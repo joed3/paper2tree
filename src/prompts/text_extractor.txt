@@ -1,0 +1,34 @@
+You are extracting structured information from a scientific paper. The text below was extracted from a PDF or HTML file and may contain artifacts such as merged words, split lines, or garbled characters from PDF parsing.
+
+Raw extracted text:
+---
+$raw_text
+---
+
+Extract and return the following structured information:
+
+1. **title**: The full title of the paper (usually near the top)
+2. **authors**: List of author names as they appear (e.g. ["John Smith", "Jane Doe"])
+3. **abstract**: The complete abstract text, cleaned up (no line breaks mid-sentence)
+4. **sections**: The major sections of the paper body. Include only substantive sections such as Introduction, Related Work, Methods/Methodology, Results/Experiments, Discussion, and Conclusion. Do NOT include: References, Acknowledgements, Appendices, or author affiliations.
+
+For each section:
+- heading: the section heading as it appears (e.g. "2. Methods")
+- text: the section body text, cleaned of PDF artifacts
+
+Clean up common PDF extraction problems:
+- Merge words that were split across lines (e.g. "ex-\nample" → "example")
+- Remove page numbers and running headers/footers
+- Fix garbled unicode characters if obvious
+
+Return ONLY valid JSON matching the schema below. No preamble, no explanation, no markdown code blocks.
+
+{
+  "title": "...",
+  "authors": ["..."],
+  "abstract": "...",
+  "sections": [
+    {"heading": "1. Introduction", "text": "..."},
+    ...
+  ]
+}

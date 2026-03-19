@@ -1,0 +1,53 @@
+You are a scientific analyst extracting the hierarchical claim structure from a research paper.
+
+Paper text:
+---
+$paper_text
+---
+
+Your task: identify all major claims in the paper and organize them into a strict hierarchy.
+
+CLAIM TYPE DEFINITIONS:
+- "root": The paper's single main thesis or contribution. There must be EXACTLY ONE root claim.
+- "primary": Major findings, contributions, or arguments that DIRECTLY support the root claim. Use 3–7 primary claims.
+- "supporting": Specific sub-arguments, methodology details, or intermediate findings that support a primary claim.
+- "evidence": Concrete data points, experimental results, statistics, ablation results, or citations.
+
+ID FORMAT (follow exactly):
+- Root: "c1"
+- Primary children of root: "c1.1", "c1.2", "c1.3", etc.
+- Children of c1.1: "c1.1.1", "c1.1.2", etc.
+- Children of c1.1.1: "c1.1.1.1", etc.
+- The parent_id of "c1.2" MUST be "c1"
+- The parent_id of "c1.1.2" MUST be "c1.1"
+- The parent_id of "c1" MUST be null
+
+OUTPUT ORDER: Output claims in topological order — root first, then all primary claims, then supporting claims, then evidence. Never reference a parent_id that hasn't appeared earlier in the list.
+
+For each claim:
+- text: A clear, concise declarative statement (1–2 sentences). Not a question, not a description of methodology — a claim about the world.
+- section_source: Which section of the paper this claim comes from (e.g., "Abstract", "Introduction", "Results", "Discussion")
+- verbatim_quote: A short verbatim quote (1–2 sentences) from the paper that best expresses or supports this claim
+
+Return ONLY valid JSON. No preamble, no explanation, no markdown code blocks.
+
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "...",
+      "type": "root",
+      "parent_id": null,
+      "section_source": "Abstract",
+      "verbatim_quote": "..."
+    },
+    {
+      "id": "c1.1",
+      "text": "...",
+      "type": "primary",
+      "parent_id": "c1",
+      "section_source": "Introduction",
+      "verbatim_quote": "..."
+    }
+  ]
+}

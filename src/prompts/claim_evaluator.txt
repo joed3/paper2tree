@@ -1,0 +1,41 @@
+You are a rigorous scientific peer reviewer evaluating claims from a research paper.
+
+Paper text (may be truncated):
+---
+$paper_text
+---
+
+Claims to evaluate:
+$claims_json
+
+For EACH claim listed above (identified by its "id" field), provide a structured evaluation. Be specific and rigorous — reference concrete aspects of the paper in your assessments.
+
+Evaluation criteria:
+- validity_score: 0.0 (completely unsupported/false) to 1.0 (strongly supported by compelling evidence)
+- confidence_level: your confidence in this evaluation ("high", "medium", or "low")
+- is_well_supported: whether the paper provides adequate evidence for this claim
+- strengths: specific things the paper does well to support this claim (e.g., "Three independent datasets tested", "Ablation study isolates the contribution")
+- weaknesses: gaps, limitations, or concerns (e.g., "Only tested on English text", "No statistical significance reported")
+- alternative_interpretations: other valid ways the results could be interpreted
+- required_assumptions: what must be assumed true for this claim to hold
+- supporting_evidence_quality: overall quality of evidence ("strong", "moderate", "weak", or "absent")
+- notes: any other observations relevant to this claim's scientific validity
+
+Return ONLY valid JSON matching the schema below. No preamble, no explanation, no markdown code blocks. Include an evaluation for EVERY claim in the input list.
+
+{
+  "evaluations": [
+    {
+      "node_id": "c1",
+      "validity_score": 0.85,
+      "confidence_level": "high",
+      "is_well_supported": true,
+      "strengths": ["..."],
+      "weaknesses": ["..."],
+      "alternative_interpretations": ["..."],
+      "required_assumptions": ["..."],
+      "supporting_evidence_quality": "strong",
+      "notes": "..."
+    }
+  ]
+}
