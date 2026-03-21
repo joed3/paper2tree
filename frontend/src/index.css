@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background-color: #0f172a !important;
+}
+
+.react-flow__minimap {
+  background-color: #1e293b !important;
+  border: 1px solid #334155;
+  border-radius: 6px;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(148, 163, 184, 0.15) !important;
+}
+
+.react-flow__controls {
+  border: 1px solid #334155 !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
+  color: #94a3b8 !important;
+  fill: #94a3b8 !important;
+}
+
+.react-flow__controls-button:hover {
+  background: #334155 !important;
+}
+
+.react-flow__edge-path {
+  stroke: #475569;
+}
+
+.react-flow__edge.contradicts .react-flow__edge-path {
+  stroke: #ef4444;
+  stroke-dasharray: 6, 3;
+}
+
+.react-flow__edge.qualifies .react-flow__edge-path {
+  stroke: #eab308;
+  stroke-dasharray: 4, 2;
+}
+
+.react-flow__arrowhead {
+  fill: #475569;
+}
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background: #475569 !important;
+  border: 2px solid #1e293b !important;
+}

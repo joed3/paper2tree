@@ -21,10 +21,20 @@ dependencies = [
     "python-dotenv>=1.0",
     "click>=8.0",
     "rich>=13.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+viz = [
+    "matplotlib>=3.8",
+    "networkx>=3.2",
 ]
 
 [project.scripts]
 paper2tree = "src.main:cli"
+paper2tree-server = "src.server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]

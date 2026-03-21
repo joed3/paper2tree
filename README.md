@@ -237,6 +237,78 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
 
 Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px).
 
+## Frontend
+
+A React app that lets you browse all processed papers and explore their claim DAGs interactively.
+
+### Starting the frontend
+
+**Browsing existing results** (no API server needed):
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Then open [http://localhost:5173](http://localhost:5173). The Vite dev server serves `outputs/` directly.
+
+**Submitting new papers from the UI** also requires the API server:
+```bash
+# Terminal 1 — API server (from project root)
+pip install -e .
+uvicorn src.server:app --reload --port 8000
+
+# Terminal 2 — frontend
+cd frontend && npm run dev
+```
+
+Click the **+** button in the sidebar (or "Add your first paper" on an empty state) to open the submission dialog. You can paste a URL or drag-and-drop / select a local PDF or HTML file. A progress indicator tracks each pipeline step in real time and the paper auto-loads in the DAG viewer once processing completes.
+
+### What you get
+
+| Area | Description |
+|---|---|
+| **Left sidebar** | Searchable list of all processed papers, sorted newest-first. Shows validity badge and claim count for each. |
+| **DAG canvas** | Interactive React Flow graph with dagre hierarchical layout. Pan, zoom, drag nodes. Minimap in the bottom-right corner. |
+| **Top bar** | Paper title, authors, source link, and summary stats (mean validity, claim count, max depth, high-confidence ratio). |
+| **Node detail panel** | Click any node to open a 360px slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes. |
+| **Assessment banner** | The pipeline's overall assessment of the paper shown at the bottom of the canvas. |
+
+**Node visual encoding:**
+
+| Color | Validity |
+|---|---|
+| Green | ≥ 0.7 |
+| Yellow | 0.4 – 0.7 |
+| Red | < 0.4 |
+
+Node size decreases with depth (root → primary → supporting → evidence). Edge style indicates relationship: solid gray for `supports`/`requires`, dashed yellow for `qualifies`, dashed red for `contradicts`.
+
+### Frontend requirements
+
+- Node.js 18+
+
+The frontend dependencies (`react`, `reactflow`, `dagre`, `tailwindcss`) are installed via `npm install` and are separate from the Python environment.
+
+### Generating a static visualization
+
+If you just want a quick PNG without running the frontend:
+
+```bash
+# Install visualization dependencies (one-time)
+pip install -e ".[viz]"
+
+# Generate PNG for the first paper in outputs/
+python visualize.py
+
+# Generate PNG for a specific paper
+python visualize.py outputs/<paper_id>/dag.json
+
+# Custom output path
+python visualize.py outputs/<paper_id>/dag.json my_graph.png
+```
+
+The PNG is saved alongside the `dag.json` as `visualization.png`.
+
 ## Project structure
 
 ```
@@ -264,7 +336,23 @@ paper2tree/
 │   │   └── graph.py             # BFS DAG builder, cycle detection, subtree utilities
 │   ├── orchestrator.py          # Async pipeline coordinator
 │   └── main.py                  # CLI (click + rich)
+├── frontend/                    # React visualization app (Node.js)
+│   ├── src/
+│   │   ├── App.tsx              # Root layout (sidebar + DAG canvas + node panel)
+│   │   ├── components/
+│   │   │   ├── PaperBrowser.tsx # Searchable paper list
+│   │   │   ├── DAGViewer.tsx    # React Flow canvas with dagre layout
+│   │   │   ├── ClaimNode.tsx    # Custom node component
+│   │   │   ├── NodeCard.tsx     # Claim detail slide-in panel
+│   │   │   └── EvalBadge.tsx    # Validity score badge
+│   │   ├── hooks/
+│   │   │   ├── usePaperIndex.ts # Loads outputs/index.json
+│   │   │   └── usePaper.ts      # Lazily loads a paper's dag.json (cached)
+│   │   ├── api/papers.ts        # fetch wrappers for /outputs/*
+│   │   └── types/dag.ts         # TypeScript types mirroring the JSON schema
+│   └── package.json
 ├── outputs/                     # Generated results (gitignored)
+├── visualize.py                 # Static PNG generator (matplotlib + networkx)
 ├── pyproject.toml
 └── .env.example
 ```

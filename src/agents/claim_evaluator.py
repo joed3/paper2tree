@@ -39,7 +39,7 @@ async def evaluate_claims(
 
     response = await _async_client.messages.parse(
         model="claude-opus-4-6",
-        max_tokens=8192,
+        max_tokens=16384,
         messages=[{"role": "user", "content": prompt}],
         output_format=SubtreeEvaluation,
     )
