@@ -46,13 +46,16 @@ class DAGSummary(BaseModel):
     total_nodes: int
     total_edges: int
     max_depth: int
-    mean_validity_score: float
-    high_confidence_nodes: int
-    low_confidence_nodes: int
+    high_support_nodes: int
+    low_support_nodes: int
     overall_assessment: str
 
 
+SCHEMA_VERSION = 1
+
+
 class PaperDAG(BaseModel):
+    schema_version: int = SCHEMA_VERSION
     paper: PaperMeta
     dag: DAGData
     summary: DAGSummary

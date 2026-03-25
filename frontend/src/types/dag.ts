@@ -6,7 +6,7 @@ export interface VisualMeta {
 
 export interface ClaimEvaluation {
   node_id: string
-  validity_score: number
+  support_level: 'high' | 'medium' | 'low'
   confidence_level: 'high' | 'medium' | 'low'
   is_well_supported: boolean
   strengths: string[]
@@ -51,9 +51,8 @@ export interface DAGSummary {
   total_nodes: number
   total_edges: number
   max_depth: number
-  mean_validity_score: number
-  high_confidence_nodes: number
-  low_confidence_nodes: number
+  high_support_nodes: number
+  low_support_nodes: number
   overall_assessment: string
 }
 
@@ -73,7 +72,7 @@ export interface PaperIndexEntry {
   url: string
   abstract_short: string
   processed_at: string
-  mean_validity_score: number
+  high_support_count: number
   total_claims: number
   result_path: string
 }

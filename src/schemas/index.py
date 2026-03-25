@@ -8,7 +8,7 @@ class PaperIndexEntry(BaseModel):
     url: str
     abstract_short: str
     processed_at: str
-    mean_validity_score: float
+    high_support_count: int
     total_claims: int
     result_path: str    # relative to outputs/: "<paper_id>/dag.json"
 

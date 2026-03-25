@@ -104,7 +104,14 @@ export function PaperBrowser({
                 {entry.authors.join(', ')}
               </p>
               <div className="flex items-center gap-2 flex-wrap">
-                <EvalBadge score={entry.mean_validity_score} size="sm" />
+                <EvalBadge
+                  support_level={
+                    entry.total_claims && entry.high_support_count / entry.total_claims >= 0.6
+                      ? 'high'
+                      : 'medium'
+                  }
+                  size="sm"
+                />
                 <span className="text-[10px] text-slate-600 font-mono">
                   {entry.total_claims} claims
                 </span>

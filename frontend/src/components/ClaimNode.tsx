@@ -19,7 +19,7 @@ export function getNodeDims(type: string) {
 
 function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
   const { label, type, visual, evaluation, isSelected } = data
-  const score = evaluation?.validity_score
+  const supportLevel = evaluation?.support_level
   const dims = getNodeDims(type)
 
   return (
@@ -51,12 +51,12 @@ function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
           >
             {type}
           </span>
-          {score !== undefined && (
+          {supportLevel !== undefined && (
             <span
-              className="text-[10px] font-mono ml-auto font-semibold"
+              className="text-[10px] font-mono ml-auto font-semibold uppercase tracking-wide"
               style={{ color: visual.color }}
             >
-              {(score * 100).toFixed(0)}%
+              {supportLevel}
             </span>
           )}
         </div>

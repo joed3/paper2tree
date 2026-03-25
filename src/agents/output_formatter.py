@@ -13,10 +13,10 @@ from ..schemas.paper import ExtractedPaper
 from ..utils.graph import EnrichedClaim
 
 
-def _validity_color(score: float) -> str:
-    if score >= 0.8:
+def _support_color(support_level: str) -> str:
+    if support_level == "high":
         return "#22c55e"   # green
-    elif score >= 0.5:
+    elif support_level == "medium":
         return "#eab308"   # yellow
     return "#ef4444"       # red
 
@@ -25,16 +25,16 @@ def _node_size(depth: int) -> int:
     return max(20, 48 - depth * 12)
 
 
-def _overall_assessment(mean_score: float, n_claims: int) -> str:
-    if mean_score >= 0.8:
+def _overall_assessment(high: int, low: int, n_claims: int) -> str:
+    if high / n_claims >= 0.6:
         quality = "strong"
-    elif mean_score >= 0.6:
-        quality = "moderate"
-    else:
+    elif low / n_claims >= 0.5:
         quality = "weak"
+    else:
+        quality = "mixed"
     return (
         f"The paper presents {n_claims} claims with {quality} overall support "
-        f"(mean validity score: {mean_score:.2f})."
+        f"({high} high, {low} low)."
     )
 
 
@@ -52,7 +52,7 @@ def format_output(
     for ec in enriched:
         claim = ec.claim
         eval_ = evaluations.get(claim.id)
-        score = eval_.validity_score if eval_ else 0.5
+        support_level = eval_.support_level if eval_ else "medium"
 
         nodes.append(DAGNode(
             id=claim.id,
@@ -64,7 +64,7 @@ def format_output(
             verbatim_quote=claim.verbatim_quote,
             evaluation=eval_.model_dump() if eval_ else None,
             visual=VisualMeta(
-                color=_validity_color(score),
+                color=_support_color(support_level),
                 size=_node_size(ec.depth),
                 border_width=3 if ec.depth == 0 else 1,
             ),
@@ -79,11 +79,10 @@ def format_output(
                 label="supports",
             ))
 
-    scores = [e.validity_score for e in evaluations.values()]
-    mean_score = round(sum(scores) / len(scores), 3) if scores else 0.0
-    high_conf = sum(1 for e in evaluations.values() if e.validity_score >= 0.8)
-    low_conf = sum(1 for e in evaluations.values() if e.validity_score < 0.5)
+    high_support = sum(1 for e in evaluations.values() if e.support_level == "high")
+    low_support = sum(1 for e in evaluations.values() if e.support_level == "low")
     max_depth = max((ec.depth for ec in enriched), default=0)
+    n_claims = len(nodes)
 
     return PaperDAG(
         paper=PaperMeta(
@@ -97,13 +96,12 @@ def format_output(
         ),
         dag=DAGData(nodes=nodes, edges=edges),
         summary=DAGSummary(
-            total_nodes=len(nodes),
+            total_nodes=n_claims,
             total_edges=len(edges),
             max_depth=max_depth,
-            mean_validity_score=mean_score,
-            high_confidence_nodes=high_conf,
-            low_confidence_nodes=low_conf,
-            overall_assessment=_overall_assessment(mean_score, len(nodes)),
+            high_support_nodes=high_support,
+            low_support_nodes=low_support,
+            overall_assessment=_overall_assessment(high_support, low_support, n_claims),
         ),
     )
 
@@ -123,7 +121,12 @@ def write_outputs(
 
 def _upsert_index(index_path: Path, paper_dag: PaperDAG) -> None:
     if index_path.exists():
-        index = PaperIndex.model_validate_json(index_path.read_text())
+        try:
+            index = PaperIndex.model_validate_json(index_path.read_text())
+        except Exception:
+            # Index uses an incompatible schema (e.g. old mean_validity_score field);
+            # start fresh rather than crashing.
+            index = PaperIndex()
     else:
         index = PaperIndex()
 
@@ -142,7 +145,7 @@ def _upsert_index(index_path: Path, paper_dag: PaperDAG) -> None:
         url=paper_dag.paper.url,
         abstract_short=abstract_short,
         processed_at=paper_dag.paper.processed_at,
-        mean_validity_score=paper_dag.summary.mean_validity_score,
+        high_support_count=paper_dag.summary.high_support_nodes,
         total_claims=paper_dag.summary.total_nodes,
         result_path=f"{paper_id}/dag.json",
     ))

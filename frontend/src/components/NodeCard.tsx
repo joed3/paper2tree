@@ -115,9 +115,9 @@ export function NodeCard({ node, onClose }: NodeCardProps) {
             <div className="border-t border-slate-700 mb-4" />
 
             {/* scores */}
-            <Section title="Validity">
+            <Section title="Support">
               <div className="flex items-center gap-3 flex-wrap">
-                <EvalBadge score={ev.validity_score} />
+                <EvalBadge support_level={ev.support_level} />
                 <span className="text-xs text-slate-400">
                   confidence:{' '}
                   <span

@@ -77,13 +77,21 @@ export default function App() {
             </p>
           </div>
           <div className="flex items-center gap-5 shrink-0">
-            <EvalBadge score={paper.summary.mean_validity_score} />
+            <EvalBadge
+              support_level={
+                paper.summary.high_support_nodes / paper.summary.total_nodes >= 0.6
+                  ? 'high'
+                  : paper.summary.low_support_nodes / paper.summary.total_nodes >= 0.5
+                    ? 'low'
+                    : 'medium'
+              }
+            />
             <ScorePip value={paper.summary.total_nodes} label="claims" />
             <ScorePip value={paper.summary.total_edges} label="edges" />
             <ScorePip value={paper.summary.max_depth} label="depth" />
             <ScorePip
-              value={`${paper.summary.high_confidence_nodes}/${paper.summary.total_nodes}`}
-              label="high conf"
+              value={`${paper.summary.high_support_nodes}/${paper.summary.total_nodes}`}
+              label="high support"
             />
           </div>
         </div>
