@@ -1771,3 +1771,298 @@ S2_API_KEY=...                      # optional; increases Semantic Scholar rate 
 OPENALEX_EMAIL=you@example.com      # polite pool registration (optional but recommended)
 KB_TOP_K=6                          # passages retrieved per claim at evaluation time
 ```
+
+---
+
+## Hosting for General Users
+
+This section outlines what it would take to turn paper2tree from a local developer tool into a publicly hosted web application.
+
+---
+
+### API Key Model: Bring Your Own Key (BYOK)
+
+The most important architectural decision for a hosted paper2tree is **who pays for the Claude API calls**.
+
+The recommended model is **BYOK**: users supply their own Anthropic API key, which is stored encrypted in the database and injected into their pipeline jobs at runtime. The service operator only pays for infrastructure.
+
+**Why BYOK is the right choice here:**
+
+- **Cost**: each paper costs $0.50–2.00 in Claude Opus API calls. At any meaningful scale, subsidising this for users makes the service uneconomical without a paid tier.
+- **Trust**: power users (researchers, academics) already have Anthropic accounts and are comfortable with BYOK — it's standard practice for AI tooling.
+- **Simplicity**: no billing infrastructure, no per-paper metering, no credit system to build and maintain.
+- **Control**: users can choose their own Claude model and spending limits via their Anthropic console.
+
+The trade-off is a higher barrier to first use (users must have an Anthropic API key). This is acceptable for the target audience of researchers.
+
+---
+
+### Key Challenges vs. Local Use
+
+| Concern | Local | Public web |
+|---|---|---|
+| **Auth** | None needed | Must identify users to scope their papers and store their API key |
+| **API costs** | You pay, you control | User pays via their own key — service has no Claude cost |
+| **Key storage** | `.env` file | Encrypted at rest; injected per-job; never logged |
+| **Job queuing** | In-memory, single user | Concurrent jobs across many users; need a real queue |
+| **Storage** | Local `outputs/` folder | Persistent, per-user S3 storage |
+| **Pipeline runtime** | ~2–5 min, you wait | Must survive server restarts mid-job |
+| **Scaling** | Single process | Workers must scale independently of the API server |
+
+---
+
+### Recommended Architecture
+
+```
+Browser
+  │
+  ▼
+CDN / Static Hosting          ← React frontend (Vite build, served via S3 + CloudFront)
+  │
+  ▼
+API Server (FastAPI on ECS)   ← auth, job submission, status, key management
+  │
+  ├── RDS Postgres            ← users, jobs, encrypted API keys
+  ├── S3                      ← per-user outputs/ (dag.json, index.json, raw PDFs)
+  │
+  ▼
+SQS Queue
+  │
+  ▼
+Worker Pool (ECS Fargate)     ← runs the pipeline with the user's API key
+  │
+  └── Anthropic API           ← billed to the user's own account
+```
+
+Workers receive the user's (decrypted) API key as part of the job payload and instantiate the Anthropic client with it, rather than reading from the environment.
+
+Staying within the AWS ecosystem simplifies IAM permissions, secrets management, networking, and billing — everything is in one place.
+
+---
+
+### Component Recommendations
+
+#### Frontend — S3 + CloudFront
+Build the React app with `npm run build` and deploy the `dist/` folder to an S3 bucket configured for static website hosting, fronted by a CloudFront distribution.
+
+- CloudFront handles global CDN, HTTPS (via ACM), and custom domains
+- API requests (`/api/*`) are forwarded to the API server via a CloudFront origin group — no CORS configuration needed
+- GitHub Actions can deploy automatically: `aws s3 sync dist/ s3://your-bucket --delete` on every push to `main`
+
+#### API Server — ECS Fargate
+Run the FastAPI server as a Docker container on ECS Fargate behind an Application Load Balancer.
+
+- Fargate is serverless containers: no EC2 instances to manage
+- Auto-scaling based on CPU/request count
+- ALB handles HTTPS termination, health checks, and rolling deploys
+- For early-stage traffic, a single `t4g.small`-equivalent task (~$12/mo) is sufficient
+
+Alternatively, **AWS App Runner** offers a simpler managed alternative to ECS for the API server — deploy directly from a container image with zero infrastructure config.
+
+#### Pipeline Workers — ECS Fargate (separate task definition)
+Workers are the same container image as the API server but run the pipeline instead of handling HTTP. They are triggered by SQS messages rather than HTTP requests.
+
+- Each worker task runs one job to completion then exits — clean isolation, no shared state
+- Fargate scales the number of running tasks based on SQS queue depth (via an Application Auto Scaling policy)
+- 2 vCPU / 4 GB memory is sufficient for the pipeline (PDF parsing + API calls)
+- Spot Fargate tasks reduce cost by ~70% for workloads that can tolerate occasional interruption — pipeline jobs can be retried safely
+
+#### Job Queue — SQS
+SQS is the natural choice when the rest of the stack is on AWS.
+
+- Standard queues with a 10-minute visibility timeout (covers the ~5-minute pipeline runtime)
+- Dead-letter queue (DLQ) for jobs that fail after 3 attempts
+- Long polling in workers keeps cost near zero when the queue is empty
+- Replaces the current in-memory `jobs` dict — job status is stored in RDS Postgres and updated by workers as they progress
+
+#### Storage — S3
+`outputs/` moves to S3, scoped per user:
+
+```
+s3://paper2tree-outputs/
+  {user_id}/
+    index.json
+    {paper_id}/
+      dag.json
+      raw/
+        paper.pdf
+        manifest.json
+```
+
+- The API server writes to S3 using the AWS SDK (`boto3`) via an IAM role — no long-lived credentials in the codebase
+- The frontend fetches outputs via pre-signed URLs (time-limited, scoped to the requesting user's prefix) generated by the API server
+- S3 lifecycle rules can expire raw PDFs after 30 days to control storage costs
+
+#### Database — RDS Postgres
+Persist:
+- User accounts (id, email, created_at)
+- Encrypted API keys (see below)
+- Job records with status, step, paper_id, error (replaces in-memory store)
+- Per-user paper index metadata (mirrors index.json for fast queries)
+
+RDS `db.t4g.micro` (~$15/mo) is sufficient for early-stage traffic. Aurora Serverless v2 is a cost-efficient upgrade path when traffic grows.
+
+#### Auth — Clerk or AWS Cognito
+Both integrate with FastAPI JWT verification middleware.
+
+- **Clerk**: drop-in React sign-in components, easiest DX, free up to 10K MAU
+- **AWS Cognito**: stays entirely within the AWS ecosystem; free up to 50K MAU; more configuration required
+
+Clerk is recommended for speed of development; Cognito if AWS-only infrastructure is a hard requirement.
+
+#### Secrets — AWS Secrets Manager
+Store the Fernet encryption key (or KMS key ARN) and other service secrets. ECS tasks access them via IAM role at runtime — no secrets in environment variables or container images.
+
+---
+
+### Storing User API Keys Securely
+
+The Anthropic API key must be:
+1. Encrypted at rest in RDS (not stored in plaintext)
+2. Decrypted only at job dispatch time, in memory, never logged
+3. Transmitted only over TLS
+4. Deletable by the user at any time
+
+**Recommended: envelope encryption with AWS KMS**
+
+```
+User submits API key via HTTPS
+  → API server calls KMS GenerateDataKey
+  → Encrypts key with the data key
+  → Stores ciphertext in RDS (api_key_enc column)
+  → Data key is discarded from memory
+
+Job dispatched:
+  → API server calls KMS Decrypt
+  → Passes plaintext key to ECS worker via SQS message (itself encrypted in transit by SQS)
+  → Worker sets ANTHROPIC_API_KEY in memory, runs pipeline
+  → Key is never written to disk or logs
+```
+
+KMS costs ~$1/mo for the key plus $0.03 per 10,000 API calls — negligible. IAM policies ensure only the API server and worker tasks can use the key.
+
+For a simpler starting point: **Fernet symmetric encryption** (Python `cryptography` package) with the secret stored in AWS Secrets Manager. Adequate for early-stage; migrate to KMS before significant user growth.
+
+---
+
+### Changes Required in the Codebase
+
+#### 1. Persist job state to RDS/Redis
+Replace the in-memory `jobs: dict` in `server.py` with async Postgres writes:
+
+```python
+# src/job_store.py
+async def set_job(job: dict) -> None:
+    await db.execute("INSERT INTO jobs ... ON CONFLICT (job_id) DO UPDATE SET ...")
+
+async def get_job(job_id: str) -> dict | None:
+    return await db.fetchone("SELECT * FROM jobs WHERE job_id = $1", job_id)
+```
+
+#### 2. Write outputs to S3
+Add an `S3Store` adapter that matches the current `Path`-based interface:
+
+```python
+# src/storage.py
+import boto3
+
+class S3Store:
+    def __init__(self, bucket: str, prefix: str):  # prefix = user_id
+        self._s3 = boto3.client("s3")
+        self._bucket = bucket
+        self._prefix = prefix
+
+    def write(self, key: str, content: str) -> None:
+        self._s3.put_object(Bucket=self._bucket, Key=f"{self._prefix}/{key}", Body=content)
+
+    def read(self, key: str) -> str:
+        obj = self._s3.get_object(Bucket=self._bucket, Key=f"{self._prefix}/{key}")
+        return obj["Body"].read().decode()
+
+    def exists(self, key: str) -> bool:
+        try:
+            self._s3.head_object(Bucket=self._bucket, Key=f"{self._prefix}/{key}")
+            return True
+        except self._s3.exceptions.ClientError:
+            return False
+```
+
+`write_outputs()` and `_upsert_index()` receive an `S3Store` instance instead of `outputs_dir: Path`.
+
+#### 3. Inject user API key into workers
+Make the Anthropic client a passed dependency rather than a module-level singleton:
+
+```python
+# Before (current)
+_client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
+
+# After
+def make_client(api_key: str) -> anthropic.Anthropic:
+    return anthropic.Anthropic(api_key=api_key)
+```
+
+This also makes agents easier to test (no environment variable dependency).
+
+#### 4. Add key management endpoints
+
+```
+POST /api/keys          — encrypt and store the user's Anthropic API key
+DELETE /api/keys        — delete stored key
+GET /api/keys/status    — returns {has_key: bool} without exposing the key
+```
+
+#### 5. Rate limit infrastructure usage
+Even with BYOK, the service bears infrastructure cost per job. Add a daily job cap per user (e.g. 20 papers/day) enforced in the API server before enqueueing.
+
+---
+
+### Deployment Topology: Recommended Starting Point
+
+```
+GitHub Actions
+  └── builds Docker image → ECR
+  └── deploys frontend → S3 + CloudFront invalidation
+
+CloudFront (frontend CDN)
+  └── origin: S3 static site
+  └── /api/* forwarded → ALB
+
+ALB
+  └── ECS Fargate (API server tasks, auto-scaled)
+        └── RDS Postgres
+        └── SQS (job queue)
+        └── S3 (outputs bucket, via IAM role)
+        └── AWS Secrets Manager (encryption key)
+
+SQS
+  └── ECS Fargate (worker tasks, scaled by queue depth)
+        └── S3 (writes results)
+        └── Anthropic API (user's own key)
+```
+
+**Estimated monthly AWS cost at low traffic (< 100 papers/day):**
+
+| Component | Cost |
+|---|---|
+| CloudFront + S3 (frontend) | ~$1/mo |
+| ECS Fargate (API server, 1 task) | ~$12/mo |
+| ECS Fargate (workers, ~3 min/paper × 100/day) | ~$30/mo |
+| RDS Postgres (`db.t4g.micro`) | ~$15/mo |
+| SQS | < $1/mo |
+| S3 (outputs storage, ~10 GB) | ~$0.25/mo |
+| KMS | ~$1/mo |
+| ALB | ~$18/mo |
+| Anthropic API | **$0 — billed directly to each user** |
+| **Total at 100 papers/day** | **~$80/mo** |
+
+Using Fargate Spot for workers reduces the worker line to ~$9/mo. The ALB is the largest fixed cost; it can be replaced with an AWS App Runner service (~$5/mo) to cut the bill further at low traffic.
+
+---
+
+### What to Build First
+
+1. **Stage 1 — Single container on App Runner with local BYOK** (days): Deploy the existing FastAPI server + React build as a single Docker image on AWS App Runner. Users paste their API key into a UI field; it's stored in the browser's `localStorage` and sent as a request header. No server-side key storage, no auth, no S3 — `outputs/` uses an EFS volume attached to the container. Good for demos and small groups of trusted users.
+
+2. **Stage 2 — Add auth, server-side key storage, and S3** (weeks): Add Clerk for sign-in, RDS for user records and job state, encrypted server-side key storage via Secrets Manager or KMS, and S3 for per-user output storage. Users enter their key once; it's used automatically.
+
+3. **Stage 3 — Decouple workers with SQS + ECS** (weeks): Move pipeline execution to separate Fargate worker tasks triggered by SQS. The API server becomes stateless. Concurrent users are handled cleanly; jobs survive server restarts.
