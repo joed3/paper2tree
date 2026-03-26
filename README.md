@@ -38,13 +38,22 @@ Each paper's results live in their own folder under `outputs/`. A central `outpu
 git clone https://github.com/yourname/paper2tree
 cd paper2tree
 
-# Install dependencies
+# Install runtime dependencies
 pip install -e .
 
 # Set your API key
 cp .env.example .env
 # Edit .env and add: ANTHROPIC_API_KEY=sk-ant-...
 ```
+
+**For development** (linting + pre-commit hooks):
+
+```bash
+pip install -e ".[dev]"
+pre-commit install
+```
+
+This registers git hooks that run `ruff` (Python lint + format) and `eslint` (TypeScript) automatically on every commit.
 
 The main dependencies installed are:
 
@@ -100,7 +109,7 @@ python -m src.main process https://arxiv.org/abs/1706.03762 --force
 
 ✓ Done — paper_id: attention-is-all-you-need-a7468c68
   Output: outputs/attention-is-all-you-need-a7468c68/dag.json
-  Claims: 14 nodes, mean validity: 0.87
+  Claims: 14 nodes, high support: 9/14
 ```
 
 ### Process multiple papers
@@ -144,11 +153,11 @@ python -m src.main list --sort-by title
 ```
            Processed Papers (3 total)
  ┌─────────────────────────────────────────────┬──────────────────┬────────┬───────┬────────────┐
- │ Title                                       │ Authors          │ Claims │ Score │ Date       │
+ │ Title                                       │ Authors          │ Claims │ High  │ Date       │
  ├─────────────────────────────────────────────┼──────────────────┼────────┼───────┼────────────┤
- │ Attention Is All You Need                   │ Vaswani, Shazeer │     14 │  0.87 │ 2026-03-19 │
- │ BERT: Pre-training of Deep Bidirectional... │ Devlin, Chang    │     11 │  0.84 │ 2026-03-19 │
- │ Language Models are Few-Shot Learners       │ Brown, Mann      │     16 │  0.79 │ 2026-03-18 │
+ │ Attention Is All You Need                   │ Vaswani, Shazeer │     14 │   9   │ 2026-03-19 │
+ │ BERT: Pre-training of Deep Bidirectional... │ Devlin, Chang    │     11 │   8   │ 2026-03-19 │
+ │ Language Models are Few-Shot Learners       │ Brown, Mann      │     16 │  10   │ 2026-03-18 │
  └─────────────────────────────────────────────┴──────────────────┴────────┴───────┴────────────┘
 ```
 
@@ -182,6 +191,7 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
 
 ```json
 {
+  "schema_version": 1,
   "paper": {
     "paper_id": "attention-is-all-you-need-a7468c68",
     "title": "Attention Is All You Need",
@@ -202,11 +212,11 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
         "section_source": "Abstract",
         "verbatim_quote": "The Transformer, a model architecture eschewing recurrence...",
         "evaluation": {
-          "validity_score": 0.91,
-          "confidence_level": "high",
+          "support_level": "high",
           "strengths": ["Comprehensive benchmarks on WMT 2014", "..."],
           "weaknesses": ["Limited to translation at time of writing", "..."],
-          "supporting_evidence_quality": "strong"
+          "supporting_evidence_quality": "strong",
+          "notes": "..."
         },
         "visual": { "color": "#22c55e", "size": 48, "border_width": 3 }
       }
@@ -219,9 +229,8 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
     "total_nodes": 14,
     "total_edges": 13,
     "max_depth": 3,
-    "mean_validity_score": 0.87,
-    "high_confidence_nodes": 9,
-    "low_confidence_nodes": 1,
+    "high_support_nodes": 9,
+    "low_support_nodes": 1,
     "overall_assessment": "The paper presents 14 claims with strong overall support..."
   }
 }
@@ -229,11 +238,11 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
 
 **Visual encoding conventions** (for React front-end):
 
-| Validity score | Node color |
+| Support level | Node color |
 |---|---|
-| ≥ 0.8 | Green `#22c55e` |
-| 0.5 – 0.8 | Yellow `#eab308` |
-| < 0.5 | Red `#ef4444` |
+| `high` | Green `#22c55e` |
+| `medium` | Yellow `#eab308` |
+| `low` | Red `#ef4444` |
 
 Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px).
 
@@ -267,19 +276,20 @@ Click the **+** button in the sidebar (or "Add your first paper" on an empty sta
 
 | Area | Description |
 |---|---|
-| **Left sidebar** | Searchable list of all processed papers, sorted newest-first. Shows validity badge and claim count for each. |
-| **DAG canvas** | Interactive React Flow graph with dagre hierarchical layout. Pan, zoom, drag nodes. Minimap in the bottom-right corner. |
-| **Top bar** | Paper title, authors, source link, and summary stats (mean validity, claim count, max depth, high-confidence ratio). |
-| **Node detail panel** | Click any node to open a 360px slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes. |
+| **Left sidebar** | Searchable list of all processed papers and in-progress jobs. Shows support badge and claim count per paper; pulsing indicator and step text for running jobs. |
+| **DAG canvas** | Interactive React Flow graph with dagre left-to-right layout. Scroll to pan, Ctrl+scroll or pinch to zoom, drag individual nodes. Supporting/evidence nodes collapsed by default; click `+N` on any node to expand its subtree. |
+| **Full-graph inset** | Portrait minimap (top-left corner) always showing the complete claim tree regardless of collapse state. Collapsed nodes appear dimmed. |
+| **Top bar** | Paper title, authors, source link, and summary stats (support badge, claim count, max depth, high-support ratio). |
+| **Node detail panel** | Click any node to open a slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — support level, strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes. |
 | **Assessment banner** | The pipeline's overall assessment of the paper shown at the bottom of the canvas. |
 
 **Node visual encoding:**
 
-| Color | Validity |
+| Color | Support level |
 |---|---|
-| Green | ≥ 0.7 |
-| Yellow | 0.4 – 0.7 |
-| Red | < 0.4 |
+| Green | `high` |
+| Yellow | `medium` |
+| Red | `low` |
 
 Node size decreases with depth (root → primary → supporting → evidence). Edge style indicates relationship: solid gray for `supports`/`requires`, dashed yellow for `qualifies`, dashed red for `contradicts`.
 
@@ -324,8 +334,8 @@ paper2tree/
 │   ├── schemas/                 # Pydantic models for inter-agent data contracts
 │   │   ├── paper.py             # FetchResult, ExtractedPaper
 │   │   ├── claim.py             # Claim, ClaimGraph
-│   │   ├── evaluation.py        # ClaimEvaluation, SubtreeEvaluation
-│   │   ├── output.py            # DAGNode, DAGEdge, PaperDAG
+│   │   ├── evaluation.py        # ClaimEvaluation (support_level: high/medium/low)
+│   │   ├── output.py            # DAGNode, DAGEdge, PaperDAG (schema_version)
 │   │   └── index.py             # PaperIndexEntry, PaperIndex
 │   ├── prompts/                 # Prompt templates (.txt, loaded via string.Template)
 │   │   ├── text_extractor.txt
@@ -335,26 +345,84 @@ paper2tree/
 │   │   ├── paper_id.py          # make_paper_id(title, url) → "slug-urlhash"
 │   │   └── graph.py             # BFS DAG builder, cycle detection, subtree utilities
 │   ├── orchestrator.py          # Async pipeline coordinator
+│   ├── server.py                # FastAPI server (job submission + status polling)
 │   └── main.py                  # CLI (click + rich)
 ├── frontend/                    # React visualization app (Node.js)
 │   ├── src/
 │   │   ├── App.tsx              # Root layout (sidebar + DAG canvas + node panel)
 │   │   ├── components/
-│   │   │   ├── PaperBrowser.tsx # Searchable paper list
-│   │   │   ├── DAGViewer.tsx    # React Flow canvas with dagre layout
-│   │   │   ├── ClaimNode.tsx    # Custom node component
+│   │   │   ├── PaperBrowser.tsx # Paper list + in-progress job entries
+│   │   │   ├── DAGViewer.tsx    # React Flow canvas (LR dagre, collapse/expand, inset)
+│   │   │   ├── ClaimNode.tsx    # Custom node component with expand toggle
+│   │   │   ├── ExpandContext.ts # React context for collapse/expand state
 │   │   │   ├── NodeCard.tsx     # Claim detail slide-in panel
-│   │   │   └── EvalBadge.tsx    # Validity score badge
+│   │   │   ├── EvalBadge.tsx    # Support level badge (high/medium/low)
+│   │   │   ├── AddPaperDialog.tsx  # URL/file submission dialog
+│   │   │   └── JobProgressView.tsx # Pipeline step progress for in-flight jobs
 │   │   ├── hooks/
 │   │   │   ├── usePaperIndex.ts # Loads outputs/index.json
-│   │   │   └── usePaper.ts      # Lazily loads a paper's dag.json (cached)
-│   │   ├── api/papers.ts        # fetch wrappers for /outputs/*
+│   │   │   ├── usePaper.ts      # Lazily loads a paper's dag.json (cached)
+│   │   │   └── useJobs.ts       # Job polling + localStorage persistence
+│   │   ├── api/
+│   │   │   ├── papers.ts        # fetch wrappers for /outputs/*
+│   │   │   └── jobs.ts          # fetch wrappers for /api/jobs
 │   │   └── types/dag.ts         # TypeScript types mirroring the JSON schema
+│   ├── eslint.config.js         # ESLint 9 flat config (typescript-eslint + react-hooks)
 │   └── package.json
+├── migrations/                  # Schema migration scripts
+│   ├── migrate_v0_to_v1.py      # validity_score → support_level (schema_version 0→1)
+│   └── README.md
 ├── outputs/                     # Generated results (gitignored)
 ├── visualize.py                 # Static PNG generator (matplotlib + networkx)
-├── pyproject.toml
+├── pyproject.toml               # Source of truth for version + ruff config
+├── .pre-commit-config.yaml      # ruff (Python) + ESLint (TypeScript) hooks
+├── CHANGELOG.md
 └── .env.example
+```
+
+## Development
+
+### Linting and formatting
+
+Python is linted and formatted with [ruff](https://docs.astral.sh/ruff/). TypeScript/React uses [ESLint 9](https://eslint.org/) with `typescript-eslint` and `eslint-plugin-react-hooks`.
+
+```bash
+# Python — check and auto-fix
+ruff check src/ --fix
+ruff format src/
+
+# Frontend — check
+cd frontend && npm run lint
+```
+
+### Pre-commit hooks
+
+Install once after cloning:
+
+```bash
+pip install -e ".[dev]"
+pre-commit install
+```
+
+On every `git commit`, the hooks will:
+
+1. Strip trailing whitespace and ensure files end with a newline
+2. Run `ruff check --fix` and `ruff format` on staged Python files
+3. Run `eslint src` on staged TypeScript/TSX files
+
+To run all hooks against the entire repo manually:
+
+```bash
+pre-commit run --all-files
+```
+
+### Schema migrations
+
+When the `dag.json` output schema changes in a breaking way (major version bump), a migration script is added to `migrations/`. See `migrations/README.md` for the conventions and history.
+
+```bash
+# Upgrade all outputs/ artifacts from schema v0 to v1
+python migrations/migrate_v0_to_v1.py
 ```
 
 ## Design notes

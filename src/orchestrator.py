@@ -3,6 +3,7 @@
 Pipeline:
   fetch_paper → extract_text → extract_claims → build_dag → evaluate_claims → write_outputs
 """
+
 import asyncio
 import hashlib
 import json
@@ -87,7 +88,9 @@ async def _run_pipeline(
 
         log(f"\n✓ Done — paper_id: {paper_id}")
         log(f"  Output: {output_path}")
-        log(f"  Claims: {paper_dag.summary.total_nodes} nodes, mean validity: {paper_dag.summary.mean_validity_score:.2f}")
+        log(
+            f"  Claims: {paper_dag.summary.total_nodes} nodes, mean validity: {paper_dag.summary.mean_validity_score:.2f}"
+        )
 
         return paper_id
 

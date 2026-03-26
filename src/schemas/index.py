@@ -10,7 +10,7 @@ class PaperIndexEntry(BaseModel):
     processed_at: str
     high_support_count: int
     total_claims: int
-    result_path: str    # relative to outputs/: "<paper_id>/dag.json"
+    result_path: str  # relative to outputs/: "<paper_id>/dag.json"
 
 
 class PaperIndex(BaseModel):

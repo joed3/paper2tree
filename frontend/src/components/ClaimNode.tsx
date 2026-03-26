@@ -16,6 +16,7 @@ const TYPE_DIMS: Record<string, { w: number; h: number }> = {
   evidence: { w: 165, h: 78 },
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function getNodeDims(type: string) {
   return TYPE_DIMS[type] ?? TYPE_DIMS.supporting
 }

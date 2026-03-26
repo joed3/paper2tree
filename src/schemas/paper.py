@@ -2,9 +2,9 @@ from pydantic import BaseModel
 
 
 class FetchResult(BaseModel):
-    content_type: str   # "pdf" | "html" | "text"
-    raw_path: str       # absolute path to downloaded file
-    source_url: str     # final URL after redirects
+    content_type: str  # "pdf" | "html" | "text"
+    raw_path: str  # absolute path to downloaded file
+    source_url: str  # final URL after redirects
 
 
 class ExtractedSection(BaseModel):
@@ -14,6 +14,7 @@ class ExtractedSection(BaseModel):
 
 class ExtractedPaperStructure(BaseModel):
     """The structured metadata Claude extracts from raw text."""
+
     title: str
     authors: list[str]
     abstract: str
@@ -22,6 +23,7 @@ class ExtractedPaperStructure(BaseModel):
 
 class ExtractedPaper(BaseModel):
     """Full extracted paper including raw text."""
+
     title: str
     authors: list[str]
     abstract: str

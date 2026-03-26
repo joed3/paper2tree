@@ -8,6 +8,7 @@ v1 evaluation: support_level ('high'|'medium'|'low'), no validity_score
 v1 summary:    high_support_nodes, low_support_nodes
 v1 top-level:  schema_version: 1
 """
+
 import json
 from pathlib import Path
 
@@ -74,17 +75,19 @@ def rebuild_index(outputs_dir: Path) -> None:
         abstract = paper["abstract"]
         if len(abstract) > 250:
             abstract = abstract[:250] + "…"
-        entries.append({
-            "paper_id": paper["paper_id"],
-            "title": paper["title"],
-            "authors": paper["authors"],
-            "url": paper["url"],
-            "abstract_short": abstract,
-            "processed_at": paper["processed_at"],
-            "high_support_count": summary["high_support_nodes"],
-            "total_claims": summary["total_nodes"],
-            "result_path": f"{paper['paper_id']}/dag.json",
-        })
+        entries.append(
+            {
+                "paper_id": paper["paper_id"],
+                "title": paper["title"],
+                "authors": paper["authors"],
+                "url": paper["url"],
+                "abstract_short": abstract,
+                "processed_at": paper["processed_at"],
+                "high_support_count": summary["high_support_nodes"],
+                "total_claims": summary["total_nodes"],
+                "result_path": f"{paper['paper_id']}/dag.json",
+            }
+        )
     entries.sort(key=lambda e: e["processed_at"], reverse=True)
     index_path = outputs_dir / "index.json"
     index_path.write_text(json.dumps({"version": 1, "papers": entries}, indent=2))
@@ -92,10 +95,7 @@ def rebuild_index(outputs_dir: Path) -> None:
 
 
 def main() -> None:
-    paper_dirs = [
-        d for d in OUTPUTS_DIR.iterdir()
-        if d.is_dir() and (d / "dag.json").exists()
-    ]
+    paper_dirs = [d for d in OUTPUTS_DIR.iterdir() if d.is_dir() and (d / "dag.json").exists()]
 
     for paper_dir in paper_dirs:
         dag_path = paper_dir / "dag.json"

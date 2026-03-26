@@ -18,4 +18,5 @@ class ClaimEvaluation(BaseModel):
 
 class SubtreeEvaluation(BaseModel):
     """Returned by the claim evaluator for a batch of claims."""
+
     evaluations: list[ClaimEvaluation]

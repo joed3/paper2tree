@@ -3,6 +3,7 @@
 Uses AsyncAnthropic with structured output (no thinking — incompatible with output_format).
 Draft: single call for all claims. TODO: parallelize by primary-claim subtrees.
 """
+
 import json
 
 import anthropic

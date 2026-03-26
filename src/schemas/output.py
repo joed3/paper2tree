@@ -9,8 +9,8 @@ class VisualMeta(BaseModel):
 
 class DAGNode(BaseModel):
     id: str
-    label: str          # truncated claim text for display
-    claim: str          # full claim text
+    label: str  # truncated claim text for display
+    claim: str  # full claim text
     type: str
     depth: int
     section_source: str

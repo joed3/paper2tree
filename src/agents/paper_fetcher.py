@@ -3,6 +3,7 @@
 The agent runs with cwd=raw_dir so all Bash/Write paths resolve there.
 After the agent finishes it must have written manifest.json to raw_dir.
 """
+
 import json
 from pathlib import Path
 
@@ -86,9 +87,7 @@ async def fetch_paper(url: str, raw_dir: Path) -> FetchResult:
     # Resolve the relative raw_path to absolute
     raw_path = raw_dir / data["raw_path"]
     if not raw_path.exists():
-        raise RuntimeError(
-            f"Paper fetcher wrote manifest but file not found: {raw_path}"
-        )
+        raise RuntimeError(f"Paper fetcher wrote manifest but file not found: {raw_path}")
 
     return FetchResult(
         content_type=data["content_type"],

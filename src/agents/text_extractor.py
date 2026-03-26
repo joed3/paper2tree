@@ -3,6 +3,7 @@
 Uses pdfplumber (+ pymupdf fallback) for PDF parsing, BeautifulSoup for HTML,
 then calls Claude to structure the raw text into title/authors/abstract/sections.
 """
+
 from pathlib import Path
 
 import anthropic
@@ -59,8 +60,8 @@ def _extract_pdf(path: Path) -> str:
 def _extract_html(path: Path) -> str:
     """Extract readable text from an HTML file."""
     try:
-        from bs4 import BeautifulSoup
         import markdownify
+        from bs4 import BeautifulSoup
 
         html = path.read_text(encoding="utf-8", errors="ignore")
         soup = BeautifulSoup(html, "lxml")

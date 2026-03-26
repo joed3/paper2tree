@@ -6,6 +6,7 @@ Usage:
   python -m src.main list [--sort-by title|date|score]
   python -m src.main show <paper_id>
 """
+
 import asyncio
 import json
 import sys
@@ -29,6 +30,7 @@ def cli() -> None:
 
 # ── process ───────────────────────────────────────────────────────────────────
 
+
 @cli.command()
 @click.argument("url")
 @click.option("--force", is_flag=True, help="Reprocess even if already cached.")
@@ -42,6 +44,7 @@ def process(url: str, force: bool) -> None:
 
 
 # ── batch ─────────────────────────────────────────────────────────────────────
+
 
 @cli.command()
 @click.argument("urls_file", type=click.Path(exists=True))
@@ -76,6 +79,7 @@ def batch(urls_file: str, force: bool, concurrency: int) -> None:
 
 # ── list ──────────────────────────────────────────────────────────────────────
 
+
 @cli.command("list")
 @click.option(
     "--sort-by",
@@ -88,7 +92,9 @@ def list_papers(sort_by: str) -> None:
     """List all processed papers."""
     index_path = OUTPUTS_DIR / "index.json"
     if not index_path.exists():
-        console.print("[yellow]No papers processed yet. Run 'process <url>' to get started.[/yellow]")
+        console.print(
+            "[yellow]No papers processed yet. Run 'process <url>' to get started.[/yellow]"
+        )
         return
 
     data = json.loads(index_path.read_text())
@@ -143,6 +149,7 @@ def list_papers(sort_by: str) -> None:
 
 # ── show ──────────────────────────────────────────────────────────────────────
 
+
 @cli.command()
 @click.argument("paper_id")
 def show(paper_id: str) -> None:
@@ -160,12 +167,14 @@ def show(paper_id: str) -> None:
     score = summary["mean_validity_score"]
     score_color = "green" if score >= 0.8 else "yellow" if score >= 0.5 else "red"
 
-    console.print(Panel(
-        f"[bold]{paper['title']}[/bold]\n"
-        f"[dim]{', '.join(paper['authors'])}[/dim]\n\n"
-        f"{paper['abstract'][:400]}{'…' if len(paper['abstract']) > 400 else ''}",
-        title="Paper",
-    ))
+    console.print(
+        Panel(
+            f"[bold]{paper['title']}[/bold]\n"
+            f"[dim]{', '.join(paper['authors'])}[/dim]\n\n"
+            f"{paper['abstract'][:400]}{'…' if len(paper['abstract']) > 400 else ''}",
+            title="Paper",
+        )
+    )
 
     console.print(
         f"\n[bold]Summary:[/bold]  "

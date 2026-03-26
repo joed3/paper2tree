@@ -6,6 +6,7 @@ Run from the project root:
 Or via the installed script:
     paper2tree-server
 """
+
 import os
 import tempfile
 import uuid
@@ -56,13 +57,16 @@ def _new_job(source: str) -> dict:
 
 def _make_logger(job_id: str):
     """Returns a log function that updates the job's step field."""
+
     def log(msg: str) -> None:
         jobs[job_id]["step"] = msg.strip()
         print(msg)
+
     return log
 
 
 # ── Background task runners ────────────────────────────────────────────────────
+
 
 async def _run_url_job(job_id: str, url: str, force: bool) -> None:
     jobs[job_id]["status"] = "running"
@@ -74,9 +78,7 @@ async def _run_url_job(job_id: str, url: str, force: bool) -> None:
         jobs[job_id].update({"status": "error", "error": str(exc)})
 
 
-async def _run_file_job(
-    job_id: str, tmp_path: Path, original_name: str, force: bool
-) -> None:
+async def _run_file_job(job_id: str, tmp_path: Path, original_name: str, force: bool) -> None:
     jobs[job_id]["status"] = "running"
     log = _make_logger(job_id)
     try:
@@ -89,6 +91,7 @@ async def _run_file_job(
 
 
 # ── API routes ─────────────────────────────────────────────────────────────────
+
 
 class ProcessRequest(BaseModel):
     url: str
@@ -162,6 +165,7 @@ if FRONTEND_DIST.exists():
 
 
 # ── Entry point ────────────────────────────────────────────────────────────────
+
 
 def main():
     uvicorn.run("src.server:app", host="0.0.0.0", port=8000, reload=True)

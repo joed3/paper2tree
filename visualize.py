@@ -13,8 +13,8 @@ import sys
 import textwrap
 from pathlib import Path
 
-import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
 import networkx as nx
 
 
@@ -113,7 +113,9 @@ def visualize_dag(dag_path: Path, output_path: Path) -> None:
 
     # Draw edges
     nx.draw_networkx_edges(
-        G, pos, ax=ax,
+        G,
+        pos,
+        ax=ax,
         arrows=True,
         arrowsize=12,
         arrowstyle="-|>",
@@ -126,7 +128,9 @@ def visualize_dag(dag_path: Path, output_path: Path) -> None:
 
     # Draw nodes
     nx.draw_networkx_nodes(
-        G, pos, ax=ax,
+        G,
+        pos,
+        ax=ax,
         node_color=colors_list,
         node_size=sizes_list,
         alpha=0.92,
@@ -136,7 +140,10 @@ def visualize_dag(dag_path: Path, output_path: Path) -> None:
 
     # Draw labels
     nx.draw_networkx_labels(
-        G, pos, labels=node_labels, ax=ax,
+        G,
+        pos,
+        labels=node_labels,
+        ax=ax,
         font_size=5.5,
         font_color="#f8fafc",
         font_family="monospace",
@@ -173,21 +180,33 @@ def visualize_dag(dag_path: Path, output_path: Path) -> None:
     type_patches = [
         mpatches.Patch(facecolor="#64748b", edgecolor="#f8fafc", label="⬤ root  (largest)"),
         mpatches.Patch(facecolor="#64748b", edgecolor="#f8fafc", label="● primary"),
-        mpatches.Patch(facecolor="#64748b", edgecolor="#f8fafc", label="· supporting / evidence  (smallest)"),
+        mpatches.Patch(
+            facecolor="#64748b", edgecolor="#f8fafc", label="· supporting / evidence  (smallest)"
+        ),
     ]
     leg1 = ax.legend(
-        handles=legend_patches, loc="lower left",
-        fontsize=7.5, framealpha=0.25,
-        labelcolor="#f8fafc", facecolor="#1e293b", edgecolor="#334155",
-        title="Node color", title_fontsize=7.5,
+        handles=legend_patches,
+        loc="lower left",
+        fontsize=7.5,
+        framealpha=0.25,
+        labelcolor="#f8fafc",
+        facecolor="#1e293b",
+        edgecolor="#334155",
+        title="Node color",
+        title_fontsize=7.5,
     )
     leg1.get_title().set_color("#94a3b8")
     ax.add_artist(leg1)
     leg2 = ax.legend(
-        handles=type_patches, loc="lower right",
-        fontsize=7.5, framealpha=0.25,
-        labelcolor="#f8fafc", facecolor="#1e293b", edgecolor="#334155",
-        title="Node size", title_fontsize=7.5,
+        handles=type_patches,
+        loc="lower right",
+        fontsize=7.5,
+        framealpha=0.25,
+        labelcolor="#f8fafc",
+        facecolor="#1e293b",
+        edgecolor="#334155",
+        title="Node size",
+        title_fontsize=7.5,
     )
     leg2.get_title().set_color("#94a3b8")
 

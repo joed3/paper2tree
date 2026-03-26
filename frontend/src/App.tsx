@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ReactFlowProvider } from 'reactflow'
 import { Job } from './api/jobs'
 import { PaperIndexEntry } from './types/dag'
@@ -27,9 +27,6 @@ export default function App() {
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [showAddDialog, setShowAddDialog] = useState(false)
-
-  // Track previous job states to detect done transitions
-  const prevJobsRef = useRef<Job[]>([])
 
   const handleJobComplete = useCallback(
     async (job: Job) => {

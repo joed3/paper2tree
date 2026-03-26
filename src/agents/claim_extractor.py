@@ -3,6 +3,7 @@
 Uses adaptive thinking (no structured output — the two are incompatible).
 Parses the JSON response manually with Pydantic and retries on validation failure.
 """
+
 import json
 import re
 
@@ -36,9 +37,7 @@ def _extract_with_retry(paper_text: str) -> ClaimGraph:
     )
 
     # Thinking blocks come first; find the text block
-    text_block = next(
-        (b for b in response.content if b.type == "text"), None
-    )
+    text_block = next((b for b in response.content if b.type == "text"), None)
     if text_block is None:
         raise ValueError("Claim extractor: no text block in response")
 

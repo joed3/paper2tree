@@ -3,6 +3,7 @@
 Assembles the final PaperDAG JSON from all pipeline outputs,
 writes outputs/<paper_id>/dag.json, and upserts outputs/index.json.
 """
+
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -15,10 +16,10 @@ from ..utils.graph import EnrichedClaim
 
 def _support_color(support_level: str) -> str:
     if support_level == "high":
-        return "#22c55e"   # green
+        return "#22c55e"  # green
     elif support_level == "medium":
-        return "#eab308"   # yellow
-    return "#ef4444"       # red
+        return "#eab308"  # yellow
+    return "#ef4444"  # red
 
 
 def _node_size(depth: int) -> int:
@@ -54,30 +55,34 @@ def format_output(
         eval_ = evaluations.get(claim.id)
         support_level = eval_.support_level if eval_ else "medium"
 
-        nodes.append(DAGNode(
-            id=claim.id,
-            label=claim.text[:80] + ("…" if len(claim.text) > 80 else ""),
-            claim=claim.text,
-            type=claim.type,
-            depth=ec.depth,
-            section_source=claim.section_source,
-            verbatim_quote=claim.verbatim_quote,
-            evaluation=eval_.model_dump() if eval_ else None,
-            visual=VisualMeta(
-                color=_support_color(support_level),
-                size=_node_size(ec.depth),
-                border_width=3 if ec.depth == 0 else 1,
-            ),
-        ))
+        nodes.append(
+            DAGNode(
+                id=claim.id,
+                label=claim.text[:80] + ("…" if len(claim.text) > 80 else ""),
+                claim=claim.text,
+                type=claim.type,
+                depth=ec.depth,
+                section_source=claim.section_source,
+                verbatim_quote=claim.verbatim_quote,
+                evaluation=eval_.model_dump() if eval_ else None,
+                visual=VisualMeta(
+                    color=_support_color(support_level),
+                    size=_node_size(ec.depth),
+                    border_width=3 if ec.depth == 0 else 1,
+                ),
+            )
+        )
 
         if claim.parent_id is not None:
-            edges.append(DAGEdge(
-                id=f"e_{claim.parent_id}_{claim.id}",
-                source=claim.parent_id,
-                target=claim.id,
-                relationship="supports",
-                label="supports",
-            ))
+            edges.append(
+                DAGEdge(
+                    id=f"e_{claim.parent_id}_{claim.id}",
+                    source=claim.parent_id,
+                    target=claim.id,
+                    relationship="supports",
+                    label="supports",
+                )
+            )
 
     high_support = sum(1 for e in evaluations.values() if e.support_level == "high")
     low_support = sum(1 for e in evaluations.values() if e.support_level == "low")
@@ -138,17 +143,19 @@ def _upsert_index(index_path: Path, paper_dag: PaperDAG) -> None:
     if len(abstract_short) > 250:
         abstract_short = abstract_short[:250] + "…"
 
-    index.papers.append(PaperIndexEntry(
-        paper_id=paper_id,
-        title=paper_dag.paper.title,
-        authors=paper_dag.paper.authors,
-        url=paper_dag.paper.url,
-        abstract_short=abstract_short,
-        processed_at=paper_dag.paper.processed_at,
-        high_support_count=paper_dag.summary.high_support_nodes,
-        total_claims=paper_dag.summary.total_nodes,
-        result_path=f"{paper_id}/dag.json",
-    ))
+    index.papers.append(
+        PaperIndexEntry(
+            paper_id=paper_id,
+            title=paper_dag.paper.title,
+            authors=paper_dag.paper.authors,
+            url=paper_dag.paper.url,
+            abstract_short=abstract_short,
+            processed_at=paper_dag.paper.processed_at,
+            high_support_count=paper_dag.summary.high_support_nodes,
+            total_claims=paper_dag.summary.total_nodes,
+            result_path=f"{paper_id}/dag.json",
+        )
+    )
 
     # Keep newest-first
     index.papers.sort(key=lambda p: p.processed_at, reverse=True)
