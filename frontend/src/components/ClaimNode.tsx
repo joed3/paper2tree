@@ -1,9 +1,12 @@
 import { memo } from 'react'
 import { Handle, Position, NodeProps } from 'reactflow'
 import { DAGNode } from '../types/dag'
+import { useExpand } from './ExpandContext'
 
 export interface ClaimNodeData extends DAGNode {
   isSelected: boolean
+  isExpanded: boolean
+  hiddenChildCount: number
 }
 
 const TYPE_DIMS: Record<string, { w: number; h: number }> = {
@@ -18,9 +21,12 @@ export function getNodeDims(type: string) {
 }
 
 function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
-  const { label, type, visual, evaluation, isSelected } = data
+  const { id, label, type, visual, evaluation, isSelected, isExpanded, hiddenChildCount } = data
   const supportLevel = evaluation?.support_level
   const dims = getNodeDims(type)
+  const { toggle } = useExpand()
+
+  const showToggle = hiddenChildCount > 0 || isExpanded
 
   return (
     <div
@@ -38,7 +44,7 @@ function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
     >
       <Handle
         type="target"
-        position={Position.Top}
+        position={Position.Left}
         style={{ background: '#475569', border: '2px solid #1e293b', width: 8, height: 8 }}
       />
 
@@ -53,11 +59,27 @@ function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
           </span>
           {supportLevel !== undefined && (
             <span
-              className="text-[10px] font-mono ml-auto font-semibold uppercase tracking-wide"
+              className="text-[10px] font-mono font-semibold uppercase tracking-wide"
               style={{ color: visual.color }}
             >
               {supportLevel}
             </span>
+          )}
+          {showToggle && (
+            <button
+              className="ml-auto text-[10px] font-mono px-1.5 py-0.5 rounded leading-none transition-colors"
+              style={{
+                color: visual.color,
+                backgroundColor: `${visual.color}20`,
+                border: `1px solid ${visual.color}50`,
+              }}
+              onClick={(e) => {
+                e.stopPropagation()
+                toggle(id)
+              }}
+            >
+              {isExpanded ? '−' : `+${hiddenChildCount}`}
+            </button>
           )}
         </div>
 
@@ -69,7 +91,7 @@ function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
 
       <Handle
         type="source"
-        position={Position.Bottom}
+        position={Position.Right}
         style={{ background: '#475569', border: '2px solid #1e293b', width: 8, height: 8 }}
       />
     </div>

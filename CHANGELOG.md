@@ -11,6 +11,41 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [1.2.0] — 2026-03-26
+
+### Added
+- Submitted papers now appear immediately as in-progress entries in the sidebar — no need to keep the dialog open
+- New `JobProgressView` center panel: clicking an in-progress or failed entry shows the step-by-step progress bar (Fetch → Extract text → Extract claims → Build DAG → Evaluate claims → Write output), current step text, and full error detail on failure
+- Jobs persist across page refreshes via `localStorage` (retained for 24 hours); active jobs resume polling automatically on reload
+- Failed jobs show a dismiss button (×) in both the sidebar entry and the progress view
+- When a job completes, the sidebar entry is automatically replaced by the paper entry and the center panel switches to the DAG view — no manual refresh needed
+- `AddPaperDialog` closes immediately after submission; progress tracking is handled entirely in the sidebar
+
+## [1.1.2] — 2026-03-26
+
+### Fixed
+- Full-graph inset moved to upper-left corner; resized from landscape (224×136) to portrait (156×220) to match the LR layout's orientation, where nodes stack vertically within each rank making the full tree taller than wide
+
+## [1.1.1] — 2026-03-26
+
+### Fixed
+- DAG canvas now pans with scroll (any direction) instead of click-drag; Ctrl+scroll or pinch zooms as before; node dragging is unaffected
+
+## [1.1.0] — 2026-03-26
+
+### Added
+- DAG viewer now collapses supporting and evidence nodes by default; only the root and primary claim nodes are shown on load
+- Primary nodes (and any node with hidden children) display a `+N` badge in the header row — clicking it expands that node's subtree; clicking `−` collapses it again; the click is isolated from the node selection so the detail panel still opens normally
+- Full-graph inset (bottom-right corner) replaces the ReactFlow minimap — it always renders the complete claim tree via a second dagre layout, with collapsed nodes dimmed, giving a bird's-eye view of the whole paper regardless of expansion state
+- Expansion state resets automatically when switching to a different paper
+
+## [1.0.1] — 2026-03-26
+
+### Fixed
+- DAG viewer now lays out left-to-right instead of top-to-bottom, reducing horizontal crowding on papers with many claims (`rankdir: LR` in dagre; node handles moved from top/bottom to left/right)
+
+---
+
 ## [1.0.0] — 2026-03-25
 
 ### Added
