@@ -107,7 +107,7 @@ def list_papers(sort_by: str) -> None:
     if sort_by == "title":
         papers.sort(key=lambda p: p["title"].lower())
     elif sort_by == "score":
-        papers.sort(key=lambda p: p["mean_validity_score"], reverse=True)
+        papers.sort(key=lambda p: p["high_support_count"], reverse=True)
     # "date" is the default sort from the index (newest first)
 
     table = Table(title=f"Processed Papers ({len(papers)} total)", show_lines=True)
@@ -115,19 +115,21 @@ def list_papers(sort_by: str) -> None:
     table.add_column("Title", max_width=50)
     table.add_column("Authors", max_width=28)
     table.add_column("Claims", justify="right", width=7)
-    table.add_column("Score", justify="right", width=7)
+    table.add_column("High Support", justify="right", width=12)
     table.add_column("Date", width=10)
     table.add_column("ID", style="dim", max_width=36)
 
     for i, p in enumerate(papers, 1):
-        score = p["mean_validity_score"]
-        score_text = Text(f"{score:.2f}")
-        if score >= 0.8:
-            score_text.stylize("green")
-        elif score >= 0.5:
-            score_text.stylize("yellow")
+        high = p["high_support_count"]
+        total = p["total_claims"]
+        ratio = high / total if total else 0
+        support_text = Text(f"{high}/{total}")
+        if ratio >= 0.6:
+            support_text.stylize("green")
+        elif ratio >= 0.3:
+            support_text.stylize("yellow")
         else:
-            score_text.stylize("red")
+            support_text.stylize("red")
 
         authors = p.get("authors", [])
         author_str = ", ".join(authors[:2])
@@ -138,8 +140,8 @@ def list_papers(sort_by: str) -> None:
             str(i),
             p["title"],
             author_str,
-            str(p["total_claims"]),
-            score_text,
+            str(total),
+            support_text,
             p["processed_at"][:10],
             p["paper_id"],
         )
@@ -164,8 +166,11 @@ def show(paper_id: str) -> None:
     summary = data["summary"]
     nodes = data["dag"]["nodes"]
 
-    score = summary["mean_validity_score"]
-    score_color = "green" if score >= 0.8 else "yellow" if score >= 0.5 else "red"
+    high = summary["high_support_nodes"]
+    low = summary["low_support_nodes"]
+    total = summary["total_nodes"]
+    ratio = high / total if total else 0
+    support_color = "green" if ratio >= 0.6 else "yellow" if ratio >= 0.3 else "red"
 
     console.print(
         Panel(
@@ -178,10 +183,9 @@ def show(paper_id: str) -> None:
 
     console.print(
         f"\n[bold]Summary:[/bold]  "
-        f"{summary['total_nodes']} claims  |  "
+        f"{total} claims  |  "
         f"max depth {summary['max_depth']}  |  "
-        f"mean score [{score_color}]{score:.2f}[/{score_color}]  |  "
-        f"{summary['high_confidence_nodes']} high / {summary['low_confidence_nodes']} low confidence\n"
+        f"[{support_color}]{high} high[/{support_color}] / {low} low support\n"
     )
     console.print(f"[dim]{summary['overall_assessment']}[/dim]\n")
 
@@ -190,16 +194,16 @@ def show(paper_id: str) -> None:
     claim_table.add_column("ID", style="dim", width=12)
     claim_table.add_column("Type", width=10)
     claim_table.add_column("Claim", max_width=70)
-    claim_table.add_column("Score", justify="right", width=7)
+    claim_table.add_column("Support", justify="right", width=8)
 
     root_first = sorted(nodes, key=lambda n: (n["depth"], n["id"]))
     for node in root_first:
         indent = "  " * node["depth"]
         eval_ = node.get("evaluation") or {}
-        s = eval_.get("validity_score", None)
-        s_text = Text(f"{s:.2f}" if s is not None else "—")
-        if s is not None:
-            s_text.stylize("green" if s >= 0.8 else "yellow" if s >= 0.5 else "red")
+        level = eval_.get("support_level", None)
+        color = {"high": "green", "medium": "yellow", "low": "red"}.get(level or "", "dim")
+        s_text = Text(level or "—")
+        s_text.stylize(color)
 
         claim_table.add_row(
             indent + node["id"],

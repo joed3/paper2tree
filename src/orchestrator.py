@@ -89,7 +89,7 @@ async def _run_pipeline(
         log(f"\n✓ Done — paper_id: {paper_id}")
         log(f"  Output: {output_path}")
         log(
-            f"  Claims: {paper_dag.summary.total_nodes} nodes, mean validity: {paper_dag.summary.mean_validity_score:.2f}"
+            f"  Claims: {paper_dag.summary.total_nodes} nodes, high support: {paper_dag.summary.high_support_nodes}/{paper_dag.summary.total_nodes}"
         )
 
         return paper_id
