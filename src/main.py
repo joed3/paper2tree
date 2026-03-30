@@ -34,10 +34,15 @@ def cli() -> None:
 @cli.command()
 @click.argument("url")
 @click.option("--force", is_flag=True, help="Reprocess even if already cached.")
-def process(url: str, force: bool) -> None:
+@click.option(
+    "--live-search",
+    is_flag=True,
+    help="Search PubMed and Semantic Scholar for prior literature during evaluation.",
+)
+def process(url: str, force: bool, live_search: bool) -> None:
     """Process a paper URL and build its claim DAG."""
     try:
-        asyncio.run(process_paper(url, force=force))
+        asyncio.run(process_paper(url, force=force, live_search=live_search))
     except Exception as e:
         console.print(f"[red]Error:[/red] {e}")
         sys.exit(1)

@@ -7,7 +7,9 @@ Or via the installed script:
     paper2tree-server
 """
 
+import json
 import os
+import shutil
 import tempfile
 import uuid
 from datetime import datetime, timezone
@@ -68,21 +70,25 @@ def _make_logger(job_id: str):
 # ── Background task runners ────────────────────────────────────────────────────
 
 
-async def _run_url_job(job_id: str, url: str, force: bool) -> None:
+async def _run_url_job(job_id: str, url: str, force: bool, live_search: bool) -> None:
     jobs[job_id]["status"] = "running"
     log = _make_logger(job_id)
     try:
-        paper_id = await process_paper(url, force=force, log=log)
+        paper_id = await process_paper(url, force=force, live_search=live_search, log=log)
         jobs[job_id].update({"status": "done", "paper_id": paper_id})
     except Exception as exc:
         jobs[job_id].update({"status": "error", "error": str(exc)})
 
 
-async def _run_file_job(job_id: str, tmp_path: Path, original_name: str, force: bool) -> None:
+async def _run_file_job(
+    job_id: str, tmp_path: Path, original_name: str, force: bool, live_search: bool
+) -> None:
     jobs[job_id]["status"] = "running"
     log = _make_logger(job_id)
     try:
-        paper_id = await process_paper_from_file(tmp_path, original_name, force=force, log=log)
+        paper_id = await process_paper_from_file(
+            tmp_path, original_name, force=force, live_search=live_search, log=log
+        )
         jobs[job_id].update({"status": "done", "paper_id": paper_id})
     except Exception as exc:
         jobs[job_id].update({"status": "error", "error": str(exc)})
@@ -96,6 +102,7 @@ async def _run_file_job(job_id: str, tmp_path: Path, original_name: str, force: 
 class ProcessRequest(BaseModel):
     url: str
     force: bool = False
+    live_search: bool = False
 
 
 @app.post("/api/process", status_code=202)
@@ -104,7 +111,7 @@ async def process_url(body: ProcessRequest, background_tasks: BackgroundTasks):
     job = _new_job(body.url)
     job_id = job["job_id"]
     jobs[job_id] = job
-    background_tasks.add_task(_run_url_job, job_id, body.url, body.force)
+    background_tasks.add_task(_run_url_job, job_id, body.url, body.force, body.live_search)
     return {"job_id": job_id}
 
 
@@ -113,6 +120,7 @@ async def upload_file(
     file: UploadFile,
     background_tasks: BackgroundTasks,
     force: bool = False,
+    live_search: bool = False,
 ):
     """Upload a paper file (PDF or HTML) for processing."""
     original_name = file.filename or "paper.pdf"
@@ -128,7 +136,7 @@ async def upload_file(
     job = _new_job(original_name)
     job_id = job["job_id"]
     jobs[job_id] = job
-    background_tasks.add_task(_run_file_job, job_id, tmp_path, original_name, force)
+    background_tasks.add_task(_run_file_job, job_id, tmp_path, original_name, force, live_search)
     return {"job_id": job_id}
 
 
@@ -144,6 +152,25 @@ async def get_job(job_id: str):
     if job_id not in jobs:
         raise HTTPException(status_code=404, detail="Job not found")
     return jobs[job_id]
+
+
+@app.delete("/api/papers/{paper_id}", status_code=204)
+async def delete_paper(paper_id: str):
+    """Delete a processed paper and all its artifacts."""
+    paper_dir = OUTPUTS_DIR / paper_id
+    if not paper_dir.exists():
+        raise HTTPException(status_code=404, detail="Paper not found")
+
+    shutil.rmtree(paper_dir)
+
+    index_path = OUTPUTS_DIR / "index.json"
+    if index_path.exists():
+        try:
+            data = json.loads(index_path.read_text())
+            data["papers"] = [p for p in data["papers"] if p["paper_id"] != paper_id]
+            index_path.write_text(json.dumps(data, indent=2))
+        except Exception:
+            pass  # index corruption is non-fatal — paper dir is already deleted
 
 
 # ── Static file serving ────────────────────────────────────────────────────────

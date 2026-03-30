@@ -13,3 +13,11 @@ export async function fetchPaper(resultPath: string): Promise<PaperDAG> {
   if (!res.ok) throw new Error(`Failed to fetch paper: ${res.status}`)
   return res.json()
 }
+
+export async function deletePaper(paperId: string): Promise<void> {
+  const res = await fetch(`/api/papers/${paperId}`, { method: 'DELETE' })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error(body?.detail ?? `HTTP ${res.status}`)
+  }
+}

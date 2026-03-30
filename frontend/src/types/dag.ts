@@ -4,6 +4,15 @@ export interface VisualMeta {
   border_width: number
 }
 
+export interface LiteratureCitation {
+  title: string
+  authors: string[]
+  year: number | null
+  url: string
+  relevance: string
+  stance: 'supports' | 'contradicts' | 'extends' | 'neutral'
+}
+
 export interface ClaimEvaluation {
   node_id: string
   support_level: 'high' | 'medium' | 'low'
@@ -15,6 +24,9 @@ export interface ClaimEvaluation {
   required_assumptions: string[]
   supporting_evidence_quality: 'strong' | 'moderate' | 'weak' | 'absent'
   notes: string
+  literature_citations?: LiteratureCitation[]
+  novelty_score?: 'high' | 'medium' | 'low' | null
+  groundedness_score?: 'high' | 'medium' | 'low' | null
 }
 
 export interface DAGNode {

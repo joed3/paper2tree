@@ -18,6 +18,7 @@ from .agents.claim_extractor import extract_claims
 from .agents.output_formatter import format_output, write_outputs
 from .agents.paper_fetcher import fetch_paper
 from .agents.text_extractor import extract_text
+from .kb.live_retriever import LiveRetriever
 from .schemas.paper import FetchResult
 from .utils.graph import build_dag
 from .utils.paper_id import make_paper_id
@@ -35,6 +36,7 @@ async def _run_pipeline(
     temp_dir: Path,
     force: bool,
     log: LogFn,
+    live_search: bool = False,
 ) -> str:
     """Steps 2–7 of the pipeline (after fetching). Shared by URL and file paths."""
     try:
@@ -76,9 +78,20 @@ async def _run_pipeline(
         max_depth = max(ec.depth for ec in enriched)
         log(f"      {len(enriched)} nodes, max depth {max_depth}")
 
+        # ── Step 5.5: Live literature search (optional) ───────────────────────
+        retrieved = None
+        if live_search:
+            log(f"[5/6] Searching prior literature for {len(enriched)} claims …")
+            retriever = LiveRetriever()
+            retrieved = await asyncio.to_thread(
+                retriever.retrieve_for_claims, enriched, extracted.title
+            )
+            total_passages = sum(len(v) for v in retrieved.values())
+            log(f"      Retrieved {total_passages} passages from PubMed + Semantic Scholar")
+
         # ── Step 6: Evaluate claims ───────────────────────────────────────────
-        log(f"[5/6] Evaluating {len(enriched)} claims …")
-        evaluations = await evaluate_claims(enriched, extracted.full_text)
+        log(f"[{'6' if live_search else '5'}/6] Evaluating {len(enriched)} claims …")
+        evaluations = await evaluate_claims(enriched, extracted.full_text, retrieved=retrieved)
         log(f"      Evaluated {len(evaluations)} claims")
 
         # ── Step 7: Format and write output ───────────────────────────────────
@@ -105,7 +118,9 @@ async def _run_pipeline(
             shutil.rmtree(temp_dir, ignore_errors=True)
 
 
-async def process_paper(url: str, force: bool = False, log: LogFn = print) -> str:
+async def process_paper(
+    url: str, force: bool = False, live_search: bool = False, log: LogFn = print
+) -> str:
     """Run the full pipeline for a single paper URL.
 
     Returns the paper_id on success.
@@ -121,13 +136,14 @@ async def process_paper(url: str, force: bool = False, log: LogFn = print) -> st
     fetch_result = await fetch_paper(url, raw_dir)
     log(f"      Downloaded: {fetch_result.content_type} → {Path(fetch_result.raw_path).name}")
 
-    return await _run_pipeline(fetch_result, url, temp_dir, force, log)
+    return await _run_pipeline(fetch_result, url, temp_dir, force, log, live_search=live_search)
 
 
 async def process_paper_from_file(
     file_path: Path,
     original_name: str,
     force: bool = False,
+    live_search: bool = False,
     log: LogFn = print,
 ) -> str:
     """Run the pipeline for an already-downloaded local file (skips the fetch step).
@@ -165,4 +181,6 @@ async def process_paper_from_file(
     )
 
     log(f"[1/6] Using uploaded file: {original_name}")
-    return await _run_pipeline(fetch_result, pseudo_url, temp_dir, force, log)
+    return await _run_pipeline(
+        fetch_result, pseudo_url, temp_dir, force, log, live_search=live_search
+    )

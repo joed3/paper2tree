@@ -8,7 +8,15 @@ $paper_text
 Claims to evaluate:
 $claims_json
 
+$literature_block
+
 For EACH claim listed above (identified by its "id" field), provide a structured evaluation. Be specific and rigorous — reference concrete aspects of the paper in your assessments.
+
+IMPORTANT — if prior literature was provided above, you MUST actively use it throughout your evaluation. Do not treat the literature as a separate appendix. Instead:
+- Cite specific papers in your strengths when prior work corroborates or validates the claim (e.g., "Consistent with Smith et al. (2022), who found…")
+- Cite specific papers in your weaknesses when prior work contradicts, undermines, or reveals gaps in the claim (e.g., "Jones et al. (2021) demonstrated the opposite effect in a larger cohort…")
+- Cite specific papers in alternative_interpretations when prior work supports a different reading of the results
+- Use the literature to calibrate the novelty and groundedness scores
 
 Evaluation criteria:
 - support_level: your overall judgment of how well the paper supports this claim:
@@ -17,12 +25,31 @@ Evaluation criteria:
     - "low": the claim has little to no direct evidence, OR there are internal contradictions in the paper's own reasoning, OR it contradicts other claims in this paper
 - confidence_level: your confidence in this evaluation ("high", "medium", or "low")
 - is_well_supported: whether the paper provides adequate evidence for this claim
-- strengths: specific things the paper does well to support this claim (e.g., "Three independent datasets tested", "Ablation study isolates the contribution")
-- weaknesses: gaps, limitations, or concerns (e.g., "Only tested on English text", "No statistical significance reported")
-- alternative_interpretations: other valid ways the results could be interpreted
+- strengths: specific things the paper does well to support this claim. When literature is available, cite supporting papers directly in these bullet points using "Author et al. (Year)" format.
+- weaknesses: gaps, limitations, or concerns. When literature is available, cite contradicting or more rigorous prior work directly in these bullet points.
+- alternative_interpretations: other valid ways the results could be interpreted. When literature is available, cite papers that support these alternative readings.
 - required_assumptions: what must be assumed true for this claim to hold
 - supporting_evidence_quality: overall quality of evidence ("strong", "moderate", "weak", or "absent")
 - notes: any other observations relevant to this claim's scientific validity; flag contradictions with other claims by their id
+- literature_citations: list only the papers from the provided literature that you actually cited or found relevant. For each include:
+    - title, authors (list), year (int or null), url
+    - relevance: one sentence explaining how this paper informed your evaluation of this claim
+    - stance: how this prior work relates to the claim:
+        - "supports": corroborates or validates the claim
+        - "contradicts": conflicts with or undermines the claim
+        - "extends": this claim builds meaningfully on the prior work
+        - "neutral": related context but neither supports nor undermines
+    If no literature was provided or none was relevant, use an empty list.
+- novelty_score: if prior literature was provided, assess how novel this claim is relative to the existing body of work:
+    - "high": genuinely new idea, method, or finding not present in prior literature
+    - "medium": incremental advance or known ideas applied in a new context
+    - "low": largely restates or reproduces what prior work already established
+    Omit (null) if no literature was provided.
+- groundedness_score: if prior literature was provided, assess how well-grounded this claim is in existing literature:
+    - "high": firmly anchored in established prior work; literature clearly supports its premises
+    - "medium": partial support in literature but some unverified or weakly established foundations
+    - "low": little backing in prior work, or prior work actively contradicts the foundations
+    Omit (null) if no literature was provided.
 
 Return ONLY valid JSON matching the schema below. No preamble, no explanation, no markdown code blocks. Include an evaluation for EVERY claim in the input list.
 
@@ -33,12 +60,24 @@ Return ONLY valid JSON matching the schema below. No preamble, no explanation, n
       "support_level": "medium",
       "confidence_level": "high",
       "is_well_supported": false,
-      "strengths": ["..."],
-      "weaknesses": ["..."],
-      "alternative_interpretations": ["..."],
+      "strengths": ["Consistent with Vaswani et al. (2017), who showed attention alone is sufficient for sequence modelling at scale."],
+      "weaknesses": ["Jones et al. (2021) demonstrated this effect did not replicate on non-English benchmarks, a gap this paper does not address."],
+      "alternative_interpretations": ["Brown et al. (2020) showed that scale alone (without architectural novelty) yields similar gains, suggesting the claimed improvement may be attributable to compute rather than the proposed mechanism."],
       "required_assumptions": ["..."],
       "supporting_evidence_quality": "moderate",
-      "notes": "..."
+      "notes": "...",
+      "literature_citations": [
+        {
+          "title": "Attention Is All You Need",
+          "authors": ["Vaswani", "Shazeer"],
+          "year": 2017,
+          "url": "https://arxiv.org/abs/1706.03762",
+          "relevance": "Foundational work establishing the attention-only paradigm this claim builds on.",
+          "stance": "extends"
+        }
+      ],
+      "novelty_score": "medium",
+      "groundedness_score": "high"
     }
   ]
 }

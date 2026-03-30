@@ -41,6 +41,19 @@ const QUALITY_COLOR: Record<string, string> = {
   absent: '#ef4444',
 }
 
+const LEVEL_COLOR: Record<string, string> = {
+  high: '#22c55e',
+  medium: '#eab308',
+  low: '#ef4444',
+}
+
+const STANCE_COLOR: Record<string, string> = {
+  supports: '#22c55e',
+  extends: '#60a5fa',
+  neutral: '#94a3b8',
+  contradicts: '#ef4444',
+}
+
 export function NodeCard({ node, onClose }: NodeCardProps) {
   if (!node) return null
   const ev = node.evaluation
@@ -172,6 +185,78 @@ export function NodeCard({ node, onClose }: NodeCardProps) {
             {ev.notes && (
               <Section title="Evaluator notes">
                 <p className="text-xs text-slate-400 leading-relaxed">{ev.notes}</p>
+              </Section>
+            )}
+
+            {(ev.novelty_score || ev.groundedness_score) && (
+              <Section title="Literature Assessment">
+                <div className="flex gap-4 flex-wrap">
+                  {ev.novelty_score && (
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-1">
+                        Novelty
+                      </p>
+                      <span
+                        className="text-xs font-semibold"
+                        style={{ color: LEVEL_COLOR[ev.novelty_score] }}
+                      >
+                        {ev.novelty_score}
+                      </span>
+                    </div>
+                  )}
+                  {ev.groundedness_score && (
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mb-1">
+                        Groundedness
+                      </p>
+                      <span
+                        className="text-xs font-semibold"
+                        style={{ color: LEVEL_COLOR[ev.groundedness_score] }}
+                      >
+                        {ev.groundedness_score}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </Section>
+            )}
+
+            {ev.literature_citations && ev.literature_citations.length > 0 && (
+              <Section title="Prior Literature">
+                <div className="space-y-3">
+                  {ev.literature_citations.map((cite, i) => (
+                    <div key={i} className="border border-slate-700 rounded p-2.5 space-y-1.5">
+                      <div className="flex items-start justify-between gap-2">
+                        <a
+                          href={cite.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-blue-400 hover:text-blue-300 font-medium leading-snug"
+                        >
+                          {cite.title}
+                        </a>
+                        <span
+                          className="text-[10px] font-semibold uppercase tracking-wide shrink-0 px-1.5 py-0.5 rounded"
+                          style={{
+                            color: STANCE_COLOR[cite.stance],
+                            backgroundColor: `${STANCE_COLOR[cite.stance]}18`,
+                            border: `1px solid ${STANCE_COLOR[cite.stance]}40`,
+                          }}
+                        >
+                          {cite.stance}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-slate-500">
+                        {cite.authors.slice(0, 3).join(', ')}
+                        {cite.authors.length > 3 ? ' et al.' : ''}
+                        {cite.year ? ` · ${cite.year}` : ''}
+                      </p>
+                      <p className="text-[10px] text-slate-400 italic leading-relaxed">
+                        {cite.relevance}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </Section>
             )}
           </>

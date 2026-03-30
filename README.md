@@ -88,7 +88,26 @@ python -m src.main process https://proceedings.mlr.press/v97/chen19a/chen19a.pdf
 
 # Force reprocess a paper that was already cached
 python -m src.main process https://arxiv.org/abs/1706.03762 --force
+
+# Enable live literature search (queries PubMed + Semantic Scholar during evaluation)
+python -m src.main process https://arxiv.org/abs/1706.03762 --live-search
 ```
+
+#### Live literature search
+
+Pass `--live-search` to enrich claim evaluations with prior-literature context retrieved at runtime from PubMed and Semantic Scholar. For each claim, Claude Haiku generates two targeted search queries, the retriever fetches up to five results per source, deduplicates by title, and ranks by lexical overlap with the claim text. The evaluator uses this context to populate a `literature_citations` field on each `ClaimEvaluation`.
+
+```bash
+python -m src.main process https://arxiv.org/abs/2303.08774 --live-search
+```
+
+No additional API key is required — PubMed and Semantic Scholar are queried over public APIs. Set `NCBI_EMAIL` in your `.env` to identify your requests to NCBI (recommended for high-volume use):
+
+```
+NCBI_EMAIL=you@example.com
+```
+
+The live search step adds roughly 30–90 seconds depending on the number of claims and network latency. Results are cached within a single run — repeated claims share retrieved passages.
 
 **Example output:**
 
@@ -280,7 +299,7 @@ Click the **+** button in the sidebar (or "Add your first paper" on an empty sta
 | **DAG canvas** | Interactive React Flow graph with dagre left-to-right layout. Scroll to pan, Ctrl+scroll or pinch to zoom, drag individual nodes. Supporting/evidence nodes collapsed by default; click `+N` on any node to expand its subtree. |
 | **Full-graph inset** | Portrait minimap (top-left corner) always showing the complete claim tree regardless of collapse state. Collapsed nodes appear dimmed. |
 | **Top bar** | Paper title, authors, source link, and summary stats (support badge, claim count, max depth, high-support ratio). |
-| **Node detail panel** | Click any node to open a slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — support level, strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes. |
+| **Node detail panel** | Click any node to open a slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — support level, strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes, and (when `--live-search` was used) cited prior literature with relevance notes. |
 | **Assessment banner** | The pipeline's overall assessment of the paper shown at the bottom of the canvas. |
 
 **Node visual encoding:**
@@ -334,9 +353,12 @@ paper2tree/
 │   ├── schemas/                 # Pydantic models for inter-agent data contracts
 │   │   ├── paper.py             # FetchResult, ExtractedPaper
 │   │   ├── claim.py             # Claim, ClaimGraph
-│   │   ├── evaluation.py        # ClaimEvaluation (support_level: high/medium/low)
+│   │   ├── evaluation.py        # ClaimEvaluation (support_level: high/medium/low), LiteratureCitation
 │   │   ├── output.py            # DAGNode, DAGEdge, PaperDAG (schema_version)
 │   │   └── index.py             # PaperIndexEntry, PaperIndex
+│   ├── kb/                      # Knowledge-base retrieval (live literature search)
+│   │   ├── schemas.py           # RetrievedPassage Pydantic model
+│   │   └── live_retriever.py    # LiveRetriever: PubMed + Semantic Scholar, Haiku queries, LRU cache
 │   ├── prompts/                 # Prompt templates (.txt, loaded via string.Template)
 │   │   ├── text_extractor.txt
 │   │   ├── claim_extractor.txt

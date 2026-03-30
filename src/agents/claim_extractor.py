@@ -29,12 +29,19 @@ def _extract_with_retry(paper_text: str) -> ClaimGraph:
     template = load_prompt("claim_extractor")
     prompt = template.substitute(paper_text=paper_text)
 
-    response = _client.messages.create(
+    with _client.messages.stream(
         model="claude-opus-4-6",
-        max_tokens=8192,
+        max_tokens=16384,
         thinking={"type": "adaptive"},
         messages=[{"role": "user", "content": prompt}],
-    )
+    ) as stream:
+        response = stream.get_final_message()
+
+    if response.stop_reason == "max_tokens":
+        raise ValueError(
+            f"Claim extractor hit max_tokens limit ({response.usage.output_tokens} output tokens). "
+            "Response was truncated — increase max_tokens or reduce paper length."
+        )
 
     # Thinking blocks come first; find the text block
     text_block = next((b for b in response.content if b.type == "text"), None)

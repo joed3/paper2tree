@@ -12,6 +12,7 @@ export function AddPaperDialog({ onClose, onSubmitted }: AddPaperDialogProps) {
   const [tab, setTab] = useState<Tab>('url')
   const [url, setUrl] = useState('')
   const [file, setFile] = useState<File | null>(null)
+  const [liveSearch, setLiveSearch] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -29,10 +30,10 @@ export function AddPaperDialog({ onClose, onSubmitted }: AddPaperDialogProps) {
       let jobId: string
       if (tab === 'url') {
         if (!url.trim()) { setError('Please enter a URL.'); return }
-        jobId = await submitUrl(url.trim())
+        jobId = await submitUrl(url.trim(), false, liveSearch)
       } else {
         if (!file) { setError('Please select a file.'); return }
-        jobId = await submitFile(file)
+        jobId = await submitFile(file, false, liveSearch)
       }
       const job: Job = {
         job_id: jobId,
@@ -49,7 +50,7 @@ export function AddPaperDialog({ onClose, onSubmitted }: AddPaperDialogProps) {
     } finally {
       setSubmitting(false)
     }
-  }, [tab, url, file, onSubmitted])
+  }, [tab, url, file, liveSearch, onSubmitted])
 
   return (
     <div
@@ -130,6 +131,37 @@ export function AddPaperDialog({ onClose, onSubmitted }: AddPaperDialogProps) {
               />
             </div>
           )}
+
+          {/* live search toggle */}
+          <label className="flex items-start gap-3 mb-4 cursor-pointer select-none group">
+            <div className="relative mt-0.5 shrink-0">
+              <input
+                type="checkbox"
+                checked={liveSearch}
+                onChange={(e) => setLiveSearch(e.target.checked)}
+                className="sr-only"
+              />
+              <div
+                className="w-4 h-4 rounded border transition-colors"
+                style={{
+                  backgroundColor: liveSearch ? '#1d4ed8' : 'transparent',
+                  borderColor: liveSearch ? '#1d4ed8' : '#475569',
+                }}
+              >
+                {liveSearch && (
+                  <svg viewBox="0 0 12 12" className="w-4 h-4 text-white" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs text-slate-300 font-medium">Live literature search</p>
+              <p className="text-[10px] text-slate-500 mt-0.5 leading-relaxed">
+                Query PubMed and Semantic Scholar for each claim before evaluation. Adds prior-literature citations to the node detail panel. Takes ~1–2 min extra.
+              </p>
+            </div>
+          </label>
 
           {error && <p className="text-xs text-red-400 mb-3 font-mono">{error}</p>}
 

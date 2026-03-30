@@ -10,11 +10,11 @@ export interface Job {
   created_at: string
 }
 
-export async function submitUrl(url: string, force = false): Promise<string> {
+export async function submitUrl(url: string, force = false, liveSearch = false): Promise<string> {
   const res = await fetch('/api/process', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ url, force }),
+    body: JSON.stringify({ url, force, live_search: liveSearch }),
   })
   if (!res.ok) {
     const body = await res.json().catch(() => ({}))
@@ -23,10 +23,11 @@ export async function submitUrl(url: string, force = false): Promise<string> {
   return (await res.json()).job_id
 }
 
-export async function submitFile(file: File, force = false): Promise<string> {
+export async function submitFile(file: File, force = false, liveSearch = false): Promise<string> {
   const form = new FormData()
   form.append('file', file)
   if (force) form.append('force', 'true')
+  if (liveSearch) form.append('live_search', 'true')
   const res = await fetch('/api/upload', { method: 'POST', body: form })
   if (!res.ok) {
     const body = await res.json().catch(() => ({}))

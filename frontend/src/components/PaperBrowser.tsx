@@ -11,6 +11,7 @@ interface PaperBrowserProps {
   onSelect: (entry: PaperIndexEntry) => void
   onSelectJob: (jobId: string) => void
   onDismissJob: (jobId: string) => void
+  onDeletePaper: (paperId: string) => void
   onAddPaper: () => void
   loading: boolean
   error: string | null
@@ -41,6 +42,7 @@ export function PaperBrowser({
   onSelect,
   onSelectJob,
   onDismissJob,
+  onDeletePaper,
   onAddPaper,
   loading,
   error,
@@ -163,34 +165,47 @@ export function PaperBrowser({
         {filtered.map((entry) => {
           const isSelected = entry.paper_id === selectedId
           return (
-            <button
+            <div
               key={entry.paper_id}
-              onClick={() => onSelect(entry)}
-              className="w-full text-left px-4 py-3 border-b border-slate-800 transition-colors hover:bg-slate-800"
+              className="relative group border-b border-slate-800"
               style={{
                 backgroundColor: isSelected ? '#1e293b' : undefined,
                 borderLeft: isSelected ? '2px solid #22c55e' : '2px solid transparent',
               }}
             >
-              <p className="text-xs text-slate-200 leading-snug mb-1 line-clamp-2 font-medium">
-                {entry.title}
-              </p>
-              <p className="text-[10px] text-slate-500 mb-2 truncate">{entry.authors.join(', ')}</p>
-              <div className="flex items-center gap-2 flex-wrap">
-                <EvalBadge
-                  support_level={
-                    entry.total_claims && entry.high_support_count / entry.total_claims >= 0.6
-                      ? 'high'
-                      : 'medium'
-                  }
-                  size="sm"
-                />
-                <span className="text-[10px] text-slate-600 font-mono">{entry.total_claims} claims</span>
-                <span className="text-[10px] text-slate-700 font-mono ml-auto">
-                  {formatDate(entry.processed_at)}
-                </span>
-              </div>
-            </button>
+              <button
+                onClick={() => onSelect(entry)}
+                className="w-full text-left px-4 py-3 pr-8 transition-colors hover:bg-slate-800"
+              >
+                <p className="text-xs text-slate-200 leading-snug mb-1 line-clamp-2 font-medium">
+                  {entry.title}
+                </p>
+                <p className="text-[10px] text-slate-500 mb-2 truncate">{entry.authors.join(', ')}</p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <EvalBadge
+                    support_level={
+                      entry.total_claims && entry.high_support_count / entry.total_claims >= 0.6
+                        ? 'high'
+                        : 'medium'
+                    }
+                    size="sm"
+                  />
+                  <span className="text-[10px] text-slate-600 font-mono">{entry.total_claims} claims</span>
+                  <span className="text-[10px] text-slate-700 font-mono ml-auto">
+                    {formatDate(entry.processed_at)}
+                  </span>
+                </div>
+              </button>
+              <button
+                onClick={() => onDeletePaper(entry.paper_id)}
+                title="Delete paper"
+                className="absolute top-2 right-2 w-5 h-5 flex items-center justify-center rounded text-slate-700 hover:text-red-400 hover:bg-slate-700 transition-colors opacity-0 group-hover:opacity-100"
+              >
+                <svg viewBox="0 0 14 14" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <path d="M2 3.5h10M5.5 3.5V2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1M5.5 6v4M8.5 6v4M3 3.5l.7 7a.5.5 0 0 0 .5.5h5.6a.5.5 0 0 0 .5-.5l.7-7" />
+                </svg>
+              </button>
+            </div>
           )
         })}
       </div>

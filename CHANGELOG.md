@@ -11,6 +11,16 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [1.3.0] — 2026-03-26
+
+### Added
+- **Live literature search** — new `--live-search` flag on the CLI `process` command and `live_search` field on the server's `/api/process` and `/api/upload` endpoints. When enabled, the pipeline queries PubMed and Semantic Scholar for each claim before evaluation, providing prior-literature context to the evaluator.
+- `src/kb/` module: `LiveRetriever` class that generates targeted search queries via Claude Haiku (`claude-haiku-4-5-20251001`), fetches results from PubMed E-utilities (esearch → efetch) and the Semantic Scholar Graph API, deduplicates by title, and ranks by lexical token overlap with the claim text. Results are cached within a single run.
+- `LiteratureCitation` Pydantic model added to `src/schemas/evaluation.py`; `ClaimEvaluation` gains a new optional field `literature_citations: list[LiteratureCitation] = []`.
+- Claim evaluator prompt updated to instruct the LLM to populate `literature_citations` when prior literature is available.
+- Frontend `NodeCard` now renders a **Prior Literature** section showing cited papers with title (linked to source), authors, year, and relevance note — only displayed when citations are present.
+- 17 new unit tests in `tests/test_live_retriever.py` covering XML parsing, Semantic Scholar response parsing, lexical ranking, deduplication, within-run caching, and mocked end-to-end retrieval.
+
 ## [1.2.0] — 2026-03-26
 
 ### Added

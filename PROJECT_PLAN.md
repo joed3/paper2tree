@@ -2066,3 +2066,327 @@ Using Fargate Spot for workers reduces the worker line to ~$9/mo. The ALB is the
 2. **Stage 2 — Add auth, server-side key storage, and S3** (weeks): Add Clerk for sign-in, RDS for user records and job state, encrypted server-side key storage via Secrets Manager or KMS, and S3 for per-user output storage. Users enter their key once; it's used automatically.
 
 3. **Stage 3 — Decouple workers with SQS + ECS** (weeks): Move pipeline execution to separate Fargate worker tasks triggered by SQS. The API server becomes stateless. Concurrent users are handled cleanly; jobs survive server restarts.
+
+---
+
+## Standalone Local Package
+
+This section covers distributing paper2tree as a self-contained application that any user can run on their own machine with a single command, without needing to know Python, Node.js, or how to configure a dev environment.
+
+---
+
+### Is It Possible?
+
+Yes. The standard approach for this kind of full-stack tool is **Docker Compose**: the user installs Docker, clones the repo (or downloads a release archive), drops their API key into a `.env` file, and runs `docker compose up`. Everything else — Python dependencies, Node build, environment wiring — is handled inside the container.
+
+Docker Compose can work **with or without Claude Code**, depending on which variant you choose:
+
+- **With Claude Code** (full-featured, larger image ~1.2 GB): installs the Claude Code CLI in the runtime container and authenticates it via `ANTHROPIC_API_KEY`. This keeps the agent-based paper fetcher as-is.
+- **Without Claude Code** (lighter image ~900 MB): replaces the paper fetcher with direct `httpx` calls, removing the `claude-agent-sdk` dependency entirely. Simpler to maintain; sufficient for arXiv and most open-access papers.
+
+The rest of this section covers the full-featured variant (keeping Claude Code). The `httpx` fallback is described at the end.
+
+---
+
+### Approach 1: Docker Compose (Recommended)
+
+Docker Compose is the right default. It handles the full dependency stack in one file, works identically on macOS, Windows (WSL2), and Linux, and requires no knowledge of Python or Node from the user.
+
+**User experience:**
+
+```bash
+# 1. Install Docker Desktop (one-time, from docker.com)
+# 2. Clone or download the repo
+git clone https://github.com/yourname/paper2tree && cd paper2tree
+
+# 3. Set API key
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+
+# 4. Start
+docker compose up
+
+# Open http://localhost:8000
+```
+
+That's the entire install flow. The same `ANTHROPIC_API_KEY` authenticates both direct Anthropic SDK calls (claim extractor, evaluator) and the Claude Code CLI used by the paper fetcher.
+
+**`Dockerfile`** (multi-stage: build frontend, then Python + Node runtime):
+
+```dockerfile
+# Stage 1: build the React frontend
+FROM node:24-slim AS frontend-build
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build
+
+# Stage 2: Python + Node.js runtime (Node required for Claude Code CLI)
+FROM python:3.11-slim
+WORKDIR /app
+
+# Install Node.js LTS into the Python image
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates \
+    && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Claude Code CLI (authenticates via ANTHROPIC_API_KEY at runtime)
+RUN npm install -g @anthropic-ai/claude-code
+
+# Install Python dependencies
+COPY pyproject.toml ./
+RUN pip install --no-cache-dir -e "."
+
+# Copy source and the built frontend assets
+COPY src/ ./src/
+COPY --from=frontend-build /app/frontend/dist ./frontend/dist
+
+# Point Claude Code at a writable config dir inside the container
+ENV CLAUDE_CONFIG_DIR=/tmp/claude-config
+
+# Persist outputs to a named volume
+VOLUME ["/app/outputs"]
+
+EXPOSE 8000
+CMD ["paper2tree-server"]
+```
+
+**`docker-compose.yml`**:
+
+```yaml
+services:
+  paper2tree:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - outputs:/app/outputs
+    restart: unless-stopped
+
+volumes:
+  outputs:
+```
+
+The `outputs` named volume persists all processed papers across container restarts. Users can also bind-mount a host directory (`./outputs:/app/outputs`) if they want direct filesystem access to their results.
+
+**`.env.example`** (committed to the repo as a template):
+
+```
+ANTHROPIC_API_KEY=sk-ant-your-key-here
+NCBI_EMAIL=you@example.com
+```
+
+---
+
+### Claude Code Authentication in Containers
+
+The Claude Code CLI (`@anthropic-ai/claude-code`) supports two authentication modes, and **both work inside a Docker container**:
+
+#### Option A: API key (recommended — works out of the box)
+
+When `ANTHROPIC_API_KEY` is set in the environment, Claude Code authenticates using the key directly, bypassing the interactive browser-based OAuth flow. No extra setup is needed — the same key passed to `docker compose up` via `.env` covers both the Anthropic SDK and the Claude Code CLI.
+
+`CLAUDE_CONFIG_DIR=/tmp/claude-config` in the Dockerfile gives Claude Code a writable scratch directory for its session state. This is the only container-specific requirement.
+
+#### Option B: Mounted host credentials (for Claude Pro / Max / OAuth users)
+
+Users who access Claude Code through a Claude.ai subscription (Pro or Max) authenticate via OAuth rather than an API key. Both tiers work identically for this purpose — the relevant distinction is **subscription (OAuth)** vs. **API key**, not Pro vs. Max.
+
+These users can mount their host-side credentials into the container:
+
+```yaml
+# docker-compose.yml — add to the volumes block
+volumes:
+  - outputs:/app/outputs
+  - ${HOME}/.claude:/root/.claude:ro   # mount host Claude Code auth
+```
+
+The `:ro` flag mounts the credentials read-only, so the container cannot modify the host's auth state. The user authenticates once on their host machine (`claude auth login`), then reuses those credentials across container runs. No `.env` changes are needed — the mounted `~/.claude` directory contains all the tokens Claude Code needs.
+
+Note: subscription users (Pro/Max) do not have an `ANTHROPIC_API_KEY` that works with the Claude Code CLI — their access is tied to the OAuth session, not a key. They should use the mount approach, not Option A.
+
+#### Security considerations for Option B
+
+Mounting `~/.claude` carries meaningfully more risk than using an API key, and the plan should be explicit about this:
+
+**Why OAuth tokens are more sensitive than API keys:**
+- An API key has a defined, limited scope and can be independently revoked without affecting your account or other sessions.
+- The `~/.claude` OAuth tokens are tied to your full Claude.ai session. If exfiltrated from inside the container, an attacker gains something closer to account-level access. Revoking them means invalidating your entire session, not just a single key.
+- The `:ro` mount prevents the container from *modifying* credentials, but a compromised container (e.g. via a vulnerability in a Python dependency or the Claude Code CLI itself) can still *read* and exfiltrate them.
+
+**Threat model:**
+| Scenario | Risk level |
+|---|---|
+| Personal laptop, container not exposed to the network | Low — attack surface is limited to the local machine |
+| Shared team machine or cloud VM | Meaningful — other users or processes on the host could access the socket or volume |
+| Container with inbound network exposure (e.g. port-forwarded to the internet) | High — a vulnerability in any dependency could expose the tokens to a remote attacker |
+
+**Recommendation:** Use Option B only for personal local deployments on a machine you control. For any shared or networked environment, prefer Option A (API key) if at all possible. Pro/Max users on shared machines should consider purchasing a separate pay-per-use API key specifically for Docker use — this gives a revocable, scoped credential with no account-level blast radius.
+
+If Option B is used, apply additional isolation:
+```yaml
+# docker-compose.yml — restrict network access to Anthropic endpoints only
+services:
+  paper2tree:
+    # ... other config ...
+    dns: ["8.8.8.8"]
+    # Consider adding network policies if your Docker setup supports it
+```
+
+#### Why this matters vs. the old assumption
+
+The earlier version of this plan stated that Claude Code's authentication "requires an interactive browser flow that doesn't work headlessly in a container." That was an overstatement — it applies only to the OAuth path when no API key is set. API key auth has never required a browser and works natively in headless/container environments.
+
+---
+
+### Optional: Lighter Image Without Claude Code
+
+If image size is a concern (~300 MB saving) or the paper fetcher is being rewritten for other reasons, the `claude-agent-sdk` dependency can be removed by replacing the fetcher with direct `httpx` calls. The Agent SDK is doing very little in the fetcher — it's essentially a managed HTTP download. A direct implementation handles the same cases (arXiv URL conversion, PDF vs. HTML fallback, size validation):
+
+```python
+# src/agents/paper_fetcher.py — standalone-compatible version
+import re
+import httpx
+from pathlib import Path
+from ..schemas.paper import FetchResult
+
+_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; paper2tree/1.0)"}
+_MIN_PDF_BYTES = 5_000
+
+def _resolve_url(url: str) -> str:
+    """Convert arXiv abstract pages to direct PDF URLs."""
+    if m := re.match(r"https?://arxiv\.org/abs/(.+)", url):
+        return f"https://arxiv.org/pdf/{m.group(1)}.pdf"
+    return url
+
+async def fetch_paper(url: str, raw_dir: Path) -> FetchResult:
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    download_url = _resolve_url(url)
+
+    async with httpx.AsyncClient(follow_redirects=True, timeout=120, headers=_HEADERS) as client:
+        response = await client.get(download_url)
+        response.raise_for_status()
+
+    content_type = "pdf"
+    filename = "paper.pdf"
+
+    if len(response.content) < _MIN_PDF_BYTES or b"%PDF" not in response.content[:1024]:
+        # Likely an HTML error page — try fetching as HTML instead
+        async with httpx.AsyncClient(follow_redirects=True, timeout=120, headers=_HEADERS) as client:
+            response = await client.get(url)
+        content_type = "html"
+        filename = "paper.html"
+
+    out_path = raw_dir / filename
+    out_path.write_bytes(response.content)
+
+    manifest = {"content_type": content_type, "raw_path": filename, "source_url": str(response.url)}
+    (raw_dir / "manifest.json").write_text(json.dumps(manifest))
+
+    return FetchResult(content_type=content_type, raw_path=str(out_path), source_url=str(response.url))
+```
+
+With this change, the Node.js runtime layer can be removed from the Dockerfile entirely (the frontend build stage still uses Node, but it's discarded after). The trade-off is losing the agent's ability to handle edge-case URL patterns (paywalled journals, DOI redirects requiring JavaScript). For arXiv and most open-access papers, direct HTTP is sufficient.
+
+The two approaches can coexist with a build-time or runtime flag:
+
+```yaml
+# docker-compose.yml — select fetcher variant at build time
+services:
+  paper2tree:
+    build:
+      context: .
+      args:
+        INCLUDE_CLAUDE_CODE: "true"   # set to "false" for the lighter image
+```
+
+---
+
+### Approach 2: `pip install` with Bundled Frontend
+
+For users who already have Python 3.11+, a PyPI package is a lower-friction alternative to Docker:
+
+```bash
+pip install paper2tree
+echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+paper2tree-server
+# Open http://localhost:8000
+```
+
+This requires shipping the pre-built frontend assets inside the Python wheel. The approach:
+
+1. **Add a Hatch build hook** (`hatch_build.py`) that runs `npm ci && npm run build` in `frontend/` before the wheel is assembled, then copies `frontend/dist/` into `src/static/`
+2. **Update `server.py`** to serve static files from `src/static/` when `frontend/dist/` is not present (i.e. when running from the installed package rather than the dev repo)
+3. **Publish to PyPI** via GitHub Actions on every version tag
+
+```python
+# hatch_build.py
+import subprocess
+from pathlib import Path
+from hatchling.builders.hooks.plugin.interface import BuildHookInterface
+
+class CustomBuildHook(BuildHookInterface):
+    def initialize(self, version, build_data):
+        frontend = Path("frontend")
+        if not (frontend / "node_modules").exists():
+            subprocess.run(["npm", "ci"], cwd=frontend, check=True)
+        subprocess.run(["npm", "run", "build"], cwd=frontend, check=True)
+        # Copy dist into the package so it's included in the wheel
+        build_data["shared_data"] = {"frontend/dist": "src/static"}
+```
+
+The downside: this requires Node.js to be available on the machine building the wheel (i.e. on the user's machine for `pip install` from source, or on the CI runner for a PyPI release). For PyPI distribution, pre-building the frontend in CI and including the `dist/` folder in the sdist avoids this entirely.
+
+---
+
+### Approach 3: GitHub Releases with a Pre-Built Archive
+
+For users who want zero build steps, publish a pre-built release archive on GitHub Releases:
+
+```
+paper2tree-v1.2.0-macos-arm64.tar.gz
+  ├── paper2tree-server   ← single binary (via PyInstaller or Nuitka)
+  └── frontend/dist/      ← pre-built React assets
+```
+
+**PyInstaller** can bundle the Python runtime + all dependencies into a single executable:
+
+```bash
+pyinstaller --onefile --name paper2tree-server src/server.py
+```
+
+The user downloads the archive, sets `ANTHROPIC_API_KEY` in their shell, and runs `./paper2tree-server`. No Python, no pip, no Node required.
+
+This is the highest-friction approach to build (PyInstaller bundles are finicky, especially with pdfplumber/PyMuPDF native libraries) but the lowest-friction approach for end users who aren't comfortable with command-line tools at all.
+
+---
+
+### Recommended Rollout
+
+| Approach | User requirement | Effort to implement | Best for |
+|---|---|---|---|
+| **Docker Compose** | Docker Desktop | Low (one Dockerfile + compose file) | Most users; cross-platform; recommended default |
+| **`pip install`** | Python 3.11+ | Medium (build hook + PyPI publish) | Python-familiar users who prefer native install |
+| **GitHub Release binary** | Nothing | High (PyInstaller packaging + CI) | Non-technical users; point-and-click install |
+
+Start with Docker Compose. It requires the least codebase change, is the most reproducible, and is well understood by the technical audience (researchers, developers) who are the primary users. The `pip install` path is a good v2 addition once the Docker path is validated.
+
+Replacing the paper fetcher with direct `httpx` is **optional** — it reduces image size and removes the Node.js runtime dependency, but it is no longer a prerequisite. The Claude Code CLI authenticates non-interactively via `ANTHROPIC_API_KEY` and works correctly inside containers.
+
+---
+
+### Required Codebase Changes Summary
+
+| Change | Required? | Why |
+|---|---|---|
+| Add `Dockerfile` + `docker-compose.yml` (with Node.js + Claude Code) | **Yes** | Docker Compose launch; keeps full agent-based paper fetcher |
+| Set `CLAUDE_CONFIG_DIR=/tmp/claude-config` in Dockerfile | **Yes** | Gives Claude Code a writable config dir inside the container |
+| Add `NCBI_EMAIL` to `.env.example` | **Yes** | Documents live search configuration |
+| Replace `paper_fetcher.py` with `httpx` implementation | Optional | Removes Node.js from image; saves ~300 MB; loses edge-case URL handling |
+| Remove `claude-agent-sdk` from `pyproject.toml` | Optional (paired with above) | Only if switching to `httpx` fetcher |
+| Update `server.py` static file path to support installed-package layout | Optional | `pip install` compatibility only |
+| Add `hatch_build.py` build hook | Optional | Pre-builds frontend into the wheel (pip path) |
+| Add GitHub Actions release workflow | Optional | Publishes to PyPI + GitHub Releases on version tags |

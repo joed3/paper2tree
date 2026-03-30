@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { ReactFlowProvider } from 'reactflow'
 import { Job } from './api/jobs'
+import { deletePaper } from './api/papers'
 import { PaperIndexEntry } from './types/dag'
 import { usePaperIndex } from './hooks/usePaperIndex'
 import { usePaper } from './hooks/usePaper'
@@ -92,6 +93,23 @@ export default function App() {
     [removeJob, selectedJobId],
   )
 
+  const handleDeletePaper = useCallback(
+    async (paperId: string) => {
+      if (!window.confirm('Delete this paper and all its review artifacts?')) return
+      try {
+        await deletePaper(paperId)
+        if (selectedEntry?.paper_id === paperId) {
+          setSelectedEntry(null)
+          setSelectedNodeId(null)
+        }
+        await refresh()
+      } catch (e) {
+        window.alert(`Delete failed: ${(e as Error).message}`)
+      }
+    },
+    [selectedEntry, refresh],
+  )
+
   const showDAG = !!paper && !paperLoading && !selectedJobId
   const showJobProgress = !!selectedJobId
   const showEmpty = !selectedEntry && !selectedJobId && !paperLoading
@@ -153,6 +171,7 @@ export default function App() {
           onSelect={handleSelectPaper}
           onSelectJob={handleSelectJob}
           onDismissJob={handleDismissJob}
+          onDeletePaper={handleDeletePaper}
           onAddPaper={() => setShowAddDialog(true)}
           loading={indexLoading}
           error={indexError}

@@ -3,6 +3,15 @@ from typing import Literal
 from pydantic import BaseModel
 
 
+class LiteratureCitation(BaseModel):
+    title: str
+    authors: list[str]
+    year: int | None = None
+    url: str
+    relevance: str  # one-sentence explanation of relevance to the claim
+    stance: Literal["supports", "contradicts", "extends", "neutral"]
+
+
 class ClaimEvaluation(BaseModel):
     node_id: str
     support_level: Literal["high", "medium", "low"]
@@ -14,6 +23,9 @@ class ClaimEvaluation(BaseModel):
     required_assumptions: list[str]
     supporting_evidence_quality: Literal["strong", "moderate", "weak", "absent"]
     notes: str
+    literature_citations: list[LiteratureCitation] = []
+    novelty_score: Literal["high", "medium", "low"] | None = None
+    groundedness_score: Literal["high", "medium", "low"] | None = None
 
 
 class SubtreeEvaluation(BaseModel):
