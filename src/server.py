@@ -18,7 +18,7 @@ from pathlib import Path
 import uvicorn
 from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
@@ -152,6 +152,35 @@ async def get_job(job_id: str):
     if job_id not in jobs:
         raise HTTPException(status_code=404, detail="Job not found")
     return jobs[job_id]
+
+
+@app.get("/api/papers/{paper_id}/export")
+async def export_paper(paper_id: str):
+    """Return a self-contained interactive HTML export of a paper review."""
+    paper_dir = OUTPUTS_DIR / paper_id
+    if not paper_dir.exists():
+        raise HTTPException(status_code=404, detail="Paper not found")
+
+    result_files = sorted(paper_dir.glob("dag*.json"))
+    if not result_files:
+        raise HTTPException(status_code=404, detail="No result file found for this paper")
+
+    from .export_html import generate_export_html, safe_filename
+
+    try:
+        data = json.loads(result_files[0].read_text(encoding="utf-8"))
+        html = generate_export_html(data)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Export failed: {exc}") from exc
+
+    filename = safe_filename(data) + ".html"
+    return Response(
+        content=html.encode("utf-8"),
+        media_type="text/html",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
 
 
 @app.delete("/api/papers/{paper_id}", status_code=204)

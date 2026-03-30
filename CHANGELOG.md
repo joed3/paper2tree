@@ -11,6 +11,18 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [1.4.0] — 2026-03-30
+
+### Added
+- **Interactive HTML export** — "Export" button in the top bar downloads a fully self-contained `.html` file (~420 KB, ~135 KB gzip) containing the complete interactive DAG viewer. Recipients can open it in any browser with no server, no dependencies, and no account required — full moveable canvas, expand/collapse nodes, node detail panel, prior literature citations, and overall assessment banner all work offline.
+- `GET /api/papers/{paper_id}/export` server endpoint returns the export HTML with a `Content-Disposition: attachment` header so browsers trigger a download; filename is derived from the paper title.
+- `src/export_html.py` — Python module that reads the pre-built viewer template (`frontend/dist-export/export.html`), injects the paper's `dag.json` data as `window.__PAPER_DATA__`, and updates the `<title>` tag with the paper title.
+- `frontend/src/ExportApp.tsx` — stripped-down viewer-only React app (no paper browser, job tracking, or add-paper dialog) that reads paper data from `window.__PAPER_DATA__` on mount.
+- `frontend/vite.export.config.ts` + `vite-plugin-singlefile` dev dependency — separate Vite build configuration that produces the single-file viewer template; run with `npm run build:export` from the `frontend/` directory.
+- Pre-built viewer template committed to `frontend/dist-export/export.html` so the server can serve exports without requiring Node.js at runtime.
+
+---
+
 ## [1.3.0] — 2026-03-26
 
 ### Added

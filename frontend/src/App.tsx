@@ -157,6 +157,14 @@ export default function App() {
               label="high support"
             />
           </div>
+          <a
+            href={`/api/papers/${paper.paper.paper_id}/export`}
+            download
+            className="shrink-0 px-3 py-1.5 rounded text-[11px] font-semibold border border-slate-600 text-slate-400 hover:text-slate-200 hover:border-slate-400 transition-colors"
+            title="Download self-contained interactive HTML"
+          >
+            Export
+          </a>
         </div>
       )}
 
