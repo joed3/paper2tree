@@ -61,9 +61,7 @@ npm install
 
 ## Paper2Tree in Action
 
-<!-- Replace this block with a screen recording or GIF of the UI -->
-> 🎬 **Demo video** — add a screen recording here showing the DAG viewer in action.
-> Tip: drag an `.mp4` into the GitHub editor to embed it automatically.
+<video src="demo/paper2tree_demo_recording.mov" controls width="100%"></video>
 
 The frontend gives you a fully interactive claim tree for every processed paper:
 
