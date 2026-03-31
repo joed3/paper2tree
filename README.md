@@ -2,6 +2,13 @@
 
 A multi-agent AI system that turns a scientific paper into an interactive, evaluable claim tree. Give it a URL — it downloads the paper, extracts the argument structure as a directed acyclic graph (DAG), evaluates each claim for strength and support, and presents everything in a shareable interactive viewer.
 
+<video src="https://github.com/user-attachments/assets/f7bb6f8a-384b-4aa5-9424-8d631ae18f26" controls width="100%"></video>
+
+- **Moveable canvas** — pan, zoom, and drag nodes freely; supporting/evidence nodes collapse by default to keep the view clean
+- **Expand subtrees** — click `+N` on any node to reveal its children; a minimap always shows the full tree
+- **Node detail panel** — click any node to see the full claim, verbatim quote, evaluator assessment (strengths, weaknesses, alternative interpretations), and cited prior literature when live search was used
+- **Export** — download a self-contained HTML file (~135 KB gzip) you can share with anyone; the full interactive viewer works offline with no server required
+
 ---
 
 ## How it works
@@ -60,15 +67,6 @@ npm install
 ---
 
 ## Paper2Tree in Action
-
-<video src="https://github.com/user-attachments/assets/f7bb6f8a-384b-4aa5-9424-8d631ae18f26" controls width="100%"></video>
-
-The frontend gives you a fully interactive claim tree for every processed paper:
-
-- **Moveable canvas** — pan, zoom, and drag nodes freely; supporting/evidence nodes collapse by default to keep the view clean
-- **Expand subtrees** — click `+N` on any node to reveal its children; a minimap always shows the full tree
-- **Node detail panel** — click any node to see the full claim, verbatim quote, evaluator assessment (strengths, weaknesses, alternative interpretations), and cited prior literature when live search was used
-- **Export** — download a self-contained HTML file (~135 KB gzip) you can share with anyone; the full interactive viewer works offline with no server required
 
 **Start the frontend:**
 
