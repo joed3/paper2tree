@@ -61,7 +61,7 @@ npm install
 
 ## Paper2Tree in Action
 
-<video src="demo/paper2tree_demo_recording.mov" controls width="100%"></video>
+<video src="demo/paper2tree_demo.mp4" controls width="100%"></video>
 
 The frontend gives you a fully interactive claim tree for every processed paper:
 
