@@ -1,122 +1,111 @@
-# Paper2Tree
+# paper2tree
 
-A multi-agent system for scientific paper review. Given a paper URL, Paper2Tree downloads the paper, extracts its main text, and constructs a **directed acyclic graph (DAG)** of the paper's claims — from the root thesis down through primary arguments, supporting claims, and evidence nodes. Each claim is independently assessed for validity, strengths, and weaknesses. Results are stored as JSON and designed for interactive visualization in a React front-end.
+A multi-agent AI system that turns a scientific paper into an interactive, evaluable claim tree. Give it a URL — it downloads the paper, extracts the argument structure as a directed acyclic graph (DAG), evaluates each claim for strength and support, and presents everything in a shareable interactive viewer.
+
+---
 
 ## How it works
 
-The pipeline runs seven agents in sequence:
+Seven agents run in sequence:
 
 ```
-URL
+URL or PDF
  │
- ▼ Paper Fetcher      (Claude Agent SDK)      Downloads PDF or HTML; handles arXiv, DOIs
+ ▼  Paper Fetcher      Downloads PDF or HTML; handles arXiv, DOIs, open-access pages
  │
- ▼ Text Extractor     (Anthropic SDK)         Parses raw text; structures title/abstract/sections
+ ▼  Text Extractor     Parses raw text; structures title, abstract, and sections
  │
- ▼ Claim Extractor    (Anthropic SDK)         Identifies hierarchical claim structure with adaptive thinking
+ ▼  Claim Extractor    Identifies the hierarchical claim structure using adaptive thinking
  │
- ▼ DAG Builder        (Pure Python)           Validates graph, computes depths, detects cycles
+ ▼  DAG Builder        Validates the graph, computes depths, detects cycles
  │
- ▼ Claim Evaluator    (Anthropic SDK, async)  Assesses validity, strengths, weaknesses per claim
+ ▼  Claim Evaluator    Assesses validity, strengths, and weaknesses per claim
  │
- ▼ Output Formatter   (Pure Python)           Assembles JSON; updates paper index
+ ▼  Output Formatter   Assembles dag.json and updates the paper index
  │
- ▼ outputs/<paper_id>/dag.json
+ ▼  outputs/<paper_id>/dag.json
 ```
 
-Each paper's results live in their own folder under `outputs/`. A central `outputs/index.json` tracks all processed papers so the front-end can display a searchable library.
+Each paper's results live in their own folder under `outputs/`. A central `outputs/index.json` tracks all processed papers so the frontend can display a browsable library.
 
-## Requirements
+---
+
+## Requirements & Installation
+
+**Python backend:**
 
 - Python 3.11+
 - An [Anthropic API key](https://console.anthropic.com/)
-- The [Claude Code CLI](https://claude.ai/code) installed and authenticated (required by the Agent SDK for the Paper Fetcher step)
-
-## Installation
+- The [Claude Code CLI](https://claude.ai/code) installed and authenticated (used by the Paper Fetcher agent)
 
 ```bash
 git clone https://github.com/yourname/paper2tree
 cd paper2tree
 
-# Install runtime dependencies
 pip install -e .
 
-# Set your API key
 cp .env.example .env
 # Edit .env and add: ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-**For development** (linting + pre-commit hooks):
+**Frontend** (only needed to browse results or submit papers from the UI):
+
+- Node.js 18+
 
 ```bash
-pip install -e ".[dev]"
-pre-commit install
+cd frontend
+npm install
 ```
 
-This registers git hooks that run `ruff` (Python lint + format) and `eslint` (TypeScript) automatically on every commit.
+---
 
-The main dependencies installed are:
+## Paper2Tree in Action
 
-| Package | Purpose |
-|---|---|
-| `anthropic` | LLM calls for text extraction, claim extraction, evaluation |
-| `claude-agent-sdk` | Agent SDK for the paper fetcher (WebFetch + Bash tools) |
-| `pdfplumber` / `pymupdf` | PDF text extraction |
-| `beautifulsoup4` / `markdownify` | HTML paper parsing |
-| `pydantic` | Structured output schemas between agents |
-| `tenacity` | Retry logic for LLM calls |
-| `click` / `rich` | CLI and terminal output |
+<!-- Replace this block with a screen recording or GIF of the UI -->
+> 🎬 **Demo video** — add a screen recording here showing the DAG viewer in action.
+> Tip: drag an `.mp4` into the GitHub editor to embed it automatically.
 
-## Usage
+The frontend gives you a fully interactive claim tree for every processed paper:
 
-All commands are run from the project root.
+- **Moveable canvas** — pan, zoom, and drag nodes freely; supporting/evidence nodes collapse by default to keep the view clean
+- **Expand subtrees** — click `+N` on any node to reveal its children; a minimap always shows the full tree
+- **Node detail panel** — click any node to see the full claim, verbatim quote, evaluator assessment (strengths, weaknesses, alternative interpretations), and cited prior literature when live search was used
+- **Export** — download a self-contained HTML file (~135 KB gzip) you can share with anyone; the full interactive viewer works offline with no server required
 
-### Process a single paper
+**Start the frontend:**
 
 ```bash
-python -m src.main process <url>
+# Terminal 1 — API server
+uvicorn src.server:app --reload --port 8000
+
+# Terminal 2 — frontend dev server
+cd frontend && npm run dev
 ```
 
-Accepts arXiv abstract pages, direct PDF links, DOI URLs, and open-access HTML pages.
+Then open [http://localhost:5173](http://localhost:5173). Click **+** in the sidebar to paste a URL or upload a PDF. Progress updates in real time; the paper loads automatically when the pipeline completes.
 
+---
+
+## Processing papers from the CLI
+
+For scripting or server-less use, the CLI processes papers directly without the frontend.
+
+**Single paper:**
 ```bash
-# arXiv paper (abstract page — automatically fetches the PDF)
 python -m src.main process https://arxiv.org/abs/1706.03762
-
-# Direct PDF link
-python -m src.main process https://proceedings.mlr.press/v97/chen19a/chen19a.pdf
-
-# Force reprocess a paper that was already cached
-python -m src.main process https://arxiv.org/abs/1706.03762 --force
-
-# Enable live literature search (queries PubMed + Semantic Scholar during evaluation)
-python -m src.main process https://arxiv.org/abs/1706.03762 --live-search
 ```
 
-#### Live literature search
-
-Pass `--live-search` to enrich claim evaluations with prior-literature context retrieved at runtime from PubMed and Semantic Scholar. For each claim, Claude Haiku generates two targeted search queries, the retriever fetches up to five results per source, deduplicates by title, and ranks by lexical overlap with the claim text. The evaluator uses this context to populate a `literature_citations` field on each `ClaimEvaluation`.
-
+**Local PDF:**
 ```bash
-python -m src.main process https://arxiv.org/abs/2303.08774 --live-search
+python -m src.main process /path/to/paper.pdf
 ```
-
-No additional API key is required — PubMed and Semantic Scholar are queried over public APIs. Set `NCBI_EMAIL` in your `.env` to identify your requests to NCBI (recommended for high-volume use):
-
-```
-NCBI_EMAIL=you@example.com
-```
-
-The live search step adds roughly 30–90 seconds depending on the number of claims and network latency. Results are cached within a single run — repeated claims share retrieved passages.
 
 **Example output:**
-
 ```
 [1/6] Fetching paper from https://arxiv.org/abs/1706.03762 …
       Downloaded: pdf → paper.pdf
 [2/6] Extracting and structuring text …
       Title: 'Attention Is All You Need'
-      Authors: Ashish Vaswani, Noam Shazeer, Niki Parmar
       Word count: 8,421
 [3/6] Extracting claim structure …
       Found 14 claims
@@ -131,21 +120,33 @@ The live search step adds roughly 30–90 seconds depending on the number of cla
   Claims: 14 nodes, high support: 9/14
 ```
 
-### Process multiple papers
+Results are saved to `outputs/<paper_id>/dag.json`. Re-running the same URL is a no-op unless you pass `--force`.
 
-Create a text file with one URL per line (lines starting with `#` are comments):
+---
+
+<details>
+<summary><strong>Advanced CLI options</strong> — batch processing, live literature search, listing and inspecting papers</summary>
+
+### Live literature search
+
+Pass `--live-search` to enrich evaluations with prior-literature context retrieved at runtime from PubMed and Semantic Scholar. For each claim, Claude Haiku generates targeted search queries; the retriever fetches results, deduplicates by title, and ranks by lexical overlap. The evaluator cites retrieved papers inline in its strengths, weaknesses, and interpretations.
+
+```bash
+python -m src.main process https://arxiv.org/abs/1706.03762 --live-search
+```
+
+No additional API key is required. Optionally set `NCBI_EMAIL` in `.env` to identify your requests to NCBI (recommended for high-volume use). Live search adds roughly 30–90 seconds depending on claim count and network latency.
+
+### Batch processing
+
+Create a text file with one URL per line (`#` lines are comments):
 
 ```
 # Foundational transformer papers
 https://arxiv.org/abs/1706.03762
 https://arxiv.org/abs/1810.04805
 https://arxiv.org/abs/2005.14165
-
-# Vision
-https://arxiv.org/abs/2010.11929
 ```
-
-Then run:
 
 ```bash
 python -m src.main batch papers.txt
@@ -164,10 +165,7 @@ python -m src.main list
 
 # Sort options: date (default), title, score
 python -m src.main list --sort-by score
-python -m src.main list --sort-by title
 ```
-
-**Example output:**
 
 ```
            Processed Papers (3 total)
@@ -183,18 +181,23 @@ python -m src.main list --sort-by title
 ### Inspect a paper
 
 ```bash
-python -m src.main show <paper_id>
-```
-
-```bash
 python -m src.main show attention-is-all-you-need-a7468c68
 ```
 
-Prints the paper's abstract, summary statistics, and a tree of all claims with their validity scores.
+Prints the abstract, summary statistics, and a tree of all claims with their support levels.
 
-## Output format
+### Force reprocess
 
-Each processed paper produces a `dag.json` file:
+```bash
+python -m src.main process https://arxiv.org/abs/1706.03762 --force
+```
+
+</details>
+
+<details>
+<summary><strong>Output format</strong> — dag.json schema reference</summary>
+
+Each processed paper produces a folder:
 
 ```
 outputs/
@@ -206,7 +209,7 @@ outputs/
         └── manifest.json                         # fetcher metadata
 ```
 
-The `dag.json` follows a node-link format compatible with React Flow, D3.js, and Cytoscape.js:
+`dag.json` follows a node-link format compatible with React Flow, D3.js, and Cytoscape.js:
 
 ```json
 {
@@ -255,7 +258,7 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
 }
 ```
 
-**Visual encoding conventions** (for React front-end):
+**Visual encoding:**
 
 | Support level | Node color |
 |---|---|
@@ -263,82 +266,47 @@ The `dag.json` follows a node-link format compatible with React Flow, D3.js, and
 | `medium` | Yellow `#eab308` |
 | `low` | Red `#ef4444` |
 
-Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px).
+Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px). Edge style: solid gray for `supports`/`requires`, dashed yellow for `qualifies`, dashed red for `contradicts`.
 
-## Frontend
+</details>
 
-A React app that lets you browse all processed papers and explore their claim DAGs interactively.
+<details>
+<summary><strong>Frontend details</strong> — component overview, static PNG export</summary>
 
-### Starting the frontend
-
-**Browsing existing results** (no API server needed):
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Then open [http://localhost:5173](http://localhost:5173). The Vite dev server serves `outputs/` directly.
-
-**Submitting new papers from the UI** also requires the API server:
-```bash
-# Terminal 1 — API server (from project root)
-pip install -e .
-uvicorn src.server:app --reload --port 8000
-
-# Terminal 2 — frontend
-cd frontend && npm run dev
-```
-
-Click the **+** button in the sidebar (or "Add your first paper" on an empty state) to open the submission dialog. You can paste a URL or drag-and-drop / select a local PDF or HTML file. A progress indicator tracks each pipeline step in real time and the paper auto-loads in the DAG viewer once processing completes.
-
-### What you get
+### Component overview
 
 | Area | Description |
 |---|---|
 | **Left sidebar** | Searchable list of all processed papers and in-progress jobs. Shows support badge and claim count per paper; pulsing indicator and step text for running jobs. |
 | **DAG canvas** | Interactive React Flow graph with dagre left-to-right layout. Scroll to pan, Ctrl+scroll or pinch to zoom, drag individual nodes. Supporting/evidence nodes collapsed by default; click `+N` on any node to expand its subtree. |
-| **Full-graph inset** | Portrait minimap (top-left corner) always showing the complete claim tree regardless of collapse state. Collapsed nodes appear dimmed. |
-| **Top bar** | Paper title, authors, source link, and summary stats (support badge, claim count, max depth, high-support ratio). |
-| **Node detail panel** | Click any node to open a slide-in panel with the full claim text, verbatim quote, section source, and the complete evaluation — support level, strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes, and (when `--live-search` was used) cited prior literature with relevance notes. |
-| **Assessment banner** | The pipeline's overall assessment of the paper shown at the bottom of the canvas. |
+| **Full-graph inset** | Portrait minimap (top-left corner) always showing the complete claim tree. Collapsed nodes appear dimmed. |
+| **Top bar** | Title, authors, source link, summary stats, and **Export** button. |
+| **Node detail panel** | Full claim text, verbatim quote, section source, and complete evaluation — support level, strengths, weaknesses, alternative interpretations, required assumptions, evaluator notes, and cited prior literature. |
+| **Assessment banner** | Pipeline's overall assessment shown at the bottom of the canvas. |
 
-**Node visual encoding:**
+### HTML export
 
-| Color | Support level |
-|---|---|
-| Green | `high` |
-| Yellow | `medium` |
-| Red | `low` |
+Click **Export** in the top bar to download a self-contained HTML file (~420 KB, ~135 KB gzip) that embeds the full interactive viewer and paper data. Recipients need no server, no account, and no Node.js — just a browser.
 
-Node size decreases with depth (root → primary → supporting → evidence). Edge style indicates relationship: solid gray for `supports`/`requires`, dashed yellow for `qualifies`, dashed red for `contradicts`.
-
-### Frontend requirements
-
-- Node.js 18+
-
-The frontend dependencies (`react`, `reactflow`, `dagre`, `tailwindcss`) are installed via `npm install` and are separate from the Python environment.
-
-### Generating a static visualization
-
-If you just want a quick PNG without running the frontend:
+To rebuild the export viewer template after changing frontend components:
 
 ```bash
-# Install visualization dependencies (one-time)
-pip install -e ".[viz]"
-
-# Generate PNG for the first paper in outputs/
-python visualize.py
-
-# Generate PNG for a specific paper
-python visualize.py outputs/<paper_id>/dag.json
-
-# Custom output path
-python visualize.py outputs/<paper_id>/dag.json my_graph.png
+cd frontend && npm run build:export
 ```
 
-The PNG is saved alongside the `dag.json` as `visualization.png`.
+### Static PNG (no frontend required)
 
-## Project structure
+```bash
+pip install -e ".[viz]"
+python visualize.py outputs/<paper_id>/dag.json
+```
+
+The PNG is saved as `visualization.png` alongside the `dag.json`.
+
+</details>
+
+<details>
+<summary><strong>Project structure</strong></summary>
 
 ```
 paper2tree/
@@ -353,60 +321,45 @@ paper2tree/
 │   ├── schemas/                 # Pydantic models for inter-agent data contracts
 │   │   ├── paper.py             # FetchResult, ExtractedPaper
 │   │   ├── claim.py             # Claim, ClaimGraph
-│   │   ├── evaluation.py        # ClaimEvaluation (support_level: high/medium/low), LiteratureCitation
-│   │   ├── output.py            # DAGNode, DAGEdge, PaperDAG (schema_version)
+│   │   ├── evaluation.py        # ClaimEvaluation, LiteratureCitation
+│   │   ├── output.py            # DAGNode, DAGEdge, PaperDAG
 │   │   └── index.py             # PaperIndexEntry, PaperIndex
 │   ├── kb/                      # Knowledge-base retrieval (live literature search)
 │   │   ├── schemas.py           # RetrievedPassage Pydantic model
-│   │   └── live_retriever.py    # LiveRetriever: PubMed + Semantic Scholar, Haiku queries, LRU cache
+│   │   └── live_retriever.py    # LiveRetriever: PubMed + Semantic Scholar, Haiku queries
 │   ├── prompts/                 # Prompt templates (.txt, loaded via string.Template)
-│   │   ├── text_extractor.txt
-│   │   ├── claim_extractor.txt
-│   │   └── claim_evaluator.txt
 │   ├── utils/
 │   │   ├── paper_id.py          # make_paper_id(title, url) → "slug-urlhash"
 │   │   └── graph.py             # BFS DAG builder, cycle detection, subtree utilities
+│   ├── export_html.py           # Self-contained HTML export generator
 │   ├── orchestrator.py          # Async pipeline coordinator
-│   ├── server.py                # FastAPI server (job submission + status polling)
+│   ├── server.py                # FastAPI server (job submission, status, export)
 │   └── main.py                  # CLI (click + rich)
-├── frontend/                    # React visualization app (Node.js)
+├── frontend/                    # React visualization app (Node.js 18+)
 │   ├── src/
 │   │   ├── App.tsx              # Root layout (sidebar + DAG canvas + node panel)
-│   │   ├── components/
-│   │   │   ├── PaperBrowser.tsx # Paper list + in-progress job entries
-│   │   │   ├── DAGViewer.tsx    # React Flow canvas (LR dagre, collapse/expand, inset)
-│   │   │   ├── ClaimNode.tsx    # Custom node component with expand toggle
-│   │   │   ├── ExpandContext.ts # React context for collapse/expand state
-│   │   │   ├── NodeCard.tsx     # Claim detail slide-in panel
-│   │   │   ├── EvalBadge.tsx    # Support level badge (high/medium/low)
-│   │   │   ├── AddPaperDialog.tsx  # URL/file submission dialog
-│   │   │   └── JobProgressView.tsx # Pipeline step progress for in-flight jobs
-│   │   ├── hooks/
-│   │   │   ├── usePaperIndex.ts # Loads outputs/index.json
-│   │   │   ├── usePaper.ts      # Lazily loads a paper's dag.json (cached)
-│   │   │   └── useJobs.ts       # Job polling + localStorage persistence
-│   │   ├── api/
-│   │   │   ├── papers.ts        # fetch wrappers for /outputs/*
-│   │   │   └── jobs.ts          # fetch wrappers for /api/jobs
+│   │   ├── ExportApp.tsx        # Stripped-down viewer for HTML export
+│   │   ├── components/          # DAGViewer, ClaimNode, NodeCard, PaperBrowser, …
+│   │   ├── hooks/               # usePaperIndex, usePaper, useJobs
+│   │   ├── api/                 # papers.ts, jobs.ts
 │   │   └── types/dag.ts         # TypeScript types mirroring the JSON schema
-│   ├── eslint.config.js         # ESLint 9 flat config (typescript-eslint + react-hooks)
+│   ├── dist-export/export.html  # Pre-built self-contained viewer template
+│   ├── vite.export.config.ts    # Singlefile build config for HTML export
 │   └── package.json
-├── migrations/                  # Schema migration scripts
-│   ├── migrate_v0_to_v1.py      # validity_score → support_level (schema_version 0→1)
-│   └── README.md
+├── migrations/                  # Schema migration scripts (v0→v1, …)
 ├── outputs/                     # Generated results (gitignored)
 ├── visualize.py                 # Static PNG generator (matplotlib + networkx)
-├── pyproject.toml               # Source of truth for version + ruff config
-├── .pre-commit-config.yaml      # ruff (Python) + ESLint (TypeScript) hooks
+├── pyproject.toml
 ├── CHANGELOG.md
 └── .env.example
 ```
 
-## Development
+</details>
+
+<details>
+<summary><strong>Development</strong> — linting, pre-commit hooks, schema migrations</summary>
 
 ### Linting and formatting
-
-Python is linted and formatted with [ruff](https://docs.astral.sh/ruff/). TypeScript/React uses [ESLint 9](https://eslint.org/) with `typescript-eslint` and `eslint-plugin-react-hooks`.
 
 ```bash
 # Python — check and auto-fix
@@ -419,40 +372,40 @@ cd frontend && npm run lint
 
 ### Pre-commit hooks
 
-Install once after cloning:
-
 ```bash
 pip install -e ".[dev]"
 pre-commit install
 ```
 
-On every `git commit`, the hooks will:
-
-1. Strip trailing whitespace and ensure files end with a newline
-2. Run `ruff check --fix` and `ruff format` on staged Python files
-3. Run `eslint src` on staged TypeScript/TSX files
-
-To run all hooks against the entire repo manually:
+On every `git commit` the hooks run `ruff` (Python) and `eslint` (TypeScript/TSX) on staged files, strip trailing whitespace, and ensure files end with a newline.
 
 ```bash
+# Run manually against the entire repo
 pre-commit run --all-files
 ```
 
 ### Schema migrations
 
-When the `dag.json` output schema changes in a breaking way (major version bump), a migration script is added to `migrations/`. See `migrations/README.md` for the conventions and history.
+When `dag.json` changes in a breaking way (major version bump), a migration script is added to `migrations/`. See `migrations/README.md` for conventions.
 
 ```bash
 # Upgrade all outputs/ artifacts from schema v0 to v1
 python migrations/migrate_v0_to_v1.py
 ```
 
-## Design notes
+</details>
 
-- **Adaptive thinking and structured output are mutually exclusive** in the current Claude API. The Claim Extractor uses adaptive thinking (for reasoning quality) and parses the JSON response manually with Pydantic retry logic. Other agents that don't need deep reasoning use `messages.parse()` with a Pydantic schema for guaranteed structure.
+<details>
+<summary><strong>Design notes</strong></summary>
 
-- **Per-paper folders with a flat index** keep individual results self-contained. The `index.json` is a lightweight catalog (title, score, path) loaded eagerly by the front-end; full DAG data is fetched lazily per paper.
+- **Adaptive thinking and structured output are mutually exclusive** in the current Claude API. The Claim Extractor uses adaptive thinking (for reasoning quality) and parses the JSON response manually with Pydantic retry logic. Other agents use `messages.stream()` with manual Pydantic parsing plus an explicit `stop_reason == "max_tokens"` guard to catch truncated responses before attempting a parse.
+
+- **Per-paper folders with a flat index** keep individual results self-contained. `index.json` is a lightweight catalog (title, score, path) loaded eagerly by the frontend; full DAG data is fetched lazily per paper.
 
 - **Idempotent by default.** Re-running `process` on the same URL is a no-op unless `--force` is passed. The `batch` command is safe to re-run after partial failures.
 
 - **Intermediate artifacts** (downloaded PDF, extracted text manifest) are preserved in `outputs/<paper_id>/raw/`. This allows individual pipeline stages to be re-run in isolation without re-downloading.
+
+- **HTML export is build-time, not runtime.** The viewer template is built once with `vite-plugin-singlefile` and committed to `frontend/dist-export/`. The server injects paper data via a string replace — no Node.js required at runtime.
+
+</details>
