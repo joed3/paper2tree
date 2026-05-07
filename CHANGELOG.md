@@ -11,6 +11,50 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [1.6.0] — 2026-05-07
+
+### Added
+- **Continuous-scroll PDF viewer** — replaced the single-page + prev/next navigation with a full document vertical scroll. All pages render simultaneously; opening the panel automatically scrolls to the page containing the selected claim.
+- **All-claims highlighting on scroll** — every node whose `page_number` and `bbox` are set is highlighted on its respective page as you scroll through the PDF. Selected claim renders with a bright yellow border; all other claims on the same page render with a subtle amber overlay.
+- **Clickable claim highlights** — clicking any non-selected claim highlight in the PDF selects that node, instantly updating the NodeCard on the right. Allows navigating the full claim structure directly from the PDF.
+- **DAG mini-map inset while PDF is open** — a compact SVG overview of the complete claim graph (the existing full-map inset from the DAG view) now appears as a floating panel in the bottom-left corner of the PDF area. The currently selected node is highlighted in white so the user can see their position in the argument structure at a glance. Clicking the inset closes the PDF and returns to the full DAG view.
+- **PDF embedded in self-contained exports** — when a paper has a local PDF, the export now base64-encodes it and injects it as `pdf_data_url` in `window.__PAPER_DATA__`. The export viewer supports the full PDF panel (continuous scroll, all-claims highlights, clickable highlights, DAG inset) with no server required. The `pdfjs` worker is inlined as a blob URL via Vite's `?raw` import so the export works completely offline.
+
+### Changed
+- **PDF panel moved to center area** — the PDF viewer now occupies the main center slot (replacing the DAG), rather than appearing as a fourth column to the right. The NodeCard remains on the right. The close button is labelled "← DAG" instead of "×". The DAG is hidden but not unmounted while the PDF is open, preserving pan/zoom state.
+- **Multi-line bbox** — `bbox` type corrected from a single flat `[x0, y0, x1, y1]` list to `[[x0, y0, x1, y1], …]` (one rect per matched line segment). Quotes spanning multiple lines now produce a separate highlight box per line. Type updated in `Claim`, `DAGNode`, and `DAGNode` TypeScript interface. Migration script updated to re-run coordinate search and repair existing v2 artifacts that held the old flat format (339/422 nodes re-located across 10 papers).
+- `FullMapInset` and `buildFullLayout` are now exported from `DAGViewer.tsx` for standalone use in the PDF area.
+- `tsconfig.json` gains `"types": ["vite/client"]` to support the `?raw` import suffix used by the worker blob approach.
+
+### Fixed
+- PDF coordinate highlights previously only covered the first line of multi-line quotes; all matched line segments are now rendered.
+
+---
+
+## [1.5.0] — 2026-05-07
+
+### Added
+- **PDF panel** — clicking any node in the DAG opens a fourth panel (560 px, far right) showing the source paper PDF with the selected claim's `verbatim_quote` highlighted in place. The panel persists across node selections and can be toggled with the "view in pdf →" button on the NodeCard or dismissed with its own close button.
+- **Coordinate-based highlighting** — the pipeline now locates each claim's verbatim quote in the source PDF using PyMuPDF's `page.search_for()` (two-pass: exact quote, then 60-char anchor prefix). The bounding box is stored in `dag.json` and rendered as a precise yellow overlay on the target page.
+- **Text-search fallback** — for nodes without stored coordinates (older DAGs or unlocatable quotes), the PDF.js text layer highlights words from the verbatim quote throughout the rendered page.
+- **PDF recovery for HTML-sourced papers** — the paper fetcher agent now scans HTML landing pages for embedded PDF links (`<meta name="citation_pdf_url">`, `href="*.pdf"`, bioRxiv/PMC patterns) and attempts a secondary PDF download. A local PDF is stored alongside the HTML extraction, enabling the PDF panel for papers initially fetched as HTML.
+- **`paper.has_local_pdf`** — new boolean field on `PaperMeta` in `dag.json`; drives whether the PDF panel is offered in the UI (no heuristics).
+- **`node.page_number` / `node.bbox`** — new optional fields on `DAGNode` carrying the 0-indexed page number and `[x0, y0, x1, y1]` bounding box (PDF user units) for each claim's quote.
+- **Frontend PDF viewer** — new `PDFPanel` component using `react-pdf` (PDF.js wrapper); single-page view with prev/next navigation and page counter.
+- **`NodeCard` "View in PDF" toggle** — button in the NodeCard header opens/closes the PDF panel independently of node selection.
+- Uploaded PDFs are now normalised to `paper.pdf` on disk for consistent URL resolution.
+
+### Changed *(schema_version 1 → 2 — additive only, no fields removed)*
+- `PaperMeta` gains `has_local_pdf: bool` (default `false`).
+- `DAGNode` gains `page_number: int | null` and `bbox: [number, number, number, number][] | null` — list of per-line rects (both default `null`). *(The flat single-rect type shipped in 1.5.0 was corrected to list-of-rects in 1.6.0.)*
+- `FetchResult` (internal) gains `pdf_path: str | None`.
+- `SCHEMA_VERSION` constant in `src/schemas/output.py` bumped from `1` to `2`.
+
+### Migration
+Run `python migrations/migrate_v1_to_v2.py` to upgrade existing artifacts. The script back-fills `page_number` and `bbox` by searching stored PDFs, sets `has_local_pdf`, and bumps `schema_version` to 2. Unmigrated v1 DAGs continue to render correctly in the UI — the PDF panel simply does not appear.
+
+---
+
 ## [1.4.0] — 2026-03-30
 
 ### Added

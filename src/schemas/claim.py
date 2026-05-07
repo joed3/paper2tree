@@ -10,6 +10,8 @@ class Claim(BaseModel):
     parent_id: str | None = None
     section_source: str
     verbatim_quote: str
+    page_number: int | None = None  # 0-indexed page in source PDF; None for HTML sources
+    bbox: list[list[float]] | None = None  # [[x0,y0,x1,y1], …] one rect per matched line
 
 
 class ClaimGraph(BaseModel):

@@ -45,6 +45,7 @@ def format_output(
     extracted: ExtractedPaper,
     enriched: list[EnrichedClaim],
     evaluations: dict[str, ClaimEvaluation],
+    has_local_pdf: bool = False,
 ) -> PaperDAG:
     """Build the PaperDAG object from pipeline outputs."""
     nodes: list[DAGNode] = []
@@ -70,6 +71,8 @@ def format_output(
                     size=_node_size(ec.depth),
                     border_width=3 if ec.depth == 0 else 1,
                 ),
+                page_number=claim.page_number,
+                bbox=claim.bbox,
             )
         )
 
@@ -98,6 +101,7 @@ def format_output(
             abstract=extracted.abstract,
             word_count=extracted.word_count,
             processed_at=datetime.now(timezone.utc).isoformat(),
+            has_local_pdf=has_local_pdf,
         ),
         dag=DAGData(nodes=nodes, edges=edges),
         summary=DAGSummary(

@@ -39,6 +39,8 @@ export interface DAGNode {
   verbatim_quote: string
   evaluation: ClaimEvaluation | null
   visual: VisualMeta
+  page_number?: number | null
+  bbox?: [number, number, number, number][] | null
 }
 
 export interface DAGEdge {
@@ -57,6 +59,7 @@ export interface PaperMeta {
   abstract: string
   word_count: number
   processed_at: string
+  has_local_pdf?: boolean
 }
 
 export interface DAGSummary {

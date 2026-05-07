@@ -17,6 +17,8 @@ class DAGNode(BaseModel):
     verbatim_quote: str
     evaluation: dict | None = None
     visual: VisualMeta
+    page_number: int | None = None
+    bbox: list[list[float]] | None = None  # [[x0,y0,x1,y1], …] one rect per matched line
 
 
 class DAGEdge(BaseModel):
@@ -40,6 +42,7 @@ class PaperMeta(BaseModel):
     abstract: str
     word_count: int
     processed_at: str
+    has_local_pdf: bool = False
 
 
 class DAGSummary(BaseModel):
@@ -51,7 +54,7 @@ class DAGSummary(BaseModel):
     overall_assessment: str
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 class PaperDAG(BaseModel):

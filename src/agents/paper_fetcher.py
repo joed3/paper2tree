@@ -25,30 +25,42 @@ STEPS — follow in order:
      Example: https://arxiv.org/abs/1706.03762 → https://arxiv.org/pdf/1706.03762.pdf
    - If the URL already ends with ".pdf", use it directly.
    - For DOI URLs (doi.org/...) or journal pages, try to find and use the direct PDF link.
+   - For bioRxiv/medRxiv URLs, the PDF is at: <base_url>.full.pdf
 
 2. Download the file using Bash:
    curl -L --max-time 120 -A "Mozilla/5.0" -o paper.pdf "<DOWNLOAD_URL>"
    (Replace <DOWNLOAD_URL> with the actual download URL from step 1.)
 
-3. Verify the download:
+3. Verify the primary download:
    Run: ls -lh paper.pdf
-   If the file is smaller than 5KB, it likely downloaded an HTML error page instead of a PDF.
-   In that case, download as HTML instead:
-   curl -L --max-time 120 -A "Mozilla/5.0" -o paper.html "<URL>"
+   Check whether the file starts with the PDF magic bytes: python3 -c "f=open('paper.pdf','rb');print(f.read(4));f.close()"
+   If the file is smaller than 5KB OR does not start with b'%PDF', it downloaded an HTML page instead.
+   In that case:
+   a) Rename the bad file: mv paper.pdf paper.html
+   b) Attempt PDF recovery: scan paper.html for a PDF link using one of these methods:
+      - grep -o 'content="[^"]*\\.pdf[^"]*"' paper.html | head -3
+      - grep -o 'href="[^"]*\\.pdf[^"]*"' paper.html | head -3
+      - grep -o '"citation_pdf_url"[^>]*content="[^"]*"' paper.html | head -3
+      - For biorxiv.org pages: construct https://www.biorxiv.org/content/<DOI>.full.pdf
+      - For PubMed/PMC pages: look for links ending in /pdf or .pdf
+   c) If a PDF URL is found, download it:
+      curl -L --max-time 120 -A "Mozilla/5.0" -o paper.pdf "<PDF_URL>"
+      Then verify: ls -lh paper.pdf && python3 -c "f=open('paper.pdf','rb');print(f.read(4));f.close()"
 
-4. Determine what was saved:
-   - If paper.pdf exists and is > 5KB: content_type = "pdf", filename = "paper.pdf"
-   - If paper.html exists: content_type = "html", filename = "paper.html"
+4. Determine what was saved and write manifest.json:
 
-5. Write manifest.json using Bash (NOT the Write tool — use echo/printf):
-   For PDF:
-   printf '%s' '{{"content_type": "pdf", "raw_path": "paper.pdf", "source_url": "<ACTUAL_URL_USED>"}}' > manifest.json
-   For HTML:
-   printf '%s' '{{"content_type": "html", "raw_path": "paper.html", "source_url": "<ACTUAL_URL_USED>"}}' > manifest.json
+   Case A — Primary PDF download succeeded (paper.pdf > 5KB and starts with %PDF):
+   printf '%s' '{{"content_type": "pdf", "raw_path": "paper.pdf", "pdf_path": "paper.pdf", "source_url": "<ACTUAL_URL>"}}' > manifest.json
 
-Replace <ACTUAL_URL_USED> with the URL you actually downloaded from (after any conversions in step 1).
+   Case B — HTML was downloaded AND a secondary PDF was found (both paper.html and paper.pdf exist and paper.pdf > 5KB):
+   printf '%s' '{{"content_type": "html", "raw_path": "paper.html", "pdf_path": "paper.pdf", "source_url": "<ACTUAL_URL>"}}' > manifest.json
 
-IMPORTANT: Use Bash to write manifest.json (not the Write tool). The manifest must be valid JSON.
+   Case C — Only HTML was downloaded (no PDF found):
+   printf '%s' '{{"content_type": "html", "raw_path": "paper.html", "pdf_path": null, "source_url": "<ACTUAL_URL>"}}' > manifest.json
+
+Replace <ACTUAL_URL> with the URL you actually downloaded from (after any conversions in step 1).
+
+IMPORTANT: Use Bash printf to write manifest.json (not the Write tool). The manifest must be valid JSON.
 """
 
 
@@ -89,8 +101,17 @@ async def fetch_paper(url: str, raw_dir: Path) -> FetchResult:
     if not raw_path.exists():
         raise RuntimeError(f"Paper fetcher wrote manifest but file not found: {raw_path}")
 
+    # Resolve optional pdf_path
+    pdf_path_rel = data.get("pdf_path")
+    pdf_path_abs: str | None = None
+    if pdf_path_rel:
+        pdf_candidate = raw_dir / pdf_path_rel
+        if pdf_candidate.exists():
+            pdf_path_abs = str(pdf_candidate.resolve())
+
     return FetchResult(
         content_type=data["content_type"],
         raw_path=str(raw_path.resolve()),
         source_url=data["source_url"],
+        pdf_path=pdf_path_abs,
     )

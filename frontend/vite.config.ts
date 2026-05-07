@@ -32,6 +32,9 @@ function serveOutputs(): Plugin {
 
 export default defineConfig({
   plugins: [react(), serveOutputs()],
+  optimizeDeps: {
+    exclude: ['pdfjs-dist'],
+  },
   server: {
     proxy: {
       '/api': {

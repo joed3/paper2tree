@@ -22,6 +22,7 @@ from .kb.live_retriever import LiveRetriever
 from .schemas.paper import FetchResult
 from .utils.graph import build_dag
 from .utils.paper_id import make_paper_id
+from .utils.pdf_locate import locate_claims
 
 load_dotenv()
 
@@ -66,11 +67,21 @@ async def _run_pipeline(
         # Patch fetch_result to point to new location
         original_name = Path(fetch_result.raw_path).name
         fetch_result.raw_path = str((final_raw_dir / original_name).resolve())
+        if fetch_result.pdf_path is not None:
+            pdf_name = Path(fetch_result.pdf_path).name
+            fetch_result.pdf_path = str((final_raw_dir / pdf_name).resolve())
 
         # ── Step 4: Extract claims ────────────────────────────────────────────
         log("[3/6] Extracting claim structure …")
         claim_graph = await asyncio.to_thread(extract_claims, extracted.full_text)
         log(f"      Found {len(claim_graph.claims)} claims")
+
+        # ── Step 4.5: Locate claims in PDF ───────────────────────────────────
+        if fetch_result.pdf_path is not None:
+            log("      Locating claims in PDF …")
+            await asyncio.to_thread(locate_claims, claim_graph, fetch_result.pdf_path)
+            located = sum(1 for c in claim_graph.claims if c.page_number is not None)
+            log(f"      Located {located}/{len(claim_graph.claims)} claims with page coordinates")
 
         # ── Step 5: Build DAG ─────────────────────────────────────────────────
         log("[4/6] Building and validating DAG …")
@@ -96,7 +107,14 @@ async def _run_pipeline(
 
         # ── Step 7: Format and write output ───────────────────────────────────
         log("[6/6] Writing output …")
-        paper_dag = format_output(paper_id, url, extracted, enriched, evaluations)
+        paper_dag = format_output(
+            paper_id,
+            url,
+            extracted,
+            enriched,
+            evaluations,
+            has_local_pdf=fetch_result.pdf_path is not None,
+        )
         write_outputs(paper_dag, paper_dir, OUTPUTS_DIR)
 
         log(f"\n✓ Done — paper_id: {paper_id}")
@@ -162,14 +180,16 @@ async def process_paper_from_file(
     raw_dir = temp_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy uploaded file into the temp raw dir
-    dest = raw_dir / original_name
+    # Normalise PDF filename so the viewer can always find it at paper.pdf
+    saved_name = "paper.pdf" if content_type == "pdf" else original_name
+    dest = raw_dir / saved_name
     shutil.copy2(file_path, dest)
 
     # Write a manifest so the rest of the pipeline has the expected structure
-    manifest = {
+    manifest: dict = {
         "content_type": content_type,
-        "raw_path": original_name,
+        "raw_path": saved_name,
+        "pdf_path": saved_name if content_type == "pdf" else None,
         "source_url": pseudo_url,
     }
     (raw_dir / "manifest.json").write_text(json.dumps(manifest))
@@ -178,6 +198,7 @@ async def process_paper_from_file(
         content_type=content_type,
         raw_path=str(dest.resolve()),
         source_url=pseudo_url,
+        pdf_path=str(dest.resolve()) if content_type == "pdf" else None,
     )
 
     log(f"[1/6] Using uploaded file: {original_name}")

@@ -165,11 +165,11 @@ async def export_paper(paper_id: str):
     if not result_files:
         raise HTTPException(status_code=404, detail="No result file found for this paper")
 
-    from .export_html import generate_export_html, safe_filename
+    from .export_html import _find_pdf, generate_export_html, safe_filename
 
     try:
         data = json.loads(result_files[0].read_text(encoding="utf-8"))
-        html = generate_export_html(data)
+        html = generate_export_html(data, pdf_path=_find_pdf(paper_dir))
     except FileNotFoundError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except Exception as exc:

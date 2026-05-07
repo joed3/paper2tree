@@ -5,6 +5,7 @@ class FetchResult(BaseModel):
     content_type: str  # "pdf" | "html" | "text"
     raw_path: str  # absolute path to downloaded file
     source_url: str  # final URL after redirects
+    pdf_path: str | None = None  # absolute path to paper.pdf when available; None for HTML-only
 
 
 class ExtractedSection(BaseModel):

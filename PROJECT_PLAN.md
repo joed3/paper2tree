@@ -2390,3 +2390,660 @@ Replacing the paper fetcher with direct `httpx` is **optional** — it reduces i
 | Update `server.py` static file path to support installed-package layout | Optional | `pip install` compatibility only |
 | Add `hatch_build.py` build hook | Optional | Pre-builds frontend into the wheel (pip path) |
 | Add GitHub Actions release workflow | Optional | Publishes to PyPI + GitHub Releases on version tags |
+
+---
+
+## PDF Panel — Claim Source Highlighting
+
+> **Status:** Planned — targets v1.2.0
+
+### Overview
+
+When a user clicks a node in the claim DAG, a fourth panel appears to the right of the NodeCard showing the source PDF with the selected claim's `verbatim_quote` highlighted in place. Clicking a different node updates the highlight; clicking the same node again (or closing the panel) dismisses it.
+
+The highlight uses one of two strategies, applied in order of preference:
+1. **Coordinate-based:** the pipeline records the exact page number and bounding box of each claim's `verbatim_quote` using PyMuPDF during processing. The frontend uses these coordinates to draw a pixel-accurate highlight overlay over the rendered PDF canvas.
+2. **Text-search fallback:** for DAGs processed before this feature shipped (schema v1), the frontend searches the rendered PDF text layer for the `verbatim_quote` string at load time and highlights the first match using the PDF.js `customTextRenderer` API.
+
+The PDF is served from the local static path `/outputs/<paper_id>/raw/paper.pdf`, which is already mounted by the FastAPI server. If no local PDF exists (e.g. the paper was processed from an HTML source), the PDF panel shows a "No PDF available" message.
+
+---
+
+### Design Decisions Summary
+
+| Decision | Choice | Reason |
+|---|---|---|
+| Highlight approach | Coordinate-based + text-search fallback | Precise for new papers; works on existing DAGs without re-processing |
+| Panel layout | Fourth panel, far right of NodeCard | Preserves DAG and NodeCard visibility; additive to existing layout |
+| PDF source | Local `/outputs/<paper_id>/raw/paper.pdf` only | Already served; no extra routes needed |
+| PDF rendering library | `react-pdf` (wraps PDF.js) | MIT, widely used, exposes text layer for fallback search |
+| Coordinate extraction | PyMuPDF `page.search_for()` | Already a project dependency; fastest, most accurate text search with bbox output |
+
+---
+
+### Schema Changes — v2
+
+#### Python (`src/schemas/`)
+
+**`src/schemas/claim.py`** — add two optional fields to `Claim`:
+
+```python
+class Claim(BaseModel):
+    id: str
+    text: str
+    type: Literal["root", "primary", "supporting", "evidence"]
+    parent_id: str | None = None
+    section_source: str
+    verbatim_quote: str
+    # New in v2 (optional — None for non-PDF sources or when search fails):
+    page_number: int | None = None        # 0-indexed page in the source PDF
+    bbox: list[float] | None = None       # [x0, y0, x1, y1] in PDF user units (72dpi)
+```
+
+**`src/schemas/output.py`** — add `page_number` and `bbox` to `DAGNode`, bump `SCHEMA_VERSION`:
+
+```python
+SCHEMA_VERSION = 2
+
+class DAGNode(BaseModel):
+    id: str
+    label: str
+    claim: str
+    type: str
+    depth: int
+    section_source: str
+    verbatim_quote: str
+    evaluation: dict | None = None
+    visual: VisualMeta
+    # New in v2:
+    page_number: int | None = None
+    bbox: list[float] | None = None       # [x0, y0, x1, y1] in PDF user units
+```
+
+#### TypeScript (`frontend/src/types/dag.ts`)
+
+```typescript
+export interface DAGNode {
+  id: string
+  label: string
+  claim: string
+  type: 'root' | 'primary' | 'supporting' | 'evidence'
+  depth: number
+  section_source: string
+  verbatim_quote: string
+  evaluation: ClaimEvaluation | null
+  visual: VisualMeta
+  // New in v2 — null for HTML-sourced papers or when location search failed:
+  page_number: number | null
+  bbox: [number, number, number, number] | null
+}
+```
+
+Both fields are additive and optional (`null`-defaulted), so frontend code reading v1 DAGs (which will not have these keys) must treat absent fields as `null`. TypeScript optional chaining (`node.page_number ?? null`) handles this cleanly at runtime.
+
+---
+
+### Migration — v1 → v2
+
+**`migrations/migrate_v1_to_v2.py`**
+
+For each `outputs/<paper_id>/dag.json` with `schema_version: 1`:
+1. Check if `outputs/<paper_id>/raw/paper.pdf` exists.
+2. If yes: open the PDF with PyMuPDF, search for each node's `verbatim_quote` using `page.search_for()` across all pages (stopping at first match), and write `page_number` and `bbox` to the node.
+3. If no PDF: set both fields to `null`.
+4. Bump `schema_version` to `2`.
+5. Write the updated `dag.json` in place.
+
+```python
+import fitz  # pymupdf
+import json
+from pathlib import Path
+
+OUTPUTS_DIR = Path(__file__).parent.parent / "outputs"
+
+
+def locate_quote(pdf_path: Path, quote: str) -> tuple[int | None, list[float] | None]:
+    """Search all pages of a PDF for quote. Returns (page_number, [x0,y0,x1,y1]) or (None, None)."""
+    try:
+        doc = fitz.open(str(pdf_path))
+        for page_num, page in enumerate(doc):
+            hits = page.search_for(quote)
+            if hits:
+                r = hits[0]
+                return page_num, [r.x0, r.y0, r.x1, r.y1]
+        # If exact match fails, try searching with a shorter anchor (first 60 chars)
+        anchor = quote[:60].strip()
+        if len(anchor) < len(quote):
+            for page_num, page in enumerate(doc):
+                hits = page.search_for(anchor)
+                if hits:
+                    r = hits[0]
+                    return page_num, [r.x0, r.y0, r.x1, r.y1]
+        return None, None
+    except Exception:
+        return None, None
+
+
+def migrate_dag(dag: dict, paper_dir: Path) -> tuple[dict, bool]:
+    if dag.get("schema_version", 0) >= 2:
+        return dag, False
+
+    pdf_path = paper_dir / "raw" / "paper.pdf"
+    has_pdf = pdf_path.exists()
+    changed = False
+
+    for node in dag["dag"]["nodes"]:
+        node["page_number"] = None
+        node["bbox"] = None
+        if has_pdf:
+            quote = node.get("verbatim_quote", "")
+            if quote:
+                page_num, bbox = locate_quote(pdf_path, quote)
+                node["page_number"] = page_num
+                node["bbox"] = bbox
+        changed = True
+
+    dag["schema_version"] = 2
+    return dag, changed
+
+
+def main() -> None:
+    paper_dirs = [d for d in OUTPUTS_DIR.iterdir() if d.is_dir() and (d / "dag.json").exists()]
+    for paper_dir in paper_dirs:
+        dag_path = paper_dir / "dag.json"
+        dag = json.loads(dag_path.read_text())
+        dag, changed = migrate_dag(dag, paper_dir)
+        if changed:
+            dag_path.write_text(json.dumps(dag, indent=2))
+            print(f"migrated   {paper_dir.name}")
+        else:
+            print(f"up-to-date {paper_dir.name}")
+    print("done.")
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+### Backend Pipeline Changes
+
+#### New: `src/utils/pdf_locate.py`
+
+Pure utility wrapping PyMuPDF's `page.search_for()`. Does a two-pass search: exact quote first, then a 60-character anchor prefix as fallback for long quotes that may span line breaks in the PDF rendering.
+
+```python
+import fitz
+from pathlib import Path
+
+
+def locate_in_pdf(pdf_path: str | Path, quote: str) -> tuple[int | None, list[float] | None]:
+    """
+    Find the first occurrence of quote in the PDF.
+    Returns (page_number_0indexed, [x0, y0, x1, y1]) or (None, None).
+    Coordinates are in PDF user units (points at 72dpi).
+    """
+    try:
+        doc = fitz.open(str(pdf_path))
+    except Exception:
+        return None, None
+
+    # Pass 1: exact match
+    for page_num, page in enumerate(doc):
+        hits = page.search_for(quote)
+        if hits:
+            r = hits[0]
+            doc.close()
+            return page_num, [r.x0, r.y0, r.x1, r.y1]
+
+    # Pass 2: first 60 chars as anchor (handles long quotes that wrap lines)
+    anchor = quote[:60].strip()
+    if len(anchor) >= 20 and len(anchor) < len(quote):
+        for page_num, page in enumerate(doc):
+            hits = page.search_for(anchor)
+            if hits:
+                r = hits[0]
+                doc.close()
+                return page_num, [r.x0, r.y0, r.x1, r.y1]
+
+    doc.close()
+    return None, None
+
+
+def locate_claims(claim_graph, pdf_path: str | Path) -> None:
+    """
+    Mutate each Claim in claim_graph in-place, setting page_number and bbox.
+    Only called for PDF-sourced papers; no-op if pdf_path does not exist.
+    """
+    path = Path(pdf_path)
+    if not path.exists():
+        return
+    for claim in claim_graph.claims:
+        claim.page_number, claim.bbox = locate_in_pdf(path, claim.verbatim_quote)
+```
+
+#### Modified: `src/orchestrator.py`
+
+Add a new step 4.5 between claim extraction and DAG building:
+
+```python
+from .utils.pdf_locate import locate_claims
+
+# ── Step 4: Extract claims ────────────────────────────────────────────
+log("[3/6] Extracting claim structure …")
+claim_graph = await asyncio.to_thread(extract_claims, extracted.full_text)
+log(f"      Found {len(claim_graph.claims)} claims")
+
+# ── Step 4.5: Locate claims in PDF ───────────────────────────────────
+if fetch_result.content_type == "pdf":
+    log("      Locating claims in PDF …")
+    await asyncio.to_thread(locate_claims, claim_graph, fetch_result.raw_path)
+    located = sum(1 for c in claim_graph.claims if c.page_number is not None)
+    log(f"      Located {located}/{len(claim_graph.claims)} claims with coordinates")
+
+# ── Step 5: Build DAG ─────────────────────────────────────────────────
+```
+
+The step numbering displayed in log messages does not change — the coordinate lookup is logged as part of step 3.
+
+#### Modified: `src/utils/graph.py`
+
+`build_dag` must propagate `page_number` and `bbox` from `Claim` to the enriched node objects. The exact change depends on the current `EnrichedClaim` type, but the principle is: copy these two fields from the source `Claim` when constructing each enriched node.
+
+#### Modified: `src/agents/output_formatter.py`
+
+When assembling `DAGNode` output objects, include `page_number` and `bbox` from the enriched claim:
+
+```python
+DAGNode(
+    id=node.id,
+    label=label,
+    claim=node.text,
+    type=node.type,
+    depth=node.depth,
+    section_source=node.section_source,
+    verbatim_quote=node.verbatim_quote,
+    evaluation=...,
+    visual=...,
+    page_number=node.page_number,   # new
+    bbox=node.bbox,                  # new
+)
+```
+
+---
+
+### Frontend Changes
+
+#### New dependency: `react-pdf`
+
+```bash
+npm install react-pdf
+```
+
+`react-pdf` v7+ ships with its own TypeScript types and bundles `pdfjs-dist` as a peer dependency. The PDF.js worker must be configured once at the app entry point.
+
+**`frontend/src/main.tsx`** — add worker configuration:
+
+```typescript
+import { pdfjs } from 'react-pdf'
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString()
+```
+
+**`frontend/vite.config.ts`** — ensure the worker file is correctly bundled. Add `optimizeDeps` exclusions for `pdfjs-dist` if needed (react-pdf v7 typically handles this automatically with Vite 5+).
+
+#### New: `frontend/src/components/PDFPanel.tsx`
+
+```typescript
+interface PDFPanelProps {
+  pdfUrl: string              // e.g. "/outputs/hyperagents-2a45007d/raw/paper.pdf"
+  pageNumber: number | null   // 0-indexed (from DAGNode.page_number); null for text-search mode
+  bbox: [number, number, number, number] | null  // PDF user units [x0, y0, x1, y1]
+  verbatimQuote: string | null                   // fallback text-search target
+  onClose: () => void
+}
+```
+
+**Behaviour:**
+- Renders the PDF using `react-pdf`'s `<Document>` and `<Page>` components.
+- When `pageNumber` is known, scrolls directly to that page on mount and whenever `pageNumber` changes.
+- When `bbox` is provided: renders a `<div>` overlay absolutely positioned over the page canvas using coordinates scaled from PDF units to screen pixels. The scale factor is `renderedPageWidth / page.originalWidth` (available via `onPageLoadSuccess`).
+- When `bbox` is null but `verbatimQuote` is provided: enables the PDF.js text layer (`renderTextLayer`) and uses `customTextRenderer` to wrap matching text spans in a highlight `<span>`.
+- Has a ×  close button in the top-right corner.
+- Shows a loading spinner while the PDF loads.
+- Shows "No PDF available" when `pdfUrl` is falsy.
+
+**Coordinate overlay implementation detail:**
+
+PDF.js provides page dimensions via the `page` object in `onPageLoadSuccess`. PyMuPDF returns bounding boxes in the same coordinate space (origin top-left, y increases downward in the rendered image). The overlay `<div>` is positioned as:
+
+```typescript
+const scale = renderedWidth / page.originalWidth
+const style = {
+  position: 'absolute' as const,
+  left:   bbox[0] * scale,
+  top:    bbox[1] * scale,
+  width:  (bbox[2] - bbox[0]) * scale,
+  height: (bbox[3] - bbox[1]) * scale,
+  backgroundColor: 'rgba(250, 204, 21, 0.35)',   // yellow-400 at 35% opacity
+  border: '1px solid rgba(250, 204, 21, 0.7)',
+  pointerEvents: 'none' as const,
+}
+```
+
+The page container must be `position: relative` to anchor the overlay.
+
+**Text-search fallback implementation detail:**
+
+`react-pdf`'s `customTextRenderer` receives each text item and its index. After the page text content is loaded, search for `verbatimQuote` in the concatenated text, identify which spans overlap the match range, and wrap them:
+
+```typescript
+<Page
+  renderTextLayer
+  customTextRenderer={({ str, itemIndex }) =>
+    matchedIndices.has(itemIndex)
+      ? `<mark class="pdf-highlight">${str}</mark>`
+      : str
+  }
+/>
+```
+
+The `pdf-highlight` class applies `background: rgba(250,204,21,0.35)` via Tailwind or a CSS rule in `index.css`.
+
+**Width:** Fixed at 560px. The panel is not resizable in v1.2.0; a resize handle can be added in a future iteration.
+
+#### Modified: `frontend/src/App.tsx`
+
+**New state:**
+```typescript
+const [pdfPanelOpen, setPdfPanelOpen] = useState(false)
+```
+
+**Derived values:**
+```typescript
+// PDF is available if the paper was fetched from a URL or uploaded as a PDF
+const pdfUrl = paper && !paper.paper.url.startsWith('upload://')
+  ? `/outputs/${paper.paper.paper_id}/raw/paper.pdf`
+  : (() => {
+      // Uploaded PDFs are also stored locally — check manifest content_type
+      // For simplicity in v1.2.0, check if the paper_id dir has raw/paper.pdf
+      // by examining the url — if it starts with upload://, check the filename suffix
+      const uploadedPdf = paper?.paper.url.startsWith('upload://') &&
+        paper.paper.url.toLowerCase().endsWith('.pdf')
+      return uploadedPdf
+        ? `/outputs/${paper!.paper.paper_id}/raw/${paper!.paper.url.replace('upload://', '')}`
+        : null
+    })()
+
+const showPDFPanel = pdfPanelOpen && !!selectedNode && !!pdfUrl
+```
+
+**Open/close triggers:**
+- PDF panel opens automatically when a node is clicked and `pdfUrl` is non-null.
+- A "View in PDF" button on `NodeCard` toggles the panel for cases where the user dismissed it but wants it back.
+- PDF panel has its own close button.
+- Switching to a different paper resets `pdfPanelOpen` to `false`.
+
+**Layout update:**
+```tsx
+{/* right panels */}
+{selectedNode && !selectedJobId && (
+  <NodeCard
+    node={selectedNode}
+    onClose={() => setSelectedNodeId(null)}
+    pdfAvailable={!!pdfUrl}
+    pdfPanelOpen={showPDFPanel}
+    onTogglePDF={() => setPdfPanelOpen((v) => !v)}
+  />
+)}
+{showPDFPanel && selectedNode && pdfUrl && (
+  <PDFPanel
+    pdfUrl={pdfUrl}
+    pageNumber={selectedNode.page_number}
+    bbox={selectedNode.bbox}
+    verbatimQuote={selectedNode.verbatim_quote}
+    onClose={() => setPdfPanelOpen(false)}
+  />
+)}
+```
+
+#### Modified: `frontend/src/components/NodeCard.tsx`
+
+Add a "View in PDF →" / "Hide PDF ←" toggle button in the header bar, visible only when `pdfAvailable` is true:
+
+```tsx
+{pdfAvailable && (
+  <button
+    onClick={onTogglePDF}
+    className="text-[10px] font-mono text-slate-500 hover:text-slate-300 transition-colors px-2 py-0.5 rounded border border-slate-700 hover:border-slate-500"
+  >
+    {pdfPanelOpen ? '← hide pdf' : 'view in pdf →'}
+  </button>
+)}
+```
+
+`NodeCard` also gets two new props: `pdfAvailable: boolean` and `pdfPanelOpen: boolean` and `onTogglePDF: () => void`.
+
+---
+
+### Layout at a Glance
+
+```
+┌──────────┬────────────────────────────────┬────────────┬────────────────────┐
+│  Paper   │                                │  NodeCard  │    PDF Panel       │
+│ Browser  │        DAG Viewer (flex-1)     │  (360px)   │    (560px)         │
+│ (220px)  │                                │            │  [highlighted PDF] │
+│          │                                │            │                    │
+└──────────┴────────────────────────────────┴────────────┴────────────────────┘
+```
+
+On a 1440px screen with both panels open: `1440 - 220 - 360 - 560 = 300px` for the DAG. This is workable but tight. The PDF panel is dismissed with its close button to reclaim DAG space. Future work could add a resize handle or collapsible panels.
+
+---
+
+### PDF Availability for URL-Sourced Papers
+
+Not every URL produces a PDF. The fetcher agent already converts arXiv `/abs/` URLs to `/pdf/` URLs and downloads the result as `paper.pdf`, but journal landing pages, DOI redirects, and some preprint servers may fall back to HTML text extraction. The PDF panel must only be offered when a local PDF actually exists.
+
+#### Problem with the current fetcher
+
+The current fetcher falls back silently to HTML when the PDF is too small or the URL returns an HTML page. There is no secondary attempt to find an embedded PDF link, and `manifest.json` records only a single `raw_path` — there is no way to know after the fact whether a PDF was obtained separately.
+
+The `FetchResult` schema has the same limitation: `content_type` tells you what the primary download was, but gives no information about a secondary PDF download.
+
+#### Enhanced fetcher behaviour
+
+The paper fetcher prompt is extended to add a **PDF recovery step** after an HTML fallback:
+
+> After downloading as HTML, scan the downloaded page for links or meta-tags pointing to a PDF version of the paper. Common patterns:
+> - `<a href="...pdf">`, `<meta name="citation_pdf_url" content="...">` (Google Scholar / most preprint servers)
+> - bioRxiv/medRxiv: `https://www.biorxiv.org/content/<doi>.full.pdf`
+> - PubMed Central: PMC full-text PDF link in the page HTML
+> - Semantic Scholar: `openAccessPdf.url` field
+>
+> If a PDF URL is found, download it as `paper.pdf` and record `pdf_path: "paper.pdf"` in the manifest. If no PDF URL is found, record `pdf_path: null`.
+
+This step runs only when `content_type == "html"` — it is a secondary download attempt, not a replacement for the primary text-based extraction (text extraction still uses the HTML for section structure).
+
+#### `manifest.json` extension
+
+```json
+{
+  "content_type": "html",
+  "raw_path": "paper.html",
+  "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC...",
+  "pdf_path": "paper.pdf"
+}
+```
+
+`pdf_path` is `null` (or absent) when no PDF was obtained. When `content_type == "pdf"`, `pdf_path` equals `raw_path` (`"paper.pdf"`).
+
+#### `FetchResult` schema extension (`src/schemas/paper.py`)
+
+```python
+class FetchResult(BaseModel):
+    content_type: str         # "pdf" | "html" | "text"
+    raw_path: str             # absolute path to the primary downloaded file
+    source_url: str           # final URL after redirects
+    pdf_path: str | None = None  # absolute path to paper.pdf if obtained; else None
+```
+
+The orchestrator sets `pdf_path = raw_path` when `content_type == "pdf"`, and reads `pdf_path` from the manifest when `content_type == "html"`.
+
+#### `PaperMeta` extension (`src/schemas/output.py` + `frontend/src/types/dag.ts`)
+
+Add `has_local_pdf: bool` to the paper metadata stored in `dag.json`:
+
+```python
+class PaperMeta(BaseModel):
+    paper_id: str
+    title: str
+    authors: list[str]
+    url: str
+    abstract: str
+    word_count: int
+    processed_at: str
+    has_local_pdf: bool = False   # True when paper.pdf exists in outputs/<paper_id>/raw/
+```
+
+```typescript
+export interface PaperMeta {
+  paper_id: string
+  title: string
+  authors: string[]
+  url: string
+  abstract: string
+  word_count: number
+  processed_at: string
+  has_local_pdf: boolean   // new in v2 — False for HTML-only or missing-PDF papers
+}
+```
+
+`output_formatter.py` receives `has_local_pdf` from the orchestrator (which checks `fetch_result.pdf_path is not None`) and writes it into `PaperMeta`.
+
+#### Orchestrator changes
+
+The PDF locate step (step 4.5) is already gated on `fetch_result.content_type == "pdf"`. After the fetcher manifest extension, the gate should instead use `fetch_result.pdf_path is not None`:
+
+```python
+if fetch_result.pdf_path is not None:
+    log("      Locating claims in PDF …")
+    await asyncio.to_thread(locate_claims, claim_graph, fetch_result.pdf_path)
+    ...
+```
+
+This correctly handles the case where the primary download was HTML but a secondary PDF was obtained.
+
+#### Frontend `pdfUrl` derivation (updated)
+
+Replace the heuristic with a metadata-driven check:
+
+```typescript
+// Clean: driven by has_local_pdf from PaperMeta
+const pdfUrl = paper?.paper.has_local_pdf
+  ? `/outputs/${paper.paper.paper_id}/raw/paper.pdf`
+  : null
+```
+
+Note: uploaded PDFs store the file under the original filename (e.g. `raw/my-paper.pdf`), not always `raw/paper.pdf`. The `has_local_pdf` flag in combination with the upload URL (`upload://my-paper.pdf`) needs special handling in `output_formatter.py` to normalise the PDF to `paper.pdf` during the copy-to-final-dir step in the orchestrator, or to record the actual filename. The simplest fix: the orchestrator renames any uploaded PDF to `paper.pdf` during the `shutil.move` step, so the filename is always predictable.
+
+#### Migration update
+
+`migrate_v1_to_v2.py` must also set `has_local_pdf` for existing DAGs:
+
+```python
+pdf_path = paper_dir / "raw" / "paper.pdf"
+dag["paper"]["has_local_pdf"] = pdf_path.exists()
+```
+
+This is added to the existing migration loop alongside the coordinate backfill.
+
+---
+
+### Server-Side Changes
+
+None required. The PDF is already served by the existing `/outputs` static mount:
+
+```python
+app.mount("/outputs", StaticFiles(directory=str(OUTPUTS_DIR)), name="outputs")
+```
+
+`/outputs/<paper_id>/raw/paper.pdf` is accessible without any new endpoints.
+
+---
+
+### New and Modified Files Summary
+
+| File | Status | Change |
+|---|---|---|
+| `src/schemas/paper.py` | Modified | Add `pdf_path: str \| None` to `FetchResult` |
+| `src/schemas/claim.py` | Modified | Add `page_number: int \| None`, `bbox: list[float] \| None` |
+| `src/schemas/output.py` | Modified | Add `page_number`, `bbox` to `DAGNode`; add `has_local_pdf` to `PaperMeta`; bump `SCHEMA_VERSION = 2` |
+| `src/utils/pdf_locate.py` | **New** | `locate_in_pdf()` + `locate_claims()` using PyMuPDF |
+| `src/utils/graph.py` | Modified | Propagate `page_number` and `bbox` through enriched nodes |
+| `src/agents/paper_fetcher.py` | Modified | Extend prompt to attempt PDF recovery from HTML pages; extend manifest to record `pdf_path` |
+| `src/agents/output_formatter.py` | Modified | Pass `page_number`, `bbox`, and `has_local_pdf` into output nodes and paper metadata |
+| `src/orchestrator.py` | Modified | Read `pdf_path` from `FetchResult`; gate coordinate lookup on `pdf_path is not None`; pass `has_local_pdf` to formatter |
+| `migrations/migrate_v1_to_v2.py` | **New** | Back-fills `page_number`/`bbox` for existing DAGs; sets `has_local_pdf`; bumps schema version |
+| `frontend/src/types/dag.ts` | Modified | Add `page_number`, `bbox` to `DAGNode`; add `has_local_pdf` to `PaperMeta` |
+| `frontend/src/components/PDFPanel.tsx` | **New** | PDF viewer with coordinate overlay + text-search fallback |
+| `frontend/src/components/NodeCard.tsx` | Modified | Add "View in PDF" toggle button |
+| `frontend/src/App.tsx` | Modified | PDF panel state + metadata-driven `pdfUrl` derivation |
+| `frontend/src/main.tsx` | Modified | Configure PDF.js worker URL |
+| `frontend/package.json` | Modified | Add `react-pdf` dependency |
+| `frontend/vite.config.ts` | Modified | Bundle PDF.js worker correctly (if needed) |
+
+---
+
+### Dependencies
+
+**Python** (`pyproject.toml`): no new dependencies — `pymupdf>=1.24` is already listed.
+
+**Frontend** (`frontend/package.json`):
+
+```json
+"react-pdf": "^7.0.0"
+```
+
+`pdfjs-dist` is pulled in automatically as a peer dependency by `react-pdf`.
+
+---
+
+### Implementation Order
+
+1. **Python schema + fetcher + utility** (no frontend)
+   - Add `pdf_path: str | None` to `FetchResult` and extend `manifest.json` spec
+   - Extend paper fetcher prompt with PDF recovery step for HTML pages; update manifest parsing in `fetch_paper()` to read `pdf_path`
+   - Add `has_local_pdf` to `PaperMeta`; update `output_formatter.py` to receive and write it
+   - Add `page_number`/`bbox` to `Claim` and `DAGNode` schemas
+   - Write `src/utils/pdf_locate.py` and test against an existing output PDF
+   - Wire locate step into orchestrator (gate on `fetch_result.pdf_path is not None`)
+   - Update `graph.py` and `output_formatter.py` to propagate all new fields
+   - Process one arXiv paper and one HTML-sourced paper; verify `has_local_pdf` and coordinates in both resulting `dag.json` files
+
+2. **Migration script**
+   - Write and run `migrations/migrate_v1_to_v2.py` against `outputs/`
+   - Spot-check 2–3 DAGs to confirm `page_number`/`bbox` are populated correctly
+
+3. **Frontend: types and react-pdf setup**
+   - Update `dag.ts`
+   - Install `react-pdf`, configure worker in `main.tsx`
+   - Verify Vite build compiles without errors
+
+4. **Frontend: `PDFPanel` component (coordinate path first)**
+   - Implement basic PDF rendering with `react-pdf`
+   - Add page scroll when `pageNumber` is set
+   - Add bbox overlay div with highlight styling
+   - Test against a paper with known coordinates
+
+5. **Frontend: `PDFPanel` component (text-search fallback)**
+   - Enable text layer
+   - Implement `customTextRenderer` with quote matching
+   - Test against a v1 DAG with no coordinates
+
+6. **Frontend: `App.tsx` wiring**
+   - Add PDF panel state and layout
+   - Add "View in PDF" button to `NodeCard`
+   - Test full user flow: click node → PDF opens → highlight visible → close → click different node → highlight updates

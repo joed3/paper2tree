@@ -6,6 +6,7 @@ module reads that template and replaces the data placeholder with the actual
 paper JSON — no build tooling is required at runtime.
 """
 
+import base64
 import json
 import re
 from pathlib import Path
@@ -14,11 +15,23 @@ _TEMPLATE_PATH = Path(__file__).parent.parent / "frontend" / "dist-export" / "ex
 _PLACEHOLDER = "window.__PAPER_DATA__ = null;"
 
 
-def generate_export_html(paper_data: dict) -> str:
+def _find_pdf(paper_dir: Path) -> Path | None:
+    """Return paper.pdf if present, else the first other PDF in raw/, else None."""
+    canonical = paper_dir / "raw" / "paper.pdf"
+    if canonical.exists():
+        return canonical
+    others = list((paper_dir / "raw").glob("*.pdf"))
+    return others[0] if others else None
+
+
+def generate_export_html(paper_data: dict, pdf_path: Path | None = None) -> str:
     """Return a self-contained HTML string for the given paper review data.
 
     Args:
         paper_data: The parsed contents of a ``dag.json`` artifact.
+        pdf_path:   Optional path to the paper PDF. When supplied the PDF is
+                    base64-encoded and embedded as ``pdf_data_url`` inside the
+                    injected data so the export works without a server.
 
     Returns:
         Complete HTML ready to be saved or served as a file.
@@ -41,8 +54,15 @@ def generate_export_html(paper_data: dict) -> str:
             "Rebuild the template with `npm run build:export`."
         )
 
+    # Augment paper data with an embedded PDF data URL when a PDF is available.
+    # pdf_data_url is not part of the dag.json schema — it exists only in the export.
+    export_data = dict(paper_data)
+    if pdf_path is not None and pdf_path.exists():
+        b64 = base64.b64encode(pdf_path.read_bytes()).decode("ascii")
+        export_data["pdf_data_url"] = f"data:application/pdf;base64,{b64}"
+
     # Compact JSON — no whitespace needed inside the script tag
-    data_json = json.dumps(paper_data, ensure_ascii=False, separators=(",", ":"))
+    data_json = json.dumps(export_data, ensure_ascii=False, separators=(",", ":"))
     html = template.replace(_PLACEHOLDER, f"window.__PAPER_DATA__ = {data_json};", 1)
 
     # Update the <title> tag with the actual paper title

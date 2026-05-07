@@ -4,6 +4,9 @@ import { EvalBadge } from './EvalBadge'
 interface NodeCardProps {
   node: DAGNode | null
   onClose: () => void
+  pdfAvailable?: boolean
+  pdfPanelOpen?: boolean
+  onTogglePDF?: () => void
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -54,7 +57,7 @@ const STANCE_COLOR: Record<string, string> = {
   contradicts: '#ef4444',
 }
 
-export function NodeCard({ node, onClose }: NodeCardProps) {
+export function NodeCard({ node, onClose, pdfAvailable, pdfPanelOpen, onTogglePDF }: NodeCardProps) {
   if (!node) return null
   const ev = node.evaluation
 
@@ -81,13 +84,23 @@ export function NodeCard({ node, onClose }: NodeCardProps) {
           </span>
           <span className="text-xs text-slate-500 font-mono">{node.id}</span>
         </div>
-        <button
-          onClick={onClose}
-          className="text-slate-500 hover:text-slate-300 transition-colors text-lg leading-none px-1"
-          aria-label="Close"
-        >
-          ×
-        </button>
+        <div className="flex items-center gap-2">
+          {pdfAvailable && onTogglePDF && (
+            <button
+              onClick={onTogglePDF}
+              className="text-[10px] font-mono text-slate-500 hover:text-slate-300 transition-colors px-2 py-0.5 rounded border border-slate-700 hover:border-slate-500 shrink-0"
+            >
+              {pdfPanelOpen ? '← hide pdf' : 'view in pdf →'}
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="text-slate-500 hover:text-slate-300 transition-colors text-lg leading-none px-1"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
       </div>
 
       {/* scrollable body */}

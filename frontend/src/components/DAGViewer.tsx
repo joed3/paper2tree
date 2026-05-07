@@ -116,10 +116,10 @@ function buildLayout(
 
 // ─── full-graph inset ─────────────────────────────────────────────────────────
 
-interface InsetNode { id: string; x: number; y: number; w: number; h: number; color: string }
-interface InsetEdge { x1: number; y1: number; x2: number; y2: number }
+export interface InsetNode { id: string; x: number; y: number; w: number; h: number; color: string }
+export interface InsetEdge { x1: number; y1: number; x2: number; y2: number }
 
-function buildFullLayout(
+export function buildFullLayout(
   rawNodes: DAGNode[],
   rawEdges: DAGEdge[],
 ): { nodes: InsetNode[]; edges: InsetEdge[]; bbox: { x: number; y: number; w: number; h: number } } {
@@ -150,19 +150,27 @@ function buildFullLayout(
   return { nodes, edges, bbox: { x: minX, y: minY, w: Math.max(...xs) - minX, h: Math.max(...ys) - minY } }
 }
 
-const INSET_W = 156
-const INSET_H = 220
+export const INSET_W = 156
+export const INSET_H = 220
 
-function FullMapInset({
+export function FullMapInset({
   nodes,
   edges,
   bbox,
   visibleIds,
+  selectedNodeId,
+  onClick,
+  label,
+  className,
 }: {
   nodes: InsetNode[]
   edges: InsetEdge[]
   bbox: { x: number; y: number; w: number; h: number }
   visibleIds: Set<string>
+  selectedNodeId?: string | null
+  onClick?: () => void
+  label?: string
+  className?: string
 }) {
   const pad = 10
   const scale = Math.min((INSET_W - pad * 2) / bbox.w, (INSET_H - pad * 2) / bbox.h)
@@ -171,7 +179,7 @@ function FullMapInset({
 
   return (
     <div
-      className="absolute top-4 left-4 z-10 rounded-lg overflow-hidden"
+      className={`${className ?? 'absolute top-4 left-4 z-10'} rounded-lg overflow-hidden${onClick ? ' cursor-pointer' : ''}`}
       style={{
         width: INSET_W,
         height: INSET_H,
@@ -179,6 +187,9 @@ function FullMapInset({
         border: '1px solid rgba(71,85,105,0.5)',
         backdropFilter: 'blur(4px)',
       }}
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      aria-label={onClick ? (label ?? 'DAG overview') : undefined}
     >
       <svg width={INSET_W} height={INSET_H}>
         {edges.map((e, i) => (
@@ -194,25 +205,26 @@ function FullMapInset({
         ))}
         {nodes.map((n) => {
           const visible = visibleIds.has(n.id)
+          const selected = n.id === selectedNodeId
           return (
             <rect
               key={n.id}
-              x={n.x * scale + ox}
-              y={n.y * scale + oy}
-              width={Math.max(n.w * scale, 2)}
-              height={Math.max(n.h * scale, 2)}
+              x={n.x * scale + ox - (selected ? 1 : 0)}
+              y={n.y * scale + oy - (selected ? 1 : 0)}
+              width={Math.max(n.w * scale, 2) + (selected ? 2 : 0)}
+              height={Math.max(n.h * scale, 2) + (selected ? 2 : 0)}
               rx={1.5}
-              fill={n.color}
-              fillOpacity={visible ? 0.55 : 0.1}
-              stroke={n.color}
-              strokeWidth={0.75}
-              strokeOpacity={visible ? 0.85 : 0.25}
+              fill={selected ? '#fff' : n.color}
+              fillOpacity={selected ? 0.95 : visible ? 0.55 : 0.1}
+              stroke={selected ? '#fff' : n.color}
+              strokeWidth={selected ? 1.5 : 0.75}
+              strokeOpacity={selected ? 1 : visible ? 0.85 : 0.25}
             />
           )
         })}
       </svg>
       <span className="absolute bottom-1.5 left-2 text-[9px] text-slate-600 font-mono uppercase tracking-widest pointer-events-none">
-        all claims
+        {label ?? 'all claims'}
       </span>
     </div>
   )

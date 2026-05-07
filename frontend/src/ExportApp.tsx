@@ -1,13 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactFlowProvider } from 'reactflow'
 import { PaperDAG } from './types/dag'
-import { DAGViewer } from './components/DAGViewer'
+import { DAGViewer, buildFullLayout, FullMapInset } from './components/DAGViewer'
 import { NodeCard } from './components/NodeCard'
+import { PDFPanel } from './components/PDFPanel'
 import { EvalBadge } from './components/EvalBadge'
+
+// pdf_data_url is injected at export time — not part of the dag.json schema
+interface ExportPaperDAG extends PaperDAG {
+  pdf_data_url?: string
+}
 
 declare global {
   interface Window {
-    __PAPER_DATA__: PaperDAG | null
+    __PAPER_DATA__: ExportPaperDAG | null
   }
 }
 
@@ -21,8 +27,9 @@ function ScorePip({ value, label }: { value: number | string; label: string }) {
 }
 
 export default function ExportApp() {
-  const [paper, setPaper] = useState<PaperDAG | null>(null)
+  const [paper, setPaper] = useState<ExportPaperDAG | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
+  const [pdfPanelOpen, setPdfPanelOpen] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -35,11 +42,26 @@ export default function ExportApp() {
     setPaper(data)
   }, [])
 
-  function handleNodeClick(nodeId: string) {
-    setSelectedNodeId((prev) => (prev === nodeId ? null : nodeId))
-  }
+  const handleNodeClick = useCallback((nodeId: string) => {
+    const isDeselecting = selectedNodeId === nodeId
+    setSelectedNodeId(isDeselecting ? null : nodeId)
+    if (!isDeselecting && paper?.pdf_data_url && !pdfPanelOpen) {
+      setPdfPanelOpen(true)
+    }
+  }, [selectedNodeId, paper?.pdf_data_url, pdfPanelOpen])
 
   const selectedNode = paper?.dag.nodes.find((n) => n.id === selectedNodeId) ?? null
+  const pdfUrl = paper?.pdf_data_url ?? null
+  const showPDFPanel = pdfPanelOpen && !!selectedNode && !!pdfUrl
+
+  const dagInsetLayout = useMemo(
+    () => (paper ? buildFullLayout(paper.dag.nodes, paper.dag.edges) : null),
+    [paper],
+  )
+  const allNodeIds = useMemo(
+    () => new Set(paper?.dag.nodes.map((n) => n.id) ?? []),
+    [paper],
+  )
 
   if (error) {
     return (
@@ -111,30 +133,64 @@ export default function ExportApp() {
 
       {/* main area */}
       <div className="flex flex-1 overflow-hidden">
-        {/* center: DAG canvas */}
-        <div className="flex-1 flex flex-col overflow-hidden relative">
-          <ReactFlowProvider>
-            <DAGViewer
-              data={paper}
+        {/* center: PDF (when open) or DAG canvas */}
+        <div className="flex-1 flex overflow-hidden relative">
+          {/* PDF panel — fills center when open */}
+          {showPDFPanel && pdfUrl && (
+            <PDFPanel
+              pdfUrl={pdfUrl}
+              nodes={paper.dag.nodes}
               selectedNodeId={selectedNodeId}
-              onNodeClick={handleNodeClick}
+              onNodeSelect={setSelectedNodeId}
+              onClose={() => setPdfPanelOpen(false)}
             />
-          </ReactFlowProvider>
-
-          {/* overall assessment banner */}
-          {paper.summary.overall_assessment && (
-            <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50 z-10">
-              <p className="text-[10px] text-slate-400 leading-relaxed line-clamp-2">
-                <span className="text-slate-600 uppercase tracking-widest mr-2">Assessment</span>
-                {paper.summary.overall_assessment}
-              </p>
-            </div>
           )}
+
+          {/* Clickable DAG mini-map inset shown while PDF is open */}
+          {showPDFPanel && dagInsetLayout && (
+            <FullMapInset
+              nodes={dagInsetLayout.nodes}
+              edges={dagInsetLayout.edges}
+              bbox={dagInsetLayout.bbox}
+              visibleIds={allNodeIds}
+              selectedNodeId={selectedNodeId}
+              onClick={() => setPdfPanelOpen(false)}
+              label="← DAG"
+              className="absolute bottom-4 left-4 z-30"
+            />
+          )}
+
+          {/* DAG hidden (not unmounted) while PDF is open to preserve pan/zoom state */}
+          <div className={`flex-1 flex flex-col overflow-hidden relative ${showPDFPanel ? 'hidden' : ''}`}>
+            <ReactFlowProvider>
+              <DAGViewer
+                data={paper}
+                selectedNodeId={selectedNodeId}
+                onNodeClick={handleNodeClick}
+              />
+            </ReactFlowProvider>
+
+            {/* overall assessment banner */}
+            {paper.summary.overall_assessment && (
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50 z-10">
+                <p className="text-[10px] text-slate-400 leading-relaxed line-clamp-2">
+                  <span className="text-slate-600 uppercase tracking-widest mr-2">Assessment</span>
+                  {paper.summary.overall_assessment}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* right: node card slide-in */}
+        {/* right: node card */}
         {selectedNode && (
-          <NodeCard node={selectedNode} onClose={() => setSelectedNodeId(null)} />
+          <NodeCard
+            node={selectedNode}
+            onClose={() => setSelectedNodeId(null)}
+            pdfAvailable={!!pdfUrl}
+            pdfPanelOpen={showPDFPanel}
+            onTogglePDF={() => setPdfPanelOpen((v) => !v)}
+          />
         )}
       </div>
     </div>

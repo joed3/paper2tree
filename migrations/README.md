@@ -8,7 +8,7 @@ Scripts for migrating `outputs/` artifacts between schema versions.
 project's **major version**. Only major releases can introduce breaking schema
 changes, so only major bumps require a migration script.
 
-The current schema version is **1** (project v1.x.x).
+The current schema version is **2** (project v1.5.x).
 
 ## Running a migration
 
@@ -40,3 +40,4 @@ When a major release introduces breaking schema changes to `PaperDAG`,
 | Script | Project versions | What changed |
 |--------|-----------------|--------------|
 | `migrate_v0_to_v1.py` | v0.x.x → v1.0.0 | `evaluation.validity_score` (float) → `evaluation.support_level` (high/medium/low); `summary.mean_validity_score` + `high_confidence_nodes` + `low_confidence_nodes` → `summary.high_support_nodes` + `low_support_nodes`; added top-level `schema_version` field |
+| `migrate_v1_to_v2.py` | v1.4.x → v1.5.0 | Added `paper.has_local_pdf: bool`; added `node.page_number: int \| null` and `node.bbox: [x0,y0,x1,y1] \| null` for PDF viewer highlighting (all additive — no fields removed) |

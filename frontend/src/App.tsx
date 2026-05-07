@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { ReactFlowProvider } from 'reactflow'
 import { Job } from './api/jobs'
 import { deletePaper } from './api/papers'
@@ -7,8 +7,9 @@ import { usePaperIndex } from './hooks/usePaperIndex'
 import { usePaper } from './hooks/usePaper'
 import { useJobs } from './hooks/useJobs'
 import { PaperBrowser } from './components/PaperBrowser'
-import { DAGViewer } from './components/DAGViewer'
+import { DAGViewer, buildFullLayout, FullMapInset } from './components/DAGViewer'
 import { NodeCard } from './components/NodeCard'
+import { PDFPanel } from './components/PDFPanel'
 import { EvalBadge } from './components/EvalBadge'
 import { AddPaperDialog } from './components/AddPaperDialog'
 import { JobProgressView } from './components/JobProgressView'
@@ -28,6 +29,7 @@ export default function App() {
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null)
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null)
   const [showAddDialog, setShowAddDialog] = useState(false)
+  const [pdfPanelOpen, setPdfPanelOpen] = useState(false)
 
   const handleJobComplete = useCallback(
     async (job: Job) => {
@@ -58,10 +60,16 @@ export default function App() {
   const selectedNode = paper?.dag.nodes.find((n) => n.id === selectedNodeId) ?? null
   const selectedJob = jobs.find((j) => j.job_id === selectedJobId) ?? null
 
+  const pdfUrl = paper?.paper.has_local_pdf
+    ? `/outputs/${paper.paper.paper_id}/raw/paper.pdf`
+    : null
+  const showPDFPanel = pdfPanelOpen && !!selectedNode && !!pdfUrl && !selectedJobId
+
   function handleSelectPaper(entry: PaperIndexEntry) {
     setSelectedEntry(entry)
     setSelectedJobId(null)
     setSelectedNodeId(null)
+    setPdfPanelOpen(false)
   }
 
   function handleSelectJob(jobId: string) {
@@ -71,7 +79,11 @@ export default function App() {
   }
 
   function handleNodeClick(nodeId: string) {
-    setSelectedNodeId((prev) => (prev === nodeId ? null : nodeId))
+    const isDeselecting = selectedNodeId === nodeId
+    setSelectedNodeId(isDeselecting ? null : nodeId)
+    if (!isDeselecting && pdfUrl && !pdfPanelOpen) {
+      setPdfPanelOpen(true)
+    }
   }
 
   const handleJobSubmitted = useCallback(
@@ -113,6 +125,16 @@ export default function App() {
   const showDAG = !!paper && !paperLoading && !selectedJobId
   const showJobProgress = !!selectedJobId
   const showEmpty = !selectedEntry && !selectedJobId && !paperLoading
+
+  // Pre-compute full-graph layout for the clickable DAG mini-map inset shown in the PDF panel
+  const dagInsetLayout = useMemo(
+    () => (paper ? buildFullLayout(paper.dag.nodes, paper.dag.edges) : null),
+    [paper],
+  )
+  const allNodeIds = useMemo(
+    () => new Set(paper?.dag.nodes.map((n) => n.id) ?? []),
+    [paper],
+  )
 
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-slate-950">
@@ -185,65 +207,99 @@ export default function App() {
           error={indexError}
         />
 
-        {/* center: DAG, job progress, or empty state */}
-        <div className="flex-1 flex flex-col overflow-hidden relative">
-          {paperLoading && !selectedJobId && (
-            <div className="absolute inset-0 flex items-center justify-center bg-slate-950 z-10">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-6 h-6 border-2 border-slate-600 border-t-slate-300 rounded-full animate-spin" />
-                <p className="text-xs text-slate-500 font-mono">Loading DAG…</p>
-              </div>
-            </div>
-          )}
-
-          {showEmpty && (
-            <div className="flex flex-col items-center justify-center h-full gap-4 text-center px-8">
-              <div className="text-5xl opacity-20">⬡</div>
-              <p className="text-sm text-slate-500 max-w-xs leading-relaxed">
-                Select a paper from the sidebar to view its claim DAG.
-              </p>
-              {papers.length === 0 && jobs.length === 0 && !indexLoading && (
-                <button
-                  onClick={() => setShowAddDialog(true)}
-                  className="mt-2 px-4 py-2 rounded-lg text-xs font-semibold transition-colors border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500"
-                >
-                  + Add your first paper
-                </button>
-              )}
-            </div>
-          )}
-
-          {showDAG && (
-            <ReactFlowProvider>
-              <DAGViewer
-                data={paper}
-                selectedNodeId={selectedNodeId}
-                onNodeClick={handleNodeClick}
-              />
-            </ReactFlowProvider>
-          )}
-
-          {showJobProgress && (
-            <JobProgressView
-              job={selectedJob}
-              onDismiss={() => handleDismissJob(selectedJobId)}
+        {/* center: PDF (when open) or DAG/loading/empty/job */}
+        <div className="flex-1 flex overflow-hidden relative">
+          {/* PDF panel — fills center when open */}
+          {showPDFPanel && pdfUrl && (
+            <PDFPanel
+              pdfUrl={pdfUrl}
+              nodes={paper!.dag.nodes}
+              selectedNodeId={selectedNodeId}
+              onNodeSelect={setSelectedNodeId}
+              onClose={() => setPdfPanelOpen(false)}
             />
           )}
 
-          {/* overall assessment banner */}
-          {paper && !selectedJobId && paper.summary.overall_assessment && (
-            <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50 z-10">
-              <p className="text-[10px] text-slate-400 leading-relaxed line-clamp-2">
-                <span className="text-slate-600 uppercase tracking-widest mr-2">Assessment</span>
-                {paper.summary.overall_assessment}
-              </p>
-            </div>
+          {/* Clickable DAG mini-map inset — shown in bottom-left while PDF is open */}
+          {showPDFPanel && dagInsetLayout && (
+            <FullMapInset
+              nodes={dagInsetLayout.nodes}
+              edges={dagInsetLayout.edges}
+              bbox={dagInsetLayout.bbox}
+              visibleIds={allNodeIds}
+              selectedNodeId={selectedNodeId}
+              onClick={() => setPdfPanelOpen(false)}
+              label="← DAG"
+              className="absolute bottom-4 left-4 z-30"
+            />
           )}
+
+          {/* DAG / loading / empty — hidden (not unmounted) while PDF is open to preserve pan/zoom */}
+          <div className={`flex-1 flex flex-col overflow-hidden relative ${showPDFPanel ? 'hidden' : ''}`}>
+            {paperLoading && !selectedJobId && (
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-950 z-10">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-6 h-6 border-2 border-slate-600 border-t-slate-300 rounded-full animate-spin" />
+                  <p className="text-xs text-slate-500 font-mono">Loading DAG…</p>
+                </div>
+              </div>
+            )}
+
+            {showEmpty && (
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-center px-8">
+                <div className="text-5xl opacity-20">⬡</div>
+                <p className="text-sm text-slate-500 max-w-xs leading-relaxed">
+                  Select a paper from the sidebar to view its claim DAG.
+                </p>
+                {papers.length === 0 && jobs.length === 0 && !indexLoading && (
+                  <button
+                    onClick={() => setShowAddDialog(true)}
+                    className="mt-2 px-4 py-2 rounded-lg text-xs font-semibold transition-colors border border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-500"
+                  >
+                    + Add your first paper
+                  </button>
+                )}
+              </div>
+            )}
+
+            {showDAG && (
+              <ReactFlowProvider>
+                <DAGViewer
+                  data={paper}
+                  selectedNodeId={selectedNodeId}
+                  onNodeClick={handleNodeClick}
+                />
+              </ReactFlowProvider>
+            )}
+
+            {showJobProgress && (
+              <JobProgressView
+                job={selectedJob}
+                onDismiss={() => handleDismissJob(selectedJobId)}
+              />
+            )}
+
+            {/* overall assessment banner */}
+            {paper && !selectedJobId && paper.summary.overall_assessment && (
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-slate-900/80 backdrop-blur-sm border-t border-slate-700/50 z-10">
+                <p className="text-[10px] text-slate-400 leading-relaxed line-clamp-2">
+                  <span className="text-slate-600 uppercase tracking-widest mr-2">Assessment</span>
+                  {paper.summary.overall_assessment}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* right: node card slide-in */}
+        {/* right: node card */}
         {selectedNode && !selectedJobId && (
-          <NodeCard node={selectedNode} onClose={() => setSelectedNodeId(null)} />
+          <NodeCard
+            node={selectedNode}
+            onClose={() => setSelectedNodeId(null)}
+            pdfAvailable={!!pdfUrl}
+            pdfPanelOpen={showPDFPanel}
+            onTogglePDF={() => setPdfPanelOpen((v) => !v)}
+          />
         )}
       </div>
 
