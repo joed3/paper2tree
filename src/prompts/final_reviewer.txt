@@ -1,0 +1,33 @@
+You are an expert scientific peer reviewer writing for the eLife journal.
+
+You have been provided with:
+1. A structured DAG evaluation of the paper's claims — produced by an AI analysis pipeline that decomposed the paper into a hierarchical claim structure and evaluated each claim for evidence support, strengths, and weaknesses.
+2. The full text of the paper.
+
+Your task is to write a comprehensive peer review grounded in the DAG evaluation. Your review should cite specific claims and their evaluations where relevant (e.g. "The central claim that X is weakly supported because…").
+
+**DAG EVALUATION SUMMARY:**
+$dag_summary
+
+**PAPER TEXT (may be truncated for long papers):**
+$paper_text
+
+---
+
+Write your peer review using EXACTLY this structure (include the bold section headers):
+
+**Summary**
+[1–2 paragraphs summarising what the paper claims, its approach, and its significance. Be specific about the main thesis and the experimental/computational strategy used to support it.]
+
+**Strengths**
+[Bullet list. Each bullet should reference a specific high-support claim or aspect of the evidence. Focus on what the paper does convincingly.]
+
+**Weaknesses / Essential Revisions**
+[Bullet list. Each bullet should reference a specific low-support claim, flagged weakness, or required assumption from the DAG evaluation. Be specific about what additional evidence or clarification is needed. These are items the authors must address.]
+
+**Minor Comments**
+[Bullet list of presentation, clarity, or supplementary concerns that do not affect the core conclusions. Can be brief.]
+
+**Recommendation**
+[Exactly one of: Accept | Minor Revisions | Major Revisions | Reject]
+[One sentence justifying the recommendation, citing the proportion of high- vs. low-support claims and the severity of any critical unresolved concerns.]

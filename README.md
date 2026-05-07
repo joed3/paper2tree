@@ -191,6 +191,78 @@ python -m src.main process https://arxiv.org/abs/1706.03762 --force
 </details>
 
 <details>
+<summary><strong>Evaluation — pilot study</strong></summary>
+
+The pilot study measures whether DAG-grounded reviews produced by paper2tree are closer to human peer reviews than a single-agent baseline (Claude alone, no intermediate decomposition).
+
+**How it works:**
+
+1. Samples 10 eLife papers (seeded, stratified across life-sciences and biomedical subject areas)
+2. Runs the full paper2tree pipeline on each → `dag.json`
+3. **Final Reviewer Agent** — reads the paper + DAG → eLife-format prose review
+4. **Baseline Reviewer** — reads the paper alone → eLife-format prose review (same model, no DAG)
+5. Compares each generated review against the human peer review using BERTScore F1, ROUGE-L, and embedding cosine similarity
+
+**Prerequisites:**
+
+```bash
+# 1. Clone the eLife article corpus (once — ~2 GB)
+#    Place it as a sibling of the paper2tree directory:
+#    projects/
+#      elife-article-xml/   ← here
+#      paper2tree/          ← here
+
+git clone https://github.com/elifesciences/elife-article-xml ../elife-article-xml
+
+# 2. Install eval extras
+pip install -e ".[eval]"
+```
+
+**Run the pilot:**
+
+```bash
+python -m eval.pilot_study
+```
+
+The local clone is detected automatically. Flags:
+
+| Flag | Default | Description |
+|---|---|---|
+| `--n` | 10 | Number of papers to sample |
+| `--seed` | 42 | Random seed for reproducibility |
+| `--output-dir` | `eval/pilot` | Where to write results |
+| `--elife-repo` | `../elife-article-xml` | Path to local eLife clone |
+| `--force` | off | Re-run all steps even if outputs exist |
+| `--self-consistency` | off | Re-run 3 longest papers to check pipeline stability |
+| `--skip-pipeline` | off | Skip DAG generation; use existing `dag.json` files only |
+
+The run is **idempotent** — re-running without `--force` skips any file that already exists, so you can resume after partial failures or re-run metrics with updated code.
+
+**Output structure:**
+
+```
+eval/pilot/
+├── sampled_papers.json          # reproducible sample manifest
+├── metrics.csv                  # per-paper BERTScore, ROUGE-L, cosine sim
+├── metrics_summary.json         # mean ± SD across all papers
+├── qualitative_notes.md         # side-by-side reading template (fill in manually)
+├── run.log                      # timestamped run log
+├── self_consistency.json        # only with --self-consistency
+└── <article_id>/
+    ├── metadata.json            # title, authors, year, subject areas
+    ├── article_text.txt         # extracted paper body
+    ├── dag.json                 # paper2tree claim DAG
+    ├── paper2tree_review.txt    # DAG-grounded review
+    ├── baseline_review.txt      # single-agent review
+    ├── human_review.txt         # eLife decision letter + referee reports
+    └── elife_assessment.txt     # eLife Assessment (if present)
+```
+
+The evaluation plan, methodology, success criteria, and roadmap to full-scale evaluation are documented in [`EVALUATION_PLAN.md`](EVALUATION_PLAN.md).
+
+</details>
+
+<details>
 <summary><strong>Output format</strong> — dag.json schema reference</summary>
 
 Each processed paper produces a folder:
