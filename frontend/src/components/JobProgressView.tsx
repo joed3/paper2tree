@@ -1,7 +1,7 @@
 import { Job } from '../api/jobs'
 
-const STEP_LABELS = ['Fetch', 'Extract text', 'Extract claims', 'Build DAG', 'Evaluate claims', 'Write output']
-const STEP_PREFIXES = ['[1/6]', '[2/6]', '[3/6]', '[4/6]', '[5/6]', '[6/6]']
+const STEP_LABELS = ['Fetch', 'Extract text', 'Extract claims', 'Build DAG', 'Evaluate claims', 'Generate review', 'Write output']
+const STEP_PREFIXES = ['[1/7]', '[2/7]', '[3/7]', '[4/7]', '[5/7]', '[6/7]', '[7/7]']
 
 function currentStepIndex(step: string): number {
   const i = STEP_PREFIXES.findIndex((p) => step.startsWith(p))

@@ -78,6 +78,7 @@ export interface PaperDAG {
     edges: DAGEdge[]
   }
   summary: DAGSummary
+  final_review?: string | null
 }
 
 export interface PaperIndexEntry {

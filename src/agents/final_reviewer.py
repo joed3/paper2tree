@@ -43,22 +43,22 @@ def _build_dag_summary(dag: PaperDAG) -> str:
     return "\n".join(lines)
 
 
-def generate_review(paper_text: str, dag: PaperDAG) -> str:
-    """Generate an eLife-format prose review grounded in the DAG evaluation.
+def generate_review(paper_text: str, dag: PaperDAG, prompt_name: str = "final_reviewer") -> str:
+    """Generate a prose review grounded in the DAG evaluation.
 
     Returns the review as a plain-text string.
     """
     dag_summary = _build_dag_summary(dag)
-    template = load_prompt("final_reviewer")
+    template = load_prompt(prompt_name)
     prompt = template.substitute(
         paper_text=paper_text[:_MAX_PAPER_CHARS],
         dag_summary=dag_summary,
     )
 
     response = _client.messages.create(
-        model="claude-opus-4-7",
+        model="claude-opus-4-6",
         max_tokens=8192,
-        thinking={"type": "enabled", "budget_tokens": 8000},
+        thinking={"type": "adaptive"},
         messages=[{"role": "user", "content": prompt}],
     )
 

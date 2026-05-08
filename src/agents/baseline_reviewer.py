@@ -8,18 +8,18 @@ _client = anthropic.Anthropic()
 _MAX_PAPER_CHARS = 80_000
 
 
-def generate_baseline_review(paper_text: str) -> str:
-    """Generate an eLife-format prose review from paper text alone (no DAG).
+def generate_baseline_review(paper_text: str, prompt_name: str = "baseline_reviewer") -> str:
+    """Generate a prose review from paper text alone (no DAG).
 
     Returns the review as a plain-text string.
     """
-    template = load_prompt("baseline_reviewer")
+    template = load_prompt(prompt_name)
     prompt = template.substitute(paper_text=paper_text[:_MAX_PAPER_CHARS])
 
     response = _client.messages.create(
-        model="claude-opus-4-7",
+        model="claude-opus-4-6",
         max_tokens=8192,
-        thinking={"type": "enabled", "budget_tokens": 8000},
+        thinking={"type": "adaptive"},
         messages=[{"role": "user", "content": prompt}],
     )
 

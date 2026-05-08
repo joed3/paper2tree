@@ -34,7 +34,7 @@ primary signal used in §2 (retraction prediction).
 
 ### Baseline
 
-For all evaluations: a **single-agent reviewer** prompt to `claude-opus-4-7` with no
+For all evaluations: a **single-agent reviewer** prompt to `claude-opus-4-6` with no
 intermediate decomposition step:
 
 > *"You are a peer reviewer for a scientific journal. Please write a detailed review of
@@ -83,7 +83,7 @@ It produces a prose review structured to match eLife's open peer review format:
 
 The agent prompt explicitly instructs it to use the DAG evaluation as its primary
 grounding, citing specific claim evaluations where relevant. For the pilot the model
-is `claude-opus-4-7` with `thinking: {type: "enabled", budget_tokens: 8000}`.
+is `claude-opus-4-6` with `thinking: {type: "adaptive"}`.
 
 #### Single-agent baseline reviewer
 
@@ -345,7 +345,7 @@ for eLife; ICLR structured format with numerical scores for ICLR).
 
 **Aspect recall protocol**: Use Claude to extract distinct substantive concerns from
 each human review, then judge whether each appears in the generated review.
-Use `claude-haiku-4-5` (not `claude-opus-4-7`) for this step to avoid circularity
+Use `claude-haiku-4-5` (not `claude-opus-4-6`) for this step to avoid circularity
 with the generation model — see §5, open question 5.
 
 **Human preference study (optional):**
@@ -495,7 +495,7 @@ Jaccard similarity. Validates the core decomposition mechanism.
 *Costs to be revised upward or downward after Stage 1 produces an empirical per-paper
 cost figure.
 
-API cost estimates assume `claude-opus-4-7` for generation and `claude-haiku-4-5`
+API cost estimates assume `claude-opus-4-6` for generation and `claude-haiku-4-5`
 for LLM-as-judge steps. Costs can be reduced ~3–5× by using `claude-haiku-4-5` for
 Claim Evaluators during evaluation runs, accepting some accuracy penalty.
 
@@ -523,6 +523,6 @@ using pilot observations.
    Determines whether §3.4 expert annotation is essential or optional.
 
 5. **Evaluation model circularity**: The LLM-as-judge steps in §1 (aspect recall) use
-   Claude. The pilot uses `claude-haiku-4-5` for judging vs. `claude-opus-4-7` for
+   Claude. The pilot uses `claude-haiku-4-5` for judging vs. `claude-opus-4-6` for
    generation. Confirm whether this separation is sufficient, or whether a non-Anthropic
    judge model (e.g., GPT-4o) is needed for external credibility.

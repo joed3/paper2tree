@@ -62,3 +62,4 @@ class PaperDAG(BaseModel):
     paper: PaperMeta
     dag: DAGData
     summary: DAGSummary
+    final_review: str | None = None  # eLife-format prose review; None for pre-v1.7 papers

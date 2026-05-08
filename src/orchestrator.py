@@ -1,7 +1,8 @@
 """Orchestrator — coordinates the full paper-processing pipeline.
 
 Pipeline:
-  fetch_paper → extract_text → extract_claims → build_dag → evaluate_claims → write_outputs
+  fetch_paper → extract_text → extract_claims → build_dag → evaluate_claims
+  → final_reviewer → write_outputs
 """
 
 import asyncio
@@ -15,6 +16,7 @@ from dotenv import load_dotenv
 
 from .agents.claim_evaluator import evaluate_claims
 from .agents.claim_extractor import extract_claims
+from .agents.final_reviewer import generate_review
 from .agents.output_formatter import format_output, write_outputs
 from .agents.paper_fetcher import fetch_paper
 from .agents.text_extractor import extract_text
@@ -42,7 +44,7 @@ async def _run_pipeline(
     """Steps 2–7 of the pipeline (after fetching). Shared by URL and file paths."""
     try:
         # ── Step 2: Extract text ──────────────────────────────────────────────
-        log("[2/6] Extracting and structuring text …")
+        log("[2/7] Extracting and structuring text …")
         extracted = await asyncio.to_thread(extract_text, fetch_result)
         log(f"      Title: {extracted.title!r}")
         log(f"      Authors: {', '.join(extracted.authors[:3])}")
@@ -72,7 +74,7 @@ async def _run_pipeline(
             fetch_result.pdf_path = str((final_raw_dir / pdf_name).resolve())
 
         # ── Step 4: Extract claims ────────────────────────────────────────────
-        log("[3/6] Extracting claim structure …")
+        log("[3/7] Extracting claim structure …")
         claim_graph = await asyncio.to_thread(extract_claims, extracted.full_text)
         log(f"      Found {len(claim_graph.claims)} claims")
 
@@ -84,7 +86,7 @@ async def _run_pipeline(
             log(f"      Located {located}/{len(claim_graph.claims)} claims with page coordinates")
 
         # ── Step 5: Build DAG ─────────────────────────────────────────────────
-        log("[4/6] Building and validating DAG …")
+        log("[4/7] Building and validating DAG …")
         enriched = build_dag(claim_graph)
         max_depth = max(ec.depth for ec in enriched)
         log(f"      {len(enriched)} nodes, max depth {max_depth}")
@@ -92,7 +94,7 @@ async def _run_pipeline(
         # ── Step 5.5: Live literature search (optional) ───────────────────────
         retrieved = None
         if live_search:
-            log(f"[5/6] Searching prior literature for {len(enriched)} claims …")
+            log(f"[5/7] Searching prior literature for {len(enriched)} claims …")
             retriever = LiveRetriever()
             retrieved = await asyncio.to_thread(
                 retriever.retrieve_for_claims, enriched, extracted.title
@@ -101,12 +103,11 @@ async def _run_pipeline(
             log(f"      Retrieved {total_passages} passages from PubMed + Semantic Scholar")
 
         # ── Step 6: Evaluate claims ───────────────────────────────────────────
-        log(f"[{'6' if live_search else '5'}/6] Evaluating {len(enriched)} claims …")
+        log(f"[{'6' if live_search else '5'}/7] Evaluating {len(enriched)} claims …")
         evaluations = await evaluate_claims(enriched, extracted.full_text, retrieved=retrieved)
         log(f"      Evaluated {len(evaluations)} claims")
 
-        # ── Step 7: Format and write output ───────────────────────────────────
-        log("[6/6] Writing output …")
+        # ── Step 7: Format output ─────────────────────────────────────────────
         paper_dag = format_output(
             paper_id,
             url,
@@ -115,6 +116,19 @@ async def _run_pipeline(
             evaluations,
             has_local_pdf=fetch_result.pdf_path is not None,
         )
+
+        # ── Step 7: Generate final review ─────────────────────────────────────
+        log("[6/7] Generating final review …")
+        try:
+            paper_dag.final_review = await asyncio.to_thread(
+                generate_review, extracted.full_text, paper_dag
+            )
+            log("      Final review complete")
+        except Exception as e:
+            log(f"      WARNING: final review failed ({e}); continuing without it")
+
+        # ── Step 8: Write output ───────────────────────────────────────────────
+        log("[7/7] Writing output …")
         write_outputs(paper_dag, paper_dir, OUTPUTS_DIR)
 
         log(f"\n✓ Done — paper_id: {paper_id}")
@@ -150,7 +164,7 @@ async def process_paper(
     temp_dir = OUTPUTS_DIR / f"_tmp_{url_hash}"
     raw_dir = temp_dir / "raw"
 
-    log(f"[1/6] Fetching paper from {url} …")
+    log(f"[1/7] Fetching paper from {url} …")
     fetch_result = await fetch_paper(url, raw_dir)
     log(f"      Downloaded: {fetch_result.content_type} → {Path(fetch_result.raw_path).name}")
 
@@ -201,7 +215,7 @@ async def process_paper_from_file(
         pdf_path=str(dest.resolve()) if content_type == "pdf" else None,
     )
 
-    log(f"[1/6] Using uploaded file: {original_name}")
+    log(f"[1/7] Using uploaded file: {original_name}")
     return await _run_pipeline(
         fetch_result, pseudo_url, temp_dir, force, log, live_search=live_search
     )

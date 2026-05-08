@@ -8,6 +8,7 @@ import { usePaper } from './hooks/usePaper'
 import { useJobs } from './hooks/useJobs'
 import { PaperBrowser } from './components/PaperBrowser'
 import { DAGViewer, buildFullLayout, FullMapInset } from './components/DAGViewer'
+import { FinalReviewPanel } from './components/FinalReviewPanel'
 import { NodeCard } from './components/NodeCard'
 import { PDFPanel } from './components/PDFPanel'
 import { EvalBadge } from './components/EvalBadge'
@@ -220,7 +221,7 @@ export default function App() {
             />
           )}
 
-          {/* Clickable DAG mini-map inset — shown in bottom-left while PDF is open */}
+          {/* Clickable DAG mini-map inset — pinned to top-left while PDF is open */}
           {showPDFPanel && dagInsetLayout && (
             <FullMapInset
               nodes={dagInsetLayout.nodes}
@@ -230,7 +231,7 @@ export default function App() {
               selectedNodeId={selectedNodeId}
               onClick={() => setPdfPanelOpen(false)}
               label="← DAG"
-              className="absolute bottom-4 left-4 z-30"
+              className="absolute top-4 left-4 z-30"
             />
           )}
 
@@ -291,15 +292,19 @@ export default function App() {
           </div>
         </div>
 
-        {/* right: node card */}
-        {selectedNode && !selectedJobId && (
-          <NodeCard
-            node={selectedNode}
-            onClose={() => setSelectedNodeId(null)}
-            pdfAvailable={!!pdfUrl}
-            pdfPanelOpen={showPDFPanel}
-            onTogglePDF={() => setPdfPanelOpen((v) => !v)}
-          />
+        {/* right panel: node card when a node is selected; final review otherwise */}
+        {!selectedJobId && (
+          selectedNode ? (
+            <NodeCard
+              node={selectedNode}
+              onClose={() => setSelectedNodeId(null)}
+              pdfAvailable={!!pdfUrl}
+              pdfPanelOpen={showPDFPanel}
+              onTogglePDF={() => setPdfPanelOpen((v) => !v)}
+            />
+          ) : paper?.final_review ? (
+            <FinalReviewPanel review={paper.final_review} />
+          ) : null
         )}
       </div>
 

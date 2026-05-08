@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ReactFlowProvider } from 'reactflow'
 import { PaperDAG } from './types/dag'
 import { DAGViewer, buildFullLayout, FullMapInset } from './components/DAGViewer'
+import { FinalReviewPanel } from './components/FinalReviewPanel'
 import { NodeCard } from './components/NodeCard'
 import { PDFPanel } from './components/PDFPanel'
 import { EvalBadge } from './components/EvalBadge'
@@ -146,7 +147,7 @@ export default function ExportApp() {
             />
           )}
 
-          {/* Clickable DAG mini-map inset shown while PDF is open */}
+          {/* Clickable DAG mini-map inset — pinned to top-left while PDF is open */}
           {showPDFPanel && dagInsetLayout && (
             <FullMapInset
               nodes={dagInsetLayout.nodes}
@@ -156,7 +157,7 @@ export default function ExportApp() {
               selectedNodeId={selectedNodeId}
               onClick={() => setPdfPanelOpen(false)}
               label="← DAG"
-              className="absolute bottom-4 left-4 z-30"
+              className="absolute top-4 left-4 z-30"
             />
           )}
 
@@ -182,8 +183,8 @@ export default function ExportApp() {
           </div>
         </div>
 
-        {/* right: node card */}
-        {selectedNode && (
+        {/* right panel: node card when a node is selected; final review otherwise */}
+        {selectedNode ? (
           <NodeCard
             node={selectedNode}
             onClose={() => setSelectedNodeId(null)}
@@ -191,7 +192,9 @@ export default function ExportApp() {
             pdfPanelOpen={showPDFPanel}
             onTogglePDF={() => setPdfPanelOpen((v) => !v)}
           />
-        )}
+        ) : paper.final_review ? (
+          <FinalReviewPanel review={paper.final_review} />
+        ) : null}
       </div>
     </div>
   )

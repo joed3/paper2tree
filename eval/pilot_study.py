@@ -146,7 +146,9 @@ async def process_paper(
         log(f"  [final_reviewer] {paper.article_id}…")
         t0 = time.time()
         try:
-            review = await asyncio.to_thread(generate_review, paper.article_text, dag)
+            review = await asyncio.to_thread(
+                generate_review, paper.article_text, dag, "final_reviewer_elife"
+            )
         except Exception as e:
             log(f"  ERROR in final reviewer for {paper.article_id}: {e}")
             return False
@@ -159,7 +161,9 @@ async def process_paper(
         log(f"  [baseline_reviewer] {paper.article_id}…")
         t0 = time.time()
         try:
-            review = await asyncio.to_thread(generate_baseline_review, paper.article_text)
+            review = await asyncio.to_thread(
+                generate_baseline_review, paper.article_text, "baseline_reviewer_elife"
+            )
         except Exception as e:
             log(f"  ERROR in baseline reviewer for {paper.article_id}: {e}")
             return False
