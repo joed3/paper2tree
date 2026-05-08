@@ -1,0 +1,44 @@
+**eLife Assessment**
+This useful study presents observations on the experimental evolution of a genome-reduced *E. coli* strain across nine independent lineages, but the central claim that diverse evolutionary paths converge on homeostatic transcriptome architecture rests on incomplete evidence, as the work lacks mechanistic validation, appropriate controls, and sufficient novelty beyond well-established principles of parallel/convergent experimental evolution.
+
+**Summary**
+The authors evolved a genome-reduced *E. coli* strain (~21% genome reduction) in nine independent lineages for approximately 1000 generations in minimal medium, then characterized the genomic mutations and transcriptome changes associated with fitness recovery. They report that (1) growth rates improved in most lineages but with highly variable mutational profiles and no common mutations across all lineages; (2) chromosomal periodicity of gene expression was conserved despite diverse mutations; (3) differentially expressed genes and enriched pathways were largely non-overlapping among lineages; and (4) WGCNA identified three gene modules correlated with growth rate, number of DEGs, and mutation frequency, respectively. The authors propose a "divergent to convergent" evolutionary model in which multiple mutational paths restore fitness while maintaining transcriptome homeostasis — summarized as "all roads lead to Rome."
+
+**Strengths**
+- The use of nine independent evolutionary lineages provides reasonable replication for characterizing the variance in evolutionary outcomes, which is often underrepresented in experimental evolution studies of reduced genomes.
+- The multi-omic approach, combining whole-genome resequencing with transcriptomics, enables a more comprehensive picture than mutation cataloguing alone.
+- The random simulation analysis to test for locational bias of mutations relative to genomic scars (Figure 2) is a thoughtful control analysis.
+- The observation that chromosomal periodicity of gene expression is maintained across all evolved lineages despite diverse mutational spectra is a genuinely interesting result that extends the group's prior work on transcriptome architecture.
+- The WGCNA approach, while exploratory, offers a potentially useful framework for grouping genes into functionally relevant modules beyond standard GO/KEGG annotation.
+
+**Weaknesses / Essential Revisions**
+
+- **Lack of a wild-type evolution control.** The study does not include parallel evolution of the wild-type strain under identical conditions. Without this, it is impossible to determine which features of the evolutionary trajectories (e.g., mutation diversity, transcriptome directionality, absence of common mutations) are specific to the reduced genome versus general features of *E. coli* adapting to M63 minimal medium. This is a critical omission for the central claim that something distinctive is occurring with the reduced genome.
+
+- **No causal validation of mutations.** The paper catalogues 65 mutations but provides no reconstruction experiments (e.g., introducing individual or combinatorial mutations into the ancestral background) to verify which mutations are beneficial. The assertion that most mutations are adaptive based on the high nonsynonymous-to-synonymous ratio and essentiality enrichment is correlative and insufficient. Without this, the claim that "a few mutations could compensate for the sizeable genomic deficiency" remains speculative.
+
+- **Limited conceptual novelty.** The finding that independent evolutionary lineages fix different mutations while converging on similar fitness outcomes is a well-established result in experimental evolution (e.g., Tenaillon et al. 2012, *Science*; Barrick et al. 2009, *Nature*; Woods et al. 2006). The paper does not adequately distinguish its "divergent to convergent" model (Figure 7, iii) from standard findings of phenotypic convergence with genotypic divergence observed in wild-type evolution experiments. The claim that this represents a novel evolutionary strategy requires stronger justification.
+
+- **Population-level sequencing confounds interpretation.** Evolved populations rather than clonal isolates were sequenced. This means mutations detected represent those at high frequency but not necessarily fixed. Clonal diversity within populations is unknown, and low-frequency variants contributing to population fitness are missed. The paper refers to mutations as "fixed" without acknowledging this limitation.
+
+- **Statistical concerns with correlational analyses.** The positive correlation between growth rate and carrying capacity (Figure 1D) is based on only 9 data points, which provides very limited statistical power and makes the Spearman correlation unreliable for drawing biological conclusions. Similarly, the WGCNA correlation of modules to "number of DEGs" and "mutation frequency" treats derived analytical quantities as phenotypic traits, which is methodologically unusual and not well justified.
+
+- **WGCNA module interpretation is speculative.** The assignment of modules M2, M10, and M16 to "growth control," "transcriptional reorganization," and "mutagenesis" is based on correlation with growth rate, DEG count, and mutation count, respectively. These assignments are not validated experimentally (e.g., by perturbation of hub genes), and the functional enrichment of the modules is vague (e.g., M2 enriched for iron-related functions; M16 enriched for translation). The claim that these represent functionally differentiated modules crucial for evolutionary response requires substantially more evidence.
+
+- **The trade-off between growth rate and carrying capacity is underexplored.** The observation that carrying capacity declines while growth rate increases is interesting and relevant, but the discussion dismisses it as possible "neutral drift" without rigorous analysis. Given that the serial transfer protocol selects for growth rate, a formal analysis of whether the carrying capacity decline is a correlated response versus drift would strengthen the paper.
+
+- **Transcriptome analysis is descriptive without mechanistic insight.** The paper documents that DEGs differ across lineages and that few pathways overlap, but does not advance beyond description. The conclusion that "there is no universal rule for evolutionary changes" is essentially a negative result that is difficult to interpret biologically. Furthermore, the DEG analysis with only 2–4 biological replicates per condition may be underpowered for the 3,290 genes tested.
+
+**Minor Comments**
+
+- Figure 7 is overly schematic and the distinction between strategy (iii) and standard convergent evolution is unclear. The authors should more precisely define what makes strategy (iii) different from previously described cases.
+- The paper's writing is dense and would benefit from clearer separation of results and interpretation. Several paragraphs in the Results section read more like Discussion.
+- The claim that histidine-related pathways are enriched in common DEGs (Figure 4C) is mentioned but never followed up or discussed mechanistically.
+- The use of FPKM values described as "statistically equivalent to TPM" after global normalization is imprecise; these are distinct metrics and the normalization procedure should be more carefully described.
+- Supplementary files are heavily referenced but key information (e.g., the list of 65 mutations, essential gene assignments) should be more accessible in the main text or figures.
+- The discussion of σ38 enrichment in genome reduction-mediated DEGs (Figure 5B) is interesting but insufficiently developed — does this suggest a general stress response?
+- The paper cites many of the authors' own prior publications; broader contextualization within the experimental evolution literature (e.g., LTEE studies) would improve positioning.
+
+**Recommendation**
+Major Revisions
+The paper addresses an interesting question about how reduced genomes evolve to recover fitness, but the absence of wild-type evolution controls, lack of causal mutation validation, and limited conceptual advance beyond established experimental evolution principles mean that the current evidence does not adequately support the central claims at the level expected by eLife.

@@ -387,6 +387,174 @@ async def run_self_consistency_check(
         log("  self_consistency.json written")
 
 
+# ── Figures ───────────────────────────────────────────────────────────────────
+
+
+def generate_figures(output_dir: Path, log=print) -> None:
+    """Generate performance plots from metrics.csv into output_dir/figures/."""
+    try:
+        import pandas as pd
+        from plotnine import (
+            aes,
+            element_blank,
+            element_line,
+            element_rect,
+            element_text,
+            geom_abline,
+            geom_bar,
+            geom_col,
+            geom_errorbar,
+            geom_point,
+            ggplot,
+            labs,
+            position_dodge,
+            scale_fill_manual,
+            theme,
+            ylim,
+        )
+    except ImportError as exc:
+        log(f"  SKIP figures: {exc} — run: pip install -e '.[eval]'")
+        return
+
+    csv_path = output_dir / "metrics.csv"
+    if not csv_path.exists():
+        log(f"  SKIP figures: {csv_path} not found")
+        return
+
+    df = pd.read_csv(csv_path)
+    if df.empty:
+        log("  SKIP figures: metrics.csv is empty")
+        return
+
+    figures_dir = output_dir / "figures"
+    figures_dir.mkdir(exist_ok=True)
+
+    # ── Colour palette ──────────────────────────────────────────────────────
+    BG = "#0f172a"
+    PANEL = "#1e293b"
+    TEXT = "#e2e8f0"
+    GRID = "#334155"
+    P2T_COLOR = "#818cf8"
+    BASE_COLOR = "#64748b"
+
+    def dark_theme():
+        return theme(
+            plot_background=element_rect(fill=BG, color=BG),
+            panel_background=element_rect(fill=PANEL),
+            panel_grid_major=element_line(color=GRID, size=0.4),
+            panel_grid_minor=element_blank(),
+            panel_border=element_blank(),
+            axis_line=element_line(color=TEXT, size=0.4),
+            axis_text=element_text(color=TEXT, size=9),
+            axis_title=element_text(color=TEXT, size=10),
+            plot_title=element_text(color=TEXT, size=12, face="bold"),
+            legend_background=element_rect(fill=BG, color=BG),
+            legend_key=element_rect(fill=PANEL, color=PANEL),
+            legend_text=element_text(color=TEXT, size=9),
+            legend_title=element_text(color=TEXT, size=10),
+            strip_background=element_rect(fill=GRID),
+            strip_text=element_text(color=TEXT, size=9),
+        )
+
+    SYSTEM_COLORS = {"paper2tree": P2T_COLOR, "baseline": BASE_COLOR}
+
+    # ── Figure 1: Mean metric comparison (grouped bar + error bars) ─────────
+    metric_map = {
+        "BERTScore F1": ("p2t_bertscore_f1", "baseline_bertscore_f1"),
+        "ROUGE-L": ("p2t_rouge_l", "baseline_rouge_l"),
+        "Cosine Sim.": ("p2t_cosine_similarity", "baseline_cosine_similarity"),
+    }
+    rows = []
+    for label, (p2t_col, base_col) in metric_map.items():
+        for val in df[p2t_col].dropna():
+            rows.append({"metric": label, "system": "paper2tree", "value": float(val)})
+        for val in df[base_col].dropna():
+            rows.append({"metric": label, "system": "baseline", "value": float(val)})
+    long_df = pd.DataFrame(rows)
+
+    summary = (
+        long_df.groupby(["metric", "system"])["value"].agg(mean="mean", std="std").reset_index()
+    )
+    summary["ymin"] = (summary["mean"] - summary["std"]).clip(lower=0)
+    summary["ymax"] = summary["mean"] + summary["std"]
+
+    fig1 = (
+        ggplot(summary, aes(x="metric", y="mean", fill="system"))
+        + geom_col(position=position_dodge(0.75), width=0.65)
+        + geom_errorbar(
+            aes(ymin="ymin", ymax="ymax"),
+            position=position_dodge(0.75),
+            width=0.2,
+            color=TEXT,
+            size=0.5,
+        )
+        + scale_fill_manual(values=SYSTEM_COLORS)
+        + ylim(0, 1)
+        + labs(title="Mean Metrics: paper2tree vs Baseline", x="", y="Score", fill="")
+        + dark_theme()
+    )
+    fig1.save(
+        str(figures_dir / "metric_comparison.png"), dpi=150, width=7, height=4.5, verbose=False
+    )
+    log("  metric_comparison.png")
+
+    # ── Figure 2: Per-paper BERTScore F1 scatter ────────────────────────────
+    scatter_df = df[["p2t_bertscore_f1", "baseline_bertscore_f1"]].dropna()
+    if not scatter_df.empty:
+        fig2 = (
+            ggplot(scatter_df, aes(x="baseline_bertscore_f1", y="p2t_bertscore_f1"))
+            + geom_abline(slope=1, intercept=0, color=GRID, linetype="dashed", size=0.8)
+            + geom_point(color=P2T_COLOR, size=3, alpha=0.85)
+            + labs(
+                title="BERTScore F1 per Paper: paper2tree vs Baseline",
+                x="Baseline",
+                y="paper2tree",
+            )
+            + dark_theme()
+        )
+        fig2.save(
+            str(figures_dir / "bertscore_scatter.png"), dpi=150, width=5, height=5, verbose=False
+        )
+        log("  bertscore_scatter.png")
+
+    # ── Figure 3: Recommendation distribution ──────────────────────────────
+    REC_ORDER = ["Accept", "Minor Revisions", "Major Revisions", "Reject"]
+    REC_COLORS = {
+        "Accept": "#22c55e",
+        "Minor Revisions": "#818cf8",
+        "Major Revisions": "#f59e0b",
+        "Reject": "#ef4444",
+    }
+    rec_rows = []
+    for _, row in df.iterrows():
+        if pd.notna(row.get("p2t_recommendation")):
+            rec_rows.append({"system": "paper2tree", "recommendation": row["p2t_recommendation"]})
+        if pd.notna(row.get("baseline_recommendation")):
+            rec_rows.append(
+                {"system": "baseline", "recommendation": row["baseline_recommendation"]}
+            )
+    if rec_rows:
+        rec_df = pd.DataFrame(rec_rows)
+        rec_df["recommendation"] = pd.Categorical(
+            rec_df["recommendation"], categories=REC_ORDER, ordered=True
+        )
+        fig3 = (
+            ggplot(rec_df, aes(x="system", fill="recommendation"))
+            + geom_bar(position="fill", width=0.55)
+            + scale_fill_manual(values=REC_COLORS, drop=False)
+            + labs(title="Recommendation Distribution", x="", y="Proportion", fill="")
+            + dark_theme()
+        )
+        fig3.save(
+            str(figures_dir / "recommendation_dist.png"),
+            dpi=150,
+            width=5,
+            height=4.5,
+            verbose=False,
+        )
+        log("  recommendation_dist.png")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 
@@ -403,6 +571,13 @@ async def main_async(args: argparse.Namespace) -> None:
         line = f"[{ts}] {msg}"
         print(line)
         log_lines.append(line)
+
+    if args.plots_only:
+        log("--plots-only: generating figures from existing metrics.csv")
+        generate_figures(output_dir, log=log)
+        log_path.write_text("\n".join(log_lines))
+        log(f"\nDone — figures in {output_dir}/figures/")
+        return
 
     elife_repo = Path(args.elife_repo) if args.elife_repo else LOCAL_REPO_DEFAULT
     token = args.github_token or os.environ.get("GITHUB_TOKEN")
@@ -518,6 +693,10 @@ async def main_async(args: argparse.Namespace) -> None:
     if args.self_consistency:
         await run_self_consistency_check(papers, output_dir, log=log)
 
+    # ── Step 5: Generate figures ───────────────────────────────────────────────
+    log("\nGenerating figures…")
+    generate_figures(output_dir, log=log)
+
     # ── Write run log ─────────────────────────────────────────────────────────
     log_path.write_text("\n".join(log_lines))
     log(f"\nDone — results in {output_dir}/")
@@ -545,6 +724,11 @@ def main() -> None:
         "--self-consistency", action="store_true", help="Run self-consistency check"
     )
     parser.add_argument("--skip-pipeline", action="store_true", help="Skip DAG generation")
+    parser.add_argument(
+        "--plots-only",
+        action="store_true",
+        help="Skip all pipeline steps; regenerate figures from existing metrics.csv",
+    )
     args = parser.parse_args()
     asyncio.run(main_async(args))
 

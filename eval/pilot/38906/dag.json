@@ -1,0 +1,2347 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_38906",
+    "title": "Recurrent loss of HMGCS2 shows that ketogenesis is not essential for the evolution of large mammalian brains",
+    "authors": [
+      "David Jebb",
+      "Michael Hiller"
+    ],
+    "url": "https://doi.org/10.7554/eLife.38906",
+    "abstract": "Apart from glucose, fatty acid-derived ketone bodies provide metabolic energy for the brain during fasting and neonatal development. We investigated the evolution of HMGCS2, the key enzyme required for ketone body biosynthesis (ketogenesis). Unexpectedly, we found that three mammalian lineages, comprising cetaceans (dolphins and whales), elephants and mastodons, and Old World fruit bats have lost this gene. Remarkably, many of these species have exceptionally large brains and signs of intelligent behavior. While fruit bats are sensitive to starvation, cetaceans and elephants can still withstand periods of fasting. This suggests that alternative strategies to fuel large brains during fasting evolved repeatedly and reveals flexibility in mammalian energy metabolism. Furthermore, we show that HMGCS2 loss preceded brain size expansion in toothed whales and elephants. Thus, while ketogenesis was likely important for brain size expansion in modern humans, ketogenesis is not a universal precondition for the evolution of large mammalian brains.",
+    "word_count": 4932,
+    "processed_at": "2026-05-08T01:24:14.425046+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Three independent losses of the ketogenesis enzyme gene HMGCS2 in large-brained …",
+        "claim": "Three independent losses of the ketogenesis enzyme gene HMGCS2 in large-brained mammalian lineages reveal unexpected flexibility in mammalian energy metabolism and demonstrate that ketogenesis is not a universal precondition for the evolution of large brains.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Discussion",
+        "verbatim_quote": "the timing of HMGCS2 loss indicates that ketogenesis is not a universal precondition for the evolution of large mammalian brains",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The genomic evidence for HMGCS2 loss in three independent lineages is thorough and well-validated.",
+            "The paper correctly identifies that these three lineages have relatively large brains, which is an interesting observation.",
+            "The phylogenetic independence of the three losses strengthens the comparative argument."
+          ],
+          "weaknesses": [
+            "The claim that ketogenesis is 'not a universal precondition' for large brain evolution is logically weaker than presented — it only requires showing that it is not necessary, which is a different claim than showing 'unexpected flexibility.' The paper conflates necessity with sufficiency/importance.",
+            "The 'unexpected flexibility in mammalian energy metabolism' is asserted but not directly demonstrated — no alternative metabolic pathways are experimentally characterized in these species (only the dolphin gluconeogenesis observation from Ridgway, 2013 is cited).",
+            "The root claim bundles two distinct assertions (flexibility in metabolism AND ketogenesis not a precondition for large brains) that have different levels of support.",
+            "The molecular dating estimates have substantial uncertainty ranges that weaken temporal ordering arguments, particularly for the elephant lineage.",
+            "No direct metabolic measurements (ketone body levels, metabolomic profiling) are provided for any of the three lineages by this paper — the metabolic consequences of gene loss are inferred rather than demonstrated."
+          ],
+          "alternative_interpretations": [
+            "It is possible that minor ketogenesis occurs via alternative, undiscovered enzymatic pathways not involving HMGCS2.",
+            "The correlation between HMGCS2 loss and large brains may be coincidental — all three lineages have other distinctive features (aquatic lifestyle, flight, large body size) that could independently drive both metabolic changes and brain evolution.",
+            "Rather than 'flexibility,' the losses may reflect lineage-specific ecological constraints that simultaneously selected for both alternative energy metabolism and large brains."
+          ],
+          "required_assumptions": [
+            "HMGCS2 loss equates to complete loss of ketogenesis.",
+            "No other enzyme or pathway can substitute for mitochondrial HMG-CoA synthase in producing ketone bodies.",
+            "Brain size (EQ) is a meaningful proxy for the metabolic demands that would require ketone body fueling.",
+            "The molecular dating of gene loss events is sufficiently accurate to establish temporal ordering relative to brain expansion."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The genomic evidence is strong, but the metabolic and evolutionary interpretation claims go substantially beyond what the genomic data alone can support. The claim about 'unexpected flexibility' requires metabolic evidence that is largely absent.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "HMGCS2, the gene encoding the rate-limiting enzyme for ketogenesis, has been ind…",
+        "claim": "HMGCS2, the gene encoding the rate-limiting enzyme for ketogenesis, has been independently lost in three mammalian lineages: cetaceans, pteropodid bats, and Elephantimorpha (elephants and mastodons).",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we discovered that three independent lineages (cetaceans, pteropodids and the African savanna elephant) exhibit large deletions that remove HMGCS2 exons or gene-inactivating mutations that shift the HMGCS2 reading frame and destroy conserved splice site dinucleotides",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple lines of evidence converge: large exon deletions, frameshift mutations, splice site disruptions, and stop codons across all three lineages.",
+            "All mutations were validated with unassembled sequencing reads (at least 30 reads per mutation in cetaceans).",
+            "Shared mutations between species within each lineage confirm independence of the three losses.",
+            "Conserved synteny confirms orthology in all three lineages.",
+            "The Egyptian fruit bat deletion was independently validated with PacBio assembly.",
+            "The elephant deletion was confirmed across multiple species (savanna elephant, forest elephant, Asian elephant) and an extinct taxon (mastodon)."
+          ],
+          "weaknesses": [
+            "Two species (proboscis monkey and lesser Egyptian jerboa) were classified as 'missing' due to assembly gaps — this limits the completeness of the survey.",
+            "Only 70 placental mammals were surveyed, which is a fraction of mammalian diversity — additional losses in unsampled lineages cannot be ruled out."
+          ],
+          "alternative_interpretations": [
+            "While extremely unlikely given the evidence, it remains formally possible that functional HMGCS2 copies exist in unsequenced genomic regions not covered by the assemblies, though the read-based searches argue strongly against this."
+          ],
+          "required_assumptions": [
+            "The genome assemblies and sequencing reads are representative of the species' genomes.",
+            "The gene loss detection pipeline has adequate sensitivity and specificity."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is the best-supported claim in the paper. The multi-layered validation approach is exemplary.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "The loss of HMGCS2 results in the complete loss of ketogenesis in these lineages…",
+        "claim": "The loss of HMGCS2 results in the complete loss of ketogenesis in these lineages, as the paralog HMGCS1 cannot compensate for HMGCS2 function.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "HMGCS1 does not seem to be capable of compensating for the loss of HMGCS2, suggesting that ketogenesis is lost in cetaceans, pteropodids and Elephantimorpha",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "TargetP analysis shows HMGCS1 lacks a mitochondrial targeting peptide in all three lineages.",
+            "Augustus gene predictions with alternative first exons also lack mTP.",
+            "Liver RNA-seq data from minke whale and Egyptian fruit bat show no novel HMGCS1 exons.",
+            "The argument that ketogenesis requires mitochondrial localization is biochemically sound."
+          ],
+          "weaknesses": [
+            "The claim that HMGCS2 loss results in 'complete loss of ketogenesis' is an inference, not a direct demonstration. No metabolic measurements of ketone body levels are provided by the authors.",
+            "Only liver RNA-seq was examined for two of the three lineages, and no RNA-seq data was available for elephant — tissue-specific or condition-specific expression could be missed.",
+            "The RNA-seq analysis would not detect very low-abundance alternative transcripts that might still be functionally relevant.",
+            "TargetP predictions are computational and have non-trivial false negative rates; cryptic mitochondrial targeting signals might exist.",
+            "The possibility of entirely novel, non-homologous enzymes performing a similar function is not addressed.",
+            "The authors state HMGCS1 'does not seem to be capable' — this hedged language itself acknowledges uncertainty."
+          ],
+          "alternative_interpretations": [
+            "A small amount of ketogenesis might occur through non-canonical pathways or in non-hepatic tissues that were not examined.",
+            "Post-translational modification or protein-protein interactions could theoretically redirect HMGCS1 to mitochondria without a canonical mTP.",
+            "Other metabolic pathways might produce ketone bodies at low levels sufficient for some physiological functions."
+          ],
+          "required_assumptions": [
+            "HMGCS2 is the sole enzyme capable of performing mitochondrial HMG-CoA synthesis for ketogenesis.",
+            "Computational prediction of mitochondrial targeting signals is reliable.",
+            "Liver RNA-seq from two species under non-fasting conditions is representative.",
+            "No non-homologous replacement enzyme has evolved."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim moves from well-supported genomic observations to metabolic conclusions without direct metabolic evidence. The dolphin fasting data from Ridgway (2013) cited elsewhere does support absence of ketone bodies in at least one species, which strengthens the claim indirectly. However, for pteropodids and elephants, no ketone body measurements are cited.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "HMGCS2 is under strong purifying selection in all other analyzed mammals, indica…",
+        "claim": "HMGCS2 is under strong purifying selection in all other analyzed mammals, indicating that ketogenesis is a generally crucial metabolic process whose repeated loss is remarkable.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we further estimated an average non-synonymous/synonymous (dN/dS) ratio of 0.16, which indicates that HMGCS2 evolves under strong purifying selection in other mammals",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "A dN/dS of 0.16 across 59 species is strong evidence of purifying selection.",
+            "The contrast between conservation in 59 species and loss in 3 lineages effectively highlights the unusualness of the loss events.",
+            "The cited human clinical data (coma after 22 hr fasting) provides strong functional evidence for the importance of HMGCS2."
+          ],
+          "weaknesses": [
+            "The average dN/dS across all non-loss species may mask variation — some lineages might show elevated dN/dS suggesting relaxed selection without complete loss.",
+            "The paper does not report confidence intervals or branch-specific variation in dN/dS among the 59 species."
+          ],
+          "alternative_interpretations": [
+            "Strong purifying selection could reflect pleiotropic functions of HMGCS2 beyond ketogenesis that have not been identified, though this seems unlikely given its restricted expression pattern."
+          ],
+          "required_assumptions": [
+            "The dN/dS ratio is computed from a reliable alignment.",
+            "The 59 species sample is representative of mammals generally."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Species in all three HMGCS2-loss lineages have relatively large brains, demonstr…",
+        "claim": "Species in all three HMGCS2-loss lineages have relatively large brains, demonstrating that ketone bodies are not strictly required to fuel large mammalian brains during fasting.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "the loss of HMGCS2 in independent large-brained species suggests that ketone bodies are not strictly required to fuel large mammalian brains during fasting",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The EQ values cited are from established literature (Montgomery et al., 2013; Stephan et al., 1981) and are well-accepted.",
+            "The phylogenetic independence of the three lineages strengthens the pattern.",
+            "Additional metrics (neocortex folding, cognitive behaviors) are cited to support the characterization of these species as 'large-brained.'"
+          ],
+          "weaknesses": [
+            "The claim uses 'demonstrates' but this is a correlational observation from only three lineages — it does not constitute a demonstration.",
+            "Many small-brained mammalian lineages have not lost HMGCS2, so the association between HMGCS2 loss and large brains could be coincidental.",
+            "The paper does not perform any statistical test of whether HMGCS2-loss lineages have significantly larger brains than expected.",
+            "EQ is a crude measure — it does not capture the specific metabolic demands of the brain that would require ketone body fueling.",
+            "The claim assumes that species without ketogenesis must be 'fueling large brains during fasting' through alternative means, but it's also possible these species simply avoid prolonged fasting or have reduced brain metabolic rates.",
+            "Bat EQ values >1 but modest compared to dolphins (3.7) — 'relatively large brains' is doing a lot of work here for pteropodids."
+          ],
+          "alternative_interpretations": [
+            "The correlation may reflect shared ecological features (e.g., dietary specialization) that independently affect both ketogenesis requirements and brain evolution.",
+            "These lineages may have evolved mechanisms to avoid fasting altogether (constant food availability, metabolic adaptations), making brain fuel during fasting a non-issue.",
+            "Large body size in elephants and cetaceans may provide sufficient glycogen reserves to buffer fasting without ketogenesis."
+          ],
+          "required_assumptions": [
+            "Large brain size creates metabolic demands that typically require ketone body fueling during fasting.",
+            "EQ is an appropriate measure for the metabolic demands relevant to this claim.",
+            "The observation of large brains plus no ketogenesis implies alternative fueling strategies rather than avoidance of conditions requiring such strategies."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The word 'demonstrating' in the claim is too strong for what is a correlational observation in three lineages without any metabolic data on brain fueling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "In cetaceans and Elephantimorpha, HMGCS2 was lost before brain size expansion oc…",
+        "claim": "In cetaceans and Elephantimorpha, HMGCS2 was lost before brain size expansion occurred, demonstrating that ketogenesis loss did not prohibit drastic evolutionary brain size expansion.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "the loss of ketogenesis has not prohibited drastic evolutionary brain size expansion in two other mammalian lineages",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The shared mutations in cetaceans provide a firm minimum age for HMGCS2 loss (before toothed/baleen whale split ~36 Mya).",
+            "The molecular dating approach using dN/dS ratios on pseudogene branches is an established method (Meredith et al., 2009; Gaudry et al., 2017).",
+            "For cetaceans, the temporal argument is relatively strong: loss at 50-47 Mya, major brain expansion in dolphins much later.",
+            "The elephant lineage argument is supported by mastodon data showing HMGCS2 deletion predates ~27 Mya."
+          ],
+          "weaknesses": [
+            "The molecular dating estimates have broad uncertainty ranges (e.g., 50-47 Mya for cetaceans, 45-42 Mya for elephants) and depend on assumptions about neutral substitution rates and the ratio of synonymous rates in functional vs. pseudogene sequences (the 70% assumption).",
+            "For the elephant lineage, the temporal gap between estimated gene loss (45-42 Mya) and brain expansion (37-27 Mya) is relatively narrow and within the uncertainty of the dating methods.",
+            "EQ data for fossil species relies on endocast volumes, which have their own measurement uncertainties.",
+            "The paper acknowledges this doesn't hold for pteropodids (brain expansion likely predated gene loss), weakening the generality of the claim.",
+            "The word 'demonstrating' is too strong — the evidence 'suggests' or 'is consistent with' but does not definitively demonstrate the temporal ordering, given dating uncertainties.",
+            "The claim that 'drastic evolutionary brain size expansion' occurred is relative — dolphin EQ going from 1.4 to 3.7 is substantial, but the elephant lineage shows more modest increases per unit time."
+          ],
+          "alternative_interpretations": [
+            "Given dating uncertainties, it is possible that HMGCS2 loss and brain expansion overlapped temporally in the elephant lineage.",
+            "Brain expansion could have occurred despite (not because of) the loss of ketogenesis, if dietary/ecological conditions made ketogenesis irrelevant.",
+            "The temporal ordering may be correlative rather than informative about causal relationships between ketogenesis and brain size."
+          ],
+          "required_assumptions": [
+            "The molecular dating method accurately estimates when HMGCS2 was inactivated.",
+            "The 70% assumption for synonymous rates in functional genes is appropriate.",
+            "Fossil-based EQ estimates accurately reflect the timing of brain expansion.",
+            "EQ changes can be meaningfully compared to gene loss timing despite very different methodological uncertainties."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The temporal arguments are interesting but rely heavily on molecular dating with inherent uncertainties. The claim for cetaceans is stronger than for elephants.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Alternative metabolic strategies to fuel large brains during fasting have evolve…",
+        "claim": "Alternative metabolic strategies to fuel large brains during fasting have evolved at least twice independently in mammals.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "alternative strategies to fuel large brains during fasting have evolved at least twice, revealing flexibility in the energy metabolism of mammals",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The dolphin gluconeogenesis observation (Ridgway, 2013) provides evidence for at least one alternative strategy.",
+            "The phylogenetic independence of cetaceans and elephants/Elephantimorpha as large-brained lineages without ketogenesis supports 'at least twice.'"
+          ],
+          "weaknesses": [
+            "No alternative metabolic strategy is actually characterized or identified by this paper for any lineage — the claim is inferred from the absence of ketogenesis plus the persistence of large brains.",
+            "For elephants, literally no data on fasting metabolism or brain fueling is presented — only the indirect musth observation about blood pH.",
+            "For pteropodids, the evidence actually suggests they DON'T have an effective alternative strategy (death after 24 hr fasting), which undermines this claim.",
+            "The claim 'evolved at least twice' implies active adaptive evolution of alternatives, but the paper provides no evidence for what these alternatives are or how they evolved.",
+            "'Alternative strategies to fuel large brains' is never actually demonstrated — the paper only shows absence of one strategy."
+          ],
+          "alternative_interpretations": [
+            "These lineages may not have 'evolved alternative strategies' so much as simply having pre-existing metabolic features (e.g., high protein diet in cetaceans enabling gluconeogenesis) that rendered ketogenesis dispensable.",
+            "Large body size in elephants and cetaceans may provide sufficient glycogen stores that alternative brain fueling strategies are not needed for ecologically relevant fasting durations."
+          ],
+          "required_assumptions": [
+            "Large brains in these species require specific fueling strategies during fasting.",
+            "The absence of ketogenesis plus survival implies the existence of compensatory alternative strategies.",
+            "These alternative strategies are evolved adaptations rather than pre-existing features."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim extends well beyond the data. The paper demonstrates absence of ketogenesis but does not identify, characterize, or demonstrate any 'alternative strategies.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The loss of HMGCS2 is associated with the loss of non-pleiotropic genes but not …",
+        "claim": "The loss of HMGCS2 is associated with the loss of non-pleiotropic genes but not pleiotropic genes in the ketogenesis pathway.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the loss of HMGCS2 is only associated with the loss of non-pleiotropic genes in the ketogenesis pathway",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear biological rationale: pleiotropic genes (ACAT1, HMGCL) are maintained because of essential roles in amino acid metabolism.",
+            "BDH1, the non-pleiotropic downstream gene, shows relaxed selection and inactivating mutations in cetaceans and pteropodids, providing a positive example.",
+            "RELAX analysis provides statistical support for relaxed selection on BDH1 in the expected lineages.",
+            "The pattern is consistent with established evolutionary principles about differential gene loss based on pleiotropy."
+          ],
+          "weaknesses": [
+            "The elephant does not show BDH1 loss, which partially breaks the expected pattern — the paper does not provide a compelling explanation for this asymmetry.",
+            "The BDH1 loss in shrews (which have intact HMGCS2) complicates the narrative and suggests BDH1 loss can occur independently of HMGCS2 loss.",
+            "Only one non-pleiotropic gene (BDH1) was examined — a broader analysis of pathway-associated genes would strengthen this claim."
+          ],
+          "alternative_interpretations": [
+            "BDH1 loss might occur for reasons unrelated to HMGCS2 loss (as seen in shrews), weakening the causal interpretation.",
+            "The retention of BDH1 in elephants could indicate that BDH1 has unknown pleiotropic functions."
+          ],
+          "required_assumptions": [
+            "The pleiotropic/non-pleiotropic classification of these genes is correct.",
+            "BDH1 loss in cetaceans and pteropodids is causally related to HMGCS2 loss."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The observation is well-supported within the data presented, though the elephant exception and shrew observation introduce complexity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "In cetaceans, shared inactivating mutations show that HMGCS2 was already lost be…",
+        "claim": "In cetaceans, shared inactivating mutations show that HMGCS2 was already lost before the split of toothed and baleen whales (~36 Mya).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the deletion of exon one that exhibits shared breakpoints in the toothed and baleen whale lineages...strongly suggests that this deletion and thus HMGCS2 loss already occurred before the split of the main cetacean lineages",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Shared breakpoints for exon 1 deletion between toothed and baleen whales is strong parsimony evidence.",
+            "Shared 2 bp insertion in exon 2 between killer whale and minke whale (representatives of both major cetacean lineages) provides independent confirmation.",
+            "All 22 mutations validated with ≥30 reads.",
+            "The pattern of shared ancestral mutations plus lineage-specific subsequent mutations is fully consistent with ancestral gene inactivation followed by continued pseudogene evolution."
+          ],
+          "weaknesses": [
+            "Shared deletion breakpoints could theoretically arise from deletion hotspots, though this is unlikely for multiple independent shared mutations.",
+            "Only four cetacean species are represented in the analysis; broader sampling could strengthen the claim."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Shared mutations are inherited rather than convergent.",
+            "The cetacean phylogeny used is correct."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "In pteropodid bats, shared mutations show HMGCS2 was lost in their common ancest…",
+        "claim": "In pteropodid bats, shared mutations show HMGCS2 was lost in their common ancestor, and the gene is completely deleted in the Egyptian fruit bat.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the ~4.5 kb deletion that removed coding exon two is validated by sequencing reads and is shared between both flying foxes, suggesting that HMGCS2 was already lost in their common ancestor",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Shared ~4.5 kb deletion of exon 2 between both flying fox species with read validation.",
+            "Complete deletion in Egyptian fruit bat validated by independent PacBio assembly.",
+            "Heterozygous 1 bp deletion in black flying fox is elegant evidence of ongoing erosion.",
+            "Negative search for deleted exons in reads (with positive control of HMGCS1 recovery) confirms deletion."
+          ],
+          "weaknesses": [
+            "Only three pteropodid species examined — broader sampling of the pteropodid family would better define when the loss occurred.",
+            "The molecular dating (29-18 Mya) spans the estimated divergence of flying foxes and Egyptian fruit bat, leaving ambiguity about whether loss was single or independent."
+          ],
+          "alternative_interpretations": [
+            "Given the complete deletion in Egyptian fruit bat, it is formally possible that HMGCS2 was lost independently in the Egyptian fruit bat and flying fox lineages, though shared exon 2 deletion argues against this."
+          ],
+          "required_assumptions": [
+            "The pteropodid phylogeny is correct.",
+            "PacBio assembly quality is sufficient for validation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "In Elephantimorpha, a large deletion removing most of HMGCS2 and the neighboring…",
+        "claim": "In Elephantimorpha, a large deletion removing most of HMGCS2 and the neighboring REG4 gene occurred prior to the divergence of mastodons and extant elephant species (~28-24 Mya).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Parsimony suggests that the deletion, which removed large parts of HMGCS2, occurred prior to the divergence of mastodons and the elephant species",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Negative blastn results for deleted exons across multiple elephant species AND extinct mastodon is exceptionally thorough.",
+            "Positive controls (remaining HMGCS2 exons and HMGCS1 exons) found in all species confirm search sensitivity.",
+            "Mastodon divergence at 28-24 Mya provides a deep calibration point for the deletion event.",
+            "Updated loxAfr4 assembly confirms loxAfr3 findings."
+          ],
+          "weaknesses": [
+            "Ancient DNA from mastodons may have limited quality/coverage, potentially reducing the power to detect deleted sequences if they were present.",
+            "The locus rearrangements (inversions) in the elephant/manatee lineage complicate the analysis and could theoretically obscure additional copies."
+          ],
+          "alternative_interpretations": [
+            "The deletion of REG4 alongside HMGCS2 exons could have been driven by selection against REG4 rather than relaxed selection on HMGCS2, with HMGCS2 loss as collateral damage."
+          ],
+          "required_assumptions": [
+            "Mastodon sequence data has sufficient coverage to detect the deleted regions if present.",
+            "The genomic rearrangements are correctly interpreted."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "All gene-inactivating mutations and exon deletions have been validated using una…",
+        "claim": "All gene-inactivating mutations and exon deletions have been validated using unassembled sequencing reads, ruling out genome assembly errors.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "To rule out that the gene-inactivating mutations are sequencing or genome assembly errors, we validated all smaller mutations and exon deletions with unassembled sequencing reads from the SRA and TRACE archives",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Systematic validation of all mutations with unassembled reads is a rigorous approach.",
+            "Minimum read support of 30 for cetacean mutations with no support for ancestral allele.",
+            "PacBio validation for Egyptian fruit bat provides technology-independent confirmation.",
+            "Multiple elephant individuals and species checked."
+          ],
+          "weaknesses": [
+            "Read validation details are in supplementary files not shown here — the main text summary is convincing but the details matter.",
+            "For pteropodids, read support thresholds for individual mutations beyond exon deletions are not explicitly stated in the main text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "SRA/TRACE reads are from correctly identified species.",
+            "The read mapping and allele counting pipeline is accurate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The remnants of HMGCS2 in all three lineages are located in conserved genomic co…",
+        "claim": "The remnants of HMGCS2 in all three lineages are located in conserved genomic contexts, confirming orthology rather than misidentification.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In cetaceans and pteropodids, the remnants of the once-functional HMGCS2 gene are located in a conserved genomic context with REG4 upstream and PHGDH downstream",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "REG4 upstream and PHGDH downstream confirmed in cetaceans and pteropodids.",
+            "Elephant shows PHGDH adjacency despite rearrangements.",
+            "UCSC genome browser visualization with alignment chains provides clear evidence.",
+            "Synteny analysis rules out misidentification of paralogs or unrelated loci."
+          ],
+          "weaknesses": [
+            "The elephant locus has undergone rearrangements (inversions) that complicate the synteny analysis somewhat, though the authors address this."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The genome browser alignment chains are reliable representations of synteny."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "The HMGCS1 protein in cetaceans, pteropodids, and elephant lacks a mitochondrial…",
+        "claim": "The HMGCS1 protein in cetaceans, pteropodids, and elephant lacks a mitochondrial targeting domain, preventing it from functioning in mitochondrial ketogenesis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We found that the HMGCS1 protein of cetaceans, pteropodids and elephant does not possess a mitochondrial targeting domain",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "TargetP analysis is a standard computational approach for predicting mitochondrial targeting.",
+            "Analysis performed on annotated and CESAR-inferred proteins from all loss species.",
+            "Augustus gene predictions with alternative first exons were also checked."
+          ],
+          "weaknesses": [
+            "TargetP is a computational prediction tool with known limitations — false negatives are possible.",
+            "Non-canonical mitochondrial import mechanisms (e.g., internal targeting signals, piggyback import) would not be detected by TargetP.",
+            "No experimental validation (e.g., GFP-fusion localization assays) was performed."
+          ],
+          "alternative_interpretations": [
+            "HMGCS1 might be imported into mitochondria through non-canonical mechanisms not detected by sequence-based tools."
+          ],
+          "required_assumptions": [
+            "TargetP reliably detects mitochondrial targeting signals.",
+            "Canonical N-terminal targeting peptides are the only mechanism for mitochondrial import relevant here."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Available liver RNA-seq data from minke whale and Egyptian fruit bat provides no…",
+        "claim": "Available liver RNA-seq data from minke whale and Egyptian fruit bat provides no indication of alternative or novel HMGCS1 exons that could encode a mitochondrial targeting signal.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "an analysis of available liver RNA-seq data from the minke whale and Egyptian fruit bat provides no indication of alternative or novel exons in HMGCS1 that could encode such a targeting signal",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "RNA-seq data from liver (the primary ketogenesis organ) is the appropriate tissue to examine.",
+            "Two species from different loss lineages were checked."
+          ],
+          "weaknesses": [
+            "RNA-seq data was only available for two of the three lineages (no elephant data).",
+            "The conditions under which the liver RNA-seq was generated are not specified — fasting conditions might reveal different expression patterns.",
+            "RNA-seq depth and the sensitivity to detect low-abundance alternative transcripts is not discussed.",
+            "Only HISAT2 mapping was used — novel exons far from the annotated locus might be missed.",
+            "Single samples per species provide limited statistical power."
+          ],
+          "alternative_interpretations": [
+            "Alternative HMGCS1 transcripts might be expressed only under specific conditions (e.g., fasting, development) not captured in the available RNA-seq data."
+          ],
+          "required_assumptions": [
+            "The available RNA-seq data is representative of the full HMGCS1 transcriptome in liver.",
+            "No condition-specific alternative splicing exists that would produce an mTP-containing HMGCS1."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The absence of evidence from limited RNA-seq data is not strong evidence of absence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "The remaining HMGCS2 sequence evolves under relaxed selection in all three loss …",
+        "claim": "The remaining HMGCS2 sequence evolves under relaxed selection in all three loss lineages, consistent with pseudogenization.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the remaining HMGCS2 sequence evolves under relaxed selection in cetaceans, pteropodids and Elephantimorpha (p<3e-3)",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "RELAX analysis provides a formal statistical framework for testing relaxed selection.",
+            "Significant p-values (p<3e-3) for all three lineages.",
+            "Relaxed selection is fully consistent with pseudogenization and supports the loss-of-function interpretation."
+          ],
+          "weaknesses": [
+            "The specific RELAX test statistics and parameter estimates are in supplementary material not shown.",
+            "RELAX can sometimes produce false positives when there is rate variation among sites rather than true relaxation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The sequence alignment is reliable enough for molecular evolutionary analysis.",
+            "The RELAX model assumptions are met."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "All three lineages have a deletion of exon one encoding the mitochondrial target…",
+        "claim": "All three lineages have a deletion of exon one encoding the mitochondrial targeting domain, a deletion type known to cause HMG-CoA synthase-2 deficiency in humans.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "All three lineages have a deletion of exon one that encodes the mitochondrial targeting domain; such a deletion causes HMG-CoA synthase-2 deficiency in human individuals",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The deletion of exon 1 encoding the mitochondrial targeting domain is confirmed in all three lineages.",
+            "The clinical reference to human HMGCS2 deficiency caused by this type of deletion (Pitt et al., 2015) provides functional validation.",
+            "This single mutation alone would be expected to abolish mitochondrial localization and thus ketogenesis."
+          ],
+          "weaknesses": [
+            "Minor: the functional consequence is inferred from human clinical genetics rather than directly demonstrated in these species."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The functional consequences of exon 1 deletion in humans are applicable to other mammals."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "59 other mammals with complete HMGCS2 locus coverage have an intact reading fram…",
+        "claim": "59 other mammals with complete HMGCS2 locus coverage have an intact reading frame with no inactivating mutations.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The 59 other mammals, for which the genome assembly fully covered the HMGCS2 locus, do not exhibit inactivating mutations in this gene",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "59 species is a substantial sample across placental mammals.",
+            "Complete absence of inactivating mutations in all 59 species is a clear result."
+          ],
+          "weaknesses": [
+            "Two species had to be excluded due to assembly gaps, slightly reducing completeness.",
+            "The paper doesn't discuss whether any of the 59 species show elevated dN/dS on specific branches that might suggest incipient relaxation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The gene loss detection pipeline has sufficient sensitivity.",
+            "Assembly quality is sufficient to detect mutations in all 59 species."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "HMGCS2 is essential for ketogenesis in mammals, as mutations in the human gene a…",
+        "claim": "HMGCS2 is essential for ketogenesis in mammals, as mutations in the human gene and mouse knockdown experiments abolish or greatly reduce ketone body production.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "HMGCS2 is required for ketogenesis, as mutations in the human gene and mouse gene-knockdown experiments abolish or greatly reduce ketogenesis",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple independent lines of evidence cited: human clinical mutations, mouse knockdown experiments.",
+            "Multiple references provided (Bouchard et al., 2001; Ramos et al., 2013; Thompson et al., 1997; Wolf et al., 2003; Pitt et al., 2015; Cotter et al., 2014).",
+            "Human clinical consequences (coma after 22 hr fasting) dramatically illustrate the importance."
+          ],
+          "weaknesses": [
+            "This claim relies on previously published literature rather than new data — it's a well-established fact rather than a novel finding."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The cited studies are reliable and generalizable across mammals."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is background knowledge rather than a novel claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "The bottlenose dolphin has an encephalization quotient (EQ) of 3.7, and dolphins…",
+        "claim": "The bottlenose dolphin has an encephalization quotient (EQ) of 3.7, and dolphins and elephants have a higher degree of neocortex folding than most mammals.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the encephalization quotient (EQ), measuring the ratio between the observed brain size and the size expected for a mammal of the same body weight, is 3.7 for the bottlenose dolphin",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "EQ values from established literature (Montgomery et al., 2013).",
+            "Neocortex folding data from Manger et al. (2012) and Lewitus et al. (2014).",
+            "These are well-known neuroanatomical facts."
+          ],
+          "weaknesses": [
+            "Minor: EQ values vary across studies depending on the allometric equation used."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The cited EQ values are reliable."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Factual claim well-supported by existing literature.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Pteropodid fruit bats have brains nearly twice as large as insectivorous vesper …",
+        "claim": "Pteropodid fruit bats have brains nearly twice as large as insectivorous vesper bats of equal body weight and a well-developed visual brain system.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "pteropodid fruit bats exhibit a well-developed visual brain system and have brains nearly twice as large as that of insectivorous vesper bats of equal body weight",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Data from Stephan et al. (1981), a classic reference in comparative neuroanatomy.",
+            "The comparison with insectivorous vesper bats of equal body weight is the appropriate comparison."
+          ],
+          "weaknesses": [
+            "The data is from 1981 and more recent analyses might refine these estimates.",
+            "Pteropodid EQ values, while >1, are modest compared to dolphins or elephants."
+          ],
+          "alternative_interpretations": [
+            "Larger brains in pteropodids might reflect visual system elaboration (as noted) rather than general cognitive enhancement, which could weaken the parallel with dolphins and elephants."
+          ],
+          "required_assumptions": [
+            "Brain size relative to body size is the appropriate metric for comparison."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "Species in all three lineages exhibit cognitive behaviors regarded as signs of i…",
+        "claim": "Species in all three lineages exhibit cognitive behaviors regarded as signs of intelligence, including vocal learning, tool use, complex social structures, and self-recognition.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Species in all three lineages also exhibit cognitive behaviors that are regarded as a sign of intelligence, exemplified by vocal learning and, in dolphins and elephants, by complex social structures, tool use and self-recognition",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Multiple citations provided for cognitive abilities in dolphins and elephants.",
+            "Self-recognition, tool use, and vocal learning are widely accepted indicators of cognitive complexity."
+          ],
+          "weaknesses": [
+            "The connection between cognitive behaviors and the need for ketone body brain fueling is not established.",
+            "The bat cognitive abilities (vocal learning, Prat et al., 2015) are less extensively documented compared to dolphins and elephants.",
+            "This claim is tangential to the main argument — cognitive abilities don't directly inform about metabolic requirements.",
+            "Listing 'signs of intelligence' is somewhat subjective and risks anthropomorphic bias."
+          ],
+          "alternative_interpretations": [
+            "Intelligence does not necessarily correlate with the type of metabolic fuel used by the brain."
+          ],
+          "required_assumptions": [
+            "Cognitive complexity is relevant to the metabolic fuel requirements of the brain."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This claim is largely about established behavioral observations and doesn't directly support the metabolic argument.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "In cetaceans, HMGCS2 was lost 50-47 Mya when the ancestor had an EQ of only 1.4,…",
+        "claim": "In cetaceans, HMGCS2 was lost 50-47 Mya when the ancestor had an EQ of only 1.4, while dolphins subsequently expanded brain size to EQ 3.7.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Molecular dating further estimates that the loss of this gene happened early on the cetacean branch 50–47 Mya. The cetacean ancestor had a brain slightly larger than expected for its body size with an EQ of 1.4",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Shared mutations provide a minimum age (before toothed/baleen split ~36 Mya).",
+            "Molecular dating narrows the window to 50-47 Mya.",
+            "The ancestral cetacean EQ of 1.4 from Montgomery et al. (2013) establishes a baseline.",
+            "The subsequent increase to EQ 3.7 in dolphins is well-documented."
+          ],
+          "weaknesses": [
+            "The molecular dating range (50-47 Mya) is narrow but depends on the assumption that synonymous rates in functional genes are 70% of pseudogene rates.",
+            "The ancestral EQ of 1.4 is itself an estimate based on fossil endocasts and body size reconstructions with inherent uncertainty.",
+            "An EQ of 1.4 is already slightly above average, so some brain expansion may have already occurred before HMGCS2 loss."
+          ],
+          "alternative_interpretations": [
+            "The ancestral cetacean at EQ 1.4 already had a modestly large brain; the subsequent expansion to 3.7 may have been driven by factors entirely unrelated to metabolic fuel."
+          ],
+          "required_assumptions": [
+            "Molecular dating assumptions are valid.",
+            "Fossil-based EQ estimates are reliable."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "In the elephant lineage, molecular dating estimates HMGCS2 loss at 45-42 Mya, pr…",
+        "claim": "In the elephant lineage, molecular dating estimates HMGCS2 loss at 45-42 Mya, prior to the brain size expansion that occurred between 37 and 27 Mya.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Molecular dating indicates that HMGCS2 loss happened between 45 and 42 Mya, suggesting that the loss of ketogenesis precedes brain size expansion in the elephant lineage",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Molecular dating provides an estimate (45-42 Mya) that precedes the estimated brain expansion period (37-27 Mya).",
+            "The mastodon data confirms the deletion predates 28-24 Mya."
+          ],
+          "weaknesses": [
+            "The gap between gene loss (45-42 Mya) and brain expansion onset (~37 Mya) is only ~5-8 My, which is within the combined uncertainty of both estimates.",
+            "Brain expansion timing is estimated from fossil endocasts with limited resolution — 'between 37 and 27 Mya' is a 10 My window.",
+            "The EQ of Palaeomastodons is not precisely known (the paper admits 'Exact EQ values of Palaeomastodons are not known'), weakening the calibration of when expansion began.",
+            "Moeritherium's phylogenetic position and relevance as a calibration point for early proboscid brain size has been debated."
+          ],
+          "alternative_interpretations": [
+            "Given overlapping uncertainties, HMGCS2 loss and brain expansion could have been roughly contemporaneous in elephants.",
+            "The brain expansion in proboscids could have begun before the estimated gene loss, given the poor fossil record for intermediate forms."
+          ],
+          "required_assumptions": [
+            "Molecular dating and fossil-based EQ estimates are sufficiently precise to establish temporal ordering.",
+            "The 70% synonymous rate assumption for functional vs. pseudogene evolution is correct.",
+            "Moeritherium and Palaeomastodon EQ values are informative about the elephant stem lineage."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is the weakest of the temporal ordering claims due to the narrow gap and imprecise fossil calibration.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "In pteropodids, brain size expansion likely predated the loss of HMGCS2 (estimat…",
+        "claim": "In pteropodids, brain size expansion likely predated the loss of HMGCS2 (estimated at 29-18 Mya), so this lineage does not support the precondition argument but also does not contradict it.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "brain size expansion presumably predates the loss of ketogenesis",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The authors honestly acknowledge that pteropodids don't support the temporal ordering argument.",
+            "The molecular dating (29-18 Mya) and the observation that insectivorous bats have EQ <1 while fruit bats have EQ >1 supports the conclusion that brain expansion likely preceded gene loss.",
+            "This transparency strengthens the paper's credibility."
+          ],
+          "weaknesses": [
+            "The pteropodid case actually provides a counterpoint to the narrative — in this lineage, brain expansion occurred without the loss of ketogenesis, which is the normal expectation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Brain size expansion in the pteropodid lineage is accurately timed relative to HMGCS2 loss."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The honest acknowledgment of this case is a strength of the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "While ketogenesis was likely crucial for brain size increase in humans, its loss…",
+        "claim": "While ketogenesis was likely crucial for brain size increase in humans, its loss did not prohibit drastic evolutionary brain size expansion in two other mammalian lineages.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "while ketogenesis was likely a crucial factor for brain size increase in humans, the loss of ketogenesis has not prohibited drastic evolutionary brain size expansion in two other mammalian lineages",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is sound: if brain expansion occurred after ketogenesis loss, then ketogenesis was not required for brain expansion.",
+            "Two independent lineages (cetaceans and elephants) show this pattern.",
+            "The qualifier 'likely' for the human case is appropriate."
+          ],
+          "weaknesses": [
+            "As noted above, the temporal ordering in elephants has substantial uncertainty.",
+            "The claim that ketogenesis was 'likely a crucial factor for brain size increase in humans' is cited from Cunnane and Crawford (2003) and Wang et al. (2014) but not evaluated critically by this paper.",
+            "The word 'prohibited' sets a low bar — showing that something didn't prevent brain expansion is different from showing it was irrelevant.",
+            "Only two lineages are cited; statistical power to make general claims about mammalian brain evolution from two cases is limited."
+          ],
+          "alternative_interpretations": [
+            "Ketogenesis may have facilitated brain expansion in most lineages even if it was not absolutely required — the cetacean and elephant cases may be unusual exceptions rather than evidence against a general rule.",
+            "The brain expansion in these lineages may have occurred through mechanisms (dietary adaptation, body size changes) that are not generalizable."
+          ],
+          "required_assumptions": [
+            "Temporal ordering of gene loss and brain expansion is correctly established.",
+            "Two independent cases are sufficient to draw conclusions about 'universal preconditions.'"
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim is logically valid but the evidence base (two lineages with uncertain dating) limits how strongly it should be stated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Dolphins maintain high blood glucose during 3-day fasts via gluconeogenesis from…",
+        "claim": "Dolphins maintain high blood glucose during 3-day fasts via gluconeogenesis from dietary amino acids, rather than relying on ketone bodies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "bottlenose dolphins do not produce ketone bodies after fasting for 3 days but are nevertheless able to maintain high blood glucose levels over this entire period",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Directly cites experimental data from Ridgway (2013) showing absence of ketone bodies and maintenance of high glucose.",
+            "This observation is fully consistent with HMGCS2 loss.",
+            "The gluconeogenesis explanation is biologically plausible given the high-protein cetacean diet."
+          ],
+          "weaknesses": [
+            "Only one species (bottlenose dolphin) was tested in the cited study.",
+            "The suggestion about glucogenic amino acids is an interpretation, not demonstrated experimentally.",
+            "Three days of fasting may not be sufficient to test whether dolphins can sustain brain metabolism during prolonged fasting."
+          ],
+          "alternative_interpretations": [
+            "Dolphins may have large glycogen reserves that sustain glucose levels for 3 days without needing either ketogenesis or gluconeogenesis."
+          ],
+          "required_assumptions": [
+            "Ridgway (2013) methodology is reliable.",
+            "Bottlenose dolphin results are representative of cetaceans generally."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Egyptian fruit bats that were fasted for more than 24 hours frequently died, sug…",
+        "claim": "Egyptian fruit bats that were fasted for more than 24 hours frequently died, suggesting they lack an alternative to ketogenesis during fasting and may be starvation-sensitive due to HMGCS2 loss.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Egyptian fruit bats that were fasted for more than 24 hours in captivity frequently died",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The citation (van der Westhuyzen, 1978) provides direct experimental evidence of starvation sensitivity.",
+            "This observation is fully consistent with loss of ketogenesis without a compensating alternative.",
+            "The parallel to human HMGCS2 deficiency (coma after 22 hr fasting) is apt."
+          ],
+          "weaknesses": [
+            "The original study is from 1978 and details of the experimental conditions, sample sizes, and causes of death are not provided here.",
+            "It's not established that death was specifically due to inability to produce ketone bodies rather than other aspects of fasting (e.g., hypoglycemia from rapid metabolism).",
+            "'Frequently died' is vague — the actual mortality rate and timeframe would be more informative."
+          ],
+          "alternative_interpretations": [
+            "Death from fasting in fruit bats could reflect high metabolic rate and low energy reserves associated with small body size and flight, rather than specifically the absence of ketogenesis."
+          ],
+          "required_assumptions": [
+            "The 1978 study is reliable.",
+            "Death from fasting is attributable to absence of ketone body production."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "The loss of HMGCS2 in pteropodids may now represent a disadvantage and is releva…",
+        "claim": "The loss of HMGCS2 in pteropodids may now represent a disadvantage and is relevant to conservation efforts for ecologically important species in this family.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the loss of HMGCS2 may now represent a disadvantage, which will be of interest to ongoing conservation efforts for ecologically and economically important species in the pteropodid family",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic connecting starvation sensitivity to conservation vulnerability is reasonable.",
+            "Pteropodid bats are indeed ecologically important (pollination, seed dispersal) and face conservation challenges."
+          ],
+          "weaknesses": [
+            "This is a speculative claim — no evidence is provided that HMGCS2 loss currently represents a fitness disadvantage in wild populations.",
+            "Under natural conditions with continuous fruit availability, HMGCS2 loss may not be disadvantageous.",
+            "The conservation relevance depends on whether habitat loss leads to food scarcity sufficient to cause starvation, which is not evaluated."
+          ],
+          "alternative_interpretations": [
+            "In the wild, pteropodid bats may rarely experience fasting long enough to make ketogenesis relevant, and the primary conservation threats may be entirely unrelated to metabolic vulnerability."
+          ],
+          "required_assumptions": [
+            "Environmental change will create fasting conditions for pteropodid bats.",
+            "HMGCS2 loss contributes meaningfully to mortality risk under such conditions."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is an interesting speculation but not supported by data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "During musth, when elephant males fast and lose body weight, their blood becomes…",
+        "claim": "During musth, when elephant males fast and lose body weight, their blood becomes slightly more alkaline rather than acidic, consistent with absence of ketone body production.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "during musth, when elephant males experience longer periods of fasting and can lose 10% of their body weight, their blood becomes slightly more alkaline",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "support_level": "low",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The observation is cited from Rasmussen and Perrin (1999).",
+            "The logic is correct: acidic ketone body production would be expected to lower blood pH."
+          ],
+          "weaknesses": [
+            "Blood alkalinity during musth could have many causes (e.g., hyperventilation, hormonal changes, altered kidney function) unrelated to ketone body production.",
+            "This is a very indirect inference — 'consistent with' is appropriate but the evidence is weak.",
+            "No direct measurement of ketone body levels in elephants is cited.",
+            "Musth involves complex physiological changes that confound interpretation of blood pH.",
+            "The paper itself uses tentative language ('consistent with'), acknowledging the weakness."
+          ],
+          "alternative_interpretations": [
+            "Blood alkalosis during musth could be caused by respiratory changes, stress hormones, or changes in electrolyte balance.",
+            "Elephants might still produce small amounts of ketone bodies through alternative pathways."
+          ],
+          "required_assumptions": [
+            "Blood pH changes during musth are primarily driven by the presence or absence of ketone bodies.",
+            "No other physiological changes during musth affect blood pH."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is the weakest piece of physiological evidence in the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "BDH1, which converts acetoacetate into d-β-hydroxybutyrate, has inactivating mut…",
+        "claim": "BDH1, which converts acetoacetate into d-β-hydroxybutyrate, has inactivating mutations and evolves under relaxed selection in cetaceans and pteropodids but not in the elephant.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "BDH1 exhibits several inactivating mutations and evolved under relaxed selection in cetaceans and pteropodids",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Inactivating mutations in BDH1 validated in cetaceans and pteropodids.",
+            "RELAX analysis confirms relaxed selection.",
+            "The absence of BDH1 loss in elephant is honestly reported.",
+            "The pattern matches the expected consequence of upstream ketogenesis loss."
+          ],
+          "weaknesses": [
+            "The elephant exception needs explanation — why would BDH1 be maintained if ketogenesis is lost?",
+            "Could indicate BDH1 has functions beyond ketone body metabolism not yet recognized.",
+            "BDH1 loss in shrew (with intact HMGCS2) shows BDH1 can be lost independently."
+          ],
+          "alternative_interpretations": [
+            "BDH1 retention in elephant could indicate residual ketone body metabolism or unknown pleiotropic functions.",
+            "BDH1 loss in cetaceans and pteropodids might be coincidental rather than consequential to HMGCS2 loss."
+          ],
+          "required_assumptions": [
+            "BDH1 is exclusively involved in ketone body interconversion in these lineages."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The elephant exception is notable and not adequately explained.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "ACAT1 and HMGCL do not exhibit inactivating mutations in any of the three lineag…",
+        "claim": "ACAT1 and HMGCL do not exhibit inactivating mutations in any of the three lineages, presumably because they have pleiotropic roles in amino acid metabolism.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "ACAT1 and HMGCL do not exhibit inactivating mutations in cetaceans, pteropodids and the elephant, likely because the respective enzymes are not only required for the production of ketone bodies but are also involved in leucine and isoleucine metabolism",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear mechanistic rationale: ACAT1 and HMGCL have known roles in leucine and isoleucine metabolism.",
+            "Complete absence of inactivating mutations in all three lineages is consistent with maintained selection.",
+            "This follows established evolutionary principles about differential loss of pleiotropic vs. non-pleiotropic genes."
+          ],
+          "weaknesses": [
+            "The absence of mutations doesn't prove ongoing purifying selection — a formal test (e.g., dN/dS analysis) on these genes in the loss lineages would strengthen the claim.",
+            "Only two pleiotropic genes examined in the pathway."
+          ],
+          "alternative_interpretations": [
+            "The genes might be conserved for reasons other than the stated pleiotropic functions."
+          ],
+          "required_assumptions": [
+            "The pleiotropic functions attributed to ACAT1 and HMGCL are correct.",
+            "Absence of inactivating mutations indicates purifying selection."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "The deletion of exon one has shared breakpoints in toothed and baleen whale line…",
+        "claim": "The deletion of exon one has shared breakpoints in toothed and baleen whale lineages.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the deletion of exon one that exhibits shared breakpoints in the toothed and baleen whale lineages",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Shared breakpoints visible in UCSC genome browser alignment chains (Figure 1—figure supplement 3).",
+            "Validated with sequencing reads."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Shared breakpoints indicate a single ancestral deletion event."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.2",
+        "label": "A 2 bp frameshifting insertion in exon two is shared between killer whale and mi…",
+        "claim": "A 2 bp frameshifting insertion in exon two is shared between killer whale and minke whale.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 2 bp frameshifting insertion in exon two that is shared between killer whale and minke whale, and was later deleted in dolphin and sperm whale",
+        "evaluation": {
+          "node_id": "c1.1.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Shared between killer whale (toothed) and minke whale (baleen) confirms ancestral origin.",
+            "Subsequent deletion of this insertion in dolphin and sperm whale shows continued pseudogene evolution, consistent with the gene being non-functional."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Killer whale and minke whale represent toothed and baleen whale lineages respectively."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.3",
+        "label": "All 22 cetacean mutations were confirmed by at least 30 sequencing reads with no…",
+        "claim": "All 22 cetacean mutations were confirmed by at least 30 sequencing reads with no support for the non-inactivating allele.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "All 22 mutations in cetaceans were confirmed by at least 30 reads, with no support for the non-gene-inactivating allele",
+        "evaluation": {
+          "node_id": "c1.1.1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "30 reads is a substantial threshold for validation.",
+            "Zero support for the ancestral allele makes assembly error extremely unlikely.",
+            "Detailed in Supplementary file 1."
+          ],
+          "weaknesses": [
+            "The supplementary data is referenced but not shown in the main text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Read mapping is accurate.",
+            "SRA reads are from the correct species."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "The ~4.5 kb deletion removing exon two is validated by sequencing reads and shar…",
+        "claim": "The ~4.5 kb deletion removing exon two is validated by sequencing reads and shared between both flying fox species.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the ~4.5 kb deletion that removed coding exon two is validated by sequencing reads and is shared between both flying foxes",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Read validation confirms the deletion in both species.",
+            "Sharing between both flying fox species indicates ancestral origin."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.2",
+        "label": "HMGCS2 deletion in the Egyptian fruit bat was validated with an independent PacB…",
+        "claim": "HMGCS2 deletion in the Egyptian fruit bat was validated with an independent PacBio assembly showing PHGDH and REG4 separated by only ~6 kb instead of ~50 kb in human.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "In the Egyptian fruit bat, HMGCS2 is entirely removed by a large deletion between the REG4 and PHGDH genes, which we validated with an independent PacBio assembly",
+        "evaluation": {
+          "node_id": "c1.1.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Independent PacBio technology provides orthogonal validation.",
+            "The dramatic size reduction (~50 kb to ~6 kb) between flanking genes is strong evidence for deletion.",
+            "Blastx results show only PHGDH and REG4, no HMGCS2."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "PacBio assembly is correct at this locus."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.3",
+        "label": "The 1 bp deletion in exon three is heterozygous in the black flying fox with ~50…",
+        "claim": "The 1 bp deletion in exon three is heterozygous in the black flying fox with ~50:50 read support, consistent with ongoing gene erosion.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Consistent with ongoing gene erosion, the 1 bp deletion in exon three is heterozygous in the black flying fox",
+        "evaluation": {
+          "node_id": "c1.1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "~50:50 read support clearly demonstrates heterozygosity.",
+            "Heterozygosity is the expected pattern for a recently arisen mutation in an already non-functional gene.",
+            "This elegantly illustrates ongoing neutral evolution of the pseudogene."
+          ],
+          "weaknesses": [
+            "A single heterozygous mutation in one individual is consistent with ongoing erosion but is also consistent with many other scenarios (e.g., recent mutation not yet fixed)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The sequenced individual is representative."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.4",
+        "label": "No evidence for deleted HMGCS2 exons was found in unassembled reads of either fl…",
+        "claim": "No evidence for deleted HMGCS2 exons was found in unassembled reads of either flying fox species, while all HMGCS1 exons were recovered, confirming search sensitivity.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we detected no evidence for the presence of the deleted HMGCS2 exons in unassembled sequencing reads of both flying fox species, while we readily found all exons of the HMGCS1 paralog",
+        "evaluation": {
+          "node_id": "c1.1.2.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The positive control (finding all HMGCS1 exons) is critical for establishing search sensitivity.",
+            "Since HMGCS1 and HMGCS2 are paralogs, finding one but not the other with the same search strategy is compelling."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "HMGCS1 and HMGCS2 sequences are sufficiently similar that finding HMGCS1 exons demonstrates ability to detect HMGCS2 exons."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3.1",
+        "label": "Sensitive blastn searches found no hits for deleted HMGCS2 exons or REG4 in read…",
+        "claim": "Sensitive blastn searches found no hits for deleted HMGCS2 exons or REG4 in reads from two savanna elephant individuals, African forest elephant, Asian elephant, or two mastodon specimens.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the three remaining HMGCS2 exons and entire HMGCS1 gene were found in all three species, while the deleted HMGCS2 exons and the REG4 gene were not found",
+        "evaluation": {
+          "node_id": "c1.1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple species and individuals tested: two savanna elephants, forest elephant, Asian elephant, two mastodons.",
+            "Positive controls (remaining HMGCS2 exons and all HMGCS1 exons) found in all species.",
+            "Co-deletion of REG4 confirmed independently.",
+            "Inclusion of mastodon (extinct) data is particularly impressive and extends the finding deep into Elephantimorpha."
+          ],
+          "weaknesses": [
+            "Ancient DNA from mastodons may have limited coverage and quality.",
+            "The negative result is dependent on search sensitivity, though positive controls address this."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Mastodon sequence data quality is sufficient.",
+            "Blastn sensitivity with manatee query is adequate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "RELAX analysis confirms relaxed selection on remaining HMGCS2 sequences in all t…",
+        "claim": "RELAX analysis confirms relaxed selection on remaining HMGCS2 sequences in all three lineages (p<3e-3).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the remaining HMGCS2 sequence evolves under relaxed selection in cetaceans, pteropodids and Elephantimorpha (p<3e-3, Supplementary file 2)",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "RELAX is an appropriate and well-established method for testing relaxed selection.",
+            "p<3e-3 across all three lineages is significant.",
+            "Tested both collectively and individually per lineage."
+          ],
+          "weaknesses": [
+            "Specific test statistics are in supplementary material not presented here."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "RELAX model assumptions are appropriate for this analysis."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "The average dN/dS ratio of HMGCS2 across non-loss mammals is 0.16.",
+        "claim": "The average dN/dS ratio of HMGCS2 across non-loss mammals is 0.16.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we further estimated an average non-synonymous/synonymous (dN/dS) ratio of 0.16",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "A dN/dS of 0.16 indicates strong purifying selection, well below the neutral expectation of 1.",
+            "Computed across a substantial number of species."
+          ],
+          "weaknesses": [
+            "This is an average — distribution across branches is not discussed.",
+            "Standard error or confidence interval not reported."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The sequence alignment is reliable.",
+            "The dN/dS estimation method is appropriate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "HMG-CoA synthase-2 deficiency in humans can lead to coma after fasting for more …",
+        "claim": "HMG-CoA synthase-2 deficiency in humans can lead to coma after fasting for more than 22 hours, demonstrating the importance of ketogenesis for fasting survival.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Introduction",
+        "verbatim_quote": "HMG-CoA synthase-2 deficiency in human can lead to coma after fasting for more than 22 hours due to low glucose levels",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Cited from Thompson et al. (1997) and Morris et al. (1998).",
+            "Dramatic clinical phenotype clearly illustrates functional importance.",
+            "The 22-hour threshold is specific and memorable."
+          ],
+          "weaknesses": [
+            "These are case reports; the generality across all human HMGCS2-deficient individuals may vary.",
+            "The paper notes that the deficiency 'may be underdiagnosed,' suggesting the clinical spectrum could be broader."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Human clinical observations are generalizable to the importance of HMGCS2 in other mammals."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Early proboscids like Moeritherium had an EQ of 0.2; mastodons diverging ~27 Mya…",
+        "claim": "Early proboscids like Moeritherium had an EQ of 0.2; mastodons diverging ~27 Mya had an EQ of 2.2, similar to extant elephants.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "Early proboscids such as Moeritherium...had brains about 20% of the size expected for a mammal of the same body size, and thus an EQ of 0.2...mastodons that diverged from elephants ~ 27 Mya had brains about twice as large as expected from their body size (EQ 2.2)",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Cited from well-established paleontological literature (Shoshani et al., 2006).",
+            "The EQ range from 0.2 to 2.2 documents substantial brain expansion."
+          ],
+          "weaknesses": [
+            "Fossil-based EQ estimates have inherent uncertainty from both brain volume (endocast) and body mass estimation.",
+            "The connection between these specific EQ values and the timing of HMGCS2 loss requires interpolation across tens of millions of years."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Endocast-based EQ estimates are reliable proxies for relative brain size."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.2",
+        "label": "Shared inactivating mutations in cetacean exons 1, 2, and 8 show HMGCS2 was lost…",
+        "claim": "Shared inactivating mutations in cetacean exons 1, 2, and 8 show HMGCS2 was lost before the toothed/baleen whale split ~36 Mya, with molecular dating estimating loss at 50-47 Mya.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "HMGCS2 was already lost in the cetacean ancestor before the split of toothed and baleen whales ~ 36 Mya, as inferred from shared inactivating mutations in exons 1, 2 and 8",
+        "evaluation": {
+          "node_id": "c1.5.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Three independent shared mutations (exons 1, 2, and 8) provide strong evidence for ancestral loss before the toothed/baleen split.",
+            "Molecular dating (50-47 Mya) is consistent with the known timing of cetacean diversification.",
+            "Multiple lines of evidence converge."
+          ],
+          "weaknesses": [
+            "The molecular dating depends on assumptions about neutral evolution rates.",
+            "The precision of 50-47 Mya should be interpreted cautiously."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Molecular dating assumptions are valid.",
+            "Shared mutations are inherited rather than convergent."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "Bottlenose dolphins fasted for 3 days do not produce ketone bodies but maintain …",
+        "claim": "Bottlenose dolphins fasted for 3 days do not produce ketone bodies but maintain high blood glucose levels throughout the entire period.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "bottlenose dolphins do not produce ketone bodies after fasting for 3 days but are nevertheless able to maintain high blood glucose levels over this entire period",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct experimental measurement from Ridgway (2013).",
+            "Clear result: no ketone bodies detected plus high glucose maintained."
+          ],
+          "weaknesses": [
+            "Single study, single species.",
+            "Only 3-day fasting period tested.",
+            "Details of assay sensitivity not discussed here."
+          ],
+          "alternative_interpretations": [
+            "Dolphins may have large glycogen reserves that sustain glucose for 3 days; longer fasting might reveal different patterns."
+          ],
+          "required_assumptions": [
+            "The ketone body assay used was sufficiently sensitive.",
+            "Three days is an ecologically relevant fasting duration for dolphins."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1.1",
+        "label": "BDH1 also has inactivating mutations and a large deletion in the shrew, but ACAT…",
+        "claim": "BDH1 also has inactivating mutations and a large deletion in the shrew, but ACAT1, HMGCS2, and HMGCL are intact in the shrew, suggesting acetoacetate and acetone are its primary ketone bodies.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found that this gene has several inactivating mutations and a large deletion in the shrew. Importantly, ACAT1, HMGCS2 and HMGCL are intact in the shrew, suggesting that acetoacetate and acetone are the primary ketone bodies in this species",
+        "evaluation": {
+          "node_id": "c1.7.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The shrew observation provides an important natural experiment: BDH1 loss without HMGCS2 loss.",
+            "The interpretation that acetoacetate and acetone are primary ketone bodies in shrews is logical.",
+            "This is consistent with BDH1 knockout mouse data (Otsuka et al., 2017) showing compensating increase in acetoacetate."
+          ],
+          "weaknesses": [
+            "No direct metabolic data from shrews to confirm this interpretation.",
+            "The shrew observation is tangential to the main narrative and receives limited analysis."
+          ],
+          "alternative_interpretations": [
+            "BDH1 loss in shrews could indicate unknown alternative enzymes for this conversion."
+          ],
+          "required_assumptions": [
+            "BDH1 is the sole enzyme converting acetoacetate to β-hydroxybutyrate in shrews."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.2",
+        "source": "c1.1.1",
+        "target": "c1.1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.3",
+        "source": "c1.1.1",
+        "target": "c1.1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.2",
+        "source": "c1.1.2",
+        "target": "c1.1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.3",
+        "source": "c1.1.2",
+        "target": "c1.1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.4",
+        "source": "c1.1.2",
+        "target": "c1.1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.3_c1.1.3.1",
+        "source": "c1.1.3",
+        "target": "c1.1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.1.1",
+        "source": "c1.5.2",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.2",
+        "source": "c1.5.1",
+        "target": "c1.5.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.1_c1.7.1.1",
+        "source": "c1.7.1",
+        "target": "c1.7.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 47,
+    "total_edges": 46,
+    "max_depth": 3,
+    "high_support_nodes": 35,
+    "low_support_nodes": 1,
+    "overall_assessment": "The paper presents 47 claims with strong overall support (35 high, 1 low)."
+  },
+  "final_review": null
+}
