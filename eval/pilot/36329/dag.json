@@ -1,0 +1,2732 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_36329",
+    "title": "Ultra-Rapid serial visual presentation reveals dynamics of feedforward and feedback processes in the ventral visual pathway",
+    "authors": [
+      "Yalda Mohsenzadeh",
+      "Sheng Qin",
+      "Radoslaw M Cichy",
+      "Dimitrios Pantazis"
+    ],
+    "url": "https://doi.org/10.7554/eLife.36329",
+    "abstract": "Human visual recognition activates a dense network of overlapping feedforward and recurrent neuronal processes, making it hard to disentangle processing in the feedforward from the feedback direction. Here, we used ultra-rapid serial visual presentation to suppress sustained activity that blurs the boundaries of processing steps, enabling us to resolve two distinct stages of processing with MEG multivariate pattern classification. The first processing stage was the rapid activation cascade of the bottom-up sweep, which terminated early as visual stimuli were presented at progressively faster rates. The second stage was the emergence of categorical information with peak latency that shifted later in time with progressively faster stimulus presentations, indexing time-consuming recurrent processing. Using MEG-fMRI fusion with representational similarity, we localized recurrent signals in early visual cortex. Together, our findings segregated an initial bottom-up sweep from subsequent feedback processing, and revealed the neural signature of increased recurrent processing demands for challenging viewing conditions.",
+    "word_count": 9210,
+    "processed_at": "2026-05-08T01:50:38.294897+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Ultra-RSVP segregates feedforward from recurrent processing in the ventral visua…",
+        "claim": "Ultra-RSVP segregates feedforward from recurrent processing in the ventral visual pathway, revealing that recurrent activity in early visual cortex compensates for disrupted bottom-up signals to facilitate visual object recognition.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Results Summary",
+        "verbatim_quote": "the rapid presentation of images segregated the activation cascade of the ventral visual pathway into two temporally dissociable processing stages, disentangling the initial bottom-up sweep from subsequent processing in high-level visual cortex.",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The study uses a creative paradigm (ultra-RSVP) to attempt temporal dissociation of feedforward and feedback processing.",
+            "Multiple converging analyses (decoding, temporal generalization, MEG-fMRI fusion) are employed to build the argument.",
+            "Behavioral data confirms participants can perform the task, validating that neural signals carry meaningful information."
+          ],
+          "weaknesses": [
+            "The claim that the paradigm 'segregates' feedforward from recurrent processing is overstated — the authors themselves acknowledge that local recurrent processes likely contribute to the early sweep and cannot be cleanly separated.",
+            "The second EVC peak in the 17 ms/pic condition did not reach statistical significance (c1.4.5), undermining a key piece of evidence for the feedback claim at the fastest rate.",
+            "The MEG and fMRI data come from different cohorts of participants, which introduces between-subject variability into the fusion analysis and weakens spatial localization claims.",
+            "The interpretation of delayed categorical peaks as 'recurrent processing' is one of several possible explanations; the paper does not rule out alternatives such as differential signal-to-noise ratios or differential mask interference patterns.",
+            "The study uses only face vs. object categorization with a fixed button mapping, limiting generalizability of the 'fundamental principles' claimed."
+          ],
+          "alternative_interpretations": [
+            "Delayed categorical information peaks could reflect reduced signal-to-noise rather than increased recurrent processing — degraded feedforward signals simply take longer to accumulate sufficient evidence for categorization without requiring feedback.",
+            "The bimodal EVC dynamics could reflect processing of mask stimuli rather than target-related feedback, as masks are presented both before and after the target in the RSVP stream.",
+            "Differences in onset latencies could reflect differential adaptation or forward masking effects rather than local recurrent interactions."
+          ],
+          "required_assumptions": [
+            "That ultra-RSVP selectively suppresses recurrent/sustained activity more than feedforward activity.",
+            "That MEG decoding dynamics directly reflect the engagement of specific neural processing stages (feedforward vs. feedback).",
+            "That MEG-fMRI fusion from different participant cohorts provides valid spatial localization.",
+            "That mask stimuli in RSVP selectively interfere with recurrent but not feedforward processing."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is the root claim that aggregates all sub-claims. While the overall pattern of results is suggestive, the critical evidence for feedback localization in EVC is weakened by the non-significant second peak at 17 ms/pic and the reliance on cross-cohort fusion. The claim overreaches in asserting 'segregation' when the data show graded effects that are consistent with but not uniquely diagnostic of feedback processing.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "The ultra-RSVP paradigm successfully segregates the initial bottom-up sweep from…",
+        "claim": "The ultra-RSVP paradigm successfully segregates the initial bottom-up sweep from subsequent feedback-influenced processing into two temporally dissociable stages in the ventral pathway.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we dissected the ventral pathway activation cascade into two temporally distinct processing stages: the initial bottom-up sweep and the subsequent emergence of categorical information.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The inverse relationship between early peak latencies and late categorical peak latencies across conditions provides converging evidence for two dissociable stages.",
+            "Temporal generalization analysis demonstrates progressively more transient dynamics with faster rates, supporting the claim of reduced temporal overlap.",
+            "MEG-fMRI fusion shows bimodal EVC dynamics in RSVP conditions versus unimodal in slow presentation."
+          ],
+          "weaknesses": [
+            "The 'segregation' is relative, not absolute — the authors acknowledge local recurrent processes likely still contribute to the early sweep (contradicted somewhat by c1.1.3).",
+            "The two 'stages' could reflect fundamentally different processes in RSVP (e.g., target vs. mask processing) rather than a clean separation of feedforward and feedback for the same stimulus.",
+            "Without a method to definitively label neural activity as feedforward vs. feedback (e.g., laminar recordings, causal perturbation), the temporal dissociation remains correlational.",
+            "The 500 ms/pic data comes from a different cohort with a different task, making cross-condition comparisons less clean."
+          ],
+          "alternative_interpretations": [
+            "The two temporal stages could reflect separate processing of target and post-target mask stimuli rather than feedforward vs. feedback processing of the target alone.",
+            "The early peak truncation in RSVP may reflect forward masking effects on the target rather than selective suppression of recurrent processing."
+          ],
+          "required_assumptions": [
+            "That RSVP masking selectively disrupts recurrent/sustained activity while leaving the feedforward sweep relatively intact.",
+            "That the temporal gap between early and late decoding peaks corresponds to the boundary between feedforward and feedback processing rather than other factors."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim of 'successful segregation' is the core methodological assertion of the paper. While the data are consistent with this interpretation, the lack of causal evidence (e.g., TMS disruption at specific time points) means the 'segregation' is inferred rather than demonstrated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "The initial bottom-up sweep is progressively disrupted with faster presentation …",
+        "claim": "The initial bottom-up sweep is progressively disrupted with faster presentation rates, as indexed by earlier peak latencies, later onset latencies, and reduced decoding accuracy.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The decreased decoding accuracy combined with the increasingly early peak latency and increasingly late onset latency for the RSVP conditions indicate that visual activity was disrupted over the first 100 ms.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Three independent metrics (peak latency, onset latency, decoding accuracy) all show consistent patterns across conditions.",
+            "Statistical tests are appropriate (sign permutation tests with cluster correction; bootstrap CIs for latencies).",
+            "Results replicate across grand total, within-face, and within-object analyses (c1.2.5).",
+            "The effect sizes are substantial — peak latency shifts of ~25 ms and onset shifts of ~40 ms."
+          ],
+          "weaknesses": [
+            "The onset latency for the 500 ms/pic condition has a very wide confidence interval (9-53 ms), making comparisons with RSVP onsets less precise.",
+            "Comparing across cohorts (500 ms/pic vs. RSVP) introduces between-subject variability that could confound latency differences.",
+            "The label 'disruption' is descriptive; lower decoding accuracy and earlier peaks are expected consequences of shorter stimulus durations and masking, without necessarily indicating disruption of a specific computational process."
+          ],
+          "alternative_interpretations": [
+            "Earlier peaks could reflect truncation of the neural response by mask onset rather than disruption of the feedforward sweep per se — the signal is simply cut short.",
+            "Later onsets could reflect stronger forward masking from preceding images rather than reduced local recurrent interactions."
+          ],
+          "required_assumptions": [
+            "That decoding accuracy and latency shifts reflect disruption of the bottom-up sweep rather than simply reduced stimulus-driven signal.",
+            "That between-cohort comparisons for the 500 ms/pic condition are valid."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The empirical observations themselves (earlier peaks, later onsets, lower accuracy) are well-supported by the data. The interpretation of these observations as 'disruption of the bottom-up sweep' is reasonable but involves an inferential step.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Categorical information emerges progressively later with faster presentation rat…",
+        "claim": "Categorical information emerges progressively later with faster presentation rates, inversely related to the early sweep dynamics, which is inconsistent with a purely feedforward account of object recognition and indexes increased recurrent processing.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "This inverse relationship in peak latencies discounts a feedforward cascade as the sole explanation for categorical representations.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The inverse relationship between early and late peak latencies is a compelling finding — a purely feedforward account would predict correlated (not anti-correlated) delays.",
+            "All three pairwise categorical peak latency comparisons are statistically significant.",
+            "The argument is logically sound: if feedforward processing alone determined categorical emergence, timing should scale similarly with stimulus degradation."
+          ],
+          "weaknesses": [
+            "The inverse relationship is demonstrated across only 3 data points (conditions), which severely limits the strength of inference about the relationship between early and late peaks.",
+            "The claim that this is 'inconsistent with a purely feedforward account' assumes that feedforward processing should produce proportional delays, but complex feedforward systems with nonlinear dynamics could produce non-proportional effects.",
+            "The 'delayed propagation' alternative is dismissed too quickly — degraded feedforward signals could require more evidence accumulation at each hierarchical level, producing disproportionate delays at later stages even in a feedforward system.",
+            "The study cannot distinguish between recurrent processing that is necessary for recognition versus recurrent processing that occurs but is epiphenomenal."
+          ],
+          "alternative_interpretations": [
+            "In a purely feedforward system with noise, weaker initial signals could require longer integration times at downstream stages, producing the observed inverse relationship without any feedback.",
+            "Signal-to-noise differences across conditions could account for differential peak latencies without invoking recurrent processing.",
+            "The delayed categorical peak could reflect the processing of post-mask recovery rather than active recurrence."
+          ],
+          "required_assumptions": [
+            "That a feedforward cascade would produce proportionally delayed (not inversely delayed) peaks when early signals are weaker.",
+            "That the inverse relationship between early and late peaks cannot arise from purely feedforward mechanisms with noise or nonlinear dynamics.",
+            "That categorical decoding peak latency is a valid index of when recurrent processing 'solves' recognition."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is one of the paper's central theoretical claims. While the inverse relationship is a genuinely interesting finding, the logical argument against feedforward processing is not watertight. A feedforward system with stochastic accumulation could produce similar patterns.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Feedback activity is localized to early visual cortex (EVC) and coincides tempor…",
+        "claim": "Feedback activity is localized to early visual cortex (EVC) and coincides temporally with the emergence of categorical information in inferior temporal cortex (IT), as revealed by MEG-fMRI fusion.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The second EVC peak occurred at similar times as the peak in IT... This is consistent with feedback activity in EVC at the same time as IT solves visual object recognition.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "MEG-fMRI fusion provides a principled approach to combining temporal and spatial resolution.",
+            "The bimodal EVC dynamics in RSVP (but not slow presentation) is a striking finding that is consistent with feedback reactivation.",
+            "For the 34 ms/pic condition, the second EVC peak (169 ms) is close to the IT peak (166 ms), consistent with feedback from IT to EVC."
+          ],
+          "weaknesses": [
+            "The second EVC peak in the 17 ms/pic condition did NOT reach statistical significance (c1.4.5), which directly undermines this claim for the fastest condition — the one where feedback should be most needed.",
+            "The EVC-IT temporal coincidence for 34 ms/pic (Δ=3 ms) has p=0.06, which is not significant at conventional thresholds.",
+            "MEG and fMRI data come from different participant cohorts, introducing unknown between-subject variability into the fusion analysis.",
+            "The fMRI data were collected in a 500 ms per picture paradigm, not in an RSVP paradigm, so the fMRI RDMs may not reflect the spatial patterns relevant to RSVP processing.",
+            "The directionality of feedback (IT→EVC) cannot be inferred from temporal coincidence alone — simultaneous activity could reflect common input or lateral interactions."
+          ],
+          "alternative_interpretations": [
+            "The second EVC peak could reflect processing of mask stimuli that follow the target, not feedback related to target recognition.",
+            "Temporal coincidence of EVC and IT peaks does not demonstrate a causal feedback relationship — both regions could be driven by a common third source.",
+            "The bimodal EVC pattern could reflect two separate feedforward sweeps (target then mask) rather than feedforward + feedback."
+          ],
+          "required_assumptions": [
+            "That fMRI RDMs from a 500 ms/pic experiment are valid spatial references for RSVP neural processing.",
+            "That temporal coincidence of EVC and IT peaks implies feedback from IT to EVC.",
+            "That cross-cohort MEG-fMRI fusion provides reliable spatial localization.",
+            "That the second EVC peak reflects target-related (not mask-related) processing."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This claim has a significant internal contradiction: the key evidence (second EVC peak) fails to reach significance in the most critical condition (17 ms/pic, c1.4.5), and is only marginally significant for 34 ms/pic (p=0.06 for EVC-IT coincidence). The use of fMRI data collected under different experimental conditions from different participants is a serious methodological concern.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Ultra-RSVP suppresses persistent neural activity, confirming that transient dyna…",
+        "claim": "Ultra-RSVP suppresses persistent neural activity, confirming that transient dynamics under rapid presentation reveal distinct feedforward and feedback processing steps.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The increasingly transient activity in the RSVP conditions shows that neural activity continuously transformed stimulus information in a feedforward and feedback manner, will less neural resources used to maintain information.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Temporal generalization analysis is a well-established method for assessing sustained vs. transient neural representations.",
+            "The graded effect across three conditions (500 > 34 > 17 ms/pic in terms of off-diagonal generalization) provides strong evidence for progressively more transient activity.",
+            "The finding is internally consistent with the earlier peak latencies and narrower decoding windows reported in other analyses."
+          ],
+          "weaknesses": [
+            "This is largely an expected consequence of the RSVP paradigm — mask stimuli overwrite sustained neural patterns, making transient dynamics almost a trivial prediction.",
+            "The claim that transient dynamics 'reveal distinct feedforward and feedback processing steps' goes beyond what the temporal generalization analysis can demonstrate — it shows transience, not the identity of the processes.",
+            "No quantitative metric for 'degree of transience' is provided; the comparison is qualitative (visual inspection of matrix width)."
+          ],
+          "alternative_interpretations": [
+            "Transient dynamics in RSVP could simply reflect rapid succession of different stimuli overwriting neural patterns, rather than revealing distinct computational steps.",
+            "The narrow diagonal could reflect the brain processing each new mask image rather than distinct feedforward/feedback processing of the target."
+          ],
+          "required_assumptions": [
+            "That transient neural dynamics under RSVP specifically reveal the temporal structure of visual processing rather than simply reflecting stimulus-driven pattern changes from sequential mask presentations."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The observation of transient activity is well-supported. The interpretation that this 'reveals distinct processing steps' is more speculative.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Participants perform face detection well above chance even at extremely rapid pr…",
+        "claim": "Participants perform face detection well above chance even at extremely rapid presentation rates, demonstrating the visual system's robustness and that the underlying neural signals represent brain activity required to accomplish visual object recognition.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the underlying neural signals, while deprived, would still represent brain activity required to accomplish visual object recognition.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Behavioral performance is clearly above chance in both RSVP conditions with appropriate statistical tests (d' = 1.95 and 3.58).",
+            "The d' metric is appropriate for a signal detection framework in a yes/no task.",
+            "Significant difference between conditions confirms that the manipulation had graded effects on visibility.",
+            "Individual image decoding was significant in all three conditions, confirming meaningful neural signals."
+          ],
+          "weaknesses": [
+            "The claim that neural signals 'represent brain activity required to accomplish visual object recognition' is an inference — above-chance performance shows the system works, but does not demonstrate that the measured neural signals are the ones required for recognition.",
+            "The face detection task is binary (face present/absent), which is a relatively simple categorization; generalization to 'visual object recognition' broadly is not demonstrated.",
+            "Participants were trained before the experiment at 50 ms/pic, which could influence the strategies used."
+          ],
+          "alternative_interpretations": [
+            "Above-chance performance could be driven by low-level visual features (e.g., spatial frequency content of faces) rather than object recognition per se."
+          ],
+          "required_assumptions": [
+            "That face detection in an RSVP stream constitutes a valid proxy for visual object recognition.",
+            "That the measured MEG signals are the ones supporting behavioral performance."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The behavioral and decoding results are solid. The broader claim about 'brain activity required for recognition' involves an inferential leap from correlation to necessity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The findings establish three fundamental processing principles of object recogni…",
+        "claim": "The findings establish three fundamental processing principles of object recognition and provide constraints for computational models requiring recurrent architectures with variable timing.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Our results thus allow the identification of three fundamental processing principles of object recognition.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The three principles are clearly articulated and logically connected to the experimental findings.",
+            "The computational modeling implications are reasonable extrapolations from the data."
+          ],
+          "weaknesses": [
+            "Labeling these as 'fundamental processing principles' vastly overstates the evidence from a single study with 17 participants using only face/object categorization.",
+            "Principle 2 ('delays index increased recurrent processing') is circular reasoning — the authors define delays as evidence for recurrence and then claim delays index recurrence.",
+            "Principle 3 relies on the EVC feedback evidence, which has significant statistical weaknesses (non-significant second peak at 17 ms/pic, p=0.06 for 34 ms/pic coincidence).",
+            "The 'constraints for computational models' are vague and would need to be formalized to be genuinely useful.",
+            "The study uses only two categories (faces and objects) and a binary task — this severely limits the claim of establishing 'fundamental' principles of object recognition."
+          ],
+          "alternative_interpretations": [
+            "The observed patterns could be specific to face detection under masking conditions rather than reflecting general principles of object recognition.",
+            "Compensatory processing time increases could reflect general degraded-signal processing rather than specifically recurrent visual computation."
+          ],
+          "required_assumptions": [
+            "That results from face/object discrimination under RSVP masking generalize to object recognition broadly.",
+            "That the statistical evidence is strong enough to support 'fundamental principles'.",
+            "That temporal delays uniquely index recurrent processing rather than any other compensatory mechanism."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The evidence supports interesting observations about RSVP neural dynamics. Elevating these to 'fundamental processing principles' is a rhetorical overreach that is not commensurate with the evidence base.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "Under rapid presentation, visual processes degrade by suppressing sustained neur…",
+        "claim": "Under rapid presentation, visual processes degrade by suppressing sustained neural signals, making neural activity transient and reducing the overlap of processes in space and time to enable disentangling distinct processing steps.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "under such rapid stimulus presentations, visual processes will degrade substantially by suppressing sustained neural signals that typically last hundreds of milliseconds.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Temporal generalization matrices clearly demonstrate increasingly transient dynamics with faster presentation rates.",
+            "The 500 ms/pic condition shows broad off-diagonal generalization while RSVP conditions show narrow diagonal patterns.",
+            "This is a well-motivated prediction that is straightforwardly confirmed by the data."
+          ],
+          "weaknesses": [
+            "The suppression of sustained signals is an expected consequence of rapid sequential stimulation — this is more a confirmation of a known property of visual masking than a novel discovery.",
+            "The claim that reduced overlap 'enables disentangling distinct processing steps' is an interpretation that goes beyond the temporal generalization evidence."
+          ],
+          "alternative_interpretations": [
+            "Transient dynamics could reflect the brain processing successive mask images rather than revealing distinct processing steps for the target."
+          ],
+          "required_assumptions": [
+            "That suppression of sustained signals reveals underlying processing steps rather than simply reflecting stimulus-driven dynamics."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The early peaks at approximately 100 ms for RSVP conditions explicitly delineate…",
+        "claim": "The early peaks at approximately 100 ms for RSVP conditions explicitly delineate the first sweep of visual activity, separating it from later neural activity that includes feedback influences from the top of the visual hierarchy.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the early peaks at 100 and 96 ms for the 34 and 17 ms per picture RSVP conditions, respectively, explicitly delineate the first sweep of visual activity, differentiating it from later neural activity that includes feedback influences from the top of the visual hierarchy.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Peak latencies around 100 ms are consistent with the known timing of the feedforward sweep reaching higher visual areas.",
+            "The statistical significance of peak latency differences across conditions supports the claim of temporally distinct dynamics."
+          ],
+          "weaknesses": [
+            "The claim that peaks at 100 ms 'explicitly delineate' the first sweep is an interpretation — 100 ms is within the range where both feedforward and early recurrent processes are active.",
+            "The authors themselves note that local recurrent processes may contribute to activity within this time window, which contradicts the claim of 'explicit delineation'.",
+            "The 500 ms/pic condition peaks at 121 ms, suggesting the RSVP peaks may be truncated versions of the same process rather than a cleanly delineated first sweep."
+          ],
+          "alternative_interpretations": [
+            "The early peak in RSVP may simply reflect the truncation of an ongoing process by mask onset rather than a natural boundary of the feedforward sweep."
+          ],
+          "required_assumptions": [
+            "That ~100 ms is a valid temporal boundary for the feedforward sweep.",
+            "That mask-induced truncation of neural activity cleanly separates feedforward from feedback processes."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "There is some internal tension with c1.2.2, which argues that even the earliest decoding reflects recurrent interactions.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "The first wave in RSVP conditions is disproportionately characterized by feedfor…",
+        "claim": "The first wave in RSVP conditions is disproportionately characterized by feedforward propagating signals rather than local recurrent activity, because any possible recurrent processes in EVC were suppressed immediately after 80 or 87 ms.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "it is reasonable to construe the first wave in the RSVP conditions as disproportionately characterized by feedforward propagating signals rather than local recurrent activity.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The EVC MEG-fMRI fusion data showing weak, early-peaking dynamics for RSVP conditions is consistent with reduced recurrent activity.",
+            "The contrast with sustained EVC dynamics in the 500 ms/pic condition is informative."
+          ],
+          "weaknesses": [
+            "This claim directly contradicts c1.2.2 and c1.2.4, which argue that even the early decoding onsets incorporate recurrent interactions. The paper simultaneously claims the first wave is 'disproportionately feedforward' and that onset latencies reflect early recurrent interactions.",
+            "The qualifier 'disproportionately' is vague and unfalsifiable — any mix of feedforward and recurrent activity could be described as 'disproportionately' one or the other.",
+            "The evidence that recurrent processes 'were suppressed immediately after 80 or 87 ms' is based on the observation that EVC similarity drops — but this could also reflect the mask overwriting the target representation."
+          ],
+          "alternative_interpretations": [
+            "The weak EVC dynamics after 80-87 ms could reflect mask processing overwriting target representations rather than suppression of recurrent processing specifically."
+          ],
+          "required_assumptions": [
+            "That weak MEG-fMRI similarity after the early peak reflects suppression of recurrent target processing rather than onset of mask processing.",
+            "That 'disproportionately feedforward' is a meaningful and testable characterization."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Internal contradiction: this claim is in tension with c1.2.2 and c1.2.4, which emphasize that recurrent interactions influence even the earliest measurable responses. The paper tries to have it both ways — arguing that early activity is both 'disproportionately feedforward' AND influenced by local recurrence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Peak latencies of grand total target decoding shift progressively earlier with f…",
+        "claim": "Peak latencies of grand total target decoding shift progressively earlier with faster presentation rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "peak latencies shifted earlier with faster stimulus presentation rates",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values with 95% confidence intervals are provided: 121 ms, 100 ms, 96 ms.",
+            "All pairwise differences are statistically significant.",
+            "The ordinal relationship is monotonic and consistent."
+          ],
+          "weaknesses": [
+            "The difference between 100 ms and 96 ms (4 ms) is small relative to the confidence intervals, though reportedly significant.",
+            "The 500 ms/pic comparison involves a different cohort."
+          ],
+          "alternative_interpretations": [
+            "Earlier peaks could reflect truncation by subsequent mask stimuli rather than a property of the feedforward sweep itself."
+          ],
+          "required_assumptions": [
+            "That peak latency shifts reflect changes in the feedforward sweep dynamics rather than mask-induced truncation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Onset latencies shift later with faster presentation rates, suggesting that loca…",
+        "claim": "Onset latencies shift later with faster presentation rates, suggesting that local recurrent interactions already influence the earliest measurable neural decoding responses.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The fact that different stimulus durations have different onsets suggests that interactions with recurrent activity are already incorporated when the first decoding onsets emerge, arguing against the view that the early part of the decoding time course can be uniquely tied to feedforward alone.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Onset latency differences across conditions are statistically significant.",
+            "The reasoning is logical — if only feedforward activity were present, onset latencies should be independent of stimulus duration."
+          ],
+          "weaknesses": [
+            "The 500 ms/pic onset has an extremely wide CI (9-53 ms), suggesting substantial uncertainty.",
+            "Later onsets in RSVP could reflect forward masking by preceding stimuli rather than reduced local recurrence — the 5 masks before the target could delay the emergence of target-specific decoding.",
+            "The interpretation that onset differences indicate recurrent interactions assumes that feedforward onset timing is invariant to stimulus context, which is not necessarily true (e.g., forward masking, adaptation).",
+            "This claim creates internal tension with c1.1.3, which argues the first wave is 'disproportionately feedforward'."
+          ],
+          "alternative_interpretations": [
+            "Forward masking from preceding images in the RSVP sequence could delay the onset of target-specific neural responses without involving recurrent interactions.",
+            "Reduced signal-to-noise in RSVP conditions could push onset detection later without implying different underlying processing."
+          ],
+          "required_assumptions": [
+            "That onset latency differences reflect recurrent interactions rather than forward masking, adaptation, or SNR differences.",
+            "That feedforward onset timing should be invariant to preceding stimulus context."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The forward masking alternative is a significant concern that the paper does not adequately address. In RSVP, 5 mask images precede the target, which could delay the emergence of target-specific decodable information through purely feedforward mechanisms.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Decoding accuracies decrease with faster stimulus presentation rates, reflecting…",
+        "claim": "Decoding accuracies decrease with faster stimulus presentation rates, reflecting less stimulus information encoded by neuronal signals at rapid presentation rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "decoding accuracies decreased with progressively shorter stimulus presentation times, indicating that neuronal signals encoded less stimulus information at rapid presentation rates.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "This is a straightforward empirical observation that is clearly supported by the data (Figure 2b).",
+            "The graded relationship across three conditions is consistent and expected.",
+            "Both behavioral and neural measures show corresponding decreases with faster presentation."
+          ],
+          "weaknesses": [
+            "This is an entirely expected finding — shorter stimulus durations naturally produce weaker neural responses and lower decoding accuracy.",
+            "The 500 ms/pic comparison involves a different cohort with a different task."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That decoding accuracy reflects meaningful stimulus encoding rather than general signal properties."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is a solid but unsurprising observation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "The variable onset latencies argue against the view that the early part of the d…",
+        "claim": "The variable onset latencies argue against the view that the early part of the decoding time course can be uniquely tied to feedforward processing alone.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "arguing against the view that the early part of the decoding time course can be uniquely tied to feedforward alone",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is sound in principle — if feedforward processing were the sole contributor to early decoding, onset should not depend on stimulus duration."
+          ],
+          "weaknesses": [
+            "Forward masking from preceding RSVP images provides a straightforward feedforward explanation for delayed onsets that does not require invoking recurrent processing.",
+            "The 500 ms/pic condition has no preceding masks, so its earlier onset could reflect absence of forward masking rather than presence of recurrent processing.",
+            "This claim is in tension with c1.1.3, which characterizes the early wave as 'disproportionately feedforward'."
+          ],
+          "alternative_interpretations": [
+            "Onset latency differences could be fully explained by forward masking effects in the RSVP paradigm.",
+            "Reduced SNR from shorter stimulus durations could push onset detection later in a purely feedforward system."
+          ],
+          "required_assumptions": [
+            "That forward masking and SNR differences cannot account for the observed onset latency shifts.",
+            "That feedforward onset timing is invariant to preceding stimulus context."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The forward masking confound is a critical weakness that undermines this interpretive claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5",
+        "label": "These findings generalize to within-category (within-face and within-object) ima…",
+        "claim": "These findings generalize to within-category (within-face and within-object) image classification, confirming the reliability of the results.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We confirmed the generalization and reliability of our findings, as our results were similar to the grand total decoding time series.",
+        "evaluation": {
+          "node_id": "c1.2.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Within-category analyses provide independent replication of the grand total findings.",
+            "Both face and object categories show the same ordinal patterns.",
+            "This controls for the possibility that the grand total results are driven solely by between-category differences."
+          ],
+          "weaknesses": [
+            "With only 12 images per category, within-category decoding may have limited power.",
+            "Peak and onset latency values for within-category analyses are summarized in a table (Table 1) but statistical significance of individual comparisons is not fully detailed in the text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That 12 images per category provide sufficient statistical power for within-category decoding."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Good replication analysis that strengthens the main findings.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6",
+        "label": "Reduced early recurrent activity in RSVP conditions is caused by both limited st…",
+        "claim": "Reduced early recurrent activity in RSVP conditions is caused by both limited stimulus evidence accumulation from shorter presentation times and disruption of recurrent processing by mask stimuli.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Reduced early recurrent activity in the RSVP conditions could be due to two reasons. First, shorter stimulus presentation times resulted in limited stimulus evidence accumulation... And second, the mask stimuli disrupted recurrent processing of the target in the RSVP conditions.",
+        "evaluation": {
+          "node_id": "c1.2.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The two proposed mechanisms (limited accumulation and mask disruption) are both plausible and consistent with the data.",
+            "The authors appropriately link each mechanism to specific empirical observations (onset latencies and transient dynamics)."
+          ],
+          "weaknesses": [
+            "These are speculative explanations without direct evidence — the study cannot disambiguate the relative contributions of stimulus duration and masking.",
+            "The two RSVP conditions differ in both stimulus duration AND masking timing, confounding these factors.",
+            "No control condition (e.g., single image at 17 ms without masks) is used to separate stimulus duration from masking effects."
+          ],
+          "alternative_interpretations": [
+            "Forward masking from preceding stimuli could be a third mechanism that is not discussed.",
+            "The two proposed mechanisms may not be independent — shorter durations inherently change the temporal relationship between target and mask."
+          ],
+          "required_assumptions": [
+            "That the two mechanisms (limited accumulation and mask disruption) are the primary causes of reduced early recurrent activity.",
+            "That other factors (e.g., forward masking, adaptation) are negligible."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Reasonable speculation but not directly supported by the experimental design.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The peak latency of categorical division increases progressively with faster pre…",
+        "claim": "The peak latency of categorical division increases progressively with faster presentation rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The peak latency increased as presentation rates became progressively faster.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values with 95% CIs: 136 ms, 169 ms, 197 ms.",
+            "All pairwise differences are statistically significant.",
+            "The monotonic relationship is consistent and the effect sizes are large (~60 ms range)."
+          ],
+          "weaknesses": [
+            "The 17 ms/pic condition has a wider CI (184-218 ms), reflecting more uncertainty.",
+            "The 500 ms/pic comparison involves a different cohort."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That categorical peak latency reflects the time of maximal categorical neural representation rather than an artifact of analysis choices."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is a clearly demonstrated empirical finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "If core object recognition were solved in a purely feedforward manner, categoric…",
+        "claim": "If core object recognition were solved in a purely feedforward manner, categorical signals would emerge with comparable dynamics regardless of stimulus presentation rates — but they do not.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "categorical information did not arise directly in a purely feedforward mode of processing, as this would predict comparable temporal dynamics in all conditions.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is clearly stated — purely feedforward processing should produce comparable dynamics.",
+            "The data show clearly different dynamics across conditions."
+          ],
+          "weaknesses": [
+            "The prediction that a feedforward system would show 'comparable dynamics regardless of stimulus presentation rates' is oversimplified. A feedforward system processing degraded inputs could show delayed categorical emergence due to longer evidence accumulation at each stage.",
+            "The paper does not formally model what a feedforward system would predict under these conditions.",
+            "Nonlinear feedforward dynamics (e.g., thresholding effects) could produce disproportionate delays for weaker inputs."
+          ],
+          "alternative_interpretations": [
+            "A feedforward system with noisy, weak inputs could require longer integration at downstream stages, producing delayed categorical peaks without any feedback.",
+            "Differential interference from masks at different rates could produce different categorical latencies in a purely feedforward system."
+          ],
+          "required_assumptions": [
+            "That a purely feedforward system would produce comparable temporal dynamics regardless of input degradation.",
+            "That the RSVP manipulation selectively affects feedback rather than also modifying feedforward processing dynamics."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The central logical argument is reasonable but relies on a simplified model of feedforward processing that may not hold.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The delayed categorical information is consistent with recurrent interactions wi…",
+        "claim": "The delayed categorical information is consistent with recurrent interactions within the ventral stream facilitating the emergence of categorical information by enhancing stimulus information in challenging visual tasks.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "it is consistent with the idea that recurrent interactions within the ventral stream facilitate the emergence of categorical information by enhancing stimulus information in challenging visual tasks.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The interpretation is consistent with the data pattern and with theories of recurrent processing in visual recognition.",
+            "MDS visualizations at peak latencies show categorical structure in all conditions."
+          ],
+          "weaknesses": [
+            "This is an interpretation of the data, not a direct demonstration of recurrent interactions facilitating categorical information.",
+            "No causal evidence (e.g., TMS disruption of feedback) is provided.",
+            "The word 'consistent with' appropriately hedges the claim, but the paper sometimes presents it more definitively elsewhere."
+          ],
+          "alternative_interpretations": [
+            "Delayed categorical emergence could reflect weaker feedforward signals requiring more integration time without any recurrent facilitation.",
+            "The categorical information could emerge through purely lateral interactions within IT rather than feedback to EVC."
+          ],
+          "required_assumptions": [
+            "That delayed categorical emergence specifically indexes recurrent processing rather than other mechanisms.",
+            "That recurrent interactions 'enhance' stimulus information rather than simply requiring more time to process degraded inputs."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "An alternative explanation of variable peak latencies due to delayed propagation…",
+        "claim": "An alternative explanation of variable peak latencies due to delayed propagation of feedforward signals is unlikely, because the peaks in the feedforward sweep were inversely related to the peaks in categorical information.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "An alternative explanation of the variable peak latencies due to delayed propagation of feedforward signals is unlikely. Instead of observing a graded increase in latencies, the peaks in the feedforward sweep were inversely related to the peaks in categorical information.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The inverse relationship between early and late peaks is indeed inconsistent with a simple proportional delay model.",
+            "The argument is logically structured."
+          ],
+          "weaknesses": [
+            "The claim that delayed feedforward propagation would produce 'graded increases in latencies' is stated without formal justification. Nonlinear feedforward systems could produce inverse relationships.",
+            "With only 3 data points, the 'inverse relationship' could also be described as two independent effects (mask-induced truncation of early activity + SNR-dependent delay of categorical emergence) that happen to go in opposite directions.",
+            "The paper does not model what different feedforward architectures would predict."
+          ],
+          "alternative_interpretations": [
+            "The early peak shift reflects mask-induced truncation (a physical constraint), while the late peak shift reflects SNR-dependent accumulation time — two independent mechanisms that happen to produce an inverse pattern without requiring feedback."
+          ],
+          "required_assumptions": [
+            "That delayed feedforward propagation would produce proportional (not inverse) latency shifts at different processing stages.",
+            "That the inverse relationship cannot arise from two independent mechanisms."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The dismissal of the feedforward alternative is premature without formal modeling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5",
+        "label": "The results are unlikely to be confounded by motor-related signals because of th…",
+        "claim": "The results are unlikely to be confounded by motor-related signals because of the delayed response design, MEG-fMRI fusion localization to IT, and motor preparation typically occurring 300-400 ms after stimulus onset.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "our experimental design used a delayed response design for the RSVP conditions (response was prompted 0.7–1 s after the offset of the stimulus)... motor-preparation signals occurs considerably later (300-400 ms after stimulus onset)",
+        "evaluation": {
+          "node_id": "c1.3.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The delayed response design (0.7-1 s delay) is a reasonable control for motor artifacts.",
+            "The 500 ms/pic condition has no motor response requirement at all.",
+            "Motor preparation at 300-400 ms is later than the reported effects (<200 ms).",
+            "MEG-fMRI fusion localizes categorical information to IT, not motor cortex."
+          ],
+          "weaknesses": [
+            "Motor preparation timing of 300-400 ms is cited as a single reference (Thorpe et al., 1996), and more recent work suggests motor preparation can begin earlier under some conditions.",
+            "The fixed button mapping means that the face-present motor plan is always associated with face stimuli, creating a confound that the delayed response may not fully eliminate."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That the 0.7-1 s delay is sufficient to prevent motor preparation signals from overlapping with the analysis window.",
+            "That motor preparation does not begin before 200 ms post-stimulus."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The motor confound argument is well-addressed, though a counterbalanced button mapping would have been preferable.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "MEG-fMRI fusion reveals bimodal dynamics in EVC for RSVP conditions, with a firs…",
+        "claim": "MEG-fMRI fusion reveals bimodal dynamics in EVC for RSVP conditions, with a first peak reflecting the feedforward sweep and a second peak reflecting feedback activity, whereas the 500 ms condition shows a single sustained peak.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "while EVC had a single peak at 104 ms and persistent representations over hundreds of milliseconds for the 500 ms per picture condition, its dynamics were transient and bimodal for the RSVP conditions.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The bimodal vs. unimodal distinction between RSVP and slow presentation is clearly demonstrated for the 34 ms/pic condition.",
+            "The approach of combining MEG temporal resolution with fMRI spatial resolution is methodologically innovative."
+          ],
+          "weaknesses": [
+            "The second peak for 17 ms/pic is NOT significant (c1.4.5), so 'bimodal dynamics for RSVP conditions' is only half-supported.",
+            "The characterization of the first peak as 'feedforward' and second as 'feedback' is an interpretation — both peaks occur in EVC, and the second could reflect mask-related feedforward processing.",
+            "The fMRI data come from a different experiment with different stimulus timing, different participants, and no RSVP — this is a fundamental limitation of the fusion approach."
+          ],
+          "alternative_interpretations": [
+            "The second EVC peak could reflect the arrival of a new feedforward sweep related to the post-target mask stimuli.",
+            "The bimodal pattern could reflect an initial transient response followed by a sustained but delayed response to the target, both feedforward in nature."
+          ],
+          "required_assumptions": [
+            "That fMRI spatial patterns from a 500 ms/pic experiment are appropriate references for RSVP processing.",
+            "That the second EVC peak reflects feedback rather than mask-related feedforward activity."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The 34 ms/pic bimodal dynamics are compelling; the 17 ms/pic dynamics are not statistically supported. See c1.4.5.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "The second EVC peak occurs at approximately the same time as the IT peak for bot…",
+        "claim": "The second EVC peak occurs at approximately the same time as the IT peak for both RSVP conditions, consistent with feedback from IT to EVC.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The second peak in EVC occurred at similar times as the peak in IT",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The temporal proximity of the second EVC peak and IT peak is a striking pattern (Δ=3 ms for 34 ms/pic, Δ=7 ms for 17 ms/pic)."
+          ],
+          "weaknesses": [
+            "For 34 ms/pic, the p-value is 0.06, which is NOT significant at conventional thresholds. The authors report this value but do not explicitly acknowledge that it fails the significance criterion.",
+            "For 17 ms/pic, the second EVC peak itself is not significant, making the Δ=7 ms comparison questionable — you cannot meaningfully compare the latency of a non-significant peak.",
+            "Temporal coincidence does not establish directionality — the EVC and IT peaks could both be driven by a common third source."
+          ],
+          "alternative_interpretations": [
+            "Simultaneous EVC and IT activation could reflect parallel processing rather than IT→EVC feedback.",
+            "Both regions could be reactivated by post-target mask processing at the same time."
+          ],
+          "required_assumptions": [
+            "That temporal coincidence implies causal feedback from IT to EVC.",
+            "That non-significant peaks can be meaningfully compared in latency analyses.",
+            "That p=0.06 is close enough to significance to support the claim."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "The statistical evidence for this claim is inadequate: p=0.06 for 34 ms/pic and a non-significant second EVC peak for 17 ms/pic. This is a key weakness of the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "The peak-to-peak latency between EVC and IT increases with faster presentation r…",
+        "claim": "The peak-to-peak latency between EVC and IT increases with faster presentation rates, reflecting both progressively shorter EVC peak latencies and progressively longer IT peak latencies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The peak-to-peak latency between EVC and IT increased as viewing conditions became increasingly challenging with faster presentation rates.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values: Δ=27 ms, Δ=79 ms, Δ=115 ms.",
+            "All pairwise differences are statistically significant.",
+            "The decomposition into EVC shortening and IT lengthening is informative."
+          ],
+          "weaknesses": [
+            "The EVC peaks for RSVP conditions are based on the first of two peaks (bimodal dynamics), while for 500 ms/pic it is a single peak — this makes the comparison somewhat apples-to-oranges.",
+            "The different cohorts for MEG and fMRI add uncertainty to the latency estimates."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That comparing first EVC peaks across conditions (unimodal vs. bimodal) is valid.",
+            "That cross-cohort fusion provides reliable peak latency estimates."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "EVC reengagement when categorical information emerges in IT is consistent with t…",
+        "claim": "EVC reengagement when categorical information emerges in IT is consistent with theories that feedback signals fill in details in an initially established scene, propagating partial responses back to EVC.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Reengagement of EVC is consistent with theories positing that feedback signals serve to add details in an initially established scene.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The theoretical framework (reverse hierarchy theory) is well-established and the interpretation is consistent with it.",
+            "The temporal coincidence of EVC reengagement and IT categorical emergence is consistent with feedback theories."
+          ],
+          "weaknesses": [
+            "This is a theoretical interpretation, not directly demonstrated by the data.",
+            "No evidence is provided that the EVC reengagement actually 'fills in' information — it could be epiphenomenal.",
+            "The critical evidence (second EVC peak) has statistical weaknesses (c1.4.2, c1.4.5)."
+          ],
+          "alternative_interpretations": [
+            "EVC reengagement could reflect mask processing rather than target-related feedback.",
+            "EVC activity could be a byproduct of IT activity without serving a computational function."
+          ],
+          "required_assumptions": [
+            "That EVC reengagement reflects functional feedback rather than an epiphenomenon.",
+            "That 'filling in' is the correct computational description of what feedback accomplishes."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Theoretically motivated but not directly tested.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "The second EVC peak for the 17 ms/pic condition was not strictly significant, po…",
+        "claim": "The second EVC peak for the 17 ms/pic condition was not strictly significant, possibly due to compromised neural representations at such fast stimulus presentation rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "though in this case the second peak was not strictly defined because the time course did not reach significance, possibly due to compromised neural representations at such fast stimulus presentation rates.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The authors transparently report that the second EVC peak for 17 ms/pic did not reach significance.",
+            "The acknowledgment that this may be due to compromised neural representations is a reasonable qualification."
+          ],
+          "weaknesses": [
+            "This transparency reveals a fundamental weakness in the feedback story — the condition where feedback should be most needed (17 ms/pic) fails to show significant evidence of feedback.",
+            "The authors still mark this non-significant peak on the figure and discuss it as if it supports their argument, which is inappropriate."
+          ],
+          "alternative_interpretations": [
+            "The absence of significant feedback signals at 17 ms/pic could indicate that feedback does not occur at this rate, contradicting the overall narrative.",
+            "At 17 ms/pic, the system may operate in a predominantly feedforward mode despite the delayed categorical peak."
+          ],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is honestly reported but significantly undermines claims c1.4, c1.4.1, and c1.4.2 for the 17 ms/pic condition.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "Resolving feedback activity in EVC was possible with MEG-fMRI fusion because MEG…",
+        "claim": "Resolving feedback activity in EVC was possible with MEG-fMRI fusion because MEG temporal resolution disentangled slow fMRI hemodynamic responses that combine feedforward and feedback contributions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "resolving feedback activity in EVC was possible with MEG-fMRI fusion because MEG activation patterns disentangled slow fMRI hemodynamic responses in EVC that correspond to the combined contributions of feedforward and feedback visual activity.",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The methodological rationale is sound — MEG temporal resolution can in principle disambiguate feedforward and feedback contributions that are conflated in fMRI.",
+            "The fusion approach is methodologically innovative."
+          ],
+          "weaknesses": [
+            "The fMRI data were collected under 500 ms/pic conditions from a different cohort — the fMRI RDMs may not accurately represent the spatial patterns of processing during RSVP.",
+            "It is not demonstrated that fMRI EVC patterns contain separable feedforward and feedback contributions; the fusion approach assumes fMRI patterns are valid spatial references regardless of temporal dynamics.",
+            "The claim that MEG 'disentangled' feedforward and feedback contributions to fMRI is strong — MEG provided temporal resolution, but the spatial patterns are still inherited from fMRI collected under different conditions."
+          ],
+          "alternative_interpretations": [
+            "The fusion results could reflect the degree to which RSVP neural dynamics match the 500 ms/pic fMRI patterns at different times, rather than disentangling feedforward and feedback."
+          ],
+          "required_assumptions": [
+            "That fMRI spatial patterns from 500 ms/pic are valid references for RSVP neural processing.",
+            "That MEG temporal variation, when correlated with fMRI spatial patterns, can disambiguate feedforward and feedback contributions."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The methodological logic is creative but the cross-condition fMRI reference is a significant limitation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Temporal generalization analysis confirms that neural activity became increasing…",
+        "claim": "Temporal generalization analysis confirms that neural activity became increasingly transient at rapid presentation rates, with narrow diagonal decoding maps for RSVP versus broad off-diagonal maps for slow presentation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the RSVP conditions had narrow diagonal maps indicating transient neural patterns, with the 17 ms per picture RSVP narrower than the 34 ms per picture RSVP.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Temporal generalization is a well-validated method.",
+            "The progressive narrowing from 500 to 34 to 17 ms/pic is clearly demonstrated.",
+            "Statistical significance contours are shown."
+          ],
+          "weaknesses": [
+            "No quantitative comparison of temporal generalization width is provided — the comparison is qualitative.",
+            "This is an expected consequence of RSVP — mask stimuli continuously overwrite neural patterns."
+          ],
+          "alternative_interpretations": [
+            "Narrow diagonal patterns could reflect rapid succession of different stimulus representations (masks) rather than genuinely transient processing of the target."
+          ],
+          "required_assumptions": [
+            "That the diagonal width reflects the transience of target-related processing rather than the rate of stimulus change."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "The increasingly transient activity shows that neural activity continuously tran…",
+        "claim": "The increasingly transient activity shows that neural activity continuously transformed stimulus information with less neural resources used to maintain information.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The increasingly transient activity in the RSVP conditions shows that neural activity continuously transformed stimulus information in a feedforward and feedback manner, will less neural resources used to maintain information.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The inference from transient dynamics to continuous transformation of information is logical."
+          ],
+          "weaknesses": [
+            "The claim that information was continuously transformed 'in a feedforward and feedback manner' goes beyond what temporal generalization can show — the analysis demonstrates transience, not the nature (feedforward vs. feedback) of the transformations.",
+            "The phrase 'less neural resources used to maintain information' is speculative and not directly measured."
+          ],
+          "alternative_interpretations": [
+            "Transient dynamics could reflect continuous feedforward processing of sequential stimuli rather than a mix of feedforward and feedback processing of the target."
+          ],
+          "required_assumptions": [
+            "That transient neural dynamics indicate both feedforward and feedback transformations rather than just rapid stimulus succession."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Face detection performance was significantly above chance in both RSVP condition…",
+        "claim": "Face detection performance was significantly above chance in both RSVP conditions, with higher accuracy in the 34 ms/pic condition than the 17 ms/pic condition.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "participants performed the face detection task consistently above chance in the 17 ms per picture RSVP condition (sensitivity index d' ± SEM = 1.95 ± 0.11), and with high accuracy in the 34 ms per picture RSVP condition (d' ± SEM = 3.58 ± 0.16)",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "d' values with SEM are clearly reported.",
+            "Both conditions are above chance with appropriate statistical testing.",
+            "The difference between conditions is highly significant (P≪0.001).",
+            "n=17 is adequate for this type of behavioral measure."
+          ],
+          "weaknesses": [
+            "No individual-level data or distribution is shown — some participants may have been at or near chance in the 17 ms/pic condition.",
+            "The SEM values suggest reasonable consistency across participants."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That d' is an appropriate measure for this task.",
+            "That the two-alternative forced choice paradigm accurately reflects face detection ability."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Solid behavioral evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Neural responses resolved stimulus information at the level of individual images…",
+        "claim": "Neural responses resolved stimulus information at the level of individual images in all three viewing conditions, confirming that RSVP neural signals carry meaningful stimulus information.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we found that neural responses were resolved at the level of individual images in all 3 viewing conditions.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Individual image decoding (not just category-level) was significant in all three conditions.",
+            "Statistical significance was assessed with appropriate cluster-based permutation tests.",
+            "This confirms meaningful neural representations even at the fastest presentation rate."
+          ],
+          "weaknesses": [
+            "Decoding accuracy values are not explicitly reported in the text (only described as significant).",
+            "Significant decoding does not necessarily mean the representations are 'meaningful' for recognition — they could reflect low-level visual features."
+          ],
+          "alternative_interpretations": [
+            "Significant decoding could be driven by low-level stimulus properties (e.g., luminance, spatial frequency) rather than high-level object representations."
+          ],
+          "required_assumptions": [
+            "That significant decoding reflects meaningful stimulus-related neural processing."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "Principle 1: The brain compensates for early disruptions of the initial sweep th…",
+        "claim": "Principle 1: The brain compensates for early disruptions of the initial sweep through longer processing times at subsequent stages.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the brain compensates for early disruptions of the initial sweep through longer processing times at subsequent stages",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The inverse relationship between early disruption and late processing time is clearly demonstrated.",
+            "This principle is a reasonable summary of the observed data pattern."
+          ],
+          "weaknesses": [
+            "The word 'compensates' implies an active, purposeful mechanism — the data show a correlation between early disruption and late delay, not compensation.",
+            "Only 3 data points (conditions) support the claimed relationship — this is not sufficient to establish a 'fundamental principle'.",
+            "The causal direction is assumed (disruption causes compensation) but not demonstrated."
+          ],
+          "alternative_interpretations": [
+            "Longer processing times at later stages could reflect degraded signals taking longer to reach threshold rather than active compensation.",
+            "The relationship could be coincidental rather than reflecting a compensatory mechanism."
+          ],
+          "required_assumptions": [
+            "That the observed correlation represents a causal compensatory mechanism.",
+            "That 3 conditions are sufficient to establish a general principle."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "Principle 2: Delays in solving object recognition are an index of increased recu…",
+        "claim": "Principle 2: Delays in solving object recognition are an index of increased recurrent processing.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "delays in solving object recognition are an index of increased recurrent processing",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The reasoning is internally consistent within the paper's framework."
+          ],
+          "weaknesses": [
+            "This is circular reasoning: the authors infer recurrent processing from delays, then claim delays index recurrent processing.",
+            "No independent measure of recurrent processing (e.g., laminar recordings, directed connectivity, causal perturbation) is provided.",
+            "Many mechanisms besides recurrence could produce processing delays (noise, adaptation, forward masking).",
+            "Calling this a 'fundamental principle' based on correlational evidence from one study is unjustified."
+          ],
+          "alternative_interpretations": [
+            "Delays could index any number of computational mechanisms including accumulation, thresholding, or noise reduction — not specifically recurrence.",
+            "Delays could reflect the difficulty of the task rather than a specific neural mechanism."
+          ],
+          "required_assumptions": [
+            "That delays uniquely and specifically index recurrent processing.",
+            "That no other mechanism could produce the same pattern."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "The circularity in this claim is a significant logical weakness.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3",
+        "label": "Principle 3: Recurrent processing takes place in early visual cortex and coincid…",
+        "claim": "Principle 3: Recurrent processing takes place in early visual cortex and coincides in time with the emergence of categorical information in inferior-temporal cortex.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "such recurrent processing takes place in early visual cortex and coincides in time with the emergence of categorical information in inferior-temporal cortex.",
+        "evaluation": {
+          "node_id": "c1.7.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "MEG-fMRI fusion provides spatial localization that is more specific than sensor-space MEG alone.",
+            "The temporal coincidence of EVC and IT activity is consistent with this principle."
+          ],
+          "weaknesses": [
+            "The critical evidence (second EVC peak) is non-significant for 17 ms/pic and only marginally significant for 34 ms/pic (p=0.06 for temporal coincidence).",
+            "The fMRI reference data come from a different experimental context.",
+            "The term 'recurrent processing' is used without demonstrating directionality or causality."
+          ],
+          "alternative_interpretations": [
+            "EVC activity coincident with IT could reflect common drive from a third region rather than IT→EVC feedback.",
+            "The EVC activation could reflect processing of post-target masks."
+          ],
+          "required_assumptions": [
+            "That temporal coincidence implies feedback interaction.",
+            "That the EVC activation is related to target processing, not mask processing."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Statistical weaknesses in the underlying evidence (c1.4.2, c1.4.5) limit confidence in this principle.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.4",
+        "label": "This study demonstrates the existence of feedback activity in early visual corte…",
+        "claim": "This study demonstrates the existence of feedback activity in early visual cortex under ecologically valid conditions with natural images, going beyond prior work using highly controlled artificial stimuli.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Since our target stimuli were natural images of objects and faces, we demonstrated the existence of feedback activity in early visual cortex under more ecologically valid conditions.",
+        "evaluation": {
+          "node_id": "c1.7.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The use of natural face and object images is indeed more ecologically valid than Kanizsa figures or random dots.",
+            "The claim appropriately contextualizes the contribution relative to prior work."
+          ],
+          "weaknesses": [
+            "12 face and 12 object images is a very limited stimulus set for claiming 'ecologically valid conditions'.",
+            "The RSVP paradigm itself is not particularly ecologically valid — rapid sequential image presentation does not correspond to normal viewing.",
+            "The 'existence of feedback activity' is inferred from temporal coincidence without direct evidence of feedback (non-significant for 17 ms/pic)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That natural images in an RSVP paradigm constitute 'ecologically valid conditions'.",
+            "That the evidence for feedback activity is strong enough to claim its 'demonstration'."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The ecological validity claim is somewhat undermined by the highly artificial RSVP presentation format.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.5",
+        "label": "Recurrent signals originate from within the ventral pathway as recognition unfol…",
+        "claim": "Recurrent signals originate from within the ventral pathway as recognition unfolds and can exert their influence before top-down attentional modulations, rather than solely subserving slower top-down attention from frontoparietal sites.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "our study corroborates growing experimental evidence suggesting that recurrent signals also originate from within the ventral pathway as recognition unfolds, and can exert their influence before attentional modulations.",
+        "evaluation": {
+          "node_id": "c1.7.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The temporal dissociation argument (effects before 200 ms vs. attention at later times) is reasonable.",
+            "The second EVC peak (~170-200 ms) is indeed earlier than typical attentional modulation reports."
+          ],
+          "weaknesses": [
+            "The claim that these signals 'originate from within the ventral pathway' is not directly demonstrated — MEG-fMRI fusion identifies where activity occurs, not where it originates.",
+            "Face-related attention effects can occur as early as 170 ms (N170), overlapping with the observed effects.",
+            "The fixed face/non-face task could engage face-specific attentional templates that modulate early processing."
+          ],
+          "alternative_interpretations": [
+            "Face-specific attentional templates could modulate ventral pathway processing at these latencies.",
+            "The effects could reflect both ventral feedback and attentional modulation simultaneously."
+          ],
+          "required_assumptions": [
+            "That the observed effects are too early to reflect attentional modulation.",
+            "That the source of the signals can be determined from MEG-fMRI fusion."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.6",
+        "label": "Computational models of object recognition should incorporate variable-timing re…",
+        "claim": "Computational models of object recognition should incorporate variable-timing recurrent processes, where feedback activates early layers at the same time object representations emerge at later layers.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the timing of recurrent processes should not be predetermined and fixed, but vary depending on viewing conditions",
+        "evaluation": {
+          "node_id": "c1.7.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The computational implications are clearly articulated.",
+            "The suggestion of variable-timing recurrence is a useful insight for model development."
+          ],
+          "weaknesses": [
+            "These are vague recommendations rather than specific, testable model constraints.",
+            "The paper acknowledges it 'does not inform on the precise nature of computations needed' for feedback, limiting the utility of these constraints.",
+            "No computational modeling is performed to validate that these constraints would actually improve model performance."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That neural timing constraints are directly transferable to computational model architectures.",
+            "That the observed timing patterns reflect fundamental computational requirements rather than implementation-specific properties."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Reasonable but speculative implications for modeling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.7",
+        "label": "The reported recurrent signals are unlikely to reflect attentional modulations, …",
+        "claim": "The reported recurrent signals are unlikely to reflect attentional modulations, because rapid recurrent signals from the ventral pathway are involuntary and temporally dissociable from top-down attentional signals at later times.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Rapid recurrent signals originating within the ventral pathway are involuntary and temporally dissociable from top-down attentional signals that are typically reported at later times.",
+        "evaluation": {
+          "node_id": "c1.7.7",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The temporal argument (effects before 200 ms) is reasonable for excluding slow top-down attention.",
+            "The paper provides appropriate citations for the involuntary nature of rapid ventral feedback."
+          ],
+          "weaknesses": [
+            "Rapid attentional effects (e.g., feature-based attention, attentional templates) can occur within 150-200 ms, overlapping with the observed effects.",
+            "The face detection task specifically engages face-related attentional templates that could modulate processing at these latencies.",
+            "This is an argument by temporal dissociation, which is weaker than a direct test (e.g., attention manipulation)."
+          ],
+          "alternative_interpretations": [
+            "Task-relevant attentional templates for faces could modulate ventral processing at these latencies.",
+            "The distinction between 'involuntary ventral feedback' and 'rapid attention' may be artificial."
+          ],
+          "required_assumptions": [
+            "That rapid attentional modulation cannot occur at the latencies observed.",
+            "That the distinction between ventral feedback and rapid attention is empirically meaningful."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.8",
+        "label": "The ultra-RSVP paradigm challenges the view that rapid presentation blocks recur…",
+        "claim": "The ultra-RSVP paradigm challenges the view that rapid presentation blocks recurrent activity, and paves the way for investigating whether recurrent activity is an integral component of the neural correlates of consciousness.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "this interpretation has been challenged both here, with the reengagement of EVC late in the processing stream... future studies could also investigate whether recurrent activity is an integral component of the neural correlates of consciousness",
+        "evaluation": {
+          "node_id": "c1.7.8",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The challenge to the view that ultra-RSVP blocks all recurrent activity is supported by the late EVC reengagement data.",
+            "The connection to consciousness research is an interesting future direction."
+          ],
+          "weaknesses": [
+            "The paper's own evidence for recurrent activity under RSVP is partially non-significant (17 ms/pic second EVC peak).",
+            "The paper acknowledges it 'did not address whether such recurrent activity can arise in more effective masking conditions', significantly limiting the scope of the challenge.",
+            "The NCC discussion is entirely speculative with no supporting data."
+          ],
+          "alternative_interpretations": [
+            "The recurrent activity observed could be present because the RSVP masking was relatively ineffective (consistent with high d' values), not because RSVP cannot block recurrence."
+          ],
+          "required_assumptions": [
+            "That the observed late EVC activity genuinely reflects recurrent target processing rather than mask processing.",
+            "That these findings generalize to more effective masking conditions."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "An important conceptual point but the paper's own evidence is mixed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "Temporal generalization matrices show broad off-diagonal significant elements fo…",
+        "claim": "Temporal generalization matrices show broad off-diagonal significant elements for 500 ms/pic but narrow diagonal maps for RSVP, with 17 ms/pic narrower than 34 ms/pic.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 500 ms per picture condition had maps with broad off-diagonal significant elements characteristic of sustained representations, the RSVP conditions had narrow diagonal maps indicating transient neural patterns, with the 17 ms per picture RSVP narrower than the 34 ms per picture RSVP.",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The temporal generalization matrices clearly show the described patterns.",
+            "Statistical significance is assessed with appropriate cluster-based permutation tests.",
+            "The graded effect across 3 conditions is consistent and convincing."
+          ],
+          "weaknesses": [
+            "No quantitative metric is provided for comparing matrix widths across conditions.",
+            "The evidence is descriptive (visual comparison of matrices) rather than quantitative."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Solid empirical observation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Grand total decoding peaked at 121 ms (95% CI: 102-126 ms) for 500 ms/pic, 100 m…",
+        "claim": "Grand total decoding peaked at 121 ms (95% CI: 102-126 ms) for 500 ms/pic, 100 ms (94-107 ms) for 34 ms/pic, and 96 ms (93-99 ms) for 17 ms/pic; all significantly different (P<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 500 ms per picture condition reached a peak at 121 ms (95% confidence interval: 102-126 ms), preceded by the 34 ms per picture RSVP condition at 100 ms (94-107 ms), and finally the 17 ms per picture RSVP condition at 96 ms (93-99 ms)",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Numerical values with 95% CIs are provided.",
+            "All pairwise differences are statistically significant.",
+            "Appropriate statistical methods (bootstrap tests) are used."
+          ],
+          "weaknesses": [
+            "The 500 ms/pic comparison involves a different cohort.",
+            "The difference between 96 ms and 100 ms (4 ms) is small, though reportedly significant."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That bootstrap-derived CIs are appropriate for peak latency estimation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3.1",
+        "label": "EVC MEG-fMRI representational similarity showed strong sustained dynamics for 50…",
+        "claim": "EVC MEG-fMRI representational similarity showed strong sustained dynamics for 500 ms/pic but weak dynamics with early peak latencies of 80 ms and 87 ms for the RSVP conditions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "EVC time series had strong MEG-fMRI representational similarities over hundreds of milliseconds for the 500 ms per picture condition, whereas weak dynamics with early peak latencies (80 and 87 ms) for the RSVP conditions",
+        "evaluation": {
+          "node_id": "c1.1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The contrast between sustained 500 ms/pic EVC dynamics and transient RSVP EVC dynamics is clearly demonstrated in the MEG-fMRI fusion results.",
+            "Specific peak latency values are provided."
+          ],
+          "weaknesses": [
+            "This evidence comes from a cross-cohort fusion analysis, which introduces uncertainty.",
+            "The fMRI reference data were not collected under RSVP conditions."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That cross-cohort MEG-fMRI fusion provides valid EVC dynamics."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Peak latencies: 121 ms (500 ms/pic), 100 ms (34 ms/pic), 96 ms (17 ms/pic); all …",
+        "claim": "Peak latencies: 121 ms (500 ms/pic), 100 ms (34 ms/pic), 96 ms (17 ms/pic); all pairwise differences statistically significant (P<0.05, two-sided sign permutation tests).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 500 ms per picture condition reached a peak at 121 ms... preceded by the 34 ms per picture RSVP condition at 100 ms... and finally the 17 ms per picture RSVP condition at 96 ms (all statistically different; P<0.05; two-sided sign permutation tests).",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values, CIs, and statistical tests are reported.",
+            "All pairwise comparisons are significant."
+          ],
+          "weaknesses": [
+            "Between-cohort comparison for 500 ms/pic adds uncertainty."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Identical to c1.1.2.1; solid evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Onset latencies: 28 ms (9-53 ms) for 500 ms/pic, 64 ms (58-69 ms) for 34 ms/pic,…",
+        "claim": "Onset latencies: 28 ms (9-53 ms) for 500 ms/pic, 64 ms (58-69 ms) for 34 ms/pic, 70 ms (63-76 ms) for 17 ms/pic; all pairwise differences statistically significant (P<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 500 ms per picture condition had onset at 28 ms (9-53 ms), followed by the 34 ms per picture RSVP condition at 64 ms (58-69 ms), and finally the 17 ms per picture RSVP condition at 70 ms (63-76 ms) (all statistically different; P<0.05)",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values with CIs are provided.",
+            "All pairwise differences are statistically significant.",
+            "The graded relationship is monotonic."
+          ],
+          "weaknesses": [
+            "The 500 ms/pic onset CI is very wide (9-53 ms), suggesting substantial variability.",
+            "The between-cohort comparison adds uncertainty."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "The data are clear; the interpretation (recurrent interactions) is debatable.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5.1",
+        "label": "Within-face and within-object decoding time series showed the same ordinal relat…",
+        "claim": "Within-face and within-object decoding time series showed the same ordinal relationships in peak and onset latencies as the grand total analysis across all three conditions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "our results were similar to the grand total decoding time series: individual images were discriminated by neural responses; decoding accuracies were weaker for rapid stimulus presentations; and peak and onset latencies had the same ordinal relationship as in the grand total analysis",
+        "evaluation": {
+          "node_id": "c1.2.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Within-category analyses replicate the grand total findings.",
+            "Both face and object categories show consistent patterns.",
+            "Table 1 provides specific latency values."
+          ],
+          "weaknesses": [
+            "Statistical details for within-category comparisons are less fully reported than for grand total."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Good internal replication.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "Categorical division peaked at 136 ms (130-139 ms) for 500 ms/pic, 169 ms (165-1…",
+        "claim": "Categorical division peaked at 136 ms (130-139 ms) for 500 ms/pic, 169 ms (165-177 ms) for 34 ms/pic, and 197 ms (184-218 ms) for 17 ms/pic; all pairwise differences statistically significant (P<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the time series for the 500 ms per picture condition peaked at 136 ms (130-139 ms), followed by the 34 ms per picture RSVP at 169 ms (165-177 ms), and the 17 ms per picture RSVP at 197 ms (184-218 ms) (all statistically different; P<0.05)",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values with CIs are provided.",
+            "All pairwise differences are statistically significant.",
+            "Large effect sizes (~60 ms range)."
+          ],
+          "weaknesses": [
+            "Between-cohort comparison for 500 ms/pic.",
+            "Wider CI for 17 ms/pic (184-218 ms)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Solid empirical finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "MDS plots at peak latencies revealed strong categorical division for 500 ms/pic …",
+        "claim": "MDS plots at peak latencies revealed strong categorical division for 500 ms/pic and 34 ms/pic conditions, followed by weaker but still distinct categorical division in the 17 ms/pic condition.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "These plots revealed strong categorical division for the 500 and 34 ms per picture conditions, followed by weaker but still distinct categorical division in the 17 ms per picture condition.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "MDS provides an intuitive visualization of representational structure.",
+            "Categorical clustering is visible in all three conditions."
+          ],
+          "weaknesses": [
+            "MDS is a 2D approximation of high-dimensional structure and may distort relationships.",
+            "The description of '17 ms/pic weaker but distinct' is qualitative.",
+            "No quantitative metric for clustering strength is provided for the MDS visualizations."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "That MDS faithfully represents the structure of the 24×24 RDM."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Supportive visualization but qualitative.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "For 34 ms/pic RSVP: EVC first peak at 87 ms, second peak at 169 ms; IT peak at 1…",
+        "claim": "For 34 ms/pic RSVP: EVC first peak at 87 ms, second peak at 169 ms; IT peak at 166 ms.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "For the 34 ms per picture RSVP condition, an early peak at 87 ms was immediately followed by weak MEG-fMRI representational similarities, and then a second peak at 169 ms.",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Specific peak latency values are provided for both EVC and IT.",
+            "The bimodal pattern in EVC is clearly described."
+          ],
+          "weaknesses": [
+            "No explicit CI or statistical test for the second EVC peak (169 ms) is reported in this specific evidence claim.",
+            "The significance of the second peak relative to the trough between peaks is not formally tested."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "For 34 ms/pic, the bimodal EVC dynamics are the best-supported part of the feedback argument.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.2",
+        "label": "For 17 ms/pic RSVP: EVC first peak at 80 ms, second peak at 202 ms (not signific…",
+        "claim": "For 17 ms/pic RSVP: EVC first peak at 80 ms, second peak at 202 ms (not significant); IT peak at 195 ms.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "For the 17 ms per picture RSVP condition, we observed similar dynamics with an early peak at 80 ms and a second peak at 202 ms, though in this case the second peak was not strictly defined because the time course did not reach significance",
+        "evaluation": {
+          "node_id": "c1.4.1.2",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The authors transparently report the non-significance of the second EVC peak.",
+            "The pattern is qualitatively similar to the 34 ms/pic condition."
+          ],
+          "weaknesses": [
+            "The second EVC peak is NOT statistically significant — this fundamentally limits what can be concluded from this condition.",
+            "Despite non-significance, the authors mark this peak on figures and discuss it as supporting evidence, which is misleading."
+          ],
+          "alternative_interpretations": [
+            "The non-significant second peak could indicate that feedback activity does not occur at 17 ms/pic rates.",
+            "The apparent bimodal pattern could be noise."
+          ],
+          "required_assumptions": [
+            "That a non-significant peak can still be interpreted as supporting evidence for feedback."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "The non-significance is a critical limitation that the paper does not adequately address in its conclusions.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.3",
+        "label": "For 500 ms/pic: EVC had a single peak at 104 ms with persistent representations;…",
+        "claim": "For 500 ms/pic: EVC had a single peak at 104 ms with persistent representations; IT peak at 131 ms.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "EVC had a single peak at 104 ms and persistent representations over hundreds of milliseconds for the 500 ms per picture condition",
+        "evaluation": {
+          "node_id": "c1.4.1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear peak values are reported.",
+            "The single sustained peak pattern for 500 ms/pic contrasts clearly with RSVP bimodal dynamics.",
+            "Consistent with well-established visual processing timelines."
+          ],
+          "weaknesses": [
+            "This comes from a different cohort, so direct comparison with RSVP conditions involves between-subject variability."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2.1",
+        "label": "Second EVC peak vs IT peak difference: Δ=3 ms for 34 ms/pic (p=0.06) and Δ=7 ms …",
+        "claim": "Second EVC peak vs IT peak difference: Δ=3 ms for 34 ms/pic (p=0.06) and Δ=7 ms for 17 ms/pic (p≪0.001).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The second peak in EVC occurred at similar times as the peak in IT (Δ=3 ms for the 34 ms per picture RSVP condition, p=0.06; and Δ=7 ms for the 17 ms per picture RSVP condition, p≪0.001)",
+        "evaluation": {
+          "node_id": "c1.4.2.1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Specific latency differences and p-values are reported.",
+            "The p≪0.001 for 17 ms/pic appears highly significant."
+          ],
+          "weaknesses": [
+            "The p=0.06 for 34 ms/pic is NOT significant at conventional thresholds — this is the condition with the strongest bimodal EVC evidence.",
+            "For 17 ms/pic, the second EVC peak is itself not significant, making the Δ=7 ms comparison scientifically questionable.",
+            "The p≪0.001 for a non-significant peak comparison seems paradoxical and may reflect a methodological issue (testing whether two non-significant peaks differ in latency)."
+          ],
+          "alternative_interpretations": [
+            "The small and non-significant differences could reflect noise rather than meaningful temporal coincidence."
+          ],
+          "required_assumptions": [
+            "That latency differences between a non-significant peak and a significant peak are interpretable.",
+            "That p=0.06 provides meaningful support for the coincidence claim."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is perhaps the most problematic piece of evidence in the paper. The 34 ms/pic comparison (the stronger condition) fails significance, while the 17 ms/pic comparison (based on a non-significant peak) is reported as highly significant. This pattern raises methodological concerns.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.1",
+        "label": "EVC-IT peak-to-peak latency: Δ=27 ms (500 ms/pic), Δ=79 ms (34 ms/pic), Δ=115 ms…",
+        "claim": "EVC-IT peak-to-peak latency: Δ=27 ms (500 ms/pic), Δ=79 ms (34 ms/pic), Δ=115 ms (17 ms/pic); all significantly different (P<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Δ=27 ms for the 500 ms per picture condition; Δ=79 ms for the 34 ms per picture RSVP; and Δ=115 ms for the 17 ms per picture RSVP (all statistically different; two-sided bootstrap hypothesis tests; P<0.05).",
+        "evaluation": {
+          "node_id": "c1.4.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear numerical values are provided.",
+            "All pairwise differences are statistically significant.",
+            "The progressive increase in EVC-IT latency gap is convincing."
+          ],
+          "weaknesses": [
+            "The comparison uses first EVC peaks, which are different in nature across conditions (single vs. bimodal).",
+            "Between-cohort comparisons add uncertainty."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "d' = 1.95 ± 0.11 (SEM) for 17 ms/pic; d' = 3.58 ± 0.16 for 34 ms/pic; both above…",
+        "claim": "d' = 1.95 ± 0.11 (SEM) for 17 ms/pic; d' = 3.58 ± 0.16 for 34 ms/pic; both above chance, significantly different from each other (n=17; two-sided signed-rank test; P≪0.001).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "sensitivity index d' ± SEM = 1.95 ± 0.11), and with high accuracy in the 34 ms per picture RSVP condition (d' ± SEM = 3.58 ± 0.16)",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "d' values with SEM clearly reported.",
+            "Highly significant difference between conditions (P≪0.001).",
+            "Appropriate statistical test (signed-rank test) used.",
+            "n=17 is adequate."
+          ],
+          "weaknesses": [
+            "No individual-subject data distribution shown."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Clean, well-reported behavioral evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.6.1",
+        "label": "Purely feedforward deep neural network models often mislabel objects in challeng…",
+        "claim": "Purely feedforward deep neural network models often mislabel objects in challenging conditions such as incongruent backgrounds, ambiguous, or partially occluded inputs, whereas models incorporating recurrent connections are more robust.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "they often mislabel objects in challenging conditions, such as incongruent object-background pairings, or ambiguous and partially occluded inputs. Instead, models that incorporate recurrent connections are robust to partially occluded objects",
+        "evaluation": {
+          "node_id": "c1.7.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "This cites established findings from the computer vision literature.",
+            "The limitations of feedforward models on challenging stimuli are well-documented.",
+            "The advantage of recurrent models for occluded objects is supported by multiple studies."
+          ],
+          "weaknesses": [
+            "This is a literature claim, not an empirical finding from this study.",
+            "The relevance to RSVP processing specifically is indirect — the models deal with occlusion and incongruent backgrounds, not rapid sequential presentation."
+          ],
+          "alternative_interpretations": [
+            "Feedforward model failures on specific stimulus types may not be analogous to RSVP degradation, which involves a fundamentally different type of challenge."
+          ],
+          "required_assumptions": [
+            "That computational model behavior on occluded/ambiguous stimuli is relevant to RSVP neural processing."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-established literature finding, but the connection to the current study's RSVP paradigm is indirect.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.5",
+        "source": "c1.2",
+        "target": "c1.2.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.6",
+        "source": "c1.2",
+        "target": "c1.2.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.5",
+        "source": "c1.3",
+        "target": "c1.3.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.3",
+        "source": "c1.7",
+        "target": "c1.7.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.4",
+        "source": "c1.7",
+        "target": "c1.7.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.5",
+        "source": "c1.7",
+        "target": "c1.7.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.6",
+        "source": "c1.7",
+        "target": "c1.7.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.7",
+        "source": "c1.7",
+        "target": "c1.7.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.8",
+        "source": "c1.7",
+        "target": "c1.7.8",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.3_c1.1.3.1",
+        "source": "c1.1.3",
+        "target": "c1.1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.5_c1.2.5.1",
+        "source": "c1.2.5",
+        "target": "c1.2.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.2",
+        "source": "c1.4.1",
+        "target": "c1.4.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.3",
+        "source": "c1.4.1",
+        "target": "c1.4.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.2.1",
+        "source": "c1.4.2",
+        "target": "c1.4.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.1",
+        "source": "c1.4.3",
+        "target": "c1.4.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.6_c1.7.6.1",
+        "source": "c1.7.6",
+        "target": "c1.7.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 55,
+    "total_edges": 54,
+    "max_depth": 3,
+    "high_support_nodes": 26,
+    "low_support_nodes": 2,
+    "overall_assessment": "The paper presents 55 claims with mixed overall support (26 high, 2 low)."
+  },
+  "final_review": null
+}

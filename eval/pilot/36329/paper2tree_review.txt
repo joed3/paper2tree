@@ -1,0 +1,63 @@
+**eLife Assessment**
+
+This valuable study uses an innovative ultra-RSVP paradigm combined with MEG and MEG-fMRI fusion to investigate the temporal dynamics of feedforward and feedback processing in the ventral visual pathway, providing solid evidence for two dissociable processing stages but incomplete evidence for the central mechanistic claim that recurrent feedback from IT to early visual cortex compensates for disrupted bottom-up signals during rapid visual recognition.
+
+**Summary**
+
+Mohsenzadeh et al. present an ultra-rapid serial visual presentation (ultra-RSVP) paradigm designed to temporally segregate feedforward from feedback processing in the ventral visual pathway. Seventeen participants viewed RSVP sequences at 17 or 34 ms per picture while MEG was recorded; a 500 ms/pic slow-viewing condition from a separate cohort served as a comparison. Using multivariate pattern classification, the authors identify two processing stages: an early bottom-up sweep peaking ~100 ms that is progressively truncated at faster rates, and a later categorical representation whose emergence is progressively delayed at faster rates. MEG-fMRI fusion localizes these stages to early visual cortex (EVC) and inferior temporal cortex (IT), respectively, and reveals bimodal EVC dynamics under RSVP that the authors interpret as feedback reactivation coinciding with categorical emergence in IT. The authors conclude with three "fundamental processing principles" and argue their results constrain computational models requiring variable-timing recurrent architectures.
+
+The study is methodologically creative, combining temporal resolution (MEG) with spatial resolution (fMRI) through representational similarity analysis, and the basic empirical observations — graded disruption of early processing and inverse delays in categorical emergence — are robust. However, the inferential leap from these observations to specific claims about feedback processing rests on several assumptions that are not fully supported, and critical statistical evidence for the feedback interpretation is weak or absent at the fastest presentation rate.
+
+**Strengths**
+
+- **Robust empirical characterization of the bottom-up sweep disruption.** Three independent metrics — peak latency, onset latency, and decoding accuracy — all show consistent, graded effects across presentation conditions, with appropriate statistical controls (sign permutation tests with cluster correction, bootstrap confidence intervals). This convergent evidence strongly supports the claim that the initial sweep is progressively disrupted at faster rates.
+
+- **The inverse relationship between early and late peak latencies is a compelling and non-trivial finding.** The categorical division peaks at 136, 169, and 197 ms across the three conditions — inversely related to the early decoding peaks at 121, 100, and 96 ms — with all pairwise differences statistically significant. This pattern is not predicted by a simple feedforward delay model and represents the strongest piece of evidence for the authors' framework.
+
+- **Temporal generalization analysis convincingly demonstrates suppression of sustained activity under RSVP.** The progressive narrowing of off-diagonal generalization from 500 to 34 to 17 ms/pic is clearly demonstrated and confirms the intended effect of the RSVP manipulation. This provides high-confidence support for the methodological premise of the study.
+
+- **Within-category replication strengthens the generality of the decoding results.** Both within-face and within-object analyses replicate the ordinal relationships observed in the grand total analysis, providing independent internal replication.
+
+- **Behavioral performance confirms meaningful stimulus processing even at extreme rates.** The d' values (1.95 and 3.58 for 17 and 34 ms/pic, respectively) demonstrate that participants extracted categorical information from these ultra-rapid streams, validating the paradigm's utility.
+
+- **The MEG-fMRI fusion approach is methodologically innovative** and provides a principled strategy for combining temporal and spatial resolution to track processing through cortical regions.
+
+**Weaknesses / Essential Revisions**
+
+- **The critical evidence for feedback to EVC is statistically weak or absent.** The second EVC peak in the 17 ms/pic condition — the very condition where feedback should be most needed — did not reach statistical significance. Yet this non-significant peak is marked on Figure 5e and discussed as supporting evidence for feedback. For the 34 ms/pic condition, the temporal coincidence between the second EVC peak and IT peak has p=0.06, which does not meet conventional significance thresholds. The authors must acknowledge more transparently that their strongest statistical evidence for the feedback claim comes from only one condition, and even there it is marginal. Discussing and depicting non-significant peaks as if they support the argument is misleading and should be corrected.
+
+- **Forward masking from preceding RSVP images is not adequately considered as an alternative explanation for several key findings.** The later onset latencies in RSVP conditions (cited as evidence for reduced local recurrence) could straightforwardly reflect forward masking by the five preceding mask images, which is entirely a feedforward phenomenon. The 500 ms/pic condition has no preceding masks, so its earlier onset may simply reflect absence of forward masking. The authors must formally address this confound or provide evidence distinguishing it from their recurrence interpretation.
+
+- **The inverse relationship between early and late peaks is demonstrated across only three data points**, which severely limits the strength of inference. The claim that a feedforward system would necessarily produce proportional (not inverse) delays is stated without formal justification. Nonlinear feedforward systems processing degraded inputs with varying SNR could produce non-proportional latency shifts at different processing stages. The authors should consider modeling or simulating what a purely feedforward system would predict under these specific conditions to strengthen the argument against a feedforward account.
+
+- **The "three fundamental processing principles" are substantially overstated** given the evidence base. Principle 2 ("delays in solving object recognition are an index of increased recurrent processing") involves circular reasoning: delays are inferred to reflect recurrence, then delays are claimed to index recurrence. No independent measure of recurrent processing (e.g., directed connectivity, laminar recordings, or causal perturbation via TMS) is provided. Principle 3's statistical support is weak, as discussed above. These should be reframed as observations or hypotheses rather than established principles.
+
+- **The fMRI reference data were collected under 500 ms/pic conditions from a different cohort**, raising questions about whether these spatial patterns are valid references for RSVP neural processing. The assumption that fMRI RDMs from slow viewing accurately capture the spatial organization of processing during ultra-rapid presentation is non-trivial and unvalidated. The authors should discuss this limitation explicitly and consider how it might affect the MEG-fMRI fusion results.
+
+- **The claim that the ultra-RSVP paradigm "segregates" feedforward from recurrent processing is overstated.** The authors themselves acknowledge that local recurrent processes likely contribute to the early sweep and cannot be cleanly separated. The term "disproportionately feedforward" is used to characterize the first wave, but this is vague and unfalsifiable. Moreover, the paper simultaneously claims the first wave is "disproportionately feedforward" while also arguing that onset latency differences reflect early recurrent interactions — these positions are in tension. The language should be made more precise and internally consistent.
+
+- **The two RSVP conditions differ in both stimulus duration and masking timing**, confounding these factors. The study cannot disambiguate whether the observed effects are driven by limited stimulus evidence accumulation, disruption of recurrent processing by masks, or both. The authors acknowledge this but do not adequately discuss how it limits interpretation.
+
+- **The between-cohort comparison (500 ms/pic vs. RSVP conditions) introduces between-subject variability** that could confound latency comparisons. While the authors note this, they do not discuss how it might affect specific results, particularly the MEG-fMRI fusion analyses where MEG and fMRI data come from entirely different participant groups.
+
+**Minor Comments**
+
+- The 500 ms/pic onset latency confidence interval is extremely wide (9–53 ms), spanning nearly 50 ms, which should be flagged more prominently when comparing with RSVP onset latencies.
+
+- No quantitative metric is provided for comparing temporal generalization matrix widths across conditions — the comparison relies on qualitative visual inspection. A summary statistic (e.g., proportion of significant off-diagonal elements, or half-width at half-maximum) would strengthen this analysis.
+
+- MDS visualizations (Figure 3c) provide only qualitative support for categorical structure. The 17 ms/pic MDS plot is described as showing "weaker but still distinct" categorical division, which is subjective. Consider adding a quantitative measure of separation.
+
+- The claim about ecological validity is somewhat undermined by the RSVP paradigm itself — rapid sequential image presentation does not correspond to normal viewing. The 24-image stimulus set (12 faces, 12 objects) is also quite limited for generalizing broadly to "visual object recognition."
+
+- Individual-level behavioral data or distributions should be shown, as the group-level d' values may mask floor-level performance in some participants at 17 ms/pic, which could affect neural decoding interpretations.
+
+- The supplementary face-vs-object classification analysis (Figure 3—figure supplement 1) is mentioned but not adequately discussed in the main text; explicitly noting its consistency with the categorical division analysis would strengthen the paper.
+
+- The rationale for the specific choice of 17 and 34 ms/pic (presumably tied to monitor refresh rates) should be stated explicitly.
+
+**Recommendation**
+
+Major Revisions
+
+While the paper presents a creative experimental paradigm and several robust empirical observations (26 of 55 claims with high support), the central mechanistic claim about feedback processing rests on statistically incomplete evidence (non-significant second EVC peak at 17 ms/pic; marginal temporal coincidence at 34 ms/pic), unaddressed alternative explanations (forward masking), overstated interpretive claims (the "three fundamental principles"), and circular reasoning (Principle 2). These critical issues must be substantively addressed before publication in eLife.

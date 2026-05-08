@@ -7,7 +7,7 @@ class LiteratureCitation(BaseModel):
     title: str
     authors: list[str]
     year: int | None = None
-    url: str
+    url: str | None = None
     relevance: str  # one-sentence explanation of relevance to the claim
     stance: Literal["supports", "contradicts", "extends", "neutral"]
 

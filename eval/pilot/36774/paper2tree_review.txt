@@ -1,0 +1,53 @@
+**eLife Assessment**
+
+This valuable study provides convincing evidence that the distribution of output-null neural activity is coupled with output-potent activity during brain-computer interface control, based on systematic hypothesis testing across multiple animals and sessions. However, the broader claim that this coupling constrains neural computation rests on incomplete evidence, as the computational implications are speculative and the generalizability beyond the BCI context remains unestablished.
+
+**Summary**
+
+This paper investigates how the nervous system resolves neural redundancy — the fact that many different population activity patterns can produce the same behavioral output. Using a brain-computer interface (BCI) in which three rhesus macaques controlled a 2D cursor via modulation of primary motor cortex (M1) activity, the authors exploit the key advantage that the BCI mapping is fully known, allowing precise identification of output-potent (task-relevant) and output-null (redundant) dimensions. Across 42 sessions, the authors test six hypotheses about what governs the distribution of output-null activity: two inspired by minimal energy principles (Minimal Firing, Minimal Deviation), three by the minimal intervention principle (Uncontrolled-uniform, Uncontrolled-empirical, Persistent Strategy), and one proposing that the conditional distribution of output-null activity given output-potent activity is preserved across BCI mappings (Fixed Distribution). The Fixed Distribution hypothesis best predicted the observed output-null distributions in 41/42 sessions, with 13.4% histogram error against an estimated floor of 6.7%. The authors interpret this as evidence that output-null activity is "yoked" to output-potent activity, and argue this coupling may limit the computational utility of redundant neural dimensions.
+
+**Strengths**
+
+- **Rigorous and systematic hypothesis testing.** The comparison of six well-defined hypotheses, spanning a meaningful spectrum from highly constrained (Minimal Firing) to minimally constrained (Uncontrolled-uniform), is methodologically exemplary. The Fixed Distribution hypothesis achieved the lowest histogram error in 41/42 sessions across three animals, with convergent results across three distinct error metrics (histogram, mean, covariance), providing compelling evidence for the coupling of output-null and output-potent activity (claims c1.1, c1.1.1, c1.1.2, c1.1.3).
+
+- **Critical test in dimensions that changed designation.** The analysis of variance changes in the 2D subspace that transitioned between output-potent and output-null across mappings (Figure 6) is the most stringent test in the paper. The finding that variance did not dramatically change — contrary to both minimal energy and uncontrolled manifold predictions — and that the observed slight decrease matched Fixed Distribution predictions, provides strong evidence that the result is not trivially driven by dimensions that were null under both mappings (claims c1.5, c1.5.1, c1.5.2, c1.5.3).
+
+- **Appropriate use of the BCI framework.** The BCI paradigm is genuinely well-suited to this question, as it provides ground-truth knowledge of the readout mapping — a key advantage over studying neural redundancy in natural motor control where the downstream readout is unknown (claim c1.7).
+
+- **Robustness across multiple controls.** The results hold when predicting in the reverse direction (first mapping from second), when using the actual BCI mapping instead of the animal's estimated internal model, and when analyzing each animal individually (claim c1.1.4). The use of internal model estimation (IME) to account for incomplete learning of the second mapping is a thoughtful methodological contribution (claim c1.7.3).
+
+- **Clear rejection of minimal energy hypotheses.** The Minimal Firing hypothesis (73.2% error) and Minimal Deviation hypothesis (30.9% error) are convincingly ruled out as dominant explanations for output-null activity selection, with the additional analysis showing that observed mean output-null activity did not shift toward minimal energy predictions (claims c1.2, c1.2.1, c1.2.2, c1.5.4).
+
+**Weaknesses / Essential Revisions**
+
+- **The computational constraint claim is unsupported by direct evidence (claim c1.6, low support).** The paper's most prominent interpretive claim — that coupling between output-null and output-potent activity "may limit the extent to which neural circuits can exploit the proposed computational benefits of redundancy" — is entirely speculative. No computation in the null space was measured, and the BCI task involves no scenario where null-space computation would be expected (e.g., no simultaneous movement preparation, no stimulus discrimination). The authors should either substantially temper this claim or provide concrete, quantitative predictions about how the observed degree of coupling would constrain specific proposed computations (e.g., movement preparation per Kaufman et al., 2014).
+
+- **The specific computational scenarios mentioned are unsupported (claim c1.6.2, low support).** The suggestion that coupling "may cause activity fluctuations in a stimulus-null space to influence the downstream readout, or limit one's ability to plan the next movement without influencing the current movement" goes well beyond the data. The BCI task involves neither stimulus discrimination nor multi-movement planning. These speculations should be clearly framed as open questions rather than implications of the findings.
+
+- **Generalizability from BCI to natural neural circuits is a significant unaddressed assumption.** The 10-dimensional intrinsic manifold, 2-dimensional output, and artificial linear readout are far removed from natural motor control with hundreds of muscles and complex, nonlinear downstream processing. The paper's framing — comparing neural redundancy resolution to muscular redundancy resolution — implicitly assumes the BCI context is representative of natural circuits. The authors should discuss more explicitly why (or why not) these findings would extend to natural readouts, and acknowledge that the principles governing redundancy under artificial vs. natural readouts may fundamentally differ.
+
+- **The hypothesis space is not exhaustive, and the Fixed Distribution hypothesis has an inherent advantage.** The Fixed Distribution hypothesis uses empirical data from the first mapping, giving it access to information unavailable to a priori hypotheses (Minimal Firing, Uncontrolled-uniform). While this is partially addressed by comparing against other empirical hypotheses (Uncontrolled-empirical, Persistent Strategy), the closest competitor (Persistent Strategy, 17.4%) also uses first-mapping data, and the gap of 4% is modest. The authors should discuss whether other untested mechanistic hypotheses (e.g., recurrent network dynamics models, OFC with non-standard cost functions) could provide comparable or better fits, and clarify why the tested set is sufficient to draw the conclusions stated.
+
+- **The characterization of errors as "exceedingly close" to the floor is overstated (claim c1.1.5, medium support).** The histogram error (13.4%) is roughly double the estimated floor (6.7%), and the mean error (23.5 spikes/s) is 3.4× the floor (6.9 spikes/s). This suggests substantial unexplained structure remains. The authors should present this more carefully, perhaps noting that Fixed Distribution captures the majority but not all of the predictable structure, and discuss what might account for the residual error (e.g., temporal dynamics, higher-order dependencies).
+
+- **Arm movement confound is addressed by argument rather than measurement (claim c1.7.2, medium support).** The paper states the arm was not moving during BCI control and argues that arm output-potent dimensions do not overlap with BCI dimensions. However, how "not moving" was verified (EMG? video? force sensors?) is not described. Subthreshold muscle activation or motor imagery could still create coupling patterns in M1. The authors should clarify the method of verification or acknowledge this limitation.
+
+**Minor Comments**
+
+- The one session (of 42) where Fixed Distribution was not the best hypothesis is not discussed. Understanding what made this session different could be informative about boundary conditions.
+
+- Exact p-values for the Wilcoxon signed rank tests should be reported rather than only significance thresholds (e.g., "p < 0.001").
+
+- The paper would benefit from reporting effect sizes alongside statistical tests, particularly for the variance change analyses in Figure 6C.
+
+- The relationship between this work and Golub et al. (2018) is discussed at length but could be more concisely summarized, as the current treatment may confuse readers unfamiliar with that prior work.
+
+- The covariance error is described in "arbitrary units," making it difficult to assess practical significance. A brief explanation of the scale or a normalized version would be helpful.
+
+- The claim that "many dimensions of population activity are coupled" (Discussion) is interesting but not quantified information-theoretically. A mutual information or explained variance analysis between potent and null dimensions could strengthen this point.
+
+**Recommendation**
+
+Major Revisions
+
+The empirical core of the paper — that the Fixed Distribution hypothesis best predicts output-null activity distributions — is supported by compelling evidence across 42 sessions, three animals, and multiple error metrics (39 of 46 claims rated high support). However, the paper's most prominent interpretive claims about constraints on neural computation (2 claims rated low support) are speculative and unsupported by direct measurement, and the generalizability beyond the BCI context requires more careful discussion. These issues affect the framing and significance of the work as presented and should be substantively addressed before publication in eLife.

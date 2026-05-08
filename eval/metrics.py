@@ -19,9 +19,7 @@ import numpy as np
 def _bert_scorer():
     from bert_score import BERTScorer  # type: ignore[import]
 
-    return BERTScorer(
-        model_type="microsoft/deberta-xlarge-mnli", lang="en", rescale_with_baseline=False
-    )
+    return BERTScorer(model_type="roberta-large", lang="en", rescale_with_baseline=False)
 
 
 @lru_cache(maxsize=1)

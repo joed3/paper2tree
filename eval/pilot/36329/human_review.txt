@@ -1,0 +1,47 @@
+In the interests of transparency, eLife includes the editorial decision letter and accompanying author responses. A lightly edited version of the letter sent to the authors after peer review is shown, indicating the most substantive concerns; minor comments are not usually included.
+
+Thank you for submitting your article "Ultra-rapid serial visual presentation disentangles feedforward and feedback processes in the ventral visual pathway" for consideration by eLife. Your article has been reviewed by three peer reviewers, including Floris P de Lange as the Reviewing Editor and Reviewer #1, and the evaluation has been overseen by Michael Frank as the Senior Editor. The following individual involved in review of your submission has agreed to reveal their identity: Johannes Jacobus Fahrenfort (Reviewer #2).
+
+The reviewers have discussed the reviews with one another and the Reviewing Editor has drafted this decision to help you prepare a revised submission.
+
+Summary:
+
+The goal of this study is to try to dissociate between feedforward and feedback processes during visual recognition. Human observers were engaged in a face vs. object categorization task using an RSVP paradigm. MEG decoding for all pairs of target images was attempted as a function of time. This lead to a first estimate of information flow interpreted as a feedforward sweep. Decoding was then attempted for face vs. object categorization and the associated information flow was delayed in time and interpreted as feedback processes.
+
+The reviewers found this to be an original study using sound analyses and the main conclusions of the paper are well supported by the data. That said, there were concerns with respect to the analysis choice: why not directly try to classify faces vs. objects and instead perform a binary image classification followed by an inter- vs. intra-class averaging? There were different viewpoints on this issue by the different reviewers, so it would be required that you clarify the rationale for the analysis choice, and/or include the more direct inter-class classification analysis. Furthermore, there were concerns with respect to the relevance of the work for the development of computational models, and the interpretation of the results.
+
+Essential revisions:
+
+1) The analysis focuses on decoding image identity for pairs of images (either averaged over all pairs or looking at the difference when the pairs fall on the same side or on opposite side of the categorization boundary.) This is different from the task that the participants are engaged in (face vs. objects). Why did the authors not directly try to classify faces vs. objects, i.e. attempt to match the readout with the behavioral task? More generally, it is not completely clear how the various signals that are read out from MEG relate to behavioral decisions.
+
+2) It is not clear how the various readouts that are performed relate to task-relevant neural computations. The authors discuss the relevance of their results for the development of computational models but this is not all that convincing because 1) there is no obvious computation that can be embued to the feedback when presentation times are shortened (unlike in some of the studies that are cited which use stimuli that are occluded or camouflaged); 2) the present study does not contribute significantly new knowledge that is directly relevant to constraining computational models (except for the fact that feedback should follow the feedforward pass in a way that is not "predetermined or fixed").
+
+3) Figure 2E: Looks at peak latency to discuss limiting evidence accumulation. Eyeballing, the onset latencies in this graph are reliably faster for longer duration presentations (also consistently between within-face and within-object). I have observed similar effects in my own data (i.e. faster onsets for longer stimulus durations). This is potentially interesting to look at and discuss, because this not only speaks (1) to the emergence of feedforward activity but in addition (2) shows its early interaction with recurrent activity. It also goes against the argument that early decoding delinates feedforward activity alone, and paints a picture that is slightly more subtle. If early decoding would only reflect feedforward, we would not expect to see latency onset differences, but we do. The fact that different stimulus durations have different onsets suggests that feedback is already incorporated when the first decoding onsets emerge, going against the oversimplification that the early part of the decoding time course can be uniquely tied to feedforward alone. I think the manuscript would benefit from making this intricacy explict, the reader should not be left with the impression that we can fully separate feedforward and feedback. Figure 4A also suggests that feedback is already incorporated at a very early stage during long lasting presentations (recurrence mediated temporal generalization), and so do the onset latencies in Table 2.
+
+4) "How did the disruption of the first sweep of visual activity, reported in the previous section, affect the emergence of categorical information in the RSVP conditions?" and "According to these theories, presenting stimuli at rapid presentation rates would compromise feedforward signals thus increase the need for recurrent processes to fill-in missing stimulus information."
+
+Consider rephrasing this paragraph to more exactly reflect what is going on. Two things occur in the current paradigm / analyses:
+
+1) From Figure 2: Short SOAs have less time to continue initial evidence accumulation (a process that in all likelihood already incorporates some local feedback, see previous comment).
+
+2) From Figure 3 (and also according to the referenced theories) feedback signals are interrupted/hampered by the incoming feedforward signals of the mask at short SOAs (i.e. the feedforward signal of the ensuing mask interrupts the feedback signal of the target stimulus, see also Fahrenfort et al., 2007 and references below). This apparently slows down the speed and extent with which category information can be resolved using recurrence.
+
+These two things could be better described/disentangled in this paragraph.
+
+The current phrasing suggest that feedforward activation (rather than recurrence) is interrupted. Moreover, the current phrasing makes it sound as information is actually missing, as in Muckli et al., et al.2015.
+
+This is not the case, there is not enough time to accumulate information in time, hence the contribution of recurrent processing to resolve image category.
+
+Other relevant references in this context: Kovacs, Vogels and Orban, 1995;.O'Reilly et al., 2013; Fahrenfort et al., 2012.
+
+5) Comparison of different conditions:
+
+One set of participants engaged in the RSVP task (17 ms and 34 ms). A different set of participants engaged in the 1500 ms condition (recycled data from a previous experiment). This makes me wonder how the data are analyzed: in a within-subject, or between-subject fashion? What was the task for the 1500 ms condition? This should be added to the Materials and methods section.
+
+6) Response mapping:
+
+Was there a fixed button mapping, i.e. did subjects always press a particular button for a particular choice? If so, can the authors rule out that the 'categorical information' classified in Figure 3 pertains to the motor plan, rather than a perceptual categorization? Presumably the motor plan is also delayed for the more difficult conditions.
+
+7) Peak latency analysis:
+
+I didn't find any detail on how peak latency was established. Were they determined within every subject, or on the grand average (using jackknifing or boot-strapping to obtain the confidence intervals)? What was the exact procedure used to identify the peak? Given that most results hinge on the latency analyses, it is imperative that they are described in detail.
