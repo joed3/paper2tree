@@ -147,7 +147,7 @@ async def process_paper(
         t0 = time.time()
         try:
             review = await asyncio.to_thread(
-                generate_review, paper.article_text, dag, "final_reviewer_elife"
+                generate_review, paper.article_text, dag, "final_reviewer_elife_dag_only"
             )
         except Exception as e:
             log(f"  ERROR in final reviewer for {paper.article_id}: {e}")
@@ -228,6 +228,12 @@ def compute_all_metrics(output_dir: Path, log=print) -> list[dict]:
                 "baseline_recommendation": baseline_metrics["recommendation"],
                 "p2t_assessment_alignment": p2t_metrics["assessment_alignment"],
                 "baseline_assessment_alignment": baseline_metrics["assessment_alignment"],
+                "p2t_concern_recall": p2t_metrics["concern_recall"],
+                "baseline_concern_recall": baseline_metrics["concern_recall"],
+                "p2t_concern_precision": p2t_metrics["concern_precision"],
+                "baseline_concern_precision": baseline_metrics["concern_precision"],
+                "p2t_concern_f1": p2t_metrics["concern_f1"],
+                "baseline_concern_f1": baseline_metrics["concern_f1"],
             }
         )
 
@@ -256,6 +262,12 @@ def write_metrics_csv(rows: list[dict], output_dir: Path, log=print) -> None:
         "baseline_rouge_l",
         "p2t_cosine_similarity",
         "baseline_cosine_similarity",
+        "p2t_concern_recall",
+        "baseline_concern_recall",
+        "p2t_concern_precision",
+        "baseline_concern_precision",
+        "p2t_concern_f1",
+        "baseline_concern_f1",
     ]
     summary_rows = []
     for col in numeric:
@@ -517,7 +529,54 @@ def generate_figures(output_dir: Path, log=print) -> None:
         )
         log("  bertscore_scatter.png")
 
-    # ── Figure 3: Recommendation distribution ──────────────────────────────
+    # ── Figure 3: Concern alignment (recall / precision / F1) ──────────────
+    concern_map = {
+        "Recall": ("p2t_concern_recall", "baseline_concern_recall"),
+        "Precision": ("p2t_concern_precision", "baseline_concern_precision"),
+        "F1": ("p2t_concern_f1", "baseline_concern_f1"),
+    }
+    concern_rows = []
+    for label, (p2t_col, base_col) in concern_map.items():
+        for val in df[p2t_col].dropna():
+            concern_rows.append({"metric": label, "system": "paper2tree", "value": float(val)})
+        for val in df[base_col].dropna():
+            concern_rows.append({"metric": label, "system": "baseline", "value": float(val)})
+    if concern_rows:
+        concern_df = pd.DataFrame(concern_rows)
+        concern_summary = (
+            concern_df.groupby(["metric", "system"])["value"]
+            .agg(mean="mean", std="std")
+            .reset_index()
+        )
+        concern_summary["ymin"] = (concern_summary["mean"] - concern_summary["std"]).clip(lower=0)
+        concern_summary["ymax"] = concern_summary["mean"] + concern_summary["std"]
+
+        fig3 = (
+            ggplot(concern_summary, aes(x="metric", y="mean", fill="system"))
+            + geom_col(position=position_dodge(0.75), width=0.65)
+            + geom_errorbar(
+                aes(ymin="ymin", ymax="ymax"),
+                position=position_dodge(0.75),
+                width=0.2,
+                color=TEXT,
+                size=0.5,
+            )
+            + scale_fill_manual(values=SYSTEM_COLORS)
+            + ylim(0, 1)
+            + labs(
+                title="Concern Alignment vs Human Review",
+                x="",
+                y="Score",
+                fill="",
+            )
+            + dark_theme()
+        )
+        fig3.save(
+            str(figures_dir / "concern_alignment.png"), dpi=150, width=7, height=4.5, verbose=False
+        )
+        log("  concern_alignment.png")
+
+    # ── Figure 4: Recommendation distribution ──────────────────────────────
     REC_ORDER = ["Accept", "Minor Revisions", "Major Revisions", "Reject"]
     REC_COLORS = {
         "Accept": "#22c55e",
@@ -538,14 +597,14 @@ def generate_figures(output_dir: Path, log=print) -> None:
         rec_df["recommendation"] = pd.Categorical(
             rec_df["recommendation"], categories=REC_ORDER, ordered=True
         )
-        fig3 = (
+        fig4 = (
             ggplot(rec_df, aes(x="system", fill="recommendation"))
             + geom_bar(position="fill", width=0.55)
             + scale_fill_manual(values=REC_COLORS, drop=False)
             + labs(title="Recommendation Distribution", x="", y="Proportion", fill="")
             + dark_theme()
         )
-        fig3.save(
+        fig4.save(
             str(figures_dir / "recommendation_dist.png"),
             dpi=150,
             width=5,

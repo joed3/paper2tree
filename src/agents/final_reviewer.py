@@ -8,13 +8,20 @@ from ..schemas.output import PaperDAG
 _client = anthropic.Anthropic()
 _MAX_PAPER_CHARS = 80_000
 _MAX_DAG_NODE_CHARS = 200
+_MAX_DAG_NODE_CHARS_DETAILED = 600
+
+# Prompt names that rely solely on the DAG (no paper_text substitution needed).
+_DAG_ONLY_PROMPTS = {"final_reviewer_elife_dag_only"}
 
 
-def _build_dag_summary(dag: PaperDAG) -> str:
+def _build_dag_summary(dag: PaperDAG, detailed: bool = False) -> str:
+    max_claim_chars = _MAX_DAG_NODE_CHARS_DETAILED if detailed else _MAX_DAG_NODE_CHARS
+    abstract = dag.paper.abstract if detailed else dag.paper.abstract[:600]
+
     lines = [
         f"Title: {dag.paper.title}",
         f"Authors: {', '.join(dag.paper.authors[:5])}{'…' if len(dag.paper.authors) > 5 else ''}",
-        f"Abstract: {dag.paper.abstract[:600]}",
+        f"Abstract: {abstract}",
         "",
         f"Overall assessment: {dag.summary.overall_assessment}",
         f"Claims: {dag.summary.total_nodes} total | {dag.summary.high_support_nodes} high support | {dag.summary.low_support_nodes} low support",
@@ -30,15 +37,21 @@ def _build_dag_summary(dag: PaperDAG) -> str:
         strengths = ev.get("strengths", [])
         weaknesses = ev.get("weaknesses", [])
         assumptions = ev.get("required_assumptions", [])
+        alt_interp = ev.get("alternative_interpretations", [])
 
-        lines.append(f"\n[{node.type.upper()}] {node.claim[:_MAX_DAG_NODE_CHARS]}")
+        lines.append(f"\n[{node.type.upper()}] {node.claim[:max_claim_chars]}")
         lines.append(f"  Support: {support}")
         if strengths:
-            lines.append(f"  Strengths: {'; '.join(strengths[:2])}")
+            limit = None if detailed else 2
+            lines.append(f"  Strengths: {'; '.join(strengths[:limit])}")
         if weaknesses:
-            lines.append(f"  Weaknesses: {'; '.join(weaknesses[:2])}")
+            limit = None if detailed else 2
+            lines.append(f"  Weaknesses: {'; '.join(weaknesses[:limit])}")
         if assumptions:
-            lines.append(f"  Required assumptions: {'; '.join(assumptions[:2])}")
+            limit = None if detailed else 2
+            lines.append(f"  Required assumptions: {'; '.join(assumptions[:limit])}")
+        if detailed and alt_interp:
+            lines.append(f"  Alternative interpretations: {'; '.join(alt_interp)}")
 
     return "\n".join(lines)
 
@@ -48,12 +61,15 @@ def generate_review(paper_text: str, dag: PaperDAG, prompt_name: str = "final_re
 
     Returns the review as a plain-text string.
     """
-    dag_summary = _build_dag_summary(dag)
+    dag_only = prompt_name in _DAG_ONLY_PROMPTS
+    dag_summary = _build_dag_summary(dag, detailed=dag_only)
     template = load_prompt(prompt_name)
-    prompt = template.substitute(
-        paper_text=paper_text[:_MAX_PAPER_CHARS],
-        dag_summary=dag_summary,
-    )
+
+    subs: dict[str, str] = {"dag_summary": dag_summary}
+    if not dag_only:
+        subs["paper_text"] = paper_text[:_MAX_PAPER_CHARS]
+
+    prompt = template.substitute(subs)
 
     response = _client.messages.create(
         model="claude-opus-4-6",

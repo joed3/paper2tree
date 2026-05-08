@@ -1,7 +1,8 @@
 """Evaluation metrics for the paper2tree pilot study.
 
 Computes BERTScore F1, ROUGE-L, embedding cosine similarity,
-and eLife Assessment alignment for a pair of (generated, reference) reviews.
+eLife Assessment alignment, and claim-level concern alignment
+for a pair of (generated, reference) reviews.
 """
 
 from __future__ import annotations
@@ -61,6 +62,65 @@ def cosine_similarity(text_a: str, text_b: str) -> float:
     b = text_b[:4000]
     embs = model.encode([a, b], normalize_embeddings=True)
     return float(np.dot(embs[0], embs[1]))
+
+
+# ── Claim-level concern alignment ─────────────────────────────────────────────
+
+
+def extract_weakness_bullets(review_text: str) -> list[str]:
+    """Extract bullet text from the Weaknesses / Essential Revisions section of an AI review."""
+    section = re.search(
+        r"\*\*Weaknesses[^*]*\*\*\s*\n(.*?)(?=\n\*\*|\Z)",
+        review_text,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if not section:
+        return []
+    body = section.group(1)
+    bullets = re.findall(r"^\s*[-•*]\s*(.+?)(?=\n\s*[-•*]|\Z)", body, re.MULTILINE | re.DOTALL)
+    return [b.strip() for b in bullets if len(b.strip()) >= 20]
+
+
+def extract_sentences(text: str, min_len: int = 40) -> list[str]:
+    """Split free-form review text into sentences of at least min_len chars."""
+    raw = re.split(r"(?<=[.!?])\s+(?=[A-Z\"\'])", text)
+    return [s.strip() for s in raw if len(s.strip()) >= min_len]
+
+
+def concern_alignment(
+    candidate: str,
+    reference: str,
+) -> dict[str, float | None]:
+    """Claim-level alignment between AI concerns and a human review.
+
+    candidate: AI-generated review (structured, with **Weaknesses** bullets)
+    reference: human review (free-form prose)
+
+    Returns:
+      recall    — for each human sentence, max cosine sim to any AI concern bullet;
+                  averaged across all human sentences. Measures coverage of human concerns.
+      precision — for each AI concern bullet, max cosine sim to any human sentence;
+                  averaged across all bullets. Measures how grounded AI concerns are.
+      f1        — harmonic mean of recall and precision.
+    """
+    model = _sentence_model()
+
+    ai_concerns = extract_weakness_bullets(candidate)
+    human_sentences = extract_sentences(reference)
+
+    if not ai_concerns or not human_sentences:
+        return {"concern_recall": None, "concern_precision": None, "concern_f1": None}
+
+    ai_embs = model.encode(ai_concerns, normalize_embeddings=True)
+    human_embs = model.encode(human_sentences, normalize_embeddings=True)
+
+    sim = human_embs @ ai_embs.T  # (n_human, n_ai)
+
+    recall = float(sim.max(axis=1).mean())
+    precision = float(sim.max(axis=0).mean())
+    f1 = (2 * recall * precision / (recall + precision)) if (recall + precision) > 0 else 0.0
+
+    return {"concern_recall": recall, "concern_precision": precision, "concern_f1": f1}
 
 
 # ── Recommendation extraction ──────────────────────────────────────────────────
@@ -186,10 +246,12 @@ def compute_metrics(
       recommendation (str), assessment_alignment
     """
     rec = extract_recommendation(candidate)
+    concern = concern_alignment(candidate, reference)
     return {
         "bertscore_f1": bertscore_f1(candidate, reference),
         "rouge_l": rouge_l(candidate, reference),
         "cosine_similarity": cosine_similarity(candidate, reference),
         "recommendation": rec,
         "assessment_alignment": assessment_alignment(rec, elife_assessment),
+        **concern,
     }
