@@ -1,5 +1,4 @@
 import { DAGNode } from '../types/dag'
-import { EvalBadge } from './EvalBadge'
 
 interface NodeCardProps {
   node: DAGNode | null
@@ -42,6 +41,12 @@ const QUALITY_COLOR: Record<string, string> = {
   moderate: '#eab308',
   weak: '#f97316',
   absent: '#ef4444',
+}
+
+const CALIBRATION_COLOR: Record<string, string> = {
+  calibrated: '#22c55e',
+  underclaimed: '#60a5fa',
+  overclaimed: '#f97316',
 }
 
 const LEVEL_COLOR: Record<string, string> = {
@@ -141,38 +146,32 @@ export function NodeCard({ node, onClose, pdfAvailable, pdfPanelOpen, onTogglePD
             <div className="border-t border-slate-700 mb-4" />
 
             {/* scores */}
-            <Section title="Support">
+            <Section title="Evidence">
               <div className="flex items-center gap-3 flex-wrap">
-                <EvalBadge support_level={ev.support_level} />
-                <span className="text-xs text-slate-400">
-                  confidence:{' '}
+                <span
+                  className="inline-flex items-center gap-1.5 font-mono rounded text-sm px-2 py-1 font-medium"
+                  style={{
+                    color: QUALITY_COLOR[ev.evidence_strength],
+                    backgroundColor: `${QUALITY_COLOR[ev.evidence_strength]}20`,
+                    border: `1px solid ${QUALITY_COLOR[ev.evidence_strength]}40`,
+                  }}
+                >
                   <span
-                    className="font-semibold"
-                    style={{
-                      color:
-                        ev.confidence_level === 'high'
-                          ? '#22c55e'
-                          : ev.confidence_level === 'medium'
-                            ? '#eab308'
-                            : '#ef4444',
-                    }}
-                  >
-                    {ev.confidence_level}
-                  </span>
+                    className="inline-block w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: QUALITY_COLOR[ev.evidence_strength] }}
+                  />
+                  {ev.evidence_strength}
                 </span>
                 <span className="text-xs text-slate-400">
-                  evidence:{' '}
+                  claim:{' '}
                   <span
                     className="font-semibold"
-                    style={{ color: QUALITY_COLOR[ev.supporting_evidence_quality] }}
+                    style={{ color: CALIBRATION_COLOR[ev.claim_evidence_calibration] }}
                   >
-                    {ev.supporting_evidence_quality}
+                    {ev.claim_evidence_calibration}
                   </span>
                 </span>
               </div>
-              {ev.is_well_supported && (
-                <p className="text-xs text-slate-500 mt-2">✓ Well supported by the paper</p>
-              )}
             </Section>
 
             <Section title="Strengths">

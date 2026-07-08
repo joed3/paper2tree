@@ -20,10 +20,43 @@ from pydantic import BaseModel
 
 DEFAULT_MODEL = "claude-opus-4-6"
 
+# Opus-tier pricing (per 1M tokens) for cost accounting in the eval harness.
+_INPUT_USD_PER_MTOK = 5.0
+_OUTPUT_USD_PER_MTOK = 25.0
+
 T = TypeVar("T", bound=BaseModel)
 
 _sync_client: anthropic.Anthropic | None = None
 _async_client: anthropic.AsyncAnthropic | None = None
+
+
+# ── Usage / cost tracking ────────────────────────────────────────────────────
+# A process-global accumulator so the eval harness can attribute token spend to a
+# pipeline stage: reset_usage() before, get_usage() after. Only the direct-API path
+# reports usage; the agent-SDK fallback (no API key) contributes nothing.
+_usage = {"input_tokens": 0, "output_tokens": 0, "calls": 0}
+
+
+def reset_usage() -> None:
+    _usage.update(input_tokens=0, output_tokens=0, calls=0)
+
+
+def record_usage(usage) -> None:
+    """Accumulate an Anthropic response .usage object (no-op if None)."""
+    if usage is None:
+        return
+    _usage["input_tokens"] += getattr(usage, "input_tokens", 0) or 0
+    _usage["output_tokens"] += getattr(usage, "output_tokens", 0) or 0
+    _usage["calls"] += 1
+
+
+def get_usage() -> dict:
+    """Return accumulated tokens plus estimated Opus-tier cost in USD."""
+    cost = (
+        _usage["input_tokens"] / 1e6 * _INPUT_USD_PER_MTOK
+        + _usage["output_tokens"] / 1e6 * _OUTPUT_USD_PER_MTOK
+    )
+    return {**_usage, "cost_usd": round(cost, 4)}
 
 
 def has_api_key() -> bool:
@@ -105,6 +138,7 @@ async def _api_complete_async(prompt: str, *, model: str, max_tokens: int, think
 
 
 def _text_of(response, max_tokens: int) -> str:
+    record_usage(getattr(response, "usage", None))
     if response.stop_reason == "max_tokens":
         raise ValueError(
             f"LLM hit max_tokens limit ({max_tokens}); response was truncated — "
@@ -158,6 +192,7 @@ def parse_structured(
             messages=[{"role": "user", "content": prompt}],
             output_format=output_format,
         )
+        record_usage(getattr(response, "usage", None))
         if response.parsed_output is None:
             raise ValueError("LLM returned no structured output")
         return response.parsed_output

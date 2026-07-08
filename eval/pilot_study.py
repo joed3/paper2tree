@@ -1,14 +1,17 @@
 """
 Pilot evaluation for paper2tree vs. single-agent reviewer.
 
-Samples 10 eLife papers, runs both review systems, computes metrics,
+Samples eLife papers, runs both review systems, computes metrics,
 and writes results to --output-dir (default: eval/pilot/).
+
+For the v1.7-vs-v2.0 comparison, run this on each code version into a separate
+--output-dir, then pair them with `python -m eval.compare`.
 
 Usage:
     python -m eval.pilot_study [OPTIONS]
 
 Options:
-    --n N               Papers to sample (default: 10)
+    --n N               Papers to sample (default: 20)
     --seed SEED         Random seed (default: 42)
     --output-dir DIR    Output directory (default: eval/pilot)
     --github-token TOK  GitHub API token (or set GITHUB_TOKEN env var)
@@ -39,6 +42,7 @@ from eval.elife_parser import (
     sample_eligible_papers,
 )
 from eval.metrics import compute_metrics
+from src import llm
 from src.agents.baseline_reviewer import generate_baseline_review
 from src.agents.claim_evaluator import evaluate_claims
 from src.agents.claim_extractor import extract_claims
@@ -117,6 +121,11 @@ async def process_paper(
         )
 
     # ── Build DAG ─────────────────────────────────────────────────────────────
+    # Track time + token cost for the paper2tree (DAG) arm: reset here and capture
+    # after the DAG-grounded review is written, before the baseline arm runs.
+    llm.reset_usage()
+    p2t_t0 = time.time()
+
     dag_path = paper_dir / "dag.json"
     if skip_pipeline and not dag_path.exists():
         log(f"  SKIP {paper.article_id}: --skip-pipeline but no dag.json found")
@@ -155,7 +164,11 @@ async def process_paper(
         p2t_path.write_text(review)
         log(f"    paper2tree review written ({len(review.split())} words, {time.time()-t0:.0f}s)")
 
+    p2t_stats = {"time_s": round(time.time() - p2t_t0, 1), **llm.get_usage()}
+
     # ── Baseline reviewer ─────────────────────────────────────────────────────
+    llm.reset_usage()
+    base_t0 = time.time()
     baseline_path = paper_dir / "baseline_review.txt"
     if force or not baseline_path.exists():
         log(f"  [baseline_reviewer] {paper.article_id}…")
@@ -169,6 +182,21 @@ async def process_paper(
             return False
         baseline_path.write_text(review)
         log(f"    baseline review written ({len(review.split())} words, {time.time()-t0:.0f}s)")
+
+    base_stats = {"time_s": round(time.time() - base_t0, 1), **llm.get_usage()}
+
+    # ── Persist per-paper resource stats (length / time / tokens / cost) ───────
+    (paper_dir / "stats.json").write_text(
+        json.dumps(
+            {
+                "article_id": paper.article_id,
+                "word_count": paper.word_count,
+                "paper2tree": p2t_stats,
+                "baseline": base_stats,
+            },
+            indent=2,
+        )
+    )
 
     return True
 
@@ -296,6 +324,71 @@ def write_metrics_csv(rows: list[dict], output_dir: Path, log=print) -> None:
     for s in summary_rows:
         log(f"  │ {s['metric']:<43} │ {s['mean']:.4f} │ {str(s['stdev'] or 'N/A'):<6} │")
     log("  └─────────────────────────────────────────────┴────────┴────────┘")
+
+
+def write_run_stats(output_dir: Path, log=print) -> None:
+    """Aggregate per-paper stats.json into run_stats.json (paper length, time, tokens, cost)."""
+    import statistics
+
+    per_paper = []
+    for paper_dir in sorted(output_dir.iterdir()):
+        stats_path = paper_dir / "stats.json"
+        if paper_dir.is_dir() and stats_path.exists():
+            try:
+                per_paper.append(json.loads(stats_path.read_text()))
+            except Exception:
+                continue
+    if not per_paper:
+        log("  No per-paper stats to aggregate")
+        return
+
+    def agg(arm: str) -> dict:
+        def col(key):
+            return [p[arm][key] for p in per_paper if arm in p and key in p[arm]]
+
+        out = {}
+        for key in ("time_s", "input_tokens", "output_tokens", "cost_usd"):
+            vals = col(key)
+            if vals:
+                out[key] = {
+                    "mean": round(statistics.mean(vals), 4),
+                    "total": round(sum(vals), 4),
+                    "min": round(min(vals), 4),
+                    "max": round(max(vals), 4),
+                }
+        return out
+
+    word_counts = [p["word_count"] for p in per_paper if "word_count" in p]
+    summary = {
+        "n_papers": len(per_paper),
+        "paper_word_count": {
+            "mean": round(statistics.mean(word_counts), 1) if word_counts else None,
+            "min": min(word_counts) if word_counts else None,
+            "max": max(word_counts) if word_counts else None,
+        },
+        "paper2tree": agg("paper2tree"),
+        "baseline": agg("baseline"),
+        "per_paper": per_paper,
+    }
+    (output_dir / "run_stats.json").write_text(json.dumps(summary, indent=2))
+
+    p2t = summary["paper2tree"]
+    base = summary["baseline"]
+    log("\n  ── Resource stats (per paper, mean) ──")
+    log(f"  paper length:  {summary['paper_word_count']['mean']} words")
+    if p2t:
+        log(
+            f"  paper2tree:    {p2t['time_s']['mean']}s  |  "
+            f"{p2t['input_tokens']['mean']:.0f} in + {p2t['output_tokens']['mean']:.0f} out tok  |  "
+            f"${p2t['cost_usd']['mean']:.4f}/paper  (total ${p2t['cost_usd']['total']:.2f})"
+        )
+    if base:
+        log(
+            f"  baseline:      {base['time_s']['mean']}s  |  "
+            f"{base['input_tokens']['mean']:.0f} in + {base['output_tokens']['mean']:.0f} out tok  |  "
+            f"${base['cost_usd']['mean']:.4f}/paper  (total ${base['cost_usd']['total']:.2f})"
+        )
+    log("  run_stats.json written")
 
 
 def write_qualitative_notes(rows: list[dict], output_dir: Path) -> None:
@@ -748,6 +841,9 @@ async def main_async(args: argparse.Namespace) -> None:
     write_qualitative_notes(rows, output_dir)
     log("qualitative_notes.md written")
 
+    # ── Resource stats: paper length, time, tokens, cost per version ──────────
+    write_run_stats(output_dir, log=log)
+
     # ── Step 4: Self-consistency check (optional) ─────────────────────────────
     if args.self_consistency:
         await run_self_consistency_check(papers, output_dir, log=log)
@@ -767,7 +863,7 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument("--n", type=int, default=10, help="Number of papers (default: 10)")
+    parser.add_argument("--n", type=int, default=20, help="Number of papers (default: 20)")
     parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
     parser.add_argument("--output-dir", default="eval/pilot", help="Output directory")
     parser.add_argument(

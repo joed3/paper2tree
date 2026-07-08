@@ -2,6 +2,7 @@
 
 import anthropic
 
+from .. import llm
 from ..prompts import load_prompt
 
 _client = anthropic.Anthropic()
@@ -22,6 +23,8 @@ def generate_baseline_review(paper_text: str, prompt_name: str = "baseline_revie
         thinking={"type": "adaptive"},
         messages=[{"role": "user", "content": prompt}],
     )
+
+    llm.record_usage(getattr(response, "usage", None))
 
     text_block = next((b for b in response.content if b.type == "text"), None)
     if text_block is None:

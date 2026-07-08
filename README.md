@@ -344,10 +344,10 @@ outputs/
         "section_source": "Abstract",
         "verbatim_quote": "The Transformer, a model architecture eschewing recurrence...",
         "evaluation": {
-          "support_level": "high",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
           "strengths": ["Comprehensive benchmarks on WMT 2014", "..."],
           "weaknesses": ["Limited to translation at time of writing", "..."],
-          "supporting_evidence_quality": "strong",
           "notes": "..."
         },
         "visual": { "color": "#22c55e", "size": 48, "border_width": 3 }
@@ -368,15 +368,23 @@ outputs/
 }
 ```
 
-**Visual encoding:**
+**Scoring (v2.0).** Each claim carries two orthogonal axes instead of the old
+multi-field scheme: **`evidence_strength`** (how well the paper's evidence backs the
+claim) and **`claim_evidence_calibration`** (whether the claim's stated scope matches
+that evidence — `overclaimed` / `calibrated` / `underclaimed`). Claims are evaluated
+**bottom-up**: each parent is judged conditioned on its children, so a thesis inherits
+weakness from weak sub-claims and is flagged when it overreaches what its children show.
 
-| Support level | Node color |
+**Visual encoding** (node color = `evidence_strength`):
+
+| Evidence strength | Node color |
 |---|---|
-| `high` | Green `#22c55e` |
-| `medium` | Yellow `#eab308` |
-| `low` | Red `#ef4444` |
+| `strong` | Green `#22c55e` |
+| `moderate` | Yellow `#eab308` |
+| `weak` | Orange `#f97316` |
+| `absent` | Red `#ef4444` |
 
-Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px). Edge style: solid gray for `supports`/`requires`, dashed yellow for `qualifies`, dashed red for `contradicts`.
+Node size decreases with depth: root (48px) → primary (36px) → supporting (24px) → evidence (20px). Edges are uniform `supports` relations rendered as solid gray lines.
 
 </details>
 

@@ -31,14 +31,15 @@ def _build_dag_summary(dag: PaperDAG, detailed: bool = False) -> str:
         ev = node.evaluation
         if ev is None:
             continue
-        support = ev.get("support_level", "?")
+        evidence = ev.get("evidence_strength", "?")
+        calibration = ev.get("claim_evidence_calibration", "?")
         strengths = ev.get("strengths", [])
         weaknesses = ev.get("weaknesses", [])
         assumptions = ev.get("required_assumptions", [])
         alt_interp = ev.get("alternative_interpretations", [])
 
         lines.append(f"\n[{node.type.upper()}] {node.claim[:max_claim_chars]}")
-        lines.append(f"  Support: {support}")
+        lines.append(f"  Evidence: {evidence} | Claim–evidence calibration: {calibration}")
         if strengths:
             limit = None if detailed else 2
             lines.append(f"  Strengths: {'; '.join(strengths[:limit])}")

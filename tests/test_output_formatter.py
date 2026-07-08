@@ -4,9 +4,9 @@ import json
 from pathlib import Path
 
 from src.agents.output_formatter import (
+    _evidence_color,
     _node_size,
     _overall_assessment,
-    _support_color,
     _upsert_index,
     format_output,
     write_outputs,
@@ -16,24 +16,27 @@ from src.schemas.output import SCHEMA_VERSION
 from src.utils.graph import build_dag
 from tests.conftest import make_claim, make_evaluation, make_extracted_paper
 
-# ── _support_color ─────────────────────────────────────────────────────────────
+# ── _evidence_color ────────────────────────────────────────────────────────────
 
 
-def test_support_color_high():
-    assert _support_color("high") == "#22c55e"
+def test_evidence_color_strong():
+    assert _evidence_color("strong") == "#22c55e"
 
 
-def test_support_color_medium():
-    assert _support_color("medium") == "#eab308"
+def test_evidence_color_moderate():
+    assert _evidence_color("moderate") == "#eab308"
 
 
-def test_support_color_low():
-    assert _support_color("low") == "#ef4444"
+def test_evidence_color_weak():
+    assert _evidence_color("weak") == "#f97316"
 
 
-def test_support_color_unknown_defaults_to_red():
-    # Any unknown value falls through to the red default
-    assert _support_color("unknown") == "#ef4444"
+def test_evidence_color_absent():
+    assert _evidence_color("absent") == "#ef4444"
+
+
+def test_evidence_color_unknown_defaults_to_red():
+    assert _evidence_color("unknown") == "#ef4444"
 
 
 # ── _node_size ─────────────────────────────────────────────────────────────────
@@ -59,32 +62,57 @@ def test_node_size_deep_clamped_to_minimum():
     assert _node_size(10) == 20
 
 
-# ── _overall_assessment ────────────────────────────────────────────────────────
+# ── _overall_assessment (centrality-weighted) ──────────────────────────────────
 
 
-def test_overall_assessment_strong():
-    # 7/10 = 70% high → "strong"
-    text = _overall_assessment(high=7, low=1, n_claims=10)
+def _enriched_and_evals(configs):
+    """configs: list of (id, type, parent_id, evidence_strength)."""
+    claims = [make_claim(id=c[0], type=c[1], parent_id=c[2]) for c in configs]
+    enriched = build_dag(ClaimGraph(claims=claims))
+    evals = {c[0]: make_evaluation(c[0], evidence_strength=c[3]) for c in configs}
+    return enriched, evals
+
+
+def test_overall_assessment_strong_when_thesis_holds():
+    enriched, evals = _enriched_and_evals(
+        [
+            ("c1", "root", None, "strong"),
+            ("c1.1", "primary", "c1", "strong"),
+            ("c1.2", "primary", "c1", "moderate"),
+        ]
+    )
+    text = _overall_assessment(enriched, evals)
     assert "strong" in text
-    assert "10 claims" in text
 
 
-def test_overall_assessment_weak():
-    # 1/10 high, 6/10 low → "weak"
-    text = _overall_assessment(high=1, low=6, n_claims=10)
-    assert "weak" in text
+def test_overall_assessment_weak_when_root_unsupported_despite_strong_leaves():
+    # The v1 bug: a broken thesis with many strong trivial leaves must NOT read strong.
+    enriched, evals = _enriched_and_evals(
+        [
+            ("c1", "root", None, "absent"),
+            ("c1.1", "evidence", "c1", "strong"),
+            ("c1.2", "evidence", "c1", "strong"),
+            ("c1.3", "evidence", "c1", "strong"),
+        ]
+    )
+    text = _overall_assessment(enriched, evals)
+    assert "strong" not in text.split(".")[0]  # verdict clause is not "strong"
 
 
-def test_overall_assessment_mixed():
-    # 4/10 high, 3/10 low → "mixed"
-    text = _overall_assessment(high=4, low=3, n_claims=10)
-    assert "mixed" in text
+def test_overall_assessment_surfaces_most_central_weak_claim():
+    enriched, evals = _enriched_and_evals(
+        [
+            ("c1", "root", None, "weak"),
+            ("c1.1", "evidence", "c1", "weak"),
+        ]
+    )
+    text = _overall_assessment(enriched, evals)
+    assert "load-bearing" in text
 
 
-def test_overall_assessment_includes_counts():
-    text = _overall_assessment(high=3, low=2, n_claims=8)
-    assert "3 high" in text
-    assert "2 low" in text
+def test_overall_assessment_no_evaluations():
+    enriched, _ = _enriched_and_evals([("c1", "root", None, "strong")])
+    assert _overall_assessment(enriched, {}) == "No claims were evaluated."
 
 
 # ── format_output ──────────────────────────────────────────────────────────────
@@ -172,13 +200,13 @@ def test_format_output_support_counts():
         ]
     )
     evals = {
-        "c1": make_evaluation("c1", support_level="high"),
-        "c1.1": make_evaluation("c1.1", support_level="low"),
-        "c1.2": make_evaluation("c1.2", support_level="medium"),
+        "c1": make_evaluation("c1", evidence_strength="strong"),
+        "c1.1": make_evaluation("c1.1", evidence_strength="absent"),
+        "c1.2": make_evaluation("c1.2", evidence_strength="moderate"),
     }
     dag = format_output("paper-abc", "https://example.com", make_extracted_paper(), enriched, evals)
-    assert dag.summary.high_support_nodes == 1
-    assert dag.summary.low_support_nodes == 1
+    assert dag.summary.high_support_nodes == 1  # one "strong"
+    assert dag.summary.low_support_nodes == 1  # one "absent" (weak/absent band)
 
 
 def test_format_output_schema_version():
@@ -191,14 +219,14 @@ def test_format_output_schema_version():
     assert dag.schema_version == SCHEMA_VERSION
 
 
-def test_format_output_missing_evaluation_uses_medium_color():
+def test_format_output_missing_evaluation_uses_moderate_color():
     enriched, _ = _make_pipeline_outputs(
         [
             {"id": "c1", "type": "root", "parent_id": None},
         ]
     )
     dag = format_output("paper-abc", "https://example.com", make_extracted_paper(), enriched, {})
-    assert dag.dag.nodes[0].visual.color == _support_color("medium")
+    assert dag.dag.nodes[0].visual.color == _evidence_color("moderate")
 
 
 def test_format_output_root_border_wider():

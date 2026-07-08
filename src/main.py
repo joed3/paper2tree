@@ -217,14 +217,19 @@ def show(paper_id: str) -> None:
     claim_table.add_column("ID", style="dim", width=12)
     claim_table.add_column("Type", width=10)
     claim_table.add_column("Claim", max_width=70)
-    claim_table.add_column("Support", justify="right", width=8)
+    claim_table.add_column("Evidence", justify="right", width=9)
 
     root_first = sorted(nodes, key=lambda n: (n["depth"], n["id"]))
     for node in root_first:
         indent = "  " * node["depth"]
         eval_ = node.get("evaluation") or {}
-        level = eval_.get("support_level", None)
-        color = {"high": "green", "medium": "yellow", "low": "red"}.get(level or "", "dim")
+        level = eval_.get("evidence_strength", None)
+        color = {
+            "strong": "green",
+            "moderate": "yellow",
+            "weak": "dark_orange",
+            "absent": "red",
+        }.get(level or "", "dim")
         s_text = Text(level or "—")
         s_text.stylize(color)
 

@@ -30,22 +30,19 @@ def make_claim(
 
 def make_evaluation(
     node_id: str,
-    support_level: str = "high",
-    confidence_level: str = "high",
-    is_well_supported: bool = True,
+    evidence_strength: str = "strong",
+    claim_evidence_calibration: str = "calibrated",
     strengths: list[str] | None = None,
     weaknesses: list[str] | None = None,
 ) -> ClaimEvaluation:
     return ClaimEvaluation(
         node_id=node_id,
-        support_level=support_level,
-        confidence_level=confidence_level,
-        is_well_supported=is_well_supported,
+        evidence_strength=evidence_strength,
+        claim_evidence_calibration=claim_evidence_calibration,
         strengths=strengths or ["Strong evidence"],
         weaknesses=weaknesses or [],
         alternative_interpretations=[],
         required_assumptions=[],
-        supporting_evidence_quality="strong",
         notes="",
     )
 

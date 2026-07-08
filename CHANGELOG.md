@@ -11,6 +11,50 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [2.0.0] — 2026-07-08
+
+> **Breaking change (data schema).** `SCHEMA_VERSION` bumped 2 → 3. Existing `dag.json`
+> artifacts must be migrated with `python -m migrations.migrate_v2_to_v3` (idempotent;
+> also rebuilds `index.json`). The scoring model changed and three evaluation fields were
+> removed — see below.
+
+### Added
+- **Compositional bottom-up evaluation** — `claim_evaluator` now evaluates claims one depth
+  level at a time, deepest first, and evaluates each parent *conditioned on the evaluations of
+  its children*. This makes the DAG structure load-bearing at judgment time: parents inherit
+  weakness from weak sub-claims (evidential gaps) and are flagged when they overreach what their
+  well-supported children establish (inferential gaps). Siblings at a level are still evaluated
+  together; only depth is serialized. (Closes #2.)
+- **`claim_evidence_calibration` axis** (`overclaimed` / `calibrated` / `underclaimed`) — surfaces
+  whether a claim's stated scope matches the strength of its evidence, the judgment a reviewer
+  actually makes.
+- **Centrality-weighted overall verdict** — `overall_assessment` is now weighted by claim
+  centrality (root/primary dominate; evidence leaves barely move it) and leads with the most
+  load-bearing weakly-supported claim ("worth reading?" framing for a triaging reader). A paper
+  with a broken thesis but many strong trivial leaves no longer reads "strong". (Addresses #1.)
+- **`migrations/migrate_v2_to_v3.py`** — forward-migrates old artifacts and rebuilds the index.
+- **`eval/compare.py`** — paired-statistics referee (Wilcoxon, or bootstrap CI without SciPy) for
+  the v1.7-vs-v2.0 and DAG-vs-baseline comparisons; pilot sample default raised to 20.
+
+### Changed
+- **Scoring collapsed to two axes.** `evidence_strength` (`strong`/`moderate`/`weak`/`absent`) is
+  now the single evidence-support axis (drives node color), alongside `claim_evidence_calibration`.
+  Evaluator persona reworded from adversarial "Reviewer 2" to calibrated ("rigorous and fair; do
+  not manufacture concerns").
+- Frontend node card and canvas now render `evidence_strength` + a calibration chip; CLI and final
+  reviewer updated to the new fields.
+
+### Removed
+- **`confidence_level`** (uncalibrated LLM self-report), **`is_well_supported`**, and
+  **`supporting_evidence_quality`** from `ClaimEvaluation` — all absorbed into `evidence_strength`.
+
+### Deferred (tracked in V1_REVIEW_AND_CRITIQUE.md)
+- Type-specific evaluation rubrics (§6), extraction-reliability hardening (§8/#7), and the
+  structured + multimodal extraction upgrade (§15) are intentionally held until the v1.7-vs-v2.0
+  comparison validates that compositional evaluation moves the needle.
+
+---
+
 ## [1.7.0] — 2026-07-07
 
 ### Added

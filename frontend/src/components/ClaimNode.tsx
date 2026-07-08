@@ -23,7 +23,7 @@ export function getNodeDims(type: string) {
 
 function ClaimNodeInner({ data }: NodeProps<ClaimNodeData>) {
   const { id, label, type, visual, evaluation, isSelected, isExpanded, hiddenChildCount } = data
-  const supportLevel = evaluation?.support_level
+  const supportLevel = evaluation?.evidence_strength
   const dims = getNodeDims(type)
   const { toggle } = useExpand()
 

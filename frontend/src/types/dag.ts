@@ -15,14 +15,12 @@ export interface LiteratureCitation {
 
 export interface ClaimEvaluation {
   node_id: string
-  support_level: 'high' | 'medium' | 'low'
-  confidence_level: 'high' | 'medium' | 'low'
-  is_well_supported: boolean
+  evidence_strength: 'strong' | 'moderate' | 'weak' | 'absent'
+  claim_evidence_calibration: 'overclaimed' | 'calibrated' | 'underclaimed'
   strengths: string[]
   weaknesses: string[]
   alternative_interpretations: string[]
   required_assumptions: string[]
-  supporting_evidence_quality: 'strong' | 'moderate' | 'weak' | 'absent'
   notes: string
   literature_citations?: LiteratureCitation[]
   novelty_score?: 'high' | 'medium' | 'low' | null
