@@ -304,3 +304,158 @@ Summary: 31 claims analyzed — 22 high support, 3 low support, max depth 3.
 4. **MCP server tools** (`src/mcp_server.py`) — wire `review_paper` and `check_review_status` to the orchestrator.
 5. **Entry point + deps** (`pyproject.toml`) — `mcp>=1.0`, `paper2tree-mcp` script.
 6. **Smoke test** — register locally with Claude Code, submit one arXiv URL, poll to completion, verify HTML opens.
+
+**Status:** Steps 1–6 complete. The MCP server runs; a local-file review (job `59012227`) went end-to-end and produced a full review plus HTML. Everything below is the *distribution* phase — not yet implemented.
+
+---
+
+# Distribution Plan — PyPI + Plugin Marketplace
+
+## Goal
+
+Make paper2tree installable by any MCP-compatible agent with a one-line config, following the convention the Python MCP ecosystem has converged on: **publish the backend to PyPI, launch it with `uvx`, and wrap that in a Claude Code plugin distributed through a marketplace.**
+
+## Why this approach
+
+Surveying how comparable Python-backed MCP servers ship (the official `modelcontextprotocol/servers` reference repo, AWS's `awslabs/mcp` suite):
+
+- **Dominant convention — PyPI + `uvx`.** The plugin ships a tiny `.mcp.json`; the code lives on PyPI; `uvx` fetches and runs it in an isolated, cached environment. No `pip install` step for the user, no venv to manage. This is the path we take.
+- **Alternative — hosted HTTP server** (e.g. Amplitude ships only a URL to their own infrastructure). Rejected: would mean hosting the pipeline and eating LLM costs ourselves — a product decision, not a packaging one.
+- **Alternative — bundle the code in the plugin, run via `uv run --project ${CLAUDE_PLUGIN_ROOT}`.** Rare in practice; used mainly when a dependency won't package cleanly as a wheel. Kept as a fallback only if a `uvx`-install blocker surfaces.
+
+The one hard precondition for the `uvx` route: the package must install cleanly from a wheel with no build toolchain required. Verifying this (especially the PDF-parsing and agent-SDK deps resolving to wheels) is part of the plan below.
+
+---
+
+## Part A — Publish the backend to PyPI
+
+### A0. ⚠️ Fix HTML template bundling (correctness-critical — do first)
+
+**Problem:** The wheel packages only `src/` (`[tool.hatch.build.targets.wheel] packages = ["src"]`), but the export template is loaded from *outside* that tree:
+
+```python
+# src/export_html.py:14
+_TEMPLATE_PATH = Path(__file__).parent.parent / "frontend" / "dist-export" / "export.html"
+```
+
+`.parent.parent` resolves to the **repo root**, then `frontend/dist-export/`. That directory is not under `src/`, so it never enters the wheel. On a `uvx`/pip install, `_TEMPLATE_PATH.exists()` is False → `generate_export_html` raises `FileNotFoundError` → the pipeline's graceful-degradation path sets `html_path = None`. **Result: every review silently ships without the interactive HTML.** No error surfaces — the feature just disappears.
+
+(For contrast, the prompt `.txt` files load via `Path(__file__).parent` from *inside* `src/prompts/` — those bundle correctly and need no change. The frontend template is the only asset reaching outside the package.)
+
+**Fix:**
+1. Relocate the built template to live under the package, e.g. `src/assets/export.html` (have `npm run build:export` emit there, or move it and adjust the frontend build output path).
+2. Change the loader in `src/export_html.py` to resolve it package-relatively — preferred: `importlib.resources.files("src") / "assets" / "export.html"` (robust for installed packages, independent of filesystem layout); acceptable: `Path(__file__).parent / "assets" / "export.html"`.
+3. Verify it lands in the wheel: `python -m build` then `unzip -l dist/*.whl | grep export.html`.
+
+Hatchling includes non-`.py` files under packaged dirs by default, so no extra manifest config is needed once the asset is under `src/`.
+
+### A1. Rename the top-level import package (recommended)
+
+The import package is currently `src` (`packages = ["src"]`, entry points `src.main:cli` etc.). Publishing a top-level `src` package to PyPI is an anti-pattern — the name is generic and collision-prone. `uvx` isolation makes it *tolerable* at runtime (each tool gets its own env), so this is recommended-not-blocking, but best done before first publish:
+
+- Rename `src/` → `paper2tree/`.
+- Update all `from src.` / `src.` imports and the three `[project.scripts]` entries.
+- Update `[tool.hatch.build.targets.wheel] packages` and `[tool.ruff.lint.isort] known-first-party`.
+
+If deferred to ship faster, treat it as debt to clear before the package gains external dependents.
+
+### A2. Add PyPI metadata to `[project]`
+
+`description`, `readme = "README.md"`, `license`, `authors`, `keywords`, `classifiers`, and a `[project.urls]` block (Homepage/Repository). PyPI renders the README as the project page.
+
+### A3. Trim default dependencies (optional)
+
+`fastapi`, `uvicorn`, `python-multipart` are hard deps today but only the web server needs them. Move them behind a `web` extra so `uvx paper2tree-mcp` pulls a leaner tree and cold-starts faster. Core deps for CLI/MCP stay; `viz`/`eval`/`dev` extras unchanged.
+
+### A4. Build and validate locally
+
+```bash
+python -m build            # dist/*.whl + *.tar.gz
+twine check dist/*         # metadata + README rendering
+```
+
+### A5. Verify the wheel is self-contained (this is the HTML-fix proof)
+
+Install the **built wheel** (not the source tree) into a throwaway venv and run one review end-to-end. Because the wheel-install has no repo root to fall back on, a successful HTML output here proves A0 worked for real `uvx` users.
+
+### A6. Publish
+
+1. TestPyPI first: `twine upload -r testpypi dist/*`, then `uvx --index-url <testpypi> paper2tree-mcp` to smoke-test the full fetch-and-run path.
+2. Production: `twine upload dist/*`.
+3. Auth: prefer a **PyPI Trusted Publisher** (OIDC from GitHub Actions); an API token is fine to start.
+
+---
+
+## Part B — Publish the plugin to a marketplace
+
+### B1. Plugin manifest
+
+`.claude-plugin/plugin.json` at the plugin root:
+```json
+{
+  "name": "paper2tree",
+  "description": "Claim-level review of scientific papers as an interactive claim DAG",
+  "version": "0.1.0",
+  "author": { "name": "joed3" }
+}
+```
+Setting `version` explicitly means users only get updates when it's bumped (otherwise the git SHA is used and every commit is a new version).
+
+### B2. `.mcp.json` — launch via `uvx`
+
+```json
+{
+  "mcpServers": {
+    "paper2tree": {
+      "command": "uvx",
+      "args": ["paper2tree-mcp@latest"],
+      "env": { "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}" }
+    }
+  }
+}
+```
+Once A1 lands the console script is `paper2tree-mcp` regardless of package rename. Pin `@<version>` instead of `@latest` for reproducibility if desired.
+
+### B3. Test locally before publishing
+
+```bash
+claude --plugin-dir ./paper2tree-plugin
+```
+Confirm the tools register (`review_paper`, `check_review_status`) and one review completes with a real `html_path`. `/reload-plugins` picks up edits without restart.
+
+### B4. Create the marketplace
+
+A git repo (can be this repo) with `.claude-plugin/marketplace.json` listing the plugin. Users then:
+```bash
+/plugin marketplace add <owner/repo>
+/plugin install paper2tree
+```
+For a private/team rollout, host the marketplace in a private repo. Optional: submit to Anthropic's reviewed `claude-community` marketplace via the in-app form (`claude plugin validate` locally first).
+
+### B5. Prerequisites documented for users
+
+- `uv` installed (provides `uvx`).
+- `ANTHROPIC_API_KEY` set, or local Claude login — the plugin cannot provision either.
+
+---
+
+## Distribution Implementation Order
+
+1. **A0 — Fix HTML template bundling.** The only change with a correctness consequence; do and verify first.
+2. **A1 — Rename `src` → `paper2tree`** (or consciously defer as debt).
+3. **A2–A3 — PyPI metadata + optional dependency trim.**
+4. **A4–A5 — Build, `twine check`, and verify HTML from a wheel-only install.**
+5. **A6 — Publish to TestPyPI, then PyPI.**
+6. **B1–B3 — Plugin manifest + `.mcp.json`, test with `--plugin-dir`.**
+7. **B4 — Marketplace repo; install end-to-end from the marketplace.**
+8. **B5 — Document prerequisites in the README.**
+
+## Open Decisions (for review)
+
+| Decision | Options | Recommendation |
+|---|---|---|
+| Rename `src` → `paper2tree` now vs. defer | Now (clean) / defer (faster, debt) | **Now** — before external dependents exist |
+| Web server deps | Keep in core / move to `web` extra | **`web` extra** — leaner `uvx` cold start |
+| Marketplace scope | This repo / dedicated repo / `claude-community` | Start with **this repo**; submit to community later |
+| Template location under `src/` | `src/assets/` / other | `src/assets/export.html` |
+| Version pin in `.mcp.json` | `@latest` / pinned | `@latest` for iteration; pin at first stable release |
