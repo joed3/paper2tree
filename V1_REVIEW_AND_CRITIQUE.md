@@ -296,6 +296,40 @@ The whole point of §3 is that we currently can't claim improvement. This releas
 
 Report all of this in `eval/pilot/v2.0_report.md` alongside the qualitative notes template that already exists.
 
+### Runbook — how to actually run the comparison (captured for a later session)
+
+State as of last session: v2 code is committed on branch **`v2-compositional-evaluation`** (commits `4372c52` = v2.0 core, `412bd93` = eval parallelism + baseline reuse). A 1-paper smoke run passed and produced the measured costs above. **Neither full run has been started yet.** Environment confirmed working: `ANTHROPIC_API_KEY` set, eLife corpus at `/Users/joed3/projects/elife-article-xml`, eval deps + scipy installed. Use the pydantic-enabled interpreter `/usr/local/opt/python@3.11/bin/python3.11` (aliased `PY` below); plain `python`/uv lacks pydantic.
+
+Run v1.7 first (its baseline is reused by v2). Only six behavioral files toggle between versions; `llm.py`, `baseline_reviewer.py`, and all of `eval/` stay at v2 so measurement is identical.
+
+```bash
+PY=/usr/local/opt/python@3.11/bin/python3.11
+
+# 1. v1.7 control: revert only the behavioral files, run, then restore v2.
+git checkout main -- src/schemas/evaluation.py src/schemas/output.py \
+  src/agents/claim_evaluator.py src/agents/output_formatter.py \
+  src/agents/final_reviewer.py src/prompts/claim_evaluator.txt
+"$PY" -m eval.pilot_study --n 20 --output-dir eval/pilot_v17 --concurrency 5
+git checkout HEAD -- src/schemas src/agents src/prompts   # restore v2 (do NOT skip)
+
+# 2. v2: reuse v1.7's baseline + identical sample; regenerate only the DAG arm.
+#    Do NOT pass --force (it would regenerate the baseline and defeat the reuse).
+"$PY" -m eval.pilot_study --n 20 --output-dir eval/pilot_v2 \
+  --reuse-from eval/pilot_v17 --concurrency 5
+
+# 3. Paired comparison (Wilcoxon; scipy present).
+"$PY" -m eval.compare --v2 eval/pilot_v2/metrics.csv --v1 eval/pilot_v17/metrics.csv \
+  --out eval/pilot_v2/comparison.json
+```
+
+Cautions:
+- **Run each pilot in the background and monitor** (multi-hour v1.7 run); the harness catches per-paper failures and caches completed papers, so a re-run resumes rather than restarting.
+- **Restore the v2 files after step 1** (`git checkout HEAD -- …`) before step 2, or the v2 run will silently re-run v1.7 logic.
+- Per-run resource stats land in `eval/pilot_v*/run_stats.json` (paper length, time, tokens, cost per arm); prose metrics in `metrics.csv` / `metrics_summary.json`.
+- Expected: **~1 h wall for v2** (20 papers ÷ 5) plus the longer v1.7 run; **~$58–62 total** with baseline reused.
+
+Then work §14: the two paired criteria, the new metrics (overclaiming agreement, thesis-verdict correctness), and the decision rule.
+
 ---
 
 ## 15. Future direction: structured + multimodal extraction (evaluated, deferred)
