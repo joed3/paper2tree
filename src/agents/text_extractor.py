@@ -6,13 +6,12 @@ then calls Claude to structure the raw text into title/authors/abstract/sections
 
 from pathlib import Path
 
-import anthropic
 import pdfplumber
 
+from .. import llm
 from ..prompts import load_prompt
 from ..schemas.paper import ExtractedPaper, ExtractedPaperStructure, FetchResult
 
-_client = anthropic.Anthropic()
 _MAX_TEXT_CHARS = 80_000  # ~60K tokens; fits comfortably in 200K context
 
 
@@ -83,14 +82,4 @@ def _structure_with_claude(raw_text: str) -> ExtractedPaperStructure:
     template = load_prompt("text_extractor")
     prompt = template.substitute(raw_text=truncated)
 
-    response = _client.messages.parse(
-        model="claude-opus-4-6",
-        max_tokens=16384,
-        messages=[{"role": "user", "content": prompt}],
-        output_format=ExtractedPaperStructure,
-    )
-
-    if response.parsed_output is None:
-        raise ValueError("Text extractor: Claude returned no structured output")
-
-    return response.parsed_output
+    return llm.parse_structured(prompt, ExtractedPaperStructure, max_tokens=16384)

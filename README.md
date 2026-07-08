@@ -33,7 +33,9 @@ URL or PDF
  ▼  outputs/<paper_id>/dag.json
 ```
 
-Each paper's results live in their own folder under `outputs/`. A central `outputs/index.json` tracks all processed papers so the frontend can display a browsable library.
+Each paper's results live in their own folder under the outputs directory, alongside a self-contained interactive HTML export (`<paper_id>.html`). A central `index.json` tracks all processed papers so the frontend can display a browsable library.
+
+**Where outputs go:** `PAPER2TREE_OUTPUT_DIR` if set, otherwise `~/.paper2tree/outputs/`. The web server pins this to the project-local `outputs/` folder, so the browsable library keeps working as before.
 
 ---
 
@@ -42,8 +44,8 @@ Each paper's results live in their own folder under `outputs/`. A central `outpu
 **Python backend:**
 
 - Python 3.11+
-- An [Anthropic API key](https://console.anthropic.com/)
-- The [Claude Code CLI](https://claude.ai/code) installed and authenticated (used by the Paper Fetcher agent)
+- The [Claude Code CLI](https://claude.ai/code) installed and authenticated
+- Optionally, an [Anthropic API key](https://console.anthropic.com/) — when `ANTHROPIC_API_KEY` is set, LLM calls go directly through the API; when it isn't, they route through your local Claude Code login, so no key is needed
 
 ```bash
 git clone https://github.com/yourname/paper2tree
@@ -51,6 +53,7 @@ cd paper2tree
 
 pip install -e .
 
+# Optional — only if you want direct API access instead of your Claude Code login:
 cp .env.example .env
 # Edit .env and add: ANTHROPIC_API_KEY=sk-ant-...
 ```
@@ -79,6 +82,45 @@ cd frontend && npm run dev
 ```
 
 Then open [http://localhost:5173](http://localhost:5173). Click **+** in the sidebar to paste a URL or upload a PDF. Progress updates in real time; the paper loads automatically when the pipeline completes.
+
+---
+
+## Use as a coding-agent plugin (MCP)
+
+paper2tree ships an [MCP](https://modelcontextprotocol.io/) server, so any MCP-compatible coding agent — Claude Code, OpenAI Codex, and others — can review papers for you. Point the agent at a URL or a local PDF; it runs the pipeline and hands back a local interactive HTML file.
+
+**Register with Claude Code:**
+
+```bash
+claude mcp add paper2tree -- paper2tree-mcp
+```
+
+**Register with other MCP clients** (Codex, etc.) — add to the client's MCP config:
+
+```json
+{
+  "mcpServers": {
+    "paper2tree": {
+      "command": "paper2tree-mcp"
+    }
+  }
+}
+```
+
+Authentication: if you're logged into Claude Code locally, no API key is needed. Set `ANTHROPIC_API_KEY` in the server's environment to use the API directly instead.
+
+**Then just ask the agent:**
+
+> Review this paper: https://arxiv.org/abs/1706.03762
+
+The server exposes two tools:
+
+| Tool | Purpose |
+|---|---|
+| `review_paper(source, live_search, force)` | Submit a URL or local file path. Returns a `job_id` immediately (the pipeline takes 2–10 minutes). |
+| `check_review_status(job_id)` | Poll progress. On completion returns `html_path` (open in a browser), the claim summary, and the final prose review. |
+
+Reviews land in `~/.paper2tree/outputs/<paper_id>.html` (override with `PAPER2TREE_OUTPUT_DIR`). Job state persists in `~/.paper2tree/jobs/`, so an agent can resume polling even if the MCP server restarts.
 
 ---
 
@@ -112,11 +154,11 @@ python -m src.main process /path/to/paper.pdf
 [6/6] Writing output …
 
 ✓ Done — paper_id: attention-is-all-you-need-a7468c68
-  Output: outputs/attention-is-all-you-need-a7468c68/dag.json
+  Output: ~/.paper2tree/outputs/attention-is-all-you-need-a7468c68/dag.json
   Claims: 14 nodes, high support: 9/14
 ```
 
-Results are saved to `outputs/<paper_id>/dag.json`. Re-running the same URL is a no-op unless you pass `--force`.
+Results are saved to `<outputs>/<paper_id>/dag.json`, with a self-contained interactive viewer at `<outputs>/<paper_id>.html` (skip with `--no-html`). The outputs directory is `~/.paper2tree/outputs/` unless `PAPER2TREE_OUTPUT_DIR` is set. Re-running the same URL is a no-op unless you pass `--force`.
 
 ---
 

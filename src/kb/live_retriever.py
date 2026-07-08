@@ -9,12 +9,10 @@ import asyncio
 import re
 import xml.etree.ElementTree as ET
 
-import anthropic
 import httpx
 
+from .. import llm
 from .schemas import RetrievedPassage
-
-_haiku_client = anthropic.Anthropic()
 
 _PUBMED_ESEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 _PUBMED_EFETCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
@@ -223,15 +221,7 @@ class LiveRetriever:
             "Output ONLY the 2 queries, nothing else."
         )
         try:
-            response = _haiku_client.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=128,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            text = next(
-                (b.text for b in response.content if b.type == "text"),
-                "",
-            )
+            text = llm.complete(prompt, model="claude-haiku-4-5-20251001", max_tokens=128)
             queries = [line.strip() for line in text.strip().splitlines() if line.strip()]
             return queries[:2] if queries else [claim_text[:200]]
         except Exception:

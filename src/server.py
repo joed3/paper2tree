@@ -22,13 +22,15 @@ from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-# Ensure all relative paths (e.g. OUTPUTS_DIR in orchestrator) resolve from the project root
+# The web app writes and serves papers from the project-local outputs/ directory
+# (unless the user explicitly points PAPER2TREE_OUTPUT_DIR elsewhere).
 PROJECT_ROOT = Path(__file__).parent.parent
 os.chdir(PROJECT_ROOT)
+os.environ.setdefault("PAPER2TREE_OUTPUT_DIR", str(PROJECT_ROOT / "outputs"))
 
-from .orchestrator import process_paper, process_paper_from_file  # noqa: E402
+from .orchestrator import get_outputs_dir, process_paper, process_paper_from_file  # noqa: E402
 
-OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+OUTPUTS_DIR = get_outputs_dir()
 FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
 
 app = FastAPI(title="paper2tree API", version="0.1.0")

@@ -11,6 +11,21 @@ Version numbers follow [Semantic Versioning](https://semver.org/):
 
 ---
 
+## [1.7.0] — 2026-07-07
+
+### Added
+- **MCP plugin for coding agents** — new `paper2tree-mcp` entry point (`src/mcp_server.py`) exposes the pipeline over the Model Context Protocol (stdio) so agents like Claude Code and Codex can review papers directly. Two tools: `review_paper(source, live_search, force)` submits a URL or local file and returns a `job_id` immediately; `check_review_status(job_id)` polls progress and returns the HTML path, summary, and final review on completion.
+- **Disk-persisted job store** (`src/jobs.py`) — MCP jobs are written to `~/.paper2tree/jobs/<job_id>.json` so state survives server restarts; orphaned running jobs are marked as errors at startup instead of hanging pollers.
+- **Automatic HTML export** — every pipeline run now writes the self-contained interactive viewer to `<outputs>/<paper_id>.html` (new `ensure_export_html()` in `src/export_html.py`; suppress with `--no-html` on the CLI). Previously exports were only available through the web server endpoint.
+- **CLI local-file support** — `paper2tree process` now accepts a local PDF/HTML path in addition to a URL (routing shared with the MCP server).
+
+- **No API key required with local Claude login** — new central LLM helper (`src/llm.py`). When `ANTHROPIC_API_KEY` is set, calls go directly through the anthropic SDK as before; when absent, calls route through the Claude Agent SDK and use the local Claude Code CLI login. All pipeline agents (text extractor, claim extractor, claim evaluator, final reviewer, live-search query generation) now share this helper; the eval-only baseline reviewer still requires a key.
+
+### Changed
+- **Configurable output directory** — the hardcoded CWD-relative `outputs/` is replaced by `get_outputs_dir()`: `PAPER2TREE_OUTPUT_DIR` if set, otherwise user-global `~/.paper2tree/outputs/`. The web server pins the variable to the project-local `outputs/` at startup, so web-app behavior is unchanged. CLI users who relied on the old CWD-relative default should set `PAPER2TREE_OUTPUT_DIR=./outputs` or use the new global location.
+
+---
+
 ## [1.6.0] — 2026-05-07
 
 ### Added

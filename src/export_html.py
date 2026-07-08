@@ -75,6 +75,29 @@ def generate_export_html(paper_data: dict, pdf_path: Path | None = None) -> str:
     return html
 
 
+def ensure_export_html(paper_id: str, outputs_dir: Path, force: bool = False) -> Path:
+    """Generate outputs_dir/<paper_id>.html from the paper's dag.json if missing.
+
+    Returns the path to the HTML file (existing or newly written).
+
+    Raises:
+        FileNotFoundError: If dag.json or the viewer template is missing.
+    """
+    html_path = outputs_dir / f"{paper_id}.html"
+    if html_path.exists() and not force:
+        return html_path
+
+    paper_dir = outputs_dir / paper_id
+    dag_path = paper_dir / "dag.json"
+    if not dag_path.exists():
+        raise FileNotFoundError(f"No dag.json found for paper_id={paper_id} at {dag_path}")
+
+    paper_data = json.loads(dag_path.read_text(encoding="utf-8"))
+    html = generate_export_html(paper_data, pdf_path=_find_pdf(paper_dir))
+    html_path.write_text(html, encoding="utf-8")
+    return html_path
+
+
 def safe_filename(paper_data: dict) -> str:
     """Return a safe filename (no extension) derived from the paper title."""
     title = paper_data.get("paper", {}).get("title", "export")

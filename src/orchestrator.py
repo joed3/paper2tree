@@ -8,6 +8,7 @@ Pipeline:
 import asyncio
 import hashlib
 import json
+import os
 import shutil
 from collections.abc import Callable
 from pathlib import Path
@@ -20,6 +21,7 @@ from .agents.final_reviewer import generate_review
 from .agents.output_formatter import format_output, write_outputs
 from .agents.paper_fetcher import fetch_paper
 from .agents.text_extractor import extract_text
+from .export_html import ensure_export_html
 from .kb.live_retriever import LiveRetriever
 from .schemas.paper import FetchResult
 from .utils.graph import build_dag
@@ -28,9 +30,19 @@ from .utils.pdf_locate import locate_claims
 
 load_dotenv()
 
-OUTPUTS_DIR = Path("outputs")
-
 LogFn = Callable[[str], None]
+
+
+def get_outputs_dir() -> Path:
+    """Resolve the outputs directory.
+
+    PAPER2TREE_OUTPUT_DIR overrides; otherwise user-global ~/.paper2tree/outputs
+    so the pipeline works regardless of the caller's working directory.
+    """
+    env = os.environ.get("PAPER2TREE_OUTPUT_DIR")
+    if env:
+        return Path(env).expanduser()
+    return Path.home() / ".paper2tree" / "outputs"
 
 
 async def _run_pipeline(
@@ -40,8 +52,10 @@ async def _run_pipeline(
     force: bool,
     log: LogFn,
     live_search: bool = False,
+    export_html: bool = True,
 ) -> str:
     """Steps 2–7 of the pipeline (after fetching). Shared by URL and file paths."""
+    outputs_dir = get_outputs_dir()
     try:
         # ── Step 2: Extract text ──────────────────────────────────────────────
         log("[2/7] Extracting and structuring text …")
@@ -52,7 +66,7 @@ async def _run_pipeline(
 
         # ── Step 3: Determine paper_id and check for duplicates ───────────────
         paper_id = make_paper_id(extracted.title, url)
-        paper_dir = OUTPUTS_DIR / paper_id
+        paper_dir = outputs_dir / paper_id
         output_path = paper_dir / "dag.json"
 
         if not force and output_path.exists():
@@ -129,7 +143,14 @@ async def _run_pipeline(
 
         # ── Step 8: Write output ───────────────────────────────────────────────
         log("[7/7] Writing output …")
-        write_outputs(paper_dag, paper_dir, OUTPUTS_DIR)
+        write_outputs(paper_dag, paper_dir, outputs_dir)
+
+        if export_html:
+            try:
+                html_path = ensure_export_html(paper_id, outputs_dir, force=True)
+                log(f"      Interactive HTML: {html_path}")
+            except FileNotFoundError as e:
+                log(f"      WARNING: HTML export skipped ({e})")
 
         log(f"\n✓ Done — paper_id: {paper_id}")
         log(f"  Output: {output_path}")
@@ -151,24 +172,31 @@ async def _run_pipeline(
 
 
 async def process_paper(
-    url: str, force: bool = False, live_search: bool = False, log: LogFn = print
+    url: str,
+    force: bool = False,
+    live_search: bool = False,
+    log: LogFn = print,
+    export_html: bool = True,
 ) -> str:
     """Run the full pipeline for a single paper URL.
 
     Returns the paper_id on success.
     Raises on any unrecoverable error.
     """
-    OUTPUTS_DIR.mkdir(exist_ok=True)
+    outputs_dir = get_outputs_dir()
+    outputs_dir.mkdir(parents=True, exist_ok=True)
 
     url_hash = hashlib.sha256(url.encode()).hexdigest()[:8]
-    temp_dir = OUTPUTS_DIR / f"_tmp_{url_hash}"
+    temp_dir = outputs_dir / f"_tmp_{url_hash}"
     raw_dir = temp_dir / "raw"
 
     log(f"[1/7] Fetching paper from {url} …")
     fetch_result = await fetch_paper(url, raw_dir)
     log(f"      Downloaded: {fetch_result.content_type} → {Path(fetch_result.raw_path).name}")
 
-    return await _run_pipeline(fetch_result, url, temp_dir, force, log, live_search=live_search)
+    return await _run_pipeline(
+        fetch_result, url, temp_dir, force, log, live_search=live_search, export_html=export_html
+    )
 
 
 async def process_paper_from_file(
@@ -177,20 +205,22 @@ async def process_paper_from_file(
     force: bool = False,
     live_search: bool = False,
     log: LogFn = print,
+    export_html: bool = True,
 ) -> str:
     """Run the pipeline for an already-downloaded local file (skips the fetch step).
 
     Returns the paper_id on success.
     Raises on any unrecoverable error.
     """
-    OUTPUTS_DIR.mkdir(exist_ok=True)
+    outputs_dir = get_outputs_dir()
+    outputs_dir.mkdir(parents=True, exist_ok=True)
 
     suffix = file_path.suffix.lower()
     content_type = "pdf" if suffix == ".pdf" else "html" if suffix in (".html", ".htm") else "text"
     pseudo_url = f"upload://{original_name}"
 
     file_hash = hashlib.sha256(original_name.encode()).hexdigest()[:8]
-    temp_dir = OUTPUTS_DIR / f"_tmp_{file_hash}"
+    temp_dir = outputs_dir / f"_tmp_{file_hash}"
     raw_dir = temp_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
 
@@ -217,5 +247,11 @@ async def process_paper_from_file(
 
     log(f"[1/7] Using uploaded file: {original_name}")
     return await _run_pipeline(
-        fetch_result, pseudo_url, temp_dir, force, log, live_search=live_search
+        fetch_result,
+        pseudo_url,
+        temp_dir,
+        force,
+        log,
+        live_search=live_search,
+        export_html=export_html,
     )

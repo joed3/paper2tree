@@ -1,11 +1,9 @@
 """Final Reviewer Agent — synthesises a DAG evaluation into an eLife-format prose review."""
 
-import anthropic
-
+from .. import llm
 from ..prompts import load_prompt
 from ..schemas.output import PaperDAG
 
-_client = anthropic.Anthropic()
 _MAX_PAPER_CHARS = 80_000
 _MAX_DAG_NODE_CHARS = 200
 _MAX_DAG_NODE_CHARS_DETAILED = 600
@@ -71,15 +69,4 @@ def generate_review(paper_text: str, dag: PaperDAG, prompt_name: str = "final_re
 
     prompt = template.substitute(subs)
 
-    response = _client.messages.create(
-        model="claude-opus-4-6",
-        max_tokens=8192,
-        thinking={"type": "adaptive"},
-        messages=[{"role": "user", "content": prompt}],
-    )
-
-    text_block = next((b for b in response.content if b.type == "text"), None)
-    if text_block is None:
-        raise ValueError("Final reviewer returned no text block")
-
-    return text_block.text.strip()
+    return llm.complete(prompt, max_tokens=8192, thinking=True).strip()

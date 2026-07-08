@@ -1,7 +1,7 @@
 """Paper2Tree CLI.
 
 Usage:
-  python -m src.main process <url> [--force]
+  python -m src.main process <url_or_path> [--force]
   python -m src.main batch <urls_file> [--force] [--concurrency N]
   python -m src.main list [--sort-by title|date|score]
   python -m src.main show <paper_id>
@@ -18,7 +18,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from .orchestrator import OUTPUTS_DIR, process_paper
+from .orchestrator import get_outputs_dir, process_paper, process_paper_from_file
 
 console = Console()
 
@@ -32,17 +32,35 @@ def cli() -> None:
 
 
 @cli.command()
-@click.argument("url")
+@click.argument("source")
 @click.option("--force", is_flag=True, help="Reprocess even if already cached.")
 @click.option(
     "--live-search",
     is_flag=True,
     help="Search PubMed and Semantic Scholar for prior literature during evaluation.",
 )
-def process(url: str, force: bool, live_search: bool) -> None:
-    """Process a paper URL and build its claim DAG."""
+@click.option("--no-html", is_flag=True, help="Skip generating the interactive HTML export.")
+def process(source: str, force: bool, live_search: bool, no_html: bool) -> None:
+    """Process a paper (URL or local file path) and build its claim DAG."""
     try:
-        asyncio.run(process_paper(url, force=force, live_search=live_search))
+        if source.startswith(("http://", "https://")):
+            asyncio.run(
+                process_paper(source, force=force, live_search=live_search, export_html=not no_html)
+            )
+        else:
+            file_path = Path(source).expanduser()
+            if not file_path.is_file():
+                console.print(f"[red]Error:[/red] not a URL or existing file: {source}")
+                sys.exit(1)
+            asyncio.run(
+                process_paper_from_file(
+                    file_path,
+                    file_path.name,
+                    force=force,
+                    live_search=live_search,
+                    export_html=not no_html,
+                )
+            )
     except Exception as e:
         console.print(f"[red]Error:[/red] {e}")
         sys.exit(1)
@@ -95,7 +113,7 @@ def batch(urls_file: str, force: bool, concurrency: int) -> None:
 )
 def list_papers(sort_by: str) -> None:
     """List all processed papers."""
-    index_path = OUTPUTS_DIR / "index.json"
+    index_path = get_outputs_dir() / "index.json"
     if not index_path.exists():
         console.print(
             "[yellow]No papers processed yet. Run 'process <url>' to get started.[/yellow]"
@@ -161,7 +179,7 @@ def list_papers(sort_by: str) -> None:
 @click.argument("paper_id")
 def show(paper_id: str) -> None:
     """Show the summary for a processed paper."""
-    dag_path = OUTPUTS_DIR / paper_id / "dag.json"
+    dag_path = get_outputs_dir() / paper_id / "dag.json"
     if not dag_path.exists():
         console.print(f"[red]Paper not found:[/red] {paper_id}")
         sys.exit(1)

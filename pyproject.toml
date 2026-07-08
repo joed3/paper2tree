@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "paper2tree"
-version = "1.6.0"
+version = "1.7.0"
 requires-python = ">=3.11"
 dependencies = [
     "anthropic>=0.86.0",
@@ -24,6 +24,7 @@ dependencies = [
     "fastapi>=0.115",
     "uvicorn>=0.30",
     "python-multipart>=0.0.9",
+    "mcp>=1.0",
 ]
 
 [project.optional-dependencies]
@@ -47,6 +48,7 @@ eval = [
 [project.scripts]
 paper2tree = "src.main:cli"
 paper2tree-server = "src.server:main"
+paper2tree-mcp = "src.mcp_server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]

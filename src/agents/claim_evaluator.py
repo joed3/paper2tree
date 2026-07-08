@@ -4,17 +4,15 @@ Draft: single call for all claims. TODO: parallelize by primary-claim subtrees.
 """
 
 import json
-import re
 
-import anthropic
 from pydantic import ValidationError
 
+from .. import llm
 from ..kb.schemas import RetrievedPassage
 from ..prompts import load_prompt
 from ..schemas.evaluation import ClaimEvaluation, SubtreeEvaluation
 from ..utils.graph import EnrichedClaim
 
-_async_client = anthropic.AsyncAnthropic()
 _MAX_TEXT_CHARS = 60_000  # leaves room for claims JSON + response
 
 
@@ -64,30 +62,7 @@ async def evaluate_claims(
         literature_block=literature_block,
     )
 
-    async with _async_client.messages.stream(
-        model="claude-opus-4-6",
-        max_tokens=32768,
-        messages=[{"role": "user", "content": prompt}],
-    ) as stream:
-        response = await stream.get_final_message()
-
-    if response.stop_reason == "max_tokens":
-        raise ValueError(
-            f"Claim evaluator hit max_tokens limit ({response.usage.output_tokens} output tokens). "
-            "Response was truncated — reduce claims or paper length."
-        )
-
-    text_block = next((b for b in response.content if b.type == "text"), None)
-    if text_block is None:
-        raise ValueError("Claim evaluator returned no structured output")
-
-    raw = text_block.text.strip()
-    if raw.startswith("```"):
-        lines = raw.splitlines()
-        raw = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
-    json_match = re.search(r"\{[\s\S]*\}", raw)
-    if json_match:
-        raw = json_match.group(0)
+    raw = llm.extract_json(await llm.complete_async(prompt, max_tokens=32768))
 
     try:
         result = SubtreeEvaluation.model_validate_json(raw)
