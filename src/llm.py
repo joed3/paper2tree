@@ -10,6 +10,7 @@ Every pipeline agent routes its Claude calls through this module:
 """
 
 import asyncio
+import contextvars
 import json
 import os
 import re
@@ -31,32 +32,51 @@ _async_client: anthropic.AsyncAnthropic | None = None
 
 
 # ── Usage / cost tracking ────────────────────────────────────────────────────
-# A process-global accumulator so the eval harness can attribute token spend to a
-# pipeline stage: reset_usage() before, get_usage() after. Only the direct-API path
-# reports usage; the agent-SDK fallback (no API key) contributes nothing.
-_usage = {"input_tokens": 0, "output_tokens": 0, "calls": 0}
+# Lets the eval harness attribute token spend to a pipeline stage: reset_usage()
+# before, get_usage() after. Only the direct-API path reports usage; the agent-SDK
+# fallback (no API key) contributes nothing.
+#
+# The accumulator lives in a ContextVar holding a *mutable dict* so per-paper
+# attribution stays correct under concurrency: each paper task calls reset_usage()
+# (a fresh dict scoped to that task's context), and record_usage() mutates the dict
+# in place. In-place mutation is visible across asyncio.to_thread boundaries (the
+# thread gets a copy of the context that references the same dict), while a
+# different task's reset_usage() rebinds only its own context — so five papers
+# running at once don't cross-contaminate each other's counts.
+_usage_var: contextvars.ContextVar[dict] = contextvars.ContextVar("p2t_usage")
+
+
+def _current_usage() -> dict:
+    try:
+        return _usage_var.get()
+    except LookupError:
+        d = {"input_tokens": 0, "output_tokens": 0, "calls": 0}
+        _usage_var.set(d)
+        return d
 
 
 def reset_usage() -> None:
-    _usage.update(input_tokens=0, output_tokens=0, calls=0)
+    _usage_var.set({"input_tokens": 0, "output_tokens": 0, "calls": 0})
 
 
 def record_usage(usage) -> None:
     """Accumulate an Anthropic response .usage object (no-op if None)."""
     if usage is None:
         return
-    _usage["input_tokens"] += getattr(usage, "input_tokens", 0) or 0
-    _usage["output_tokens"] += getattr(usage, "output_tokens", 0) or 0
-    _usage["calls"] += 1
+    d = _current_usage()
+    d["input_tokens"] += getattr(usage, "input_tokens", 0) or 0
+    d["output_tokens"] += getattr(usage, "output_tokens", 0) or 0
+    d["calls"] += 1
 
 
 def get_usage() -> dict:
     """Return accumulated tokens plus estimated Opus-tier cost in USD."""
+    d = _current_usage()
     cost = (
-        _usage["input_tokens"] / 1e6 * _INPUT_USD_PER_MTOK
-        + _usage["output_tokens"] / 1e6 * _OUTPUT_USD_PER_MTOK
+        d["input_tokens"] / 1e6 * _INPUT_USD_PER_MTOK
+        + d["output_tokens"] / 1e6 * _OUTPUT_USD_PER_MTOK
     )
-    return {**_usage, "cost_usd": round(cost, 4)}
+    return {**d, "cost_usd": round(cost, 4)}
 
 
 def has_api_key() -> bool:

@@ -209,7 +209,7 @@ Work is on branch **`v2-compositional-evaluation`**. Per the directive to stop a
 | 2 — Compositional evaluation | ✅ done | `claim_evaluator` now evaluates depth-by-depth, deepest first, parents conditioned on children (evidential vs. inferential gaps). New tests assert ordering + child context. |
 | 3 — Centrality-weighted aggregation | ✅ done | Weighted verdict + "worth reading?" framing; a weak thesis with strong leaves no longer reads "strong". Tests cover the old bug. |
 | Migration v2→v3 | ✅ done | `migrations/migrate_v2_to_v3.py` + 9 tests; all 9 committed artifacts migrated and re-validated; `index.json` rebuilt. |
-| Eval harness | ✅ done | `eval/compare.py` (paired Wilcoxon / bootstrap CI); pilot default raised to 20. |
+| Eval harness | ✅ done | `eval/compare.py` (paired Wilcoxon / bootstrap CI); pilot default raised to 20; per-paper time/token/cost tracking (concurrency-safe via `ContextVar`); `--concurrency N` (parallel across papers) and `--reuse-from DIR` (share a prior run's sample + baseline). |
 | Docs + version | ✅ done | `pyproject` → 2.0.0; CHANGELOG 2.0.0 entry; README scoring section. |
 | 4 — Type rubrics + de-biased persona | ⏸ **paused** | Persona already softened in Phase 1's prompt; full `claim_nature` rubric routing deferred until the comparison validates the approach. |
 | 5 — Foundation reliability (#7) | ⏸ **paused** | Deferred. |
@@ -286,7 +286,7 @@ The whole point of §3 is that we currently can't claim improvement. This releas
 6. **Extraction fidelity** (§8 mini-eval) — report the human-rated thesis-capture rate as a gate; if extraction is unreliable, judgment metrics are uninterpretable.
 
 **Guardrails / cost tracking:**
-7. **Latency & token cost per paper**, v1.7 vs v2.0 — compositional evaluation serializes by depth, so this *will* rise. Record it so the "worth it for judgment" trade (§11) is quantified, not assumed.
+7. **Latency & token cost per paper**, v1.7 vs v2.0 — compositional evaluation serializes by depth, so this *will* rise. Record it so the "worth it for judgment" trade (§11) is quantified, not assumed. *Measured on a 1-paper smoke run (11.3K-word paper, Opus $5/$25 per MTok): the v2 DAG arm costs **$1.82/paper** and **~15 min** (135K in + 46K out tokens) vs. the single-prompt baseline's **$0.19/paper** and ~75s — the compositional pipeline is ~9.5× the cost and ~12× the latency of the baseline, itself a data point for §14 criterion 1. Projected two-run cost at n=20 ≈ **$60–66**; the harness now parallelizes across papers (`--concurrency`) to cut wall-clock, and reuses the v1.7 baseline in the v2 run (`--reuse-from`) to avoid paying for it twice.*
 8. **No silent sample loss** — with the #7 fix, confirm all sample papers actually complete extraction; a dropped paper biases the comparison.
 
 **Decision rule:**

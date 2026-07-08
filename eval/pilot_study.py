@@ -14,6 +14,8 @@ Options:
     --n N               Papers to sample (default: 20)
     --seed SEED         Random seed (default: 42)
     --output-dir DIR    Output directory (default: eval/pilot)
+    --concurrency N     Papers to process in parallel (default: 1)
+    --reuse-from DIR    Seed sample + baseline from a prior run (e.g. eval/pilot_v17)
     --github-token TOK  GitHub API token (or set GITHUB_TOKEN env var)
     --force             Re-run all steps even if outputs exist
     --self-consistency  Add self-consistency check on 3 longest papers
@@ -27,6 +29,7 @@ import asyncio
 import csv
 import json
 import os
+import shutil
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -77,6 +80,42 @@ async def build_paper_dag(paper: ELifePaper, log=print) -> PaperDAG:
     url = f"https://doi.org/{paper.doi}" if paper.doi else f"elife:{paper.article_id}"
 
     return format_output(paper_id, url, extracted, enriched, evaluations, has_local_pdf=False)
+
+
+# ── Reuse an earlier run's sample + baseline ────────────────────────────────────
+
+# Files safe to copy from another run: the sample, article text, human review, and
+# the baseline (identical across code versions). dag.json / paper2tree_review.txt are
+# deliberately NOT copied so the current code regenerates them.
+_REUSE_FILES = [
+    "article_text.txt",
+    "human_review.txt",
+    "elife_assessment.txt",
+    "metadata.json",
+    "baseline_review.txt",
+]
+
+
+def reuse_from(src_dir: Path, dst_dir: Path, log=print) -> None:
+    """Seed dst_dir with the sample + baseline from a prior run (e.g. reuse v1.7's
+    baseline in the v2 run). Skips paper2tree artifacts so they regenerate."""
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    sample = src_dir / "sampled_papers.json"
+    if sample.exists():
+        shutil.copy2(sample, dst_dir / "sampled_papers.json")
+    n = 0
+    for pd in sorted(src_dir.iterdir()):
+        if not pd.is_dir():
+            continue
+        out = dst_dir / pd.name
+        out.mkdir(exist_ok=True)
+        for fname in _REUSE_FILES:
+            if (pd / fname).exists():
+                shutil.copy2(pd / fname, out / fname)
+        n += 1
+    log(
+        f"Reused sample + baseline from {src_dir} ({n} papers); paper2tree artifacts will regenerate"
+    )
 
 
 # ── Per-paper processing ───────────────────────────────────────────────────────
@@ -741,6 +780,10 @@ async def main_async(args: argparse.Namespace) -> None:
     else:
         log(f"  elife_repo=GitHub (local clone not found at {elife_repo})")
 
+    # ── Step 0: Reuse a prior run's sample + baseline (optional) ──────────────
+    if args.reuse_from:
+        reuse_from(Path(args.reuse_from), output_dir, log=log)
+
     # ── Step 1: Sample papers ─────────────────────────────────────────────────
     papers_cache = output_dir / "sampled_papers.json"
 
@@ -818,21 +861,33 @@ async def main_async(args: argparse.Namespace) -> None:
 
     log(f"Working with {len(papers)} papers")
 
-    # ── Step 2: Process each paper ────────────────────────────────────────────
-    for i, paper in enumerate(papers, 1):
-        log(f"\n[{i}/{len(papers)}] {paper.article_id}: {paper.title[:70]}…")
-        paper_dir = output_dir / paper.article_id
-        ok = await process_paper(
-            paper,
-            paper_dir,
-            force=args.force,
-            skip_pipeline=args.skip_pipeline,
-            log=log,
-        )
-        if ok:
-            log(f"  Done: {paper.article_id}")
-        else:
-            log(f"  Failed: {paper.article_id}")
+    # ── Step 2: Process papers (optionally concurrent across papers) ──────────
+    concurrency = max(1, args.concurrency)
+    log(f"Processing {len(papers)} papers with concurrency={concurrency}")
+    sem = asyncio.Semaphore(concurrency)
+
+    async def run_one(i: int, paper: ELifePaper) -> bool:
+        # gather() wraps each call in its own Task, giving each paper an isolated
+        # context — so the ContextVar-based token/cost tracking in src.llm stays
+        # attributed per paper even with several running at once.
+        async with sem:
+            log(f"\n[{i}/{len(papers)}] {paper.article_id}: {paper.title[:70]}…")
+            paper_dir = output_dir / paper.article_id
+            try:
+                ok = await process_paper(
+                    paper,
+                    paper_dir,
+                    force=args.force,
+                    skip_pipeline=args.skip_pipeline,
+                    log=log,
+                )
+            except Exception as e:  # keep one bad paper from aborting the batch
+                log(f"  Failed: {paper.article_id}: {e}")
+                return False
+            log(f"  {'Done' if ok else 'Failed'}: {paper.article_id}")
+            return ok
+
+    await asyncio.gather(*[run_one(i, p) for i, p in enumerate(papers, 1)])
 
     # ── Step 3: Compute metrics ────────────────────────────────────────────────
     log("\nComputing metrics…")
@@ -873,6 +928,19 @@ def main() -> None:
     )
     parser.add_argument(
         "--github-token", default=None, help="GitHub API token (fallback if no local clone)"
+    )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help="Number of papers to process in parallel (default: 1 = sequential)",
+    )
+    parser.add_argument(
+        "--reuse-from",
+        default=None,
+        help="Seed this run's sample + baseline reviews from a prior run dir "
+        "(e.g. --reuse-from eval/pilot_v17 to reuse v1.7's baseline). "
+        "paper2tree artifacts are regenerated by the current code.",
     )
     parser.add_argument("--force", action="store_true", help="Re-run all steps")
     parser.add_argument(
