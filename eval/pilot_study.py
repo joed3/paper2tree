@@ -15,6 +15,7 @@ Options:
     --seed SEED         Random seed (default: 42)
     --output-dir DIR    Output directory (default: eval/pilot)
     --concurrency N     Papers to process in parallel (default: 1)
+    --limit N           Process at most N not-yet-done papers this run (batch size)
     --reuse-from DIR    Seed sample + baseline from a prior run (e.g. eval/pilot_v17)
     --github-token TOK  GitHub API token (or set GITHUB_TOKEN env var)
     --force             Re-run all steps even if outputs exist
@@ -861,9 +862,24 @@ async def main_async(args: argparse.Namespace) -> None:
 
     log(f"Working with {len(papers)} papers")
 
-    # ── Step 2: Process papers (optionally concurrent across papers) ──────────
+    # ── Step 2: Process papers — resumable batches ───────────────────────────
+    # A paper is "done" once its DAG-grounded review exists. --limit caps how many
+    # not-yet-done papers this invocation processes, so runs can be checkpointed in
+    # batches of N; re-invoke to continue where it left off (completed papers are
+    # cached and skipped).
+    def _needs_work(p: ELifePaper) -> bool:
+        return not (output_dir / p.article_id / "paper2tree_review.txt").exists()
+
+    pending = [p for p in papers if _needs_work(p)]
+    done_before = len(papers) - len(pending)
+    batch = pending[: args.limit] if args.limit else pending
+    remaining_after = len(pending) - len(batch)
+    log(
+        f"{done_before}/{len(papers)} already complete; "
+        f"processing {len(batch)} this run; {remaining_after} will remain"
+    )
+
     concurrency = max(1, args.concurrency)
-    log(f"Processing {len(papers)} papers with concurrency={concurrency}")
     sem = asyncio.Semaphore(concurrency)
 
     async def run_one(i: int, paper: ELifePaper) -> bool:
@@ -887,17 +903,36 @@ async def main_async(args: argparse.Namespace) -> None:
             log(f"  {'Done' if ok else 'Failed'}: {paper.article_id}")
             return ok
 
-    await asyncio.gather(*[run_one(i, p) for i, p in enumerate(papers, 1)])
+    await asyncio.gather(*[run_one(done_before + i, p) for i, p in enumerate(batch, 1)])
 
-    # ── Step 3: Compute metrics ────────────────────────────────────────────────
-    log("\nComputing metrics…")
+    # ── Batch cost (this invocation only) + cumulative resource stats ─────────
+    batch_cost = 0.0
+    for p in batch:
+        sp = output_dir / p.article_id / "stats.json"
+        if sp.exists():
+            s = json.loads(sp.read_text())
+            batch_cost += s.get("paper2tree", {}).get("cost_usd", 0.0)
+            batch_cost += s.get("baseline", {}).get("cost_usd", 0.0)
+    log(f"\n  Batch cost this run: ${batch_cost:.2f} for {len(batch)} paper(s)")
+    write_run_stats(output_dir, log=log)
+
+    if remaining_after > 0:
+        # More batches to go: skip the (model-loading, slow) metrics/figures until
+        # the version is fully processed.
+        log(
+            f"\n⏸  {remaining_after} paper(s) remain — re-run the same command to "
+            f"process the next batch. Metrics/figures deferred until complete."
+        )
+        log_path.write_text("\n".join(log_lines))
+        log(f"\nPaused — {done_before + len(batch)}/{len(papers)} done in {output_dir}/")
+        return
+
+    # ── Step 3: Compute metrics (version complete) ───────────────────────────
+    log("\nAll papers complete — computing metrics…")
     rows = compute_all_metrics(output_dir, log=log)
     write_metrics_csv(rows, output_dir, log=log)
     write_qualitative_notes(rows, output_dir)
     log("qualitative_notes.md written")
-
-    # ── Resource stats: paper length, time, tokens, cost per version ──────────
-    write_run_stats(output_dir, log=log)
 
     # ── Step 4: Self-consistency check (optional) ─────────────────────────────
     if args.self_consistency:
@@ -934,6 +969,13 @@ def main() -> None:
         type=int,
         default=1,
         help="Number of papers to process in parallel (default: 1 = sequential)",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Process at most N not-yet-done papers this run (batch size). "
+        "Re-run to continue; completed papers are cached and skipped.",
     )
     parser.add_argument(
         "--reuse-from",
