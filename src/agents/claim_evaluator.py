@@ -11,6 +11,7 @@ call; only the depth dimension is serialized (deeper levels feed shallower ones)
 """
 
 import json
+import re
 
 from pydantic import ValidationError
 
@@ -21,6 +22,35 @@ from ..schemas.evaluation import ClaimEvaluation, SubtreeEvaluation
 from ..utils.graph import EnrichedClaim
 
 _MAX_TEXT_CHARS = 60_000  # leaves room for claims JSON + child context + response
+
+# The model occasionally decorates an enum value ("slightly overclaimed",
+# "moderately strong"), which would fail strict Literal validation and sink the
+# whole paper. Coerce leniently to the nearest allowed value before validating.
+_EVIDENCE = ("strong", "moderate", "weak", "absent")
+_CALIB = ("overclaimed", "underclaimed", "calibrated")  # check compounds before "calibrated"
+_LEVEL = ("high", "medium", "low")
+
+
+def _coerce_choice(val, options, default):
+    if not isinstance(val, str):
+        return default
+    v = re.sub(r"[^a-z]", "", val.lower())
+    for o in options:
+        if o in v:
+            return o
+    return default
+
+
+def _coerce_enums(ev: dict) -> None:
+    if "evidence_strength" in ev:
+        ev["evidence_strength"] = _coerce_choice(ev["evidence_strength"], _EVIDENCE, "moderate")
+    if "claim_evidence_calibration" in ev:
+        ev["claim_evidence_calibration"] = _coerce_choice(
+            ev["claim_evidence_calibration"], _CALIB, "calibrated"
+        )
+    for k in ("novelty_score", "groundedness_score"):
+        if ev.get(k) is not None:
+            ev[k] = _coerce_choice(ev[k], _LEVEL, None)
 
 
 def _format_literature_block(retrieved: dict[str, list[RetrievedPassage]]) -> str:
@@ -97,8 +127,17 @@ async def _evaluate_level(
     raw = llm.extract_json(await llm.complete_async(prompt, max_tokens=32768))
 
     try:
-        result = SubtreeEvaluation.model_validate_json(raw)
-    except (ValidationError, json.JSONDecodeError) as e:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Claim evaluator returned non-JSON: {e}") from e
+
+    for ev in data.get("evaluations", []):
+        if isinstance(ev, dict):
+            _coerce_enums(ev)
+
+    try:
+        result = SubtreeEvaluation.model_validate(data)
+    except ValidationError as e:
         raise ValueError(f"Claim evaluator returned invalid JSON: {e}") from e
 
     return {ev.node_id: ev for ev in result.evaluations}

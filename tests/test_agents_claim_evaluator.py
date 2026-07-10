@@ -102,3 +102,32 @@ def test_parent_prompt_includes_child_evaluations(monkeypatch):
     root_prompt = recorder[-1]
     assert "supporting sub-claims of c1" in root_prompt.lower()
     assert "c1.1" in root_prompt
+
+
+def test_decorated_enum_values_are_coerced(monkeypatch):
+    """A qualifier like 'slightly overclaimed' must not fail the whole paper."""
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test")
+    enriched = build_dag(ClaimGraph(claims=[make_claim("c1", type="root", parent_id=None)]))
+
+    async def _fake(prompt, **kwargs):
+        return json.dumps(
+            {
+                "evaluations": [
+                    {
+                        "node_id": "c1",
+                        "evidence_strength": "moderately strong",
+                        "claim_evidence_calibration": "slightly overclaimed",
+                        "strengths": [],
+                        "weaknesses": [],
+                        "alternative_interpretations": [],
+                        "required_assumptions": [],
+                        "notes": "",
+                    }
+                ]
+            }
+        )
+
+    monkeypatch.setattr("src.llm.complete_async", _fake)
+    result = asyncio.run(evaluate_claims(enriched, "paper text"))
+    assert result["c1"].evidence_strength == "strong"
+    assert result["c1"].claim_evidence_calibration == "overclaimed"
