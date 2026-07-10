@@ -1,0 +1,3045 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_91783",
+    "title": "circHIPK3 nucleates IGF2BP2 and functions as a competing endogenous RNA",
+    "authors": [
+      "Trine Line Hauge Okholm",
+      "Andreas Bjerregaard Kamstrup",
+      "Morten Muhlig Nielsen",
+      "Anne Kruse Hollensen",
+      "Mette Laugesen Graversgaard",
+      "Matilde Helbo Sørensen",
+      "Lasse Sommer Kristensen",
+      "Søren Vang",
+      "Samuel S Park",
+      "Eugene Yeo",
+      "Lars Dyrskjøt",
+      "Jørgen Kjems",
+      "Jakob Skou Pedersen",
+      "Christian Kroun Damgaard"
+    ],
+    "url": "https://doi.org/10.7554/eLife.91783",
+    "abstract": "Circular RNAs represent a class of endogenous RNAs that regulate gene expression and influence cell biological decisions with implications for the pathogenesis of several diseases. Here, we disclose a novel gene-regulatory role of circHIPK3 by combining analyses of large genomics datasets and mechanistic cell biological follow-up experiments. Using time-course depletion of circHIPK3 and specific candidate RNA-binding proteins, we identify several perturbed genes by RNA sequencing analyses. Expression-coupled motif analyses identify an 11-mer motif within circHIPK3, which also becomes enriched in genes that are downregulated upon circHIPK3 depletion. By mining eCLIP datasets and combined with RNA immunoprecipitation assays, we demonstrate that the 11-mer motif constitutes a strong binding site for IGF2BP2 in bladder cancer cell lines. Our results suggest that circHIPK3 can sequester IGF2BP2 as a competing endogenous RNA (ceRNA), leading to target mRNA stabilization. As an example of a circHIPK3-regulated gene, we focus on the STAT3 mRNA as a specific substrate of IGF2BP2 and validate that manipulation of circHIPK3 regulates IGF2BP2-STAT3 mRNA binding and, thereby, STAT3 mRNA levels. Surprisingly, absolute copy number quantifications demonstrate that IGF2BP2 outnumbers circHIPK3 by orders of magnitude, which is inconsistent with a simple 1:1 ceRNA hypothesis. Instead, we show that circHIPK3 can nucleate multiple copies of IGF2BP2, potentially via phase separation, to produce IGF2BP2 condensates. Our results support a model where a few cellular circHIPK3 molecules can induce IGF2BP2 condensation, thereby regulating key factors for cell proliferation.",
+    "word_count": 13714,
+    "processed_at": "2026-07-09T23:56:42.471046+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "CircHIPK3 regulates the expression of hundreds of cancer-related genes by intera…",
+        "claim": "CircHIPK3 regulates the expression of hundreds of cancer-related genes by interacting with IGF2BP2 via an 11-mer motif, functioning as a ceRNA that sequesters multiple IGF2BP2 molecules through protein condensation/nucleation rather than simple 1:1 stoichiometric binding.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract",
+        "verbatim_quote": "we identified an 11-mer motif within circHIPK3 that is important for the regulation of multiple cancer-related genes via IGF2BP2 binding. We propose a ceRNA model where a few circHIPK3 molecules can sequester multiple IGF2BP2 proteins by inducing their condensation.",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The paper provides multi-layered evidence: computational motif discovery (Regmex), eCLIP data mining, RIP experiments, KD/rescue experiments, and mutation analysis all converge on the circHIPK3-IGF2BP2 interaction via the 11-mer.",
+            "Experiments are performed across multiple cell lines (UMUC3, J82, FL3, HEK293) and cross-referenced with ENCODE data (K562, HepG2), lending cross-system consistency.",
+            "The authors commendably acknowledge that the stoichiometric mismatch undermines a simple ceRNA model, showing intellectual honesty."
+          ],
+          "weaknesses": [
+            "The condensation/nucleation model is the central mechanistic novelty but rests on a single overexpression immunofluorescence experiment with small sample sizes (28 and 34 cells), no biochemical characterization of the condensates, and no evidence at endogenous circHIPK3 levels.",
+            "The claim that circHIPK3 regulates 'hundreds of cancer-related genes' conflates the number of DE genes (which could include many indirect effects) with direct regulation. No evidence distinguishes direct from indirect targets.",
+            "The paper acknowledges that it cannot reconcile the tumor suppressor role of circHIPK3 with STAT3 downregulation upon its KD, which is an internal tension within the proposed model (see c1.7.4).",
+            "The 11-mer motif allows up to two mismatches, which substantially broadens matching and risks high false-positive rates without rigorous permutation controls on the mismatch threshold.",
+            "The ceRNA model assumes a destabilizing function for IGF2BP2 on its target mRNAs, which contradicts the well-established role of IGF2BP proteins as mRNA stabilizers in the majority of studies (e.g., Huang et al., 2018, Nature). This critical discrepancy is insufficiently addressed."
+          ],
+          "alternative_interpretations": [
+            "The observed gene expression changes upon circHIPK3 KD could be secondary/indirect effects not mediated through IGF2BP2 at all, given the massive number of DE genes and lack of direct target validation.",
+            "The condensates observed upon overexpression could be non-specific protein aggregation artifacts due to supraphysiological circHIPK3 levels, not reflecting endogenous biology.",
+            "CircHIPK3 may affect IGF2BP2 localization or post-translational modification rather than functioning as a ceRNA, as the authors themselves suggest but do not test."
+          ],
+          "required_assumptions": [
+            "The 11-mer motif with up to two mismatches is specific enough to identify genuine IGF2BP2 targets.",
+            "IGF2BP2 functions as an mRNA destabilizer (rather than stabilizer) for the relevant target mRNAs in BC cells.",
+            "Condensation/nucleation observed under overexpression conditions reflects a biologically meaningful process at endogenous levels.",
+            "The large number of DE genes upon circHIPK3 KD reflects direct regulatory effects rather than secondary cascading effects.",
+            "eCLIP data from K562/HepG2 are transferable to BC cell lines."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is a composite root claim that integrates multiple primary claims. The individual supporting lines of evidence range from strong (motif enrichment, RIP) to weak (condensation). The stoichiometric problem is a fundamental challenge that the nucleation hypothesis does not convincingly resolve with the available data. Internal contradiction with c1.7.4 noted.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "CircHIPK3 does not function as a miRNA sponge in bladder cancer, contrary to num…",
+        "claim": "CircHIPK3 does not function as a miRNA sponge in bladder cancer, contrary to numerous previous studies claiming this function.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we found no clear evidence for circHIPK3 to possess miRNA-sponge functions in our experiments, although this has previously been suggested for circHIPK3 in numerous studies",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Systematic evaluation of all 23 circHIPK3-miRNAs using Chi-square tests at multiple time points shows no enrichment of miRNA target sites in downregulated genes.",
+            "Regmex analysis provides an unbiased genome-wide evaluation beyond pre-selected miRNAs, and the effect size for miRNA 7-mers is small.",
+            "The stoichiometric argument (~40-51 copies per cell) further undermines the sponge hypothesis, consistent with Guo et al. (2014) who argued that most circRNAs lack sufficient miRNA-binding sites for sponge function.",
+            "The authors appropriately note that previous studies relied on overexpression and reporter assays, which are well-known to produce artifacts."
+          ],
+          "weaknesses": [
+            "The AGO-CLIP data used to define miRNA target sites are not from bladder cancer tissue, as the authors themselves acknowledge, which could miss BC-specific miRNA interactions.",
+            "The miRNA expression profiling was only performed in J82, not UMUC3 or FL3, limiting the generalizability of the negative finding.",
+            "Absence of evidence is not evidence of absence — the experimental system may simply lack sensitivity to detect subtle miRNA sponging effects.",
+            "The paper does not perform AGO2 RIP or CLIP in BC cells to directly assess miRNA-circHIPK3 interactions, which would be the gold standard for disproving sponge function.",
+            "The slightly lower motif scores for miRNA 7-mers (p < 0.05) could indicate a weak but real sponge effect that is dismissed."
+          ],
+          "alternative_interpretations": [
+            "CircHIPK3 may function as a miRNA sponge in specific cellular contexts or for specific miRNAs not captured by the AGO-CLIP dataset used here.",
+            "The sponge effect could be quantitatively small but biologically meaningful for specific miRNA-target pairs, which a global enrichment analysis would not detect."
+          ],
+          "required_assumptions": [
+            "AGO-CLIP data from non-BC tissues adequately represent miRNA-binding sites in BC cells.",
+            "Global enrichment analysis is sensitive enough to detect biologically relevant miRNA sponging.",
+            "The NanoString miRNA expression panel covers all relevant miRNAs."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The negative claim is well-supported but inherently limited by the inability to prove a negative definitively. The tissue-specificity caveat is important and acknowledged by the authors.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "CircHIPK3 knockdown causes deregulation of thousands of genes across BC cell lin…",
+        "claim": "CircHIPK3 knockdown causes deregulation of thousands of genes across BC cell lines, with highly consistent perturbation profiles between cell lines.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we identify thousands of genes that are deregulated upon circHIPK3 KD across different BC cell lines",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Time-series design with five time points and three biological replicates per condition is rigorous.",
+            "Two independent cell lines show large overlap (1104 genes) with 92% concordant regulation.",
+            "Untreated controls confirm no significant transfection effects (Rho > 0.93).",
+            "The siRNA is junction-specific, and linear HIPK3 mRNA and protein are unaffected."
+          ],
+          "weaknesses": [
+            "With only ~40-51 circHIPK3 molecules per cell, detecting 3072 DE genes upon KD raises the question of how many are direct vs. indirect targets. The authors do not address this.",
+            "QuantSeq (3' end sequencing) may have different sensitivity characteristics than standard RNA-Seq, potentially inflating or missing certain DE genes.",
+            "FDR < 0.1 is relatively permissive; at FDR < 0.05, the numbers would likely be substantially reduced.",
+            "Single siRNA used — no rescue experiment with circHIPK3 re-expression to confirm specificity of DE gene changes (except for specific targets later).",
+            "The dramatic increase in DE genes from 12h to 24h could reflect cascading indirect effects rather than direct circHIPK3 regulation."
+          ],
+          "alternative_interpretations": [
+            "Many of the thousands of DE genes may be downstream consequences of a smaller number of directly regulated targets, inflating the apparent regulatory scope of circHIPK3.",
+            "Some DE genes could result from residual off-target effects of the siRNA not captured by the scrambled control."
+          ],
+          "required_assumptions": [
+            "A single siRNA against the backsplice junction is sufficient to exclude off-target effects.",
+            "FDR < 0.1 provides an acceptable balance of sensitivity and specificity.",
+            "The two cell lines are representative of BC biology generally."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The consistency across cell lines is genuinely impressive, but the sheer number of DE genes relative to the low copy number of circHIPK3 raises significant concerns about direct vs. indirect effects.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "An 11-mer motif (AGGCCCCCAGC) within circHIPK3 constitutes a binding site for th…",
+        "claim": "An 11-mer motif (AGGCCCCCAGC) within circHIPK3 constitutes a binding site for the RNA-binding protein IGF2BP2, and this motif is enriched in the 3′UTRs of genes downregulated upon circHIPK3 KD.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we identify an 11-mer circHIPK3 motif that is also enriched in mRNAs that become downregulated upon circHIPK3 KD. We examine a large eCLIP dataset of RBP targets and discover that the motif is part of a binding site for IGF2BP2.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Unbiased computational discovery of the 11-mer through Regmex, with nine of ten top-scoring 7-mers aligning to form the motif.",
+            "Consistent enrichment in downregulated genes across three independent BC cell lines (UMUC3, J82, FL3) with highly significant p-values.",
+            "eCLIP data independently identifies IGF2BP2 binding at the 11-mer position in circHIPK3.",
+            "RIP confirms circHIPK3-IGF2BP2 interaction in multiple cell lines (HepG2, K562, FL3).",
+            "Mutation of the 11-mer reduces IGF2BP2 binding ~twofold (p = 0.028), providing direct evidence for the motif's functional importance.",
+            "Significant overlap between genes containing the 11-mer and the IGF2BP2 KH34 RE (p < 2.2e-16) provides independent validation."
+          ],
+          "weaknesses": [
+            "Allowing two mismatches in the 11-mer substantially broadens the motif definition and could lead to false positive target identification. The paper does not systematically evaluate how sensitive results are to the mismatch threshold.",
+            "The 11-mer motif (AGGCCCCCAGC) contains the core elements CA and GG of the IGF2BP2 KH34 RE but in reverse order. The authors acknowledge this discrepancy but do not provide a structural or biochemical explanation.",
+            "The ~twofold reduction in binding upon 11-mer mutation, while significant, is modest and suggests the 11-mer is not the sole binding determinant.",
+            "RIP is semi-quantitative in initial experiments (Figure 3B) — the gel-based assessment is not ideal for quantitative claims about binding affinity differences."
+          ],
+          "alternative_interpretations": [
+            "The 11-mer could represent a general sequence feature of GC-rich regions that co-occurs with IGF2BP2 binding rather than being a specific recognition element.",
+            "IGF2BP2 binding to circHIPK3 may primarily occur through secondary structure or other sequence elements, with the 11-mer playing a partial role."
+          ],
+          "required_assumptions": [
+            "Two mismatches in an 11-mer constitute biologically meaningful matches.",
+            "eCLIP data from K562 accurately reflect RBP binding in BC cells.",
+            "The Regmex scoring approach is robust to multiple testing and sequence composition biases."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is one of the best-supported claims in the paper, with convergent computational and experimental evidence. The main weakness is the mismatch allowance and the reversed RE orientation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "CircHIPK3 functions as a competing endogenous RNA (ceRNA) for IGF2BP2, where IGF…",
+        "claim": "CircHIPK3 functions as a competing endogenous RNA (ceRNA) for IGF2BP2, where IGF2BP2 KD counteracts the effect of circHIPK3 KD on target genes and proliferation pathways.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "We show that IGF2BP2 KD leads to upregulation of genes containing the 11-mer motif and that IGF2BP2 KD counteracts the effect of circHIPK3 KD on target genes and proliferation pathways.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Opposing regulatory effects of circHIPK3 KD and IGF2BP2 KD on shared target genes are consistent with a ceRNA model.",
+            "Rescue experiment (double KD) restoring target gene expression provides strong functional evidence.",
+            "The 11-mer motif is enriched in upregulated genes upon IGF2BP2 KD, mirroring the pattern seen for downregulated genes upon circHIPK3 KD.",
+            "Consistent results across multiple cell lines and ENCODE data."
+          ],
+          "weaknesses": [
+            "The stoichiometric mismatch (c1.6) fundamentally undermines a ceRNA model, and this claim does not adequately address this problem.",
+            "The claim that IGF2BP2 acts as an mRNA destabilizer contradicts the predominant literature describing IGF2BP2 as an mRNA stabilizer. This critical point is supported by only one tethering study (Luo et al., 2020) and requires much stronger evidence.",
+            "The IGF2BP2 KD data used for comparison come from ENCODE experiments in K562 and HepG2, not BC cells, making direct comparisons across different cell types potentially misleading.",
+            "The pathway-level effects on proliferation (E2F targets, G2/M checkpoint) are not validated by functional assays — EdU flow cytometry shows only 'subtle differences' (c1.4.6.1).",
+            "The 'counteracting' effect could simply reflect that both circHIPK3 and IGF2BP2 independently regulate overlapping gene sets through unrelated mechanisms."
+          ],
+          "alternative_interpretations": [
+            "The opposing effects of circHIPK3 and IGF2BP2 KD could reflect independent regulation of shared downstream targets rather than a ceRNA mechanism.",
+            "IGF2BP2 may affect target genes through translational regulation rather than mRNA stability, which would not be captured by QuantSeq.",
+            "The double KD rescue could reflect general cellular stress responses rather than specific pathway restoration."
+          ],
+          "required_assumptions": [
+            "IGF2BP2 destabilizes mRNAs containing the 11-mer motif.",
+            "Cross-cell-type comparisons (K562/HepG2 vs BC lines) are valid for inferring mechanism.",
+            "The stoichiometric mismatch can be overcome by nucleation (an unproven mechanism at endogenous levels).",
+            "Pathway-level effects translate to functional phenotypic changes."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The ceRNA model is the paper's central mechanistic claim but faces the fundamental stoichiometric challenge acknowledged in c1.6. The rescue experiment is compelling but does not distinguish between ceRNA and other mechanisms. Tension with c1.4.6.1 (subtle cell cycle effects despite pathway enrichment).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "The circHIPK3-IGF2BP2 interaction specifically affects STAT3 expression, which i…",
+        "claim": "The circHIPK3-IGF2BP2 interaction specifically affects STAT3 expression, which in turn regulates TP53 via the established STAT3-TP53 axis.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "One of these targets, STAT3, is downregulated upon circHIPK3 KD, while TP53, a known target of STAT3 inhibition, becomes upregulated.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "STAT3 downregulation upon circHIPK3 KD is replicated in two cell lines (UMUC3 and J82) at the RNA level.",
+            "Reciprocal regulation: STAT3 is upregulated upon IGF2BP2 KD, consistent with the proposed axis.",
+            "RIP demonstrates increased STAT3-IGF2BP2 binding upon circHIPK3 depletion (p < 0.007).",
+            "TP53 upregulation is consistent with established STAT3-TP53 regulatory axis (Niu et al., 2005).",
+            "Protein-level changes confirmed by both western blot and immunofluorescence.",
+            "11-mer mutation experiment in HEK293 shows increased STAT3-IGF2BP2 binding when the motif is scrambled.",
+            "Double KD rescue confirmed for STAT3."
+          ],
+          "weaknesses": [
+            "The ASO experiment targeting the 11-mer was not statistically significant for STAT3 binding (p = 0.078) or circHIPK3-IGF2BP2 binding (p = 0.27), which substantially weakens the direct evidence for 11-mer-dependent competition (see c1.5.6.1).",
+            "The 11-mer mutation experiment was performed in HEK293 cells with ectopic circHIPK3, not in BC cells, limiting direct relevance.",
+            "The authors cannot explain the paradox of a tumor suppressor circRNA downregulating the generally oncogenic STAT3 (see c1.7.4), which undermines the biological coherence of the model.",
+            "STAT3 has complex pleiotropic roles, and its downregulation could be an indirect consequence of circHIPK3 KD through other pathways.",
+            "The claim relies on the assumption that IGF2BP2 destabilizes STAT3 mRNA, which is mechanistically unusual for IGF2BP2."
+          ],
+          "alternative_interpretations": [
+            "STAT3 regulation could be an indirect consequence of circHIPK3 KD through other regulatory intermediates, not necessarily through IGF2BP2.",
+            "The increased STAT3-IGF2BP2 binding upon circHIPK3 KD could reflect a global redistribution of IGF2BP2 rather than specific competition at the 11-mer.",
+            "TP53 upregulation could result from circHIPK3 KD-induced cellular stress rather than specifically through the STAT3-TP53 axis."
+          ],
+          "required_assumptions": [
+            "IGF2BP2 binding to STAT3 mRNA destabilizes it.",
+            "The STAT3-TP53 axis operates as expected in these BC cell lines.",
+            "HEK293 experiments with ectopic circHIPK3 are transferable to BC biology.",
+            "The non-significant ASO results reflect insufficient power rather than absence of effect."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Multiple lines of evidence converge on STAT3 as a target, but the non-significant ASO experiments and the tumor suppressor paradox are concerning. The interplay between c1.5 and c1.7.4 creates an unresolved internal contradiction.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "A simple 1:1 ceRNA model is unlikely because IGF2BP2 outnumbers circHIPK3 by ord…",
+        "claim": "A simple 1:1 ceRNA model is unlikely because IGF2BP2 outnumbers circHIPK3 by orders of magnitude, but circHIPK3 may function by nucleating numerous IGF2BP2 molecules into condensates.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "careful quantifications of copy numbers of circHIPK3 and IGF2BP2 suggest that a simple ceRNA model is unlikely as IGF2BP2 outnumbers circHIPK3 by orders of magnitude. Since ectopic expression of circHIPK3 induces IGF2BP2 condensation within cells, we propose that even a few circHIPK3 molecules can function as a ceRNAs by nucleating numerous IGF2BP2 molecules per circRNA.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The authors commendably perform absolute quantification of both circHIPK3 and IGF2BP2, which is rarely done in circRNA studies.",
+            "The honest acknowledgment that a simple ceRNA model is incompatible with the stoichiometry is a strength of scientific integrity.",
+            "The condensation observation (80% vs 29% of cells with condensates) provides a potential mechanistic explanation.",
+            "The quantification approach using standard curves and purified proteins is methodologically sound."
+          ],
+          "weaknesses": [
+            "The condensation experiment uses ectopic overexpression of circHIPK3, which creates supraphysiological levels. The relevance to endogenous biology (~40-51 copies/cell) is completely unknown.",
+            "Only 28 and 34 cells were scored for condensates — an extremely small sample size for a key mechanistic claim. No statistical test is reported for the condensate comparison.",
+            "No biochemical characterization of the condensates was performed (e.g., FRAP, 1,6-hexanediol sensitivity, co-localization with other markers of phase separation).",
+            "The 25% RT efficiency assumption for circHIPK3 quantification could substantially affect copy number estimates. If efficiency is lower (due to secondary structure of the backsplice junction), actual copy numbers could be higher.",
+            "The condensation model does not explain how condensates would specifically affect only IGF2BP2 target genes containing the 11-mer, as phase-separated condensates would likely sequester IGF2BP2 non-specifically.",
+            "The authors present this as a potential mechanism but provide no evidence that it operates at endogenous levels."
+          ],
+          "alternative_interpretations": [
+            "The condensates could be artifacts of protein aggregation due to overexpression rather than biologically meaningful phase separation.",
+            "CircHIPK3 may affect IGF2BP2 through catalytic or enzymatic mechanisms rather than stoichiometric sequestration.",
+            "Only a small fraction of total IGF2BP2 may be functionally accessible for the relevant mRNA interactions, which would reduce the effective stoichiometric mismatch without requiring condensation.",
+            "The condensates may represent stress granule-like structures induced by overexpression of any circRNA, not specifically circHIPK3."
+          ],
+          "required_assumptions": [
+            "The RT efficiency assumption (25%) is accurate for circHIPK3.",
+            "Condensation observed under overexpression reflects a mechanism that operates at endogenous levels.",
+            "Phase separation can explain target specificity for 11-mer-containing mRNAs.",
+            "The western blot quantification of IGF2BP2 is sufficiently accurate."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim represents the most speculative part of the paper. While the stoichiometric quantification is valuable, the proposed resolution (condensation) is poorly supported. The gap between overexpression experiments and endogenous biology is vast.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "CircHIPK3 expression is positively associated with overall survival in bladder c…",
+        "claim": "CircHIPK3 expression is positively associated with overall survival in bladder cancer patients and is significantly higher in NMIBC than MIBC.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "by analyzing large patient cohorts with rich clinical annotations, we show that the expression of circHIPK3 is positively associated with overall survival in BC patients.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Large cohort (>500 patients) shows significantly higher circHIPK3 in NMIBC vs MIBC (p < 3.3e-09).",
+            "Independent NMIBC cohort (n=56) shows significant association with overall survival (p < 0.009).",
+            "The survival association is stronger for circHIPK3 than for HIPK3 (p=0.052), suggesting independent regulatory significance.",
+            "Consistent with previous findings from the same group (Okholm et al., 2017)."
+          ],
+          "weaknesses": [
+            "The survival cohort is small (n=56) and uses median expression as cutoff, which is arbitrary and susceptible to overfitting.",
+            "No multivariate analysis is presented to control for known prognostic factors (stage, grade, age, etc.).",
+            "The clinical association is correlative, not causal — it could reflect general differences in tumor biology.",
+            "The paradox noted in c1.7.4 — that circHIPK3 KD also downregulates STAT3, which is generally pro-tumorigenic — creates internal tension with the tumor suppressor interpretation.",
+            "The previous cohort (Okholm et al., 2017) is from the same group, raising concerns about independent validation."
+          ],
+          "alternative_interpretations": [
+            "Higher circHIPK3 in NMIBC could simply reflect that less aggressive tumors have higher circHIPK3 expression without circHIPK3 playing a causal role.",
+            "The survival association could be confounded by tumor grade, molecular subtype, or treatment differences.",
+            "CircHIPK3 could be a passenger biomarker rather than a functional tumor suppressor."
+          ],
+          "required_assumptions": [
+            "Median expression is an appropriate cutoff for survival analysis.",
+            "The survival association is independent of known prognostic factors.",
+            "The independent cohort is truly independent (different patients, different processing)."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The clinical data are suggestive but not definitive. The lack of multivariate analysis is a significant omission for a clinical claim. The internal contradiction with the STAT3 findings (c1.7.4) weakens the biological interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "Predicted miRNA target sites in circHIPK3 (based on AGO-CLIP data) are not enric…",
+        "claim": "Predicted miRNA target sites in circHIPK3 (based on AGO-CLIP data) are not enriched in the 3′UTRs of genes downregulated upon circHIPK3 KD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Neither the target sites for the highest expressed miRNA (miR-148-3p; CAGUGCA) nor any of the other circHIPK3-miRNAs are enriched among downregulated genes (p > 0.05, Chi-square test)",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Systematic evaluation of all 11 conserved miRNA target sites (23 miRNAs) using Chi-square tests.",
+            "miRNA expression profiling confirms which circHIPK3-miRNAs are expressed in J82.",
+            "Negative result is consistent across 24h and 48h time points."
+          ],
+          "weaknesses": [
+            "Only tested in J82, not in UMUC3 or FL3 for the miRNA-specific analysis.",
+            "Chi-square test may lack power for individual miRNAs with few target genes.",
+            "AGO-CLIP data are from non-BC tissues."
+          ],
+          "alternative_interpretations": [
+            "Some miRNA sponging effects may be too subtle to detect with this approach."
+          ],
+          "required_assumptions": [
+            "AGO-CLIP-derived miRNA target sites are applicable to BC.",
+            "Chi-square test has sufficient power for this analysis."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "Regmex analysis of all circHIPK3 7-mers shows that 7-mers constituting miRNA tar…",
+        "claim": "Regmex analysis of all circHIPK3 7-mers shows that 7-mers constituting miRNA target sites are not overall enriched in downregulated genes, with small effect sizes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "7-mers constituting miRNA target sites are not overall enriched in downregulated genes",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Unbiased evaluation of all 1032 circHIPK3 7-mers, not just pre-selected miRNA targets.",
+            "Consistent results in both UMUC3 and J82.",
+            "Effect sizes reported (<0.25), providing transparency about the magnitude of any trend."
+          ],
+          "weaknesses": [
+            "The median motif score is above 0 but statistically significant (p < 0.05), suggesting a very weak trend that could be biologically meaningful.",
+            "Effect size cutoffs are somewhat arbitrary — even small effect sizes can be biologically relevant for many miRNAs acting together."
+          ],
+          "alternative_interpretations": [
+            "The weak but significant trend could indicate minor miRNA sponging that is biologically relevant in aggregate."
+          ],
+          "required_assumptions": [
+            "Effect size < 0.25 is too small to be biologically meaningful."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Previous studies claiming circHIPK3 miRNA sponge function are generally based on…",
+        "claim": "Previous studies claiming circHIPK3 miRNA sponge function are generally based on inflated circRNA expression, miRNA mimics, and reporter assays, which may not provide concluding evidence for an endogenous function.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "since most reports claiming circRNA-specific miRNA sponging are based on inflated circRNA expression, use of miRNA mimics and reporter assays, a conclusion that circRNAs are generally functioning as miRNA sponges should be taken with some caution.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "This is a fair critique of prior literature and is well-established in the circRNA field.",
+            "Consistent with concerns raised by Guo et al. (2014) and others about the generalizability of miRNA sponge claims."
+          ],
+          "weaknesses": [
+            "This is a commentary on prior literature rather than a new experimental finding.",
+            "Does not address all possible experimental designs that could support sponge function."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is largely a statement about methodological limitations in the field rather than a novel experimental finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "The estimation of less than a hundred circHIPK3 molecules per cell further under…",
+        "claim": "The estimation of less than a hundred circHIPK3 molecules per cell further undermines the miRNA sponge hypothesis, which requires sequence-specific binding of miRNA-guided Argonaute proteins.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "our estimation of less than a hundred circHIPK3 molecules per cell, questions the miRNA-sponge hypothesis, as this entails specific sequence-specific binding of miRNA-guided Argonaute proteins.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The quantification of ~40-51 copies per cell is a concrete, data-driven argument against sponge function.",
+            "This is a quantitative argument that strengthens the qualitative negative finding from motif analysis."
+          ],
+          "weaknesses": [
+            "The copy number estimate depends on a 25% RT efficiency assumption that is not independently validated.",
+            "Even low-copy circRNAs could have sponge function if concentrated in specific subcellular compartments.",
+            "Copy numbers in cell lines may not reflect in vivo levels."
+          ],
+          "alternative_interpretations": [
+            "If circHIPK3 is concentrated in specific cellular locations (e.g., processing bodies), the effective local concentration could be much higher than the per-cell average suggests."
+          ],
+          "required_assumptions": [
+            "25% RT efficiency is accurate.",
+            "Uniform cellular distribution of circHIPK3.",
+            "Cell line copy numbers are representative."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Time-series knockdown experiments in UMUC3 and J82 cell lines reveal 3072 and 23…",
+        "claim": "Time-series knockdown experiments in UMUC3 and J82 cell lines reveal 3072 and 2389 differentially expressed genes respectively, with a significant overlap of 1104 genes between cell lines.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "thousands of genes that are differentially expressed (DE) upon circHIPK3 KD across time in UMUC3 (n = 3072) and J82 (n = 2389) (false discovery rate [FDR] <0.1, Benjamini–Hochberg correction), with a large overlap (n = 1104) between cell lines (p < 2.2e−16, Fisher's exact test)",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantification with appropriate statistical testing (FDR < 0.1, Benjamini-Hochberg).",
+            "The overlap is highly significant (p < 2.2e-16).",
+            "Three biological replicates at five time points."
+          ],
+          "weaknesses": [
+            "FDR < 0.1 is relatively permissive.",
+            "The overlap of 1104 out of 3072/2389 represents ~36-46% overlap, meaning more than half the DE genes are cell-line specific."
+          ],
+          "alternative_interpretations": [
+            "Cell-line-specific DE genes may reflect differences in genetic background rather than circHIPK3-specific effects."
+          ],
+          "required_assumptions": [
+            "FDR < 0.1 is sufficiently stringent.",
+            "QuantSeq accurately quantifies mRNA levels."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "The siRNA specifically targets the backsplicing junction of circHIPK3 without co…",
+        "claim": "The siRNA specifically targets the backsplicing junction of circHIPK3 without co-knockdown of the linear HIPK3 mRNA or HIPK3 protein.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the circHIPK3 siRNA did not lead to co-knockdown of the linear HIPK3 mRNA or HIPK3 protein",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The siRNA targets the backsplice junction, which is unique to the circular form.",
+            "Both mRNA and protein levels of HIPK3 are shown to be unaffected.",
+            "Untreated controls confirm no transfection artifacts."
+          ],
+          "weaknesses": [
+            "Only one siRNA design is used — a second independent siRNA would strengthen the specificity argument.",
+            "Potential off-target effects on other genes (not just HIPK3) are not addressed beyond the scrambled control."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The backsplice junction siRNA has no off-target effects on any gene other than circHIPK3."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "92% of the shared DE genes between UMUC3 and J82 show the same perturbation prof…",
+        "claim": "92% of the shared DE genes between UMUC3 and J82 show the same perturbation profile, indicating shared functions of circHIPK3 across BC cell lines.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "92% of the shared DE genes between UMUC3 and J82 cells show the same perturbation profile in both cell lines",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "92% concordance across two independent cell lines is high.",
+            "This strongly suggests that the effects are circHIPK3-specific rather than cell-line-specific."
+          ],
+          "weaknesses": [
+            "No p-value or formal statistical test is provided for the 92% concordance claim.",
+            "The remaining 8% discordant genes could reflect important biological differences."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Concordant regulation in two cell lines implies shared mechanism."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "The number of differentially expressed genes increases dramatically at 24 hr pos…",
+        "claim": "The number of differentially expressed genes increases dramatically at 24 hr post-transfection, with 1241 (UMUC3) and 642 (J82) genes significantly deregulated.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the number of DE genes increases dramatically at 24 hr (Figure 1F and Figure 1—figure supplement 1), where 1241 (UMUC3) and 642 (J82) genes are significantly down- or upregulated (Wald test, Benjamini–Hochberg correction with FDR <0.1)",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear time-course data showing progressive increase in DE genes.",
+            "Consistent with expected kinetics of siRNA-mediated knockdown."
+          ],
+          "weaknesses": [
+            "The dramatic increase from 12h to 24h could reflect cascading indirect effects rather than direct circHIPK3 regulation.",
+            "Different numbers of DE genes between UMUC3 (1241) and J82 (642) at 24h suggest cell-line-specific sensitivity."
+          ],
+          "alternative_interpretations": [
+            "The time course may primarily reflect the kinetics of indirect downstream effects rather than direct circHIPK3 targets."
+          ],
+          "required_assumptions": [
+            "The time course captures direct and meaningful biological effects."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "Regmex motif enrichment analysis identifies nine of the top ten 7-mers with the …",
+        "claim": "Regmex motif enrichment analysis identifies nine of the top ten 7-mers with the most negative motif scores in UMUC3 that align to form a larger 11-mer, AGGCCCCC(A/T)GC, within circHIPK3.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the sequence composition of nine of the top ten 7-mers with the most negative motif scores in UMUC3 are shifted by one base or only differ by a single or two bases. These 7-mers are also among the most negatively scoring motifs in J82 cells...Aligning these nine 7-mers to circHIPK3 reveals a larger 11-mer within circHIPK3, AGGCCCCC(A/T)GC",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Unbiased discovery — the 11-mer emerges from ranking all 1032 7-mers, not from prior hypotheses.",
+            "Nine of ten top 7-mers aligning to a single motif is highly unlikely by chance.",
+            "Consistency between UMUC3 and J82 strengthens the finding."
+          ],
+          "weaknesses": [
+            "The 11-mer notation AGGCCCCC(A/T)GC already includes variability at one position, and two mismatches are allowed for target matching, raising questions about motif precision.",
+            "No formal permutation test is presented to assess how often nine of ten top 7-mers would form a coherent 11-mer by chance."
+          ],
+          "alternative_interpretations": [
+            "The 11-mer could reflect a general GC-rich sequence feature rather than a specific functional motif."
+          ],
+          "required_assumptions": [
+            "The top-scoring 7-mers converging on a single region is biologically meaningful rather than a statistical artifact."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The 11-mer motif is enriched in the 3′UTRs of downregulated genes compared to up…",
+        "claim": "The 11-mer motif is enriched in the 3′UTRs of downregulated genes compared to upregulated and non-DE genes in UMUC3, J82, and FL3 cells upon circHIPK3 KD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the motif is enriched in downregulated genes compared to upregulated genes (p < 1e−39) and genes that are not differentially expressed (not DE) (p < 1e−28) in both UMUC3...and J82 cells...This finding was further validated in a third BC cell line FL3",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Replicated across three independent BC cell lines with highly significant p-values.",
+            "Multiple comparisons (downregulated vs. upregulated, downregulated vs. not-DE) all significant."
+          ],
+          "weaknesses": [
+            "Two mismatches in an 11-mer means many sequences will match, potentially inflating enrichment.",
+            "No permutation analysis to assess enrichment significance accounting for GC content or sequence composition biases."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Two mismatches is an appropriate threshold.",
+            "GC content does not confound the enrichment."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "eCLIP data reveals that IGF2BP2 binding sites in K562 overlap the 11-mer motif i…",
+        "claim": "eCLIP data reveals that IGF2BP2 binding sites in K562 overlap the 11-mer motif in circHIPK3.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "binding sites for GRWD1 (HepG2) and IGF2BP2 (K562) overlap the 11-mer.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "eCLIP is an established, high-confidence method for identifying RBP binding sites.",
+            "The overlap between the computationally identified 11-mer and experimentally defined IGF2BP2 binding provides independent validation."
+          ],
+          "weaknesses": [
+            "eCLIP data are from K562, not BC cells.",
+            "GRWD1 also overlaps the 11-mer in HepG2, but is not confirmed in RIP."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "K562 eCLIP data are transferable to BC cell lines."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "RIP experiments confirm that IGF2BP2 strongly associates with circHIPK3 in both …",
+        "claim": "RIP experiments confirm that IGF2BP2 strongly associates with circHIPK3 in both ENCODE cell lines and BC cell lines.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we specifically verified circHIPK3 pull-down in IGF2BP1 and IGF2BP2 RIP experiments by semi-quantitative reverse transcription polymerase chain reaction (RT-PCR) in both cell lines",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "RIP confirmed in four cell lines (HepG2, K562, FL3, and with overexpression).",
+            "IGF2BP2 shows stronger binding than other tested RBPs (IGF2BP1, GRWD1).",
+            "Negative control (GFP/UCHL5) shows specificity.",
+            "Overexpression RIP provides additional confirmation (p < 0.002)."
+          ],
+          "weaknesses": [
+            "Initial RIP in HepG2/K562 is semi-quantitative (gel-based) rather than qPCR-based.",
+            "RIP cannot distinguish direct from indirect (bridged) interactions."
+          ],
+          "alternative_interpretations": [
+            "The interaction could be indirect, mediated through other RBPs or RNA structures."
+          ],
+          "required_assumptions": [
+            "RIP preserves endogenous interactions.",
+            "Semi-quantitative RT-PCR is sufficient for initial confirmation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5",
+        "label": "Mutation of the 11-mer motif in circHIPK3 significantly reduces IGF2BP2 binding …",
+        "claim": "Mutation of the 11-mer motif in circHIPK3 significantly reduces IGF2BP2 binding (~twofold), confirming the 11-mer is important for the circHIPK3-IGF2BP2 interaction.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we found that binding of IGF2BP2 was reduced significantly (~twofold, p = 0.028) when the 11-mer motif had been scrambled",
+        "evaluation": {
+          "node_id": "c1.3.5",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct mutagenesis experiment provides causal evidence for the 11-mer's role.",
+            "Statistically significant reduction in binding (p = 0.028).",
+            "Northern blot confirms equal expression of WT and mutant circHIPK3."
+          ],
+          "weaknesses": [
+            "The ~twofold reduction is modest, suggesting the 11-mer contributes to but is not essential for IGF2BP2 binding.",
+            "Experiment performed in HEK293, not BC cells.",
+            "Only one mutant tested — a systematic mutational analysis would strengthen the claim.",
+            "Overexpression context may not reflect endogenous biology."
+          ],
+          "alternative_interpretations": [
+            "The residual binding (~50%) with mutated 11-mer indicates other binding determinants may be equally or more important."
+          ],
+          "required_assumptions": [
+            "HEK293 overexpression experiments are informative for endogenous BC biology.",
+            "Scrambling the 11-mer does not affect circHIPK3 secondary structure in ways that independently affect binding."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.6",
+        "label": "There is a significant overlap between genes containing the 11-mer motif and the…",
+        "claim": "There is a significant overlap between genes containing the 11-mer motif and the IGF2BP2 KH34 recognition element in their 3′UTRs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we found a significant overlap between genes containing the 11-mer motif and the IGF2BP2 KH34 RE in their 3′UTRs (p < 2.2e−16, Fisher's exact test)",
+        "evaluation": {
+          "node_id": "c1.3.6",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant overlap (p < 2.2e-16) provides independent bioinformatic validation.",
+            "Links the computationally discovered 11-mer to an independently established IGF2BP2 binding motif."
+          ],
+          "weaknesses": [
+            "The 11-mer and KH34 RE share the CA and GG elements but in reverse order, which the authors acknowledge is unusual.",
+            "Overlap could partially reflect shared GC-rich sequence features."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The overlap is biologically meaningful and not driven by sequence composition alone."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "IGF2BP2 binding sites (from eCLIP) are enriched in genes that become downregulat…",
+        "claim": "IGF2BP2 binding sites (from eCLIP) are enriched in genes that become downregulated upon circHIPK3 KD in UMUC3, J82, and FL3.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "IGF2BP2-binding sites are enriched in genes that become downregulated upon circHIPK3 KD in both UMUC3, J82, and FL3 (all p < 0.05, Chi-square tests, Figure 3C)",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Consistent enrichment across three BC cell lines (UMUC3, J82, FL3) with p < 0.05.",
+            "Uses experimentally validated eCLIP binding sites rather than computational predictions."
+          ],
+          "weaknesses": [
+            "eCLIP data are from K562, not BC cells.",
+            "Enrichment could reflect general properties of downregulated genes (e.g., longer 3'UTRs) rather than specific IGF2BP2 regulation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "K562 eCLIP binding sites are relevant to BC."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "There is a significant overlap between genes affected by circHIPK3 KD in BC cell…",
+        "claim": "There is a significant overlap between genes affected by circHIPK3 KD in BC cells and IGF2BP2 KD in K562, particularly for downregulated genes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we evaluated if genes affected by circHIPK3 KD in BC cell lines are also affected in ENCODE experiments of IGF2BP2 KD and found a significant overlap of altered genes (p < 2.2e−16, Fisher's exact tests)",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant overlap (p < 2.2e-16) in both UMUC3 and J82.",
+            "Overlap is largest for downregulated genes, which is consistent with the ceRNA model."
+          ],
+          "weaknesses": [
+            "Cross-cell-type comparison (BC vs K562) introduces confounds.",
+            "Both KDs may independently affect common pathways (e.g., proliferation genes) without mechanistic connection."
+          ],
+          "alternative_interpretations": [
+            "Overlap could reflect shared downstream pathway effects rather than direct mechanistic coupling."
+          ],
+          "required_assumptions": [
+            "K562 IGF2BP2 KD effects are comparable to what would be observed in BC cells."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "Genes downregulated by circHIPK3 KD are primarily upregulated upon IGF2BP2 KD, s…",
+        "claim": "Genes downregulated by circHIPK3 KD are primarily upregulated upon IGF2BP2 KD, suggesting an opposing regulatory relationship consistent with a ceRNA model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the genes that are downregulated by circHIPK3 KD are primarily upregulated upon IGF2BP2 KD suggesting an mRNA destabilization function of IGF2BP2",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear opposing patterns visible in Figure 3F.",
+            "Consistent across both UMUC3 and J82.",
+            "Double KD rescue experiment supports this opposing relationship."
+          ],
+          "weaknesses": [
+            "The opposing regulation is shown for cross-cell-type comparison (BC vs K562), which is inherently noisy.",
+            "The claim that IGF2BP2 destabilizes target mRNAs contradicts the predominant view of IGF2BP2 as a stabilizer.",
+            "Not all genes show opposing regulation — some are regulated in the same direction."
+          ],
+          "alternative_interpretations": [
+            "IGF2BP2 may regulate these targets through translational repression rather than mRNA destabilization.",
+            "The opposing effects could reflect different regulatory mechanisms for circHIPK3 and IGF2BP2 converging on the same genes."
+          ],
+          "required_assumptions": [
+            "IGF2BP2 destabilizes the relevant target mRNAs.",
+            "The opposing pattern reflects direct mechanistic coupling."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The mRNA destabilization function attributed to IGF2BP2 is an unusual and insufficiently justified claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "Regmex analysis of IGF2BP2 KD data shows that the 7-mers constituting the 11-mer…",
+        "claim": "Regmex analysis of IGF2BP2 KD data shows that the 7-mers constituting the 11-mer motif are among the highest-scoring motifs upon IGF2BP2 KD in K562.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "RegMex analysis of all possible 7-mers showed that the 7-mers that constitute the 11-mer motif in circHIPK3 are among the highest scoring motifs upon IGF2BP2 KD in K562",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Unbiased analysis of all 16,384 possible 7-mers provides strong evidence.",
+            "The 11-mer 7-mers ranking among the highest scoring is an independent validation of the motif's regulatory relevance."
+          ],
+          "weaknesses": [
+            "Data from K562, not BC cells."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "K562 data are transferable."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "The 11-mer motif is enriched in upregulated genes upon IGF2BP2 KD in both K562 a…",
+        "claim": "The 11-mer motif is enriched in upregulated genes upon IGF2BP2 KD in both K562 and BC cell lines (UMUC3 and J82).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the 11-mer motif and IGF2BP2-binding sites are highly enriched in upregulated genes (p < 6e−19, Chi-square test, Figure 3H, I)",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Enrichment shown in K562 (p < 6e-19), UMUC3 (p < 7e-04), and J82 (p < 0.002).",
+            "Consistent reciprocal pattern with circHIPK3 KD results."
+          ],
+          "weaknesses": [
+            "The UMUC3/J82 IGF2BP2 KD experiments reference a previous publication (Okholm et al., 2020), limiting independent assessment."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "Several proliferation pathways (e.g., E2F targets, G2/M checkpoint) are upregula…",
+        "claim": "Several proliferation pathways (e.g., E2F targets, G2/M checkpoint) are upregulated upon circHIPK3 KD but downregulated upon IGF2BP2 KD, suggesting the circHIPK3-IGF2BP2 axis affects cell cycle progression.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "several proliferation pathways, for example, E2F targets and G2/M checkpoint, are upregulated upon circHIPK3 KD in both UMUC3...and J82 cells...In contrast, these pathways are downregulated upon IGF2BP2 KD",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Pathway enrichment analysis shows reciprocal patterns for circHIPK3 and IGF2BP2 KD.",
+            "Consistent across UMUC3 and J82 cells."
+          ],
+          "weaknesses": [
+            "EdU-flow cytometry shows only 'subtle differences' in cell cycle distribution, contradicting the pathway enrichment findings.",
+            "Pathway enrichment was significant at p < 0.05 without multiple testing correction across 50 hallmarks.",
+            "No functional validation (proliferation assays, colony formation, etc.) to confirm the pathway-level effects."
+          ],
+          "alternative_interpretations": [
+            "The pathway enrichment may reflect transcriptional changes that do not translate into phenotypic effects.",
+            "The 'subtle differences' in cell cycle may indicate the pathway effects are compensated by other mechanisms."
+          ],
+          "required_assumptions": [
+            "Transcriptional pathway enrichment translates to functional changes.",
+            "The flow cytometry assay has sufficient sensitivity."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Internal tension between pathway enrichment and lack of phenotypic validation. The EdU result (c1.4.6.1) essentially undermines this claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.7",
+        "label": "CircHIPK3 KD does not significantly affect IGF2BP2 mRNA expression, consistent w…",
+        "claim": "CircHIPK3 KD does not significantly affect IGF2BP2 mRNA expression, consistent with no direct effect of circHIPK3 on IGF2BP2 levels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We observed no difference in IGF2BP2 gene expression between circHIPK3 KD and scr samples in UMUC3 (p = 0.41, likelihood ratio test)",
+        "evaluation": {
+          "node_id": "c1.4.7",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "No significant change in UMUC3 (p = 0.41).",
+            "Only slight change at later time points in J82 (p = 0.003), which could reflect indirect effects.",
+            "Consistent with a model where circHIPK3 affects IGF2BP2 function, not expression."
+          ],
+          "weaknesses": [
+            "Only mRNA levels tested; protein levels of IGF2BP2 upon circHIPK3 KD are not reported."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "mRNA levels reflect protein levels for IGF2BP2."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "STAT3 mRNA is downregulated upon circHIPK3 KD in UMUC3 and J82 cells, while it i…",
+        "claim": "STAT3 mRNA is downregulated upon circHIPK3 KD in UMUC3 and J82 cells, while it is upregulated upon IGF2BP2 KD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the STAT3 gene...becomes downregulated upon circHIPK3 KD in UMUC3 (P_24h = 3e−04, Wald test) and J82 cells (P_48h = 0.01, Wald test), while it is upregulated upon IGF2BP2 depletion in both cell lines (p < 0.001, Wald test)",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "STAT3 downregulation shown in both UMUC3 and J82 with significant p-values.",
+            "Reciprocal upregulation upon IGF2BP2 KD in both cell lines (p < 0.001).",
+            "mRNA-level changes confirmed by protein-level changes."
+          ],
+          "weaknesses": [
+            "STAT3 is regulated at different time points in the two cell lines (24h in UMUC3, 48h in J82).",
+            "STAT3 could be an indirect target."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "STAT3 mRNA is bound more efficiently by IGF2BP2 upon circHIPK3 depletion, consis…",
+        "claim": "STAT3 mRNA is bound more efficiently by IGF2BP2 upon circHIPK3 depletion, consistent with a ceRNA model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "upon immunoprecipitation of IGF2BP2, we observed significantly more STAT3 mRNA binding after circHIPK3 depletion (48 hr), supporting a regulatory role of circHIPK3 as a ceRNA (p < 0.007, T-test)",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Directly demonstrates increased STAT3-IGF2BP2 binding upon circHIPK3 depletion (p < 0.007).",
+            "Three additional targets (NEU, SLC7A5, TRAPPC9) show similar enrichment (p < 0.03).",
+            "Controls (GAPDH, β-actin) do not show enrichment."
+          ],
+          "weaknesses": [
+            "RIP measures association, not direct binding — increased association could reflect indirect effects.",
+            "Performed in FL3 cells, while the KD transcriptomics were in UMUC3 and J82."
+          ],
+          "alternative_interpretations": [
+            "Increased binding could reflect global redistribution of IGF2BP2 rather than specific competition with circHIPK3."
+          ],
+          "required_assumptions": [
+            "RIP enrichment reflects specific regulatory interactions.",
+            "FL3 results are generalizable."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Double KD of both circHIPK3 and IGF2BP2 restores target mRNA expression (STAT3, …",
+        "claim": "Double KD of both circHIPK3 and IGF2BP2 restores target mRNA expression (STAT3, NEU, TRAPPC9) in J82 cells, supporting the ceRNA model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the single KDs confirmed the previously observed expression pattern (down- and upregulation for circHIPK3 and IGF2BP2, respectively), while double KD indeed restored target mRNA expression in J82 cells",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Rescue experiment directly tests the ceRNA model prediction.",
+            "Three targets tested (STAT3, NEU, TRAPPC9) all show restoration.",
+            "Single KDs confirm expected individual effects before assessing double KD."
+          ],
+          "weaknesses": [
+            "Only performed in J82 cells — should be replicated in at least one other cell line.",
+            "Statistical testing for the rescue effect is not clearly reported.",
+            "General cellular perturbation from double KD could lead to non-specific normalization of gene expression."
+          ],
+          "alternative_interpretations": [
+            "Double KD may normalize expression through stress response pathways rather than specific ceRNA reversal."
+          ],
+          "required_assumptions": [
+            "Double KD achieves sufficient depletion of both molecules.",
+            "Expression normalization reflects mechanistic rescue rather than general perturbation effects."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is one of the more compelling pieces of evidence for the ceRNA model.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "TP53 mRNA is upregulated upon circHIPK3 KD at later time points, consistent with…",
+        "claim": "TP53 mRNA is upregulated upon circHIPK3 KD at later time points, consistent with STAT3 downregulation since STAT3 represses TP53 transcription.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Consistent with our predictions, TP53 mRNA is upregulated upon circHIPK3 KD at later time points in UMUC3 cells (p = 1.7e−05, Wald test, Figure 5G)",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant upregulation (p = 1.7e-05).",
+            "Consistent with the established STAT3-TP53 regulatory axis (Niu et al., 2005).",
+            "The time delay (later time points) is consistent with TP53 being downstream of STAT3."
+          ],
+          "weaknesses": [
+            "TP53 upregulation could result from other consequences of circHIPK3 KD, not necessarily through STAT3.",
+            "No direct evidence that STAT3 downregulation causes TP53 upregulation in this specific system."
+          ],
+          "alternative_interpretations": [
+            "TP53 could be upregulated through DNA damage responses triggered by circHIPK3 KD.",
+            "Other transcription factors affected by circHIPK3 KD could contribute to TP53 upregulation."
+          ],
+          "required_assumptions": [
+            "The STAT3-TP53 axis is active in these BC cells.",
+            "STAT3 downregulation is sufficient to derepress TP53."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Correlation but not causation between STAT3 decrease and TP53 increase.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5",
+        "label": "Western blot and immunofluorescence confirm that circHIPK3 KD leads to decreased…",
+        "claim": "Western blot and immunofluorescence confirm that circHIPK3 KD leads to decreased STAT3 protein and increased p53 protein levels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "western blot analysis confirmed that circHIPK3 KD indeed leads to downregulation of STAT3 protein, while p53 protein levels rise (p < 0.05, T-test)",
+        "evaluation": {
+          "node_id": "c1.5.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Protein-level validation by two independent methods (western blot and IF).",
+            "Highly significant IF results for both STAT3 (p < 0.003) and p53 (p = 1.7e-30).",
+            "Western blot quantification with appropriate loading control (HuR)."
+          ],
+          "weaknesses": [
+            "Western blot p-values reported as p < 0.05 — exact values would be more informative.",
+            "The extremely significant IF p-value for p53 (1.7e-30) seems unusually high and may reflect the large number of cells analyzed rather than large effect size."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.6",
+        "label": "The 11-mer motif-dependent competition is demonstrated by the observation that 1…",
+        "claim": "The 11-mer motif-dependent competition is demonstrated by the observation that 11-mer ASO treatment increases IGF2BP2-STAT3 binding affinity and a mutated 11-mer in circHIPK3 increases STAT3-IGF2BP2 binding.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "this competition is dependent on the 11-mer motif since its presence within circHIPK3 reduces the STAT3 mRNA–IGF2BP2 interaction.",
+        "evaluation": {
+          "node_id": "c1.5.6",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The 11-mer mutation experiment in HEK293 provides significant results (p = 0.028 for circHIPK3, p = 0.036 for STAT3).",
+            "The ASO experiment shows the expected directional trends."
+          ],
+          "weaknesses": [
+            "The ASO experiment fails to reach statistical significance for both STAT3-IGF2BP2 binding (p = 0.078) and circHIPK3-IGF2BP2 binding (p = 0.27). This is a key experiment for the motif-dependency claim.",
+            "The ASO could have off-target effects, and the authors note it 'theoretically' should target circHIPK3 less than target genes.",
+            "The mutation experiment is in HEK293 with overexpression, not endogenous levels in BC cells.",
+            "Two different experimental approaches (ASO and mutation) give qualitatively similar but quantitatively inconsistent results."
+          ],
+          "alternative_interpretations": [
+            "The non-significant ASO results could indicate that the 11-mer is not the primary determinant of the circHIPK3-IGF2BP2 interaction.",
+            "The significant mutation results could reflect structural changes in circHIPK3 secondary structure rather than loss of the specific motif."
+          ],
+          "required_assumptions": [
+            "The non-significant ASO results reflect insufficient power rather than absence of effect.",
+            "Scrambling the 11-mer does not affect circHIPK3 global structure."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim is a critical link in the mechanistic model but rests on mixed evidence: one significant experiment in an overexpression system and one non-significant experiment at endogenous levels.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Absolute quantification estimates ~40-51 circHIPK3 molecules per cell but ~127,5…",
+        "claim": "Absolute quantification estimates ~40-51 circHIPK3 molecules per cell but ~127,500-261,000 IGF2BP2 molecules per cell across three BC cell lines.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we estimate the number of circHIPK3 molecules to ~45 (FL3), ~51 (J82), and ~40 (UMUC3) per cell...each cell contains ~216,000 (FL3), ~127,500 (J82), and ~261,000 (UMUC3) IGF2BP2 molecules",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Quantification performed in three independent cell lines with consistent results.",
+            "Methods are clearly described with standard curves and purified protein standards.",
+            "The results are internally consistent across cell lines."
+          ],
+          "weaknesses": [
+            "The 25% RT efficiency assumption is critical but not experimentally validated for circHIPK3 specifically, where the backsplice junction may impede reverse transcription.",
+            "Western blot quantification involves comparing recombinant Twin-streptagged protein to endogenous protein, which may differ in antibody binding efficiency.",
+            "BSA standard for Coomassie quantification introduces uncertainty in the IGF2BP2 protein quantification chain.",
+            "No independent method (e.g., mass spectrometry) was used to validate IGF2BP2 copy numbers."
+          ],
+          "alternative_interpretations": [
+            "If RT efficiency is lower than 25% (possible for structured backsplice junctions), actual circHIPK3 copy numbers could be higher, narrowing the stoichiometric gap.",
+            "If many IGF2BP2 molecules are in complexes or otherwise unavailable, the effective stoichiometric mismatch may be smaller."
+          ],
+          "required_assumptions": [
+            "25% RT efficiency for circHIPK3.",
+            "Recombinant and endogenous IGF2BP2 are detected with equal efficiency by the antibody.",
+            "Cell counting and RNA/protein extraction efficiencies are accurately estimated."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "While the approach is reasonable, the compounding assumptions in both measurements could produce significant errors. The orders-of-magnitude difference is likely robust to moderate errors, however.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Ectopic expression of circHIPK3 induces large cytoplasmic IGF2BP2-containing con…",
+        "claim": "Ectopic expression of circHIPK3 induces large cytoplasmic IGF2BP2-containing condensates, suggesting circHIPK3 can nucleate multiple IGF2BP2 proteins.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we observed a significantly higher prevalence of large cytoplasmic condensates in cells expressing high levels of circHIPK3 compared to controls (80% vs 29%)",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The condensation phenotype is visually striking and quantified (80% vs 29%).",
+            "The experiment uses endogenous IGF2BP2 antibody, confirming the condensates contain endogenous protein.",
+            "EGFP co-expression allows identification of transfected cells."
+          ],
+          "weaknesses": [
+            "Extremely small sample sizes (28 and 34 cells) for a key mechanistic claim.",
+            "No statistical test is reported for the 80% vs 29% comparison.",
+            "Ectopic overexpression produces supraphysiological circHIPK3 levels, making the biological relevance at endogenous levels completely unknown.",
+            "No biochemical characterization of condensates (FRAP, 1,6-hexanediol, co-localization with P-bodies or stress granule markers).",
+            "No evidence that condensation affects IGF2BP2 function or target gene regulation.",
+            "Control cells already show 29% with 'large condensates,' suggesting these may be normal cellular structures.",
+            "The condensates could be non-specific protein aggregation from any overexpressed RNA."
+          ],
+          "alternative_interpretations": [
+            "The condensates could be stress granules induced by transfection and overexpression, not specific to circHIPK3.",
+            "Any long, structured RNA overexpressed in cells might nucleate RBPs into visible condensates.",
+            "The 29% baseline suggests these are normal IGF2BP2-containing structures (e.g., processing bodies) that are enhanced non-specifically."
+          ],
+          "required_assumptions": [
+            "Overexpression-induced condensation reflects a mechanism operating at endogenous levels.",
+            "The condensates are functionally relevant for gene regulation.",
+            "CircHIPK3 specifically induces condensation (not any RNA).",
+            "28-34 cells provide sufficient statistical power."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is the weakest evidence in the paper and serves as the key resolution to the stoichiometric problem. The authors appropriately frame it as suggestive, but it is insufficient to support the nucleation model as presented.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "The authors acknowledge alternative mechanisms including: limited available IGF2…",
+        "claim": "The authors acknowledge alternative mechanisms including: limited available IGF2BP2 molecules for dynamic interaction, scaffolding of enzymatic complexes that modify IGF2BP2 post-translationally, or scaffolding interactions between multiple RBPs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "we cannot exclude alternative mechanisms, including that the cell only has a limited number of available IGF2BP2 molecules that can dynamically interact with either circHIPK3 or other mRNA targets...More speculatively, circHIPK3 may scaffold an enzymatic complex that can modify IGF2BP2 post-translationally and change its function",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The authors honestly present these alternatives, demonstrating scientific rigor.",
+            "Multiple plausible mechanisms are considered rather than committing to one unsupported model."
+          ],
+          "weaknesses": [
+            "These alternatives are not experimentally tested.",
+            "The paper does not prioritize which alternative is most likely based on available data."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This represents appropriate scientific caution in the discussion rather than a testable claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "CircHIPK3 expression is significantly higher in NMIBC than in MIBC patients in a…",
+        "claim": "CircHIPK3 expression is significantly higher in NMIBC than in MIBC patients in a cohort of more than 500 samples.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The expression of circHIPK3 is significantly upregulated in patients with NMIBC compared to patients with muscle invasive BC (p < 3.3e−09, Wilcoxon Rank Sum Test, Figure 6E)",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Large cohort (>500 patients).",
+            "Highly significant p-value (p < 3.3e-09)."
+          ],
+          "weaknesses": [
+            "No adjustment for potential confounders.",
+            "The comparison is between different disease stages, which inherently differ in many molecular features."
+          ],
+          "alternative_interpretations": [
+            "Higher circHIPK3 in NMIBC could reflect general differences in cell differentiation state rather than functional significance."
+          ],
+          "required_assumptions": [
+            "circHIPK3 expression differences are biologically meaningful rather than reflecting general transcriptional differences between NMIBC and MIBC."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "In an independent NMIBC cohort (n = 56), circHIPK3 levels are positively associa…",
+        "claim": "In an independent NMIBC cohort (n = 56), circHIPK3 levels are positively associated with overall survival (p < 0.009, Log-Rank Test), while the association is less pronounced for HIPK3 (p = 0.052).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "circHIPK3 levels are positively associated with overall survival (p < 0.009, Log-Rank Test, Figure 6F). The association was less pronounced for HIPK3 levels (p = 0.052, Log-Rank Test)",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Independent cohort from previous studies.",
+            "Statistically significant (p < 0.009).",
+            "Stronger association for circHIPK3 than linear HIPK3."
+          ],
+          "weaknesses": [
+            "Very small cohort (n=56) for survival analysis.",
+            "Median expression cutoff is arbitrary.",
+            "No multivariate analysis controlling for known prognostic factors.",
+            "Overall survival in NMIBC is generally good, raising questions about statistical power."
+          ],
+          "alternative_interpretations": [
+            "Confounding by tumor grade or molecular subtype could explain the survival association.",
+            "The marginal HIPK3 result (p=0.052) suggests the parent gene may also contribute."
+          ],
+          "required_assumptions": [
+            "Median cutoff is appropriate.",
+            "n=56 provides sufficient power.",
+            "Association is independent of confounders."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3",
+        "label": "CircHIPK3 is higher expressed than the linear HIPK3 transcript in nearly all BC …",
+        "claim": "CircHIPK3 is higher expressed than the linear HIPK3 transcript in nearly all BC cell lines tested.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In all cell lines except for one, circHIPK3 is higher expressed than the linear transcript (Figure 1B).",
+        "evaluation": {
+          "node_id": "c1.7.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Observed in 10 out of 11 cell lines tested.",
+            "Consistent with the importance of the circular form."
+          ],
+          "weaknesses": [
+            "Cell line expression may not reflect tumor tissue expression.",
+            "The one exception is noted but not explained."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.4",
+        "label": "The authors cannot explain why downregulation of a proposed tumor suppressor cir…",
+        "claim": "The authors cannot explain why downregulation of a proposed tumor suppressor circRNA also downregulates STAT3, whose activation is most often associated with cancer progression.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "At this point, we cannot explain why downregulation of a proposed tumor suppressor circRNA (Okholm et al., 2017) also downregulates a STAT3, whose activation is most often associated with cancer progression.",
+        "evaluation": {
+          "node_id": "c1.7.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The authors honestly acknowledge this unresolved paradox.",
+            "This transparency strengthens the overall scientific credibility of the paper."
+          ],
+          "weaknesses": [
+            "This paradox undermines the coherence of the proposed biological model.",
+            "If the authors' model is correct, the tumor suppressor designation for circHIPK3 becomes difficult to reconcile with the molecular data."
+          ],
+          "alternative_interpretations": [
+            "CircHIPK3 may not be a true tumor suppressor — its correlation with better survival could be associative rather than causal.",
+            "STAT3 may have tumor suppressor functions in this specific BC context, as noted for certain cancers by Tolomeo and Cascio (2021).",
+            "Short-term KD effects may not predict long-term biological consequences."
+          ],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is an important internal contradiction that the paper does not resolve. It creates tension between claims c1.5 and c1.7.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "For each of the 11 distinctly conserved miRNA target sites (23 miRNAs) in circHI…",
+        "claim": "For each of the 11 distinctly conserved miRNA target sites (23 miRNAs) in circHIPK3, Chi-square tests showed no enrichment in 3′UTRs of downregulated genes (p > 0.05) in J82 at 24 hr and 48 hr.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Neither the target sites for the highest expressed miRNA (miR-148-3p; CAGUGCA) nor any of the other circHIPK3-miRNAs are enriched among downregulated genes (p > 0.05, Chi-square test, Figure 2B and Figure 2—figure supplement 1B, C)",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear statistical testing with p > 0.05 for all miRNAs tested.",
+            "Multiple time points evaluated."
+          ],
+          "weaknesses": [
+            "Only in J82."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Although motif scores were slightly lower for miRNA 7-mers, the median motif sco…",
+        "claim": "Although motif scores were slightly lower for miRNA 7-mers, the median motif score was above 0 with small effect sizes (effect size <0.25, p < 0.05, Wilcoxon Rank Sum Test) in both cell lines.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Although motif scores were slightly lower for miRNA 7-mers than for 7-mers that do not constitute a miRNA target site, the median motif score was above 0 and the effect size small in both cell lines (effect size <0.25, p < 0.05, Wilcoxon Rank Sum Test)",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Effect size and median reported, providing full transparency.",
+            "Both cell lines show consistent results."
+          ],
+          "weaknesses": [
+            "The slight but significant lower scores for miRNA 7-mers could indicate a weak sponge effect."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.2",
+        "label": "The miRNA 7-mer with the most negative motif score in both cell lines constitute…",
+        "claim": "The miRNA 7-mer with the most negative motif score in both cell lines constitutes a target site for miR-1207-5p, which is not conserved and has no reported functional roles.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the miRNA-7-mer with the most negative motif score in both cell lines constitute a target site for miR-1207-5p, however, miR-1207-5p is not conserved and has no reported functional roles.",
+        "evaluation": {
+          "node_id": "c1.1.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Identifies the most extreme miRNA 7-mer and explains why it is not functionally relevant."
+          ],
+          "weaknesses": [
+            "The fact that a non-conserved miRNA scores highest does not completely rule out functional sponging of other miRNAs."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "The overlap of 1104 DE genes between UMUC3 and J82 is highly significant (p < 2.…",
+        "claim": "The overlap of 1104 DE genes between UMUC3 and J82 is highly significant (p < 2.2e−16, Fisher's exact test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "a large overlap (n = 1104) between cell lines (p < 2.2e−16, Fisher's exact test, Figure 1E)",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant p-value with appropriate test."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Gene expression is highly correlated between scr siRNA and untreated samples (Rh…",
+        "claim": "Gene expression is highly correlated between scr siRNA and untreated samples (Rho > 0.93, Spearman's), indicating no immediate effect of transfection.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Gene expression is highly correlated between scr siRNA samples and No siRNA samples indicating no immediate effect of transfection (Rho > 0.93 for all comparisons, Spearman's rank-order correlation).",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "High correlation (Rho > 0.93) across all comparisons.",
+            "Appropriate control experiment."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "In UMUC3, the 11-mer is enriched in downregulated vs. upregulated genes (p < 1e−…",
+        "claim": "In UMUC3, the 11-mer is enriched in downregulated vs. upregulated genes (p < 1e−39) and vs. non-DE genes (p < 1e−28) by Chi-square test.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the motif is enriched in downregulated genes compared to upregulated genes (p < 1e−39) and genes that are not differentially expressed (not DE) (p < 1e−28) in both UMUC3 (Chi-square test, Figure 2F)",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Extremely significant p-values."
+          ],
+          "weaknesses": [
+            "Two mismatches allowed may inflate significance."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.2",
+        "label": "In J82, the 11-mer is enriched in downregulated genes (p < 0.0001 for both compa…",
+        "claim": "In J82, the 11-mer is enriched in downregulated genes (p < 0.0001 for both comparisons, Chi-square test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "J82 cells (p < 0.0001 for both comparisons, Chi-square test, Figure 2—figure supplement 1G)",
+        "evaluation": {
+          "node_id": "c1.3.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Replication in independent cell line."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.3",
+        "label": "In FL3, the 11-mer is enriched in downregulated genes (p < 2e−39 for both compar…",
+        "claim": "In FL3, the 11-mer is enriched in downregulated genes (p < 2e−39 for both comparisons, Chi-square test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "further validated in a third BC cell line FL3 (p < 2e−39 for both comparisons, Chi-square test, Figure 2—figure supplement 1H)",
+        "evaluation": {
+          "node_id": "c1.3.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Third independent validation with extremely significant p-values."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.1",
+        "label": "RIP in FL3 cells shows circHIPK3 interacts strongly with IGF2BP2 but not GRWD1, …",
+        "claim": "RIP in FL3 cells shows circHIPK3 interacts strongly with IGF2BP2 but not GRWD1, and with lower affinity for IGF2BP1.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "circHIPK3 interacts strongly with IGF2BP2 in BC cells but not with GRWD1",
+        "evaluation": {
+          "node_id": "c1.3.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct experimental validation of computational prediction.",
+            "Differential binding between IGF2BP2 (strong) and GRWD1 (none) is informative.",
+            "Appropriate negative control."
+          ],
+          "weaknesses": [
+            "Semi-quantitative assessment (gel-based) in the initial experiment."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.2",
+        "label": "RIP of IGF2BP2 upon circHIPK3 overexpression confirmed tight and specific bindin…",
+        "claim": "RIP of IGF2BP2 upon circHIPK3 overexpression confirmed tight and specific binding (p < 0.002, T-test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "RIP experiments of IGF2BP2 upon circHIPK3 overexpression, using Laccase2-driven circRNA expression (Kramer et al., 2015), confirmed tight and specific binding between circHIPK3 and IGF2BP2 (p < 0.002, T-test, Figure 4B)",
+        "evaluation": {
+          "node_id": "c1.3.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Quantitative RIP with statistical testing (p < 0.002).",
+            "Overexpression context provides clean binding assessment."
+          ],
+          "weaknesses": [
+            "Overexpression may create non-physiological interactions."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5.1",
+        "label": "Scrambling the 11-mer in a Laccase2 circRNA expression construct reduced IGF2BP2…",
+        "claim": "Scrambling the 11-mer in a Laccase2 circRNA expression construct reduced IGF2BP2 binding ~twofold (p = 0.028) and increased STAT3 mRNA binding ~sevenfold (p = 0.036) in HEK293 cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "binding of IGF2BP2 was reduced significantly (~twofold, p = 0.028) when the 11-mer motif had been scrambled, while binding of STAT3 mRNA to IGF2BP2 was increased (~sevenfold, p = 0.036)",
+        "evaluation": {
+          "node_id": "c1.3.5.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Statistically significant for both circHIPK3 binding (p = 0.028) and STAT3 binding (p = 0.036).",
+            "WT and mutant circHIPK3 expressed at similar levels (northern blot).",
+            "Reciprocal effects (decreased circHIPK3 binding, increased STAT3 binding) are internally consistent."
+          ],
+          "weaknesses": [
+            "HEK293 cells, not BC cells.",
+            "Overexpression system.",
+            "Only one mutant tested.",
+            "The ~twofold reduction for circHIPK3 suggests residual binding through other sites."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The scrambled sequence does not create new binding sites or alter secondary structure."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5.1",
+        "label": "In UMUC3 BC cells, the 11-mer motif is enriched in upregulated genes upon IGF2BP…",
+        "claim": "In UMUC3 BC cells, the 11-mer motif is enriched in upregulated genes upon IGF2BP2 KD (p < 7e−04, Chi-square test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the 11-mer motif is enriched in upregulated genes compared to downregulated genes upon IGF2BP2 KD in UMUC3 (p < 7e−04, Chi-square test, Figure 4C)",
+        "evaluation": {
+          "node_id": "c1.4.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Significant enrichment in BC cells, not just ENCODE lines."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6.1",
+        "label": "Only subtle differences in cell cycle distribution were observed by EdU-flow cyt…",
+        "claim": "Only subtle differences in cell cycle distribution were observed by EdU-flow cytometry upon KD of circHIPK3 or IGF2BP2 in FL3 cells, despite pathway-level enrichment.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found only subtle differences in the distribution between G1-, S-, or G2/M-phases of the cell cycle, when measuring these parameters upon KD of either circHIPK3 or IGF2BP2 in FL3 cells.",
+        "evaluation": {
+          "node_id": "c1.4.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Honest reporting of negative/weak results.",
+            "Flow cytometry is an appropriate assay for cell cycle analysis."
+          ],
+          "weaknesses": [
+            "Only performed in FL3 cells, not UMUC3 or J82 where the pathway enrichments were observed.",
+            "'Subtle differences' is vague — quantification and statistical testing should be reported."
+          ],
+          "alternative_interpretations": [
+            "The pathway enrichment may not translate to functional cell cycle effects.",
+            "FL3 cells may not be the appropriate cell line for this phenotypic readout."
+          ],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This evidence actually weakens claim c1.4.6 rather than supporting it.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "RIP experiments in FL3 cells showed significantly more STAT3 mRNA bound by IGF2B…",
+        "claim": "RIP experiments in FL3 cells showed significantly more STAT3 mRNA bound by IGF2BP2 after circHIPK3 KD (p < 0.007, T-test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "upon immunoprecipitation of IGF2BP2, we observed significantly more STAT3 mRNA binding after circHIPK3 depletion (48 hr), supporting a regulatory role of circHIPK3 as a ceRNA (p < 0.007, T-test, Figure 5D)",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Statistically significant (p < 0.007).",
+            "Direct experimental test of the ceRNA prediction."
+          ],
+          "weaknesses": [
+            "Single cell line (FL3).",
+            "RIP cannot distinguish direct from bridged interactions."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5.1",
+        "label": "Immunofluorescence shows nuclear and overall STAT3 protein levels are significan…",
+        "claim": "Immunofluorescence shows nuclear and overall STAT3 protein levels are significantly lower upon circHIPK3 KD (p < 0.003, Wilcoxon) and nuclear p53 is higher (p = 1.7e−30, Wilcoxon).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "immunofluorescence staining showed that nuclear and overall STAT3 protein levels are significantly lower upon circHIPK3 KD (p < 0.003, Wilcoxon Rank Sum Test, Figure 5I), while nuclear p53 protein levels are higher (p = 1.7e−30, Wilcoxon Rank Sum Test, Figure 5J)",
+        "evaluation": {
+          "node_id": "c1.5.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Two independent methods confirm protein changes.",
+            "Highly significant IF results.",
+            "Nuclear/cytoplasmic distinction provides subcellular resolution."
+          ],
+          "weaknesses": [
+            "The p53 IF p-value (1.7e-30) seems disproportionately significant and may reflect sample size rather than effect size."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.6.1",
+        "label": "11-mer ASO treatment showed 2.9× higher IGF2BP2-STAT3 binding but was not statis…",
+        "claim": "11-mer ASO treatment showed 2.9× higher IGF2BP2-STAT3 binding but was not statistically significant (p = 0.078, T-test), while circHIPK3–IGF2BP2 binding was 30% lower (p = 0.27).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Although not statistically significant, IGF2BP2-binding affinity to STAT3 is 2.9 times higher in the presence of the 11-mer ASO compared to control samples (p = 0.078, T-test, Figure 5E). Additionally, the relative circHIPK3–IGF2BP2-binding affinity is 30% lower in 11-mer ASO samples (p = 0.27, T-test)",
+        "evaluation": {
+          "node_id": "c1.5.6.1",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Directional trends are consistent with the hypothesis.",
+            "The 2.9x enrichment for STAT3 is a meaningful effect size."
+          ],
+          "weaknesses": [
+            "Neither result is statistically significant (p = 0.078 and p = 0.27).",
+            "In standard statistical practice, these are negative results.",
+            "Biological triplicates may be insufficient for the variability in this assay.",
+            "The ASO may have off-target effects or insufficient on-target activity."
+          ],
+          "alternative_interpretations": [
+            "The non-significant results could indicate the 11-mer is not the primary driver of circHIPK3-IGF2BP2 interaction at endogenous levels.",
+            "The variability suggests the effect may be inconsistent."
+          ],
+          "required_assumptions": [
+            "Non-significance reflects power limitations rather than absence of effect."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is a critical piece of evidence for the motif-dependency claim and its non-significance is a significant weakness.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.6.2",
+        "label": "Three other IGF2BP2 target transcripts (NEU, SLC7A5, TRAPPC9) also show signific…",
+        "claim": "Three other IGF2BP2 target transcripts (NEU, SLC7A5, TRAPPC9) also show significantly increased IGF2BP2 binding upon circHIPK3 KD (p < 0.03, T-test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We analyzed the IGF2BP2-binding affinity of three other transcripts (NEU, SLC7A5, and TRAPPC9) containing the 11-mer motifs in their 3′UTRs...and found a similar significant enrichment upon circHIPK3 KD (p < 0.03, T-test)",
+        "evaluation": {
+          "node_id": "c1.5.6.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Three additional targets all show the same pattern (p < 0.03).",
+            "Strengthens the generalizability of the STAT3 finding."
+          ],
+          "weaknesses": [
+            "All targets were selected based on known properties (contain 11-mer, downregulated upon circHIPK3 KD, upregulated upon IGF2BP2 KD), which could introduce selection bias."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "CircHIPK3 copy numbers were estimated using qPCR standard curves with a backspli…",
+        "claim": "CircHIPK3 copy numbers were estimated using qPCR standard curves with a backsplicing junction DNA template, assuming 25% RT efficiency.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Methods",
+        "verbatim_quote": "circHIPK3 copy number per cell was calculated based on a standard curve made from serial dilutions of a DNA fragment (Twist Bioscience) carrying the sequence amplified by the circHIPK3 primers used for qPCR",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Standard curve approach is standard methodology.",
+            "Applied across three cell lines with consistent results."
+          ],
+          "weaknesses": [
+            "25% RT efficiency is assumed, not measured for the specific backsplice junction.",
+            "DNA template may not fully recapitulate the qPCR behavior of the cDNA produced from circular RNA."
+          ],
+          "alternative_interpretations": [
+            "If RT efficiency is lower (e.g., 10%), copy numbers could be 2.5x higher (~100-125 per cell)."
+          ],
+          "required_assumptions": [
+            "25% RT efficiency is accurate.",
+            "DNA standard curves are appropriate for estimating RNA copy numbers."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The method is reasonable but the critical assumption is not validated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.2",
+        "label": "IGF2BP2 copy numbers were estimated by comparing western blot signal intensities…",
+        "claim": "IGF2BP2 copy numbers were estimated by comparing western blot signal intensities of cell lysates from known cell numbers against purified recombinant Twin-Streptagged IGF2BP2 quantified by Coomassie staining.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "From known amounts of purified IGF2BP2 in western blots with lysates from a known number of BC cells, we estimate that each cell contains ~216,000 (FL3), ~127,500 (J82), and ~261,000 (UMUC3) IGF2BP2 molecules",
+        "evaluation": {
+          "node_id": "c1.6.1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Multi-step quantification with purified protein standards.",
+            "Consistent results across three cell lines.",
+            "Referenced comparison to published HeLa cell estimates (~10,000 in Bekker-Jensen et al., 2017) — note BC cell lines show 10-25x higher levels, which raises questions."
+          ],
+          "weaknesses": [
+            "Recombinant Twin-streptagged protein may differ from endogenous protein in antibody recognition.",
+            "BSA as Coomassie standard introduces additional uncertainty.",
+            "The estimates are 10-25x higher than published HeLa estimates, which should be discussed.",
+            "No independent validation by mass spectrometry or other method."
+          ],
+          "alternative_interpretations": [
+            "If the western blot quantification overestimates IGF2BP2 due to tag-related differences, the stoichiometric gap could be smaller."
+          ],
+          "required_assumptions": [
+            "Antibody recognizes recombinant and endogenous IGF2BP2 equally.",
+            "BSA standard provides accurate protein quantification.",
+            "Cell counting is accurate."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The 10-25x discrepancy with published HeLa data is notable and unexplained.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "80% of circHIPK3-overexpressing cells contained large cytoplasmic IGF2BP2 conden…",
+        "claim": "80% of circHIPK3-overexpressing cells contained large cytoplasmic IGF2BP2 condensates compared to 29% of control cells, assessed by immunofluorescence of endogenous IGF2BP2 in UMUC3 cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we observed a significantly higher prevalence of large cytoplasmic condensates in cells expressing high levels of circHIPK3 compared to controls (80% vs 29%) (Figure 6C, D)",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Large difference in percentage (80% vs 29%) is notable.",
+            "Endogenous IGF2BP2 antibody confirms the condensates contain the protein of interest."
+          ],
+          "weaknesses": [
+            "Extremely small sample sizes (28 and 34 cells).",
+            "No statistical test reported.",
+            "29% baseline suggests these structures occur normally.",
+            "Overexpression system creates non-physiological conditions.",
+            "No controls for condensate specificity (other circRNAs, other overexpressed RNAs).",
+            "Error bars show standard error of the mean, which may underrepresent true variability."
+          ],
+          "alternative_interpretations": [
+            "Any overexpressed RNA might nucleate RBPs into visible structures.",
+            "The 'condensates' could be stress granules or aggregation artifacts."
+          ],
+          "required_assumptions": [
+            "28-34 cells are sufficient.",
+            "Overexpression phenotype reflects endogenous mechanism.",
+            "The structures are true phase-separated condensates."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is the weakest piece of evidence in the entire paper and supports the most speculative claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.5",
+        "source": "c1.3",
+        "target": "c1.3.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.6",
+        "source": "c1.3",
+        "target": "c1.3.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.7",
+        "source": "c1.4",
+        "target": "c1.4.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.5",
+        "source": "c1.5",
+        "target": "c1.5.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.6",
+        "source": "c1.5",
+        "target": "c1.5.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.3",
+        "source": "c1.7",
+        "target": "c1.7.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.4",
+        "source": "c1.7",
+        "target": "c1.7.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.2",
+        "source": "c1.1.2",
+        "target": "c1.1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.2",
+        "source": "c1.3.2",
+        "target": "c1.3.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.3",
+        "source": "c1.3.2",
+        "target": "c1.3.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.1",
+        "source": "c1.3.4",
+        "target": "c1.3.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.2",
+        "source": "c1.3.4",
+        "target": "c1.3.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.5_c1.3.5.1",
+        "source": "c1.3.5",
+        "target": "c1.3.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.5_c1.4.5.1",
+        "source": "c1.4.5",
+        "target": "c1.4.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.6_c1.4.6.1",
+        "source": "c1.4.6",
+        "target": "c1.4.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.5_c1.5.5.1",
+        "source": "c1.5.5",
+        "target": "c1.5.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.6_c1.5.6.1",
+        "source": "c1.5.6",
+        "target": "c1.5.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.6_c1.5.6.2",
+        "source": "c1.5.6",
+        "target": "c1.5.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.2",
+        "source": "c1.6.1",
+        "target": "c1.6.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 62,
+    "total_edges": 61,
+    "max_depth": 3,
+    "high_support_nodes": 46,
+    "low_support_nodes": 4,
+    "overall_assessment": "The paper presents 62 claims with strong overall support (46 high, 4 low)."
+  },
+  "final_review": null
+}

@@ -1,0 +1,61 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to understanding the role of transposable element insertion polymorphisms in gene expression variation and rice evolution. However, the evidence supporting the central claims is **incomplete**: while the correlational analyses are well-executed, the absence of functional validation for causality, insufficient control for demographic confounders in the selection analyses, and overclaiming relative to the modest fraction of genes affected substantially weaken the paper's strongest conclusions.
+
+**Summary**
+
+This paper investigates the contribution of transposable element insertion polymorphisms (TIPs) to gene expression variability in cultivated and wild rice. Using 3′ mRNA-seq expression data from 208 *Oryza sativa* varieties (126 indica, 82 japonica), the authors perform TIP-eQTL mapping and identify 563 and 356 TIP-eQTLs in indica and japonica respectively, affecting 3.1% and 2% of expressed genes. They report that TIPs uncover expression associations not detected by SNPs alone and often explain more expression variance. A Population Branch Statistic (PBS) analysis reveals that TIP-eQTLs are enriched among loci with extreme frequency differentiation between subspecies. Three detailed case studies (EG2/OsJAZ1, OsGAP, OsMPH1) illustrate TIP-defined haplotypes with differential expression effects that appear to have been selected in indica and/or japonica. The authors conclude that TEs are a "major driver" of gene expression variation selected during rice domestication and adaptation, with standing variation from wild ancestors being differentially retained in the two subspecies.
+
+**Strengths**
+
+- **TIP-eQTL identification is methodologically sound and clearly quantified (claims on TIP-eQTL numbers).** The identification of 563 and 356 TIP-eQTLs in indica and japonica respectively, using FDR-corrected Matrix eQTL analysis performed separately for each subspecies with subpopulation covariates, reflects appropriate methodology. The TIP calling pipeline was validated against the MH63 assembled genome (97.1% sensitivity, 92.2% precision), providing confidence in the input data.
+
+- **The TIP vs. SNP comparison is robustly conducted across multiple analytical frameworks (claim on TIPs explaining more variance).** The authors perform combined TIP-SNP analysis, separate analyses, and subsampled SNP analyses, all converging on the conclusion that TIPs capture expression associations missed by SNPs and frequently explain more variance per gene (~62–73% of TIP-eQTLs).
+
+- **The PBS enrichment analysis provides compelling statistical evidence for frequency differentiation of TIP-eQTLs (claims on PBS values and enrichment).** The 3-fold higher mean absolute PBS for TIP-eQTLs vs. non-eQTL TIPs (p < 0.01, Wilcoxon) and the strong enrichment at the 95th percentile (OR = 4.87, Fisher's exact test, p < 0.01) are well-supported quantitatively.
+
+- **The wild ancestor analysis provides valuable evolutionary context (claim on 66% of TIP-eQTLs in rufipogon/nivara).** Direct comparison with O. rufipogon and O. nivara data demonstrating that 66% of TIP-eQTLs represent standing ancestral variation is a well-executed analysis that meaningfully contextualizes the evolutionary origins of these variants.
+
+- **The low overlap between subspecies TIP-eQTLs is clearly documented (~69% indica-specific, ~60% japonica-specific).** This finding, combined with the differing frequency distributions of eQTL vs. non-eQTL TIPs between subspecies, provides an interesting population-genetic observation about subspecies divergence.
+
+- **The case studies are detailed and utilize super-pangenome data for haplotype resolution (EG2, OsGAP, OsMPH1).** The structural characterization of haplotypes using pangenome resources, combined with π and H12 statistics, represents a thorough multi-layered analysis of individual loci.
+
+**Weaknesses / Essential Revisions**
+
+- **The claim that TIP-eQTLs represent causal mutations is the weakest in the paper and requires substantial revision or qualification (claim on "important fraction being causal").** This claim, rated as low support, relies entirely on indirect evidence: enrichment in upstream regions and negative directional bias. Both observations have alternative explanations (MITE insertion preferences for upstream regions; LD with deletions or other structural variants). No functional validation—such as allele-specific expression, reporter assays, or CRISPR editing—is provided for any single TIP. The authors should either provide experimental evidence for at least one TIP being causal or substantially temper this claim throughout the manuscript.
+
+- **The conflation of PBS extreme values with "positive selection" is a critical overstatement that must be addressed.** The rice domestication bottleneck can produce extreme PBS values through genetic drift alone. The paper provides π and H12 analyses for only three loci, not genome-wide. The permutation tests for these individual loci do not adequately control for demographic history (random sampling ignoring subspecies structure) or local recombination rate variation. The authors should either perform demographic simulations to establish expected PBS distributions under neutrality with realistic bottleneck parameters, or replace "positive selection" language with "frequency differentiation" or "signatures consistent with selection."
+
+- **The "major driver" framing in the root claim is not supported by the quantitative evidence.** TIP-eQTLs affect only 2–3% of expressed genes, and only a fraction of those show extreme PBS values. While TIPs may be a non-negligible contributor to expression variation, characterizing them as a "major driver" requires either comparative quantification against other sources of variation (cis-regulatory SNPs, structural variants, epigenetic marks) or more modest language.
+
+- **Potential circularity and confounding in the PBS–eQTL enrichment analysis must be addressed.** TIP-eQTLs are detected when allele frequencies provide statistical power for association mapping—typically at intermediate frequencies that differ between populations. TIPs at different frequencies between indica and japonica will tend to have higher PBS values *and* be preferentially detected as eQTLs in only one subspecies. The authors should formally test whether the PBS enrichment persists after controlling for allele frequency differences and genomic context (e.g., gene density, recombination rate).
+
+- **The claim about "regulatory genes" and "signal transduction genes" being preferentially affected lacks systematic support.** The paper highlights anecdotal examples (EG2, OsGAP, OsMPH1, hormone signaling genes) but presents no GO enrichment analysis, pathway enrichment test, or systematic quantification to support the claim that regulatory or signal transduction genes are disproportionately represented among selected TIP-eQTLs. This analysis should be performed or the claim should be removed.
+
+- **The subspecies-specificity of TIP-eQTLs may be substantially inflated by differences in statistical power.** With 126 indica vs. 82 japonica accessions and different allele frequency spectra, many TIP-eQTLs will be detected in one subspecies simply due to power differences. The authors should perform power-matched analyses (e.g., subsampling indica to 82 accessions) or present formal GxE interaction tests to distinguish true biological specificity from statistical artifacts.
+
+- **For all three detailed case studies (EG2, OsGAP, OsMPH1), the haplotypes contain structural variants beyond the focal TIPs, making attribution of expression effects specifically to TEs unjustified.** The authors acknowledge structural complexity at these loci but still attribute expression differences to the TIPs. This should be more carefully discussed, and the possibility that other linked variants drive expression differences should be explicitly considered as an equally likely alternative.
+
+- **The requirement that a TIP-eQTL be significant in "at least one replicate" is insufficient for establishing reproducibility.** Requiring significance in both replicates, or demonstrating a high replication rate, would substantially strengthen confidence in the reported associations.
+
+**Minor Comments**
+
+- The MAF threshold of 3% with 82 japonica samples means some associations involve only ~2–3 individuals carrying the minor allele. The authors should report how many TIP-eQTLs are driven by such rare variants and consider sensitivity analyses at higher MAF thresholds.
+
+- The claim that ~90% of TIP-eQTLs overlap between wet and drought conditions is based on a relaxed threshold (p < 0.05, no FDR correction). A comparison to the overlap expected by chance under these permissive criteria should be provided.
+
+- The 18% vs. 43% comparison for multiple TIP-eQTLs in high-PBS vs. all genes lacks a formal statistical test. A Fisher's exact test or similar should be reported.
+
+- The negative directional bias of TIP-eQTLs (59% negative) should be formally tested against a null of 50%, and the difference from SNP-eQTL directionality (53% negative) should be formally compared.
+
+- The unequal representation of O. rufipogon (72) and O. nivara (10) in the ancestral outgroup could bias PBS estimates if these species have different population histories. The sensitivity of results to excluding O. nivara should be examined.
+
+- The low proportion of LTR retrotransposon TIPs (9%) relative to their genomic abundance likely reflects short-read detection bias. This limitation should be discussed more prominently, as it means the study systematically undersamples what may be the most impactful class of TIPs.
+
+- Figure 2H vs. 2I comparison (eQTL vs. non-eQTL TIP frequency distributions) should include a formal statistical test.
+
+**Recommendation**
+
+Major Revisions
+
+The paper addresses an important question and presents a large-scale, multi-faceted analysis, but the central narrative—that TIPs are causal variants driving gene expression changes under positive selection—rests on correlational evidence with insufficient controls for demographic confounding, ascertainment bias, and LD-based alternative explanations. With 20 of 44 claims receiving high support but the critical causality claim rated as low support and multiple primary claims rated as medium, the paper requires substantial revision of its interpretive framework and either functional validation or appropriately tempered conclusions before meeting eLife's standards for a conceptual advance.

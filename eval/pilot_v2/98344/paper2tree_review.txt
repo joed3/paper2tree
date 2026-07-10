@@ -1,0 +1,53 @@
+**eLife Assessment**
+
+This paper presents a **useful** methodological contribution describing a single-cell RNA sequencing and TCR repertoire analysis pipeline for selecting TCR sequences to generate transgenic mice, demonstrated through the creation of SARS-CoV-2 Spike-specific CD8 T cell (CORSET8) mice. The evidence supporting the functionality of the resulting transgenic mice is **solid**, but the central comparative claims regarding superiority over classical hybridoma-based approaches and generalizability rest on **incomplete** evidence, as the comparison is confounded (N=1 per method, different epitopes targeted) and key claims about efficiency and broad applicability lack quantitative substantiation.
+
+**Summary**
+
+The authors describe a workflow combining single-cell gene expression profiling (scRNA-seq) with V(D)J sequencing, integrated through their DALI software tool, to identify optimal TCR clonotypes from polyclonal in vivo immune responses. This approach is presented as superior to the classical hybridoma-based method for generating TCR transgenic mice, motivated by the authors' own failed first attempt using a hybridoma-derived clone (clone 47). The rationalized pipeline involved immunizing C57BL/6 mice with SARS-CoV-2 Spike protein, sorting Spike tetramer-positive CD8 T cells, performing 10x Genomics scRNA-seq with paired TCR sequencing, and using DALI to link clonotype identity to transcriptomic phenotype. Clonotype 1 was selected based on clonal expansion, proliferation markers (Mki67), cytokine production (Ifng), and putative memory potential (Tcf7+, Sell−). The resulting CORSET8 transgenic mice were validated through BM-DC co-culture, Spike/CpG immunization, BNT162b2 mRNA vaccination, and live SARS-CoV-2 infection in K18-hACE2 mice, demonstrating robust antigen-specific CD8 T cell activation and proliferation.
+
+The paper addresses a genuine need in the field—TCR transgenic mice remain essential tools but can fail unpredictably—and the concept of leveraging single-cell multi-omics for informed clone selection is sound. However, the strength of the comparative claims substantially exceeds what the evidence supports, and several experimental discrepancies require clarification.
+
+**Strengths**
+
+- **CORSET8 transgenic mice show robust and well-validated transgene expression.** The CD4/CD8 skewing in both spleen and thymus (Figure 3A, E), ~70% tetramer positivity among CD8 T cells (Figure 3C), and the shift from naive to effector phenotype (CD62L−CD44+, Figure 3B) are all supported by strong evidence across three independent experiments, providing compelling confirmation that the selected TCR is correctly expressed and drives appropriate lineage commitment.
+
+- **Dose-dependent functional sensitivity of CORSET8 T cells is well-demonstrated.** The BM-DC co-culture proliferation assay shows CTV dilution at peptide concentrations as low as 10 pg/ml (Figure 3D), replicated across three independent experiments. This provides strong functional evidence for a highly sensitive TCR, which is a meaningful validation of the clone selection approach.
+
+- **Near-complete antigen-driven proliferation across three distinct in vivo models.** The demonstration of 95.17% (±1.61) division upon Spike/CpG immunization (Figure 4A) and 99.28% (±0.12) upon SARS-CoV-2 infection (Figure 4F), with appropriate controls (CpG-only, mock infection, hACE2^wt/wt mice), provides strong, convergent evidence that CORSET8 T cells are functional across vaccination and infection contexts. The specificity control showing absence of CORSET8 activation in non-permissive hACE2^wt/wt mice is particularly convincing.
+
+- **The integration of clonotype and transcriptomic data for clone selection is conceptually valuable.** The simultaneous consideration of clonal expansion, proliferation status, cytokine production, and putative memory markers represents a genuinely richer selection framework than CD69/IL-2 screening alone, even if the comparative advantage remains to be rigorously established.
+
+**Weaknesses / Essential Revisions**
+
+- **The central comparative claim (scRNA-seq approach superior to classical hybridoma method) rests on an N=1 confounded comparison.** The root claim that the rationalized approach is more efficient and reliable than classical methods is supported by only one failed hybridoma-derived line (clone 47) versus one successful scRNA-seq-derived line. Critically, the two approaches targeted different epitopes: the hybridoma used a pool of five peptides, while the scRNA-seq approach used a validated VNFNFNGL tetramer for pre-enrichment. The failure of clone 47 could therefore be attributable to epitope selection rather than the clone selection method itself. The authors must acknowledge this confound explicitly, ideally reframing the comparison as a proof-of-concept rather than a demonstration of superiority. At minimum, investigating why clone 47 failed (e.g., tetramer staining to confirm peptide specificity) would substantially strengthen the narrative.
+
+- **A potentially critical peptide discrepancy between the co-culture assay and the TCR selection must be resolved.** The Methods section states that the BM-DC co-culture uses peptide GNYNYLYRL, while the TCR was selected based on VNFNFNGL tetramer reactivity. This discrepancy is unexplained and could fundamentally affect interpretation of the dose-response data (Figure 3D). If GNYNYLYRL was indeed used, the response could reflect cross-reactivity rather than cognate recognition. If this is a methods error, it should be corrected. The authors must clarify which peptide was used and provide the rationale.
+
+- **The claim of "high-affinity TCR" is repeatedly made without direct affinity measurement.** Multiple claims (c1.3, c1.3.3, c1.4.4) infer high TCR affinity from functional sensitivity (BM-DC co-culture dose-response) and tetramer MFI comparisons. However, tetramer MFI can reflect TCR surface density rather than per-molecule affinity, and functional sensitivity is influenced by co-receptor contributions, antigen presentation efficiency, and activation thresholds. The authors should either perform a direct affinity measurement (e.g., tetramer dissociation kinetics, SPR) or replace "high-affinity" language with "high-avidity" or "high functional sensitivity" throughout.
+
+- **The claim that the approach is "highly time-efficient" and "generalizable to any antigen of interest" lacks quantitative support.** No time, cost, or workload comparison between the two approaches is provided. The scRNA-seq pipeline requires tetramer generation, cell sorting, 10x Genomics library preparation, sequencing, and bioinformatics analysis—none of which are trivial. The generalizability claim is demonstrated for only one antigen (Spike), one MHC allele (H-2K^b), and one T cell type (CD8). Extension to CD4 T cells, other MHC alleles, or antigens lacking validated tetramers is not addressed. The authors should either provide a quantitative timeline/cost comparison or substantially temper these claims.
+
+- **The prediction that scRNA-based clone selection could generate TCR Tg mice biased toward specific cell fates (effector vs. memory) is entirely unsupported by data.** Despite selecting clonotype 1 partly based on Tcf7+ expression (a memory-associated marker), no memory response data are presented. The CORSET8 mice are evaluated only for acute effector responses. Furthermore, there is an internal tension: clonotype 1 was the most expanded clone with high Mki67 and Ifng (effector features), yet is simultaneously claimed to have "memory potential"—the literature cited by the authors (Kavazović et al., 2018) suggests memory cells are found among lower-affinity clones with greater clonal diversity. This prediction should be clearly labeled as speculative and the tension acknowledged.
+
+- **The scRNA-seq was performed on cells from only two pooled immunized mice, and total Tetramer+ cell numbers are not reported.** Clonotype 1's dominance could reflect stochastic founder effects or idiosyncratic clonal dynamics in these specific mice rather than a generalizable biological property. Without reporting the total number of Tetramer+ cells sequenced and without biological replicates of the scRNA-seq experiment, the robustness of clonotype identification cannot be assessed.
+
+**Minor Comments**
+
+- The claim that "only the transgenic T cells were engaged" in the SARS-CoV-2 infection model (based solely on CD44 expression at day 6 post-infection) is overclaimed. Peak endogenous CD8 responses typically occur at days 7–10; this language should be softened to reflect the early time point.
+
+- The DALI tool is described as enabling immunologists with "limited bioinformatics experience" to perform the analysis, but the upstream pipeline (Cell Ranger, scran/scater, Seurat) requires substantial expertise. The accessibility claim should be scoped to the TCR integration step rather than the full analysis pipeline.
+
+- The ~30% of CD8 T cells that are tetramer-negative in Rag1-sufficient CORSET8 mice are not characterized. A brief discussion of whether these express endogenous TCRs would be informative.
+
+- Clustering resolution and parameter choices for the three Tetramer+ subclusters are not discussed; reproducibility would benefit from reporting these parameters.
+
+- The comparison between CORSET8 and bulk endogenous CD45.2 T cell activation is inherently unequal (monoclonal antigen-specific vs. polyclonal with mostly irrelevant specificities). The authors should acknowledge this limitation when drawing conclusions about relative TCR quality.
+
+- No negative control peptide is shown alongside the dose-response curve in Figure 3D; including one would strengthen the specificity claim.
+
+**Recommendation**
+
+Major Revisions
+
+The CORSET8 transgenic mice are well-validated as functional tools (6 high-support claims), but the paper's central thesis—that the scRNA-seq/DALI approach is superior to and more efficient than classical methods—is overclaimed relative to the evidence (5 low-support claims, confounded N=1 comparison, no quantitative efficiency data). The peptide discrepancy between methods and results sections raises a potentially critical concern that must be resolved. With appropriate reframing of comparative claims, resolution of the peptide issue, and correction of the affinity language, the paper could represent a useful methodological contribution to the field.

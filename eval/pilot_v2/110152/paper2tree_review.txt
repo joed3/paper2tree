@@ -1,0 +1,61 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to understanding how CTLH/GID-type E3 ligase ring complexes achieve subunit-specific assembly, supported by **solid** evidence from multiple crystal structures and quantitative biophysical measurements. While the structural and mutagenesis data convincingly define specificity determinants at isolated CRA-CRA interfaces, the central claim of a decipherable and engineerable "assembly specificity code" governing ring assembly is overclaimed relative to the evidence, which remains confined to binary domain-level interactions without validation in reconstituted rings or functional assays.
+
+**Summary**
+
+This paper investigates the molecular rules governing subunit-specific assembly of mammalian GID/CTLH-type E3 ubiquitin ligases, which form ring-shaped architectures from repeating LisH-CTLH-CRA modules. The authors determined five crystal structures of CTLH-CRA domains (RanBP9, RanBP10, Twa1, Maea, and the RanBP9-muskelin heterodimer) at 1.4–2.1 Å resolution, revealing a conserved eight-helix fold with CRA-helix-mediated dimerization interfaces that were previously unresolved in cryo-EM maps. Using these structures, the authors identify specific aromatic and polar residues — including π–π stacking and hydrogen-bonding contacts — as "specificity determinants" that distinguish cognate from non-cognate pairings, while a conserved hydrophobic leucine provides a general scaffold. The central experimental demonstration involves bidirectional specificity rewiring: four mutations switch RanBP10 from muskelin to Maea binding (R10_GLFF), while eight mutations convert Twa1 from an Maea to a muskelin binder (Twa1_52). These findings are integrated with competitive ITC revealing picomolar affinities for native interactions and AlphaFold3 predictions suggesting conservation across eukaryotes. The authors propose this constitutes a "structural code" that could be exploited for rational manipulation of CTLH ring composition.
+
+**Strengths**
+
+- **High-resolution crystal structures provide genuine structural novelty** (claim c1.1): Five crystal structures at 1.4–2.1 Å resolution, including the first atomic-resolution view of the CRA dimerization interface (RanBP9-muskelin at 2.0 Å, PDB: 9SNV), fill a critical gap left by prior cryo-EM studies. The constructs are validated by SEC-MALS and AlphaFold overlay, and the structures are deposited with PDB codes enabling independent verification.
+
+- **Systematic mutagenesis establishes graded structure-function relationships** (claim c1.2.1): The complete combinatorial panel of RanBP10 single, double, and triple mutants (F543L, Y548F, V556F) with ITC quantification demonstrates a compelling additive contribution of each specificity determinant, progressing from ~4 nM (wild-type) through double-digit and triple-digit nanomolar to undetectable binding. This is supported by orthogonal NAGE validation.
+
+- **Bidirectional specificity switching is a compelling experimental demonstration** (claims c1.3, c1.4): The RanBP10→Maea switch (R10_GLFF, four mutations) and Twa1→muskelin switch (Twa1_52, eight mutations) go beyond simple disruption experiments to demonstrate genuine reprogramming of partner selection, validated by SEC-MALS (1:1 complex formation), NAGE, and crystal structures of the engineered complexes.
+
+- **Comprehensive Twa1 mutagenesis campaign** (claim c1.4): The systematic screening of 52 mutants against both native and target partners, with stepwise optimization tracking both affinity gain for muskelin and affinity loss for Maea, represents a thorough and well-designed exploration of the interface sequence space.
+
+- **Maea dimer-of-dimers characterization** (claim c1.1.4): The 1.4 Å Maea structure revealing a Y272/Y275-mediated tetramerization interface, validated by the Y272A/Y275A double mutant that specifically disrupts tetramerization while preserving dimerization, is a clean demonstration of structure-guided mutagenesis.
+
+- **The RanBP9-muskelin interface analysis** (claims c1.2.1, c1.2.2): The 2.0 Å structure directly visualizing F686–F576 π–π stacking and Q679–Y581 hydrogen bonding, coupled with the structural rationalization of why Twa1 (with L155, F152, F160) is excluded from this interface, provides a satisfying mechanistic explanation grounded in high-quality structural data.
+
+**Weaknesses / Essential Revisions**
+
+- **Critical inferential gap between domain-level binding and ring assembly** (root claim weakness): The root claim states a "residue-level specificity code governing partner recognition within CTLH complex ring assembly," yet all rewiring experiments use isolated CTLH-CRA domain constructs. No reconstituted ring with swapped subunits is demonstrated. The authors must either provide evidence that engineered specificity switches alter ring composition (e.g., reconstitution of subcomplexes with altered stoichiometry, or pull-down experiments from cells expressing mutant subunits) or substantially temper the claim that a ring "assembly code" has been decoded. At minimum, the title and abstract should distinguish between interface-level specificity determinants and ring-level assembly rules.
+
+- **Non-canonical ring architectures claim lacks any experimental support** (claim c1.7.2, the only low-support claim): The speculation that specificity-switch mutations "could enable non-canonical CTLH ring architectures, such as rings lacking catalytic modules or rings with additional catalytic modules" is entirely unsupported. No non-canonical ring has been assembled or tested. This should be explicitly framed as untested speculation or removed from the main conclusions, as it currently overstates the translational implications of the work.
+
+- **The Twa1→muskelin specificity switch achieves ~35-fold weaker affinity than the native interaction** (claim c1.4.4): Twa1_52 binds muskelin at ~146 nM compared to ~4 nM for wild-type RanBP10, representing an incomplete recapitulation of native binding strength. This gap should be explicitly acknowledged when claiming that the specificity code is "both decipherable and engineerable." The authors should discuss whether the remaining affinity deficit reflects additional unidentified specificity determinants, conformational incompatibilities inherent to the Twa1 scaffold, or contributions from flanking domains.
+
+- **AlphaFold3-based conservation claims lack validation metrics** (claims c1.6, c1.6.1, c1.6.2): The assertion that "the same π–π and hydrogen-bonding mechanisms" are conserved across eukaryotes relies primarily on AlphaFold3 predictions for most species without reported pLDDT or PAE scores. Specific interaction types (π–π, Met–π, hydrogen bonds) depend on precise side-chain positioning that AF3 may not reliably predict at interfaces. The authors should report confidence metrics for all AF3 predictions, particularly interface PAE scores, and temper claims from "employing the same mechanism" to "predicted to employ similar mechanisms." The observation that yeast Gid1 lacks the key phenylalanine for π–π stacking actually argues against the universality of the mechanism and should be more prominently discussed.
+
+- **Key crystal structures are at resolution limits for the claims made** (claims c1.3.3, c1.4.2): The R10_GLFF-Maea structure (3.5 Å) and Twa1_14-Maea structure (3.3 Å) are used to assign specific hydrogen bonds (Y254–Q540 and Y254–E144Q, respectively), but reliable side-chain positioning at these resolutions is marginal. The "unexpected" hydrogen bond in the R10_GLFF-Maea structure, which is central to explaining why R10_GLFF selects Maea over Twa1, has no mutational validation (e.g., Y254F or Q540A). The authors should either provide mutational validation of these proposed contacts or present electron density maps at these positions and qualify the hydrogen bond assignments.
+
+- **"Functional interchangeability" of RanBP9/RanBP10 is overclaimed** (claim c1.5): The claim that these paralogs are "functionally interchangeable" is supported only by assembly behavior (gel filtration), not by any functional readout such as ubiquitylation activity or substrate processing. The ~6-fold difference in Wdr26 affinity (62 pM vs. 412 pM) is discussed as potentially biologically meaningful (erythrocyte maturation), which contradicts the interchangeability claim. The authors should restrict the claim to "structurally interchangeable for ring assembly" and avoid the broader functional implication.
+
+- **Interface disruption mutations are claimed to be "selective" without functional validation** (claim c1.7.1): The assertion that mutations like R10_LFF and Twa1_3 "selectively perturb defined subunit interactions while preserving other structural or regulatory roles" is not experimentally demonstrated. No cell-based assays, protein stability measurements, or non-ring functional tests are presented. This claim should be qualified as a prediction that requires cellular validation.
+
+- **Missing direct KD for R10_GLFF-Maea** (claim c1.3): Due to Maea oligomerization, no direct affinity measurement for this key specificity-switched complex is provided. While SEC-MALS confirms complex formation, the lack of a quantitative affinity benchmark weakens the comparison with other engineered and native interactions. The authors should discuss this limitation explicitly and consider whether alternative approaches (e.g., surface plasmon resonance with immobilized Maea, or fluorescence anisotropy) could provide quantitative data.
+
+**Minor Comments**
+
+- Full crystallographic statistics tables (Rwork/Rfree, completeness, redundancy, multiplicity) are not presented in the main text. While presumably in supplementary data, the key structures supporting novel claims (especially the 3.2–3.5 Å structures) should have their refinement statistics readily accessible.
+
+- The RanBP10-Twa1 structure (3.2 Å) is described as "highly anisotropic" without quantitative metrics. The effective resolution in the worst direction and anisotropy correction details should be reported.
+
+- RMSD values for structural overlays (e.g., mutant vs. wild-type, AlphaFold vs. crystal structure) are not consistently provided and would strengthen quantitative claims of structural similarity.
+
+- The "interface classes" concept (claim c1.2.4) based on aromatic residue positioning relative to the conserved leucine is interesting but descriptive. The functional relevance of this classification is not experimentally tested and should be presented as an observation rather than a conclusion.
+
+- The SEC-MALS MW for the Twa1_52-muskelin complex (31.2 kDa) is ~7% below theoretical (33.6 kDa). While within normal error, this should be noted in the text.
+
+- The thermodynamic evolution from enthalpy-driven to entropy-favored binding during Twa1 optimization (claim c1.4.5) is an interesting observation but the "conformational strain" interpretation is speculative without supporting dynamic measurements (NMR, MD). This should be presented as a hypothesis.
+
+- The term "code" in the title and throughout implies predictive generality, but the study demonstrates rewiring in only two directions and does not test predictions for untested pairings (e.g., involving Rmnd5a or Wdr26 CTLH-CRA domains that could not be individually purified). The authors should acknowledge this limitation.
+
+**Recommendation**
+
+Major Revisions
+
+The structural and biophysical data at the domain level are of high quality (25 of 58 claims strongly supported), but the central thesis — that a ring assembly code has been decoded and is engineerable — requires either experimental validation in the context of actual ring assembly or substantial reframing of the claims. The single low-support claim about non-canonical ring architectures, combined with systematic overclaiming at the root level and in conservation/functional interchangeability claims, necessitates revision to align the conclusions with the evidence, which currently demonstrates interface-level specificity determinants rather than a validated ring assembly code.

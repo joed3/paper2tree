@@ -1,0 +1,57 @@
+**eLife Assessment**
+
+This study presents a **useful** methodological advance for generating TCR transgenic mice by integrating single-cell transcriptomics with TCR repertoire analysis; however, the central comparative claim that this approach is systematically superior to the classical hybridoma-based method is supported by **incomplete** evidence, resting on an N=1 comparison confounded by different target epitopes, while the downstream validation of the CORSET8 mouse itself is supported by **solid** experimental data.
+
+**Summary**
+
+The authors describe a pipeline for generating TCR transgenic mice that replaces the classical hybridoma-based clone selection with single-cell RNA and VDJ sequencing analyzed through their DALI software tool. The paper is motivated by the failure of a hybridoma-derived TCR transgenic line (clone 47) targeting SARS-CoV-2 Spike, which passed in vitro screening (IL-2, CD69, IFN-γ) but was completely non-functional after transgenesis. The authors then used scRNAseq/VDJseq of polyclonal Spike-tetramer-sorted CD8 T cells from immunized mice, identified a dominant clonotype (clonotype 1) with favorable transcriptomic features (Mki67+, Ifng+, Tcf7+), and generated CORSET8 mice carrying this TCR. The resulting transgenic T cells showed CD8 skewing, high tetramer positivity (~70%), dose-dependent proliferation in vitro, and robust activation upon intratracheal Spike/CpG immunization, BNT162b2 vaccination, and SARS-CoV-2 infection.
+
+The paper frames the scRNAseq-guided approach as systematically superior to the classical method, claims it is more time-efficient and cost-effective overall, and predicts it could enable selection of fate-biased TCR clones. While the CORSET8 mouse itself is well-validated, the comparative and generalizable claims are not adequately supported by the experimental design.
+
+**Strengths**
+
+- **CORSET8 T cells respond robustly in vivo to both vaccination and SARS-CoV-2 infection**: The in vivo validation is thorough, encompassing three distinct immunization/infection contexts (intratracheal Spike/CpG, intramuscular BNT162b2, and SARS-CoV-2 infection in K18-hACE2 mice). Near-complete proliferation (95–99%), combined with appropriate negative controls (CpG-only, mock infection, hACE2^wt/wt^), provides convincing evidence that the CORSET8 TCR is functional and antigen-specific.
+
+- **CORSET8 mice show expected CD8 T cell skewing and high tetramer positivity**: The ~70% tetramer positivity on a Rag1-sufficient background, CD8 skewing in both spleen and thymus, and dose-dependent proliferation responding to as little as 10 pg/ml peptide collectively provide strong evidence that the transgenic TCR is expressed, functional, and of high sensitivity.
+
+- **The hybridoma-derived line failure is well-documented**: The clear demonstration that clone 47 passed all standard in vitro criteria yet produced non-functional transgenic T cells — while the TCR still supported positive selection on a Rag1^−/−^ background — is a valuable and informative observation for the field.
+
+- **Clonotype 1 selection criteria are well-rationalized**: The integration of clonal expansion data with transcriptomic markers (Mki67, Ifng, Cd69, Tcf7, Sell) via DALI is a logical application of available technology. The markers chosen are well-supported by established CD8 T cell biology literature.
+
+- **The SARS-CoV-2 infection experiment provides gold-standard validation**: The BSL3 experiment with appropriate controls demonstrates that CORSET8 T cells are exclusively activated in infected K18-hACE2^Tg/wt^ mice and not in mock-infected or wild-type ACE2 animals, confirming antigen-dependent, infection-driven activation.
+
+**Weaknesses / Essential Revisions**
+
+- **The central comparative claim (root claim) is fundamentally confounded**: The comparison between the failed hybridoma-derived line and the successful scRNAseq-derived CORSET8 is an N=1 vs. N=1 comparison targeting *different epitopes*. The hybridoma approach used IEDB-predicted epitopes from a peptide pool, while the scRNAseq approach used the well-validated VNFNFNGL epitope. Without applying both methods to the same epitope, or testing the scRNAseq approach on the hybridoma's target epitope, the claim of methodological superiority cannot be separated from epitope quality. The authors should either (a) explicitly restrict their claims to describing a proof-of-concept rather than asserting superiority, or (b) provide additional evidence that the hybridoma failure was attributable to the selection methodology rather than epitope choice.
+
+- **Time and cost efficiency claims are unsubstantiated (multiple low-support claims)**: The claims that the rationalized approach took "only a fraction of the workload and time" and is "highly time-efficient" are not supported by any quantitative data. No person-hours, calendar timelines, or cost comparisons are provided. The scRNAseq pipeline itself requires immunization, tetramer sorting, library preparation, sequencing turnaround, bioinformatic analysis, and transgenesis. The authors should provide an honest, quantitative comparison of the two workflows, including the acknowledged increased reagent costs for single-cell sequencing.
+
+- **Generalizability is claimed but not demonstrated**: The assertion that the approach is applicable to "any antigen of interest" is tested in only one antigen system (SARS-CoV-2 Spike). Critically, the approach depends on having a validated MHC tetramer for sorting, which is a significant limitation not available for all antigens. The authors should temper this claim or discuss the tetramer requirement as a substantive limitation.
+
+- **The memory-fate prediction is untested**: The authors selected clonotype 1 partly based on memory-potential markers (Tcf7+, Sell−) and predict that the approach could enable selection of fate-biased TCR clones. However, no long-term memory experiment was performed. The 4-day in vivo readouts assess only early activation/effector function. Without memory recall experiments, the claim that scRNAseq-based selection can bias toward memory formation remains speculative and should be clearly labeled as such.
+
+- **The cause of the hybridoma-derived line's failure is unexplored**: The paper presents the failure as evidence that the classical approach is "erratic," but does not investigate why clone 47 failed. Possible explanations include: mispairing with endogenous TCR chains from the BW5147 fusion partner, poor construct design, transgene integration site effects, or epitope-related issues. Without investigating the cause, the lesson drawn from this failure is limited, and the characterization of the classical approach as generally unreliable (based on a single example, when many successful lines exist — OT-I, OT-II, P14, SMARTA) is overstated.
+
+- **TCR affinity is inferred, not measured**: The claim that CORSET8 T cells have "high affinity" is based on functional sensitivity (dose-response) and tetramer MFI comparisons, both of which are confounded by TCR expression levels and avidity effects. Tetramer MFI differences between monoclonal transgenic T cells and polyclonal endogenous cells are inherently uninterpretable as affinity differences. Biophysical affinity measurements (SPR, tetramer decay) or at minimum TCR surface expression quantification should be provided to support affinity claims, or the language should be changed to "high functional avidity."
+
+- **Peptide discrepancy needs clarification**: The TCR was selected based on VNFNFNGL tetramer reactivity, but the methods state that BM-DC co-cultures used GNYNYLYRL peptide. If these are different peptides/epitopes, the specificity of the co-culture results requires clarification.
+
+**Minor Comments**
+
+- Sample sizes (number of mice per group) are not consistently reported for in vivo experiments (Figures 4 and 5), making it difficult to assess statistical power. These should be stated in all figure legends.
+
+- The scRNAseq analysis pooled cells from only two immunized mice. Given the potential for stochastic clonal dominance, the authors should discuss whether clonotype 1's dominance could reflect individual mouse variation rather than intrinsic TCR superiority.
+
+- The DALI tool is described as accessible to immunologists with limited coding experience, but no usability assessment is provided. The upstream steps (Cell Ranger, Seurat preprocessing) still require substantial bioinformatic expertise, which should be acknowledged.
+
+- The steady-state effector phenotype (CD62L−CD44+) of CORSET8 T cells in unimmunized mice could reflect tonic signaling or lymphopenia-induced proliferation rather than an intrinsic property of the selected TCR. This alternative should be discussed.
+
+- Only one SARS-CoV-2 variant (D614G) was tested. Given the relevance to emerging pathogens, a brief discussion of expected cross-reactivity with variants carrying mutations in the VNFNFNGL epitope region would be informative.
+
+- The 3R principle argument would be strengthened by acknowledging that the classical approach has a generally high success rate in the literature, rather than implying a high baseline failure rate.
+
+**Recommendation**
+
+Major Revisions
+
+While the CORSET8 mouse is well-validated with solid experimental evidence (25 of 37 claims rated high support), the paper's central framing — that the scRNAseq-guided approach is systematically superior to the classical method — rests on an inadequately controlled comparison and multiple unsubstantiated claims regarding efficiency, generalizability, and fate-prediction capability (5 low-support claims, confounded root claim). The manuscript requires either substantial additional evidence to support the comparative claims or a significant reframing that presents the work as a valuable proof-of-concept rather than a demonstrated methodological advance over existing approaches.

@@ -1,0 +1,59 @@
+**eLife Assessment**
+This valuable study presents a novel hybrid brain network modeling framework that fuses EEG, fMRI, and structural connectivity data to predict subject-specific fMRI time series and infer candidate neurophysiological mechanisms across temporal scales. However, the mechanistic claims rest on incomplete evidence, as the inferred "mechanisms" are model-dependent emergent properties that lack empirical validation, and the modest improvement over a zero-parameter α-regressor raises questions about whether the complexity of the framework is justified.
+
+**Summary**
+The authors introduce a "hybrid" brain network model in which EEG source activity, rather than noise, is injected into neural mass models (dynamic mean field models) coupled via subject-specific structural connectomes derived from diffusion-weighted MRI. The models are fitted to reproduce simultaneously acquired resting-state fMRI time series from 15 healthy subjects by tuning three global parameters (global coupling strength, excitatory input weight, inhibitory input weight) plus region-wise feedback inhibition control parameters. The authors report that this framework predicts subject-specific fMRI time series, reproduces functional connectivity topology, and—importantly—generates emergent phenomena at faster timescales not used for fitting: the inverse relationship between α-phase and firing rate, the inverse relationship between α-band power and fMRI amplitude, excitation-inhibition balance, and power-law scaling of fMRI spectra. The authors propose explicit mechanistic explanations for these phenomena, including half-wave rectification of α-oscillations by inhibitory populations and frequency-dependent amplification of oscillations by long-range structural coupling.
+
+The paper's ambition is significant: to create a biophysically grounded framework that not only fuses multimodal data but enables mechanistic inference about unobservable neural processes. If successful, such an approach would represent a substantial conceptual advance in computational neuroscience.
+
+**Strengths**
+
+- **Novel and ambitious framework**: The idea of injecting empirically derived EEG source activity into biophysical neural mass models to predict fMRI is creative and represents a genuine conceptual advance over both noise-driven brain network models and purely statistical EEG-fMRI fusion approaches. The framing as a "multimodal fusion under a generative model" is compelling.
+
+- **Multi-scale coherence**: The emergence of fast-timescale phenomena (α-phase–firing relationships, E/I balance) from a model fitted only to slow fMRI time series is noteworthy and provides a degree of construct validity that would not be expected from a purely overfitted model.
+
+- **Systematic control conditions**: The comparison against noise-driven models, temporally permuted EEG input, and the α-regressor is helpful for contextualizing the hybrid model's performance. The finding that permuted input preserves FC but not time series predictions is informative about the respective contributions of temporal dynamics versus structural connectivity.
+
+- **Subject-specificity**: The demonstration that simulated fMRI correlates more strongly with the same subject's empirical fMRI than with other subjects' data supports the claim that the model captures individual-level dynamics.
+
+- **Cross-validation**: The five-fold cross-validation scheme, showing no significant difference between training and test performance, helps address concerns about overfitting of the three global parameters.
+
+- **Transparent discussion of limitations**: The authors are admirably forthright about the non-autonomous nature of the model, the limitations of EEG source reconstruction, and the need for empirical falsification of inferred mechanisms.
+
+**Weaknesses / Essential Revisions**
+
+- **Circularity in the EEG-to-fMRI prediction**: The well-established negative correlation between α-band power and BOLD signal means that any model receiving EEG as input and producing BOLD-like output is expected to show some correlation with empirical BOLD. The improvement of the hybrid model over the zero-parameter α-regressor appears modest (Figure 3b). The authors should quantify effect sizes (e.g., Cohen's d or Cliff's delta) for the hybrid model vs. α-regressor comparison and discuss whether the magnitude of improvement justifies the added model complexity. A formal model comparison framework (e.g., Bayesian model comparison accounting for model complexity) is essential for the central claim that the hybrid model provides added value beyond the α-regressor.
+
+- **Mechanistic claims are model-contingent, not empirically validated**: The inferred "mechanisms" (e.g., half-wave rectification, frequency-dependent amplification) are emergent properties of a specific neural mass model with specific assumptions (e.g., monotonic f-I curves, NMDA time constants, Balloon-Windkessel neurovascular coupling). The paper presents these as if they reveal how the brain works, but they are better described as properties of one particular model that happens to fit certain data. The authors should more clearly distinguish between "the model exhibits property X" and "the brain exhibits property X." Ideally, the authors should demonstrate that the key mechanistic conclusions are robust to alternative model specifications (e.g., different neural mass models, different hemodynamic models, different neurovascular coupling assumptions).
+
+- **No ground-truth validation of inferred dynamics**: The model's predictions about firing rates, synaptic currents, and E/I ratios are compared only to qualitative patterns from the literature (e.g., Haegens et al., 2011), not to quantitative data from the same subjects or species. The claim that "when the model optimally fits observable brain activity, then also the underlying unobservable brain activity is faithfully reproduced" is a strong assumption that requires justification. Can the authors validate any model-predicted quantity against independent data (e.g., MEG, intracranial EEG)?
+
+- **EEG source reconstruction quality uncharacterized**: The entire framework depends on EEG source activity serving as an approximation of EPSCs, yet the quality of source reconstruction is not evaluated. Given the well-known limitations of EEG inverse solutions (ill-posedness, leakage between sources), the authors should characterize the reliability of their source estimates—for example, by comparing different inverse methods or by computing resolution matrices. How sensitive are the results to the choice of source reconstruction algorithm?
+
+- **Statistical rigor**: With n=15 subjects, statistical power is limited for the number of comparisons made (68 regions × 15 subjects × multiple RSNs × sliding windows). The multiple comparison correction strategy is not clearly specified. Additionally, non-parametric tests (Wilcoxon) are used throughout, but effect sizes are inconsistently reported. The sliding-window analysis (Figure 3d) involves many comparisons across RSNs and quartiles without clear correction.
+
+- **Power-law analysis methodology**: The paper mentions using "rigorous model selection criteria" for testing power-law scaling but the methods section appears truncated and the specific approach is not fully described. Given the well-documented difficulties of distinguishing power-laws from other heavy-tailed distributions (Clauset et al., 2009), the full methodology must be provided and the results of formal tests (e.g., likelihood ratio tests against alternative distributions) should be reported.
+
+- **Artificial α-activity experiments**: While instructive, the use of pure sine waves and idealized power modulations (Figures 6 and 7) may not generalize to realistic brain signals. The half-wave rectification mechanism depends on inhibitory firing rates reaching the 0 Hz floor—does this actually occur with realistic (non-sinusoidal, broadband) input? The authors should demonstrate that the identified mechanisms are quantitatively (not just qualitatively) preserved when using the actual EEG source activity.
+
+- **Hemodynamic model assumptions**: The exclusive coupling of BOLD to excitatory synaptic activity (S^E) is a strong assumption. Evidence suggests that inhibitory activity, astrocytic signaling, and metabolic factors also contribute to neurovascular coupling. The sensitivity of the results to this assumption should be tested.
+
+**Minor Comments**
+
+- The paper is very long and the narrative, while engaging, could be substantially tightened. The extensive discussion of implications (e.g., clinical applications, noise correction in fMRI) is premature given the preliminary nature of the mechanistic claims.
+
+- Figure quality could be improved: Figure 5 is dense and difficult to parse, and the column-based layout with Roman numerals is not intuitive. Consider reorganizing for clarity.
+
+- The relationship between the parameter values obtained across subjects (Table 2, referenced but not shown in the provided text) should be discussed—do optimal parameters vary substantially across subjects, and if so, what does this imply?
+
+- The claim that "methods for physiological noise correction might remove variance from fMRI experiments that is related to neuronal activity" is an important but provocative statement that requires more careful qualification.
+
+- The video (Video 1) is referenced multiple times but cannot substitute for clear textual description of methods and results.
+
+- The FIC algorithm convergence properties (Equations 7–9) should be more rigorously characterized—is convergence guaranteed? What is the sensitivity to initialization?
+
+- The paper would benefit from a clear table summarizing which phenomena were used for fitting versus which emerged without fitting, to help readers assess the strength of the construct validation.
+
+**Recommendation**
+Major Revisions
+The hybrid modeling framework is conceptually novel and potentially valuable, but the mechanistic claims—which are the paper's central contribution—require stronger evidence: formal model comparison against the α-regressor, robustness analysis across model specifications, and clearer delineation between model properties and biological mechanisms.

@@ -1,0 +1,59 @@
+**eLife Assessment**
+
+This study presents a potentially useful strategy for CRISPR-based gene activation by recruiting trans-acting enhancer DNA to target promoters, but the evidence supporting the central mechanistic claims and the asserted superiority over existing systems is incomplete. While the blunt-end versus stick-end controls are well designed, the absence of direct evidence for enhancer recruitment to target loci, the lack of fair comparisons with state-of-the-art activator systems, and entirely speculative claims about in vivo applicability substantially weaken the paper's conclusions.
+
+**Summary**
+
+The authors describe a gene activation strategy termed the "CRISPR-assisted trans enhancer," in which a CMV enhancer DNA fragment is recruited in trans to a target gene promoter by dCas9. Two architectures are presented: (1) a capture sgRNA (csgRNA) bearing a 3′ single-stranded extension that hybridizes with a complementary overhang on the enhancer fragment (csgRNA-sCMV), and (2) a GAL4-UAS protein-DNA interaction system (dCas9-VP64-GAL4/UAS-CMV). The authors propose that the tethered enhancer mimics a natural looped cis enhancer, synergizes with dCas9-fused VP64, and activates both exogenous reporters and endogenous genes across multiple cell lines more efficiently than dCas9-VP64 or dCas9-VPR. They further report that activation of HNF4α and E47 in cancer cells induces differentiation-associated transcriptional changes. Finally, they suggest the GAL4-UAS version is suitable for AAV-mediated in vivo delivery. The strategy is tested across ten endogenous genes and seven cell lines, with activation measured by flow cytometry and qPCR.
+
+**Strengths**
+
+- **The stick-end versus blunt-end control is well designed and consistently supports the capture mechanism requirement.** Across all enhancers tested (CMV, EF1a, PGK), blunt-end versions uniformly fail to activate gene expression, while stick-end versions succeed (claims on blunt-end controls for all enhancers). This is the strongest internal control in the paper and provides high-confidence evidence that activation depends on the single-stranded overhang rather than non-specific effects of co-transfected DNA.
+
+- **The csgRNA modification does not impair Cas9 targeting.** Three csgRNAs with different capture sequences all guided Cas9 to cleave a target fragment in vitro identically to the unmodified sgRNA, providing high-support evidence that the 24-nt 3′ extension is functionally benign for target recognition.
+
+- **Breadth of testing across genes and cell lines.** Ten endogenous genes were tested across seven cell lines, and both exogenous reporter and endogenous targets were examined. This breadth is commendable and provides some evidence of generalizability, even if individual comparisons have caveats.
+
+- **Both linear and circular UAS-CMV activate gene expression when recruited by dCas9-VP64-GAL4**, with appropriate controls showing no activation in the absence of GAL4 or UAS-CMV, providing high-support evidence for the GAL4-UAS architecture.
+
+- **The demonstration that alternative enhancers (EF1a, PGK) also function in stick-end form** broadens the approach beyond a single enhancer, although activity was lower than CMV.
+
+**Weaknesses / Essential Revisions**
+
+- **No direct evidence that the sCMV fragment is physically recruited to the target locus.** The central mechanistic claim — that csgRNA captures sCMV at the dCas9-bound promoter — is supported only by functional readouts. No ChIP, FISH, EMSA, or imaging data demonstrate co-localization of sCMV with the target gene. This is rated as low support in the DAG and is arguably the most critical gap: without this evidence, the activation could arise from non-specific mechanisms (e.g., redistribution of transcription factors by free sCMV, altered transfection dynamics). The authors must provide direct physical evidence of sCMV recruitment to the target site.
+
+- **The claim that the trans enhancer "functions like a natural looped cis enhancer" is mechanistically unsupported.** Natural enhancer looping involves mediator complexes, cohesin, CTCF, and specific protein-protein interactions. The paper provides no evidence that the same transcriptional machinery is engaged by the tethered sCMV. This analogy should either be substantiated with mechanistic data (e.g., Mediator ChIP at the target promoter) or significantly tempered.
+
+- **Comparisons with dCas9-VP64 and dCas9-VPR are unfair and do not reflect standard practice.** Throughout the paper, the trans enhancer system (which provides a large enhancer element) is compared against dCas9-VP64 or dCas9-VPR using a single sgRNA. Standard protocols for these activators use multiple sgRNAs (typically 3–4) to achieve maximal activation. This inflates the apparent advantage of the trans enhancer. Moreover, no comparisons are made with SAM, SunTag, or other second-generation activators identified as highly potent (Chavez et al., 2016). The claim of superiority over "current widely used" systems is therefore overstated and requires either fair head-to-head comparisons or substantial qualification.
+
+- **The term "synergy" between VP64 and sCMV is used without formal synergy analysis.** No Bliss independence, Loewe additivity, or dose-response analysis is performed. The combined activation could be additive rather than synergistic — the CMV enhancer provides transcription factor binding sites while VP64 independently recruits transcriptional machinery. The authors should either perform a formal synergy analysis or replace "synergy" with "combination" or "combined effect."
+
+- **Claims about AAV suitability are entirely speculative and contradicted by the system's own design.** The assertion that the GAL4-UAS system is "particularly suitable for in vivo delivery via AAV" is unsupported by any AAV packaging, transduction, or in vivo experiment (low support). Moreover, dCas9-VP64-GAL4 is larger than dCas9-VP64, exacerbating rather than alleviating AAV packaging constraints (~4.7 kb limit). This claim should be removed or explicitly presented as speculation with a frank acknowledgment of the size limitation.
+
+- **No off-target gene activation analysis is provided.** Introducing a strong viral enhancer in trans raises significant concerns about off-target activation. The sCMV fragment could potentially activate genes near its non-specific chromatin association sites. RNA-seq or at minimum a panel of non-target gene qPCR controls is essential.
+
+- **The differentiation claims lack phenotypic validation.** The assertion that HNF4α and E47 activation leads to "phenotypic changes consistent with differentiation into normal-like cells" is based solely on qPCR of downstream genes at a single 36-hour time point. No protein-level data (Western blot), morphological assessment, functional assays (albumin secretion, CYP activity, insulin secretion), growth curves, or in vivo tumorigenicity assays are presented. p21 and TP53INP1 upregulation could equally reflect cellular stress or DNA damage responses from transfection. This claim should be substantially downgraded or removed.
+
+- **Statistical concerns with multiple comparisons.** Testing 10 genes across 7 cell lines generates 70+ comparisons, yet no correction for multiple testing is applied. At p < 0.05 without correction, 3–4 false positives would be expected by chance. The qualifier "almost all genes" in the results suggests exceptions exist but these are neither identified nor discussed.
+
+- **No protein-level validation for any endogenous gene activation.** All endogenous gene activation is measured only by qPCR. At minimum, Western blot confirmation for key targets (HNF4α, E47) would be expected to confirm that mRNA changes translate to functional protein expression.
+
+**Minor Comments**
+
+- The text states "six different cell lines" for the reporter assay but lists seven in the methods (293T, HepG2, PANC1, A549, HeLa, SKOV3, HT29). The discrepancy should be clarified.
+
+- The claim that capture sequences have "no complementary sequences in the human genome" is stated without supporting data. A BLAST analysis should be provided, ideally as a supplementary table.
+
+- The stability of a 24-nt RNA-DNA hybrid under physiological nuclear conditions (37°C, ionic strength, competing nucleic acids) should be characterized or at least discussed with reference to known Tm values.
+
+- The terminology is inconsistent: EF1a and PGK are referred to interchangeably as "enhancers" and "promoters." These are promoter sequences being used as enhancers; the distinction should be made precise.
+
+- Raw fold-activation values are difficult to extract from the figures. A supplementary table listing absolute fold-change values, standard deviations, and p-values for all comparisons would greatly improve transparency.
+
+- The paper would benefit from a clear schematic distinguishing the two systems (csgRNA-sCMV vs. GAL4-UAS) side by side, including all required components, to allow readers to assess total system complexity.
+
+**Recommendation**
+
+Major Revisions
+
+The paper presents a creative concept, but only 11 of 35 claims have high support, and three critical claims (nuclear capture specificity, AAV suitability, overcoming current delivery limitations) have low support. The absence of direct physical evidence for enhancer recruitment to target loci, the unfair benchmarking against existing activator systems, the unsupported AAV claims, and the lack of off-target analysis represent essential gaps that must be addressed before the central conclusions meet eLife's standards for convincing evidence of a conceptual advance.

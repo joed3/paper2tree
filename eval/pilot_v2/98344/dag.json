@@ -1,0 +1,1770 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_98344",
+    "title": "TCR transgenic clone selection guided by immune receptor analysis and single-cell RNA expression of polyclonal responders",
+    "authors": [
+      "Nincy Debeuf",
+      "Sahine Lameire",
+      "Manon Vanheerswynghels",
+      "Julie Deckers",
+      "Caroline De Wolf",
+      "Wendy Toussaint",
+      "Rein Verbeke",
+      "Kevin Verstaen",
+      "Hamida Hammad",
+      "Stijn Vanhee",
+      "Bart N Lambrecht"
+    ],
+    "url": "https://doi.org/10.7554/eLife.98344",
+    "abstract": "Since the precursor frequency of naive T cells is extremely low, investigating the early steps of antigen-specific T cell activation is challenging. To overcome this detection problem, adoptive transfer of a cohort of T cells purified from T cell receptor (TCR) transgenic donors has been extensively used but is not readily available for emerging pathogens. Constructing TCR transgenic mice from T cell hybridomas is a labor-intensive and sometimes erratic process, since the best clones are selected based on antigen-induced CD69 upregulation or IL-2 production in vitro, and TCR chains are polymerase chain reaction (PCR)-cloned into expression vectors. Here, we exploited the rapid advances in single-cell sequencing and TCR repertoire analysis to select the best clones without hybridoma selection, and generated CORSET8 mice (CORona Spike Epitope specific CD8 T cell), carrying a TCR specific for the Spike protein of SARS-CoV-2. Implementing newly created DALI software for TCR repertoire analysis in single-cell analysis enabled the rapid selection of the ideal responder CD8 T cell clone, based on antigen reactivity, proliferation, and immunophenotype in vivo. Identified TCR sequences were inserted as synthetic DNA into an expression vector and transgenic CORSET8 donor mice were created. After immunization with Spike/CpG-motifs, mRNA vaccination or SARS-CoV-2 infection, CORSET8 T cells strongly proliferated and showed signs of T cell activation. Thus, a combination of TCR repertoire analysis and scRNA immunophenotyping allowed rapid selection of antigen-specific TCR sequences that can be used to generate TCR transgenic mice.",
+    "word_count": 5791,
+    "processed_at": "2026-07-10T01:42:53.325013+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Combining single-cell gene expression and TCR sequencing analysis (via the DALI …",
+        "claim": "Combining single-cell gene expression and TCR sequencing analysis (via the DALI tool) provides an optimized, rationalized approach for TCR clone selection that yields functional TCR transgenic mice more efficiently than the classical hybridoma-based method.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract",
+        "verbatim_quote": "we applied scRNA and TCR sequencing and subsequent analysis of the T cell clones via the DALI tool. This latter approach allowed us to a priori evaluate key characteristics required for the development of TCR Tg T cells, including cytokine production, cellular phenotype, and physiologically relevant clonal expansion.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper provides a compelling proof-of-concept: the classical hybridoma approach yielded a non-functional CORSET8 line (clone 47), while the scRNA-seq/DALI approach yielded a functional line, providing a direct within-study comparison.",
+            "The rationalized clone selection criteria (Mki67+, Ifng+, Cd69+, Tcf7+, Sell−, clonal expansion) are biologically well-motivated and represent a genuinely useful integration of phenotypic and clonotypic information.",
+            "The resulting CORSET8 mice show robust ex vivo (BM-DC co-culture with dose-dependent proliferation down to 10 pg/ml peptide), in vivo (vaccination and SARS-CoV-2 infection), and phenotypic (thymic skewing, tetramer staining ~70%) validation, demonstrating the selected TCR is functional.",
+            "The use of the DALI tool to integrate scRNA-seq with VDJ sequencing is a practical contribution, and the GUI accessibility for non-bioinformaticians is a meaningful practical advantage.",
+            "Validation across multiple experimental contexts (intratracheal Spike/CpG, intramuscular BNT162b2 vaccine, live SARS-CoV-2 infection in K18-hACE2 mice) strengthens the functional claim."
+          ],
+          "weaknesses": [
+            "INFERENTIAL gap (from c1.1): The claim that the classical method is generally unreliable is supported by only a single failure (clone 47). One failed attempt does not establish that the classical approach is systematically inferior; the failure could reflect an unlucky clone choice, an epitope mismatch (the hybridoma used a different peptide pool than the tetramer epitope VNFNFNGL), or technical issues specific to this experiment.",
+            "INFERENTIAL gap (from c1.5): The headline claim of greater efficiency is not substantiated by any quantitative comparison of time, cost, or workload. The scRNA-seq approach requires tetramer generation, FACS sorting, 10x Genomics library prep, sequencing, and bioinformatics—all of which carry significant costs and time that are not accounted for. The timeline comparison in Figure 1 is mentioned but not detailed in the text.",
+            "EVIDENTIAL gap (from c1.2): The scRNA-seq was performed on cells pooled from only two immunized mice, and the total number of Tetramer+ cells is not clearly reported. Clonotype 1's expansion dominance could be idiosyncratic rather than representative of a generalizable biological signal.",
+            "EVIDENTIAL gap (from c1.3): The Methods section states the co-culture peptide is GNYNYLYRL, while the TCR was selected based on VNFNFNGL tetramer reactivity. This discrepancy is unexplained and potentially undermines the co-culture validation data.",
+            "EVIDENTIAL gap (from c1.4): Higher tetramer MFI on CORSET8 vs. endogenous Tetramer+ cells (Figure 4I) is interpreted as higher affinity, but this could reflect higher TCR surface density on transgenic cells rather than higher per-molecule affinity. No direct affinity measurement (e.g., SPR, tetramer dissociation kinetics) is provided.",
+            "INFERENTIAL gap (from c1.6): The paper claims the approach could yield TCR Tg mice biased toward effector or memory fates based on scRNA-seq phenotype selection, but no data demonstrate this. The CORSET8 mice were only evaluated for effector responses; memory formation was not assessed despite selecting a clone partly on Tcf7+ expression.",
+            "The n=1 comparison (one failed classical line vs. one successful scRNA-seq line) is insufficient to establish that the scRNA-seq approach is systematically more efficient or reliable. Additional TCR Tg lines made by each method would be needed.",
+            "The two approaches targeted different epitopes (the hybridoma used a pool of 5 peptides; the scRNA-seq used the VNFNFNGL tetramer), making it a confounded comparison—the failure could be attributable to epitope choice rather than method of clone selection."
+          ],
+          "alternative_interpretations": [
+            "The failure of the classical approach could be due to the epitope choice (the hybridoma peptide pool) rather than the clone selection method itself. If the classical approach had used the VNFNFNGL epitope with tetramer-guided selection, it might have succeeded.",
+            "The success of the scRNA-seq approach may largely reflect the use of a validated tetramer (VNFNFNGL) for pre-enrichment rather than the scRNA-seq/DALI analysis per se. A simpler approach—tetramer sorting followed by limiting dilution cloning and conventional functional screening—might have yielded similar results.",
+            "The superior performance of CORSET8 cells over endogenous T cells in the infection model may reflect the artificially high precursor frequency from adoptive transfer of 10^6 cells, rather than intrinsic TCR quality."
+          ],
+          "required_assumptions": [
+            "That a single successful case (CORSET8) and a single failure (clone 47) are sufficient to establish the superiority of the rationalized approach over the classical method.",
+            "That clonal expansion observed in scRNA-seq from two immunized mice reflects a generalizable biological property of the clone rather than stochastic variation.",
+            "That scRNA-seq phenotype at the time of analysis (e.g., Tcf7+, Mki67+) is predictive of TCR Tg T cell behavior in a transgenic mouse context with different developmental and homeostatic signals.",
+            "That tetramer MFI is a reasonable proxy for TCR affinity.",
+            "That the epitope VNFNFNGL is conserved across SARS-CoV-2 variants (stated but not experimentally verified in this paper)."
+          ],
+          "notes": "The paper is methodologically sound in demonstrating that the CORSET8 mice generated via the rationalized approach are functional. However, the root claim bundles together three distinct assertions: (1) the scRNA-seq/DALI approach works, (2) it is superior to the classical approach, and (3) it is more efficient. Only assertion (1) is well-supported. Assertion (2) rests on a confounded n=1 vs. n=1 comparison, and assertion (3) lacks quantitative support. The claim as stated is therefore overclaimed relative to the evidence provided.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "The classical hybridoma-based TCR clone selection method is unreliable and can r…",
+        "claim": "The classical hybridoma-based TCR clone selection method is unreliable and can result in the generation of non-functional TCR transgenic mice.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "This can result in the generation of TCR Tg mice whose T cells do not respond optimally in a biological setting, fail to compete with endogenous polyclonal T cells upon adoptive transfer, or fail to form memory responses.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paper provides a concrete example of failure: clone 47, selected by classical hybridoma methods, yielded TCR Tg mice whose CD8 T cells did not respond to Spike peptide or protein in BM-DC co-culture (Figure 1—figure supplement 1C).",
+            "The paper correctly notes that hybridoma selection typically relies on limited functional readouts (CD69 upregulation, IL-2 production) that do not capture in vivo fitness or competition with endogenous polyclonal T cells.",
+            "Literature citations (Bartleson et al., 2020; Milam et al., 2018; Weber et al., 2012) provide independent corroboration that TCR Tg mice generated by standard methods can fail to produce optimal responses due to issues with affinity, tonic signalling, or cell-fate bias."
+          ],
+          "weaknesses": [
+            "The claim that the classical approach is 'unreliable' as a general phenomenon is supported by only a single failed example (clone 47) plus literature citations. No systematic analysis or meta-analysis of failure rates is provided.",
+            "The paper somewhat oversimplifies the classical approach by stating clones are selected 'merely based on upregulation of CD69 or production of IL-2'; some laboratories perform more extensive functional screening before proceeding to transgenesis.",
+            "The mechanism for clone 47's non-responsiveness was never investigated. No tetramer staining was performed on the first-generation CORSET8 mice to confirm whether the TCR actually binds the intended pMHC, so the cause of failure remains speculative.",
+            "The number of hybridoma clones screened and their relative IL-2 fold-increases are not quantitatively detailed, making it difficult to assess whether clone 47 was the best of a genuinely promising set or merely the best of a weak set."
+          ],
+          "alternative_interpretations": [
+            "Clone 47's failure could have been due to technical issues in the transgenesis process (e.g., insertion site effects, transgene silencing) rather than inherent flaws in the hybridoma selection approach.",
+            "The first-generation failure might have been caused by using IEDB-predicted peptides that were suboptimal, rather than the hybridoma selection process per se."
+          ],
+          "required_assumptions": [
+            "That the failure of clone 47 is attributable to the hybridoma-based selection process rather than other factors (transgene integration, peptide choice, expression vector issues).",
+            "That the frequency of such failures in the broader field is high enough to warrant the term 'unreliable'."
+          ],
+          "notes": "The claim is reasonable and the example is illustrative, but the generalization from one failure (plus literature) to a broad characterization of unreliability is not fully substantiated by the paper's own data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Single-cell RNA and TCR sequencing combined with the DALI tool enables rationali…",
+        "claim": "Single-cell RNA and TCR sequencing combined with the DALI tool enables rationalized TCR clone selection by linking clonotype information to functional properties, immunophenotype, and clonal expansion within a polyclonal in vivo response.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Abstract",
+        "verbatim_quote": "The DALI tool facilitates linking TCR clonotype information to functional properties, immunophenotype and precursor frequency of individual T cells within a polyclonal response to vaccination or infection in vivo.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paper demonstrates the full workflow: scRNA-seq and VDJ-seq of sorted Tetramer+ and Tetramer− T cells, integration via DALI, identification of clonotypes with distinct functional phenotypes (proliferation markers, cytokine expression, memory potential), and selection of a clone based on these criteria.",
+            "The DALI tool's GUI-based interface is described as accessible to non-bioinformaticians, and it is publicly available (Verstaen et al., 2022).",
+            "The approach correctly identifies clonotype 1 as having both clonal expansion and a desirable transcriptomic profile (Mki67+, Ifng+, Cd69+, Tcf7+, Sell−), which integrates multiple selection criteria simultaneously."
+          ],
+          "weaknesses": [
+            "The scRNA-seq was performed on cells pooled from only two immunized mice, limiting statistical power and generalizability. Clonotype 1's dominance could be idiosyncratic to these two mice.",
+            "The total number of Tetramer+ cells subjected to scRNA-seq is not clearly stated, making it difficult to assess whether the observed clonal expansion is robust or a sampling artifact.",
+            "No formal usability testing of the DALI tool is provided. The actual upstream bioinformatics pipeline (Cell Ranger, scran, scater, Seurat) requires significant expertise, and DALI handles only the TCR integration step.",
+            "Clustering resolution and parameter choices for the three subclusters of Tetramer+ cells are not discussed, raising concerns about the reproducibility of the classification.",
+            "INFERENTIAL gap: The paper demonstrates the workflow can identify a clone with desirable transcriptomic features, but the claim that this 'enables rationalized clone selection' implicitly assumes that scRNA-based phenotype reliably predicts in vivo function—a link only demonstrated for this single case."
+          ],
+          "alternative_interpretations": [
+            "The most expanded clonotype might have been identifiable by bulk TCR sequencing alone without the scRNA component, if expansion rather than phenotype was the key predictive factor.",
+            "The success of the selected clone may be coincidental rather than attributable to the rationalized selection criteria."
+          ],
+          "required_assumptions": [
+            "That transcriptomic phenotype at the time of sorting (post-immunization) predicts TCR Tg T cell behavior in future in vivo contexts.",
+            "That clonal expansion in the polyclonal response reflects TCR fitness rather than stochastic or founder effects.",
+            "That pooling two mice provides a representative picture of the polyclonal response."
+          ],
+          "notes": "The concept is sound and the workflow is well-described, but the claim rests on a single proof-of-concept. The generalizability to other antigens, MHC alleles, and CD4 T cells is asserted but not demonstrated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "The rationalized approach successfully generated functional CORSET8 TCR Tg mice …",
+        "claim": "The rationalized approach successfully generated functional CORSET8 TCR Tg mice carrying a high-affinity TCR specific for the SARS-CoV-2 Spike epitope VNFNFNGL.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the phenotypical characteristics for which clonotype 1 was chosen for during single-cell analysis, could be confirmed in the newly generated CORSET8 mice in vivo.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple lines of evidence support transgene expression and function: CD8 skewing in spleen and thymus (Figure 3A, E), ~70% tetramer+ CD8 T cells (Figure 3C), dose-dependent proliferation in BM-DC co-culture (Figure 3D).",
+            "The CD8 skewing in the thymus confirms that the transgenic TCR drives positive selection into the CD8 lineage, consistent with correct MHC class I restriction.",
+            "The shift from naive to effector CD8 phenotype (CD62L−CD44+) is consistent with the scRNA-seq profile of the selected clonotype (Sell−).",
+            "Sensitivity to very low peptide doses (10 pg/ml) provides strong functional evidence for high-affinity TCR expression."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap: The peptide used in the co-culture assay (GNYNYLYRL per Methods) differs from the tetramer peptide (VNFNFNGL). This discrepancy is not explained and is potentially confusing—if the TCR was selected for VNFNFNGL reactivity, why is GNYNYLYRL used in the co-culture?",
+            "No negative control peptide is shown alongside the dose-response proliferation curve, making it harder to exclude non-specific activation.",
+            "No direct quantification of transgene copy number or mRNA levels is provided; evidence for transgene expression is entirely indirect (tetramer staining, phenotype).",
+            "The ~30% of CD8 T cells that are tetramer-negative in CORSET8 mice on a Rag1-sufficient background are not characterized—they could express endogenous TCRs or express the transgenic TCR below tetramer detection threshold.",
+            "INFERENTIAL gap: 'High-affinity TCR' is inferred from dose-response sensitivity and tetramer staining intensity, but no direct affinity measurement (e.g., SPR, tetramer dissociation kinetics) is provided."
+          ],
+          "alternative_interpretations": [
+            "High sensitivity in the BM-DC co-culture could reflect high TCR surface density on transgenic T cells rather than high per-molecule affinity.",
+            "The peptide discrepancy between co-culture and tetramer raises the possibility that cross-reactivity, rather than specific high affinity for VNFNFNGL, drives the observed responses."
+          ],
+          "required_assumptions": [
+            "That tetramer staining intensity is a reasonable proxy for TCR affinity.",
+            "That the peptide used in the co-culture is the correct one (either VNFNFNGL or GNYNYLYRL—this needs clarification).",
+            "That functional responses in BM-DC co-culture predict in vivo functionality."
+          ],
+          "notes": "The peptide discrepancy (GNYNYLYRL in Methods vs. VNFNFNGL for tetramer/selection) is a significant concern that should be clarified. If the TCR recognizes both peptides, this should be stated and explained.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "CORSET8 T cells are functional in vivo, responding to both Spike protein/CpG vac…",
+        "claim": "CORSET8 T cells are functional in vivo, responding to both Spike protein/CpG vaccination, mRNA vaccination, and live SARS-CoV-2 infection with robust proliferation and activation.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Both upon Spike/CpG and Pfizer BNT162b2 vaccine immunization, CORSET8 T cells were displaying an activation profile, as shown by increased expression of activation markers such as CD44, IFN-γ, T-Bet, and CD69 compared to endogenous CD45.2 cells.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Three distinct in vivo models are used: Spike/CpG intratracheal immunization, Pfizer BNT162b2 intramuscular vaccination, and live SARS-CoV-2 infection in K18-hACE2 mice—providing broad functional validation.",
+            "Robust proliferation is demonstrated: 95.17% (±1.61) division upon Spike/CpG, 99.28 ± 0.12% upon SARS-CoV-2 infection.",
+            "Multiple activation markers (CD44, IFN-γ, T-Bet, CD69, Ki-67) are upregulated, providing convergent evidence for T cell activation.",
+            "Appropriate controls are included: CpG-only control for vaccination, mock infection and hACE2wt/wt mice for the infection model.",
+            "CORSET8 cells are detected exclusively in infected hACE2Tg/wt mice and not in mock or hACE2wt/wt mice, supporting antigen-specific activation."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap: The claim that 'only the transgenic T cells were engaged' (based on CD44 in the infection model) is somewhat overclaimed—the 6-day post-infection time point may be too early to detect endogenous CD8 responses, which typically peak at day 7-10.",
+            "EVIDENTIAL gap: Tetramer MFI is used to claim higher TCR affinity of CORSET8 vs. endogenous Tetramer+ T cells (Figure 4I), but higher tetramer staining could reflect higher TCR surface density rather than higher per-molecule affinity.",
+            "The endogenous Tetramer+ population is described as 'small,' raising concerns about reliable quantification and statistical comparison of activation markers on rare cells.",
+            "Quantitative statistical comparisons between endogenous Tetramer+ and Tetramer− populations are described qualitatively ('slightly increased,' 'very mild') without clear statistical testing in the text.",
+            "Sample sizes for individual experiments are not always explicitly stated, though results are described as representative of two independent experiments.",
+            "No memory response data are shown despite the selection of clonotype 1 partly based on memory potential markers (Tcf7+)—this is a gap given the rationale for clone selection."
+          ],
+          "alternative_interpretations": [
+            "The nearly complete proliferation (95-99%) could partly reflect lymphopenia-driven homeostatic proliferation in the adoptive transfer setting, though antigen-specific controls partially address this.",
+            "The lack of endogenous CD8 activation at day 6 post-infection could simply reflect the early time point rather than demonstrating that CORSET8 cells are uniquely responsive."
+          ],
+          "required_assumptions": [
+            "That the adoptive transfer dose (1 × 10^6 cells) does not significantly alter the endogenous immune response dynamics.",
+            "That CTV dilution faithfully reports antigen-driven proliferation rather than homeostatic expansion.",
+            "That a single early time point is sufficient to evaluate T cell functionality."
+          ],
+          "notes": "The absence of memory response data is notable given that memory potential was a stated criterion for clone selection. This creates an internal tension: the paper argues for selecting clones with memory potential but only shows acute effector responses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "This rationalized approach is highly time-efficient compared to classical method…",
+        "claim": "This rationalized approach is highly time-efficient compared to classical methods and is generalizable to any antigen of interest.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "This approach, in which we rationalize every step of TCR Tg mouse generation, can be used to any antigen of interest.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper presents a plausible argument that avoiding the hybridoma generation and screening steps saves time.",
+            "The paper correctly notes that failed TCR Tg mouse lines (like their first-generation CORSET8) represent wasted resources, time, and animals.",
+            "The claim of generalizability is conceptually sound—scRNA-seq and VDJ-seq are not antigen-specific technologies."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap: No quantitative comparison of time, workload, or cost between the two approaches is provided. The claim that the rationalized approach took 'only a fraction of the workload and time' is unsubstantiated.",
+            "EVIDENTIAL gap: The scRNA-seq approach still requires the same immunization protocol, tetramer generation, cell sorting, library preparation, sequencing, and bioinformatics analysis—collectively representing significant time and expense that are not accounted for.",
+            "The paper acknowledges 'increased reagent costs for single-cell sequencing' but provides no cost analysis, making the cost-benefit argument unquantifiable.",
+            "INFERENTIAL gap: Generalizability to 'any antigen of interest' is asserted but demonstrated for only one antigen (SARS-CoV-2 Spike) with one MHC allele (H-2Kb) and one T cell type (CD8). Extension to CD4 T cells, other MHC alleles, or antigens where tetramers are unavailable is not demonstrated.",
+            "The 3R argument is appealing but speculative—no estimate of how many animals would be saved is provided, and the base rate of failure for classical approaches is not established.",
+            "The claim rests heavily on the assumption that a single classical failure and a single scRNA-seq success constitutes a generalizable comparison."
+          ],
+          "alternative_interpretations": [
+            "The time savings may be marginal if the hybridoma step is replaced by equally time-consuming scRNA-seq library preparation, sequencing turnaround, and bioinformatics analysis.",
+            "The first-generation failure may have been due to factors unrelated to the selection method (e.g., epitope choice, transgenesis technical issues), in which case the comparison is not fair."
+          ],
+          "required_assumptions": [
+            "That the failure rate of classical approaches is high enough to make scRNA-seq-based selection cost-effective despite higher reagent costs.",
+            "That the scRNA-seq approach reliably prevents non-functional TCR Tg mouse lines (demonstrated by N=1).",
+            "That appropriate tetramers or other enrichment reagents are available for the antigen of interest.",
+            "That the bioinformatics pipeline is accessible to typical immunology labs."
+          ],
+          "notes": "This is the weakest claim in the paper. The time efficiency and generalizability assertions are reasonable hypotheses but are not supported by quantitative evidence. A timeline figure is referenced but no numerical data comparing the two approaches is provided in the text.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Selection of TCR clones based on immunophenotype could enable the generation of …",
+        "claim": "Selection of TCR clones based on immunophenotype could enable the generation of TCR Tg T cells biased toward specific cell-fate outcomes such as immediate effectors or long-term memory cells.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "We predict that the method that we propose here which is based on selection of TCRs based on immunophenotype could lead to selection of clones and generation of TCR Tg T cells which are biased to become either immediate effectors or long-term memory cells.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The prediction is grounded in a reasonable understanding of the literature on TCR affinity and cell-fate decisions (Kavazović et al., 2018; Knudson et al., 2013; Zehn et al., 2009).",
+            "The scRNA-seq approach does capture markers associated with different cell fates (e.g., Tcf7 for memory, Ifng for effector), which in principle could inform clone selection for specific outcomes.",
+            "The authors appropriately frame this as a prediction ('We predict that...') rather than a demonstrated finding."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap: No new experimental data in this paper support this claim. The prediction is entirely based on reasoning from prior literature.",
+            "INFERENTIAL gap: The paper does not demonstrate that selecting a clone based on scRNA-seq phenotype (e.g., Tcf7+ for memory) actually results in TCR Tg T cells that preferentially adopt that fate. The CORSET8 mice are only evaluated for effector responses, not memory formation.",
+            "The relationship between affinity and cell fate is context-dependent and influenced by many factors beyond what scRNA-seq captures at a single time point (e.g., antigen persistence, inflammatory milieu, competition).",
+            "The paper does not show that their approach can distinguish high- from low-affinity clones or predict tonic signalling strength from transcriptomic data.",
+            "Selecting for phenotype at the time of acute response may not predict long-term cell-fate bias of the TCR itself, since the observed phenotype is a product of both TCR properties and environmental context."
+          ],
+          "alternative_interpretations": [
+            "The phenotype observed by scRNA-seq may reflect the particular immunization protocol and timing rather than intrinsic TCR properties that would persist across different experimental contexts.",
+            "Cell-fate bias may be more strongly determined by factors like TCR signal strength relative to co-stimulation and cytokine environment, which are not captured by a single scRNA-seq snapshot."
+          ],
+          "required_assumptions": [
+            "That transcriptomic phenotype at the time of scRNA-seq reflects intrinsic TCR-driven fate bias rather than context-dependent stochastic variation.",
+            "That the markers used for selection (Tcf7, Sell, Ifng, etc.) are reliable predictors of long-term cell fate.",
+            "That fate bias is a stable property of a given TCR clonotype rather than context-dependent."
+          ],
+          "notes": "This is appropriately framed as a prediction, but it is overclaimed in the sense that the paper's data do not provide any evidence for or against it. The absence of memory response data in the CORSET8 validation is particularly notable given that memory potential was a stated selection criterion. This creates an internal inconsistency with claim c1.4, which only demonstrates effector function.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "The classical hybridoma method selects clones based on minimal functional parame…",
+        "claim": "The classical hybridoma method selects clones based on minimal functional parameters (CD69 upregulation, IL-2 production) that do not inform on fitness in a polyclonal environment or cell-fate outcomes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "Hybridomas are then selected for reactivity to immunodominant peptides, often independent of cellular phenotype or function, but merely based on upregulation of CD69 or production of IL-2 as a sign for antigen sensitivity.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim accurately describes the standard hybridoma selection process as documented in the literature (Vanheerswynghels et al., 2018).",
+            "The paper's own experience with clone 47 illustrates this limitation concretely—clone 47 was selected based on IL-2 fold increase and CD69 upregulation, yet ultimately failed in vivo.",
+            "The claim is supported by cited literature (Bartleson et al., 2020; Milam et al., 2018; Weber et al., 2012) showing that affinity and tonic signalling—parameters not captured by hybridoma screening—profoundly affect cell-fate decisions."
+          ],
+          "weaknesses": [
+            "The claim that hybridoma screening uses 'merely' CD69/IL-2 somewhat oversimplifies; some labs do perform additional functional assays (e.g., cytotoxicity, cytokine profiling), though the paper's characterization of the 'most often used method' is fair.",
+            "The paper does not provide a systematic comparison or meta-analysis of how often hybridoma-derived TCR Tg mice fail; the evidence for the claim being a general problem is based on a single failed example plus literature citations."
+          ],
+          "alternative_interpretations": [
+            "The failure of the hybridoma-derived clone could be due to factors unrelated to the screening parameters (e.g., issues with transgene integration, expression levels, or MHC restriction artifacts in the hybridoma system), rather than an inherent limitation of the hybridoma selection criteria."
+          ],
+          "required_assumptions": [
+            "That CD69 upregulation and IL-2 production are indeed insufficient proxies for in vivo fitness and cell-fate potential.",
+            "That the hybridoma screening limitations described here are representative of typical practice in the field."
+          ],
+          "notes": "This is a reasonable and well-calibrated characterization of the classical method's limitations, though the strength of the argument rests partly on published literature rather than new data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "A first-attempt CORSET8 mouse generated via the classical hybridoma approach (cl…",
+        "claim": "A first-attempt CORSET8 mouse generated via the classical hybridoma approach (clone 47) produced CD8 T cells that did not respond to Spike peptide or protein despite expressing a functional TCR.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "CD8 T cells from the newly generated CORSET8 mice did not respond to Spike peptide or Spike protein in a bone marrow-derived dendritic cell (BM-DC) co-culture experiment.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is directly supported by the BM-DC co-culture experiment (Figure 1—figure supplement 1C), which showed no responsiveness of the first CORSET8 T cells to Spike peptide or protein.",
+            "The Rag1−/− cross experiment demonstrates that the TCR was expressed and functional enough for positive selection (Figure 1—figure supplement 1D), ruling out complete non-expression.",
+            "The paper appropriately presents this as negative data rather than hiding it, which adds credibility."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.1.2.1: The number of hybridoma clones screened and their relative IL-2 fold-increases are not quantitatively detailed in the main text, making it difficult to assess whether clone 47 was a genuinely strong candidate or merely the best of a weak set.",
+            "EVIDENTIAL gap from sub-claim c1.1.2.2: The mechanism of non-responsiveness is never investigated. No tetramer staining was performed on the first-generation CORSET8 mice to confirm whether the TCR actually binds the intended pMHC complex.",
+            "Without understanding why the first line failed, the narrative that classical approaches are unreliable is anecdotal rather than systematic."
+          ],
+          "alternative_interpretations": [
+            "The failure could have been due to technical issues with the specific transgene construct, integration site effects, or expression level problems rather than fundamental flaws in the hybridoma selection approach.",
+            "The hybridoma fusion process itself may have introduced mutations or alterations in the TCR sequence that were not present in the original T cell clone.",
+            "The peptide specificity of clone 47 may have been different from the VNFNFNGL epitope used later; the initial screen used a different peptide pool."
+          ],
+          "required_assumptions": [
+            "That the TCR sequence was correctly identified and cloned from clone 47.",
+            "That the expression vector and integration were not the primary cause of failure.",
+            "That the BM-DC co-culture conditions were adequate to detect a response if one existed."
+          ],
+          "notes": "The first CORSET8 mice used a different peptide pool (INITRFQTL, IWLGFIAGL, GNYNYLYRL, VVFLHVTYV, FQFCNDPFL) for hybridoma selection, while the successful second line was based on the VNFNFNGL epitope. This is a different epitope entirely, which confounds the comparison between the two approaches. The failure may reflect a poor epitope choice rather than a flaw in hybridoma methodology per se.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "TCR affinity and tonic signalling strength profoundly influence cell-fate decisi…",
+        "claim": "TCR affinity and tonic signalling strength profoundly influence cell-fate decisions (effector vs. memory, Tfh differentiation), information that hybridoma screening does not capture.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the strength of tonic signalling determines whether the cells will become Tfh cells or not... the potential to react to tonic MHC signals... can also profoundly influence whether a given TCR will induce and immediate effector proliferative response, or rather give a memory response.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is well-supported by multiple cited publications (Bartleson et al., 2020; Milam et al., 2018; Weber et al., 2012; Kavazović et al., 2018; Knudson et al., 2013; Zehn et al., 2009).",
+            "The mechanistic explanations (IL-12R signalling, T-bet, Eomes, CD5 upregulation as a proxy for tonic signalling) are grounded in established immunological literature.",
+            "The claim is appropriately scoped as a summary of existing literature rather than presented as new experimental findings."
+          ],
+          "weaknesses": [
+            "This is entirely a literature-based claim; the paper provides no new experimental evidence for the relationship between TCR affinity/tonic signalling and cell-fate decisions.",
+            "The paper does not demonstrate that their scRNA-seq approach actually captures tonic signalling strength or affinity differences between clonotypes in a way that would predict cell-fate outcomes.",
+            "The connection between this claim and the CORSET8 validation is implicit—the paper does not show that the selected clonotype 1 has specific tonic signalling properties."
+          ],
+          "alternative_interpretations": [
+            "The role of tonic signalling in cell-fate decisions may be context-dependent and not universally applicable to all TCR Tg models.",
+            "Single-cell gene expression at a single time point may not adequately capture tonic signalling dynamics."
+          ],
+          "required_assumptions": [
+            "That the cited literature findings generalize to the SARS-CoV-2 Spike epitope context.",
+            "That scRNA-seq phenotyping captures relevant aspects of TCR affinity and tonic signalling."
+          ],
+          "notes": "While the claim itself is well-supported by literature, its relevance to the paper's actual methodology is somewhat indirect—the authors selected clonotype 1 based on expression markers, not direct measurements of affinity or tonic signalling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "The DALI tool is an interactive, user-friendly R software package that allows im…",
+        "claim": "The DALI tool is an interactive, user-friendly R software package that allows immunologists with limited bioinformatics experience to link TCR clonotype data to single-cell gene expression data.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "Owing to the browser-based interactive GUI, immunologists having limited coding experience can effectively analyse these complex datasets.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "DALI was previously published and described (Verstaen et al., 2022), providing a citable reference for the tool's capabilities.",
+            "The paper demonstrates DALI's use in practice, showing integration of TCR data with Seurat objects and UMAP visualization (Figure 2D).",
+            "The browser-based GUI is described and shown schematically, supporting the user-friendliness claim."
+          ],
+          "weaknesses": [
+            "No formal usability testing or user feedback data is provided to support the claim of user-friendliness for immunologists with limited bioinformatics experience.",
+            "The actual analysis pipeline described involves preprocessing with scran/scater, Seurat, and Cell Ranger, which require significant bioinformatics expertise—the DALI component is only the TCR integration step.",
+            "The claim that DALI alone makes the entire analysis accessible to non-bioinformaticians is an overstatement given the complexity of the full pipeline."
+          ],
+          "alternative_interpretations": [
+            "The accessibility of the approach may depend more on institutional bioinformatics support for upstream processing (Cell Ranger, Seurat clustering) than on DALI itself.",
+            "Other tools exist for TCR-transcriptome integration (e.g., scRepertoire, Scirpy) that may offer comparable functionality."
+          ],
+          "required_assumptions": [
+            "That the upstream data processing (Cell Ranger, quality control, Seurat clustering) has already been performed before DALI is used.",
+            "That 'limited coding experience' means users can still navigate R environments and load Seurat objects."
+          ],
+          "notes": "The user-friendliness claim is reasonable but should be understood in the context of DALI handling TCR integration specifically, not the entire scRNA-seq analysis pipeline.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Tetramer-positive (Spike-reactive) CD8 T cells from immunized mice formed a dist…",
+        "claim": "Tetramer-positive (Spike-reactive) CD8 T cells from immunized mice formed a distinct cluster in UMAP space with elevated expression of proliferation markers, cytokines, and effector-associated transcription factors.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "A subgroup of Tetramer+ cells had a distinct phenotype, marked by increased expression of proliferation and activation markers such as Mki67 and Gzmb and transcription factors regulating CD8 effector differentiation such as Tbet and Bhlhe40.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The UMAP visualization (Figure 2A, B) clearly shows separation of Tetramer+ cells from other populations.",
+            "The differential gene expression analysis identifies biologically plausible markers (Mki67, Gzmb, Tbet, Bhlhe40) consistent with known effector CD8 T cell biology.",
+            "The inclusion of three samples (Tet+ immunized, Tet− immunized, naive) provides appropriate controls for distinguishing antigen-driven phenotypes."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.2.2.1: The scRNA-seq was performed on cells pooled from only two immunized mice, limiting statistical power and generalizability.",
+            "EVIDENTIAL gap from sub-claim c1.2.2.1: Clustering resolution and parameters are not discussed, and the choice of three subclusters for Tetramer+ cells may be arbitrary.",
+            "The total number of Tetramer+ cells captured is not clearly stated, which is important for assessing the robustness of the clustering.",
+            "Only a single immunization experiment was used for scRNA-seq—no biological replicates of the sequencing itself."
+          ],
+          "alternative_interpretations": [
+            "The distinct clustering of Tetramer+ cells could partially reflect batch effects from the sorting procedure (Tetramer staining protocol, different sort gates) rather than purely biological differences.",
+            "The activated phenotype may reflect the specific immunization protocol (CpG adjuvant, three IP immunizations) rather than a general feature of Spike-reactive CD8 T cells."
+          ],
+          "required_assumptions": [
+            "That the FACS sorting did not introduce significant artifacts affecting gene expression profiles.",
+            "That the Tetramer staining reliably identifies all Spike-reactive CD8 T cells without significant false positives or negatives.",
+            "That the clustering parameters chosen are appropriate and not overfitting."
+          ],
+          "notes": "The claim is appropriately scoped and the data shown are consistent with it, but the lack of biological replication in the scRNA-seq experiment is a notable limitation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Clonotype 1 was selected because it was the most expanded clone, expressed proli…",
+        "claim": "Clonotype 1 was selected because it was the most expanded clone, expressed proliferation markers (Mki67+), produced cytokines (Ifng+), and had memory potential (Cd69+, Tcf7+, Sell−).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Given that clonotype 1 expressed proliferation markers (Mki67+), produced cytokines (Ifng+), had the potential to become a memory cell (Cd69+, Tcf7+, Sell−) and the observed clonal expansion, we decided to continue using this clonotype for the generation of TCR Tg mice.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The selection criteria (proliferation, cytokine production, memory potential markers) are biologically rational and well-justified.",
+            "The integration of multiple criteria (expansion, phenotype, gene expression) represents a meaningful advance over single-parameter hybridoma screening.",
+            "The gene expression data (Mki67, Ifng, Cd69, Tcf7, Sell) is presented in Figure 2F, supporting the stated markers."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.2.3.1: The total number of Tetramer+ cells is not clearly stated, making it difficult to assess whether clonotype 1's expansion dominance is statistically robust or sampling noise.",
+            "EVIDENTIAL gap from sub-claim c1.2.3.1: Only two immunized mice were pooled, so the observed clonal expansion may be idiosyncratic rather than representative.",
+            "The criteria used to select clonotype 1 contain a potential tension: high Mki67 and Ifng suggest immediate effector function, while Cd69+/Tcf7+/Sell− is interpreted as memory potential. Whether a single clone can optimally serve both functions is not discussed.",
+            "No alternative clonotypes were compared in detail—it would strengthen the approach to show why clonotype 1 was superior to clonotype 2, 3, etc., across all these parameters.",
+            "The interpretation that Cd69+/Tcf7+/Sell− indicates 'memory potential' at a single time point is somewhat speculative; Cd69 at this point may simply reflect recent activation."
+          ],
+          "alternative_interpretations": [
+            "Clonotype 1's dominance in expansion could reflect immunodominance at the population level rather than intrinsic superiority of the TCR, meaning other expanded clonotypes might have been equally functional.",
+            "The Tcf7+ Sell− phenotype could represent an activated effector state transitioning to exhaustion rather than memory precursor potential.",
+            "Selecting the most expanded clone may bias toward high-affinity effector cells at the expense of memory-biased clones, which may be less expanded."
+          ],
+          "required_assumptions": [
+            "That gene expression at a single post-immunization time point reliably predicts in vivo functional properties of the TCR.",
+            "That clonal expansion in an IP immunization model is predictive of fitness in respiratory infection models.",
+            "That the scRNA-seq markers used (Mki67, Ifng, Cd69, Tcf7, Sell) are valid proxies for the claimed functional properties."
+          ],
+          "notes": "There is an interesting tension between selecting for the most expanded clone (suggesting high affinity/effector bias) and claiming memory potential. The discussion acknowledges that high-affinity clones tend toward effector fate while memory cells often have lower affinity (c1.6.1), which seems somewhat at odds with the selection rationale for clonotype 1.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "CORSET8 mice show the expected skewing of CD4/CD8 distribution toward CD8 T cell…",
+        "claim": "CORSET8 mice show the expected skewing of CD4/CD8 distribution toward CD8 T cells in spleen and thymus, consistent with successful transgene expression and allelic exclusion.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the distribution of splenic CD4 T and CD8 T cells shows a skewing toward CD8 T cells, compared to wildtype mice.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The CD4/CD8 skewing in both spleen and thymus is directly demonstrated with flow cytometry data (Figure 3A, E) with statistical significance (p-values indicated).",
+            "The phenotype is consistent with well-established expectations for CD8 TCR Tg mice, where transgenic TCR expression causes allelic exclusion and biases development toward CD8 lineage.",
+            "Data are described as representative of three independent experiments, providing reasonable biological replication."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.3.1.2: No direct measure of transgene mRNA or protein levels (e.g., qPCR, copy number analysis) is provided—skewing alone is indirect evidence.",
+            "EVIDENTIAL gap from sub-claim c1.3.1.1: The connection between scRNA markers (Sell−) and flow cytometry phenotype (CD62L−) could be made more explicitly.",
+            "INFERENTIAL consideration from sub-claim c1.3.1.1: Some circularity—the cells were selected for phenotypic markers, and observing those markers in the Tg mice is expected rather than independently validating the approach."
+          ],
+          "alternative_interpretations": [
+            "CD8 skewing could also occur if the transgenic TCR has unusually strong MHC class I interactions during thymic selection, independent of the rationalized selection approach."
+          ],
+          "required_assumptions": [
+            "That CD4/CD8 skewing in spleen and thymus is a reliable indicator of transgene expression and function.",
+            "That comparison to wildtype littermates is an appropriate control."
+          ],
+          "notes": "The data are solid and the claim is well-calibrated. The skewing toward CD8 is a standard and expected phenotype for CD8 TCR Tg mice.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "Approximately 70% of CD8 T cells in Rag1-sufficient CORSET8 mice are Spike tetra…",
+        "claim": "Approximately 70% of CD8 T cells in Rag1-sufficient CORSET8 mice are Spike tetramer-positive transgenic cells.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Staining of the splenocytes with the Spike Tetramer... revealed that about 70% of total CD8 T cells of the CORSET mice on a Rag1 sufficient background were transgenic cells.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct tetramer staining provides specific, quantitative evidence for the proportion of transgenic cells (Figure 3C).",
+            "The ~70% figure is consistent with expectations for TCR Tg mice on a Rag-sufficient background, where some endogenous TCR rearrangement still occurs.",
+            "The comparison to wildtype littermates (low/absent tetramer staining) provides a clear negative control."
+          ],
+          "weaknesses": [
+            "The variability around the 70% figure (SEM, n) is not explicitly stated in the text for this specific measurement.",
+            "Whether the remaining ~30% of CD8 T cells express endogenous TCRs or express the transgenic TCR at levels below tetramer detection is not addressed."
+          ],
+          "alternative_interpretations": [
+            "Some tetramer-negative CD8 T cells in CORSET8 mice could still express the transgenic TCR but with a conformation or surface density that reduces tetramer binding."
+          ],
+          "required_assumptions": [
+            "That tetramer staining accurately identifies all transgenic T cells.",
+            "That the 70% figure is representative across different CORSET8 mice."
+          ],
+          "notes": "This is straightforward, well-supported data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "CORSET8 T cells express a high-affinity TCR, as evidenced by responsiveness to m…",
+        "claim": "CORSET8 T cells express a high-affinity TCR, as evidenced by responsiveness to minute doses of Spike peptide (as low as 10 pg/ml) in BM-DC co-culture.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the CORSET8 cells responded to minute doses of Spike peptide (10 pg/ml), illustrating that the CORSET8 cells express a strong affinity TCR.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The dose-response curve showing proliferation at 10 pg/ml (Figure 3D) provides functional evidence for high sensitivity.",
+            "CTV dilution is a well-established method for measuring T cell proliferation.",
+            "Data are described as representative of three independent experiments."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.3.3.1: The peptide used in the co-culture (GNYNYLYRL per Methods) differs from the tetramer peptide (VNFNFNGL). If the CORSET8 TCR was selected for VNFNFNGL reactivity, this discrepancy is confusing and potentially important.",
+            "EVIDENTIAL gap from sub-claim c1.3.3.1: No negative control peptide is shown alongside the dose-response curve.",
+            "Sensitivity to low peptide doses in a BM-DC co-culture does not directly measure TCR-pMHC affinity. Factors like co-receptor binding, peptide loading efficiency, and T cell activation threshold all contribute.",
+            "The term 'strong affinity TCR' is used without any direct affinity measurement (e.g., surface plasmon resonance, tetramer dissociation kinetics).",
+            "INFERENTIAL gap: Sensitivity in a peptide-pulsed DC assay and TCR affinity are related but not equivalent concepts; claiming 'high affinity' from functional sensitivity is an inferential stretch."
+          ],
+          "alternative_interpretations": [
+            "High functional sensitivity could reflect high TCR surface density on transgenic T cells rather than intrinsically high TCR affinity.",
+            "The sensitivity could also be influenced by the co-receptor (CD8) contribution rather than TCR affinity per se.",
+            "If GNYNYLYRL is indeed the peptide used (as stated in Methods), the CORSET8 TCR may be cross-reactive rather than optimally specific for VNFNFNGL."
+          ],
+          "required_assumptions": [
+            "That functional sensitivity in a peptide titration assay is a reliable proxy for TCR affinity.",
+            "That the peptide used in the co-culture is the correct cognate peptide for the CORSET8 TCR."
+          ],
+          "notes": "The peptide discrepancy between the co-culture assay (GNYNYLYRL) and tetramer (VNFNFNGL) needs clarification. If GNYNYLYRL was accidentally used in the Methods description, this is an error. If it was intentionally used, the cross-reactivity is unexplained. See also c1.1.2 notes about the different peptide pools.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Upon adoptive transfer and intratracheal Spike/CpG immunization, 95.17% (±1.61) …",
+        "claim": "Upon adoptive transfer and intratracheal Spike/CpG immunization, 95.17% (±1.61) of CORSET8 T cells underwent division in the draining mediastinal lymph node within 4 days.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Four days after T cell transfer, 95.17% (±1.61) of CORSET8 cells underwent division in the draining mediastinal lymph node, as demonstrated by the CTV dilution profile.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The 95.17% ± 1.61 division figure is precise and quantitative, based on CTV dilution—a well-established assay.",
+            "The in vivo adoptive transfer model with intratracheal immunization is a physiologically relevant system for respiratory pathogen-directed T cells.",
+            "The experiment includes appropriate controls (CpG alone without Spike)."
+          ],
+          "weaknesses": [
+            "The sample size (n) for this specific measurement is not explicitly stated in the text, though data are described as representative of two independent experiments.",
+            "The 4-day time point may not distinguish between antigen-specific proliferation and lymphopenia-driven homeostatic expansion, though the CpG-only control helps address this.",
+            "The absolute number of CORSET8 T cells recovered is shown but the recovery efficiency (transferred vs. recovered) is not discussed."
+          ],
+          "alternative_interpretations": [
+            "Some division could be driven by inflammation (CpG adjuvant) rather than antigen-specific TCR engagement, though the CpG-only control argues against this being the dominant driver."
+          ],
+          "required_assumptions": [
+            "That CTV dilution accurately reflects cell division rather than dye transfer or loss.",
+            "That the mediastinal lymph node is the appropriate draining lymph node to assess the response."
+          ],
+          "notes": "Solid, well-controlled data point.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "CORSET8 T cells showed increased expression of activation markers (CD44, IFN-γ, …",
+        "claim": "CORSET8 T cells showed increased expression of activation markers (CD44, IFN-γ, T-Bet, CD69, Ki-67) compared to endogenous CD45.2 T cells upon both Spike/CpG and Pfizer BNT162b2 vaccination.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Both upon Spike/CpG and Pfizer BNT162b2 vaccine immunization, CORSET8 T cells were displaying an activation profile, as shown by increased expression of activation markers such as CD44, IFN-γ, T-Bet, and CD69 compared to endogenous CD45.2 cells.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple activation markers (CD44, IFN-γ, T-Bet, CD69, Ki-67) are assessed, providing a comprehensive activation profile.",
+            "The comparison to endogenous CD45.2 T cells provides an internal control within the same animal.",
+            "Two immunization strategies (Spike/CpG and Pfizer BNT162b2) are tested, showing consistency across different antigenic contexts.",
+            "Statistical analysis is performed with appropriate tests."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.4.2.1: The endogenous Tetramer+ population is described as 'small,' raising concerns about reliable quantification of activation markers on rare cells.",
+            "EVIDENTIAL gap from sub-claim c1.4.2.1: Quantitative statistical comparisons between endogenous Tetramer+ and Tetramer− populations are described qualitatively ('slightly increased,' 'very mild') without clear statistical testing.",
+            "The comparison between CORSET8 cells and bulk endogenous CD45.2 cells is somewhat unfair—comparing a monoclonal antigen-specific population to a polyclonal population that includes many irrelevant specificities."
+          ],
+          "alternative_interpretations": [
+            "The strong activation of CORSET8 T cells compared to endogenous cells could partly reflect the high precursor frequency of transgenic cells (1 × 10^6 transferred) competing for antigen, rather than intrinsic TCR superiority.",
+            "At 4 days post-immunization, endogenous antigen-specific cells may not yet have reached peak activation, making the comparison time-dependent."
+          ],
+          "required_assumptions": [
+            "That 4 days is a comparable time point for both transgenic and endogenous T cell activation.",
+            "That MFI comparisons between CORSET8 and endogenous cells are meaningful given different precursor frequencies."
+          ],
+          "notes": "The data support the claim as stated, though the comparison is inherently biased by the frequency difference between transferred monoclonal cells and endogenous polyclonal cells.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "In SARS-CoV-2 infection of K18-hACE2 transgenic mice, CORSET8 T cells were exclu…",
+        "claim": "In SARS-CoV-2 infection of K18-hACE2 transgenic mice, CORSET8 T cells were exclusively detected in infected hACE2Tg/wt mice, with 99.28 ± 0.12% undergoing division, and were absent in mock or hACE2wt/wt conditions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "CORSET8 T cells were exclusively detected in the infected hACE2Tg/wt mice, with no presence observed in mock conditions or hACE2wt/wt infected mice.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The specificity controls are excellent: CORSET8 T cells are detected only in infected hACE2Tg/wt mice, not in mock or hACE2wt/wt conditions.",
+            "The near-complete division (99.28 ± 0.12%) demonstrates robust antigen-driven proliferation in an actual infection model.",
+            "The use of a BSL3 SARS-CoV-2 infection model adds physiological relevance beyond vaccination experiments.",
+            "The absence of CORSET8 cells in hACE2wt/wt mice (which cannot be productively infected) is a strong specificity control."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL gap from sub-claim c1.4.3.1: The claim that 'only the transgenic T cells were engaged' based on CD44 alone is somewhat overclaimed—CD44 is just one marker, and at day 6 post-infection, endogenous responses may be beginning but not yet detectable by this single marker.",
+            "EVIDENTIAL gap from sub-claim c1.4.3.1: Peak endogenous CD8 responses typically occur at day 7-10 post-infection, so the time point chosen may be too early to detect endogenous activation.",
+            "The sample sizes for the infection experiment appear small (data representative of two independent experiments, exact n not stated).",
+            "The adoptive transfer was performed 2 days post-infection, meaning CORSET8 cells had only 4 days in the infected environment—the high division rate may partly reflect lymphopenia-driven expansion in the inflamed environment."
+          ],
+          "alternative_interpretations": [
+            "The exclusive detection of CORSET8 cells in infected hACE2Tg/wt mice could partly reflect preferential trafficking and retention rather than exclusive activation.",
+            "The near-100% division could include some bystander activation in the highly inflammatory environment of SARS-CoV-2 infection, though the absence in mock conditions argues against this."
+          ],
+          "required_assumptions": [
+            "That the K18-hACE2 model generates sufficient Spike antigen presentation in the mediastinal lymph node by day 6 post-infection.",
+            "That absence of CORSET8 cells in control conditions reflects lack of activation rather than lack of trafficking or survival.",
+            "That 450 pfu produces a sublethal but immunologically productive infection."
+          ],
+          "notes": "The infection data are compelling for demonstrating antigen-specific activation in a disease-relevant model. The claim about 'exclusive' detection is appropriate; the sub-claim about 'only transgenic cells engaged' (from Figure 4H discussion) is slightly overclaimed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "CORSET8 T cells had higher Spike Tetramer binding than endogenous Tetramer+ CD8 …",
+        "claim": "CORSET8 T cells had higher Spike Tetramer binding than endogenous Tetramer+ CD8 T cells in SARS-CoV-2 infected mice, confirming their high-affinity TCR.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Spike Tetramer staining revealed that CORSET8 T cells had a higher affinity for the Tetramer than Tetramer+ endogenous CD8 T cells, which again confirms that the generated CORSET8 mice have a high-affinity TCR, a phenotype we selected for.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Direct comparison of tetramer MFI between CORSET8 and endogenous Tetramer+ cells within the same animal is a meaningful internal comparison (Figure 4I).",
+            "Higher tetramer binding is consistent with the expectation that the selected clonotype has high antigen sensitivity."
+          ],
+          "weaknesses": [
+            "INFERENTIAL gap: Tetramer MFI does not directly measure TCR affinity. Higher tetramer staining could reflect higher TCR surface density on transgenic T cells, not higher per-molecule affinity.",
+            "The authors state this 'confirms that the generated CORSET8 mice have a high-affinity TCR, a phenotype we selected for,' but they did not directly select for tetramer binding intensity—they selected for gene expression phenotype and clonal expansion.",
+            "No direct affinity measurements (e.g., SPR, BLI, tetramer decay assays) are provided.",
+            "The endogenous Tetramer+ population may represent a heterogeneous mix of affinities, so comparing the average to a monoclonal population is not a fair measure of relative affinity."
+          ],
+          "alternative_interpretations": [
+            "Higher tetramer MFI on CORSET8 cells could reflect higher TCR surface expression levels due to transgene copy number or expression from the CD4 promoter, rather than higher per-molecule TCR affinity.",
+            "The monoclonal nature of CORSET8 cells means all cells bind tetramer identically, while endogenous Tetramer+ cells include a range of affinities—the comparison conflates population heterogeneity with affinity differences."
+          ],
+          "required_assumptions": [
+            "That tetramer MFI is a reliable proxy for TCR affinity.",
+            "That TCR surface density is comparable between transgenic and endogenous T cells.",
+            "That the tetramer reagent has not reached saturation on high-affinity cells."
+          ],
+          "notes": "The term 'high-affinity TCR' is used throughout the paper without direct affinity measurements. While the functional data (sensitivity to low peptide doses, robust proliferation) are consistent with high functional avidity, equating tetramer MFI with affinity is an overstatement.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "The rationalized approach was highly time-efficient compared to classical hybrid…",
+        "claim": "The rationalized approach was highly time-efficient compared to classical hybridoma methods, requiring only a fraction of the workload and time.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Abstract",
+        "verbatim_quote": "the generation of fully functional TCR transgenic mice took only a fraction of the workload and time in comparison to the classical approach.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper references Figure 1 for timelines, suggesting some timeline comparison was made.",
+            "The conceptual argument is sound: skipping hybridoma generation, selection, and subcloning should save time."
+          ],
+          "weaknesses": [
+            "No quantitative comparison of time or workload is provided in the text—the claim that it took 'only a fraction of the workload and time' is not substantiated with specific numbers.",
+            "The scRNA-seq approach still requires the same immunization protocol, cell sorting, library preparation, sequencing, and bioinformatics analysis, which together represent significant time and effort.",
+            "The time to generate the transgenic mouse itself (oocyte injection, gestation, genotyping, breeding) is identical in both approaches.",
+            "The comparison is confounded by the fact that the classical approach failed and had to be restarted, which inflates the apparent time difference."
+          ],
+          "alternative_interpretations": [
+            "The time savings may primarily come from avoiding the hybridoma generation and screening steps, but this is offset by the time needed for scRNA-seq library preparation, sequencing, and analysis.",
+            "If the classical approach had succeeded on the first attempt, the time comparison would be very different."
+          ],
+          "required_assumptions": [
+            "That the time comparison is made on a per-attempt basis, not accounting for the failed first attempt.",
+            "That scRNA-seq data turnaround time (sequencing core, bioinformatics analysis) is faster than hybridoma generation and screening."
+          ],
+          "notes": "This claim would be significantly strengthened by providing actual timelines for both approaches. As stated, it is more of an assertion than an evidence-backed claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "The increased reagent costs for single-cell sequencing may be offset by avoiding…",
+        "claim": "The increased reagent costs for single-cell sequencing may be offset by avoiding the expensive generation of poorly functional TCR Tg mouse lines.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "We found this approach to be highly time efficient compared to classical methods... albeit with increased reagent costs for single-cell sequencing. Nonetheless, the rationalized selection of TCR clones might circumvent the expensive generation of poorly functional TCR Tg mouse lines.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The argument is logically sound: if the rationalized approach reduces the probability of generating non-functional Tg mice, the cost of single-cell sequencing could be offset.",
+            "The paper's own experience (one failed line from classical approach) provides a single data point supporting this argument.",
+            "The authors appropriately use hedging language ('might circumvent')."
+          ],
+          "weaknesses": [
+            "No cost analysis is provided—no comparison of reagent costs for scRNA-seq vs. hybridoma technology.",
+            "The claim rests on a single failed example; the base rate of failure for classical hybridoma-derived TCR Tg mice is not established.",
+            "The rationalized approach also does not guarantee success—the CORSET8 line could still have failed due to transgene integration issues or other technical factors."
+          ],
+          "alternative_interpretations": [
+            "If the failure rate of classical approaches is low (and the paper only shows n=1 failure), the cost of scRNA-seq may not be justified on an expected-value basis.",
+            "The cost comparison should include not just reagent costs but also instrument access, bioinformatics expertise, and computational resources."
+          ],
+          "required_assumptions": [
+            "That the failure rate of classical hybridoma-derived TCR Tg mice is high enough to justify the additional sequencing costs.",
+            "That the rationalized approach significantly reduces failure rates."
+          ],
+          "notes": "The hedging language ('might circumvent') makes this claim appropriately calibrated given the limited evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Avoiding generation of non-functional TCR Tg mice also aligns with the reduction…",
+        "claim": "Avoiding generation of non-functional TCR Tg mice also aligns with the reduction arm of the 3R principle for animal experimentation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the rationalized selection of TCR clones might circumvent the expensive generation of poorly functional TCR Tg mouse lines, which additionally conflicts with the reduction arm of the 3R principle.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The 3R principle argument is logically valid: reducing failed Tg mouse lines would reduce unnecessary animal use.",
+            "The argument is appropriately framed as a potential benefit rather than a demonstrated one."
+          ],
+          "weaknesses": [
+            "This is a forward-looking argument without quantitative evidence—no estimate of how many animals would be saved.",
+            "The claim assumes that the rationalized approach reliably prevents non-functional lines, which is demonstrated by only a single case.",
+            "Both approaches require similar numbers of animals for immunization, and the transgenic mouse generation itself uses similar numbers of animals."
+          ],
+          "alternative_interpretations": [
+            "The 3R benefit is real but may be modest compared to other sources of animal use in TCR Tg mouse development (breeding, backcrossing, validation experiments)."
+          ],
+          "required_assumptions": [
+            "That non-functional TCR Tg mouse lines represent a significant source of unnecessary animal use in the field.",
+            "That the rationalized approach substantially reduces this waste."
+          ],
+          "notes": "A reasonable but minor supporting argument. Appropriately calibrated in its hedging.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Effector cells are mainly found among high-affinity clones, while memory cells r…",
+        "claim": "Effector cells are mainly found among high-affinity clones, while memory cells recognize antigens with lower affinity and benefit from more clonal diversity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "whereas effector cells are mainly found amongst high-affinity clones, memory cells recognize antigens with lower affinity and benefit from more clonal diversity.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This claim is directly cited to Kavazović et al. (2018) and is consistent with established immunological literature.",
+            "The distinction between effector and memory cell affinity requirements is well-documented in the field."
+          ],
+          "weaknesses": [
+            "This is a literature claim, not supported by new data in this paper.",
+            "The generalization may be oversimplified—the relationship between affinity and cell fate is context-dependent and influenced by factors beyond affinity alone.",
+            "There is a tension with the paper's own approach: they selected the most expanded (presumably highest affinity) clone but also claim it has 'memory potential'—which this claim suggests should be associated with lower affinity clones."
+          ],
+          "alternative_interpretations": [
+            "Recent work has shown that the affinity-fate relationship is more nuanced than a simple high=effector, low=memory dichotomy, with intermediate affinity clones contributing significantly to both compartments."
+          ],
+          "required_assumptions": [
+            "That the cited literature findings are accurately summarized.",
+            "That affinity is a primary determinant of effector vs. memory fate, independent of other variables."
+          ],
+          "notes": "This claim creates an interesting tension with c1.2.3—the authors selected the most expanded clone (suggesting high affinity) yet claim it has memory potential. The paper does not address this apparent contradiction.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Distinct molecular mechanisms (IL-12R signalling, T-bet, Eomes expression) drive…",
+        "claim": "Distinct molecular mechanisms (IL-12R signalling, T-bet, Eomes expression) drive effector/memory development in high- and low-affinity T cells, and tonic signalling strength also determines cell-fate decisions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Distinct mechanisms drive effector/memory development in high- and low-affinity T cells, such as regulation of IL-12R signalling, T-bet, and Eomes expression.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The molecular mechanisms cited (IL-12R, T-bet, Eomes) are well-established in the literature (Knudson et al., 2013).",
+            "The role of tonic signalling in cell-fate decisions is supported by multiple publications (Bartleson et al., 2020; Milam et al., 2018; Weber et al., 2012).",
+            "The claim is appropriately attributed to existing literature rather than presented as new findings."
+          ],
+          "weaknesses": [
+            "No new data in this paper support this claim—it is purely a literature review statement.",
+            "The paper does not demonstrate that their scRNA-seq selection approach captures or accounts for these molecular mechanisms.",
+            "The relevance to the CORSET8 selection is indirect—clonotype 1 was not selected based on IL-12R, T-bet, or Eomes expression patterns."
+          ],
+          "alternative_interpretations": [
+            "These molecular mechanisms may be downstream consequences of affinity differences rather than independent determinants of cell fate.",
+            "The relative contribution of these mechanisms vs. stochastic or environmental factors in determining cell fate in vivo remains debated."
+          ],
+          "required_assumptions": [
+            "That the cited mechanisms are accurately represented.",
+            "That these mechanisms are relevant to the SARS-CoV-2 Spike-specific CD8 T cell response studied here."
+          ],
+          "notes": "Well-calibrated literature claim that provides context for the approach but is not directly validated by the paper's experiments.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Hybridoma clone 47 was selected because it had the strongest fold increase in IL…",
+        "claim": "Hybridoma clone 47 was selected because it had the strongest fold increase in IL-2 upon Spike peptide pool stimulation and also upregulated CD69 and IFN-γ.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Compared to medium control, clone 47 had the strongest fold increase in IL-2. This clone also upregulated CD69 and IFN-γ in the presence of the Spike peptide pool.",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim directly references data shown in Figure 1—figure supplement 1A and 1B, with IL-2 MFI fold-increase and CD69/IFN-γ upregulation clearly described.",
+            "Multiple readouts (IL-2, CD69, IFN-γ) were used, providing convergent evidence of reactivity.",
+            "Three co-culture experiments were mentioned as the basis for comparison between clones."
+          ],
+          "weaknesses": [
+            "The number of hybridoma clones screened and their relative IL-2 fold-increases are not quantitatively detailed in the text—readers must rely on the supplementary figure.",
+            "Only fold-increase in IL-2 was used as the primary selection criterion, which is a relatively crude metric. No dose-response or affinity estimation was performed at this stage.",
+            "The peptide pool used for screening contained five peptides (INITRFQTL, IWLGFIAGL, GNYNYLYRL, VVFLHVTYV, FQFCNDPFL), but the epitope specificity of clone 47 was not deconvoluted before selection, which is a limitation acknowledged implicitly by the eventual failure of this clone."
+          ],
+          "alternative_interpretations": [
+            "Clone 47 may have been reactive to one peptide in the pool that was poorly presented in vivo or unstable, explaining subsequent failure.",
+            "The strongest IL-2 fold-increase in a hybridoma assay does not necessarily reflect the strongest TCR affinity or in vivo fitness."
+          ],
+          "required_assumptions": [
+            "IL-2 fold-increase in a hybridoma co-culture is a reliable proxy for selecting functional TCR clones.",
+            "The hybridoma fusion and screening process faithfully preserved the TCR characteristics of the original T cell."
+          ],
+          "notes": "This claim serves as the setup for the negative result (failed first-generation CORSET8 line), so its limitations are part of the paper's argument for the improved approach.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.2",
+        "label": "The TCR from clone 47 was expressed and functional enough for positive selection…",
+        "claim": "The TCR from clone 47 was expressed and functional enough for positive selection, as CD8 T cells were detected on a Rag1−/− background, but the T cells were non-responsive to Spike antigen.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We readily detected CD8 T cells even on the Rag1−/− background, demonstrating that the TCR was expressed and was of high enough affinity to cause positive selection of CD8 T cells, and therefore functional.",
+        "evaluation": {
+          "node_id": "c1.1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Crossing to Rag1−/− background is a rigorous way to confirm that the transgenic TCR is expressed and mediates positive selection, since no endogenous TCR rearrangement can rescue T cell development.",
+            "The data in Figure 1—figure supplement 1D showing CD8 T cells on Rag1−/− background directly supports the claim of TCR expression and positive selection.",
+            "The BM-DC co-culture data (Figure 1—figure supplement 1C) showing no response to Spike peptide or protein supports the non-responsiveness claim."
+          ],
+          "weaknesses": [
+            "The mechanism of non-responsiveness is never investigated. It could be due to incorrect peptide specificity, MHC restriction issues, post-translational modification differences between hybridoma and primary T cells, or issues with transgene expression levels.",
+            "No tetramer staining was performed on the first-generation CORSET8 mice to confirm whether the TCR actually binds the intended pMHC complex.",
+            "The inference from 'positive selection occurred' to 'TCR is functional' is reasonable but does not rule out that the TCR specificity may have been misidentified or that the clone recognized a different peptide in the pool."
+          ],
+          "alternative_interpretations": [
+            "The TCR might positively select on self-MHC but have insufficient affinity for the Spike peptide due to the hybridoma clone recognizing a different peptide in the original pool.",
+            "Transgene expression levels might be suboptimal for peripheral T cell activation despite being sufficient for thymic selection.",
+            "The hybridoma fusion process could have introduced mutations or the wrong pairing of Vα/Vβ chains."
+          ],
+          "required_assumptions": [
+            "Positive selection on Rag1−/− background confirms that the TCR is functional (at least for thymic selection).",
+            "The BM-DC co-culture conditions are adequate to detect reactivity if present."
+          ],
+          "notes": "This is a key piece of evidence motivating the alternative approach. The authors appropriately discontinued this line.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Reclustering of Tetramer+ cells revealed three subclusters, with cluster 1 showi…",
+        "claim": "Reclustering of Tetramer+ cells revealed three subclusters, with cluster 1 showing high Mki67 expression and clusters 0 and 1 showing high Ifng, Cd69, and Nr4a1 expression.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "cluster 1 showed high expression of Mki67, while both clusters 0 and 1 showed high expression of Ifng and activation markers Cd69 and Nr4a1.",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis used established tools (Seurat for clustering, DALI for TCR integration), and the markers mentioned (Mki67, Ifng, Cd69, Nr4a1) are well-established activation and proliferation markers for CD8 T cells.",
+            "The data are presented in Figures 2E and 2F with UMAP projections and gene expression overlays."
+          ],
+          "weaknesses": [
+            "The sample size for the scRNA-seq is modest: Tetramer+ cells were pooled from only two immunized mice, limiting the statistical power and generalizability of cluster identification.",
+            "The clustering resolution and the number of subclusters (three) were likely determined by default parameters or subjective resolution choices, which are not discussed.",
+            "No validation of the cluster identities by independent methods (e.g., protein-level confirmation of these markers by flow cytometry in sorted subpopulations) was performed at this stage."
+          ],
+          "alternative_interpretations": [
+            "The three subclusters could reflect technical variation (e.g., cell cycle effects driving the Mki67 cluster) rather than biologically distinct populations.",
+            "Different clustering resolutions might yield different numbers of subclusters with different marker gene compositions."
+          ],
+          "required_assumptions": [
+            "The scRNA-seq clustering faithfully represents biologically meaningful T cell subsets.",
+            "Tetramer sorting effectively captured the relevant antigen-specific population without significant contamination."
+          ],
+          "notes": "The DALI tool is presented as a novel contribution, but the clustering analysis itself uses standard Seurat workflows.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "Clonotype 1 was highly expanded in clusters 0 and 1 of the Tetramer+ cells, whic…",
+        "claim": "Clonotype 1 was highly expanded in clusters 0 and 1 of the Tetramer+ cells, which contained the most clonally expanded clones.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "When assessing clonal expansion in more detail, we found clonotype1 to be highly expanded in clusters 0 and 1.",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clonotype expansion analysis is directly supported by TCR sequencing data integrated via DALI, shown in Figures 2G, 2H, and 2I.",
+            "The co-localization of clonotype 1 with the activation/proliferation clusters provides biologically coherent evidence linking expansion to functional phenotype."
+          ],
+          "weaknesses": [
+            "The total number of Tetramer+ cells subjected to scRNA-seq is not clearly stated, making it difficult to assess whether clonotype 1's dominance is statistically robust or could reflect sampling noise.",
+            "Only two immunized mice were pooled, so the observed clonal expansion may be idiosyncratic to those particular mice rather than representative of a general response to Spike immunization.",
+            "No independent replicate experiment was performed to confirm that clonotype 1 would consistently be dominant across different immunized animals."
+          ],
+          "alternative_interpretations": [
+            "Clonotype 1's expansion could reflect stochastic early priming advantages rather than intrinsically superior TCR fitness.",
+            "In a different set of immunized mice, a different clonotype might dominate."
+          ],
+          "required_assumptions": [
+            "Clonal expansion in immunized mice reflects TCR fitness and affinity rather than stochastic variation.",
+            "Pooling from two mice is sufficient to identify reliably expanded clonotypes."
+          ],
+          "notes": "The claim is descriptive and appropriately scoped to what was observed in this particular experiment.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "CD8 T cells in CORSET8 mice showed a significant loss of naive (CD62L+CD44−) and…",
+        "claim": "CD8 T cells in CORSET8 mice showed a significant loss of naive (CD62L+CD44−) and increase of effector (CD62L−CD44+) populations, consistent with the phenotype of cells harboring clonotype 1.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Both CD4 T and CD8 T cells displayed normal frequencies of T cell subsets with a significant loss of naive (CD62L+CD44−) and increase of effector (CD62L−CD44+) T cell populations in the CD8 compartment, as expected based on the phenotype of the cells harbouring clonotype 1.",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Flow cytometry data in Figure 3B directly show statistically significant differences in naive vs. effector proportions within CD8 T cells, with appropriate statistical tests applied.",
+            "The observation is internally consistent with the scRNA-seq phenotype of clonotype 1 (Cd69+, Tcf7+, Sell−), providing cross-platform validation.",
+            "Data are stated to be representative of three independent experiments, adding reproducibility.",
+            "The phenotypic shift is biologically expected for a TCR Tg mouse expressing a high-affinity TCR that encounters cross-reactive self or environmental ligands."
+          ],
+          "weaknesses": [
+            "The 'Sell−' phenotype from scRNA-seq is consistent with CD62L− but the connection between the scRNA markers and the flow cytometry phenotype could be made more explicitly.",
+            "The claim that this is 'as expected based on the phenotype of cells harbouring clonotype 1' is somewhat circular—the cells were selected for this phenotype."
+          ],
+          "alternative_interpretations": [
+            "The effector skewing could partly reflect tonic TCR signaling or lymphopenia-driven homeostatic proliferation rather than the intrinsic phenotype of clonotype 1.",
+            "Transgene copy number and expression level could influence the degree of effector skewing independently of TCR specificity."
+          ],
+          "required_assumptions": [
+            "The flow cytometry markers (CD62L, CD44) accurately classify naive and effector T cell subsets in TCR Tg mice.",
+            "The phenotypic shift reflects TCR-driven biology rather than artifacts of transgene expression."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.2",
+        "label": "Thymic CD4/CD8 distribution in CORSET8 mice shows significant skewing toward CD8…",
+        "claim": "Thymic CD4/CD8 distribution in CORSET8 mice shows significant skewing toward CD8+ T cells, confirming transgene expression.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the CD4 and CD8 T cell distribution in the thymus of the CORSET8 Tg animals shows significant skewing to the CD8+ T cell subset, which also hints toward successful transgene expression.",
+        "evaluation": {
+          "node_id": "c1.3.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Thymic CD4/CD8 skewing toward CD8 is the expected outcome of expressing a class I-restricted TCR transgene and is a classical validation metric for MHC I-restricted TCR Tg mice.",
+            "Data are presented in Figure 3E with comparison to wildtype littermates.",
+            "Consistency between thymic (Figure 3E) and peripheral splenic (Figure 3A) data strengthens the claim."
+          ],
+          "weaknesses": [
+            "The authors use 'hints toward successful transgene expression' which is appropriately cautious, but no direct measure of transgene mRNA or protein levels (e.g., qPCR, copy number analysis) is provided.",
+            "CD8 skewing alone does not prove that all CD8 T cells express the transgenic TCR—some could be endogenous CD8 T cells with rearranged TCRs (on Rag-sufficient background)."
+          ],
+          "alternative_interpretations": [
+            "The degree of CD8 skewing depends on transgene copy number and expression level, which are not characterized."
+          ],
+          "required_assumptions": [
+            "Thymic CD8 skewing is a reliable indicator of functional MHC I-restricted TCR transgene expression."
+          ],
+          "notes": "The ~70% tetramer positivity in Figure 3C provides complementary evidence that a substantial fraction of CD8 T cells express the transgenic TCR.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "CTV dilution showed dose-dependent proliferation of CORSET8 T cells in BM-DC co-…",
+        "claim": "CTV dilution showed dose-dependent proliferation of CORSET8 T cells in BM-DC co-culture with increasing Spike peptide concentrations (0–10 µg/ml).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The dilution of the cell proliferation dye CTV reflects the augmented proliferation of the CORSET8 cells in correspondence with the antigenic dose.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "CTV dilution assay is a well-established method for measuring T cell proliferation.",
+            "Dose-response data over a wide range (0–10 µg/ml) are presented in Figure 3D.",
+            "Sensitivity to 10 pg/ml of Spike peptide is notable and supports the claim of high-affinity TCR.",
+            "The experiment uses BM-DCs as antigen-presenting cells, providing physiological context for antigen presentation.",
+            "Data stated to be representative of three independent experiments."
+          ],
+          "weaknesses": [
+            "The peptide used in this co-culture (GNYNYLYRL per Methods) differs from the tetramer peptide (VNFNFNGL), which is confusing—if the CORSET8 TCR was selected for VNFNFNGL reactivity via tetramer sorting, why is GNYNYLYRL used here? This could be a discrepancy or an error in the methods.",
+            "No negative control peptide is shown alongside the dose-response curve in Figure 3D."
+          ],
+          "alternative_interpretations": [
+            "If the peptide used was indeed GNYNYLYRL rather than VNFNFNGL, this could indicate cross-reactivity rather than primary specificity, or it could be a methods error."
+          ],
+          "required_assumptions": [
+            "CTV dilution accurately reflects cell division.",
+            "BM-DC antigen processing and presentation faithfully represents in vivo conditions.",
+            "The correct peptide was used in the assay (potential discrepancy between results and methods sections)."
+          ],
+          "notes": "The peptide discrepancy between what appears to be used in the co-culture (GNYNYLYRL per Methods) and the tetramer epitope (VNFNFNGL) needs clarification. This could be a significant concern if the Methods section is accurate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2.1",
+        "label": "Endogenous Spike Tetramer-positive CD45.2 cells showed only mildly increased act…",
+        "claim": "Endogenous Spike Tetramer-positive CD45.2 cells showed only mildly increased activation compared to Tetramer-negative cells, which was far less than the strong activation in CORSET8 T cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "a small population of endogenous CD45.2 cells was Spike Tetramer positive, and these cells had a slightly increased activation profile compared to their Tetramer negative counterparts. However, this increase was still very mild in comparison with the strong activation in CORSET8 T cells.",
+        "evaluation": {
+          "node_id": "c1.4.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison between CORSET8 T cells, endogenous Tetramer+ cells, and endogenous Tetramer− cells provides a three-way comparison that contextualizes the activation levels.",
+            "Multiple activation markers (CD44, IFN-γ, T-Bet, CD69, Ki-67) are assessed in Figure 4D, providing convergent evidence.",
+            "The observation that endogenous Tetramer+ cells show mild activation is biologically expected—these are polyclonal cells with varying affinities that are just beginning to respond."
+          ],
+          "weaknesses": [
+            "The claim relies on qualitative descriptors ('slightly increased,' 'very mild') without providing quantitative statistical comparisons between endogenous Tetramer+ and Tetramer− populations in the text.",
+            "The endogenous Tetramer+ population is described as 'small,' raising concerns about reliable quantification of activation markers on a rare population.",
+            "Data are stated to be representative of two independent experiments, which is adequate but not extensive."
+          ],
+          "alternative_interpretations": [
+            "The stronger activation of CORSET8 cells compared to endogenous Tetramer+ cells could partly reflect the higher precursor frequency of transferred CORSET8 cells rather than purely higher TCR affinity.",
+            "The difference could also reflect that 4 days post-transfer is too early for the rare endogenous clones to have fully activated and expanded."
+          ],
+          "required_assumptions": [
+            "Tetramer staining intensity and activation marker expression are reliable surrogates for TCR affinity and T cell engagement.",
+            "The comparison is meaningful despite the vast numerical difference between transferred CORSET8 cells and endogenous Tetramer+ cells."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.1",
+        "label": "Endogenous CD8 T cells in SARS-CoV-2 infected recipient mice did not upregulate …",
+        "claim": "Endogenous CD8 T cells in SARS-CoV-2 infected recipient mice did not upregulate CD44, demonstrating that only the transgenic T cells were engaged at this early time point.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Endogenous CD8 T cells from the recipient SARS-CoV-2 infected mice (CD45.2) did not upregulate CD44, demonstrating that only the transgenic T cells were engaged.",
+        "evaluation": {
+          "node_id": "c1.4.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "CD44 expression data on endogenous CD45.2 CD8 T cells are shown in Figure 4H with statistical comparison.",
+            "The finding is consistent with the expected kinetics of an early immune response, where adoptively transferred high-frequency monoclonal cells would be expected to respond faster than rare endogenous clones."
+          ],
+          "weaknesses": [
+            "The claim that 'only the transgenic T cells were engaged' is an overstatement. CD44 is just one activation marker, and absence of CD44 upregulation at day 4 post-transfer (day 6 post-infection) does not prove that endogenous cells are entirely unengaged—they may be in early stages of activation not yet detectable by CD44.",
+            "At 6 days post-infection with SARS-CoV-2, some endogenous CD8 T cell activation would be expected to be beginning, though peak responses typically occur later (day 7-10). The time point chosen may simply be too early to detect endogenous responses.",
+            "No other activation markers on endogenous cells in the SARS-CoV-2 model are shown (unlike the vaccination model where multiple markers were assessed)."
+          ],
+          "alternative_interpretations": [
+            "Endogenous T cells may be in early activation stages not yet reflected by CD44 upregulation.",
+            "The high number of transferred CORSET8 cells (1×10⁶) could suppress endogenous responses through competition for antigen or cytokines.",
+            "CD44 alone is insufficient to conclude complete lack of engagement of endogenous T cells."
+          ],
+          "required_assumptions": [
+            "CD44 upregulation is a sensitive and early marker of T cell engagement.",
+            "The time point (4 days post-transfer, 6 days post-infection) is appropriate to detect any endogenous T cell activation.",
+            "The number of transferred CORSET8 cells does not suppress endogenous responses."
+          ],
+          "notes": "The word 'only' in the claim makes this an overstatement relative to what CD44 data alone can demonstrate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.2",
+        "source": "c1.1.2",
+        "target": "c1.1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.2",
+        "source": "c1.3.1",
+        "target": "c1.3.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.2.1",
+        "source": "c1.4.2",
+        "target": "c1.4.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.1",
+        "source": "c1.4.3",
+        "target": "c1.4.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 34,
+    "total_edges": 33,
+    "max_depth": 3,
+    "high_support_nodes": 6,
+    "low_support_nodes": 5,
+    "overall_assessment": "The paper's 34 claims show mixed overall support when weighted by centrality (weighted support score 0.58, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “This rationalized approach is highly time-efficient compared to classical methods and is generalizable to any antigen of interest.” (5 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

@@ -1,0 +1,59 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to the understanding of circRNA function by proposing a novel IGF2BP2-nucleation model for circHIPK3, challenging the prevailing miRNA sponge paradigm. The evidence supporting the circHIPK3-IGF2BP2 interaction via the 11-mer motif is **solid**, drawing on orthogonal computational and experimental approaches, but the central mechanistic claim — that circHIPK3 nucleates IGF2BP2 condensates to regulate gene expression — rests on **incomplete** evidence that requires substantial strengthening before the model can be considered established.
+
+**Summary**
+
+This paper investigates the gene-regulatory function of the circular RNA circHIPK3 in bladder cancer cell lines. The authors first argue against the widely cited miRNA sponge hypothesis by showing that miRNA target sites are not enriched in genes downregulated upon circHIPK3 knockdown and that circHIPK3 copy numbers (~40–51 per cell) are too low for effective sponging. Using unbiased Regmex motif enrichment analysis of time-course knockdown RNA-seq data, they identify an 11-mer motif within circHIPK3 that is enriched in the 3′UTRs of downregulated genes. Mining ENCODE eCLIP datasets and performing RNA immunoprecipitation, they identify IGF2BP2 as the cognate RNA-binding protein for this motif. The authors propose that circHIPK3 functions as a competing endogenous RNA (ceRNA) for IGF2BP2, sequestering it away from target mRNAs such as STAT3. Recognizing that IGF2BP2 outnumbers circHIPK3 by ~3,000–5,000-fold, the authors propose that circHIPK3 nucleates multiple IGF2BP2 molecules into cytoplasmic condensates, potentially via phase separation, to reconcile the stoichiometric mismatch. This model represents an intriguing conceptual advance for the circRNA field, but the condensation mechanism is supported by a single overexpression immunofluorescence experiment with very small sample sizes.
+
+**Strengths**
+
+- **Systematic refutation of the miRNA sponge hypothesis**: The paper rigorously evaluates this prevailing model using multiple complementary approaches — Chi-square tests of miRNA target site enrichment in DE genes, unbiased Regmex analysis of all 1,032 circHIPK3 7-mers showing small effect sizes for miRNA motifs, and absolute copy number quantification. This multi-layered negative result is well-supported (high-support claims) and provides an important corrective to the field.
+
+- **Unbiased motif discovery and cross-validation of the 11-mer**: The convergence of nine of ten top-scoring Regmex 7-mers onto a single 11-mer motif (AGGCCCCCAGC), replicated across three independent BC cell lines (UMUC3, J82, FL3) with highly significant enrichment statistics, represents a rigorous computational discovery. The independent validation by eCLIP overlap and RIP in multiple cell lines constitutes strong orthogonal evidence (high support).
+
+- **Direct demonstration of the circHIPK3-IGF2BP2 interaction**: RIP experiments across four cell lines (HepG2, K562, FL3, HEK293), combined with the mutagenesis experiment showing ~twofold reduced IGF2BP2 binding upon 11-mer scrambling (p = 0.028), provide direct experimental evidence for the interaction and the motif's contribution (high support).
+
+- **Functional validation through double knockdown rescue**: The restoration of STAT3, NEU, and TRAPPC9 expression upon combined circHIPK3/IGF2BP2 knockdown provides strong functional evidence for the opposing regulatory relationship predicted by the ceRNA model (high support).
+
+- **Intellectual honesty regarding stoichiometric mismatch**: The authors' absolute quantification revealing orders-of-magnitude excess of IGF2BP2 over circHIPK3, and their transparent acknowledgment that this undermines a simple ceRNA model, reflects commendable scientific rigor. The explicit discussion of alternative mechanisms (scaffolding, post-translational modification) further strengthens the paper's credibility.
+
+- **Robust experimental design for knockdown transcriptomics**: The time-series design with five time points, three biological replicates, two independent cell lines, and junction-specific siRNA that does not affect linear HIPK3 mRNA/protein provides a well-controlled foundation for the DE gene analysis (high support for specificity and reproducibility claims).
+
+**Weaknesses / Essential Revisions**
+
+- **The condensation/nucleation model — the paper's central mechanistic novelty — is inadequately supported.** The key evidence (80% vs. 29% of cells with IGF2BP2 condensates upon circHIPK3 overexpression) derives from a single experiment with extremely small sample sizes (28 and 34 cells), no reported statistical test, and critically, uses ectopic overexpression that creates supraphysiological circHIPK3 levels. No biochemical characterization of the condensates is provided (e.g., FRAP to assess liquid-like properties, 1,6-hexanediol sensitivity, co-localization with stress granule or P-body markers). The 29% baseline in control cells raises the possibility that these are pre-existing structures enhanced non-specifically. Without evidence that this mechanism operates at endogenous circHIPK3 levels or that the condensates are functionally relevant (i.e., affect target gene expression), this claim remains speculative. At minimum, the authors should (i) substantially increase sample sizes and provide statistical testing, (ii) include controls with other overexpressed circRNAs to demonstrate specificity, (iii) perform basic phase separation characterization, and (iv) attempt to demonstrate condensation at or near endogenous expression levels.
+
+- **The ASO experiment targeting the 11-mer fails to reach statistical significance**, fundamentally weakening the evidence for motif-dependent competition at endogenous levels. The IGF2BP2-STAT3 binding increase upon ASO treatment is not significant (p = 0.078), and the circHIPK3-IGF2BP2 binding reduction is clearly non-significant (p = 0.27). This is the most direct test of the ceRNA model at endogenous levels and effectively constitutes a negative result. The authors should either increase statistical power (more replicates), optimize the ASO approach, or temper their claims about motif-dependent competition accordingly.
+
+- **The claim that IGF2BP2 functions as an mRNA destabilizer for its targets contradicts the well-established consensus** that IGF2BP2 primarily stabilizes target mRNAs (Huang et al., 2018, Nature). The entire ceRNA model — where circHIPK3 sequestration of IGF2BP2 leads to target mRNA stabilization — depends on this assumption. The authors cite only one tethering study (Luo et al., 2020) to support destabilization. This fundamental discrepancy must be addressed with either direct experimental evidence (e.g., mRNA half-life measurements upon IGF2BP2 manipulation) or a much more thorough discussion of how a destabilizing function can be reconciled with the broader literature.
+
+- **The unresolved paradox between circHIPK3's proposed tumor suppressor role and its regulation of STAT3** creates a significant internal inconsistency. If circHIPK3 knockdown leads to STAT3 downregulation, and STAT3 is generally pro-oncogenic, then loss of circHIPK3 should be anti-tumorigenic — the opposite of what the clinical data suggest. The authors commendably acknowledge this paradox but do not resolve it, which undermines the biological coherence of the proposed model.
+
+- **The distinction between direct and indirect targets is not addressed.** With only ~40–51 circHIPK3 molecules per cell, the finding that thousands of genes are differentially expressed upon knockdown (3,072 in UMUC3, 2,389 in J82) strongly suggests that the vast majority are indirect targets. The paper conflates these with direct circHIPK3 regulation. The authors should attempt to distinguish primary from secondary effects, for example by correlating DE genes with the kinetics of their response (early vs. late responders) or by integrating with IGF2BP2 eCLIP data to identify high-confidence direct targets.
+
+- **Cross-cell-type comparisons introduce significant confounds.** The ceRNA model's key supporting evidence — opposing effects of circHIPK3 KD (in BC cells) and IGF2BP2 KD (in K562/HepG2) — relies on comparing different cell types. This could produce apparent opposing effects simply because different genes are expressed or regulated differently in BC vs. leukemia/liver cancer cells. IGF2BP2 knockdown in the same BC cell lines would substantially strengthen this comparison.
+
+- **The 11-mer motif definition allowing two mismatches is insufficiently validated.** Two mismatches in an 11-mer substantially broadens the matching criteria and risks high false-positive rates. The authors should provide sensitivity analyses showing how enrichment statistics change across mismatch thresholds (0, 1, 2, 3) and perform permutation tests controlling for sequence composition (GC content) to ensure the enrichments are not driven by the GC-rich nature of the motif.
+
+**Minor Comments**
+
+- The FDR threshold of 0.1 for DE gene calling is relatively permissive by current standards. The authors should report how many genes remain significant at FDR < 0.05 and whether the key conclusions (motif enrichment, pathway analysis) are robust to this more stringent threshold.
+
+- EdU-flow cytometry results showing only "subtle differences" in cell cycle distribution should be quantified and statistically tested, rather than described qualitatively, given that cell cycle/proliferation pathways are highlighted as key downstream effects.
+
+- The extremely significant p-value for p53 IF (p = 1.7e-30) likely reflects the large number of cells analyzed; reporting effect sizes (fold-change, Cohen's d) alongside p-values would be more informative for biological interpretation.
+
+- The observation that IGF2BP2 copy numbers in BC cell lines are 10–25× higher than published HeLa estimates (Bekker-Jensen et al., 2017) warrants discussion, as it raises questions about whether the extreme stoichiometric mismatch is specific to these cell lines.
+
+- For the initial RIP experiments (Figure 3B), gel-based semi-quantitative RT-PCR should be supplemented with qPCR-based quantification for consistency with later experiments.
+
+- The survival analysis (n = 56) would be strengthened by multivariate analysis controlling for known prognostic factors (stage, grade, age) and by using an independently determined expression cutoff rather than the median.
+
+- A second independent siRNA or rescue experiment with circHIPK3 re-expression would substantially strengthen the specificity argument for the transcriptomic perturbation data.
+
+**Recommendation**
+
+Major Revisions
+
+While the paper presents a valuable and thought-provoking model supported by strong computational evidence and solid interaction data (46 of 62 claims with high support), the central mechanistic novelty — IGF2BP2 condensation/nucleation by circHIPK3 — is supported by inadequate evidence (low-support claims for both the condensation phenotype and the ASO experiment), and the critical assumption that IGF2BP2 destabilizes target mRNAs contradicts established literature without sufficient justification. These issues, combined with the unresolved tumor suppressor paradox, require substantial additional experimentation and/or significant revision of claims before the paper meets eLife's standards for a mechanistic study.

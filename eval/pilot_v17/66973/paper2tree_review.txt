@@ -1,0 +1,50 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to understanding the roles of 5-hydroxymethylcytosine in postmitotic neuronal differentiation, supported by **solid** multi-omic evidence that Tet enzymes are required for DNA demethylation in postmitotic Purkinje cells. However, the mechanistic interpretation invoking the TDG-BER active demethylation pathway rests on incomplete evidence, and the claimed essentiality of this process is undermined by the absence of a functional phenotype and by lenient statistical thresholds applied to differential expression analyses.
+
+**Summary**
+
+This paper investigates the role of 5-hydroxymethylcytosine (5hmC) in the terminal differentiation of cerebellar Purkinje cells (PCs) using high-resolution multi-omic profiling (OxBSSeq, RNASeq, ATACSeq, ChIPSeq) at three developmental timepoints (P0, P7, adult) in combination with a postmitotic triple knockout of all three Tet enzymes (Pcp2TetTKO). The authors report that a specific class of highly expressed, PC-specific genes lose both 5mC and 5hmC to form very large DNA methylation valleys (DMVs) during terminal differentiation, and that this process requires continued Tet activity. Additionally, developmentally repressed genes are classified into two epigenetically distinct groups based on CH-context modification. Loss of all three Tet enzymes after P7 prevents demethylation at late-forming DMVs while leaving early-established DMVs intact, and results in altered expression of hundreds of genes. The authors conclude that Tet-mediated active DNA demethylation—proposed to proceed through the TDG-BER pathway—occurs in vivo in postmitotic neurons, and that this process is essential for acquisition of the precise molecular properties of adult PCs.
+
+**Strengths**
+
+- **Postmitotic triple knockout design**: The use of Pcp2-Cre to delete all three Tet genes after cell cycle exit is a technically elegant approach that eliminates confounds from passive, replication-dependent dilution of methylation marks. The Cre timing is validated by ROSA26-eGFP reporter crosses, and deletion is confirmed by both PCR and RNASeq (claims on Cre timing and deletion validation are high-support).
+
+- **Comprehensive multi-omic profiling with appropriate resolution**: OxBSSeq at three developmental timepoints provides definitive separation of 5mC and 5hmC signals, and the necessity of this approach is convincingly demonstrated by the Prkg1 example, where a 5mCG→5hmCG transition is invisible to standard BSSeq. Data quality is strong, with Pearson correlations >0.9 between biological replicates across all techniques (high-support evidence claims).
+
+- **Discovery of very large DMVs at PC-specific genes**: The progressive loss of both 5mCG and 5hmCG at highly expressed PC-specific genes (e.g., Itpr1, Mtss1, Gpr63, Grid2) to form DMVs exceeding 15 kb is convincingly documented across three timepoints by OxBSSeq, corroborated by independent BSSeq experiments, and confirmed to require Tet activity by the TKO data (high-support primary claim).
+
+- **Internal temporal control via early vs. late DMVs**: The observation that DMVs established before P7 (e.g., Hox cluster, Calb1) are unaffected in the Pcp2TetTKO while DMVs forming after P7 (e.g., Gpr63, Grid2) are strongly impaired is one of the most compelling pieces of evidence in the paper, serving as a built-in control for the timing of Tet deletion (high-support).
+
+- **Two distinct epigenetic classes of repressed genes**: K-means clustering separates developmentally repressed genes into highCHmod and lowCHmod classes with orthogonal validation by promoter accessibility, H3K27me3, and GO analysis. The finding that 5hmCG persists or increases in repressed gene bodies—demonstrating that functional demethylation is insufficient to maintain transcription—adds important nuance to the field (high-support).
+
+- **Cell-type purity validation**: Sorted nuclei expressing PC markers and lacking granule cell and glial markers, combined with spike-in controls confirming bisulfite conversion rates within expected ranges, establish confidence in the technical foundation (high-support).
+
+**Weaknesses / Essential Revisions**
+
+- **The TDG-BER pathway is inferred, not demonstrated (low-support claim)**: The central mechanistic claim—that active demethylation proceeds through Tet-mediated oxidation of 5hmC to 5fC and 5caC, followed by TDG-BER removal—lacks direct evidence. 5fC and 5caC were not detected by mass spectrometry, and TDG was neither knocked out nor inhibited. The authors acknowledge this is "the simplest interpretation," but alternative mechanisms (nucleotide excision repair, transcription-coupled repair, deamination pathways) are not excluded. At minimum, the authors should (1) report the sensitivity limits of their mass spectrometry assay and whether positive controls were included, (2) temper the title and abstract language to reflect that Tet-dependent demethylation—rather than specifically TDG-BER-mediated active demethylation—is what is demonstrated, and (3) explicitly discuss alternative downstream mechanisms.
+
+- **"Essential" and "required" language is not supported by the phenotypic data**: The title claims active demethylation is "required for mammalian neuronal differentiation and function," yet the Pcp2TetTKO mice show normal survival, normal body weight, and normal rotarod performance (high-support evidence). This creates a fundamental tension with the claimed essentiality. While hundreds of genes are differentially expressed, the absence of a functional consequence—even by a crude assay—significantly weakens claims of necessity. The authors should either perform more sensitive behavioral assays (eyeblink conditioning, optokinetic reflex, gait analysis) or substantially revise the language to reflect that Tet activity is required for molecular refinement rather than for functional differentiation.
+
+- **Lenient statistical thresholds inflate differential expression claims (medium-support claim)**: The TKO differential expression analysis uses p < 0.05 and log2FC > 0.5 with apparently no multiple testing correction and only two biological replicates. With ~15,000+ tested genes, this would yield hundreds of false positives. The resulting 1,269 differentially expressed genes (~10% of expressed genes) may substantially overestimate the true effect. The authors should (1) apply FDR correction, (2) use more stringent thresholds, (3) report the results at multiple threshold levels, and (4) validate key findings by independent methods (qPCR, in situ hybridization).
+
+- **Generalization to other neuronal types is unsupported (low-support claims)**: The claims that "most differentiating, postmitotic neurons" likely require Tet-dependent active demethylation, and that this is "particularly important for large projection neurons," are entirely speculative with no supporting data from any other cell type. These statements should be clearly framed as hypotheses, not conclusions.
+
+- **Ion channel transcriptional changes lack functional validation (medium-support evidence)**: The claim that ion channel genes are affected in the TKO and "should impact the fine-tuned physiology of PCs" is not supported by electrophysiological data. Given the absence of a behavioral phenotype, it is unclear whether these transcript-level changes translate to functional consequences. Electrophysiological characterization or, at minimum, protein-level validation of key ion channel changes would substantially strengthen this claim.
+
+- **5'-to-3' directionality of demethylation is not rigorously established (medium-support claim)**: The claim that demethylation is initiated at the 5' end and spreads toward the 3' end is based on visual inspection of genome browser tracks for select genes rather than systematic quantitative analysis. No statistical test for directional bias is described. This could simply reflect proximity to promoter-associated chromatin remodeling. A systematic analysis across all DMV genes with appropriate statistical testing is needed.
+
+**Minor Comments**
+
+- The text contains a likely typo: "H4K4me3" should be "H3K4me3."
+- The precise number of genes in the "specific class" that form very large DMVs is never clearly enumerated—quantifying this would improve clarity.
+- The comparison to MeCP2 loss phenotypes is described as "reminiscent of" but no quantitative comparison is made; this vague analogy could be misleading given that MeCP2 loss produces clear neurological phenotypes while the Pcp2TetTKO does not.
+- The k-means clustering with k=2 for repressed genes is imposed without validation (e.g., silhouette analysis, gap statistic). Demonstrating that two clusters is the optimal or at least a well-justified choice would strengthen the claim of distinct classes versus a continuum.
+- The contribution of changes in DNMT activity to the global decrease in 5mCG is not addressed—this alternative explanation for part of the observed demethylation should be discussed.
+- The description of the three proposed functions of 5hmC (passive demethylation, functional demethylation, active demethylation) would benefit from a clearer delineation of which functions are demonstrated versus inferred in this study.
+
+**Recommendation**
+
+Major Revisions
+
+The descriptive multi-omic data are of high quality and the postmitotic triple knockout is well-designed (36 of 51 claims are high-support), but the mechanistic claim of TDG-BER-mediated active demethylation is inadequately supported, the "essential" framing is contradicted by the absence of a phenotype, and the differential expression analysis employs statistical thresholds that do not meet eLife's standards for rigor—these critical issues (spanning 4 low-support and several medium-support claims at the primary level) must be addressed before publication.

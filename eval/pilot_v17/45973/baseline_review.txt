@@ -1,0 +1,38 @@
+**eLife Assessment**
+This study presents a potentially useful concept of recruiting enhancer DNA elements to target gene promoters via CRISPR/dCas9, but the central mechanistic claim — that the trans enhancer is physically recruited and functions analogously to a looped cis enhancer — rests on inadequate evidence. Key controls and direct demonstration of the proposed molecular mechanism are absent, and the experimental design does not rule out alternative explanations for the observed gene activation.
+
+**Summary**
+The authors propose a novel dCas9-based gene activation strategy termed the "CRISPR-assisted trans enhancer." The system uses a modified sgRNA (csgRNA) bearing a 3′ capture sequence that anneals to a complementary single-stranded overhang on a linear CMV enhancer fragment (sCMV). The authors hypothesize that dCas9/csgRNA recruits the sCMV to a target gene's promoter, where the CMV enhancer functions like a natural looped cis enhancer in trans. They report activation of an exogenous reporter gene and ten endogenous genes across seven cell lines, claiming the system outperforms dCas9-VP64 and dCas9-VPR. They further describe a GAL4-UAS-based version for improved in vivo applicability. The concept of recruiting an enhancer DNA element in trans to activate transcription is creative and, if rigorously validated, could represent a meaningful advance in CRISPR-based transcriptional activation.
+
+**Strengths**
+- The conceptual framework — mimicking natural enhancer-promoter looping with an artificially recruited trans enhancer — is original and distinct from existing dCas9-based activation architectures (VP64, VPR, SAM, SunTag).
+- The study tests activation across a reasonably broad panel of cell lines (seven) and endogenous target genes (ten), providing breadth to the gene activation claims.
+- The observation that blunt-end CMV (bCMV) fails to activate while stick-end CMV (sCMV) succeeds provides initial suggestive evidence that the capture sequence–overhang interaction is important.
+- The GAL4-UAS implementation is a pragmatic engineering step toward AAV-compatible in vivo delivery.
+- The use of single sgRNAs (rather than multiple) for gene activation is a practical advantage if the system proves robust.
+
+**Weaknesses / Essential Revisions**
+- **No direct evidence of physical recruitment of the trans enhancer to the target locus.** The central mechanistic claim — that sCMV is recruited to the promoter via csgRNA annealing — is never directly demonstrated. ChIP-qPCR or ChIP-seq using primers/probes specific to the CMV enhancer sequence at the target locus, or fluorescence-based proximity assays (e.g., FISH co-localization), are essential to validate the proposed mechanism.
+- **The annealing of sCMV to csgRNA inside the dCas9 complex is assumed, not shown.** The 3′ end of sgRNA is partially buried within the Cas9/dCas9 protein (structural studies show extensive protein-RNA contacts). Whether a 24-nt extension at the 3′ end of sgRNA remains accessible for DNA annealing within the ribonucleoprotein complex in living cells has not been demonstrated. In vitro annealing or gel-shift assays showing dCas9/csgRNA–sCMV complex formation are needed.
+- **Critical controls are missing.** (1) A sCMV with a non-complementary overhang (scrambled sequence) is needed to distinguish sequence-specific annealing from non-specific effects of single-stranded overhangs. (2) A csgRNA with a scrambled capture sequence should be tested to confirm specificity. (3) Free linear CMV enhancer (without overhang) transfected at equivalent amounts should be tested to rule out that any free enhancer DNA in the nucleus provides non-specific transcriptional activation.
+- **No assessment of genome-wide specificity.** RNA-seq is necessary to determine whether the trans enhancer causes widespread off-target gene activation, particularly given that free CMV enhancer DNA in the nucleus could bind endogenous transcription factors (NF-κB, CREB, AP-1) and activate non-target genes.
+- **Transfection normalization is lacking.** Different constructs (linear PCR products vs. plasmids) likely have different transfection efficiencies and nuclear stability. No normalization for transfection efficiency (e.g., co-transfection of a constitutive reporter) is described. The amount of sCMV delivered to the nucleus relative to dCas9/csgRNA is unknown.
+- **Stability of sCMV in cells is not addressed.** Linear DNA with single-stranded overhangs is highly susceptible to exonuclease degradation. The effective intracellular half-life of sCMV should be measured; degradation kinetics could fundamentally limit the system's utility.
+- **The comparison with VPR is limited.** Only one sgRNA target site per gene and two cell lines are used for the VPR comparison. A fair comparison requires testing multiple sgRNA positions and ideally using the SAM and SunTag systems as well, as these were identified as the most potent activators alongside VPR.
+- **The differentiation phenotype claims (Figure 4) are not substantiated.** Changes in mRNA levels of differentiation markers do not demonstrate functional differentiation. No morphological characterization, proliferation assays, functional assays (e.g., albumin secretion for hepatocyte-like differentiation), or protein-level validation is provided.
+- **Dose-response relationship not explored.** The amount of sCMV transfected relative to other components is not systematically varied. Understanding whether activation scales with sCMV dose is important for interpreting the mechanism.
+- **Statistical analysis is insufficient.** Multiple comparisons across many genes and cell lines are performed using uncorrected Student's t-tests. Appropriate multiple testing correction (e.g., Bonferroni, Benjamini-Hochberg) should be applied. The sample size (n=3 biological replicates) is small, and some error bars appear unusually tight, raising questions about true biological variability.
+
+**Minor Comments**
+- The manuscript would benefit from a schematic showing structural data on where the 3′ end of sgRNA is positioned within the dCas9 complex to support the plausibility of overhang annealing.
+- Figure labeling is inconsistent (e.g., Figure 2 references panels a, b, c, but the text describes panels that don't clearly match).
+- The term "trans enhancer" may be confusing in the epigenetics/chromatin biology field, where "trans" regulation typically refers to regulation from a different chromosome. The authors should clarify terminology.
+- The paper lacks protein-level validation (Western blot) for any of the activated genes.
+- The discussion overstates the in vivo applicability without any in vivo data.
+- The claim that this is "the first report of a gene being activated by an artificial DNA in trans" is difficult to verify and should be tempered.
+- Several supplementary files are referenced but not fully accessible for review; these should be carefully checked for completeness.
+- Writing quality could be improved; several sentences are unclear or contain grammatical errors (e.g., "panaceas" should be "pancreas").
+
+**Recommendation**
+Reject
+The paper introduces a creative concept, but the absence of direct mechanistic evidence for the proposed recruitment mechanism, the lack of critical controls to rule out alternative explanations, and insufficient specificity and functional characterization place the current evidence well below eLife's standard for convincing support of the central claims.

@@ -1,0 +1,57 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to understanding how reactive oxygen species, vimentin, and collagen fiber dynamics are integrated during zebrafish caudal fin regeneration. The evidence supporting the individual links in the proposed pathway is generally **solid**, with strong genetic validation of vimentin's requirement for regeneration, but the central mechanistic claim — that collagen fibers *guide* epithelial extensions — rests on **incomplete** evidence, as the causal directionality of this relationship is not established.
+
+**Summary**
+
+This paper proposes a multi-step signaling pathway (ROS → NFκB → vimentin → collagen fiber projections → epithelial cell extensions → regeneration) operating during zebrafish larval caudal fin wound repair. The authors generate a vimentin promoter reporter line, demonstrate that wound-induced ROS are required for vimentin expression at the wound margin, show that vimentin is necessary for efficient regeneration and collagen expression, and use second harmonic generation (SHG) time-lapse imaging to reveal dynamic collagen fiber projections that spatiotemporally associate with epithelial cell extensions at the wound edge. Burn wound and pharmacological collagen perturbation experiments are used to argue that collagen fiber integrity is necessary for epithelial projection formation and regenerative outgrowth. The study is ambitious in scope, connecting redox signaling to extracellular matrix reorganization and tissue-level morphogenesis, and the live SHG/fluorescence imaging of collagen-epithelial dynamics is technically innovative and visually compelling.
+
+**Strengths**
+
+- **Vimentin is required for efficient wound healing (c1.4):** This is the best-supported claim in the paper. Multiple independent loss-of-function approaches — two morpholinos, RNA rescue, and F0 CRISPR mosaics — converge on a regeneration defect with large sample sizes (n=85–130 per group), strong statistical significance (p<0.0001), and no developmental fin phenotype in unwounded controls. Consistency with mammalian vimentin knockout studies (Eckes et al., 2000; Cheng et al., 2016) further strengthens this finding.
+
+- **Vimentin depletion impairs collagen fiber organization at the wound edge (c1.6.5):** CurveAlign analysis of SHG fiber contour length (p=0.0009) and fiber angle (p=0.0003) in vimentin morphants, with adequate sample sizes (n=30–33 per group over four replicates), provides rigorous quantitative evidence that vimentin regulates collagen fiber architecture during repair.
+
+- **Vimentin depletion reduces wound-induced collagen expression (c1.6.2):** qRT-PCR data showing reduced col1a1 (p=0.004, n=6) and col2a1b (p=0.0404, n=5) in vimentin morphants provides in vivo confirmation of prior in vitro findings on vimentin-collagen regulatory relationships (Challa and Stefanovic, 2011).
+
+- **Reporter validation and wound-induced vimentin expression (c1.1, c1.2.1):** The Tg(−2vim:egfp) reporter is validated against published in situ data, and wound-induced vimentin expression is demonstrated by two independent methods (WMISH and live reporter imaging) with appropriate controls, including sense probe controls.
+
+- **Technical innovation in live SHG/fluorescence dual imaging (c1.5.3):** The simultaneous live imaging of SHG collagen fibers and krt4:egfp-caax epithelial membranes over extended periods is technically impressive and provides novel spatiotemporal data on the wound healing process that has not been previously reported.
+
+**Weaknesses / Essential Revisions**
+
+- **The central "guidance" claim is overclaimed (ROOT, c1.5):** The paper's most important mechanistic assertion — that collagen fibers *guide* or *push* epithelial cells outward — is supported only by spatial and temporal co-occurrence from imaging. No causal experiment establishes directionality: integrin inhibition, laser ablation of individual fibers, or traction force microscopy would be needed to distinguish collagen guiding epithelia from epithelia shaping collagen, or from both being independently regulated. The language throughout ("guide," "push," "induce physical stress") should be revised to accurately reflect the correlative nature of the evidence, or direct perturbation experiments should be provided.
+
+- **The burn wound experiment cannot isolate collagen fiber integrity as the causal variable (c1.7, c1.7.2):** The comparison between burn and transection wounds is presented as evidence that collagen fiber destruction specifically impairs epithelial projections and regeneration. However, burn wounds differ from transection in cell death extent, protein denaturation, inflammatory response, and depth of damage. This comparison cannot isolate collagen fiber integrity as the relevant variable. The authors should either provide an orthogonal approach that specifically disrupts collagen fibers without these confounds, or substantially revise their claims to acknowledge that the burn data is consistent with, but does not demonstrate, a collagen-specific mechanism.
+
+- **Pharmacological specificity issues undermine pathway delineation (c1.3):** DPI is a broad-spectrum flavoprotein inhibitor, not specific to NADPH oxidases, and Withaferin A inhibits both NFκB and vimentin protein directly. The ROS → NFκB → vimentin transcriptional pathway is therefore not cleanly dissected pharmacologically. The NFκB link in particular relies entirely on WA, whose confounding effects the authors acknowledge but still use to support the pathway. Genetic approaches (e.g., dominant-negative NFκB, IκB super-repressor) or more specific inhibitors would substantially strengthen this claim.
+
+- **Small sample sizes and modest effect sizes for the ROS → vimentin link (c1.3.1):** The DPI effect on vimentin reporter intensity is based on only n=12 total fins (2–6 per treatment per replicate) with overlapping confidence intervals at the boundary (DMSO: 1.18–1.33, DPI: 1.07–1.21). The Duox1 morpholino result (c1.3.2) is shown only with representative images and no quantification. These key data points in the pathway require larger sample sizes and rigorous quantification.
+
+- **BAPN toxicity severely limits interpretability (c1.7.1):** BAPN caused lethality at 4–5 dpf, restricting analysis to 2 dpw and raising concerns that the observed regeneration defect reflects toxicity rather than specific collagen cross-linking inhibition. The paradoxical increase in contour length (opposite to the vimentin morphant prediction) further undermines the internal consistency of this approach. The authors' explanation (V-shaped fin morphology) is speculative.
+
+- **Projection quantification methodology is underpowered (c1.5.4, c1.5.5):** The statistical analysis of epithelial projection formation uses n=3 replicate percentages, yielding wide confidence intervals (e.g., vim MO: 7.56%–65.78%). This high variability, combined with subjective binary scoring of "visible projections" without stated blinding, limits confidence in the magnitude of the projection phenotype. The authors should increase replication, implement blinded scoring, and consider more quantitative metrics of projection morphology.
+
+- **Lack of quantification for key co-localization and cell identity experiments (c1.2.3):** The claims that vim+ cells are distinct from epithelial cells and immune cells rely entirely on qualitative assessments. No Pearson's coefficients, cell counts, or statistical analyses are provided for the krt4 co-localization, mpeg1 co-localization, or pu.1 depletion experiments. Furthermore, mpeg1 labels macrophages but not all immune cell types, making the broader claim of distinction from "immune cells" overstated.
+
+- **The vimentin reporter autoregulation experiment may be trivially uninformative (c1.4.5):** The observation that the vimentin reporter is still active in vimentin morphants is presented as evidence that vimentin is not required for its own promoter activation. However, if the morpholino is splice-blocking and the reporter construct contains only promoter sequence without introns, the MO would not be expected to affect the reporter, making this result trivially expected rather than biologically meaningful. This should be clarified.
+
+**Minor Comments**
+
+- The col1a1 qRT-PCR result at 8 hpw (p=0.0779) is presented without clear interpretation of what this non-significant trend means for the model. The authors should either discuss its implications or remove it from the narrative.
+
+- The number of larvae imaged by dual SHG/fluorescence time-lapse is not stated; this should be reported explicitly for reproducibility.
+
+- The Larp6 morpholino regeneration data comes from a single experiment performed in triplicate rather than independent biological replicates; this limitation should be stated more prominently.
+
+- The slight increase in fin area in unwounded CRISPR F0 mosaics (Figure 3—figure supplement 3G) should be discussed, as it complicates the claim of purely wound-specific effects.
+
+- The identification of SHG-generating structures as "collagen" throughout the paper is indirect. The authors should acknowledge that actinotrichia contain non-collagen components (elastoidin) that could contribute to the SHG signal.
+
+- EGFP maturation and perdurance kinetics should be discussed as potential confounds for the temporal dynamics reported with the vimentin reporter.
+
+**Recommendation**
+
+Major Revisions
+
+The paper presents a valuable integrative model with strong evidence for vimentin's requirement in fin regeneration and solid supporting data for most individual links in the proposed pathway. However, the central mechanistic claim — that collagen fibers guide epithelial extensions — is overclaimed relative to the correlative evidence provided, and two key experimental approaches (burn wound comparison and BAPN treatment) have substantial confounds that prevent the conclusions drawn from them. Revisions should focus on (1) recalibrating causal language to match the correlative evidence or providing direct perturbation experiments, (2) strengthening quantification of the ROS–vimentin link and projection analyses, and (3) addressing the pharmacological specificity limitations through additional controls or revised claims.

@@ -1,0 +1,2009 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_36774",
+    "title": "Constraints on neural redundancy",
+    "authors": [
+      "Jay A Hennig",
+      "Matthew D Golub",
+      "Peter J Lund",
+      "Patrick T Sadtler",
+      "Emily R Oby",
+      "Kristin M Quick",
+      "Stephen I Ryu",
+      "Elizabeth C Tyler-Kabara",
+      "Aaron P Batista",
+      "Byron M Yu",
+      "Steven M Chase"
+    ],
+    "url": "https://doi.org/10.7554/eLife.36774",
+    "abstract": "Millions of neurons drive the activity of hundreds of muscles, meaning many different neural population activity patterns could generate the same movement. Studies have suggested that these redundant (i.e. behaviorally equivalent) activity patterns may be beneficial for neural computation. However, it is unknown what constraints may limit the selection of different redundant activity patterns. We leveraged a brain-computer interface, allowing us to define precisely which neural activity patterns were redundant. Rhesus monkeys made cursor movements by modulating neural activity in primary motor cortex. We attempted to predict the observed distribution of redundant neural activity. Principles inspired by work on muscular redundancy did not accurately predict these distributions. Surprisingly, the distributions of redundant neural activity and task-relevant activity were coupled, which enabled accurate predictions of the distributions of redundant activity. This suggests limits on the extent to which redundancy may be exploited by the brain for computation.",
+    "word_count": 15573,
+    "processed_at": "2026-07-10T01:28:27.149776+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "The distribution of redundant (output-null) neural activity is coupled with task…",
+        "claim": "The distribution of redundant (output-null) neural activity is coupled with task-relevant (output-potent) activity, meaning neural redundancy is resolved differently from muscular redundancy and there are constraints on the extent to which neural circuits can exploit redundancy for computation.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Introduction",
+        "verbatim_quote": "We found strong evidence for the third hypothesis, that redundant activity is coupled with task-relevant activity. This indicates that neural redundancy is resolved differently than muscular redundancy.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The Fixed Distribution hypothesis consistently outperformed all alternatives across 41 of 42 sessions and three animals, providing robust and reproducible evidence for coupling between output-potent and output-null activity.",
+            "The experimental design using two different BCI mappings is well-constructed: predictions are built from one mapping and evaluated on the other, avoiding circularity.",
+            "The analysis in Figure 6 directly tests whether variance changes when dimensions switch from output-potent to output-null, providing the most discriminating test among the hypotheses. The observed small change in variance is inconsistent with both minimal firing (large decrease predicted) and uncontrolled (increase predicted) hypotheses.",
+            "Multiple error metrics (histogram, mean, covariance) all converge on the same conclusion, lending robustness to the core finding that Fixed Distribution best predicts output-null activity.",
+            "The use of the animal's internal model of the BCI mapping to define output-null dimensions, with verification that results hold without this correction (Figure 5—figure supplement 3), strengthens confidence in the core result.",
+            "The analysis is performed in dimensions that changed from output-potent to output-null (the hardest test case), and the Fixed Distribution hypothesis still provides the best predictions."
+          ],
+          "weaknesses": [
+            "INFERENTIAL GAP (from c1.4): The claim that 'neural redundancy is resolved differently from muscular redundancy' is overstated. The paper tests specific simplified implementations of minimal energy and minimal intervention principles. The authors themselves acknowledge that OFC with an appropriate cost function could potentially predict their findings, which substantially undermines the categorical claim of a fundamental difference between neural and muscular redundancy resolution.",
+            "INFERENTIAL GAP (from c1.5): The claim about constraints on the extent to which neural circuits can 'exploit redundancy for computation' is stated broadly but supported only in a BCI cursor control task with a 10D manifold and 2D output. Whether and how these constraints apply to natural motor control or other brain circuits performing computations in output-null spaces (e.g., movement preparation per Kaufman et al., 2014) is not tested and remains speculative.",
+            "EVIDENTIAL GAP (from c1.1): The mean error of 23.5 spikes/s is approximately 3.4x the error floor of 6.9 spikes/s, and the covariance error is 1.4x the floor. While the histogram error (13.4% vs. 6.7% floor) is reasonably close, the paper's characterization of errors being 'exceedingly close' to the floor is overclaimed for mean and covariance metrics, suggesting the Fixed Distribution hypothesis, while best among those tested, does not fully explain the data.",
+            "The BCI setting, while methodologically advantageous for defining redundancy, may not generalize to natural neural circuits. The 10D intrinsic manifold with 2D output-potent and 8D output-null is a specific regime where most dimensions are null, and the coupling observed could be an artifact of constraining activity to a low-dimensional manifold.",
+            "The Persistent Strategy hypothesis (17.4% error) and Fixed Distribution (13.4% error) are relatively close in performance. The key conceptual difference—whether output-null activity is sampled independently of output-potent activity or is yoked to it—is supported by a modest quantitative margin, raising questions about how strongly the data distinguish between 'loose coupling' and 'tight coupling' scenarios.",
+            "The small but significant decrease in variance when dimensions become output-null (Figure 6C, p<0.001), which exceeds the Fixed Distribution prediction, suggests an additional factor at play that none of the hypotheses fully capture, potentially including a mild energy minimization effect.",
+            "More sophisticated metabolic cost functions beyond simple spike count minimization were not tested, leaving open whether a more biologically realistic energy hypothesis could perform better."
+          ],
+          "alternative_interpretations": [
+            "The observed coupling between output-potent and output-null activity could reflect intrinsic network connectivity constraints (i.e., the neural population has limited flexibility to modulate activity independently across dimensions) rather than a principled resolution of redundancy. This would mean the coupling is a structural constraint rather than a computational strategy.",
+            "OFC with a sufficiently rich cost function (as the authors acknowledge) could potentially reproduce the Fixed Distribution predictions, meaning the results may be fully consistent with optimal control theory rather than representing a departure from it.",
+            "The coupling could reflect habitual motor patterns (de Rugy et al., 2012) that are simply maintained across BCI mappings, rather than an active computational principle governing redundancy resolution.",
+            "The Fixed Distribution hypothesis essentially posits that the joint distribution of neural activity is preserved across contexts. This could simply reflect the stability of the underlying neural circuit dynamics (e.g., recurrent connectivity patterns) rather than anything specific about how redundancy is resolved."
+          ],
+          "required_assumptions": [
+            "The 10D intrinsic manifold adequately captures the relevant neural population activity, and activity outside this manifold can be ignored.",
+            "The two BCI mappings used in each experiment are sufficiently different to meaningfully test the hypotheses, particularly in the dimensions that switch between output-potent and output-null.",
+            "The animal's internal model estimation procedure correctly identifies the output-null dimensions as perceived by the animal.",
+            "The BCI paradigm is a valid model system for studying neural redundancy more broadly, and findings generalize beyond this specific experimental context.",
+            "The principles governing redundancy resolution in primary motor cortex during BCI control are representative of those in other cortical areas and during natural behavior.",
+            "The comparison between neural and muscular redundancy is valid despite the fundamentally different nature of the two systems (neural networks vs. musculoskeletal mechanics)."
+          ],
+          "notes": "The root claim is a composite of three distinct sub-claims: (1) output-null activity is coupled with output-potent activity (well supported), (2) neural redundancy is resolved differently from muscular redundancy (overclaimed given the specific implementations tested), and (3) there are constraints on computational use of redundancy (speculative). The strongest evidence supports sub-claim (1), but the paper packages all three together at equivalent confidence levels. The authors do appropriately hedge some of these claims in the Discussion but not in the Abstract/Introduction framing. The slight decrease in variance beyond Fixed Distribution predictions (Figure 6C) and the gap between observed and predicted mean errors suggest the true picture may involve a combination of coupling and mild energetic constraints, rather than coupling alone.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "The Fixed Distribution hypothesis — that the joint distribution of output-null a…",
+        "claim": "The Fixed Distribution hypothesis — that the joint distribution of output-null activity conditioned on output-potent activity is preserved across different BCI mappings — best predicts the observed output-null activity among all hypotheses tested.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The Fixed Distribution hypothesis yielded a lower histogram error than all other hypotheses across sessions from three different animals.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The Fixed Distribution hypothesis achieved the lowest histogram error in 41 of 42 sessions across three animals, demonstrating remarkable consistency.",
+            "Three distinct error metrics (histogram, mean, covariance) all converge on the same conclusion, providing triangulating evidence.",
+            "Results replicate across three monkeys individually (Figure 5—figure supplement 1) and hold under multiple control analyses (reversed mapping order, actual vs. internal model BCI mapping).",
+            "Statistical significance is demonstrated at α=0.001 using Wilcoxon signed rank tests for comparisons against all other hypotheses.",
+            "The study avoids circularity by using activity from one mapping to predict output-null activity under a different mapping."
+          ],
+          "weaknesses": [
+            "Evidential gap from c1.1.4: The mean error of 23.5 spikes/s is about 3.4x the error floor of 6.9 spikes/s, meaning the prediction is clearly not perfect. The paper's description of errors being 'exceedingly close' to the floor is overclaimed for the mean and covariance metrics, even though the histogram error (13.4% vs. 6.7% floor) is closer.",
+            "The covariance error metric is in arbitrary units, making it difficult to assess practical significance of the covariance predictions.",
+            "The one session where Fixed Distribution did not win is not discussed—understanding exceptions could be informative.",
+            "All sessions used similar experimental setups (center-out BCI task with 2D output), so generalizability to other tasks, brain regions, or higher-dimensional outputs remains unknown.",
+            "Only 3 of 8 output-null dimensions are shown visually, selected by variance explained, which could give an overly favorable impression."
+          ],
+          "alternative_interpretations": [
+            "The Fixed Distribution hypothesis uses the most information from prior sessions compared to other hypotheses, so its advantage could partly reflect a data-fitting advantage rather than a mechanistic insight.",
+            "The coupling between potent and null dimensions could be a consequence of the low-dimensional manifold constraint (10D) rather than a fundamental computational principle."
+          ],
+          "required_assumptions": [
+            "The intrinsic manifold (10D) is an appropriate space in which to evaluate neural redundancy.",
+            "The animal's internal model of the BCI mapping is sufficiently well estimated.",
+            "The binning by cursor movement direction (8 bins) is sufficiently fine-grained to capture the relevant conditional distributions.",
+            "The histogram error metric is a meaningful and fair way to compare predicted and observed distributions."
+          ],
+          "notes": "The gap between Fixed Distribution error and the error floor suggests room for a more refined hypothesis, but this does not undermine the claim that Fixed Distribution is the best among those tested.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Minimal firing/energy principles do not play a dominant role in the selection of…",
+        "claim": "Minimal firing/energy principles do not play a dominant role in the selection of redundant neural activity, unlike their role in muscular redundancy.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "we found that minimal energy principles in terms of firing rates do not play a dominant role in the selection of output-null neural activity.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Two versions of minimal firing/energy hypotheses were tested: Minimal Firing (73.2% error) and Minimal Deviation (30.9% error), both performing substantially worse than the Fixed Distribution hypothesis (13.4%).",
+            "The Minimal Deviation hypothesis was given the advantage of cross-validated baseline selection, yet still performed poorly.",
+            "Additional analysis (Figure 6—figure supplement 2) showed that observed mean output-null activity was not closer to minimal firing/deviation predictions than expected under Fixed Distribution (p>0.5).",
+            "The language 'do not play a dominant role' is appropriately hedged rather than claiming complete absence."
+          ],
+          "weaknesses": [
+            "The Minimal Firing hypothesis (minimize total spikes) is a somewhat simplified version of metabolic cost—more sophisticated metabolic cost functions (e.g., accounting for synaptic costs, maintenance costs, or nonlinear spike-rate relationships) were not tested.",
+            "The null result for mean output-null activity moving toward minimal energy predictions (p>0.5) is inherently hard to interpret definitively—power analysis is not reported.",
+            "The paper acknowledges that 'metabolic activity can decrease without corresponding changes in firing rates' (Picard et al., 2013), which means the relevant metabolic constraint could operate at a level not captured by firing rate analyses.",
+            "The Minimal Deviation baseline was fit by cross-validation rather than being grounded in a physiologically motivated quantity, making the comparison somewhat ad hoc."
+          ],
+          "alternative_interpretations": [
+            "Minimal energy principles could still operate at a different level (e.g., synaptic transmission, membrane maintenance) not captured by spike counts.",
+            "A weak minimal energy influence may be present but masked by stronger coupling effects—the small decrease in variance in potent-to-null dimensions (Figure 6C) is consistent with this."
+          ],
+          "required_assumptions": [
+            "Metabolic cost is well approximated by spike count or deviation from a baseline firing rate.",
+            "The absence of a dominant minimal firing effect in the BCI setting generalizes to natural motor control."
+          ],
+          "notes": "The claim is stated with appropriate qualification ('do not play a dominant role'), which keeps it calibrated even given the limitations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Minimal intervention principles, which predict that output-null activity can var…",
+        "claim": "Minimal intervention principles, which predict that output-null activity can vary independently of output-potent activity, do not accurately predict the observed output-null neural activity.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "None of these hypotheses predicted neural activity in task-irrelevant dimensions as accurately as did the Fixed Distribution hypothesis, which predicts that the distributions of task-relevant and task-irrelevant activity are yoked.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Three distinct hypotheses incorporating the minimal intervention principle were tested (Uncontrolled-uniform 56.6%, Uncontrolled-empirical 23.8%, Persistent Strategy 17.4%), all performing worse than Fixed Distribution (13.4%).",
+            "The progression from Uncontrolled-uniform to Uncontrolled-empirical to Persistent Strategy shows that incorporating more information improves predictions, but the key remaining gap (independence of potent and null) is only closed by Fixed Distribution.",
+            "Statistical significance is established at α=0.001 for comparisons with Fixed Distribution.",
+            "The variance analysis in Figure 6 provides independent evidence against minimal intervention: variability did not increase in dimensions that became output-null, contrary to uncontrolled manifold predictions."
+          ],
+          "weaknesses": [
+            "The difference between Persistent Strategy (17.4%) and Fixed Distribution (13.4%) is smaller than other hypothesis comparisons, raising the question of whether the remaining gap is practically meaningful versus reflecting noise or model specification differences.",
+            "The specific formulations of the uncontrolled hypotheses may not capture the full range of predictions consistent with a minimal intervention principle—other formulations could potentially perform better.",
+            "The claim is stated accurately ('do not accurately predict') which appropriately reflects that these hypotheses do provide partial predictive power (Uncontrolled-empirical at 23.8% is not terrible)."
+          ],
+          "alternative_interpretations": [
+            "A more sophisticated implementation of minimal intervention with additional constraints (e.g., within a recurrent network model) might better approximate the Fixed Distribution predictions.",
+            "The OFC framework could potentially accommodate coupling between potent and null dimensions with an appropriate cost function, as the authors acknowledge."
+          ],
+          "required_assumptions": [
+            "The formulations of uncontrolled hypotheses adequately represent the minimal intervention principle.",
+            "Independence of output-potent and output-null activity is a core prediction of the minimal intervention principle, not just one specific implementation."
+          ],
+          "notes": "The claim is about prediction accuracy, not about falsifying the minimal intervention principle in general. The authors are appropriately careful in the discussion to note that OFC with different cost functions might still work.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Neural redundancy is resolved differently from muscular redundancy, contradictin…",
+        "claim": "Neural redundancy is resolved differently from muscular redundancy, contradicting the expectation that principles governing muscle coordination would transfer to neural activity.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Our results indicate that the way in which neural redundancy is resolved is different from how muscle redundancy is resolved.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper tests neural analogs of both minimal energy and minimal intervention principles—the two major frameworks from muscle redundancy—and finds that neither accurately predicts the observed output-null neural activity.",
+            "The comparison with habitual control (de Rugy et al., 2012) provides nuanced context, noting both similarities and differences.",
+            "The claim is well-grounded in the literature on muscular redundancy (Bernstein, 1967; Todorov and Jordan, 2002; Scholz and Schöner, 1999)."
+          ],
+          "weaknesses": [
+            "Inferential gap: The paper only demonstrates that specific implementations of minimal energy and minimal intervention principles fail to predict neural activity in a BCI context. This does not establish that neural redundancy is fundamentally resolved differently from muscular redundancy—only that the same simplified principles don't transfer directly.",
+            "The authors acknowledge that OFC with an appropriate cost function could potentially predict their findings, which substantially weakens the claim that neural and muscular redundancy are resolved differently.",
+            "The comparison between BCI control and natural arm movements involves very different experimental paradigms, control architectures, and dimensionalities. The BCI task has 2 output dimensions and ~10 intrinsic dimensions, whereas arm movements involve tens of muscles and much higher neural dimensionality.",
+            "The BCI setting may not be representative of natural neural computation—subjects learn BCI control over limited time periods, and the principles governing redundancy in this artificial setting may differ from those in natural motor control."
+          ],
+          "alternative_interpretations": [
+            "The difference between neural and muscular redundancy could be an artifact of the experimental paradigm (BCI vs. natural movement) rather than a fundamental difference in how the nervous system resolves redundancy at different levels.",
+            "OFC applied at a different level (e.g., inputs to M1 rather than M1 activity itself) could produce the observed coupling, maintaining consistency with how muscular redundancy is resolved.",
+            "The coupling could reflect recurrent network dynamics in M1 that constrain population activity patterns, which is a network property rather than a difference in how 'redundancy is resolved.'"
+          ],
+          "required_assumptions": [
+            "The BCI setting provides a valid model for how the nervous system handles neural redundancy in general.",
+            "The principles governing muscular redundancy (minimal energy, minimal intervention) are the appropriate null hypotheses for neural redundancy.",
+            "The specific implementations of minimal energy and minimal intervention tested are representative of these broader principles."
+          ],
+          "notes": "This is the broadest claim in the paper and the one most susceptible to the inferential gap between the specific BCI results and the general conclusion about neural vs. muscular redundancy. The authors' own acknowledgment that OFC could potentially explain their results with a different cost function is a significant caveat that undermines the strength of this claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "The coupling between output-null and output-potent activity implies that there a…",
+        "claim": "The coupling between output-null and output-potent activity implies that there are limits on the extent to which output-null activity can be leveraged for neural computations independently of the readout.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "This coupling between the output-potent and output-null activity implies that, when output-potent activity is used to satisfy task demands, there are constraints on the extent to which neural circuits can use redundant activity to perform additional computations.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The empirical finding of coupling between output-potent and output-null activity is robust (Fixed Distribution best predicting observed data in 41/42 sessions).",
+            "The logical inference—that if output-null activity is constrained by output-potent activity, then output-null activity cannot vary freely for other computations—is sound.",
+            "The paper frames this appropriately as an 'implication' rather than a direct observation."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim about 'limits on the extent to which output-null activity can be leveraged for neural computations' is stated broadly but supported only by evidence from a 2D BCI cursor control task with a 10D manifold. The nature and degree of constraints on computation in output-null dimensions during natural behavior are not directly tested.",
+            "From c1.5.1: The specific implications for movement preparation (Kaufman et al., 2014), noise filtering (Moreno-Bote et al., 2014), and stable computation (Driscoll et al., 2017) are purely speculative with no supporting data.",
+            "From c1.5.3: The speculation about natural arm movements is explicitly unsupported and the authors acknowledge this.",
+            "The coupling could partly be an artifact of the low-dimensional manifold (10D)—in higher-dimensional spaces or with more training, the coupling could be weaker.",
+            "The error gap between Fixed Distribution (13.4%) and the floor (6.7%) leaves room for some degree of independent variation in null dimensions that the Fixed Distribution hypothesis doesn't capture.",
+            "The claim that coupling 'limits' computation is qualitative—the paper doesn't quantify how much computational capacity remains available in the output-null space despite the coupling."
+          ],
+          "alternative_interpretations": [
+            "The coupling may be a property of the untrained/recently-learned BCI mapping and could weaken with extended practice as animals learn to decouple dimensions.",
+            "The coupling could reflect the specific recurrent network dynamics of M1 and may not generalize to other brain regions where output-null computations have been proposed (e.g., prefrontal cortex).",
+            "Even with coupling, the conditional distribution in output-null dimensions may still have enough variability to support meaningful computations—the claim of 'limits' may overstate the practical constraint."
+          ],
+          "required_assumptions": [
+            "The degree of coupling observed in BCI control is representative of coupling during natural neural computation.",
+            "The proposed computational uses of output-null activity (movement preparation, noise filtering) require the kind of independent variation that is constrained by the observed coupling.",
+            "The 10D intrinsic manifold and 2D output are representative of the dimensionality relationships relevant to natural motor control."
+          ],
+          "notes": "The core empirical finding (coupling) is solid, but the broader implications for neural computation are speculative. The paper would benefit from quantifying how much independent variation remains in the output-null space despite the coupling, and whether this is sufficient for the proposed computations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "The variance of neural population activity does not change dramatically when dim…",
+        "claim": "The variance of neural population activity does not change dramatically when dimensions switch from being output-potent to output-null, consistent with the Fixed Distribution hypothesis and inconsistent with both minimal firing and minimal intervention hypotheses.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the variance of activity did not change much when an output-potent dimension became output-null, in agreement with the predictions of the Fixed Distribution hypothesis.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis directly tests the key predictions of competing hypotheses in the dimensions most likely to reveal differences (those changing from potent to null).",
+            "Both directions were tested: potent-to-null (Figure 6) and null-to-potent (Figure 6—figure supplement 1), with consistent results.",
+            "The observed covariance ellipses (Figure 6B) provide compelling visual evidence of similarity across mappings.",
+            "The Fixed Distribution hypothesis predicts the small observed decrease, providing a mechanistic explanation for the slight variance change.",
+            "The quantitative comparison in Figure 6C clearly shows the observed change is much closer to Fixed Distribution predictions than to Minimal Firing/Deviation or Uncontrolled predictions."
+          ],
+          "weaknesses": [
+            "There was a statistically significant (p<0.001) small decrease in variance when dimensions went from potent to null, which means the variance is not perfectly preserved—the claim correctly uses 'did not change dramatically' which appropriately hedges this.",
+            "The observed decrease was slightly larger than the Fixed Distribution prediction (visible in Figure 6C), suggesting an additional factor may be at play that is not fully captured by any hypothesis.",
+            "The null-to-potent analysis yielded a null result (p>0.5) without reported power analysis, making it hard to distinguish between 'no change' and 'insufficient power to detect a small change.'",
+            "The analysis is restricted to the 2D subspace that changed from potent to null, which is a subset of the full output-null space.",
+            "No normality assessment for the t-tests is reported."
+          ],
+          "alternative_interpretations": [
+            "The small but significant decrease in variance could reflect a weak minimal energy influence that operates alongside the dominant coupling constraint.",
+            "The preserved variance could be a consequence of the recurrent network dynamics maintaining similar activity patterns regardless of the BCI mapping, rather than reflecting a computational principle about redundancy resolution."
+          ],
+          "required_assumptions": [
+            "The 2D subspace analyzed is representative of how variance changes across all output-null dimensions.",
+            "The t-test assumptions (normality, etc.) are sufficiently met.",
+            "Binning by cursor movement direction under the second mapping is the appropriate way to condition the analysis."
+          ],
+          "notes": "This is one of the strongest pieces of evidence in the paper because it directly tests competing predictions in the dimensions where they diverge most. The slight discrepancy between observed and predicted variance changes is honestly reported.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "The Fixed Distribution hypothesis achieved the lowest histogram error of all hyp…",
+        "claim": "The Fixed Distribution hypothesis achieved the lowest histogram error of all hypotheses tested, at 13.4% ± 0.5% (mean ± SE) across sessions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Overall, these predictions differed from the observed output-null activity by only 13.4% ±0.5% (mean ± SE) across sessions.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is directly supported by quantitative error metrics (13.4% ± 0.5%) compared against all other hypotheses with higher errors (17.4%, 23.8%, 30.9%, 56.6%, 73.2%).",
+            "The result held in 41 of 42 sessions across three animals, demonstrating robustness.",
+            "Statistical significance was assessed at α=0.001 level using Wilcoxon signed rank tests.",
+            "Sub-claim c1.1.1.1 provides strong evidence for statistically significant pairwise comparisons, and c1.1.1.2 provides moderate visual corroboration."
+          ],
+          "weaknesses": [
+            "No formal multiple comparisons correction is explicitly mentioned, though the α=0.001 threshold is conservative.",
+            "Only 3 of 8 output-null dimensions are shown visually, selected for most variance, which may not be fully representative of all dimensions.",
+            "The histogram error metric itself is a specific choice; different distance metrics between distributions could yield different rankings, though the consistency with mean and covariance metrics mitigates this concern."
+          ],
+          "alternative_interpretations": [
+            "The Fixed Distribution hypothesis has the advantage of using the most information from the previous mapping (joint distribution conditioned on output-potent activity), so its superior performance may partly reflect the information advantage rather than a deep mechanistic insight."
+          ],
+          "required_assumptions": [
+            "The histogram error metric is an appropriate measure of distributional similarity.",
+            "The set of hypotheses tested is sufficiently comprehensive to draw meaningful conclusions.",
+            "The 10-dimensional intrinsic manifold captures the relevant neural activity space."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The Fixed Distribution hypothesis also best predicted the mean and covariance of…",
+        "claim": "The Fixed Distribution hypothesis also best predicted the mean and covariance of observed output-null activity, not just the marginal histograms.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In agreement with our findings for histogram error, the mean and covariance of output-null activity was best predicted by the Fixed Distribution hypothesis, with an average mean error of 23.5 ± 1.4 spikes/s (mean ± SE) and an average covariance error of 1.4 ± 0.1",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is supported by three independent error metrics (histogram, mean, covariance), providing convergent evidence.",
+            "Quantitative values are provided for mean error (23.5 ± 1.4 spikes/s) and covariance error (1.4 ± 0.1).",
+            "All three metrics point consistently to Fixed Distribution as the best predictor."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.1.4.1: The mean error (23.5 spikes/s vs. floor of 6.9 spikes/s) shows a substantial gap from the floor, suggesting the prediction is not perfect, particularly for the mean.",
+            "The covariance error metric is in arbitrary units, making it harder to assess practical significance."
+          ],
+          "alternative_interpretations": [
+            "The gap between achieved and floor errors for the mean suggests there may be additional structure in the output-null activity not captured by the Fixed Distribution hypothesis."
+          ],
+          "required_assumptions": [
+            "Mean and covariance are sufficient summary statistics to characterize distributional fit.",
+            "The error floor estimation procedure is valid."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "The Fixed Distribution hypothesis had the lowest histogram error in 41 of 42 ses…",
+        "claim": "The Fixed Distribution hypothesis had the lowest histogram error in 41 of 42 sessions across three animals.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In total, the Fixed Distribution hypothesis had the lowest histogram error in 41 of 42 sessions.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "41/42 sessions is an overwhelming consistency, demonstrating the result is not driven by a subset of sessions or a single animal.",
+            "The result spans three different animals, strengthening generalizability within the experimental paradigm."
+          ],
+          "weaknesses": [
+            "The one session where Fixed Distribution did not win is not discussed—understanding this exception could be informative.",
+            "All sessions used similar experimental setups (center-out BCI task), so generalizability to other task types remains unknown."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Sessions are sufficiently independent to be treated as separate tests of the hypothesis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "The errors of the Fixed Distribution hypothesis were exceedingly close to the es…",
+        "claim": "The errors of the Fixed Distribution hypothesis were exceedingly close to the estimated lowest achievable error given the limited number of samples available.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The errors of Fixed Distribution were exceedingly close to the lowest achievable error given the number of samples available",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper provides an estimate of the error floor and compares Fixed Distribution errors to it.",
+            "For histogram error, the gap between Fixed Distribution (13.4%) and the floor (6.7%) is relatively modest."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.1.4.1: The mean error (23.5 vs. floor 6.9 spikes/s) is about 3.4x the floor, which is not 'exceedingly close.'",
+            "The covariance error (1.4 vs. floor 1.0) also shows meaningful room for improvement.",
+            "The word 'exceedingly' is somewhat strong given the quantitative gaps, particularly for the mean error metric. The claim is most accurate for the histogram error but less so for other metrics."
+          ],
+          "alternative_interpretations": [
+            "The gap from the floor suggests there is residual structure in output-null activity not captured by the Fixed Distribution hypothesis, possibly reflecting additional computational processes or noise sources."
+          ],
+          "required_assumptions": [
+            "The error floor estimation method (split-half) provides a valid lower bound on achievable error.",
+            "The error floor reflects only sampling noise and not systematic biases in the estimation procedure."
+          ],
+          "notes": "The claim as stated ('exceedingly close') seems most applicable to the histogram error and less to the mean and covariance errors.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The results hold when predicting output-null activity in the reverse direction (…",
+        "claim": "The results hold when predicting output-null activity in the reverse direction (first mapping predicted from second mapping activity) and when using the actual BCI mapping rather than the animal's internal model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We repeated our analyses to predict output-null activity produced during the first mapping using activity observed during the second mapping... We also predicted output-null activity using the actual BCI mapping rather than the animal's internal model... Both analyses yielded results similar to those in Figure 5.",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The reverse-direction analysis (predicting first mapping from second) addresses a potential circularity concern.",
+            "Using the actual BCI mapping rather than the internal model addresses a potential confound from internal model estimation.",
+            "Both robustness checks yielded 'similar results' to the main findings, as shown in supplemental figures."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.1.5.1: The number of sessions per animal is not clearly stated for these supplemental analyses, and some animals may have fewer sessions.",
+            "'Similar results' is somewhat vague—specific error values for these control analyses would strengthen the claim."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The internal model estimation procedure is reasonable even if imperfect.",
+            "The two mappings are sufficiently different to provide a meaningful test."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "The ability to predict output-null distributions is not merely due to most dimen…",
+        "claim": "The ability to predict output-null distributions is not merely due to most dimensions being output-null under both mappings; the predictions hold even in dimensions that were previously output-potent.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the distribution of output-null activity remains consistent with the Fixed Distribution hypothesis even in the output-null dimensions that were previously output-potent.",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is a critical analysis that addresses the most obvious alternative explanation—that prediction accuracy is trivially achieved because most dimensions don't change between mappings.",
+            "The analysis specifically examines the 2D subspace that switched from output-potent to output-null, which is the hardest test for Fixed Distribution.",
+            "The variance showed remarkable stability in these dimensions, consistent with Fixed Distribution."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.1.6.1: There was a statistically significant (small) decrease in variance (p<0.001), meaning the covariance was not perfectly preserved. The paper appropriately notes this but the claim of consistency should be read with this caveat.",
+            "The analysis is restricted to the 2D subspace that changed from potent to null, which is only a subset of the full 8D output-null space."
+          ],
+          "alternative_interpretations": [
+            "The small decrease in variance could indicate a weak influence of minimal energy principles that the Fixed Distribution hypothesis does not fully capture."
+          ],
+          "required_assumptions": [
+            "The 2D subspace that switched from potent to null is representative of the behavior in other challenging dimensions."
+          ],
+          "notes": "This analysis is one of the strongest pieces of evidence in the paper because it tests predictions in the dimensions most likely to discriminate between hypotheses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "The Minimal Firing hypothesis, predicting that subjects select the population ac…",
+        "claim": "The Minimal Firing hypothesis, predicting that subjects select the population activity pattern requiring the fewest spikes, performed very poorly with 73.2% ± 1.3% histogram error.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We found that the predictions of the Minimal Firing hypothesis differed from the observed activity by 73.2% ±1.3% (mean ± SE) across sessions.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The 73.2% error is dramatically higher than other hypotheses, making the conclusion unambiguous.",
+            "The hypothesis is well-specified and directly testable.",
+            "The inclusion of Poisson spiking noise makes the prediction more realistic than a pure delta distribution."
+          ],
+          "weaknesses": [
+            "The Minimal Firing hypothesis as formulated (minimize total spikes) is somewhat of a straw man—more sophisticated metabolic cost functions could yield different predictions.",
+            "Metabolic cost may not scale linearly with spike count, and the relevant metabolic constraint may operate at different timescales."
+          ],
+          "alternative_interpretations": [
+            "As the authors note (Picard et al., 2013), metabolic activity can decrease without changes in firing rates, so minimal energy principles might operate through mechanisms not captured by spike counts."
+          ],
+          "required_assumptions": [
+            "Spike count is a reasonable proxy for metabolic cost.",
+            "Poisson noise adequately captures the variability expected under this hypothesis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "The Minimal Deviation hypothesis, predicting that subjects select the activity p…",
+        "claim": "The Minimal Deviation hypothesis, predicting that subjects select the activity pattern closest to some baseline, improved over Minimal Firing but still had substantial errors at 30.9% ± 1.2%.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This hypothesis yielded an average histogram error of 30.9% ±1.2% (mean ± SE) across sessions. While this represents a substantial improvement over the Minimal Firing hypothesis (paired t-test of histogram errors in each session, p<0.001), the predicted distributions of output-null activity still show clear discrepancies from the observed distributions",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The cross-validated baseline identification makes this a fair test.",
+            "The improvement over Minimal Firing (30.9% vs. 73.2%) is statistically significant (p<0.001).",
+            "The remaining 30.9% error clearly indicates that this hypothesis is insufficient."
+          ],
+          "weaknesses": [
+            "The 'baseline' is identified by cross-validation to minimize prediction error, which gives this hypothesis a slight advantage in fitting but it still performs poorly.",
+            "The specific form of the deviation metric (Euclidean distance in spike space) is one choice among many possible formulations."
+          ],
+          "alternative_interpretations": [
+            "A different norm or cost function for deviation might yield better predictions, though the gap to Fixed Distribution (30.9% vs 13.4%) suggests any such improvement would likely be modest."
+          ],
+          "required_assumptions": [
+            "Euclidean distance in spike-rate space is the appropriate metric for 'deviation' from baseline."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "The mean observed output-null activity did not move toward the predictions of Mi…",
+        "claim": "The mean observed output-null activity did not move toward the predictions of Minimal Firing or Minimal Deviation relative to Fixed Distribution predictions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we did not find any evidence that the mean output-null activity moved in the direction of the predictions of Minimal Firing or Minimal Deviation.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis directly tests whether the small variance decrease (favoring minimal energy) is accompanied by a corresponding shift in the mean, which would be expected if minimal energy principles were at play.",
+            "The test uses both Minimal Deviation and Minimal Firing as reference points."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.2.3.1: This is a null result (p>0.5), which is inherently harder to interpret—the test may lack power to detect a small effect.",
+            "The p-value is imprecise (only reported as p>0.5).",
+            "The analysis is conducted on the mean of the output-null activity, which is a single summary statistic; effects might be present in other moments of the distribution."
+          ],
+          "alternative_interpretations": [
+            "A weak influence of minimal energy principles on the mean could exist but be below the detection threshold of this analysis."
+          ],
+          "required_assumptions": [
+            "The statistical test has sufficient power to detect a meaningful shift in the mean.",
+            "Shifts in mean are the appropriate metric to assess minimal energy influences."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The Uncontrolled-uniform hypothesis, predicting output-null activity uniformly d…",
+        "claim": "The Uncontrolled-uniform hypothesis, predicting output-null activity uniformly distributed within physiological bounds, had 56.6% ± 1.1% histogram error.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The predictions of the Uncontrolled-uniform hypothesis differed from the observed output-null activity by 56.6% ±1.1% (mean ± SE) across sessions.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The hypothesis is clearly specified as a maximum-entropy limiting case.",
+            "The 56.6% error clearly demonstrates inadequacy.",
+            "The authors appropriately explain why the visualized histograms appear mound-shaped despite the uniform assumption (due to PCA rotation)."
+          ],
+          "weaknesses": [
+            "This is somewhat of a limiting case that few would expect to hold exactly; the Uncontrolled-empirical hypothesis is a more nuanced version.",
+            "The physiological range used to bound the uniform distribution is empirically determined, which introduces some circularity."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The maximum-entropy (uniform) distribution is a reasonable formalization of the uncontrolled hypothesis.",
+            "The physiological range bounds are correctly estimated."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The Uncontrolled-empirical hypothesis, using previously observed output-null act…",
+        "claim": "The Uncontrolled-empirical hypothesis, using previously observed output-null activity sampled independently of output-potent activity, had 23.8% ± 0.8% histogram error.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The histograms of the predictions differed from the observed data by only 23.8% ±0.8% (mean ± SE) across sessions, which is the lowest error of all hypotheses considered so far.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The error (23.8%) is clearly lower than all previously considered hypotheses at the point in the paper where this claim is made.",
+            "The hypothesis is well-motivated as a refinement of the uncontrolled hypothesis using empirical data.",
+            "The resampling procedure to ensure physiological plausibility is a reasonable methodological choice."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.3.2.1: The Uncontrolled-empirical hypothesis uses substantially more information than a priori hypotheses, so the improvement may partly reflect the information advantage rather than a deeper mechanistic insight.",
+            "The claim is about being the 'lowest error of all hypotheses considered so far,' which is narrower than the overall comparison (Fixed Distribution later achieves 13.4%)."
+          ],
+          "alternative_interpretations": [
+            "The improvement from Uncontrolled-uniform to Uncontrolled-empirical may simply reflect that the marginal distribution of neural activity is not uniform, rather than validating the minimal intervention principle."
+          ],
+          "required_assumptions": [
+            "Activity patterns from the first mapping provide a reasonable prior for the distribution of output-null activity under the second mapping.",
+            "The sampling procedure (with resampling for physiological plausibility) does not introduce systematic biases."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The Persistent Strategy hypothesis, which extends the minimal intervention princ…",
+        "claim": "The Persistent Strategy hypothesis, which extends the minimal intervention principle by conditioning on cursor-target angle, had 17.4% ± 0.7% histogram error, still worse than Fixed Distribution.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The predictions of this hypothesis differed from the observed output-null activity by 17.4% ±0.7% (mean ± SE) across sessions.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The error (17.4%) is clearly stated and compared to Fixed Distribution (13.4%).",
+            "The hypothesis represents a natural intermediate between Uncontrolled-empirical and Fixed Distribution, helping to isolate the contribution of conditioning on cursor direction.",
+            "The progressive improvement from Uncontrolled-empirical to Persistent Strategy to Fixed Distribution provides insight into the source of predictive power."
+          ],
+          "weaknesses": [
+            "The difference between Persistent Strategy (17.4%) and Fixed Distribution (13.4%) is smaller than differences between other hypotheses, though still statistically significant.",
+            "The Persistent Strategy hypothesis assumes subjects start with activity appropriate for the previous mapping and then correct, which is a specific behavioral assumption that may not hold for all sessions."
+          ],
+          "alternative_interpretations": [
+            "The improvement from Persistent Strategy to Fixed Distribution could reflect the coupling between output-potent and output-null dimensions, or it could reflect better conditioning on the specific output-potent values rather than just the cursor direction."
+          ],
+          "required_assumptions": [
+            "Subjects' behavior under the second mapping can be modeled as a correction from the first mapping.",
+            "Cursor direction is an adequate conditioning variable for the Persistent Strategy."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "The results for neural activity differ from OFC predictions with standard cost f…",
+        "claim": "The results for neural activity differ from OFC predictions with standard cost functions in two important respects: variability did not increase in dimensions that became task-irrelevant, and activity in task-relevant and task-irrelevant dimensions was not independent.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Our results for neural activity differ in two important respects from OFC predictions with standard cost functions involving task requirements and effort.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The two respects in which neural activity differs from standard OFC predictions are clearly stated and empirically supported: (1) variability did not increase in task-irrelevant dimensions (Figure 6C), and (2) task-relevant and task-irrelevant activity are coupled rather than independent.",
+            "The authors appropriately acknowledge that OFC is not ruled out—a suitable cost function could potentially be designed.",
+            "The comparison to the uncontrolled manifold (Scholz and Schöner, 1999) is well-placed."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.4.1.1: The acknowledgment that a suitable OFC cost function could be designed to match observations somewhat undermines the strength of the conclusion, as the claim only rules out 'standard' OFC cost functions.",
+            "The paper does not test any specific OFC model implementation, making this more of a comparison to the general principle rather than a specific falsification.",
+            "The BCI setting may not be representative of natural motor control where OFC has been most successful (Todorov and Jordan, 2002)."
+          ],
+          "alternative_interpretations": [
+            "OFC applied at the level of inputs to M1 (e.g., PMd activity) rather than M1 output could produce coupled potent-null activity in M1, as the authors themselves note.",
+            "Standard OFC models are typically applied to muscle activations, not neural populations, and the translation may not be straightforward."
+          ],
+          "required_assumptions": [
+            "The 'standard cost functions' referenced are representative of the OFC framework as typically applied.",
+            "The BCI task provides a reasonable context for testing OFC predictions at the neural level."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "The results are somewhat similar to habitual muscle control in that activity is …",
+        "claim": "The results are somewhat similar to habitual muscle control in that activity is predictable from previously observed activity and task-relevant/irrelevant coupling is tight, but differ in that subjects appeared to use the same distribution of activity across different BCI mappings.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the results for habitual control are different from our findings in that we found that subjects appear to use the same distribution of activity in each of two different BCI mappings, whereas different (overlapping) subsets of muscle activation patterns were used under different conditions",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison to habitual control (de Rugy et al., 2012) is informative and highlights both similarities and differences.",
+            "The tight coupling between task-relevant and task-irrelevant activity is well-documented in the paper's results."
+          ],
+          "weaknesses": [
+            "The comparison is at a conceptual level rather than a direct empirical comparison—the experimental paradigms (BCI vs. arm dynamics perturbation) are quite different.",
+            "The distinction between 'same distribution' (present study) and 'different overlapping subsets' (de Rugy et al., 2012) may partly reflect differences in the experimental designs rather than fundamental differences in neural vs. muscular control."
+          ],
+          "alternative_interpretations": [
+            "Habitual control and the Fixed Distribution hypothesis may both be manifestations of the same underlying neural constraint (fixed intrinsic manifold), with differences arising from the effector properties."
+          ],
+          "required_assumptions": [
+            "Comparing across very different experimental paradigms (BCI vs. arm dynamics) yields meaningful insights about neural vs. muscular redundancy."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "The coupling may cause activity fluctuations in a stimulus-null space to influen…",
+        "claim": "The coupling may cause activity fluctuations in a stimulus-null space to influence the downstream readout, or limit one's ability to plan the next movement without influencing the current movement.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "This coupling may cause activity fluctuations in a stimulus-null space to influence the downstream readout, or limit one's ability to plan the next movement without influencing the current movement.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately framed as a potential implication ('may') rather than a definitive conclusion.",
+            "The logical reasoning connecting potent-null coupling to constraints on computational use of null activity is sound."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.5.1.1: No data is presented to support or refute this claim—it is purely speculative.",
+            "The implications for movement planning and noise filtering are drawn by analogy to other systems and tasks, without direct experimental evidence.",
+            "Whether potent-null coupling truly limits computation depends on the degree of coupling and the nature of the computations, neither of which is quantified here."
+          ],
+          "alternative_interpretations": [
+            "Even with coupling, there may be sufficient residual degrees of freedom in the null space to perform computations, especially if the coupling is partial rather than deterministic.",
+            "Extended training might allow animals to learn to decouple some dimensions, which would weaken this constraint."
+          ],
+          "required_assumptions": [
+            "The potent-null coupling observed in BCI generalizes to natural neural circuits.",
+            "The degree of coupling is sufficient to meaningfully constrain computations."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "It is surprising that conditioning on only two output-potent dimensions provides…",
+        "claim": "It is surprising that conditioning on only two output-potent dimensions provides so much explanatory power for predicting the distribution in the remaining eight neural dimensions, suggesting many dimensions of population activity are coupled.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Given how many dimensions of population activity there are (in this case, 10), it is somewhat surprising that conditioning on only the two output-potent dimensions could provide so much explanatory power for predicting the distribution in the remaining neural dimensions.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that 2 dimensions predict 8 others is quantitatively demonstrated by the 13.4% error (close to the 6.7% floor).",
+            "The claim is appropriately hedged ('somewhat surprising') and framed as an observation rather than a mechanism."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.5.2.1: The gap between 13.4% and 6.7% could reflect unaccounted sources of variability, including additional potent dimensions not captured by the 2D BCI output.",
+            "The coupling might partly be an artifact of the low-dimensional manifold structure (10D) rather than reflecting genuine functional coupling—in a higher-dimensional space, the coupling might be weaker."
+          ],
+          "alternative_interpretations": [
+            "The coupling may reflect the low-dimensional structure of the intrinsic manifold itself, where the 10 dimensions are already correlated due to shared neural circuit constraints, rather than a specific coupling between potent and null subspaces."
+          ],
+          "required_assumptions": [
+            "The 10-dimensional intrinsic manifold captures the relevant degrees of freedom.",
+            "The coupling is a feature of neural activity rather than an artifact of the manifold estimation procedure."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "The authors speculate that during arm movements with larger output dimensionalit…",
+        "claim": "The authors speculate that during arm movements with larger output dimensionality, many null dimensions will remain coupled with potent dimensions, yielding similar results.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "We speculate that during arm movements, many of the null dimensions will remain coupled with the potent dimensions, thereby yielding results similar to what we found here.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The speculation is clearly labeled as such ('We speculate').",
+            "The reasoning—that network constraints underlying the intrinsic manifold should also constrain natural arm movements—is logical."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.5.3.1: No direct evidence is provided—this is purely speculative.",
+            "Natural arm movements involve much higher output dimensionality (tens of muscles) and different control architectures, which could weaken or strengthen the coupling.",
+            "The BCI paradigm eliminates biomechanical feedback and proprioception, which could fundamentally alter how redundancy is resolved during natural movement.",
+            "No EMG data is described to confirm the absence of muscle activity during BCI control."
+          ],
+          "alternative_interpretations": [
+            "During natural arm movements, proprioceptive feedback and biomechanical constraints could alter the coupling structure.",
+            "Higher output dimensionality might leave more null dimensions effectively uncoupled."
+          ],
+          "required_assumptions": [
+            "The neural coupling observed in BCI reflects intrinsic network properties rather than BCI-specific constraints.",
+            "These properties would be preserved during natural motor control."
+          ],
+          "notes": "The authors appropriately acknowledge this limitation and suggest future experiments.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "The observed variance showed a small but significant decrease when a dimension b…",
+        "claim": "The observed variance showed a small but significant decrease when a dimension became output-null, but this decrease was much smaller than predicted by Minimal Firing or Minimal Deviation and closest to the predictions of Fixed Distribution.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Across sessions, we found that the variance of observed activity showed a small but significant decrease when it became output-null... This is in contrast to the predictions of the Minimal Firing and Minimal Deviation hypotheses, which predicted much larger decreases.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis directly compares observed variance changes to predictions of all hypotheses in the most informative subspace.",
+            "The quantitative comparison in Figure 6C clearly shows that Minimal Firing and Minimal Deviation predict much larger decreases than observed.",
+            "The finding of a small but significant decrease (p<0.001) is appropriately reported rather than ignored."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.6.1.1: The small but significant decrease leaves open the possibility of a minor minimal-energy influence that Fixed Distribution does not fully capture.",
+            "No assessment of the normality assumption for the t-test is provided.",
+            "The analysis is restricted to the 2D subspace that switched from potent to null."
+          ],
+          "alternative_interpretations": [
+            "The small decrease could reflect a weak additional influence of energy minimization on top of the dominant Fixed Distribution pattern."
+          ],
+          "required_assumptions": [
+            "The 2D subspace is representative of the broader phenomenon.",
+            "The t-test assumptions are met."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "The Fixed Distribution hypothesis itself predicted a slight decrease in variance…",
+        "claim": "The Fixed Distribution hypothesis itself predicted a slight decrease in variance in dimensions that became output-null, due to slightly different sets of output-potent activity under the two mappings.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we observed that the Fixed Distribution hypothesis also predicted a slight decrease in variance in dimensions that became output-null... This slight predicted change in variance occurs because the distributions of activity in the output-potent dimensions of the second mapping are different under the first and second mappings.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The explanation for why Fixed Distribution itself predicts a slight decrease is mechanistically clear and well-reasoned.",
+            "The predicted decrease (from Fixed Distribution) is shown to be statistically significant (p<0.001), matching the direction of the observed effect.",
+            "This demonstrates that the observed small decrease is not evidence against Fixed Distribution but is in fact predicted by it."
+          ],
+          "weaknesses": [
+            "The observed decrease appears slightly larger than the Fixed Distribution prediction (visible in Figure 6C), suggesting an additional factor may be at play.",
+            "The quantitative magnitude of the predicted vs. observed decrease is not explicitly compared."
+          ],
+          "alternative_interpretations": [
+            "The gap between the predicted and observed decrease might reflect a minor contribution from minimal energy principles."
+          ],
+          "required_assumptions": [
+            "The different distributions of output-potent activity across mappings are sufficient to explain the predicted decrease."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "Activity showed little to no change in variance in dimensions that began as outp…",
+        "claim": "Activity showed little to no change in variance in dimensions that began as output-null and became output-potent, also consistent with Fixed Distribution.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We found that the activity showed little to no change in variance in these dimensions (t-test, p>0.5), in agreement with the predictions of Fixed Distribution",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The reverse analysis (null-to-potent) complements the potent-to-null analysis and provides a symmetry check.",
+            "The finding of no significant change (p>0.5) is consistent with Fixed Distribution predictions."
+          ],
+          "weaknesses": [
+            "From sub-claim c1.6.3.1: This is a null result, which is inherently harder to interpret—the test may lack power to detect a small effect.",
+            "The exact p-value is not reported (only p>0.5), which is imprecise.",
+            "The number of sessions contributing to this analysis may be smaller if this uses the reverse-direction prediction (Figure 5—figure supplement 2)."
+          ],
+          "alternative_interpretations": [
+            "The lack of variance change could reflect insufficient statistical power rather than a true absence of effect, especially if fewer data points are available for this analysis."
+          ],
+          "required_assumptions": [
+            "The statistical test has adequate power to detect a meaningful change.",
+            "The reverse-direction analysis is comparable in data quality to the main analysis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "The Fixed Distribution hypothesis yielded a significantly lower histogram error …",
+        "claim": "The Fixed Distribution hypothesis yielded a significantly lower histogram error than all other hypotheses (one-sided Wilcoxon signed rank test, α=0.001 level).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Asterisks depict a significant difference between errors of Fixed Distribution and other hypotheses for a one-sided Wilcoxon signed rank test at the α=0.001 (***) level.",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim specifies the exact statistical test (one-sided Wilcoxon signed rank test) and significance level (α=0.001), which is appropriate for paired comparisons across sessions.",
+            "The Fixed Distribution hypothesis had the lowest histogram error in 41 of 42 sessions, providing overwhelming consistency across sessions and animals.",
+            "The comparison was made across all five alternative hypotheses, not just one, strengthening the claim of superiority."
+          ],
+          "weaknesses": [
+            "The paper does not report exact p-values for each pairwise comparison, only indicating significance at the α=0.001 level.",
+            "Multiple comparisons across five hypotheses are being made; while the α=0.001 threshold is conservative, no formal multiple comparisons correction is explicitly mentioned for this test."
+          ],
+          "alternative_interpretations": [
+            "Statistical significance does not establish practical significance—the improvement over the next-best hypothesis (Persistent Strategy, 17.4% vs. 13.4%) could be modest relative to the error floor of 6.7%."
+          ],
+          "required_assumptions": [
+            "The histogram error metric is an appropriate measure for comparing distributions.",
+            "Sessions are sufficiently independent to justify non-parametric testing across them."
+          ],
+          "notes": "The error floor analysis (6.7%) provides useful context: Fixed Distribution's 13.4% is reasonably close to the floor, suggesting the hypothesis captures most of the explainable variance.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.2",
+        "label": "The predicted marginal histograms of the Fixed Distribution hypothesis were a st…",
+        "claim": "The predicted marginal histograms of the Fixed Distribution hypothesis were a striking visual match to the recorded activity and accurately predicted the dependence on cursor direction.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The histograms of output-null activity predicted by the Fixed Distribution hypothesis were a striking visual match to the recorded activity, and accurately predicted the dependence of these distributions on the cursor direction",
+        "evaluation": {
+          "node_id": "c1.1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paper provides extensive visual comparisons in Figures 4E-F showing predicted and observed histograms across 8 cursor directions and 3 output-null dimensions.",
+            "The claim is appropriately qualified as a 'visual match' and is supported by the quantitative histogram error metric."
+          ],
+          "weaknesses": [
+            "Only 3 of 8 output-null dimensions are shown visually, and these are selected to show the most variance, which may not be representative.",
+            "'Striking visual match' is subjective—the paper appropriately also provides quantitative metrics, but the claim itself is qualitative.",
+            "The figures shown are from a single representative session (L20131218); generalization across sessions is supported by aggregate statistics but not by extensive visual comparison."
+          ],
+          "alternative_interpretations": [
+            "Visual matches in marginal histograms can be misleading if the joint distribution has different structure than suggested by the marginals."
+          ],
+          "required_assumptions": [
+            "Marginal histograms are sufficient to characterize the quality of distributional prediction.",
+            "PCA rotation for visualization does not obscure important features of the distributions."
+          ],
+          "notes": "The authors supplement the visual comparison with mean and covariance error metrics, which partially addresses the limitation of only showing marginals.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "The estimated error floor was 6.7% ± 1.9% for histogram error, 6.9 ± 2.5 spikes/…",
+        "claim": "The estimated error floor was 6.7% ± 1.9% for histogram error, 6.9 ± 2.5 spikes/s for mean error, and 1.0 ± 0.3 for covariance error, compared to Fixed Distribution's 13.4%, 23.5 spikes/s, and 1.4 respectively.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Average histogram error floor was 6.7% ± 1.9% (mean ± s.d., also shown in gray).",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The error floor provides an essential benchmark for interpreting how close the Fixed Distribution predictions are to the best possible predictions given finite data.",
+            "Three distinct error metrics (histogram, mean, covariance) are reported with their respective floors, providing a comprehensive assessment.",
+            "The error floor estimation method (using half the data to predict the other half) is a reasonable approach for establishing a lower bound."
+          ],
+          "weaknesses": [
+            "The mean error (23.5 spikes/s vs. floor of 6.9 spikes/s) suggests there is still a substantial gap in predicting the mean of the output-null activity, approximately 3.4x the floor.",
+            "The covariance error (1.4 vs. floor of 1.0) also shows room for improvement, though relatively closer to the floor.",
+            "The histogram error (13.4% vs. 6.7% floor) is about 2x the floor, suggesting the hypothesis captures about half the gap, which is good but not near-perfect."
+          ],
+          "alternative_interpretations": [
+            "The residual gap between Fixed Distribution and the error floor (especially for mean error) could indicate systematic deviations from the Fixed Distribution hypothesis that might be captured by a more refined model."
+          ],
+          "required_assumptions": [
+            "The error floor estimation method (split-half) provides an unbiased estimate of the minimum achievable error.",
+            "The error metrics chosen (histogram, mean, covariance) adequately characterize distributional similarity."
+          ],
+          "notes": "The histogram error is closest to the floor proportionally, which is the metric that best captures the full shape of the distribution.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "Each animal individually showed the Fixed Distribution hypothesis achieving the …",
+        "claim": "Each animal individually showed the Fixed Distribution hypothesis achieving the lowest prediction errors among all hypotheses.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found that the Fixed Distribution hypothesis achieved the lowest prediction errors among all hypotheses when data for each monkey was considered individually",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is supported by Figure 5—figure supplement 1, which shows results broken down by each of the three animals.",
+            "Replication across three different animals greatly strengthens the generalizability of the finding.",
+            "Statistical tests are reported per animal with explicit significance levels."
+          ],
+          "weaknesses": [
+            "The number of sessions varies across animals, and some animals may have fewer sessions, potentially reducing statistical power for individual animal analyses.",
+            "Without seeing exact session counts per animal, it is hard to assess whether the per-animal results are equally robust."
+          ],
+          "alternative_interpretations": [
+            "Consistent results across animals could reflect a common feature of the BCI task design rather than a universal neural principle."
+          ],
+          "required_assumptions": [
+            "The three animals are sufficiently representative of the broader population of macaques.",
+            "Individual differences in array placement, neural populations recorded, or BCI mapping design do not confound the comparison."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6.1",
+        "label": "The observed covariance of activity in the 2D subspace that was output-potent un…",
+        "claim": "The observed covariance of activity in the 2D subspace that was output-potent under the first mapping and output-null under the second mapping was remarkably similar across the two mappings.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We observed that the variance of population activity recorded under the first and second mappings was remarkably similar in the dimensions that changed from output-potent to output-null, even though these activity patterns usually corresponded to different cursor movements under the two mappings",
+        "evaluation": {
+          "node_id": "c1.1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is a particularly rigorous test because it examines dimensions where changes would be most expected—dimensions that were output-potent under one mapping and output-null under another.",
+            "Figure 6B provides visual evidence across all sessions and 8 cursor directions, showing remarkably similar covariance ellipses.",
+            "The quantitative analysis in Figure 6C confirms the visual impression with statistical testing.",
+            "The analysis controls for output-potent activity by binning, ensuring fair comparison."
+          ],
+          "weaknesses": [
+            "The variance did show a small but significant decrease (t-test, p<0.001), meaning the covariance was not perfectly preserved—'remarkably similar' may slightly overstate the finding.",
+            "The 2D subspace examined is only a subset of the full 8D output-null space, though it is the most informative subset."
+          ],
+          "alternative_interpretations": [
+            "The small decrease in variance could reflect a genuine minimal-energy influence that is simply weak compared to the dominant coupling effect.",
+            "The similarity in covariance could partly reflect the constraint of the intrinsic manifold rather than a specific property of redundancy resolution."
+          ],
+          "required_assumptions": [
+            "Binning by cursor movement direction under the second mapping provides a fair comparison of activity distributions.",
+            "The 2D subspace that changed from output-potent to output-null is representative of how variance changes when dimensions change roles."
+          ],
+          "notes": "See also c1.6.1.1 which quantifies the small decrease. The claim here is about qualitative similarity, which is well-supported, though not perfect preservation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "One-sided Wilcoxon signed rank tests comparing observed mean distance to Minimal…",
+        "claim": "One-sided Wilcoxon signed rank tests comparing observed mean distance to Minimal Deviation/Minimal Firing predictions versus Fixed Distribution mean distance yielded p > 0.5.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We did not find evidence that the observed mean output-null activity was closer to the mean predicted by Minimal Deviation than was the mean predicted by Fixed Distribution (one-sided Wilcoxon signed rank test, p>0.5)",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis directly addresses whether the small variance decrease observed might reflect minimal-energy principles by checking if the mean also shifts in that direction.",
+            "Both Minimal Deviation and Minimal Firing versions were tested, showing consistent null results.",
+            "The Wilcoxon signed rank test is appropriate for this paired comparison."
+          ],
+          "weaknesses": [
+            "Reporting p>0.5 is imprecise—it indicates no trend at all, but the exact p-value would be more informative.",
+            "This is a null result, which is harder to interpret—absence of evidence is not evidence of absence. The test may lack power to detect a small effect.",
+            "The comparison is based on distances between means, which may not capture more subtle distributional shifts toward minimal-energy predictions."
+          ],
+          "alternative_interpretations": [
+            "A small effect in the direction of Minimal Deviation could exist but be undetectable with the available sample size.",
+            "The small variance decrease could reflect a mechanism unrelated to either Minimal Deviation or Fixed Distribution."
+          ],
+          "required_assumptions": [
+            "ℓ2 norm distance in 8D output-null space is an appropriate metric for comparing mean predictions.",
+            "Sufficient statistical power exists to detect a meaningful shift toward Minimal Deviation predictions."
+          ],
+          "notes": "This is an important supplementary analysis that strengthens the case against minimal-energy explanations for the small variance decrease noted in c1.6.1.1.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "Previously observed population activity offers greater predictive power for outp…",
+        "claim": "Previously observed population activity offers greater predictive power for output-null activity than a priori predictions, motivating the use of previously observed activity in more refined hypotheses.",
+        "type": "supporting",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This suggests that previously observed population activity (in this case, recorded during use of a different BCI mapping) offers greater predictive power of the selection of output-null activity than a priori predictions",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The logical progression from Uncontrolled-empirical (23.8% error) outperforming a priori hypotheses (30.9-73.2%) to motivating more refined empirical hypotheses is well-reasoned.",
+            "The claim is appropriately stated as a suggestion rather than a definitive conclusion."
+          ],
+          "weaknesses": [
+            "The claim relies on comparing errors across fundamentally different types of hypotheses (a priori vs. empirical), which differ in both the hypothesis structure and the amount of information used, making it difficult to isolate what drives the improvement.",
+            "The Uncontrolled-empirical hypothesis uses the full distribution of activity from the previous mapping, which provides substantially more information than a priori hypotheses. Better performance could simply reflect having more data, not necessarily a deeper insight about neural redundancy."
+          ],
+          "alternative_interpretations": [
+            "The improvement of empirical over a priori hypotheses could reflect that empirical distributions implicitly capture the intrinsic manifold constraints, rather than indicating anything specific about how redundancy is resolved.",
+            "Any hypothesis conditioned on richer data would likely outperform simpler models, making this comparison somewhat tautological."
+          ],
+          "required_assumptions": [
+            "The comparison across hypothesis types (a priori vs. empirical) is meaningful and not simply reflecting differences in information content."
+          ],
+          "notes": "This claim serves primarily as a transition to the Fixed Distribution hypothesis rather than as a standalone finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "The authors acknowledge that OFC could potentially be made consistent with their…",
+        "claim": "The authors acknowledge that OFC could potentially be made consistent with their findings either by designing a suitable cost function or by applying OFC to inputs to M1 rather than M1 activity directly.",
+        "type": "supporting",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "our work does not rule out the possibility that OFC is appropriate for predicting neural activity. First, it may be possible to design a cost function such that OFC predictions are consistent with the findings presented here.",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors explicitly acknowledge that their findings do not rule out OFC, showing intellectual honesty.",
+            "Two specific mechanisms by which OFC could be reconciled with the findings are proposed: (1) designing a suitable cost function, and (2) applying OFC to inputs to M1.",
+            "The second mechanism (applying OFC to M1 inputs rather than M1 activity) is a concrete and plausible proposal that could generate testable predictions."
+          ],
+          "weaknesses": [
+            "The claim that a suitable cost function could be designed is somewhat vacuous—with enough free parameters, almost any cost function could be made consistent with observed data.",
+            "No specific cost function is proposed or analyzed, leaving this as speculation rather than a tested hypothesis.",
+            "The claim about applying OFC to M1 inputs is interesting but untested in this paper."
+          ],
+          "alternative_interpretations": [
+            "The coupling between output-potent and output-null dimensions could be an emergent property of recurrent M1 dynamics rather than reflecting optimal control of M1 inputs.",
+            "The Fixed Distribution results could reflect network-level constraints (e.g., connectivity structure) that are orthogonal to optimization-based frameworks like OFC."
+          ],
+          "required_assumptions": [
+            "OFC applied to M1 inputs would produce coupling in M1 output dimensions similar to what is observed."
+          ],
+          "notes": "This is a discussion-level claim that appropriately frames the limitations of the study's conclusions. The reference to Todorov (2004) and standard OFC frameworks is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "The study focused on short timescales (one to two hours); with repeated practice…",
+        "claim": "The study focused on short timescales (one to two hours); with repeated practice over days and weeks, there may be different and perhaps fewer constraints on neural redundancy.",
+        "type": "supporting",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "Given repeated practice with the same BCI mapping across days and weeks, it is possible that there are different and perhaps fewer constraints on neural redundancy than what we found here.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors correctly identify this as an important limitation of their study.",
+            "It is well established in the BCI literature that neural representations can reorganize substantially over days and weeks of practice (e.g., Ganguly and Carmena, 2009).",
+            "The claim is appropriately hedged ('it is possible that')."
+          ],
+          "weaknesses": [
+            "No data is presented to support or refute this claim; it is purely speculative.",
+            "The claim could be seen as undermining the generalizability of the main findings without providing any evidence for or against extended learning effects."
+          ],
+          "alternative_interpretations": [
+            "Extended practice might strengthen rather than weaken the coupling between output-potent and output-null dimensions if the coupling reflects fundamental network properties.",
+            "Alternatively, extended practice could allow animals to learn to decouple dimensions, which would weaken the Fixed Distribution hypothesis."
+          ],
+          "required_assumptions": [
+            "Short-timescale constraints on neural activity may differ fundamentally from long-timescale constraints."
+          ],
+          "notes": "This is an appropriate caveat for the discussion section.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "Being unaware of extra output-potent dimensions would make Fixed Distribution pr…",
+        "claim": "Being unaware of extra output-potent dimensions would make Fixed Distribution predictions worse rather than better, so the accurate predictions despite not knowing all potent dimensions suggests those extra dimensions would not provide substantial additional predictive power.",
+        "type": "supporting",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "The fact that we were able to accurately predict the output-null distributions (13% histogram error on average, with the lowest possible error being 7%) without knowing all the potent dimensions is then evidence that these extra potent dimensions, if they exist, would not provide substantial additional predictive power.",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The logical argument is sound: if additional unknown potent dimensions exist, they would add noise to predictions by conflating truly potent and null activity, which would worsen predictions rather than improve them.",
+            "The 13% histogram error (vs. 7% floor) serves as quantitative evidence that the predictions are already quite accurate.",
+            "This is an important consideration given that motor cortex neurons likely have downstream effects beyond the BCI."
+          ],
+          "weaknesses": [
+            "The argument assumes that additional potent dimensions would primarily add noise, but they could also introduce systematic biases that might fortuitously improve predictions in some dimensions.",
+            "The gap between 13% and the 7% floor could partly be explained by unaccounted potent dimensions, but the authors frame this as evidence against their importance.",
+            "The argument is more about the practical impact than definitively ruling out additional potent dimensions."
+          ],
+          "alternative_interpretations": [
+            "The residual 6% gap between Fixed Distribution error and the floor could be partly attributable to unaccounted potent dimensions constraining activity in ways not captured by the model.",
+            "The additional potent dimensions might be important for understanding the coupling mechanism even if they don't substantially improve predictions."
+          ],
+          "required_assumptions": [
+            "Unknown potent dimensions would degrade rather than improve predictions.",
+            "The 13% error is close enough to the 7% floor to constitute 'accurate predictions'."
+          ],
+          "notes": "Related to c1.5.3.1 which argues arm motor output dimensions are separate from BCI dimensions.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.1",
+        "label": "Arm movements were not occurring during BCI control, so arm motor output dimensi…",
+        "claim": "Arm movements were not occurring during BCI control, so arm motor output dimensions do not overlap with BCI output-potent or output-null dimensions and cannot explain the observed coupling.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "in these experiments, the animal's arm was not moving during BCI control... Thus, the activity we study here resides within the arm's output-null dimensions.",
+        "evaluation": {
+          "node_id": "c1.5.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim that the arm was not moving during BCI control is a concrete experimental fact that can be verified.",
+            "This effectively addresses a potential confound: arm movements could create additional output-potent dimensions that would complicate the analysis."
+          ],
+          "weaknesses": [
+            "Even without overt arm movement, motor cortex activity could still reflect motor planning or sub-threshold motor commands that have downstream effects on spinal circuits.",
+            "The claim that 'the activity we study here resides within the arm's output-null dimensions' is an inference, not a direct measurement—no EMG data is described to confirm the absence of muscle activity.",
+            "Motor cortex neurons that drive BCI cursor movement may still have connections to spinal motor neurons, creating a coupling that is not captured by the absence of visible arm movement."
+          ],
+          "alternative_interpretations": [
+            "Sub-threshold motor commands or postural maintenance could still impose constraints on the activity in what the authors call output-null dimensions.",
+            "The coupling between output-potent and output-null dimensions could partly reflect the preserved motor cortex-to-spinal cord connectivity, even in the absence of overt movement."
+          ],
+          "required_assumptions": [
+            "Absence of overt arm movement implies absence of arm-related motor output from the recorded neurons.",
+            "The activity patterns used for BCI control do not overlap with those used for arm motor control."
+          ],
+          "notes": "The Sadtler et al. (2014) framework of intrinsic manifolds is relevant here—the BCI-relevant manifold may overlap with the arm movement manifold.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "The observed decrease in variance when dimensions became output-null was statist…",
+        "claim": "The observed decrease in variance when dimensions became output-null was statistically significant (t-test, p<0.001) but the magnitude was small compared to Minimal Firing/Deviation predictions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Across sessions, we found that the variance of observed activity showed a small but significant decrease when it became output-null (Figure 6C, 'Data') (t-test, p<0.001). This is in contrast to the predictions of the Minimal Firing and Minimal Deviation hypotheses, which predicted much larger decreases.",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Both the statistical significance and the magnitude of the effect are reported, allowing proper interpretation.",
+            "The comparison to Minimal Firing/Deviation predictions provides important context: the observed decrease was much smaller than what those hypotheses predicted.",
+            "The analysis is conducted in the specific dimensions where changes would be most expected, making this a strong test.",
+            "The t-test is appropriate for assessing whether the mean change in variance is significantly different from zero."
+          ],
+          "weaknesses": [
+            "The existence of a statistically significant decrease, even if small, leaves open the possibility of a minor minimal-energy influence that the Fixed Distribution hypothesis does not fully capture.",
+            "The t-test assumes normality of the change-in-variance distribution across sessions; no assessment of this assumption is provided."
+          ],
+          "alternative_interpretations": [
+            "The small but significant decrease could reflect a genuine but weak minimal-energy constraint operating alongside the dominant coupling effect described by Fixed Distribution.",
+            "The decrease could be an artifact of the binning procedure or of differences in sample sizes between the two mapping conditions."
+          ],
+          "required_assumptions": [
+            "The binning procedure (by cursor direction under the second mapping) does not introduce systematic biases in variance estimation.",
+            "Changes in variance in this 2D subspace are representative of how variance changes in all dimensions that shift from output-potent to output-null."
+          ],
+          "notes": "This finding is consistent with the Fixed Distribution hypothesis, which also predicted a slight decrease (t-test, p<0.001), adding further support. See c1.1.6.1 for the qualitative counterpart.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "No significant change in variance was found in dimensions going from output-null…",
+        "claim": "No significant change in variance was found in dimensions going from output-null to output-potent (t-test, p>0.5).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We found that the activity showed little to no change in variance in these dimensions (t-test, p>0.5), in agreement with the predictions of Fixed Distribution",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is a complementary analysis to c1.6.1.1, examining the reverse direction (output-null to output-potent), providing a more complete picture.",
+            "The null result (p>0.5) is consistent with the Fixed Distribution hypothesis prediction that variance should not change dramatically.",
+            "The analysis uses the same methodology as the forward direction, ensuring consistency."
+          ],
+          "weaknesses": [
+            "Null results are inherently harder to interpret—the lack of a significant change could reflect insufficient statistical power rather than a true absence of effect.",
+            "The exact p-value is not reported, only p>0.5, which is imprecise.",
+            "This analysis relies on predicting output-null activity of the first mapping using activity from the second mapping, which reverses the temporal order and could introduce different confounds."
+          ],
+          "alternative_interpretations": [
+            "The asymmetry between the results in this direction (no change) and the forward direction (small decrease, c1.6.1.1) could reflect a genuine directional asymmetry in how neural circuits adapt to mapping changes.",
+            "The lack of variance change could simply reflect that the intrinsic manifold constrains activity regardless of which dimensions are potent or null."
+          ],
+          "required_assumptions": [
+            "The temporal order of mapping presentation does not systematically affect the variance of activity in the relevant dimensions.",
+            "The analysis has sufficient statistical power to detect a meaningful change in variance."
+          ],
+          "notes": "The asymmetry with c1.6.1.1 (where a small significant decrease was found) is noteworthy but not discussed extensively by the authors.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.6",
+        "source": "c1.1",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.2",
+        "source": "c1.1.1",
+        "target": "c1.1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.6_c1.1.6.1",
+        "source": "c1.1.6",
+        "target": "c1.1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.3_c1.5.3.1",
+        "source": "c1.5.3",
+        "target": "c1.5.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 40,
+    "total_edges": 39,
+    "max_depth": 3,
+    "high_support_nodes": 23,
+    "low_support_nodes": 2,
+    "overall_assessment": "The paper's 40 claims show strong overall support when weighted by centrality (weighted support score 0.80, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “The coupling may cause activity fluctuations in a stimulus-null space to influence the downstream readout, or limit one's ability to plan the next movement with…” (2 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

@@ -1,0 +1,43 @@
+**eLife Assessment**
+This valuable study challenges the prevailing miRNA-sponge model for circHIPK3 and proposes an alternative mechanism involving IGF2BP2 binding through an 11-mer motif, but the central ceRNA/condensation model rests on incomplete evidence, as the stoichiometric incompatibility is acknowledged but not convincingly resolved by the condensation experiments, which rely solely on overexpression conditions far exceeding physiological circHIPK3 levels.
+
+**Summary**
+The authors investigate the function of circHIPK3, the most prevalent "alpha" circRNA, in bladder cancer cells. Using time-series siRNA knockdown in two BC cell lines (UMUC3 and J82) followed by QuantSeq, they identify thousands of differentially expressed genes and, through unbiased computational motif analysis (Regmex), find that an 11-mer motif within circHIPK3 is enriched in the 3′UTRs of downregulated genes. They argue against a miRNA-sponge function and instead propose that circHIPK3 acts as a competing endogenous RNA (ceRNA) for the RNA-binding protein IGF2BP2, which binds via this 11-mer motif. They show that IGF2BP2 knockdown counteracts the effects of circHIPK3 knockdown on target genes, including STAT3, and that circHIPK3 depletion increases IGF2BP2 binding to STAT3 mRNA. However, absolute quantification reveals ~45 circHIPK3 molecules versus ~200,000 IGF2BP2 proteins per cell, which is incompatible with a simple ceRNA model. To address this, the authors demonstrate that circHIPK3 overexpression induces IGF2BP2 condensates, proposing a nucleation model where individual circRNA molecules can sequester many RBP molecules.
+
+**Strengths**
+- The systematic, unbiased computational approach using Regmex to identify the 11-mer motif is well-designed and provides a data-driven alternative to candidate-based studies. The consistency of the motif across two cell lines (UMUC3 and J82) and validation in a third (FL3) strengthens this finding.
+- The negative result regarding miRNA sponging is rigorously supported by multiple complementary analyses (AGO-CLIP-defined target sites, Regmex on all circHIPK3 7-mers, and miRNA expression profiling), and represents an important corrective to a large body of literature making unsupported sponge claims.
+- The integration of ENCODE eCLIP data with functional knockdown experiments across different cell systems to converge on IGF2BP2 is methodologically sound and leverages publicly available datasets effectively.
+- The honest reporting of stoichiometric measurements and the acknowledgment that a simple ceRNA model is unlikely is commendable and raises important questions about circRNA function more broadly.
+- The 92% concordance in regulation direction of shared DE genes between UMUC3 and J82 provides good confidence in the biological relevance of the findings.
+- The rescue experiment (double KD of circHIPK3 and IGF2BP2) and the 11-mer mutation experiment in the Laccase2 expression system provide mechanistic support for the proposed model.
+
+**Weaknesses / Essential Revisions**
+- **Stoichiometry vs. condensation model**: The central mechanistic claim—that circHIPK3 can function as a ceRNA despite being outnumbered ~5000:1 by IGF2BP2—hinges entirely on the condensation/nucleation hypothesis. However, condensates are only observed upon overexpression of circHIPK3 from a Laccase2 vector, which produces levels far exceeding endogenous expression. The authors need to demonstrate that endogenous circHIPK3 associates with IGF2BP2 condensates or granules, or at minimum estimate how many circHIPK3 molecules are produced from the overexpression construct to contextualize the condensation observation. The 29% condensate-positive rate in control cells also requires explanation.
+
+- **11-mer motif specificity**: Allowing up to two mismatches in an 11-mer is quite permissive (each position can be any of 4 nucleotides for 2 positions, yielding many degenerate sequences). The authors should provide the expected frequency of this motif occurring by chance in 3′UTRs of similar length, and demonstrate that the enrichment in downregulated genes survives permutation testing with matched random 11-mers from other abundant circRNAs or random sequences.
+
+- **ASO experiment is underpowered**: The critical experiment testing 11-mer function via ASO (Figure 5E) fails to reach statistical significance (p=0.078 for STAT3 binding, p=0.27 for circHIPK3 binding). While the trends are directionally consistent, this experiment is insufficient to support the claim that the 11-mer is the critical binding site. Additional replicates or alternative approaches (e.g., CRISPR-based editing of endogenous circHIPK3) are needed.
+
+- **Cell line heterogeneity**: Key experiments are distributed across different cell lines (UMUC3/J82 for RNA-seq, FL3 for RIP, HEK293 for overexpression/mutation, K562/HepG2 for eCLIP), making it difficult to construct a coherent mechanistic narrative within a single biological system. The eCLIP data from K562/HepG2 may not faithfully represent IGF2BP2 binding behavior in BC cells. The authors should acknowledge this limitation more explicitly and ideally perform eCLIP or CLIP-like experiments in at least one BC cell line.
+
+- **STAT3 paradox**: The authors acknowledge but do not resolve the paradox that knockdown of a proposed tumor suppressor (circHIPK3) downregulates the oncogene STAT3. This undermines the clinical narrative connecting circHIPK3 expression to patient survival. A more thorough discussion of how the STAT3-p53 axis integrates with the tumor-suppressive phenotype is needed, potentially including proliferation/apoptosis assays that directly test the STAT3-mediated effects.
+
+- **Cell cycle data contradict pathway analysis**: The GSEA shows enrichment of proliferative pathways (E2F targets, G2/M checkpoint) upon circHIPK3 KD, yet EdU-flow cytometry reveals "only subtle differences" in cell cycle distribution (Figure 4—figure supplement 1G). The authors should quantify these differences statistically and reconcile this discrepancy, as it weakens the functional significance of the proposed mechanism.
+
+- **Clinical cohort size and specificity**: The survival analysis uses only 56 NMIBC patients, and the linear HIPK3 transcript shows a nearly significant association (p=0.052) with the same trend. Multivariate analysis controlling for established prognostic factors (stage, grade, molecular subtype) is essential to claim that circHIPK3 has independent prognostic value beyond HIPK3 expression.
+
+- **Causality of gene expression changes**: The time-series design is elegant, but the large number of DE genes (>3000 in UMUC3) at later time points likely includes many indirect/secondary effects. The authors should more carefully distinguish direct from indirect targets, for example, by integrating with IGF2BP2 CLIP binding data to define a high-confidence direct target set and testing enrichment specifically within that set.
+
+**Minor Comments**
+- The paper would benefit from a schematic figure summarizing the experimental workflow and how different cell lines were used for different experiments.
+- Figure 2A shows AGO-CLIP-defined miRNA binding sites, but the source datasets span diverse tissues/cell types. The relevance to BC should be discussed.
+- The Regmex analysis uses 7-mers from circHIPK3, but the rationale for choosing 7-mers specifically (as opposed to 6-mers or 8-mers) should be stated.
+- The northern blot (Figure 5—figure supplement 1H) confirms expression of WT and mutant circHIPK3 but quantification should be provided to ensure equal expression levels.
+- The manuscript contains some redundancy in describing negative miRNA-sponge results across multiple figures that could be consolidated.
+- Reference formatting appears inconsistent in some places (e.g., duplicate citations in the miRNA sponge discussion paragraph).
+- The Methods section appears truncated (cell cycle assay description is incomplete).
+
+**Recommendation**
+Major Revisions
+The study addresses an important question and provides a valuable framework for understanding circRNA function beyond miRNA sponging, but the central nucleation/condensation mechanism requires substantially stronger evidence at physiologically relevant circHIPK3 levels, and several key experiments (ASO, cell cycle) are underpowered or contradictory to the proposed model.

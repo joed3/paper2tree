@@ -1,0 +1,59 @@
+**eLife Assessment**
+
+This study presents a **valuable** investigation into how experimental evolution compensates for growth deficits caused by genome reduction in *E. coli*, combining genomic resequencing and transcriptome profiling across nine independent lineages. However, the evidence supporting the central conceptual claims — particularly the proposed novel "divergent-to-convergent" evolutionary strategy and the WGCNA-based functional module analysis — is **incomplete**, undermined by critically underpowered network analyses, internal inconsistencies, and insufficient distinction from well-established evolutionary phenomena.
+
+**Summary**
+
+The authors evolved nine independent lineages of a genome-reduced *E. coli* strain (~980 generations) and observed that eight of nine lineages significantly recovered growth rate. They report that genomic mutations accumulated during evolution are highly diverse across lineages (65 total mutations, no common mutation across all nine), yet a conserved six-period chromosomal periodicity in gene expression is maintained across all evolved populations. The authors interpret this as a novel "divergent-to-convergent" evolutionary strategy — a third type of evolution distinct from classical parallel or divergent evolution — in which diverse mutational paths converge on a homeostatic transcriptome architecture. Weighted gene co-expression network analysis (WGCNA) is used to identify three gene modules purportedly responsible for growth fitness, transcriptional reorganization, and mutation accumulation, respectively. The metaphor "all roads leading to Rome" is invoked to capture the idea that multiple evolutionary solutions restore fitness while preserving transcriptome structure.
+
+**Strengths**
+
+- **Growth rate recovery is robustly demonstrated** (c1.1.1): Eight of nine independently evolved lineages showed statistically significant growth rate improvement (Mann-Whitney U tests with N=4–6 biological replicates), consistent with prior work and providing strong evidence that experimental evolution can compensate for genome reduction-mediated fitness loss.
+
+- **Mutation diversity across lineages is well-documented** (c1.2.1): Genome resequencing identified 65 mutations across nine lineages with no mutation shared across all nine, and the data are deposited and verifiable (DRA013661, Supplementary file 3). The range of 2–13 mutations per lineage and the absence of common targets clearly establishes genomic-level diversity.
+
+- **Nonsynonymous enrichment and essential gene overrepresentation provide evidence for adaptive significance** (c1.2.3, c1.2.4): The 36/45 nonsynonymous SNP ratio (p<0.01) and the 22% vs. 9% essential gene enrichment (chi-square p=0.008) support the claim that at least some fixed mutations are adaptive.
+
+- **Chromosomal periodicity conservation is rigorously quantified** (c1.3.1): Fourier transform analysis with Fisher's g test confirms statistically significant six-period periodicity across all nine evolved populations, the ancestor, and wild-type (Supplementary file 5), providing a concrete structural finding.
+
+- **Transcriptomic divergence across lineages is clearly documented** (c1.4.2): The UpSet plot analysis (Figure 4A) and the declining overlap with increasing lineage number (Figure 4B) demonstrate that DEGs are largely lineage-specific, with only 108 common DEGs across all nine populations.
+
+- **Comparison between genome reduction and evolution is systematic and multi-layered** (c1.4): DEG overlap, regulon enrichment, and KEGG/GO pathway analyses consistently show limited commonality between genome reduction-mediated and evolution-mediated transcriptome changes, validated with both DESeq2 and RankProd methods.
+
+**Weaknesses / Essential Revisions**
+
+- **WGCNA analysis is critically underpowered (c1.5, c1.5.1, c1.5.2, c1.5.3):** The gene network reconstruction uses only nine evolved samples — far below the recommended minimum of 15–20 for reliable WGCNA. With 3,290 genes and 9 samples, the 21 reconstructed modules are prone to overfitting and instability. No robustness analysis (bootstrapping, leave-one-out, or alternative parameterization) is provided to assess module stability. The functional labels assigned to the three highlighted modules ("replication" for an iron-transport module, "population dynamics" for a translation-enriched module) represent major interpretive leaps unsupported by the enrichment results. This analysis is central to the paper's narrative but cannot be relied upon in its current form. The authors must either substantially increase sample size, provide rigorous stability assessments, or remove these claims.
+
+- **Internal inconsistency in module assignments (c1.5.5):** The Results section assigns translation-related processes to module M16 (mutation-correlated), while the Discussion states translation is enriched in M10 (DEG-correlated module). This factual contradiction must be resolved, as it directly affects the claim of "unexpected functional differentiation" of translation from growth.
+
+- **The proposed "third type" of evolution is not distinguished from established phenomena (c1.6, c1.6.1):** The "divergent-to-convergent" evolutionary strategy is presented as novel, but genotypic diversity converging on similar phenotypic outcomes is extensively documented in experimental evolution (e.g., Lenski's LTEE). The authors provide no quantitative criterion or formal statistical test to distinguish their proposed pattern from standard phenotypic convergence. The claim of novelty requires either a rigorous comparative framework or significant reframing.
+
+- **"Convergence" is conflated with structural constraint maintenance (c1.3, c1.6):** The transcriptome "convergence" is operationalized almost entirely as conservation of six-period chromosomal periodicity. However, the authors' own prior work (Nagai et al., 2020; Matsui et al., 2023) demonstrates this periodicity is invariant across many conditions, suggesting it is an intrinsic structural property of the *E. coli* chromosome rather than a target of evolutionary convergence. Meanwhile, PCA and hierarchical clustering (Figure 4—figure supplement 1) show evolved transcriptomes diverge from each other in many respects, directly undermining the "convergent" framing. A formal test demonstrating that transcriptomic similarity among evolved populations exceeds what would be expected from shared ancestry and growth conditions alone is essential.
+
+- **The "trade-off" framing is internally contradictory (c1.1, c1.1.3, c1.1.5):** The paper describes a trade-off between growth rate and carrying capacity, yet the authors' own data show a *positive* Spearman correlation between these traits among the evolved populations (Figure 1D). Furthermore, the authors acknowledge elsewhere that the carrying capacity decrease may represent neutral drift rather than a true trade-off. These contradictory framings must be reconciled.
+
+- **Individual mutation effects are assumed, not demonstrated (c1.2):** The claim that "most or all mutations benefit fitness increase" is explicitly stated as an assumption. Without experimental validation (e.g., reconstruction of individual mutations, allele swaps, or fitness assays of intermediates), the adaptive significance of the majority of mutations remains unverified. The nonsynonymous enrichment and essential gene overrepresentation are suggestive but do not constitute proof for individual mutations.
+
+- **The equivalence of genome reduction to a stress response is poorly supported (c1.4.5):** The claim that genome reduction and evolution are "equivalent to a stress response" based on the involvement of mobile elements and flagella is a loose analogy without formal comparison to characterized stress response transcriptomes.
+
+**Minor Comments**
+
+- The specific p-values for individual lineage growth rate comparisons (c2.2) should be reported in the text or a supplementary table, not merely indicated in figure panels.
+
+- The Spearman correlation coefficient and p-value for the growth rate–carrying capacity relationship (c2.3) should be explicitly stated, along with clarification of whether the ancestor is included in the correlation.
+
+- The mean-of-p-values approach used for the mutational locational bias simulation (c2.8) is unconventional. Standard p-value combination methods (Fisher's method, Stouffer's method) would be more appropriate and interpretable.
+
+- The borderline non-significance of the locational bias test (μp = 0.07–0.09) deserves more nuanced discussion; the authors should acknowledge this as potentially suggestive rather than definitively negative.
+
+- The biological significance of histidine pathway enrichment in common DEGs (c1.4.3) should be discussed in the context of M63 minimal medium composition, as this may reflect media-specific adaptation rather than a universal evolutionary response.
+
+- The variance explained by PC1 and PC2 in the transcriptome PCA (Figure 4—figure supplement 1) should be reported to contextualize the clustering pattern.
+
+- The number of evolved lineages carrying the insH deletion should be explicitly stated in the text rather than only in the supplementary files.
+
+**Recommendation**
+
+Major Revisions
+
+The paper addresses an interesting biological question and presents solid growth and mutation data from a well-replicated experimental evolution design (25 of 49 claims have high support). However, the central conceptual claims — the WGCNA-based functional module analysis (low support across all module-related claims), the proposed novel evolutionary strategy (low support), and the "homeostatic transcriptome architecture as evolutionary convergence" framing — are insufficiently supported by the current evidence and contain critical internal inconsistencies. These claims require either substantial additional evidence (increased sample size for WGCNA, formal tests for convergence beyond structural constraint, experimental validation of mutation effects) or significant reframing to align with the data's actual inferential reach.

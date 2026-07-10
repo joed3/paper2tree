@@ -1,0 +1,2367 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_86260",
+    "title": "Autonomous metabolic reprogramming and oxidative stress characterize endothelial dysfunction in acute myocardial infarction",
+    "authors": [
+      "Erika Zodda",
+      "Olga Tura-Ceide",
+      "Nicholas L Mills",
+      "Josep Tarragó-Celada",
+      "Marina Carini",
+      "Timothy M Thomson",
+      "Marta Cascante"
+    ],
+    "url": "https://doi.org/10.7554/eLife.86260",
+    "abstract": "Compelling evidence has accumulated on the role of oxidative stress on the endothelial cell (EC) dysfunction in acute coronary syndrome. Unveiling the underlying metabolic determinants has been hampered by the scarcity of appropriate cell models to address cell-autonomous mechanisms of EC dysfunction. We have generated endothelial cells derived from thrombectomy specimens from patients affected with acute myocardial infarction (AMI) and conducted phenotypical and metabolic characterizations. AMI-derived endothelial cells (AMIECs) display impaired growth, migration, and tubulogenesis. Metabolically, AMIECs displayed augmented ROS and glutathione intracellular content, with a diminished glucose consumption coupled to high lactate production. In AMIECs, while PFKFB3 protein levels of were downregulated, PFKFB4 levels were upregulated, suggesting a shunting of glycolysis towards the pentose phosphate pathway, supported by upregulation of G6PD. Furthermore, the glutaminolytic enzyme GLS was upregulated in AMIECs, providing an explanation for the increase in glutathione content. Finally, AMIECs displayed a significantly higher mitochondrial membrane potential than control ECs, which, together with high ROS levels, suggests a coupled mitochondrial activity. We suggest that high mitochondrial proton coupling underlies the high production of ROS, balanced by PPP- and glutaminolysis-driven synthesis of glutathione, as a primary, cell-autonomous abnormality driving EC dysfunction in AMI.",
+    "word_count": 5590,
+    "processed_at": "2026-07-10T01:30:14.264948+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Coronary endothelial cells isolated from AMI patients exhibit pharmacologically …",
+        "claim": "Coronary endothelial cells isolated from AMI patients exhibit pharmacologically actionable cell-autonomous metabolic dysfunction, characterized by a shift from glycolysis to glutamine-dependent metabolism, mitochondrial hyperpolarization, excess ROS production, and compensatory redox homeostasis mechanisms.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Introduction/Discussion",
+        "verbatim_quote": "Our observations point to pharmacologically actionable cell-autonomous metabolic dysfunction in these cells.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The study presents a coherent narrative across multiple orthogonal measurements (growth, migration, tubulogenesis, metabolite flux, enzyme expression, ROS, glutathione, membrane potential) that collectively paint a consistent picture of metabolic reprogramming in AMIECs.",
+            "Use of eight independent patient-derived cell lines provides some biological replication, and the consistency of phenotypes across most lines strengthens the pattern (e.g., 7/8 show low PFKFB3, 7/8 show high ROS).",
+            "The identification of CE-45 as a partial outlier with a more normal-like profile across multiple assays provides internal consistency and suggests the observed patterns are not artifacts of culture conditions.",
+            "The correlation between migration capacity and tubulogenic potential (R²=0.67) provides functional coherence linking the observed deficits.",
+            "The combination of high ROS, high glutathione, high G6PD activity, high glutamine consumption, and high GLS1 expression forms a logically coherent metabolic model."
+          ],
+          "weaknesses": [
+            "INFERENTIAL GAP (critical): The root claim asserts 'pharmacologically actionable' dysfunction, but no pharmacological intervention was tested in AMIECs. This phrase in the claim is entirely aspirational, not evidence-based. Sub-claim c1.7 confirms this is wholly unsupported.",
+            "INFERENTIAL GAP (critical): The claim of 'cell-autonomous metabolic dysfunction' implies a primary, intrinsic defect, but the study cannot distinguish between (a) primary metabolic dysfunction, (b) epigenetic memory of in vivo conditions, or (c) selection bias during isolation and culture. The authors acknowledge this ambiguity in the discussion but the root claim does not reflect it.",
+            "EVIDENTIAL GAP (major): No direct flux measurements were performed. The metabolic shift from glycolysis to glutamine-dependent metabolism (central to the claim) is inferred from consumption/production rates and enzyme expression, but never validated with isotope tracing (¹³C-glucose or ¹³C-glutamine). Sub-claims c1.2, c1.3, c1.4, and c1.5 all inherit this gap.",
+            "EVIDENTIAL GAP (major): Mitochondrial hyperpolarization is measured by DiIC1(5) without controlling for mitochondrial mass differences. No direct mitochondrial respiration measurement (e.g., Seahorse OCR) was performed, yet 'mitochondrial hyperpolarization' and 'excess ROS production from mitochondria' are central to the claim (c1.6 weakness).",
+            "EVIDENTIAL GAP (significant): Only one commercial HCAEC line serves as control. All claims of 'dysfunction' are relative to this single donor. Without multiple healthy donor controls, it is impossible to know whether the AMIECs fall outside normal inter-individual variation. This limitation pervades every comparison in the paper.",
+            "EVIDENTIAL GAP: Whether n=3 replicates are biological or technical is never specified. If technical replicates, the statistical framework (Student's t-test for each AMIEC vs. HCAEC) is inappropriate and p-values are unreliable.",
+            "INFERENTIAL GAP: The claim of 'glutamine-dependent metabolism' as a 'shift' presupposes that the cells formerly relied on glycolysis and changed. The study captures a snapshot and cannot establish temporal directionality.",
+            "INFERENTIAL GAP: The connection between high lactate and glutaminolysis (c1.3) is entirely speculative — neither malic enzyme expression/activity nor ¹³C-glutamine tracing was performed. This is acknowledged as a 'possibility' in the text but incorporated into the root claim as though established.",
+            "The sub-claim evaluations show that c1.3 (glutamine-derived lactate) is 'weak/overclaimed' and c1.7 (pharmacological actionability) is 'weak/overclaimed', yet both are integral to the root claim. The root claim therefore overreaches what its sub-claims collectively establish."
+          ],
+          "alternative_interpretations": [
+            "The observed metabolic profile could reflect selection bias: cells that survived isolation from thrombectomy specimens and adapted to culture may not be representative of the endothelium in vivo. More quiescent or damaged cells may have been lost during isolation.",
+            "High ROS and compensatory glutathione could be a consequence of culture adaptation stress rather than a reflection of in vivo endothelial pathology. Extended passage in culture could amplify or attenuate these features.",
+            "The metabolic differences could reflect normal inter-individual variation amplified by comparison to a single control donor rather than disease-specific reprogramming.",
+            "Low PFKFB3 and slow growth may reflect cellular senescence or replicative exhaustion in cells derived from diseased tissue, rather than a specific metabolic reprogramming linked to AMI pathogenesis.",
+            "High membrane potential could reflect increased mitochondrial mass rather than per-mitochondrion hyperpolarization, which would fundamentally change the mechanistic interpretation.",
+            "The high glutamine consumption and high GLS1 expression could be driven by culture conditions (EGM-2 medium with high glutamine) rather than intrinsic metabolic wiring."
+          ],
+          "required_assumptions": [
+            "The single HCAEC control line is representative of healthy coronary endothelial cell metabolism, and inter-individual variation among healthy donors would not overlap with the AMIECs.",
+            "Cells isolated from thrombectomy specimens and cultured in vitro retain metabolic features relevant to their in vivo pathological state.",
+            "The isolation procedure does not select for a subpopulation of cells with atypical metabolic properties.",
+            "n=3 replicates represent independent biological replicates (not technical replicates of the same measurement).",
+            "DiIC1(5) signal differences reflect true membrane potential differences and not differences in mitochondrial mass or dye uptake kinetics.",
+            "The metabolic phenotypes observed in vitro are causally related to AMI pathogenesis rather than being consequences of the disease process or incidental findings.",
+            "Low glucose consumption and low PFKFB3 protein levels are reliable proxies for reduced glycolytic flux in the absence of direct flux measurements."
+          ],
+          "notes": "The paper presents an interesting descriptive characterization of patient-derived endothelial cells with a well-constructed metabolic narrative. However, the root claim significantly overreaches the evidence in two key ways: (1) calling the dysfunction 'pharmacologically actionable' when no pharmacological intervention was tested, and (2) presenting a comprehensive metabolic reprogramming model (glycolysis→PPP shunt, glutamine as primary carbon source, glutamine-derived lactate) built almost entirely on expression/consumption data without any direct metabolic flux measurements. The narrative is internally consistent and hypothesis-generating, but the claim language implies mechanistic demonstration rather than the correlative/descriptive evidence actually presented. A more calibrated claim would be: 'AMI patient-derived coronary endothelial cells display metabolic alterations relative to a commercial control line, including reduced glucose consumption, increased glutamine consumption, elevated ROS, and mitochondrial hyperpolarization, suggestive of metabolic reprogramming that warrants further mechanistic investigation.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "AMI patient-derived coronary endothelial cells are dysfunctional in major cell-a…",
+        "claim": "AMI patient-derived coronary endothelial cells are dysfunctional in major cell-autonomous processes, namely growth, migration, and tubulogenesis.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "These results indicate that AMI patient-derived coronary endothelial cells are dysfunctional in major cell-autonomous processes, namely growth and migration.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple functional assays (growth, migration, tubulogenesis) consistently show deficits across most or all 8 patient-derived cell lines.",
+            "The convergence of three independent assay types strengthens the claim of cell-autonomous dysfunction.",
+            "Mitomycin C was used in migration assays to control for proliferation confounding, which is methodologically appropriate.",
+            "The correlation between migration and tubulogenesis (R²=0.67) provides internal coherence."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claims: only n=3 replicates per cell line, and whether these are biological or technical replicates is never specified — if technical, the statistical analysis is inappropriate.",
+            "Only a single control cell line (commercial HCAEC) is used, so inter-individual variation among healthy donors is entirely unaccounted for. This is a significant limitation for claims about 'AMI patient-derived' cells being abnormal.",
+            "The cell cycle analysis was performed at only a single time point (24 hr) and showed no significant differences, which somewhat undermines the 'growth dysfunction' narrative — the slow growth is observed but not mechanistically explained.",
+            "The correlation between migration and tubulogenesis (c1.1.5) is based on only 9 data points and is overclaimed as evidence of a causal link; both could be downstream of a common metabolic cause.",
+            "The claim extends to tubulogenesis, but the verbatim quote only mentions growth and migration — the paper does present tubulogenesis data but the stated claim is broader than the quoted conclusion."
+          ],
+          "alternative_interpretations": [
+            "The functional deficits could reflect culture artifact from the isolation procedure (explant culture from thrombectomy specimens), rather than inherent properties of these endothelial cells in vivo.",
+            "Passage number and time in culture could differ between AMIECs and commercial HCAECs, potentially confounding growth and migration comparisons.",
+            "A single control line might represent an unusually vigorous endothelial phenotype, making AMIECs appear abnormal by comparison."
+          ],
+          "required_assumptions": [
+            "The single HCAEC control line is representative of normal coronary endothelial cell function.",
+            "Culture conditions and passage numbers are equivalent between AMIECs and controls.",
+            "The isolation procedure from thrombectomy specimens does not introduce selection bias or culture artifacts."
+          ],
+          "notes": "The claim is stated in a measured way ('dysfunctional in major cell-autonomous processes') and is reasonably supported by converging evidence from multiple assays, but the single-control limitation is a recurring weakness throughout the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "AMIECs display diminished glycolysis, evidenced by low glucose consumption and d…",
+        "claim": "AMIECs display diminished glycolysis, evidenced by low glucose consumption and downregulation of the key glycolytic regulator PFKFB3, contrary to normal endothelial cells which rely mainly on glycolysis.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "AMIECs display low levels of glycolysis, as attested by low glucose consumption and downregulation of PFKFB3, which catalyzes the production of fructose-2,6-bisP (F2,6BP), a potent allosteric activator of the glycolysis rate-limiting enzyme 6-phosphofructokinase-1 (PFK-1)",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Two independent lines of evidence (glucose consumption measurements and PFKFB3 protein levels) converge to support diminished glycolysis.",
+            "7 out of 8 AMIECs show reduced PFKFB3 expression, and 6 out of 8 show reduced glucose consumption, providing consistency across patient-derived lines.",
+            "The internal coherence between PFKFB3 levels and glucose uptake is well-noted, with CE-45 (near-normal PFKFB3) also showing high glucose consumption.",
+            "The biological logic linking PFKFB3 downregulation to reduced glycolytic flux is well-established in the literature (Schoors et al., 2014; De Bock et al., 2013)."
+          ],
+          "weaknesses": [
+            "No direct measurement of glycolytic flux (e.g., ¹³C-glucose tracing, extracellular acidification rate via Seahorse) was performed — glucose consumption and PFKFB3 levels are indirect proxies.",
+            "Fructose-2,6-bisphosphate (F2,6BP) levels were not measured, which would be the most direct readout of PFKFB3 functional impact.",
+            "PFKFB3 protein expression was measured but enzyme activity was not — post-translational modifications could modulate activity independently of expression level.",
+            "CE-61 shows high glucose uptake but apparently low PFKFB3, which is not adequately discussed as an exception to the narrative.",
+            "n=3 replicates with unclear biological/technical nature.",
+            "No rescue experiment (e.g., PFKFB3 overexpression) to demonstrate causality between PFKFB3 downregulation and functional deficits."
+          ],
+          "alternative_interpretations": [
+            "Reduced glucose consumption could reflect reduced metabolic demand from slower growth rather than impaired glycolytic capacity.",
+            "Other glycolytic enzymes or glucose transporters could be limiting glycolysis independently of PFKFB3.",
+            "PFKFB3 downregulation could be an adaptive response rather than a primary defect."
+          ],
+          "required_assumptions": [
+            "PFKFB3 protein levels are a reliable proxy for glycolytic flux in these cells.",
+            "Glucose consumption rate primarily reflects glycolytic activity rather than other glucose-utilizing pathways.",
+            "The single control HCAEC line represents normal glycolytic capacity."
+          ],
+          "notes": "The claim as stated is reasonably calibrated — it says 'evidenced by' rather than 'caused by', appropriately characterizing the relationship as correlational rather than causal.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "AMIECs produce high levels of lactate uncoupled from glucose consumption, sugges…",
+        "claim": "AMIECs produce high levels of lactate uncoupled from glucose consumption, suggesting an alternative, possibly glutamine-derived, source of lactate.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "This uncoupling of lactate production from glycolysis suggests the existence of an alternative source of lactate in these cells.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The observation that 6 out of 8 AMIECs produce high lactate despite low glucose consumption is a genuinely intriguing finding that requires explanation.",
+            "The paper correctly identifies the logical problem: high lactate with low glucose consumption is inconsistent with conventional glycolytic lactate production.",
+            "The suggestion of glutamine-derived lactate via malic enzyme and LDH-A has precedent in cancer metabolism literature (Brooks, 2018; Zielke et al., 1980)."
+          ],
+          "weaknesses": [
+            "Critical inferential gap: the claim that lactate is 'possibly glutamine-derived' is entirely speculative — no isotope tracing (e.g., ¹³C-glutamine) was performed to determine the actual carbon source of lactate.",
+            "Malic enzyme (ME1, ME2) expression or activity was not measured in AMIECs.",
+            "LDH-A expression or activity was not measured.",
+            "NAD+/NADH ratios were not determined, which would support or refute the proposed mechanism of lactate production for NAD+ regeneration (c1.3.4 is weak).",
+            "Normalization of lactate production to cell number or protein is not clearly described — given different growth rates, this could significantly affect the interpretation.",
+            "The observation that CE-45 and CE-61 have high glucose consumption AND high lactate production is handled differently (attributed to a Warburg-like effect) without sufficient justification for treating the eight cell lines as belonging to distinct metabolic categories."
+          ],
+          "alternative_interpretations": [
+            "Lactate could be derived from other carbon sources in the culture medium (e.g., amino acids in the serum, pyruvate in the medium) — standard EGM-2 medium contains pyruvate.",
+            "Apparent uncoupling could be an artifact of normalization or timing of measurements.",
+            "The 'high lactate' could partly reflect reduced lactate consumption (e.g., via MCT1) rather than increased production.",
+            "Fatty acid oxidation could contribute to acetyl-CoA and ultimately to pyruvate/lactate pools via alternative pathways."
+          ],
+          "required_assumptions": [
+            "Lactate production in these cells reflects de novo synthesis rather than reduced uptake/metabolism of medium-derived lactate.",
+            "Glutamine-to-lactate conversion via malic enzyme and LDH-A is active in these cells.",
+            "The normalization of metabolite flux data is appropriate given differential growth rates."
+          ],
+          "notes": "This is one of the central claims of the paper, but its most novel component (glutamine-derived lactate) is entirely inferred rather than demonstrated. The gap between observation (high lactate, low glucose) and mechanism (glutaminolysis-derived lactate) is the paper's most significant evidential shortfall.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "AMIECs exhibit a metabolic shunt from glycolysis to the pentose phosphate pathwa…",
+        "claim": "AMIECs exhibit a metabolic shunt from glycolysis to the pentose phosphate pathway, driven by low PFKFB3 and high PFKFB4 expression, resulting in enhanced NADPH production for redox homeostasis.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "Low levels of PFKFB3 expression coupled with high levels of PFKFB4 expression in AMI patient-derived cells predict a redirection of glucose-6-phosphate (G6P) towards the PPP.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Three converging observations support PPP activation: low PFKFB3, high PFKFB4, and elevated G6PD expression and activity.",
+            "G6PD enzyme activity was measured directly, not just protein expression, providing stronger functional evidence for oxidative PPP activation.",
+            "The internal coherence of CE-45 (near-normal PFKFB3, G6PD, and ROS levels) strengthens the overall narrative.",
+            "The logic connecting PFKFB4 upregulation with PPP shunting has literature support (Dasgupta et al., 2018; Ros et al., 2017)."
+          ],
+          "weaknesses": [
+            "Inferential gap: the 'metabolic shunt from glycolysis to PPP' is inferred from enzyme expression/activity levels but was never directly measured. PPP flux (e.g., via ¹³C-glucose tracing), G6P levels, and F2,6BP levels were not determined.",
+            "PFKFB4 is a bifunctional enzyme that also has kinase activity — its role is more nuanced than simply opposing PFKFB3. Attributing PPP redirection primarily to PFKFB4 overexpression oversimplifies its biology.",
+            "The claim about 'enhanced NADPH production' is inferred from G6PD activity but NADPH levels were never directly measured.",
+            "The mechanistic discussion about what drives PFKFB3/PFKFB4 expression (HIF-1α, mTOR, PPARγ, p53) is entirely speculative — none of these pathways was measured (c1.4.3 and c1.4.4 are weak).",
+            "H2DCFDA is a non-specific ROS probe susceptible to artifacts from esterase activity and dye loading differences."
+          ],
+          "alternative_interpretations": [
+            "G6PD upregulation could be a direct response to oxidative stress (ROS-driven transcriptional activation) rather than a consequence of metabolic shunting driven by PFKFB3/PFKFB4.",
+            "PFKFB4 upregulation could serve non-metabolic functions (e.g., its role as SRC-3 kinase) rather than primarily redirecting flux.",
+            "The low PFKFB3 and high G6PD could be independently regulated without requiring a glycolysis-to-PPP 'shunt' model."
+          ],
+          "required_assumptions": [
+            "PFKFB3/PFKFB4 expression ratio reliably predicts the partitioning of G6P between glycolysis and PPP.",
+            "G6PD activity reflects actual PPP flux in these cells.",
+            "Enhanced NADPH production from the PPP is the primary mechanism maintaining redox homeostasis."
+          ],
+          "notes": "The individual observations (PFKFB3 down, PFKFB4 up, G6PD up) are each moderately well-supported, but their integration into a coherent 'metabolic shunt' model goes beyond what the data directly demonstrate. The claim would be substantially strengthened by direct flux measurements.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "AMIECs rely heavily on glutamine rather than glucose as their primary carbon sou…",
+        "claim": "AMIECs rely heavily on glutamine rather than glucose as their primary carbon source, with enhanced glutaminolysis supporting both anaplerosis and glutathione biosynthesis.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "our data suggest that AMIECs rely heavily on glutamine, both as an alternative to glucose as a carbon source and in order to maintain redox homeostasis in these cells.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Multiple converging lines of evidence: increased glutamine consumption, elevated GLS1 (both KGA and GAC isoforms), increased intracellular glutamate and cysteine, and elevated glutathione levels.",
+            "The glutamine-to-glucose consumption ratio being higher in AMIECs is a clear quantitative observation supporting a shift in carbon source preference.",
+            "Intracellular metabolomics (GC/MS) provides direct evidence of altered amino acid pools.",
+            "The lower glutamate export despite higher glutaminase expression provides a logical internal consistency."
+          ],
+          "weaknesses": [
+            "Inferential gap: the claim that AMIECs 'rely heavily on glutamine as their primary carbon source' goes beyond the evidence. Higher glutamine consumption does not prove it is the primary carbon source — this would require ¹³C-glutamine tracing to demonstrate carbon incorporation into TCA intermediates, lipids, etc.",
+            "Inferential gap from c1.5.4: the conclusion that reduced glutamate export means glutamate is consumed 'for GSH production' is speculative — glutamate has multiple intracellular fates (TCA anaplerosis, protein synthesis, transamination).",
+            "No direct measurement of mitochondrial respiration (oxygen consumption rate) was performed, so 'anaplerosis' is inferred rather than demonstrated (c1.5.5 is overclaimed).",
+            "Normalization of glutamine consumption to cell number is critical given different growth rates but is not clearly described.",
+            "Glutaminase activity was not measured — only protein expression.",
+            "The exceptions in amino acid profiling (glycine, alanine, histidine, proline not elevated) are noted but unexplained, and some (e.g., glycine, which is involved in glutathione synthesis) are potentially important."
+          ],
+          "alternative_interpretations": [
+            "Increased glutamine consumption could reflect nitrogen demand for nucleotide or amino acid biosynthesis rather than a carbon source switch.",
+            "Elevated intracellular amino acids could reflect decreased protein synthesis rates (consistent with slow growth) rather than increased amino acid production.",
+            "Lower glutamate export could reflect altered transporter expression rather than increased intracellular consumption.",
+            "The metabolic profile could represent a stress response to culture conditions rather than an inherent metabolic program."
+          ],
+          "required_assumptions": [
+            "Glutamine consumption rate reflects glutaminolytic flux for TCA anaplerosis.",
+            "The single control line has representative glutamine metabolism.",
+            "Extracellular metabolite measurements accurately reflect intracellular metabolic fluxes."
+          ],
+          "notes": "This claim represents a potentially important observation, but the language ('rely heavily on glutamine as primary carbon source') implies metabolic flux data that were not obtained. The evidence supports increased glutamine consumption and utilization but does not definitively establish glutamine as the primary carbon source.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "AMIECs display mitochondrial hyperpolarization with excess ROS production, count…",
+        "claim": "AMIECs display mitochondrial hyperpolarization with excess ROS production, countered by elevated intracellular glutathione levels, indicating a cell-autonomous primary mitochondrial dysfunction.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "a strong proton coupling in the mitochondrial membrane that results in excess ROS production, countered by enhanced NADPH and glutathione levels, driven by a glycolysis-to-PPP shunt and an enhanced glutamine metabolism",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Mitochondrial membrane potential was directly measured with DiIC1(5), and CCCP control demonstrates specificity of the signal.",
+            "All 8 AMIECs show hyperpolarization, providing strong consistency across patient-derived lines.",
+            "The combination of elevated ROS and elevated glutathione is internally consistent and suggests an active compensatory mechanism.",
+            "The overall narrative linking membrane hyperpolarization → ROS production → glutathione compensation is biologically plausible and has literature precedent (Murphy, 2009; Cadenas, 2018)."
+          ],
+          "weaknesses": [
+            "Critical inferential gap: the claim of 'cell-autonomous primary mitochondrial dysfunction' is the strongest mechanistic claim in the paper but rests on indirect evidence. No direct measurement of mitochondrial respiration (OCR, Seahorse), respiratory chain complex activity, or mitochondrial DNA integrity was performed.",
+            "DiIC1(5) fluorescence can be confounded by differences in mitochondrial mass — if AMIECs have more mitochondria, this would increase the signal without reflecting higher per-mitochondrion membrane potential. No mitochondrial mass quantification was performed.",
+            "H2DCFDA is a non-specific ROS probe; no mitochondrial-specific ROS measurement (e.g., MitoSOX) was performed to establish that the ROS are of mitochondrial origin.",
+            "The authors argue that in vitro ROS elevation 'cannot be directly attributed to environmental factors' (c1.6.4), but this reasoning is undermined by their own Discussion where they acknowledge possible epigenetic imprints. The argument is internally contradictory.",
+            "No measurement of uncoupling protein expression, proton leak, or electron transport chain components was performed.",
+            "The GSH/GSSG ratio was not determined — total reduced glutathione alone is less informative about actual redox status.",
+            "Labeling this as 'primary mitochondrial dysfunction' implies it is the root cause rather than a secondary consequence of other metabolic changes — this is not established."
+          ],
+          "alternative_interpretations": [
+            "ROS could originate from NADPH oxidases (NOX enzymes) or other non-mitochondrial sources, which are well-known contributors to endothelial ROS in cardiovascular disease.",
+            "Mitochondrial hyperpolarization could be a consequence of reduced ATP demand (due to slow growth) rather than a primary defect.",
+            "The elevated membrane potential could reflect altered mitochondrial dynamics (fission/fusion) or biogenesis rather than respiratory chain dysfunction.",
+            "Epigenetic changes from the in vivo environment could drive the phenotype without any 'primary' mitochondrial defect."
+          ],
+          "required_assumptions": [
+            "DiIC1(5) signal differences reflect membrane potential differences rather than mitochondrial mass differences.",
+            "H2DCFDA-detected ROS are primarily of mitochondrial origin.",
+            "The observed mitochondrial hyperpolarization represents a primary defect rather than an adaptive response.",
+            "Epigenetic memory of in vivo stress is insufficient to explain the sustained phenotype in culture."
+          ],
+          "notes": "The term 'primary mitochondrial dysfunction' is the most overclaimed element. The evidence supports mitochondrial hyperpolarization and elevated ROS, but whether this represents a primary defect, a secondary adaptation, or an epigenetic memory of in vivo stress is undetermined. This claim conflicts internally with the acknowledgment of epigenetic explanations in the Discussion. See tension with c1.7.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The observed mitochondrial dysfunction in AMIECs could potentially be reverted t…",
+        "claim": "The observed mitochondrial dysfunction in AMIECs could potentially be reverted through pharmacological uncoupling to mitigate ROS production and its accompanying metabolic reprogramming.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Independent of the original insult, a possible intervention to revert the observed mitochondrial dysfunction would be the use of pharmacological uncouplers to mitigate ROS production and the accompanying metabolic reprogramming",
+        "evaluation": {
+          "node_id": "c1.7",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The therapeutic suggestion is logically consistent with the evidence presented — if mitochondrial hyperpolarization drives ROS, then uncoupling should mitigate it.",
+            "The cited literature on UCP1 knockout causing vascular dysfunction and atherogenesis (Gu et al., 2021) provides relevant biological precedent.",
+            "The authors appropriately hedge with 'could potentially' rather than making a definitive therapeutic claim."
+          ],
+          "weaknesses": [
+            "No experiment in the current paper tests pharmacological uncoupling in AMIECs — this is entirely a proposal, not a demonstrated result.",
+            "The foundation of this claim (c1.6, 'primary mitochondrial dysfunction') is itself overclaimed, making the therapeutic suggestion rest on uncertain premises.",
+            "No evidence distinguishes between genetic and epigenetic explanations for the phenotype (c1.7.2 is weak), which would fundamentally affect whether uncoupling could 'revert' the dysfunction or merely mask it.",
+            "The cited UCP1 knockout study (Gu et al., 2021) is in an animal model, and translation to human patient-derived cells is assumed but not tested.",
+            "The phrase 'pharmacologically actionable' in the abstract implies therapeutic potential that is not experimentally validated in any way."
+          ],
+          "alternative_interpretations": [
+            "Pharmacological uncoupling might address the symptom (excess ROS) without correcting the underlying metabolic reprogramming.",
+            "If the phenotype is epigenetically imprinted from in vivo exposure, uncoupling might not revert the metabolic program.",
+            "Uncoupling agents could have deleterious effects on endothelial cells that depend on membrane potential for other functions (e.g., calcium signaling, apoptosis regulation)."
+          ],
+          "required_assumptions": [
+            "Mitochondrial hyperpolarization is a primary defect rather than an adaptive response.",
+            "Pharmacological uncoupling would mitigate ROS without compromising other essential mitochondrial functions.",
+            "Animal model findings on UCP1 and chemical uncouplers translate to human patient-derived endothelial cells.",
+            "The metabolic reprogramming observed in AMIECs is reversible."
+          ],
+          "notes": "This claim is framed as a suggestion ('could potentially') but is prominent in the abstract ('pharmacologically actionable cell-autonomous metabolic dysfunction'), creating a mismatch between the abstract's tone and the evidence base. The claim is entirely prospective — no therapeutic experiment was performed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "All eight AMIECs consistently displayed slower growth rates compared to control …",
+        "claim": "All eight AMIECs consistently displayed slower growth rates compared to control HCAECs over 168 hours of monitoring.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "all AMIECs consistently displayed slower growth rates as compared to control HCAECs",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "All eight patient-derived cell lines are reported to show slower growth, providing consistency across the cohort.",
+            "Growth monitoring over 168 hours provides a reasonable timeframe for comparing proliferation rates.",
+            "The use of multiple patient-derived lines (n=8) strengthens the generalizability within this sample."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: only n=3 replicates per cell line, and it is unclear whether these are biological or technical replicates.",
+            "Only a single control cell line (HCAEC from a commercial source) is used, limiting the robustness of comparison — inter-individual variation among healthy donors is not captured.",
+            "The term 'consistently' implies strong uniformity, but quantitative growth curves and statistical testing across cell lines are described only briefly.",
+            "Patient-derived cells were cultured from thrombectomy specimens through an explant outgrowth protocol, which may select for a subpopulation of cells, potentially biasing the growth comparison."
+          ],
+          "alternative_interpretations": [
+            "Slower growth could result from isolation/culture conditions or passage-related artifacts rather than intrinsic cell-autonomous defects.",
+            "The commercial HCAEC control may be optimized for growth in culture, making AMIECs appear comparatively slower without reflecting true in vivo differences."
+          ],
+          "required_assumptions": [
+            "The commercial HCAEC line is a valid control for patient-derived coronary endothelial cells.",
+            "Growth differences are not artifacts of isolation procedures or differential adaptation to culture conditions.",
+            "The n=3 replicates are sufficient to reliably detect consistent differences."
+          ],
+          "notes": "The claim of 'consistently displayed slower growth rates' for all eight lines is well-hedged by the word 'consistently' and appears supported by Figure 1D, though quantitative details are sparse.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "AMIECs showed no significant differences in cell cycle phase distribution compar…",
+        "claim": "AMIECs showed no significant differences in cell cycle phase distribution compared to controls, suggesting an overall slowing of growth affecting all cell cycle phases equally.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The slow growth rate, in conjunction with unaltered cell cycle phase distribution, of AMIECs suggests an overall slowing down of growth that affects equally all phases of the cell cycle.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately stated as 'suggesting' rather than asserting a definitive mechanism.",
+            "Cell cycle analysis by flow cytometry is a standard and appropriate method.",
+            "The observation of no significant difference, combined with slow growth, is logically interpreted as a uniform slowing."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: cell cycle analysis at only a single time point (24 hr) may not capture relevant differences in slow-growing AMIECs.",
+            "n=3 replicates may lack statistical power to detect modest shifts in cell cycle distribution.",
+            "The interpretation that all phases are equally affected is one of several possibilities; an alternative is that transitions between phases are slowed without altering steady-state distribution.",
+            "A more informative approach would include BrdU/EdU pulse labeling or time-resolved cell cycle analysis."
+          ],
+          "alternative_interpretations": [
+            "Cells could have prolonged G1 but also proportionally prolonged S and G2/M phases, yielding unchanged proportions but still indicating specific phase-level defects.",
+            "Slow growth could reflect increased cell death rather than (or in addition to) slower cycling, which was not assessed here."
+          ],
+          "required_assumptions": [
+            "A single time point at 24 hr is representative of the overall cell cycle dynamics of both AMIECs and HCAECs.",
+            "Cell death rates are comparable between the two groups."
+          ],
+          "notes": "The authors acknowledge this was 'somewhat contrary to expectations,' showing appropriate scientific caution.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "AMIECs display significantly impaired migration capacity in wound-healing assays…",
+        "claim": "AMIECs display significantly impaired migration capacity in wound-healing assays compared to control HCAECs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "three AMIECs displayed wound closure rates below 50%, four others about 60%, and only one about 80% after 24 hr of migration under the same conditions",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The use of mitomycin C to inhibit proliferation during the scratch assay isolates migration from growth effects.",
+            "Quantitative wound closure data are provided for all eight lines and the control.",
+            "The spread of results (below 50% to ~80%) across different patient lines is informative regarding heterogeneity."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: only n=3 replicates per cell line; biological vs. technical replicate nature is unspecified.",
+            "Only one control line (HCAEC) is used, making it impossible to assess normal inter-individual variation.",
+            "Statistical significance (p-values) is mentioned generically but individual p-values for each AMIEC vs. HCAEC comparison are not clearly enumerated in the text.",
+            "The mitomycin C concentration of 1 mg/mL seems very high; if this is an error (typical concentrations are ~1-10 µg/mL), it could differentially affect viability across cell lines."
+          ],
+          "alternative_interpretations": [
+            "Differences in migration could partially reflect differences in cell adhesion or spreading rather than true migratory capacity.",
+            "If AMIECs differ in sensitivity to mitomycin C, the observed differences could reflect cytotoxicity rather than migration defects."
+          ],
+          "required_assumptions": [
+            "Mitomycin C treatment equally affects (or does not differentially harm) all cell lines.",
+            "Wound closure percentage is a valid proxy for endothelial migration capacity.",
+            "A single commercial HCAEC control line represents normal coronary endothelial cell migration."
+          ],
+          "notes": "The reported mitomycin C concentration of 1 mg/mL is unusual and may be a typographical error; this should be clarified as it could affect interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "AMIECs display significantly reduced tubulogenic potential, with diminished bran…",
+        "claim": "AMIECs display significantly reduced tubulogenic potential, with diminished branching points and shorter, fragmented tubes compared to control cells.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "AMIECs displayed a significantly reduced tubulogenic potential, evident both as a diminished number of branching points and as shorter and fragmented tubes as compared to control cells",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Tubulogenesis assay on Matrigel is a well-established functional readout for angiogenic potential.",
+            "Branching point quantification is performed using ImageJ Angiogenesis plugin, providing reproducible analysis.",
+            "Representative images and quantification are provided, with triplicate experiments."
+          ],
+          "weaknesses": [
+            "Only one control cell line limits the ability to define 'normal' tubulogenic potential.",
+            "Growth factor-free Matrigel was used but VEGF was added to the medium — the specific concentration of VEGF is not stated, which could influence results.",
+            "The assay was conducted without FBS but with 1% non-essential amino acids, which differs from standard protocols and may introduce variability."
+          ],
+          "alternative_interpretations": [
+            "Reduced tubulogenesis could reflect differences in VEGF receptor expression rather than intrinsic endothelial dysfunction.",
+            "Culture-adapted differences in cell adhesion properties could influence tube formation independently of true angiogenic capacity."
+          ],
+          "required_assumptions": [
+            "Matrigel-based tube formation assay accurately reflects in vivo angiogenic potential.",
+            "Differences are not driven by differential sensitivity to the specific VEGF concentration used."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The deficient tubulogenesis of AMIECs is linked to defective migration rather th…",
+        "claim": "The deficient tubulogenesis of AMIECs is linked to defective migration rather than abnormal proliferation or survival, as branching capacity is linearly correlated with migration ability.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The branching capacity of the AMIECs derived from different patients was linearly correlated (R2=0.67) with their ability to migrate regardless of their growth rates suggesting that the deficient tubulogenesis or sprouting of these cells is linked to a defect in their migration properties",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The correlation analysis attempts to link two functional readouts (migration and tubulogenesis) mechanistically.",
+            "The R² of 0.67 shows a reasonable trend across 9 data points."
+          ],
+          "weaknesses": [
+            "Inferential gap: a correlation between migration and tubulogenesis does not establish that deficient tubulogenesis is 'linked to' migration defects — this is a causal claim derived from correlational data. Both could be downstream of a common cause.",
+            "Evidential gap inherited from sub-claim: only 9 data points (8 AMIECs + 1 HCAEC), making the correlation susceptible to influence by outliers; no p-value or confidence interval is reported.",
+            "The statement 'regardless of their growth rates' is not formally tested — no partial correlation or regression controlling for growth rate is reported.",
+            "The HCAEC data point is included in the correlation but represents a fundamentally different cell source, potentially driving the correlation artificially."
+          ],
+          "alternative_interpretations": [
+            "Both migration and tubulogenesis could independently depend on a shared metabolic deficiency (e.g., glycolysis) without migration being the causal mediator of tubulogenesis.",
+            "Removing the HCAEC outlier from the correlation could substantially change the R² value."
+          ],
+          "required_assumptions": [
+            "Correlation implies mechanistic linkage between migration and tubulogenesis.",
+            "Growth rate does not confound the observed correlation."
+          ],
+          "notes": "The claim that tubulogenesis is 'linked to a defect in their migration properties, rather than to abnormal proliferation or survival' is overreaching from a simple bivariate correlation without controlling for other variables.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Six out of eight AMIECs consumed glucose at significantly lower rates than contr…",
+        "claim": "Six out of eight AMIECs consumed glucose at significantly lower rates than control HCAECs, while two consumed more.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "6 out of the 8 AMIECs consumed glucose at significantly lower rates than control HCAECs, which may reconcile with the lower growth rates of patient-derived cells, while two patient-derived cell lines consumed more glucose than control cells.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Glucose consumption was measured by a standard spectrophotometric method (COBAS analyzer).",
+            "The authors note the heterogeneity honestly — 6/8 showed lower and 2/8 showed higher glucose consumption.",
+            "Measurements were taken from culture media at 48 hr, a reasonable time point."
+          ],
+          "weaknesses": [
+            "Only n=3 replicates; biological vs. technical replicate status unclear.",
+            "A single control cell line limits the ability to define 'normal' glucose consumption rates.",
+            "Glucose consumption measured at a single time point (48 hr) may not capture dynamic changes.",
+            "The two outlier cell lines (CE-45, CE-61) complicate the narrative but are dealt with post hoc rather than through a pre-specified analytical framework."
+          ],
+          "alternative_interpretations": [
+            "Lower glucose consumption in slower-growing cells could simply reflect fewer cells at time of measurement rather than per-cell metabolic differences — normalization to cell number at the end point is not explicitly described.",
+            "Different passage numbers or culture conditions during isolation could influence metabolic phenotypes."
+          ],
+          "required_assumptions": [
+            "Glucose consumption values are normalized appropriately (per cell or per protein) to account for different cell densities.",
+            "The 48-hr measurement captures representative metabolic activity."
+          ],
+          "notes": "The paper does not clearly state whether metabolite flux data are normalized to cell number, protein content, or simply reported as media concentration changes.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "PFKFB3 protein levels are significantly lower in 7 out of 8 AMIECs compared to c…",
+        "claim": "PFKFB3 protein levels are significantly lower in 7 out of 8 AMIECs compared to control HCAECs, consistent with their lower glucose uptake.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "finding significantly lower levels in 7 out of the 8 AMIECs, as compared to control HCAECs, consistent with their lower glucose uptake.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Western blotting was performed in triplicate with β-actin normalization.",
+            "The pattern is consistent across 7/8 cell lines, providing reasonable evidence.",
+            "The concordance between PFKFB3 levels and glucose uptake in CE-45 strengthens the interpretive framework."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: CE-61 has high glucose uptake but its PFKFB3 levels are not explicitly discussed as an exception, creating an asymmetry in the narrative.",
+            "Protein expression levels do not necessarily reflect enzyme activity — no PFKFB3 activity assay or F2,6BP measurement was performed.",
+            "A single control cell line limits the reference range for 'normal' PFKFB3 levels.",
+            "Western blotting quantification has inherent variability and limited dynamic range."
+          ],
+          "alternative_interpretations": [
+            "Low PFKFB3 protein could reflect transcriptional, translational, or post-translational regulation — each has different implications for glycolytic flux.",
+            "Other glycolytic enzymes (hexokinase, pyruvate kinase) could compensate for low PFKFB3, and their status is not assessed."
+          ],
+          "required_assumptions": [
+            "PFKFB3 protein levels are a reliable proxy for glycolytic flux regulation.",
+            "β-actin is a stable loading control across all cell lines (its expression does not vary with metabolic state)."
+          ],
+          "notes": "The CE-61 discrepancy (high glucose uptake without mentioned normal PFKFB3) is a notable gap in the argument.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "The low glycolytic activity may help explain, at least in part, the low prolifer…",
+        "claim": "The low glycolytic activity may help explain, at least in part, the low proliferation rates, migration capacity, and tubulogenic activity of AMIECs, as these processes require robust glycolysis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This may also help explain, at least in part, the low proliferation rates, migration capacity, and tubulogenic activity of these cells, as these processes require robust glycolysis.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately hedged ('may help explain, at least in part').",
+            "The link between glycolysis and endothelial proliferation/migration is well-supported by prior literature (De Bock et al., 2013; Schoors et al., 2014).",
+            "Multiple lines of evidence (glucose consumption, PFKFB3 levels, functional assays) converge on this interpretation."
+          ],
+          "weaknesses": [
+            "No direct experimental test was performed (e.g., rescuing glycolysis in AMIECs by overexpressing PFKFB3 or providing glycolytic intermediates to test if phenotypes are reversed).",
+            "The causal chain is inferred from correlational data across multiple assays; alternative causes of the functional defects were not systematically excluded.",
+            "CE-45 and CE-61, which have high glucose uptake, still show impaired proliferation and migration, suggesting glycolysis alone does not explain the phenotypes."
+          ],
+          "alternative_interpretations": [
+            "Impaired migration could be due to cytoskeletal defects, altered integrin expression, or defective signaling pathways independent of glycolysis.",
+            "Mitochondrial dysfunction (evidenced by high ROS) could independently impair proliferation and migration."
+          ],
+          "required_assumptions": [
+            "Glycolysis is a rate-limiting factor for endothelial cell proliferation and migration in this context.",
+            "The relationship between glycolytic enzyme levels and functional outcomes is causal rather than correlational."
+          ],
+          "notes": "The fact that CE-45 and CE-61 have high glucose uptake but still show reduced growth and migration partially undermines the glycolysis-centric explanation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "All AMIECs displayed strong lactate production comparable or superior to control…",
+        "claim": "All AMIECs displayed strong lactate production comparable or superior to control cells, regardless of their levels of glucose uptake.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "all AMIECs displayed a strong production of lactate, comparable or superior to control cells, regardless of their levels of glucose uptake",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lactate production measured by a standard spectrophotometric method.",
+            "The observation holds across all eight cell lines, providing consistency.",
+            "The dissociation between glucose consumption and lactate production in 6/8 lines is a genuinely interesting and well-documented finding."
+          ],
+          "weaknesses": [
+            "Normalization of lactate production data (per cell or per protein) is not clearly specified.",
+            "n=3 replicates with unclear biological vs. technical status.",
+            "Single control cell line limits the reference range.",
+            "No direct measurement of glycolytic flux (e.g., by isotope tracing) to confirm whether lactate derives from glucose or other sources."
+          ],
+          "alternative_interpretations": [
+            "If lactate is normalized per well rather than per cell, slower-growing AMIECs producing comparable lactate would imply higher per-cell lactate production — the opposite conclusion is also possible if normalized differently.",
+            "Lactate could come from other media components metabolized by the cells."
+          ],
+          "required_assumptions": [
+            "Lactate measurements accurately reflect endogenous production rather than media-derived artifacts.",
+            "Normalization is appropriate for meaningful comparison."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The six AMIECs with low glucose consumption but high lactate production suggest …",
+        "claim": "The six AMIECs with low glucose consumption but high lactate production suggest an alternative source of lactate, possibly through glutaminolysis via malic enzyme and LDH-A.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "glutaminolysis also produces lactate, in a pathway that involves the oxidation of glutamine to malate and then to pyruvate by the malic enzyme (ME), followed by conversion to lactate by the action of LDH-A",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The biochemical pathway linking glutaminolysis to lactate via malic enzyme and LDH-A is well-established in literature.",
+            "The observation of high glutamine consumption in AMIECs provides circumstantial support.",
+            "The uncoupling of lactate production from glucose consumption is a clear observation that requires explanation."
+          ],
+          "weaknesses": [
+            "Inferential gap: no direct experimental evidence (e.g., ¹³C-glutamine tracing) is provided to demonstrate that lactate is actually derived from glutamine in these cells. The claim is entirely speculative.",
+            "Malic enzyme expression or activity was not measured.",
+            "LDH-A expression or activity was not measured.",
+            "No pharmacological or genetic manipulation of glutaminolysis was performed to test whether lactate production decreases.",
+            "Other potential sources of lactate (e.g., from other amino acids, from PPP-linked pathways) are not considered."
+          ],
+          "alternative_interpretations": [
+            "Lactate could originate from other carbon sources in the culture medium.",
+            "Glycolysis may still produce significant lactate even with lower glucose consumption if glucose-to-lactate conversion efficiency is very high.",
+            "Serine, threonine, or other amino acids could contribute to pyruvate and hence lactate."
+          ],
+          "required_assumptions": [
+            "Glutaminolysis via malic enzyme is the primary alternative source of pyruvate for lactate production.",
+            "The glutamine-to-lactate pathway is active in endothelial cells at physiologically relevant rates."
+          ],
+          "notes": "This is the weakest evidential link in the paper — a central mechanistic claim with no direct experimental support. Isotope tracing would be essential to validate this.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The slow proliferation rates of AMIECs stand in contrast to the rapid proliferat…",
+        "claim": "The slow proliferation rates of AMIECs stand in contrast to the rapid proliferation seen in other cell types displaying a Warburg effect, arguing against a classical Warburg effect explanation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "their slow rates of proliferation stand in contrast to the rapid proliferation phenotypes seen in other cell types displaying a Warburg effect, such as cancer cells.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The argument is logically sound — the Warburg effect in cancer is typically associated with rapid proliferation, which is absent here.",
+            "This distinction helps differentiate the metabolic phenotype of AMIECs from classical aerobic glycolysis."
+          ],
+          "weaknesses": [
+            "The Warburg effect is not exclusively associated with rapid proliferation; it also occurs in non-proliferating immune cells and other contexts.",
+            "Only CE-45 and CE-61 show the high-glucose/high-lactate pattern that would qualify as potentially Warburg-like; the argument applies primarily to these two lines.",
+            "No direct measurement of mitochondrial respiration (e.g., Seahorse oxygen consumption rate) is provided to formally assess whether oxidative phosphorylation is suppressed."
+          ],
+          "alternative_interpretations": [
+            "The Warburg effect can occur independently of rapid proliferation (e.g., in activated macrophages), so slow proliferation does not definitively rule it out.",
+            "A Warburg-like state with simultaneously increased mitochondrial activity ('reverse Warburg') has been described in some contexts."
+          ],
+          "required_assumptions": [
+            "The Warburg effect is inherently linked to rapid proliferation — which is an oversimplification."
+          ],
+          "notes": "The argument is reasonable but not definitive; the Warburg effect is more nuanced than presented.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "High lactate production may serve to replenish NAD+ via LDH-A, which is predicte…",
+        "claim": "High lactate production may serve to replenish NAD+ via LDH-A, which is predicted to be depleted in AMIECs due to the drive to produce reducing equivalents and increased mitochondrial membrane potential impairing electron transport.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "In the LDH-A catalyzed reaction, pyruvate accepts electrons from NADH, yielding lactate and replenishing NAD+, predicted to be depleted in AMIECs by a strong drive to produce reducing equivalents and by the increased mitochondrial membrane potential",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The biochemistry of LDH-A catalyzed NAD+ regeneration is well-established.",
+            "The logic connecting high membrane potential to impaired electron transport and NAD+ depletion is internally consistent."
+          ],
+          "weaknesses": [
+            "No direct measurement of NAD+/NADH ratio in AMIECs is provided.",
+            "No measurement of LDH-A expression or activity is reported.",
+            "The claim that NAD+ is 'predicted to be depleted' relies on a chain of assumptions without experimental verification.",
+            "The connection between high membrane potential and impaired NAD+ regeneration, while plausible, is speculative without supporting data."
+          ],
+          "alternative_interpretations": [
+            "NAD+ levels could be maintained by other salvage pathways (e.g., NAMPT) even with high membrane potential.",
+            "Lactate production could serve functions other than NAD+ regeneration, such as signaling or pH regulation."
+          ],
+          "required_assumptions": [
+            "NAD+ is actually depleted in AMIECs.",
+            "LDH-A activity is the primary mechanism for NAD+ regeneration in these cells.",
+            "High membrane potential necessarily impairs electron transport and NAD+ regeneration."
+          ],
+          "notes": "This is a theoretical prediction that would require NAD+/NADH measurements and metabolic flux analysis to validate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "PFKFB4 protein levels are significantly higher in AMIECs compared to control cel…",
+        "claim": "PFKFB4 protein levels are significantly higher in AMIECs compared to control cells, which combined with low PFKFB3 predicts redirection of glucose-6-phosphate toward the PPP.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We also determined PFKFB4 protein levels, finding significantly higher levels of expression in AMIECs compared to control cells",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "PFKFB4 upregulation is documented by Western blotting with triplicate experiments and β-actin normalization.",
+            "The reciprocal pattern (low PFKFB3 / high PFKFB4) is mechanistically coherent with a glycolysis-to-PPP shunt."
+          ],
+          "weaknesses": [
+            "Inferential gap: the 'prediction' that glucose-6-phosphate is redirected to the PPP based on PFKFB3/PFKFB4 levels is not directly tested. G6P levels, PPP flux, or F2,6BP levels were not measured.",
+            "PFKFB4's role is more complex than simply opposing PFKFB3 — PFKFB4 also has kinase activity and can produce F2,6BP, though at lower efficiency.",
+            "The claim that high PFKFB4 'predicts' PPP redirection requires direct measurement of PPP metabolites or isotope tracing.",
+            "No measurement of transketolase or other PPP enzymes beyond G6PD is provided."
+          ],
+          "alternative_interpretations": [
+            "PFKFB4 upregulation could reflect a transcriptional response to stress rather than a functional metabolic shunt.",
+            "PFKFB4 has non-metabolic functions (e.g., SRC-3 activation) that could be relevant independently of PPP redirection."
+          ],
+          "required_assumptions": [
+            "PFKFB4 protein levels reflect its phosphatase activity toward F2,6BP.",
+            "The PFKFB3/PFKFB4 ratio determines the balance between glycolysis and PPP in these cells."
+          ],
+          "notes": "The claim would be substantially strengthened by direct measurement of F2,6BP levels or PPP flux.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "G6PD, the rate-limiting enzyme of the oxidative branch of the PPP, is expressed …",
+        "claim": "G6PD, the rate-limiting enzyme of the oxidative branch of the PPP, is expressed at significantly higher levels and with higher enzyme activity in AMIECs than in control cells.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we found significantly higher levels of G6PD in AMIECs than in control cells... Likewise, AMIECs displayed higher levels of G6PD enzyme activity than control cells",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Both protein expression (Western blotting, triplicate, β-actin normalized) and enzyme activity (spectrophotometric assay) were measured, providing two independent lines of evidence.",
+            "Results are consistent across both approaches.",
+            "The exception of CE-45 (near-normal G6PD levels correlating with near-normal ROS) provides internal validation."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: H2DCFDA is a non-specific ROS probe susceptible to artifacts.",
+            "The concordance of CE-45 with controls is noted but not formally tested as a predictive pattern.",
+            "Single control cell line limits reference range.",
+            "G6PD activity was measured in cell lysates, not in intact cells, which may not perfectly reflect in vivo activity."
+          ],
+          "alternative_interpretations": [
+            "Increased G6PD could be a general stress response rather than a specific adaptation to PPP-mediated NADPH production.",
+            "G6PD upregulation could reflect Nrf2 activation (a common oxidative stress response) rather than a specific metabolic reprogramming."
+          ],
+          "required_assumptions": [
+            "G6PD activity in lysates reflects in situ enzyme activity.",
+            "G6PD upregulation specifically reflects enhanced PPP flux rather than a generic stress response."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "The high levels of PFKFB4 observed in AMIECs are unlikely downstream of HIF-1α, …",
+        "claim": "The high levels of PFKFB4 observed in AMIECs are unlikely downstream of HIF-1α, mTOR, or PPARγ activation, since these pathways drive glycolysis, which is diminished in AMIECs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "our patient-derived endothelial cells show evidence of diminished glycolysis accompanied with low expression levels of PFKFB3, and thus it seems unlikely that the high levels of PFKFB4 observed in these cells are a downstream outcome of the activation of these pathways.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The reasoning is logically structured: if HIF-1α/mTOR/PPARγ drive glycolysis, and glycolysis is low, then these pathways are unlikely to explain high PFKFB4."
+          ],
+          "weaknesses": [
+            "Inferential gap: the argument assumes these pathways regulate PFKFB3 and PFKFB4 identically, but differential regulation is well-documented — HIF-1α could upregulate PFKFB4 without proportionally affecting glycolysis via PFKFB3.",
+            "No measurement of HIF-1α, mTOR activity (e.g., phospho-S6K, phospho-4EBP1), or PPARγ levels was performed.",
+            "The argument from exclusion is weak without direct experimental evidence ruling out these pathways.",
+            "Chronic low-level activation of these pathways could selectively upregulate PFKFB4 without fully restoring glycolysis."
+          ],
+          "alternative_interpretations": [
+            "HIF-1α could be active at levels sufficient to drive PFKFB4 but insufficient to overcome PFKFB3 repression by other factors.",
+            "mTOR pathway could be partially active, driving PFKFB4 while other downstream targets are inhibited.",
+            "Multiple converging signals could differentially regulate PFKFB3 and PFKFB4."
+          ],
+          "required_assumptions": [
+            "HIF-1α, mTOR, and PPARγ regulate PFKFB3 and PFKFB4 coordinately.",
+            "If glycolysis is low, the upstream regulators of glycolysis must also be inactive."
+          ],
+          "notes": "This is speculation presented as a fairly confident inference. The argument would require direct measurement of these transcription factors/pathways.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "A blunted function of p53 could be a driver of PFKFB4 upregulation in AMIECs, as…",
+        "claim": "A blunted function of p53 could be a driver of PFKFB4 upregulation in AMIECs, as PFKFB4 but not PFKFB3 is strongly upregulated in the absence of p53.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The hypothesis of a blunted function of p53 as a driver of PFKFB4 upregulation in these cells could merit further investigation.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately framed as a hypothesis ('could merit further investigation').",
+            "The literature basis for differential regulation of PFKFB3 and PFKFB4 by p53 is cited (Ros et al., 2017).",
+            "The pattern (low PFKFB3, high PFKFB4) is consistent with the published p53-deficiency phenotype."
+          ],
+          "weaknesses": [
+            "No measurement of p53 status, expression, or activity in AMIECs is provided.",
+            "No assessment of p53 target genes or downstream pathway activity.",
+            "Endothelial cells from thrombectomy specimens are not expected to harbor p53 mutations in the way cancer cells do — the relevance of this pathway in non-malignant cells needs justification.",
+            "'Blunted function' of p53 is vague and encompasses many possible mechanisms (mutation, MDM2 overexpression, post-translational modification)."
+          ],
+          "alternative_interpretations": [
+            "Other transcription factors or signaling pathways could differentially regulate PFKFB3 and PFKFB4.",
+            "Epigenetic regulation (e.g., promoter methylation) could selectively affect PFKFB3 expression."
+          ],
+          "required_assumptions": [
+            "p53 function is relevant in non-malignant endothelial cells in this context.",
+            "The differential regulation of PFKFB3 vs. PFKFB4 by p53 observed in cancer cell models is applicable to endothelial cells."
+          ],
+          "notes": "This is a well-flagged hypothesis, not a claim. The calibration is appropriate because the authors explicitly acknowledge it needs investigation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Glutamine consumption is higher in AMIECs than in control HCAECs, and the glutam…",
+        "claim": "Glutamine consumption is higher in AMIECs than in control HCAECs, and the glutamine-to-glucose consumption ratio is far greater in patient-derived cells.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the glutamine-to-glucose consumption ratio is far greater in patient-derived cells than in control cells. This suggests that AMI patient-derived cells mainly resort to glutamine, rather than glucose, as their carbon source.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Glutamine and glucose consumption were measured by the same validated spectrophotometric method.",
+            "The glutamine-to-glucose ratio provides a useful integrative metric.",
+            "The observation is consistent across the majority of cell lines."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: CE-45's similarity to controls is assessed qualitatively rather than by formal statistical or multivariate analysis.",
+            "Normalization of consumption data to cell number is not clearly described, which is critical given different growth rates.",
+            "The conclusion that cells 'mainly resort to glutamine rather than glucose as their carbon source' is a strong inference from consumption data alone — it would require isotope tracing to confirm carbon source utilization.",
+            "n=3 replicates with unclear biological vs. technical replicate status."
+          ],
+          "alternative_interpretations": [
+            "Higher glutamine consumption could reflect biosynthetic needs (protein synthesis, nucleotide synthesis) rather than a carbon source switch.",
+            "If AMIECs have more mitochondria or higher mitochondrial activity, glutamine anaplerosis could supplement rather than replace glucose as a carbon source."
+          ],
+          "required_assumptions": [
+            "The glutamine-to-glucose consumption ratio reflects carbon source preference.",
+            "Consumption rates are appropriately normalized."
+          ],
+          "notes": "The claim that AMIECs 'mainly resort to glutamine rather than glucose as their carbon source' overreaches the evidence, which shows altered consumption ratios but not carbon flux.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Both GLS1 isoforms (KGA and GAC) are expressed at significantly higher levels in…",
+        "claim": "Both GLS1 isoforms (KGA and GAC) are expressed at significantly higher levels in AMIECs than in controls, with a higher KGA/GAC ratio, consistent with enhanced glutaminolysis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "both isoforms of GLS1, KGA, and GAC, are expressed at significantly higher levels in patient-derived cells than control cells, with a higher KGA/GAC ratio in AMIECs",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Isoform-specific antibodies were used to distinguish KGA and GAC, providing specificity.",
+            "Triplicate Western blotting with β-actin normalization.",
+            "The KGA/GAC ratio provides additional mechanistic insight.",
+            "Higher glutaminase expression is consistent with higher glutamine consumption."
+          ],
+          "weaknesses": [
+            "Protein expression does not necessarily reflect enzyme activity — no glutaminase activity assay was performed.",
+            "The functional significance of the KGA/GAC ratio difference is noted but not experimentally tested.",
+            "Single control cell line limits reference range.",
+            "GLS2 (liver-type) expression was not assessed."
+          ],
+          "alternative_interpretations": [
+            "Higher GLS1 expression could be a response to glutamine-rich culture medium rather than an intrinsic metabolic reprogramming.",
+            "Post-translational regulation of glutaminase activity (e.g., by phosphorylation or acetylation) could decouple expression from activity."
+          ],
+          "required_assumptions": [
+            "GLS1 protein levels correlate with glutaminolysis rates.",
+            "The KGA/GAC ratio has functional consequences in these cells."
+          ],
+          "notes": "The observation about GAC being crucial under acidic pH conditions (Aguilar et al., 2016) is interesting but the pH of culture medium was not measured.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Most intracellular amino acids are present at higher concentrations in AMIECs, i…",
+        "claim": "Most intracellular amino acids are present at higher concentrations in AMIECs, including cysteine and glutamate which are important for glutathione synthesis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The results disclosed a higher intracellular content of all amino acids determined, with the exception of glycine, alanine, histidine, and proline.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GC/MS-based metabolomics is a rigorous analytical method for intracellular amino acid quantification.",
+            "Internal standard (norvaline) was used for normalization.",
+            "The observation is consistent across most cell lines, with noted exceptions (glycine, alanine, histidine, proline)."
+          ],
+          "weaknesses": [
+            "The exceptions (glycine, alanine, histidine, proline) are listed but not discussed — some of these (glycine, alanine) are metabolically important and their exception from the pattern deserves explanation.",
+            "Normalization to cellular protein content may not adequately account for cell size differences between AMIECs and HCAECs.",
+            "No formal statistical analysis of the global amino acid profile is described (e.g., PCA, heatmap with clustering).",
+            "A single time-point measurement provides a snapshot but not dynamic information."
+          ],
+          "alternative_interpretations": [
+            "Higher intracellular amino acid levels could reflect decreased protein synthesis rather than increased amino acid production or uptake.",
+            "Slower-growing cells might accumulate amino acids simply because they use them less for anabolic processes."
+          ],
+          "required_assumptions": [
+            "Intracellular amino acid concentrations reflect metabolic activity rather than simply reduced utilization.",
+            "Protein normalization is appropriate for comparing intracellular metabolite pools."
+          ],
+          "notes": "The link between cysteine/glutamate and glutathione synthesis is well-established but the direction of causation (more GSH synthesis pulling more cysteine/glutamate, vs. more cysteine/glutamate enabling more GSH) cannot be determined from steady-state measurements.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "The lower extracellular export of glutamate by AMIECs, despite high glutaminase …",
+        "claim": "The lower extracellular export of glutamate by AMIECs, despite high glutaminase levels implying strong glutamine-to-glutamate conversion, suggests robust intracellular consumption of glutamate for glutathione production.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the lower levels of extracellular export of glutamate are suggestive of a robust consumption of glutamate in the production of GSH in these cells.",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The logic is internally consistent: high glutaminase + high glutamine consumption + low glutamate export = intracellular glutamate utilization.",
+            "The observation is supported by multiple converging data points (glutaminase levels, glutamine consumption, glutamate export, GSH levels)."
+          ],
+          "weaknesses": [
+            "Inferential gap: the conclusion that glutamate is consumed 'for GSH production' is inferred but not directly demonstrated. Glutamate has many intracellular fates (TCA cycle anaplerosis via α-KG, transamination, protein synthesis).",
+            "Evidential gap inherited from sub-claim: the ratio statistics are described qualitatively ('considerably lower') without formal statistical testing.",
+            "No direct measurement of glutathione synthesis rate was performed (e.g., using labeled glutamate or γ-glutamylcysteine synthetase activity assay).",
+            "The claim applies to 6/8 lines for glutamate export but GSH is elevated in all 8 — this inconsistency is not addressed."
+          ],
+          "alternative_interpretations": [
+            "Lower glutamate export could reflect increased TCA cycle anaplerosis (glutamate → α-KG) rather than GSH synthesis.",
+            "Glutamate could be used for other biosynthetic reactions (e.g., nucleotide synthesis, non-essential amino acid synthesis via transamination).",
+            "Lower glutamate export could reflect altered transporter expression rather than increased intracellular consumption."
+          ],
+          "required_assumptions": [
+            "The primary fate of intracellular glutamate in AMIECs is GSH synthesis.",
+            "Extracellular glutamate levels reflect intracellular metabolic utilization patterns."
+          ],
+          "notes": "This is a plausible interpretation but stated more definitively than the evidence warrants.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5",
+        "label": "Aspartate was found at increased levels in AMIECs, consistent with higher mitoch…",
+        "claim": "Aspartate was found at increased levels in AMIECs, consistent with higher mitochondrial respiration and anaplerotic use of glutamate.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Consistently, aspartate was found at increased levels in AMIECs.",
+        "evaluation": {
+          "node_id": "c1.5.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "GC/MS measurement of aspartate provides direct evidence of increased levels.",
+            "The link between glutaminolysis and aspartate biosynthesis is well-established in the literature (Wong et al., 2016)."
+          ],
+          "weaknesses": [
+            "Inferential gap: elevated aspartate is stated to be 'consistent with' higher mitochondrial respiration and anaplerotic glutamate use, but no direct measurement of mitochondrial respiration rate (e.g., oxygen consumption) was performed.",
+            "Aspartate can be elevated for many reasons (altered protein catabolism, transamination changes, altered export) — not exclusively from increased anaplerosis.",
+            "The claim is a single data point (one metabolite) used to support a broad mechanistic conclusion."
+          ],
+          "alternative_interpretations": [
+            "Increased aspartate could reflect decreased utilization in nucleotide synthesis or protein synthesis in slow-growing cells.",
+            "Aspartate aminotransferase activity could be altered independently of mitochondrial respiration."
+          ],
+          "required_assumptions": [
+            "Aspartate levels are primarily determined by mitochondrial OAA-to-aspartate conversion.",
+            "Higher aspartate levels indicate higher mitochondrial anaplerotic flux."
+          ],
+          "notes": "The duplicated sentence about aspartate in the text ('Aspartate derived from oxaloacetate, via glutaminolysis, produces NAD+...') appears to be a copy-editing error.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Seven out of eight AMIECs contained ROS at significantly higher levels than cont…",
+        "claim": "Seven out of eight AMIECs contained ROS at significantly higher levels than control cells.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Seven out of the 8 AMIECs contained ROS at significantly higher levels than control cells",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Flow cytometry with H2DCFDA provides a quantitative measurement of total ROS.",
+            "7/8 cell lines show significantly higher ROS, indicating consistency.",
+            "The exception (CE-45) has near-normal G6PD and PFKFB3, providing internal coherence."
+          ],
+          "weaknesses": [
+            "H2DCFDA is a non-specific probe that can be affected by esterase activity, dye loading efficiency, and other artifacts beyond ROS levels.",
+            "Only total ROS is measured — no distinction between mitochondrial and cytoplasmic sources.",
+            "Single control cell line as reference.",
+            "No positive control for ROS induction (e.g., rotenone or antimycin A) is mentioned."
+          ],
+          "alternative_interpretations": [
+            "Higher H2DCFDA fluorescence could partly reflect higher esterase activity in AMIECs rather than genuinely higher ROS.",
+            "ROS could be elevated due to NADPH oxidase activity rather than mitochondrial dysfunction."
+          ],
+          "required_assumptions": [
+            "H2DCFDA fluorescence accurately reflects total intracellular ROS levels.",
+            "ROS differences are not confounded by differences in dye uptake, esterase activity, or cell size."
+          ],
+          "notes": "A mitochondria-specific ROS probe (e.g., MitoSOX) would help distinguish sources of ROS.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Intracellular concentration of reduced glutathione was increased in all eight AM…",
+        "claim": "Intracellular concentration of reduced glutathione was increased in all eight AMIECs, suggesting upregulation to counter excess ROS levels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the intracellular concentration of reduced glutathione was increased in all 8 AMIECs... These observations suggest that glutathione levels are upregulated in AMIECs to counter excess ROS levels.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Glutathione was measured by a well-established DTNB/glutathione reductase recycling assay.",
+            "All 8/8 cell lines show elevated GSH, providing the most consistent finding in the study.",
+            "The interpretation (GSH upregulated to counter ROS) is biologically plausible and consistent with the broader narrative."
+          ],
+          "weaknesses": [
+            "Only total reduced glutathione was measured — the GSH/GSSG ratio would be more informative about redox status.",
+            "The causal direction is assumed (ROS elevation drives GSH upregulation) but could be reversed or both could reflect a common upstream cause.",
+            "Normalization to protein content may introduce systematic bias if cell sizes differ."
+          ],
+          "alternative_interpretations": [
+            "High GSH could reflect increased cysteine availability from enhanced amino acid uptake rather than a specific response to ROS.",
+            "GSH elevation could be a constitutive feature of these cells unrelated to ROS scavenging.",
+            "Nrf2 activation (not measured) could independently drive both G6PD and GSH synthesis."
+          ],
+          "required_assumptions": [
+            "GSH elevation is a compensatory response to ROS rather than a coincidental or independent phenomenon.",
+            "Total reduced glutathione is a meaningful indicator of redox homeostasis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "All AMIECs showed significantly higher mitochondrial membrane potential than con…",
+        "claim": "All AMIECs showed significantly higher mitochondrial membrane potential than control HCAECs, indicating mitochondrial hyperpolarization.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "MitoProbe accumulated at significantly higher levels in all AMIECs relative to control HCAECs, indicating a mitochondrial hyperpolarization due to increased membrane potentials.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "DiIC1(5) is a well-validated probe for mitochondrial membrane potential.",
+            "CCCP control confirms that the signal is membrane potential-dependent.",
+            "All 8/8 cell lines show hyperpolarization, providing strong consistency.",
+            "The observation is consistent with the broader model of increased mitochondrial activity."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: quantitative data on CCCP-induced depolarization magnitude are not provided.",
+            "DiIC1(5) fluorescence can be influenced by mitochondrial mass — if AMIECs have more mitochondria, this could confound the signal.",
+            "No normalization for mitochondrial mass (e.g., MitoTracker Green or citrate synthase activity) was performed.",
+            "Membrane potential hyperpolarization has multiple interpretations (reduced ATP synthase activity, increased substrate oxidation, altered proton leak)."
+          ],
+          "alternative_interpretations": [
+            "Hyperpolarization could reflect reduced ATP synthase activity (e.g., due to low ADP availability in slow-growing cells) rather than increased respiratory chain activity.",
+            "Increased mitochondrial mass rather than per-mitochondrion hyperpolarization could explain higher dye accumulation."
+          ],
+          "required_assumptions": [
+            "DiIC1(5) signal differences reflect true membrane potential changes rather than differences in mitochondrial mass.",
+            "The relationship between membrane potential and metabolic activity is straightforward."
+          ],
+          "notes": "Normalization to mitochondrial mass is a key missing control. If AMIECs have more mitochondria per cell, the observed hyperpolarization could be an artifact.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "The increased ROS levels in AMIECs cannot be directly attributed to environmenta…",
+        "claim": "The increased ROS levels in AMIECs cannot be directly attributed to environmental factors since the cells are in an identical in vitro environment to controls, and are therefore likely elicited by endogenous damage signals impinging on mitochondria or through NAD(P)H oxidases.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "their increased ROS levels cannot be directly attributed to environmental factors. Absent maintenance of long-term epigenetic memory of past stress responses in vivo, it is reasonable to assume that the high levels of ROS in AIM patient-derived cells may be elicited by endogenous damage signals impinging upon mitochondria",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The logic is valid: cells in identical in vitro conditions should have similar environmental exposures.",
+            "The authors appropriately consider epigenetic memory as an alternative."
+          ],
+          "weaknesses": [
+            "Inferential gap: the argument that ROS cannot be attributed to environmental factors because cells are in the same in vitro environment ignores the possibility of cell-intrinsic but non-mitochondrial sources of ROS (e.g., NADPH oxidases, xanthine oxidase, cytochrome P450) that could differ between cell lines for genetic or epigenetic reasons.",
+            "The phrase 'absent maintenance of long-term epigenetic memory' is a strong assumption that is immediately contradicted by the Discussion section (c1.7.2), where the authors acknowledge epigenetic imprints as a possibility.",
+            "No direct evidence for 'endogenous damage signals impinging upon mitochondria' is provided.",
+            "The attribution to mitochondria vs. NADPH oxidases is left unresolved."
+          ],
+          "alternative_interpretations": [
+            "Epigenetic reprogramming from the in vivo inflammatory environment could persist in culture and drive ROS production.",
+            "Genetic variants in the patient-derived cells could affect multiple ROS-generating systems.",
+            "The isolation procedure itself could select for cells with different ROS characteristics."
+          ],
+          "required_assumptions": [
+            "Environmental factors do not leave lasting epigenetic or metabolic imprints on the cells.",
+            "Cell-intrinsic ROS production reflects fundamental mitochondrial dysfunction."
+          ],
+          "notes": "There is a logical tension between this claim (c1.6.4) and c1.7.2, which acknowledges epigenetic imprints as a possible explanation. The qualifier 'absent maintenance of long-term epigenetic memory' is doing heavy lifting.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5",
+        "label": "The combination of high membrane potential and high ROS levels in AMIECs suggest…",
+        "claim": "The combination of high membrane potential and high ROS levels in AMIECs suggests robust proton coupling at the inner mitochondrial membrane, as uncoupling has been shown to mitigate ROS production.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The combination of high membrane potential and high ROS levels suggests robust proton coupling at the inner mitochondrial membrane, as uncoupling through the expression of UCP1 or the use of pharmacological uncouplers has been shown to mitigate ROS production",
+        "evaluation": {
+          "node_id": "c1.6.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The bioenergetic principle linking tight proton coupling to ROS production is well-established.",
+            "The combination of measured high membrane potential and high ROS is consistent with this mechanism.",
+            "The reference to UCP1 and pharmacological uncouplers provides literature context."
+          ],
+          "weaknesses": [
+            "No direct measurement of proton coupling or uncoupling protein expression in AMIECs was performed.",
+            "The inference from two observational measurements (membrane potential and ROS) to a mechanistic conclusion about proton coupling is indirect.",
+            "No measurement of UCP expression, proton leak, or state 3/4 respiration ratios.",
+            "Alternative mechanisms of ROS production (NADPH oxidases, mentioned but not tested) remain possible."
+          ],
+          "alternative_interpretations": [
+            "High membrane potential and high ROS could both be consequences of reduced ATP demand in slow-growing cells, without reflecting abnormal coupling.",
+            "Reverse electron transport at complex I could generate ROS independently of proton coupling efficiency."
+          ],
+          "required_assumptions": [
+            "The relationship between membrane potential, proton coupling, and ROS production observed in other systems applies to these endothelial cells.",
+            "Other sources of ROS (NADPH oxidases) do not substantially contribute."
+          ],
+          "notes": "The argument is conceptually sound but entirely indirect. Seahorse-based measurements of coupling efficiency would substantially strengthen this claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "Knockout of the uncoupling protein UCP1 has been shown to cause vascular dysfunc…",
+        "claim": "Knockout of the uncoupling protein UCP1 has been shown to cause vascular dysfunction, atherogenesis, and NLRP3 inflammasome activation, which was relieved by re-expression of UCP1 or treatment with chemical uncouplers.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "knockout of the uncoupling protein UCP1 caused vascular dysfunction, atherogenesis, and NLRP3 inflammasome activation and IL1-β-dependent inflammation, relieved by re-expression of UCP1 or treatment of animals with chemical uncouplers",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This claim references published work (Gu et al., 2021) rather than the paper's own data, and is cited as supporting context.",
+            "The claim is accurately presented as prior literature evidence supporting the potential therapeutic relevance of uncoupling."
+          ],
+          "weaknesses": [
+            "This is a cited literature finding, not from the present study — no experiment in the current paper tests uncoupling in AMIECs.",
+            "The UCP1 knockout model is in mice, and translational relevance to human AMIECs is assumed but not demonstrated.",
+            "UCP1 is primarily expressed in brown adipose tissue, not in endothelial cells — its relevance to EC-specific dysfunction needs justification."
+          ],
+          "alternative_interpretations": [
+            "The UCP1 knockout phenotype could involve systemic metabolic changes (e.g., altered lipid metabolism from brown fat dysfunction) rather than cell-autonomous endothelial effects."
+          ],
+          "required_assumptions": [
+            "UCP1-mediated uncoupling findings in mouse models are translatable to human endothelial cell biology.",
+            "The vascular phenotype of UCP1 knockout is cell-autonomous to endothelial cells."
+          ],
+          "notes": "This claim functions as supporting context for the therapeutic hypothesis, not as primary evidence from this study.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "The primary dysfunctions in AMIECs may originate from inherited or acquired gene…",
+        "claim": "The primary dysfunctions in AMIECs may originate from inherited or acquired genetic defects in mitochondria, or alternatively from persistent epigenetic imprints of in vivo exposure to pathological factors.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Primary dysfunctions in mitochondria, from either inherited or acquired genetic defects, have been suggested as underlying causes of atherogenic pathologies. Alternatively, our AIMECs might continue to carry, ex-vivo, epigenetic imprints of their exposure to factors and cells while in the patients",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately presented as speculative ('might continue to carry').",
+            "Both possibilities (genetic and epigenetic) are acknowledged, showing intellectual honesty.",
+            "The citation of Dabravolski et al. (2022) provides literature context for mitochondrial genetic defects in atherogenesis."
+          ],
+          "weaknesses": [
+            "No evidence is provided to distinguish between genetic and epigenetic explanations — this is purely speculative.",
+            "No genetic analysis (e.g., mitochondrial DNA sequencing, exome sequencing) of AMIECs was performed.",
+            "No epigenetic profiling (e.g., DNA methylation, histone modification, chromatin accessibility) was conducted.",
+            "The claim that AMIECs 'might continue to carry epigenetic imprints' is in tension with the earlier claim (c1.6.4) that 'absent maintenance of long-term epigenetic memory' ROS must reflect endogenous damage signals."
+          ],
+          "alternative_interpretations": [
+            "The phenotypes could reflect selection bias during the isolation procedure — only cells capable of growing from explants were captured, and these may not be representative of the overall endothelial population.",
+            "The observed differences could reflect clonal variation or culture adaptation rather than disease-related features."
+          ],
+          "required_assumptions": [
+            "The phenotypes observed in culture faithfully reflect the endothelial dysfunction that exists in vivo in AMI patients.",
+            "Culture conditions do not significantly alter the metabolic programming of these cells over passages."
+          ],
+          "notes": "The logical tension between c1.6.4 (arguing against epigenetic memory) and c1.7.2 (invoking epigenetic imprints) should be reconciled by the authors.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "After 168 hours, control HCAECs had reached a growth plateau while AMIECs contin…",
+        "claim": "After 168 hours, control HCAECs had reached a growth plateau while AMIECs continued to proliferate exponentially at slow rates without reaching saturation.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "after 168 hr, while control HCAECs had reached a plateau in their growth, AMIECs continued to proliferate exponentially, albeit at slow rates, without reaching saturation.",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is directly supported by the growth curve data referenced in Figure 1D (though labeled as 1C in the figure legend), with monitoring over 168 hours.",
+            "All eight AMIECs consistently showed slower growth rates, providing biological replication across patients.",
+            "The timeframe limitation is transparently acknowledged and justified by the practical constraints of endothelial cell culture at high confluence."
+          ],
+          "weaknesses": [
+            "The term 'exponentially' is used loosely — no formal fitting of growth kinetics (e.g., exponential vs. linear model) is presented to validate this characterization.",
+            "Only n=3 replicates are reported per cell line, and it is unclear whether these are biological or technical replicates.",
+            "Control HCAECs are from a single commercial source (Lonza), and it is unclear how many donor lots were used; inter-donor variability in controls is unaccounted for.",
+            "The claim that AMIECs had not reached saturation is descriptive and not formally tested (e.g., by extended culture or modeled carrying capacity)."
+          ],
+          "alternative_interpretations": [
+            "The slower growth of AMIECs could reflect selection bias during outgrowth culture from thrombectomy specimens rather than a cell-autonomous AMI-related defect.",
+            "Different passage numbers or in vitro adaptation between commercially sourced HCAECs and patient-derived AMIECs could contribute to growth rate differences."
+          ],
+          "required_assumptions": [
+            "Growth conditions (media, confluence, passage number) are truly equivalent between AMIECs and HCAECs.",
+            "The single HCAEC control is representative of normal coronary endothelial cell growth."
+          ],
+          "notes": "There is a discrepancy between figure panel labels in the text (1D for growth rates) and the figure legend (1C for growth rates). This causes confusion about which panel corresponds to which data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Cell cycle analysis at 24 hours after seeding showed only a modest, non-signific…",
+        "claim": "Cell cycle analysis at 24 hours after seeding showed only a modest, non-significant tendency for AMIECs to accumulate in G1 phase relative to HCAECs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we observed no significant differences in the distribution of cell cycle phases between AMIECs and control cells, except for a modest tendency, without reaching statistical significance, of AMIECs to accumulate in the G1 phase",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Flow cytometry is an appropriate and standard method for cell cycle analysis.",
+            "The authors appropriately report the result as non-significant, avoiding overclaiming.",
+            "The observation is internally consistent with the interpretation that the slow growth affects all cell cycle phases rather than being stage-specific."
+          ],
+          "weaknesses": [
+            "Cell cycle analysis was performed at only a single time point (24 hr), which is described as 'the point of maximum growth in the control HCAECs' — this choice may not capture relevant differences in AMIECs, which grow more slowly.",
+            "With n=3 replicates, statistical power to detect modest shifts in cell cycle distribution may be insufficient.",
+            "No quantification of apoptosis or sub-G1 fraction is mentioned, which could explain slower growth independent of cell cycle distribution."
+          ],
+          "alternative_interpretations": [
+            "If AMIECs have a uniformly longer cell cycle, snapshot flow cytometry would show identical phase distributions despite different proliferation rates, which is exactly what is observed — but this interpretation is not unique; equivalent distributions could also mean equivalent cycling rates with differences in cell death or quiescence.",
+            "A fraction of AMIECs may be quiescent (G0) rather than in G1, which standard PI staining cannot distinguish."
+          ],
+          "required_assumptions": [
+            "24 hours post-seeding is an informative time point for both control and patient-derived cells.",
+            "Standard cell cycle staining adequately distinguishes G0 from G1."
+          ],
+          "notes": "The text refers to this as Figure 1E, but the figure legend describes cell cycle analysis in panel D. This label mismatch is persistent throughout the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3.1",
+        "label": "Control HCAECs achieved complete wound closure after 24 hours, while AMIECs achi…",
+        "claim": "Control HCAECs achieved complete wound closure after 24 hours, while AMIECs achieved only 50–80% closure under identical conditions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "control HCAECs achieved a complete closure of the wound after 24 hr of seeding",
+        "evaluation": {
+          "node_id": "c1.1.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Wound-healing assays are standard and well-established for migration assessment.",
+            "The use of mitomycin C to inhibit proliferation ensures migration is assessed independently of growth differences, which is methodologically sound.",
+            "Multiple AMIECs (all eight) were tested, and statistical significance was reported for comparisons against HCAEC.",
+            "The range of wound closure (50–80%) across AMIECs provides granularity across patient-derived lines."
+          ],
+          "weaknesses": [
+            "Only n=3 replicates per cell line; whether these are independent biological experiments or technical replicates is not specified.",
+            "Only one control cell line (HCAEC) is used, limiting the robustness of the comparison.",
+            "Representative images are shown (Figure 1E in text), but the quantification (Figure 1F/G) should be cross-referenced with the specific p-values for each AMIEC line — the text provides asterisk notation but does not report exact p-values."
+          ],
+          "alternative_interpretations": [
+            "Reduced migration could be a consequence of in vitro culture adaptation differences between commercially obtained HCAECs and patient-derived cells rather than an AMI-specific phenotype.",
+            "Cell-matrix adhesion differences, rather than intrinsic migratory defects, could explain wound closure variation."
+          ],
+          "required_assumptions": [
+            "Mitomycin C treatment is equally effective in all cell lines.",
+            "Wound closure rate is a valid proxy for endothelial migratory capacity."
+          ],
+          "notes": "Panel labeling confusion continues: the text refers to Figure 1F and 1G for wound closure images and quantification, but the legend calls them 1E and 1F.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "The linear correlation between branching capacity and migration ability across A…",
+        "claim": "The linear correlation between branching capacity and migration ability across AMIECs had an R-squared of 0.67.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The branching capacity of the AMIECs derived from different patients was linearly correlated (R2=0.67) with their ability to migrate",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The R² value of 0.67 is explicitly reported, and the authors do not overstate this as a perfect correlation.",
+            "The biological rationale linking migration to tubulogenesis is well-established in endothelial biology (De Bock et al., 2013).",
+            "The analysis spans 8 patient-derived cell lines plus control, providing a reasonable number of data points for a correlation."
+          ],
+          "weaknesses": [
+            "With only 9 data points (8 AMIECs + 1 HCAEC), the R² of 0.67 should be interpreted cautiously — individual outliers could heavily influence the correlation.",
+            "No p-value is reported for the correlation, and no confidence interval is provided.",
+            "Including the HCAEC control (which likely sits at the high end of both axes) in a correlation meant to characterize AMIECs could inflate R² by extending the range; the correlation among AMIECs alone is not reported.",
+            "The claim that the correlation holds 'regardless of their growth rates' is asserted without formal analysis (e.g., partial correlation controlling for growth rate)."
+          ],
+          "alternative_interpretations": [
+            "Both migration and tubulogenesis could be independently affected by a common upstream factor (e.g., cytoskeletal defects, adhesion abnormalities) rather than migration directly driving tubulogenesis.",
+            "The correlation could be driven primarily by the control HCAEC acting as an outlier anchor point."
+          ],
+          "required_assumptions": [
+            "The relationship between migration and tubulogenesis is linear.",
+            "The inclusion of HCAEC in the correlation is appropriate."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "CE-45, one of the two patient-derived cell lines with high glucose uptake, expre…",
+        "claim": "CE-45, one of the two patient-derived cell lines with high glucose uptake, expressed PFKFB3 at levels close to those of control cells, reinforcing the link between PFKFB3 levels and glucose uptake.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "one of the two patient-derived cell lines with high glucose uptake, CE-45, expressed PFKFB3 at levels close to those of control cells",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is internally consistent: CE-45 is identified as having high glucose uptake AND near-normal PFKFB3, linking the two observations.",
+            "Western blotting was performed in triplicate with normalization to β-actin.",
+            "The mechanistic logic is sound — PFKFB3 produces F-2,6-BP, a potent activator of PFK-1, and therefore higher PFKFB3 should correlate with higher glycolytic flux.",
+            "The observation that 7/8 AMIECs have low PFKFB3 and 6/8 have low glucose uptake is broadly consistent."
+          ],
+          "weaknesses": [
+            "CE-61 is also described as having high glucose uptake but is not mentioned as having normal PFKFB3 levels — this asymmetry undermines the generality of the PFKFB3-glucose uptake link.",
+            "Protein expression levels do not necessarily reflect enzyme activity; no direct PFKFB3 activity assay was performed.",
+            "The correlation is based on a qualitative matching of individual cell lines rather than a formal quantitative correlation analysis between PFKFB3 levels and glucose consumption.",
+            "A single control cell line limits the strength of comparisons."
+          ],
+          "alternative_interpretations": [
+            "Other regulators of glucose uptake (GLUT1 expression, hexokinase activity) could independently drive glucose consumption patterns.",
+            "PFKFB3 may be a passenger rather than driver — both low PFKFB3 and low glucose uptake could be downstream of a common upstream regulatory change."
+          ],
+          "required_assumptions": [
+            "PFKFB3 protein levels reflect its catalytic contribution to glycolytic flux.",
+            "Glucose consumption rate is primarily driven by glycolytic capacity."
+          ],
+          "notes": "The claim about CE-61 (the other high glucose consumer) and its PFKFB3 status is conspicuously absent and would be important for completeness.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2.1",
+        "label": "CE-45, the cell line with near-normal ROS levels, was also the one displaying no…",
+        "claim": "CE-45, the cell line with near-normal ROS levels, was also the one displaying normal levels of G6PD protein.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The one cell line with near-normal ROS levels, CE-45, was the same one displayed normal levels of G6PD protein",
+        "evaluation": {
+          "node_id": "c1.4.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The convergence of multiple independent measurements (ROS levels by flow cytometry, G6PD protein by Western blot) on the same cell line (CE-45) strengthens the internal consistency of the dataset.",
+            "This highlights CE-45 as a natural internal control that helps validate the overall pattern across the cohort.",
+            "The observation is biologically plausible: lower G6PD would produce less NADPH, potentially limiting ROS-scavenging capacity (though this is counterintuitive — if CE-45 has normal G6PD and normal ROS, it suggests adequate ROS handling)."
+          ],
+          "weaknesses": [
+            "The claim is observational and post-hoc — a single concordant cell line does not establish causality between G6PD levels and ROS.",
+            "H2DCFDA (used for ROS detection) is a non-specific probe that measures total intracellular ROS and can be influenced by esterase activity, dye loading, and other artifacts.",
+            "If the logic is that high G6PD → high NADPH → better ROS scavenging → lower ROS, then cells with high G6PD should have lower ROS, but the opposite is observed (7/8 AMIECs have both high G6PD AND high ROS). The claim about CE-45 works in the opposite direction to the bulk pattern, creating an internal tension.",
+            "No formal correlation analysis between G6PD levels and ROS across all lines is presented."
+          ],
+          "alternative_interpretations": [
+            "CE-45 may simply be an outlier or less-affected sample from a patient with less severe disease or different clinical characteristics.",
+            "The near-normal ROS in CE-45 could be due to factors unrelated to G6PD, such as lower mitochondrial activity or different antioxidant enzyme profiles."
+          ],
+          "required_assumptions": [
+            "G6PD protein levels reflect PPP activity and NADPH production.",
+            "ROS levels as measured by H2DCFDA faithfully represent oxidative stress status."
+          ],
+          "notes": "There is an interpretive tension: the authors argue G6PD is upregulated to counter ROS, yet 7/8 AMIECs have both high G6PD AND high ROS. CE-45 with normal G6PD and normal ROS is actually the cell line where the compensatory mechanism would not be needed. The authors' framing is not incorrect but could be more clearly discussed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Among AMIECs, CE45 displayed the intracellular amino acid profile most resemblin…",
+        "claim": "Among AMIECs, CE45 displayed the intracellular amino acid profile most resembling that of control HCAECs, consistent with its overall normal-like phenotype.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Among AMIECs, CE45 displayed the intracellular amino acid profile most resembling that of control HCAECs, consistent with the overall normal-like phenotype of this cell line.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GC/MS-based metabolomics is a rigorous and quantitative approach for measuring intracellular metabolites.",
+            "The observation is internally consistent with multiple other findings for CE-45 (near-normal PFKFB3, G6PD, ROS, glucose uptake), building a coherent picture of this cell line as the least affected.",
+            "The claim is appropriately qualified as 'most resembling' rather than 'identical to' controls."
+          ],
+          "weaknesses": [
+            "No formal statistical framework (e.g., principal component analysis, hierarchical clustering, or multivariate distance metric) is used to quantify the 'resemblance' of CE-45's amino acid profile to controls — this appears to be a qualitative visual assessment from Figure 5E.",
+            "CE-45's clinical characteristics (Table 1) are not discussed in relation to its outlier-like behavior, which could provide important context.",
+            "It is unclear whether the GC/MS measurements were performed with biological replicates or just technical replicates."
+          ],
+          "alternative_interpretations": [
+            "CE-45 might represent a patient at an earlier stage of endothelial dysfunction, or one whose cells underwent less ex vivo selection during outgrowth culture.",
+            "The 'normal-like' profile of CE-45 could reflect technical variability rather than a true biological distinction."
+          ],
+          "required_assumptions": [
+            "The amino acid profile measured by GC/MS reflects steady-state metabolic activity rather than artifact of cell density or media conditioning.",
+            "A single HCAEC control is representative of 'normal' amino acid profiles."
+          ],
+          "notes": "CE-45 is repeatedly singled out across multiple assays as the most normal-like AMIEC. While this internal consistency is a strength, it also raises the question of whether CE-45 should be considered a true AMIEC or a possible misclassification/less-affected sample.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4.1",
+        "label": "The glutamate production-to-glutamine consumption ratio was considerably lower i…",
+        "claim": "The glutamate production-to-glutamine consumption ratio was considerably lower in AMIECs compared to controls, in 6 of 8 cell lines.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio between glutamate production and glutamine consumption was considerably lower in AMIECs",
+        "evaluation": {
+          "node_id": "c1.5.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is derived from quantitative spectrophotometric measurements of extracellular glutamine and glutamate, which are well-established methods.",
+            "The ratio-based analysis (glutamate production / glutamine consumption) is informative because it normalizes for differences in absolute metabolic rates.",
+            "The finding is biologically coherent with the high glutaminase expression and proposed high intracellular glutamate utilization for GSH synthesis."
+          ],
+          "weaknesses": [
+            "The claim says 'in 6 of 8 cell lines' but the verbatim quote does not specify this — the evaluator's interpretation may be conflating the 6/8 pattern from glutamate production data with the ratio data, where the exact number of significant cell lines is not explicitly stated in the quoted text.",
+            "No statistical test results are presented specifically for the ratio values in the text; the description is qualitative ('considerably lower').",
+            "The ratio interpretation depends on the assumption that glutamate is the primary fate of glutamine in these cells, and that reduced glutamate export reflects intracellular consumption rather than altered transporter activity.",
+            "The 48-hour measurement window integrates potentially complex dynamics (media conditioning, pH changes from lactate accumulation) that could affect transporter kinetics."
+          ],
+          "alternative_interpretations": [
+            "Lower extracellular glutamate could reflect decreased glutamate transporter expression/activity rather than increased intracellular consumption.",
+            "Glutamate could be diverted to α-ketoglutarate for TCA cycle anaplerosis rather than GSH synthesis, and both explanations are consistent with the data.",
+            "The low ratio could partly be an artifact of different cell densities or growth rates between AMIECs and HCAECs over the 48-hour measurement period."
+          ],
+          "required_assumptions": [
+            "Extracellular glutamate levels reflect the balance between production (from glutamine) and intracellular utilization.",
+            "Growth rate differences do not confound the metabolite flux measurements."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "Addition of the uncoupling agent CCCP resulted in rapid depolarization of mitoch…",
+        "claim": "Addition of the uncoupling agent CCCP resulted in rapid depolarization of mitochondria in AMIECs, confirming the proton gradient dependency of the signal.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The subsequent addition of the uncoupling agent carbonyl cyanide m-chlorophenylhydrazone (CCCP) resulted in rapid depolarization, reflecting the proton gradient dissipation.",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "CCCP is a well-established mitochondrial uncoupler, and its use as a positive control for depolarization is standard practice.",
+            "The experiment confirms that the DiIC1(5) signal is dependent on the proton gradient, validating the earlier finding of mitochondrial hyperpolarization.",
+            "This is a necessary control experiment that is appropriately performed and reported."
+          ],
+          "weaknesses": [
+            "The claim is essentially a control verification rather than a novel finding — CCCP depolarization of DiIC1(5) is fully expected and would be concerning if it did NOT occur.",
+            "No quantitative data on the degree of depolarization or rate of signal loss upon CCCP addition are provided.",
+            "It is not specified whether the CCCP depolarization was equivalent between AMIECs and HCAECs, which could provide additional information about mitochondrial mass or membrane composition differences."
+          ],
+          "alternative_interpretations": [
+            "The higher baseline DiIC1(5) signal in AMIECs could partially reflect greater mitochondrial mass rather than exclusively higher membrane potential per mitochondrion. Additional normalization (e.g., to MitoTracker Green for mass) would clarify this."
+          ],
+          "required_assumptions": [
+            "DiIC1(5) accumulation is primarily driven by membrane potential and not significantly affected by differences in mitochondrial mass, dye uptake kinetics, or plasma membrane potential.",
+            "CCCP fully dissipates the proton gradient under the conditions used."
+          ],
+          "notes": "The CCCP control is necessary but insufficient to fully validate the membrane potential interpretation. Normalization to mitochondrial mass would strengthen the hyperpolarization claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.5",
+        "source": "c1.5",
+        "target": "c1.5.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.5",
+        "source": "c1.6",
+        "target": "c1.6.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.3_c1.1.3.1",
+        "source": "c1.1.3",
+        "target": "c1.1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.2.1",
+        "source": "c1.4.2",
+        "target": "c1.4.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.4_c1.5.4.1",
+        "source": "c1.5.4",
+        "target": "c1.5.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 45,
+    "total_edges": 44,
+    "max_depth": 3,
+    "high_support_nodes": 4,
+    "low_support_nodes": 8,
+    "overall_assessment": "The paper's 45 claims show mixed overall support when weighted by centrality (weighted support score 0.56, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “AMIECs produce high levels of lactate uncoupled from glucose consumption, suggesting an alternative, possibly glutamine-derived, source of lactate.” (8 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

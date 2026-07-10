@@ -1,0 +1,3367 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_86194",
+    "title": "Impairment of lipid homeostasis causes lysosomal accumulation of endogenous protein aggregates through ESCRT disruption",
+    "authors": [
+      "John Yong",
+      "Jacqueline E Villalta",
+      "Ngoc Vu",
+      "Matthew A Kukurugya",
+      "Niclas Olsson",
+      "Magdalena Preciado López",
+      "Julia R Lazzari-Dean",
+      "Kayley Hake",
+      "Fiona E McAllister",
+      "Bryson D Bennett",
+      "Calvin H Jan"
+    ],
+    "url": "https://doi.org/10.7554/eLife.86194",
+    "abstract": "Protein aggregation increases during aging and is a pathological hallmark of many age-related diseases. Protein homeostasis (proteostasis) depends on a core network of factors directly influencing protein production, folding, trafficking, and degradation. Cellular proteostasis also depends on the overall composition of the proteome and numerous environmental variables. Modulating this cellular proteostasis state can influence the stability of multiple endogenous proteins, yet the factors contributing to this state remain incompletely characterized. Here, we performed genome-wide CRISPRi screens to elucidate the modulators of proteostasis state in mammalian cells, using a fluorescent dye to monitor endogenous protein aggregation. These screens identified known components of the proteostasis network and uncovered a novel link between protein and lipid homeostasis. Increasing lipid uptake and/or disrupting lipid metabolism promotes the accumulation of sphingomyelins and cholesterol esters and drives the formation of detergent-insoluble protein aggregates at the lysosome. Proteome profiling of lysosomes revealed ESCRT accumulation, suggesting disruption of ESCRT disassembly, lysosomal membrane repair, and microautophagy. Lipid dysregulation leads to lysosomal membrane permeabilization but does not otherwise impact fundamental aspects of lysosomal and proteasomal functions. Together, these results demonstrate that lipid dysregulation disrupts ESCRT function and impairs proteostasis.",
+    "word_count": 11321,
+    "processed_at": "2026-07-10T01:02:05.368399+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Lysosomal lipid dysregulation, particularly elevated sphingomyelins and choleste…",
+        "claim": "Lysosomal lipid dysregulation, particularly elevated sphingomyelins and cholesterol esters, drives endogenous protein aggregation through disruption of the ESCRT pathway, establishing an emergent mechanistic link between lipid homeostasis and proteostasis.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract",
+        "verbatim_quote": "Together, this work provides strong evidence that supports an emergent role of lipid dysregulation in driving protein aggregation through disruption of the ESCRT pathway.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The study provides a comprehensive, multi-layered evidence base spanning genome-wide CRISPRi screens, lipidomics, Lyso-IP proteomics, imaging, and multiple functional assays, all pointing toward a lipid-proteostasis axis.",
+            "The CRISPRi screen is well-validated with known proteostasis regulators (proteasome subunits, vATPases, ribosomal proteins) scoring as expected, lending credibility to novel hits.",
+            "Epistasis experiments (MYLIP/LDLR double KD, MYLIP/PSAP double KD) effectively demonstrate that the ProteoStat phenotype is mediated through lipid uptake rather than through other MYLIP E3 ligase targets.",
+            "The lipidomics data showing high correlation of SM and CE species with ProteoStat phenotype (R² up to 0.968 for SM) provides quantitative evidence linking specific lipid classes to aggregation.",
+            "Lyso-IP proteomics identifying 9 of 12 top insoluble proteins as ESCRT components is a striking and specific finding that provides mechanistic insight beyond correlation.",
+            "Systematic ruling out of alternative mechanisms (lysosomal pH, lipid peroxidation as a causal factor, macroautophagy involvement) strengthens the specificity of the ESCRT-centered model.",
+            "Controls for ProteoStat not directly staining cholesterol (MBCD treatment, GUV experiments, lack of Filipin III colocalization) address an important confound."
+          ],
+          "weaknesses": [
+            "INFERENTIAL GAP (major): The root claim asserts that ESCRT disruption is the mechanism by which lipid dysregulation 'drives' protein aggregation, but the evidence establishes correlation/association rather than causation. The ESCRT insolubility is shown only for MYLIP KD (sub-claim c1.5), not for PSAP KD or other lipid perturbations, so the generalization to 'lysosomal lipid dysregulation' broadly is not fully supported.",
+            "INFERENTIAL GAP: VPS4A overexpression only modestly rescued MYLIP KD-induced LMP and aggregation (sub-claim c1.6), which the authors acknowledge but which undermines the causal centrality of ESCRT disruption in the mechanistic model. The partial rescue is consistent with ESCRT involvement but does not establish it as the primary or sufficient mechanism.",
+            "EVIDENTIAL GAP (inherited from c1.7): Proteasome activity measurements under lipid-modifying KDs are n=1 (Figure 6H), yet the abstract-level claim states proteasome activity was 'unaffected' — this is overclaimed given the absence of replication and statistical testing.",
+            "EVIDENTIAL GAP (inherited from c1.3): R² correlations between lipid species and ProteoStat are computed across a small, selected set of perturbations directly affecting lipid metabolism, with limited degrees of freedom. The number of independent data points is not clearly stated, and pre-selection of perturbations could inflate apparent correlations.",
+            "EVIDENTIAL GAP (inherited from c1.4): The inference of microautophagy involvement is indirect — no direct measurement of microautophagy flux is performed. The ubiquitin-low, ProteoStat-high lysosomal puncta pattern is 'consistent with' but not diagnostic of microautophagy; other pathways (CMA, direct import) could explain the same observation.",
+            "The study is performed entirely in K562 cells (a chronic myelogenous leukemia cell line), which are rapidly dividing and not representative of post-mitotic neurons or aged tissues where proteinopathy is most relevant. The root claim's framing in the context of aging and neurodegeneration is not directly supported by the experimental system.",
+            "DQ-Red BSA assay for lysosomal protease activity is confounded under MYLIP KD conditions because LDLR upregulation could alter endocytic uptake rates of BSA, affecting delivery kinetics independently of protease activity (inherited from c1.7).",
+            "The term 'emergent role' in the root claim implies novelty, but prior literature (Kirkegaard et al., 2010; Gabandé-Rodríguez et al., 2014; Tian et al., 2021) has already linked sphingolipid/cholesterol dysregulation to proteostasis impairment through lysosomal dysfunction, albeit through different proposed mechanisms."
+          ],
+          "alternative_interpretations": [
+            "ESCRT component insolubility could be a consequence rather than a cause of lysosomal stress — aggregated proteins or damaged membranes might trap ESCRT components secondarily, rather than ESCRT disruption being the primary driver.",
+            "The ProteoStat signal increase could reflect accumulation of undigested cargo in lysosomes due to general lysosomal overload from lipid accumulation, rather than specifically through ESCRT-mediated microautophagy failure. Lysosomal crowding by undegraded lipids alone could impair protein degradation.",
+            "The correlation between SM/CE levels and ProteoStat could reflect a shared upstream cause (e.g., general lysosomal dysfunction) rather than SM/CE directly causing protein aggregation through ESCRT disruption.",
+            "Membrane composition changes from SM/CE accumulation could impair multiple lysosomal membrane-dependent processes beyond ESCRT (e.g., lipid raft dynamics, transporter function, membrane fluidity affecting protease substrate access), any of which could contribute to aggregate accumulation."
+          ],
+          "required_assumptions": [
+            "ProteoStat faithfully reports endogenous protein aggregation (amyloid-like structures) and is not confounded by lipid-protein mixed deposits or other non-proteinaceous structures in the lysosome.",
+            "Detergent-insoluble ESCRT components on lysosomes represent functionally impaired/stalled complexes rather than simply increased ESCRT recruitment in response to elevated membrane repair demand.",
+            "The K562 cell system captures biologically relevant proteostasis mechanisms that translate to post-mitotic cells and aging tissues.",
+            "CRISPRi knockdown achieves sufficient and consistent target gene suppression across all perturbations compared.",
+            "The Lyso-IP method cleanly isolates lysosomes without significant contamination from other organelles, and the insoluble fraction accurately reflects lysosome-associated insoluble proteins."
+          ],
+          "notes": "The claim as stated in the abstract uses the language 'strong evidence' and 'emergent role,' which overstates the evidential basis. The ESCRT link is novel and interesting but remains correlative for a single perturbation (MYLIP KD). The mechanistic model is plausible and well-articulated but incompletely validated — particularly the absence of ESCRT proteomics data for PSAP KD and the only partial rescue by VPS4A. The exclusion of macroautophagy as a contributor is well-supported by the screen data. The proteasome activity claim (n=1) is the most clearly overclaimed element inherited from sub-claims.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "Genome-wide CRISPRi screens on unmodified mammalian cells using an aggresome-sta…",
+        "claim": "Genome-wide CRISPRi screens on unmodified mammalian cells using an aggresome-staining dye reveal a link between lysosomal lipid homeostasis and endogenous protein aggregation.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "To our knowledge, ours are the first CRISPRi genome-wide screens performed on unmodified mammalian cells to interrogate endogenous protein aggregation. These screens revealed a link between lysosomal lipid homeostasis and proteostasis.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is supported by multiple converging lines of evidence: ProteoStat validation with MG132 (microscopy and FACS), genome-wide CRISPRi screens with two biological replicates and MAGeCK analysis, batch retest validation, pharmacological confirmation, and GSEA identifying known proteostasis pathways.",
+            "The screen successfully recovers known proteostasis regulators (proteasome, vATPases, ribosomal proteins), providing internal validation of the assay's ability to detect genuine proteostasis modifiers.",
+            "The identification of lipid-related genes (LDLR, MYLIP, SCAP, PSAP, GNPTAB, IGF2R, LYSET) as hits alongside known proteostasis components constitutes genuine discovery.",
+            "The use of CRISPRi on unmodified K562 cells (no overexpressed aggregation-prone proteins, no exogenous seeds) is a legitimate methodological distinction from prior screens."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claims: the ProteoStat validation experiment comparing sorted high vs. low populations is described qualitatively without quantitative comparison of puncta counts or fluorescence intensities between sorted populations.",
+            "Some pharmacological validations (chaperone inhibitors) are noted as n=1, limiting statistical confidence for those specific conditions (sub-claim c1.1.6).",
+            "The batch retest is described qualitatively without reporting how many genes replicated or at what statistical threshold (sub-claim c1.1.2).",
+            "Null result for macroautophagy genes is harder to interpret definitively—could reflect assay insensitivity rather than biological irrelevance (sub-claim c1.1.4).",
+            "ProteoStat specificity for amyloid-like aggregates versus other protein states is assumed but not fully validated; the dye may capture a subset of aggregation phenomena.",
+            "K562 is a chronic myelogenous leukemia cell line with abnormal karyotype and potentially unusual proteostasis compared to primary cells or neurons where protein aggregation is most relevant."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat changes could reflect alterations in lysosomal membrane composition or content rather than strictly protein aggregation state, given the strong lysosomal colocalization.",
+            "The lipid homeostasis link could be an indirect consequence of general lysosomal stress rather than a specific lipid-proteostasis axis."
+          ],
+          "required_assumptions": [
+            "ProteoStat accurately reports on endogenous protein aggregation state in this system.",
+            "CRISPRi KD is efficient for the genes of interest within the timeframe used.",
+            "K562 cells provide a reasonable model for general cellular proteostasis."
+          ],
+          "notes": "The claim is well-structured with the screen results clearly presented. The 'first CRISPRi genome-wide screens on unmodified mammalian cells' claim of novelty is reasonable given prior work focused on overexpressed aggregation-prone proteins.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Increased LDL uptake through LDLR, rather than de novo cholesterol synthesis, me…",
+        "claim": "Increased LDL uptake through LDLR, rather than de novo cholesterol synthesis, mediates the effect of lipid perturbations on protein aggregation.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Together, the evidence suggests that increased flux of LDL uptake and/or the levels of lipid metabolites generated during the process increases protein aggregation.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "MYLIP-LDLR epistasis experiment (double KD) directly demonstrates that MYLIP's effect operates through LDLR (sub-claim c1.2.1).",
+            "Delipidated serum experiments show that removing exogenous lipids phenocopies LDLR KD and abrogates MYLIP KD effect (sub-claim c1.2.2).",
+            "Rescue with exogenous cholesterol or human LDL restores ProteoStat after lipid depletion (sub-claim c1.2.3).",
+            "MBCD and GUV experiments convincingly rule out direct ProteoStat staining of cholesterol (sub-claim c1.2.4).",
+            "SCAP and MBTPS2 KDs (SREBP pathway regulators) also reduce ProteoStat, providing additional supporting evidence.",
+            "Multiple complementary approaches (genetic epistasis, environmental manipulation, chemical extraction) converge on the same conclusion."
+          ],
+          "weaknesses": [
+            "Delipidated FBS removes all lipids, not just LDL, so the effect could partially reflect depletion of other serum lipids or lipid-associated factors (sub-claim c1.2.2).",
+            "The null result for mevalonate pathway genes is based on screen results alone without validation of KD efficiency for those specific genes (sub-claim c1.2.5).",
+            "Human LDL contains multiple lipid species beyond cholesterol esters; supplementation cannot definitively identify which LDL component is responsible (sub-claim c1.2.3).",
+            "Epistasis experiments use n≥2, which is relatively modest for quantitative conclusions, though the directional effect is clear.",
+            "MYLIP-PSAP interaction (sub-claim c1.2.6) is described as 'dramatically exacerbated' without quantitative specification in the text."
+          ],
+          "alternative_interpretations": [
+            "The effect of LDL uptake could be mediated through general endo-lysosomal trafficking burden rather than specific lipid species.",
+            "LDLR pathway perturbations could alter endocytic flux broadly, affecting delivery of other cargo to lysosomes."
+          ],
+          "required_assumptions": [
+            "MYLIP's primary relevant function in this system is LDLR degradation.",
+            "Changes in ProteoStat upon lipid depletion reflect genuine changes in protein aggregation rather than secondary metabolic effects.",
+            "De novo synthesis pathway genes were adequately knocked down in the screen."
+          ],
+          "notes": "The distinction between uptake-derived and de novo-synthesized cholesterol is an interesting finding. The epistasis and environmental manipulation experiments are well-designed and provide strong support.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Sphingomyelins and cholesterol esters are the specific lipid classes whose level…",
+        "claim": "Sphingomyelins and cholesterol esters are the specific lipid classes whose levels correlate with protein aggregation, and the proteostatic impairment is pleiotropic, attributable to multiple lipid species rather than any single one.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we found remarkable correlation between ProteoStat staining and individual levels of most lipids in the sphingomyelin (SM) and cholesterol ester (CE) classes",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lipidomics across multiple perturbation conditions shows high R² correlations between SM and CE levels and ProteoStat intensity (up to 0.968 and 0.843 respectively).",
+            "K-S tests demonstrate that SM and CE classes are significantly better correlated than the full lipid collection, with ceramides, lactosylceramides, and hexosylceramides serving as negative counterexamples.",
+            "Non-lipid perturbations (AMBRA1, CHMP2A) break the SM/CE-ProteoStat correlation, supporting specificity.",
+            "PSAP rescue experiments using modular Sap constructs demonstrate that no single sphingolipid species is solely responsible, supporting the 'pleiotropic' interpretation."
+          ],
+          "weaknesses": [
+            "R² values are computed across a small number of perturbation conditions, which may inflate correlations due to limited degrees of freedom (sub-claim c1.3.1). The exact number of data points in the regression is not clearly stated.",
+            "The analysis is restricted to perturbations that 'directly affect lipid uptake and metabolism,' a selected subset that could bias toward high correlations (sub-claim c1.3.1).",
+            "Full-length PSAP rescue reaches only p=0.07 vs control, which does not meet conventional significance thresholds. 'Largely rescued' is generous language (sub-claim c1.3.3).",
+            "Expression levels of the various PSAP constructs are not verified; single-Sap constructs might fail to rescue due to insufficient expression, misfolding, or improper localization rather than genuine functional insufficiency (sub-claim c1.3.3).",
+            "Correlation does not establish causation; SM and CE levels may simply correlate with another unmeasured variable that drives aggregation."
+          ],
+          "alternative_interpretations": [
+            "SM and CE levels may be markers of general lysosomal metabolic burden rather than direct causative agents.",
+            "The failure of individual Sap rescues could reflect technical issues (expression, folding) rather than biological pleiotropy.",
+            "Other lipid classes not measured or not well-captured by the lipidomics platform could be the true drivers."
+          ],
+          "required_assumptions": [
+            "The lipidomic measurements accurately reflect intracellular lipid levels.",
+            "The perturbations selected for lipidomics are representative.",
+            "PSAP variant constructs are properly expressed, processed, and delivered to lysosomes."
+          ],
+          "notes": "The correlation analysis, while impressive in R² values, relies on a selected subset of conditions with limited degrees of freedom. The PSAP rescue data is informative but the borderline significance of the full-length rescue weakens the positive control.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Lipid-induced protein aggregates colocalize predominantly with lysosomes in a pa…",
+        "claim": "Lipid-induced protein aggregates colocalize predominantly with lysosomes in a pattern consistent with a microautophagy pathway rather than macroautophagy.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Cells with lipid impairment (MYLIP or PSAP KD) exhibited lysosomal ProteoStat puncta that were non-ubiquitinated, in addition to occasional cytoplasmic double-positive puncta.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Confocal microscopy with LAMP1 co-staining and quantification across n=3 replicates demonstrates lysosomal colocalization of ProteoStat puncta under lipid perturbation conditions.",
+            "Lyso-IP with differential extraction provides orthogonal biochemical evidence for detergent-insoluble proteins accumulating in lysosomes under lipid-perturbing KDs.",
+            "The observation that lysosomal ProteoStat puncta are non-ubiquitinated under lipid perturbation is consistent with the microautophagy model where deubiquitination occurs during ESCRT-mediated transport.",
+            "UBPY KD increases both lysosomal ProteoStat and ubiquitination signals, consistent with ESCRT-associated deubiquitination playing a role.",
+            "The null result for macroautophagy genes in the screen, combined with the ubiquitination-negative lysosomal puncta, provides complementary evidence against macroautophagy."
+          ],
+          "weaknesses": [
+            "Inferential gap: the evidence is 'consistent with' microautophagy but does not prove it. No direct measurement of microautophagy flux is performed. Multiple other pathways (CMA, direct import, other non-canonical autophagy) could explain ubiquitin-low ProteoStat-high lysosomal puncta (sub-claim c1.4.2).",
+            "Colocalization methodology (quantitative metrics such as Manders' coefficients) is not fully detailed. Confocal maximum projections can overstate colocalization if objects overlap in z but not in the same optical section (sub-claim c1.4.1).",
+            "Silver stain of Lyso-IP insoluble fractions is shown as representative images; densitometric quantification across triplicates is not provided in the text (sub-claim c1.4.3).",
+            "Lyso-IP using TMEM192 may co-purify late endosomes and other TMEM192-containing compartments, not exclusively lysosomes (sub-claim c1.4.3).",
+            "UBPY/USP8 has many cellular functions beyond ESCRT-associated deubiquitination; the result is consistent with but not uniquely supportive of the microautophagy interpretation (sub-claim c1.4.4)."
+          ],
+          "alternative_interpretations": [
+            "Lysosomal accumulation of aggregates could result from impaired lysosomal degradation of proteins delivered by any pathway, not specifically microautophagy.",
+            "The non-ubiquitinated state of lysosomal aggregates could reflect efficient deubiquitination by multiple DUBs, not specifically ESCRT-associated ones.",
+            "Chaperone-mediated autophagy could deliver proteins directly to lysosomes without ubiquitination."
+          ],
+          "required_assumptions": [
+            "ProteoStat puncta in lysosomes represent protein aggregates rather than ProteoStat interacting with non-protein lysosomal contents.",
+            "The distinction between ubiquitinated and non-ubiquitinated aggregates is informative about the delivery pathway.",
+            "TMEM192-based Lyso-IP provides sufficiently pure lysosomal fractions."
+          ],
+          "notes": "The claim is appropriately hedged with 'consistent with' language in the text. The lysosomal colocalization data is solid, but the specific attribution to microautophagy versus other lysosomal delivery mechanisms remains inferential.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Lipid dysregulation causes accumulation of detergent-insoluble ESCRT components …",
+        "claim": "Lipid dysregulation causes accumulation of detergent-insoluble ESCRT components at lysosomes, providing novel evidence that excessive SM and CE levels may disrupt ESCRT function by impeding ESCRT-III progression and/or resolution.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Here, our results provide novel evidence that excessive SM and CE levels may disrupt ESCRT function by impeding ESCRT-III progression and/or resolution.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "TMT-based quantitative proteomics on Lyso-IP fractions identifies 9 of 12 top insoluble proteins in MYLIP KD as ESCRT pathway components, including ESCRT-III subunits, accessory proteins, and VPS4A—a striking and specific enrichment.",
+            "GSEA on the Lyso-IP proteomics data independently highlights the Multivesicular Body gene set, corroborating the ESCRT finding.",
+            "The distinction between Lysosomal Total and Lysosomal Insoluble fractions shows that ESCRT enrichment is specific to the insoluble fraction (vATPases increase in total but not insoluble), strengthening the specificity of the observation.",
+            "The finding is consistent with known biochemistry of ESCRT-III polymerization into detergent-insoluble assemblies on membranes.",
+            "Validation of Lyso-IP quality (67/70 core lysosomal proteins captured) supports the method."
+          ],
+          "weaknesses": [
+            "Only MYLIP KD vs control is analyzed; PSAP KD or other lipid perturbations were not included in the Lyso-IP proteomics, limiting the generalizability of the ESCRT finding to lipid dysregulation broadly (sub-claim c1.5.2).",
+            "The number of biological replicates for the proteomics experiment is not explicitly stated in the text (sub-claim c1.5.1).",
+            "The mechanistic hypothesis about SM/CE levels impeding ESCRT-III progression/resolution via membrane curvature effects is presented in the Discussion as interpretation, not directly tested experimentally (sub-claim c1.5.3). This is an inferential gap between the observation (ESCRT insolubility) and the proposed mechanism.",
+            "Detergent-insoluble ESCRT components could reflect increased ESCRT recruitment to damaged membranes (an appropriate stress response) rather than pathological dysfunction.",
+            "No functional assay of ESCRT activity (e.g., ILV formation, membrane repair kinetics) is performed to directly demonstrate impaired function."
+          ],
+          "alternative_interpretations": [
+            "Increased ESCRT insolubility could represent an adaptive response to increased membrane repair demand rather than pathological dysfunction.",
+            "ESCRT accumulation could be a consequence rather than a cause of lysosomal stress.",
+            "Other membrane-associated proteins might also become insoluble under lipid perturbation but fall below detection or significance thresholds."
+          ],
+          "required_assumptions": [
+            "Detergent-insoluble ESCRT components represent trapped, dysfunctional assemblies rather than normally functioning but membrane-bound complexes.",
+            "Lyso-IP fractionation into RIPA-soluble and Urea/SDS-insoluble fractions accurately separates functional from dysfunctional protein states.",
+            "The MYLIP KD condition is representative of lipid dysregulation more broadly."
+          ],
+          "notes": "The ESCRT finding is novel and striking but would be substantially strengthened by including additional lipid perturbation conditions in the proteomics and by direct functional assays of ESCRT activity. The claim as stated ('may disrupt ESCRT function') is appropriately hedged.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Lysosomal membrane permeabilization partially contributes to lipid-induced prote…",
+        "claim": "Lysosomal membrane permeabilization partially contributes to lipid-induced protein aggregation, but lipid accumulation impairs ESCRT function through an additional or upstream mechanism that resists VPS4A-mediated rescue.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Together, these data show that LMP contributes, albeit only partially, to lipid-induced lysosomal protein aggregation and that lipid accumulation may impair VPS4A-mediated resolution of ESCRT assemblies.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GAL3 reporter experiments quantify LMP across multiple conditions (n=3), showing that MYLIP KD and, more weakly, PSAP KD increase LMP.",
+            "LLOMe treatment demonstrates that chemically induced LMP is sufficient to cause lysosomal protein aggregation.",
+            "VPS4A overexpression rescues LLOMe-induced LMP almost completely, but this rescue is largely negated in the MYLIP KD background, elegantly demonstrating that lipid dysregulation impairs ESCRT function upstream or orthogonal to VPS4A-mediated resolution.",
+            "The partial (not complete) contribution of LMP to aggregation is honestly presented, and the data showing dissociation between LMP magnitude and ProteoStat intensity across conditions supports the multi-factor model."
+          ],
+          "weaknesses": [
+            "LLOMe treatment is acute (4 hr) while genetic perturbations are chronic (7 days); temporal mismatch complicates direct comparison of LMP magnitude (sub-claim c1.6.2).",
+            "LLOMe causes massive, non-physiological LMP that may not be comparable to the moderate LMP from genetic perturbations (sub-claim c1.6.2).",
+            "VPS4A overexpression level is not quantified; supra-physiological expression could create artifactual results (sub-claim c1.6.3).",
+            "GAL3 puncta quantification methodology is not described in detail (manual vs. automated counting, thresholding criteria) (sub-claim c1.6.1).",
+            "The claim that lipid accumulation impairs 'VPS4A-mediated resolution of ESCRT assemblies' is inferred from the VPS4A rescue experiment but not directly demonstrated biochemically."
+          ],
+          "alternative_interpretations": [
+            "VPS4A overexpression may fail to rescue MYLIP KD-induced LMP because the membrane composition changes make repair inherently more difficult, independent of ESCRT function per se.",
+            "The partial contribution of LMP could indicate that aggregate accumulation is primarily driven by impaired lysosomal degradation capacity rather than membrane damage.",
+            "Lipid dysregulation might impair lysosomal function through mechanisms entirely independent of ESCRT (e.g., direct effects on membrane fluidity affecting transporter function)."
+          ],
+          "required_assumptions": [
+            "GAL3 puncta accurately report LMP in this system.",
+            "VPS4A overexpression primarily enhances ESCRT-III resolution rather than having other effects.",
+            "The relationship between LMP and protein aggregation is mechanistic rather than correlative."
+          ],
+          "notes": "The VPS4A rescue experiment is well-designed and provides the most compelling functional evidence linking ESCRT dysfunction to lipid-induced proteostasis impairment. The claim is appropriately hedged with 'partially' and 'may impair.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "Key lysosomal functions (pH, protease activity) and proteasome activity are not …",
+        "claim": "Key lysosomal functions (pH, protease activity) and proteasome activity are not impaired by lipid dysregulation, and lipid peroxidation is not causally related to the protein aggregation phenotype, ruling out several alternative mechanistic models.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Other aspects of lysosomal and proteasomal functions essential for proteostasis (lysosomal pH, lysosomal protease activity, and proteasome activity) were unaffected by lipid dysregulation.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "pHLARE ratiometric sensor is validated with a pH buffer series and correctly reports deacidification under ATP6V1E1 KD; lipid-modifying KDs do not significantly shift lysosomal pH (sub-claim c1.7.1).",
+            "Antioxidant cocktail (5AO) effectively reduces lipid peroxidation but does not rescue ProteoStat or LysoTracker phenotypes, providing a dissociation experiment for lipid peroxidation (sub-claim c1.7.4).",
+            "DQ-Red BSA assay shows only modest and incoherent effects of lipid perturbations on lysosomal protease function.",
+            "Multiple alternative mechanisms are systematically tested and excluded, demonstrating rigorous approach."
+          ],
+          "weaknesses": [
+            "Critical evidential gap: proteasome activity measurements by KD experiments are n=1 (Figure 6H), which is insufficient to make definitive claims about no effect on proteasome activity (sub-claim c1.7.3). The abstract-level claim 'proteasome activity was unaffected' is stated more strongly than a single unreplicated experiment warrants.",
+            "DQ-Red BSA assay interpretation is confounded: MYLIP KD upregulates LDLR and could alter endocytic uptake rates, affecting BSA delivery kinetics independently of protease activity (sub-claim c1.7.2).",
+            "pHLARE reports average lysosomal pH; subpopulations of damaged lysosomes with altered pH could be diluted by the larger pool of normal lysosomes (sub-claim c1.7.1).",
+            "5AO may not fully eliminate all forms of oxidative damage, particularly localized oxidation within lysosomal membranes (sub-claim c1.7.4).",
+            "Inferential gap: ruling out these specific alternative mechanisms does not conclusively establish the ESCRT mechanism; other untested mechanisms could also contribute."
+          ],
+          "alternative_interpretations": [
+            "Proteasome activity at n=1 could show a real but variable effect that would emerge with adequate replication.",
+            "Subtle pH changes below the resolution of pHLARE in a subpopulation of lysosomes could still be biologically meaningful.",
+            "Lysosomal protease activity could be locally impaired at sites of lipid accumulation while appearing normal in bulk measurements.",
+            "Antioxidants may rescue lipid peroxidation markers without rescuing the downstream oxidative damage already done to proteins."
+          ],
+          "required_assumptions": [
+            "n=1 proteasome activity measurements are sufficient to rule out an effect.",
+            "Bulk flow cytometry measurements of lysosomal pH and protease activity reflect the functionally relevant subpopulation of lysosomes.",
+            "5AO cocktail adequately suppresses all relevant forms of oxidative stress in K562 cells."
+          ],
+          "notes": "The proteasome activity claim (n=1) is the most problematic element. The other rule-out experiments (pH, lipid peroxidation) are better supported but each has caveats. The claim in the abstract that these functions are 'unaffected' is stronger than the evidence warrants, particularly for proteasome activity. This is a case where the evidence ranges from moderate to strong for individual sub-mechanisms but the composite claim of ruling out all alternatives is overclaimed due to the n=1 proteasome data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "ProteoStat dye reliably reports changes in proteostasis state in human cell cult…",
+        "claim": "ProteoStat dye reliably reports changes in proteostasis state in human cell culture and can be used to isolate cells in different proteostasis states by FACS.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "ProteoStat-high cells obtained by fluorescence-activated cell sorting (FACS) from cells treated with a lower dose of MG132 – which generated mixed phenotypes – likewise showed numerous bright puncta, whereas ProteoStat-low cells displayed diffuse staining of lower intensity, indicating that this tool can be used to report and isolate cells in different proteostasis states",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "MG132 treatment provides a well-established positive control for inducing protein aggregation.",
+            "The mixed-phenotype sorting experiment at lower MG132 dose directly demonstrates that FACS can separate cells with different aggregation states.",
+            "Both microscopy and flow cytometry are used, providing complementary evidence.",
+            "Pharmacological validation with multiple inhibitors (MG132, BafA1, chaperone inhibitors) corroborates the tool's responsiveness."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claims: the mixed-phenotype experiment is described qualitatively without quantitative comparison of puncta counts or fluorescence intensities between sorted populations.",
+            "Some pharmacological experiments are noted as n=1 (chaperone inhibitors), limiting statistical confidence for those specific conditions.",
+            "The claim extends to 'human cell culture' broadly, but evidence is from a single cell line (K562, a chronic myelogenous leukemia line), which may not represent all human cell types."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat could be reporting changes in cellular structures other than classical protein aggregates (e.g., amyloid-like structures in normal cellular components) that increase under proteotoxic stress.",
+            "The correlation between cell size and ProteoStat staining (corrected for in FACS) suggests potential confounders beyond pure protein aggregation state."
+          ],
+          "required_assumptions": [
+            "ProteoStat binding to cross-beta sheets faithfully reflects protein aggregation state.",
+            "K562 cells are a valid model for studying proteostasis in human cells."
+          ],
+          "notes": "The authors appropriately reference prior use of ProteoStat in mouse NSCs and C. elegans (Leeman et al., 2018; Bohnert and Kenyon, 2017).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The screens correctly identified known proteostasis modifiers (proteasome subuni…",
+        "claim": "The screens correctly identified known proteostasis modifiers (proteasome subunits, vATPases, ribosomal proteins, chaperones), validating the screening approach.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Many of these genes and pathways are known proteostasis modifiers. These include ribosomal proteins (both small 40 S and large 60 S subunits), ribosome biogenesis and processing, proteasome subunits, lysosomal proton pump subunits (vATPases), and certain chaperones.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple known proteostasis pathway categories were recovered: ribosomal proteins, proteasome subunits, vATPases, and chaperones, all with biologically expected directionality.",
+            "GSEA analysis provides pathway-level evidence beyond individual gene thresholds.",
+            "Pharmacological validation (MG132, BafA1) independently corroborates screen hits.",
+            "Batch retest provides an independent validation step."
+          ],
+          "weaknesses": [
+            "Evidential gap: the batch retest is described qualitatively without reporting how many genes replicated or at what statistical threshold.",
+            "Only two biological replicates for the genome-wide screen; while standard, this limits power for weaker hits.",
+            "The asymmetry between hits increasing (239) vs decreasing (607) ProteoStat is not discussed and could reflect technical bias."
+          ],
+          "alternative_interpretations": [
+            "Recovery of known hits validates the assay but does not guarantee that novel hits are equally reliable, as known hits may have stronger effect sizes."
+          ],
+          "required_assumptions": [
+            "CRISPRi achieves sufficient knockdown for the targeted genes in K562 cells.",
+            "The MAGeCK pipeline appropriately handles the library complexity and sequencing depth."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Genes involved in lipid uptake (LDLR, MYLIP, SCAP) and lysosomal lipid metabolis…",
+        "claim": "Genes involved in lipid uptake (LDLR, MYLIP, SCAP) and lysosomal lipid metabolism/enzyme trafficking (PSAP, GNPTAB, IGF2R, LYSET) were identified as proteostasis modifiers in the screen.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "in addition to the vATPases, several genes that broadly regulate lysosomal function impacted ProteoStat. These include genes that modulate the delivery or activity of multiple lysosomal enzymes (e.g. GNPTAB, IGF2R, LYSET, and PSAP) or lipid uptake and metabolism (e.g. LDLR, MYLIP, and SCAP",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple genes across two related functional categories (lipid uptake and lysosomal lipid metabolism/enzyme trafficking) are identified, providing internal consistency.",
+            "The hits make biological sense: LDLR/MYLIP/SCAP are in the LDL uptake/SREBP pathway, while GNPTAB/IGF2R/LYSET/PSAP are in lysosomal enzyme trafficking.",
+            "Individual genes are subsequently validated with orthogonal experiments (epistasis, lipid depletion, supplementation)."
+          ],
+          "weaknesses": [
+            "The claim is straightforward reporting of screen results and depends on the overall screen quality, which is supported by sub-claims c1.1.2."
+          ],
+          "alternative_interpretations": [
+            "These genes could affect ProteoStat staining through mechanisms unrelated to lipid metabolism (e.g., GNPTAB/IGF2R/LYSET broadly affect lysosomal enzyme trafficking, not just lipid-related enzymes)."
+          ],
+          "required_assumptions": [
+            "Screen hits reflect genuine biological effects rather than technical artifacts of the CRISPRi system."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "Basal macroautophagy plays a negligible role in clearing endogenous amyloid-like…",
+        "claim": "Basal macroautophagy plays a negligible role in clearing endogenous amyloid-like structures in this system.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "KD of most of the major components directly involved in macroautophagy did not affect ProteoStat in either direction... These results suggest that basal macroautophagy plays a negligible role in clearing endogenous amyloid-like structures in this system.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors explicitly list multiple core macroautophagy genes (ATG5, ATG10, ATG12, ATG8 family, autophagy adaptors) that did not score.",
+            "They cite prior evidence that CRISPRi perturbations of these genes in K562 under similar conditions do affect autophagic flux (Shoemaker et al., 2019), arguing against a simple KD-failure explanation.",
+            "The qualifier 'in this system' appropriately limits the scope of the claim."
+          ],
+          "weaknesses": [
+            "Evidential gap: a null result in a pooled FACS-based screen is inherently harder to interpret than a positive result—it could reflect assay insensitivity rather than biological irrelevance.",
+            "ProteoStat may not capture all forms of protein aggregates that autophagy clears; some may not have amyloid-like cross-beta structure.",
+            "No independent validation of autophagy gene KD efficiency in this specific screen experiment is shown.",
+            "The claim says 'negligible role' which is appropriate hedging, but the evidence cannot distinguish between 'no role' and 'role below detection threshold of this assay.'"
+          ],
+          "alternative_interpretations": [
+            "Autophagy may clear aggregates of types not detected by ProteoStat (e.g., non-amyloid aggregates).",
+            "Under nutrient-replete conditions, macroautophagy may already be at a low basal rate, making KD effects harder to detect.",
+            "Compensatory mechanisms may mask the effect of individual autophagy gene KD."
+          ],
+          "required_assumptions": [
+            "ProteoStat captures the relevant aggregate species that autophagy would clear.",
+            "CRISPRi effectively knocks down autophagy genes in this experiment."
+          ],
+          "notes": "This is an important negative result that should be interpreted cautiously.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The proteostasis network is generally resilient and becomes impaired only in res…",
+        "claim": "The proteostasis network is generally resilient and becomes impaired only in response to pleiotropic perturbations, not perturbations of discrete functional nodes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "no perturbations of more discrete activities (e.g. individual cathepsins, lipid hydrolases – e.g. GBA, LIPA, and GALC – or solute carriers) did so, suggesting that proteostasis is generally resilient and becomes impaired only in response to pleiotropic perturbations.",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Pattern is internally consistent: pleiotropic perturbations (vATPases, GNPTAB, PSAP) score, while individual enzymes (GBA, LIPA, GALC, individual cathepsins) do not.",
+            "The PSAP rescue experiment (Figure 2—figure supplement 2D) further supports the idea that no single saposin is sufficient, consistent with pleiotropic requirement.",
+            "The claim is stated as a suggestion ('suggesting') rather than a definitive conclusion."
+          ],
+          "weaknesses": [
+            "Evidential gap: this conclusion rests on null results for individual genes, which are subject to power limitations (two replicates, FDR threshold).",
+            "No validation of KD efficiency for these specific individual hydrolases is shown.",
+            "Inferential gap: 'resilient to discrete perturbations' could also mean individual KDs have redundant partners, rather than the network being intrinsically resilient.",
+            "The claim generalizes from absence of evidence to a broader principle about proteostasis network architecture."
+          ],
+          "alternative_interpretations": [
+            "Individual enzyme KDs may have subthreshold effects that are real but below the screen's detection limit.",
+            "Functional redundancy among lysosomal hydrolases could explain why single KDs don't score.",
+            "K562 cells may have cell-type-specific buffering capacity not representative of other cell types (e.g., neurons)."
+          ],
+          "required_assumptions": [
+            "The screen has sufficient power to detect effects of individual enzyme KDs if they existed.",
+            "Individual genes were effectively knocked down."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "KD of many chaperones paradoxically reduced ProteoStat, potentially through a sa…",
+        "claim": "KD of many chaperones paradoxically reduced ProteoStat, potentially through a safeguard mechanism targeting aggregation-prone proteins to the lysosome or through upregulation of the heat shock response.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "KD of many chaperones, including HSPA4, HSP90AB1, DNAJB6, and several subunits of TRiC chaperonins, paradoxically reduced ProteoStat.",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paradoxical reduction is observed for multiple chaperones across different families (HSPA4, HSP90AB1, DNAJB6, TRiC subunits), suggesting it is not an artifact of a single gene.",
+            "Two plausible mechanistic explanations are offered, each with literature support.",
+            "The biphasic pharmacological response (increase at 30 min, decrease at 24 hr) provides temporal evidence consistent with the heat shock response feedback explanation."
+          ],
+          "weaknesses": [
+            "Evidential gap: the pharmacological time course data includes some conditions at n=1, limiting confidence.",
+            "The two proposed mechanisms (safeguard mechanism vs. HSR upregulation) are not distinguished experimentally; both are presented as possibilities.",
+            "Only two time points are shown; the kinetics of the biphasic response are not fully characterized.",
+            "Inferential gap: the connection between the 24-hr pharmacological result and the CRISPRi result (7-day KD) involves a large temporal extrapolation."
+          ],
+          "alternative_interpretations": [
+            "Chaperone KD might reduce the amount of soluble but aggregation-prone intermediates that ProteoStat detects, without actually improving proteostasis.",
+            "CRISPRi-mediated partial KD over 7 days may trigger compensatory responses distinct from acute pharmacological inhibition."
+          ],
+          "required_assumptions": [
+            "The 24-hr pharmacological result is mechanistically relevant to the 7-day CRISPRi phenotype.",
+            "ProteoStat accurately reports the net change in protein aggregation rather than changes in aggregate accessibility or location."
+          ],
+          "notes": "The use of 'paradoxically' is appropriate and signals that this finding challenges simple expectations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "MYLIP KD increases ProteoStat via upregulating LDLR levels rather than through o…",
+        "claim": "MYLIP KD increases ProteoStat via upregulating LDLR levels rather than through other MYLIP targets, as LDLR KD is epistatic to MYLIP KD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "MYLIP KD increased ProteoStat via upregulating LDLR levels rather than through other MYLIP targets, as the effect of LDLR KD was epistatic to MYLIP in cells with double KD",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Double KD epistasis experiment directly tests whether MYLIP acts through LDLR.",
+            "The direction of epistasis is biologically logical: if MYLIP increases ProteoStat by upregulating LDLR, then removing LDLR should block the effect.",
+            "The experiment is replicated (n≥2)."
+          ],
+          "weaknesses": [
+            "n≥2 is relatively modest for quantitative epistasis conclusions, though the direction is clear.",
+            "LDLR KD could mask MYLIP effects through shared downstream pathways even if MYLIP had additional targets.",
+            "No direct measurement of LDLR protein levels under MYLIP KD is shown in this section."
+          ],
+          "alternative_interpretations": [
+            "LDLR KD could be epistatic simply because it blocks the major lipid uptake pathway, which might mask non-LDLR effects of MYLIP that still contribute."
+          ],
+          "required_assumptions": [
+            "Both KDs are effective and stable over the experimental period.",
+            "LDLR is the dominant pathway for the relevant lipid uptake in K562 cells."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Chronic depletion of exogenous LDL reduces ProteoStat to LDLR KD levels and abro…",
+        "claim": "Chronic depletion of exogenous LDL reduces ProteoStat to LDLR KD levels and abrogates the effect of MYLIP KD, demonstrating mediation through lipid uptake.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Chronic depletion of exogenous LDL using media that contains delipidated serum reduced ProteoStat to a level similar to LDLR KD and was sufficient to abrogate the effect of MYLIP KD",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Delipidated serum experiment provides an orthogonal, non-genetic approach that complements CRISPRi results.",
+            "Two key observations: (1) delipidated FBS reduces ProteoStat to LDLR KD levels, (2) it abrogates MYLIP KD effect—both consistent with lipid uptake mediation.",
+            "n=3 for these experiments."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claims: delipidated FBS removes all lipids, not just LDL, so the effect could be due to depletion of other serum lipids or lipid-associated factors.",
+            "Delipidated serum may also affect cell growth or stress state, introducing confounders."
+          ],
+          "alternative_interpretations": [
+            "Removal of other serum components (e.g., growth factors that co-purify with lipoproteins) could affect proteostasis independently of lipid uptake.",
+            "Cell metabolic state changes under lipid-deprived conditions could independently affect ProteoStat."
+          ],
+          "required_assumptions": [
+            "The primary effect of delipidated FBS is lipid deprivation rather than other nutritional or signaling changes.",
+            "K562 cells remain viable and in a comparable growth state in delipidated media."
+          ],
+          "notes": "The cholesterol/LDL add-back experiment (c1.2.3) partially addresses the specificity concern.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Supplementing exogenous cholesterol or human LDL reverses the effect of LDL depl…",
+        "claim": "Supplementing exogenous cholesterol or human LDL reverses the effect of LDL depletion on ProteoStat.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Supplementing either exogenous cholesterol or human LDL reversed the effect of LDL depletion",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Add-back experiment directly tests the necessity of lipids by restoring what was depleted.",
+            "Both free cholesterol and human LDL are tested, showing convergence.",
+            "n=3 with statistical testing."
+          ],
+          "weaknesses": [
+            "The paper does not clarify whether cholesterol alone vs. LDL fully restored ProteoStat to baseline levels, or only partially; quantitative comparison would strengthen the claim.",
+            "Human LDL contains multiple lipid species beyond cholesterol esters, so this does not definitively identify which LDL component is responsible."
+          ],
+          "alternative_interpretations": [
+            "LDL supplementation could restore ProteoStat through protein components of LDL (e.g., ApoB-100) rather than lipids."
+          ],
+          "required_assumptions": [
+            "The depletion-restoration paradigm is valid for inferring causality."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "ProteoStat does not directly stain free cholesterol or lipid membranes, confirmi…",
+        "claim": "ProteoStat does not directly stain free cholesterol or lipid membranes, confirming the dye reports protein aggregation rather than lipid accumulation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "MBCD removed most free cholesterol as determined by Filipin III staining, but did not affect ProteoStat... ProteoStat stained the lipid bilayer poorly and was not brighter at the cholesterol-rich phase",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Three complementary experiments: (1) MBCD extraction of cholesterol doesn't change ProteoStat, (2) no co-localization between ProteoStat and Filipin III, (3) GUV experiment shows no preferential binding to cholesterol-rich phases.",
+            "Controls are well-designed: Filipin III confirms MBCD actually removed cholesterol.",
+            "Both cellular and in vitro (GUV) systems are tested."
+          ],
+          "weaknesses": [
+            "MBCD primarily extracts plasma membrane cholesterol; intracellular/lysosomal cholesterol may be less affected, though the claim is about free cholesterol generally.",
+            "GUV assessment appears qualitative from images; no quantification described.",
+            "GUVs are a simplified system that may not capture all cellular lipid contexts."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat might still interact with cholesterol esters or complex lipid-protein aggregates, which are not tested by MBCD (free cholesterol) or GUVs (bilayer cholesterol)."
+          ],
+          "required_assumptions": [
+            "Free cholesterol and cholesterol in model membranes are representative of the lipid environments in which ProteoStat might bind."
+          ],
+          "notes": "This is an important control experiment that strengthens the interpretation of all lipid-related findings.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5",
+        "label": "De novo cholesterol synthesis (mevalonate pathway) genes did not consistently sc…",
+        "claim": "De novo cholesterol synthesis (mevalonate pathway) genes did not consistently score in the screen, indicating a difference between cholesterol that is taken up versus synthesized de novo.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "genes along the mevalonate – de novo cholesterol synthesis – pathway did not consistently score in our screen, indicating the difference between cholesterol that is taken up vs synthesized de novo.",
+        "evaluation": {
+          "node_id": "c1.2.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that mevalonate pathway genes did not score while LDLR/MYLIP/SCAP did score provides a natural internal contrast.",
+            "This is consistent with the idea that the subcellular route of cholesterol delivery matters."
+          ],
+          "weaknesses": [
+            "This is a null result from the screen, subject to power limitations.",
+            "No validation of KD efficiency for mevalonate pathway genes is provided.",
+            "The mevalonate pathway also produces non-cholesterol products (e.g., isoprenoids), so the comparison is not purely 'de novo cholesterol vs. uptake cholesterol.'"
+          ],
+          "alternative_interpretations": [
+            "Mevalonate pathway KDs might reduce cell viability or growth, confounding the ProteoStat readout.",
+            "De novo cholesterol synthesis may be a minor contributor to total cellular cholesterol in K562 cells cultured with serum, making KD effects small.",
+            "Mevalonate pathway KDs might have compensatory upregulation of LDLR, partially offsetting effects."
+          ],
+          "required_assumptions": [
+            "Mevalonate pathway genes are effectively knocked down by CRISPRi.",
+            "The distinction between uptake and de novo synthesis is the primary variable, not other pathway metabolites."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6",
+        "label": "Lipid uptake can impinge on proteostasis through its interaction with lipid cata…",
+        "claim": "Lipid uptake can impinge on proteostasis through its interaction with lipid catabolism in lysosomes, as PSAP KD is exacerbated by MYLIP KD and alleviated by LDLR KD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The effect of PSAP KD was dramatically exacerbated by MYLIP KD and alleviated by LDLR KD, indicating that lipid uptake can impinge on proteostasis through its interaction with lipid catabolism in lysosomes.",
+        "evaluation": {
+          "node_id": "c1.2.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The synergistic (MYLIP+PSAP) and suppressive (LDLR+PSAP) epistatic interactions directly test the interaction between uptake and catabolism.",
+            "Results are biologically coherent: more uptake + less catabolism = worse, less uptake + less catabolism = not as bad.",
+            "Replicated (n≥2 for double KDs)."
+          ],
+          "weaknesses": [
+            "The term 'dramatically exacerbated' is qualitative; specific fold-changes are only in figures.",
+            "Only a few double KD combinations are tested; the interaction could be more complex."
+          ],
+          "alternative_interpretations": [
+            "The interactions could be additive rather than truly synergistic (i.e., each contributing independently to lipid load) rather than reflecting a specific interaction between uptake and catabolism pathways."
+          ],
+          "required_assumptions": [
+            "Both KDs in the double-KD experiments achieve comparable levels of gene silencing as in single KDs.",
+            "The effects are mediated through the expected targets rather than off-target effects of multiple sgRNAs."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "Lipidomic analysis shows remarkable correlation between ProteoStat staining and …",
+        "claim": "Lipidomic analysis shows remarkable correlation between ProteoStat staining and individual levels of most lipids in the SM and CE classes across lipid-modifying perturbations.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we found remarkable correlation between ProteoStat staining and individual levels of most lipids in the sphingomyelin (SM) and cholesterol ester (CE) classes (R2 of up to 0.968 and 0.843, for SM and CE, respectively",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lipidomics provides molecular-level data connecting specific lipid classes to the ProteoStat phenotype.",
+            "Very high R² values (up to 0.968 for SM) across perturbations are striking.",
+            "KS test comparing SM/CE R² distributions vs. all lipids provides statistical rigor for the class-level comparison.",
+            "Biological triplicates with normalization to non-targeting controls."
+          ],
+          "weaknesses": [
+            "R² values are computed across a small number of perturbation conditions (the exact number is not stated in the text), potentially inflating correlation due to limited degrees of freedom.",
+            "The analysis is restricted to perturbations that 'directly affect lipid uptake and metabolism,' which is a selected subset that might bias toward high correlations.",
+            "The evidence is correlational, not causal."
+          ],
+          "alternative_interpretations": [
+            "SM and CE levels may be markers of a broader lysosomal dysfunction state that directly causes aggregation, rather than SM/CE themselves being causative.",
+            "The high R² could partly reflect that all lipid-related perturbations affect these classes in a coordinated manner, so the correlation is partly tautological."
+          ],
+          "required_assumptions": [
+            "Lipidomic measurements accurately reflect intracellular lipid levels, particularly lysosomal lipid levels.",
+            "The selected perturbation conditions are representative."
+          ],
+          "notes": "The authors appropriately show that non-lipid perturbations break the correlation (insets in Figure 2E), which strengthens the specificity argument.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The correlation between SM/CE levels and ProteoStat is specific to lipid-metabol…",
+        "claim": "The correlation between SM/CE levels and ProteoStat is specific to lipid-metabolism perturbations and does not hold for non-lipid perturbations or perturbations with strong pleiotropic effects.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "KD of targets that do not impinge directly on lipid metabolism (e.g. AMBRA1 or CHMP2A) or else expected to have strong pleiotropic effects beyond lipid metabolism (e.g. ATP6V1E1) did not induce strong correlations between SMs/CEs and ProteoStat",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The inclusion of AMBRA1, CHMP2A, and ATP6V1E1 as negative controls for the lipid-ProteoStat correlation is a strong experimental design choice.",
+            "This directly demonstrates the specificity of the SM/CE-ProteoStat relationship to lipid-modifying perturbations."
+          ],
+          "weaknesses": [
+            "Only three non-lipid perturbations are shown as counterexamples; a broader set would strengthen the claim.",
+            "ATP6V1E1 KD increases both ProteoStat and likely some lipid species (via impaired lysosomal degradation), so its classification as a non-lipid perturbation is debatable."
+          ],
+          "alternative_interpretations": [
+            "The lack of correlation for non-lipid perturbations could simply mean these perturbations affect proteostasis through different mechanisms, which is expected and does not specifically validate SM/CE as causal."
+          ],
+          "required_assumptions": [
+            "The selected non-lipid perturbations are truly independent of lipid metabolism."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "Proteostasis impairment from sphingolipid accumulation is attributable to multip…",
+        "claim": "Proteostasis impairment from sphingolipid accumulation is attributable to multiple lipid species rather than any single one, as demonstrated by PSAP rescue experiments.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Together, the evidence suggests that proteostasis impairment from sphingolipid accumulation is pleiotropic and is likely attributable to the action of multiple but not a single lipid.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clever use of modular PSAP constructs to dissect individual saposin contributions.",
+            "Multiple constructs tested (full-length, ΔABCD, single Sap, all-but-one Sap) provide comprehensive coverage.",
+            "The pattern (no single Sap sufficient, no single Sap necessary) is internally consistent with the pleiotropic interpretation."
+          ],
+          "weaknesses": [
+            "Evidential gap: full-length PSAP rescue reaches only p=0.07 vs control, which is not statistically significant at conventional thresholds. 'Largely rescued' is generous.",
+            "Expression levels of the various PSAP constructs are not verified; single-Sap constructs might fail to rescue due to insufficient expression or misfolding rather than genuine insufficiency.",
+            "Inferential gap: the inability of single Saps to fully rescue could also reflect the need for the intact proprotein structure (rather than multiple lipid species being required), since individual Saps are normally generated by proteolytic cleavage of the precursor."
+          ],
+          "alternative_interpretations": [
+            "Individual Sap peptides expressed alone may not fold or traffic correctly, explaining failure to rescue without implicating multiple lipid species.",
+            "The rescue experiment tests saposin function, not directly which lipid species drive aggregation."
+          ],
+          "required_assumptions": [
+            "Ectopically expressed PSAP constructs are properly processed and trafficked to lysosomes.",
+            "Failure to rescue reflects lipid biology rather than construct expression/stability issues."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Under pharmacological proteasome inhibition, ProteoStat puncta colocalize predom…",
+        "claim": "Under pharmacological proteasome inhibition, ProteoStat puncta colocalize predominantly with lysosomes, and distinct inhibitors produce subtly different patterns reflecting different proteostatic stress mechanisms.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Treatment with MG132 for 4 hr induced ProteoStat puncta that colocalized predominantly with the lysosomes, in addition to a diffuse but weaker signal in the cytosol... These results with diverse inhibitors demonstrate subtle pharmacological biases",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple pharmacological agents tested (MG132, Bortezomib, BafA1) with distinct mechanisms, revealing agent-specific patterns.",
+            "Both ProteoStat and Thioflavin T show similar patterns, providing cross-validation.",
+            "Time course (4 hr and 20 hr for MG132) adds temporal resolution.",
+            "Quantification of lysosomal vs non-lysosomal signals (Figure 3—figure supplement 1B) provides rigorous analysis."
+          ],
+          "weaknesses": [
+            "Colocalization analysis methodology (whether Manders' coefficients or other quantitative metrics are used) is not fully detailed in the text.",
+            "Confocal maximum projection images can overstate colocalization if objects overlap in z but not in the same plane."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat puncta in lysosomes could represent normal lysosomal protein turnover products (partially degraded proteins with residual cross-beta structure) rather than pathological aggregates.",
+            "Lysosomal ProteoStat accumulation could reflect increased delivery of normal substrates rather than failed clearance of aggregates."
+          ],
+          "required_assumptions": [
+            "LAMP1 accurately marks lysosomes (and not other compartments).",
+            "ProteoStat fluorescence intensity correlates with aggregate quantity."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Lysosomal ProteoStat-positive puncta are largely ubiquitination-negative, consis…",
+        "claim": "Lysosomal ProteoStat-positive puncta are largely ubiquitination-negative, consistent with the microautophagy pathway where cargos are deubiquitinated by ESCRT-associated deubiquitinating enzymes during lysosomal import.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These observations of lysosomal ProteoStat-high ubiquitination-low puncta, together with the aforementioned lack of evidence of macroautophagy involvement, are consistent with the microautophagy pathway where cargos are processed by deubiquitinating enzymes (STAMBP and UBPY) associated with ESCRT during transport into lysosomes",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation of ProteoStat-high/ubiquitin-low lysosomal puncta is well-documented with imaging and quantification.",
+            "The microautophagy interpretation is biologically coherent with known ESCRT-associated deubiquitinating activity.",
+            "The UBPY KD experiment (c1.4.4) provides supporting evidence for the microautophagy pathway.",
+            "Consistency with the macroautophagy-negative result (c1.1.4) strengthens the alternative microautophagy interpretation."
+          ],
+          "weaknesses": [
+            "Inferential gap: the evidence is 'consistent with' microautophagy but does not prove it. Multiple other mechanisms could explain ubiquitin-low ProteoStat-high lysosomal puncta (e.g., proteins delivered by CMA or other pathways that don't require ubiquitination).",
+            "No direct measurement of microautophagy flux is performed.",
+            "The absence of evidence for macroautophagy involvement (from screen null results) is used as supporting evidence for microautophagy, which is an argument from elimination that may not be complete."
+          ],
+          "alternative_interpretations": [
+            "Chaperone-mediated autophagy (CMA) delivers proteins to lysosomes without ubiquitination, and could explain the observed pattern.",
+            "Normal lysosomal protein degradation intermediates might have cross-beta structure but not retain ubiquitin marks.",
+            "The pattern could reflect different kinetics of ProteoStat-positive material accumulation vs. ubiquitin chain removal by proteasomal or lysosomal deubiquitinases."
+          ],
+          "required_assumptions": [
+            "The ubiquitin-negative state of lysosomal aggregates reflects active deubiquitination rather than non-ubiquitin-dependent delivery.",
+            "Microautophagy is the primary non-macroautophagy pathway delivering substrates to lysosomes in this system."
+          ],
+          "notes": "The authors appropriately use 'consistent with' language rather than making a definitive claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "Lyso-IP with differential extraction confirmed that lipid perturbations result i…",
+        "claim": "Lyso-IP with differential extraction confirmed that lipid perturbations result in accumulation of detergent-insoluble protein aggregates in the lysosome.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This orthogonal approach confirmed that lipid-perturbation (MYLIP and PSAP KDs) resulted in accumulation of detergent-insoluble protein aggregates in the lysosome",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lyso-IP provides an orthogonal biochemical approach to complement imaging data.",
+            "Differential extraction (RIPA vs Urea/SDS) specifically isolates detergent-insoluble material.",
+            "Multiple conditions tested (MYLIP KD, PSAP KD, ATP6V1E1 KD, MG132) with consistent directionality.",
+            "The method is validated by capturing 67/70 core lysosomal resident proteins."
+          ],
+          "weaknesses": [
+            "Silver stain is shown as representative images from triplicates; densitometric quantification across replicates is not provided in the text.",
+            "Lyso-IP using TMEM192 can co-purify late endosomes and other TMEM192-containing compartments, not exclusively lysosomes.",
+            "The identity of the insoluble proteins at this stage is unknown (addressed later by proteomics for MYLIP KD only)."
+          ],
+          "alternative_interpretations": [
+            "Detergent-insoluble material could include lipid-protein complexes or membrane-associated protein complexes that are not true aggregates.",
+            "Insoluble material might be trapped in multivesicular bodies rather than the lysosomal lumen."
+          ],
+          "required_assumptions": [
+            "TMEM192-based Lyso-IP enriches primarily for lysosomes.",
+            "Detergent insolubility is a reasonable proxy for protein aggregation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "UBPY KD increased both lysosomal ProteoStat and mono-/poly-ubiquitinated protein…",
+        "claim": "UBPY KD increased both lysosomal ProteoStat and mono-/poly-ubiquitinated proteins, consistent with a role for microautophagy in delivery of misfolded proteins to the lysosome.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "UBPY KD increased lysosomal signals of both ProteoStat and mono-/poly-ubiquitinated proteins, consistent with a role for microautophagy in delivery of misfolded proteins to the lysosome",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "UBPY KD provides a functional test of the deubiquitination hypothesis.",
+            "The result (increased lysosomal ProteoStat AND ubiquitin) is specifically predicted by the microautophagy model.",
+            "Imaging with quantification (n=3) provides replicated evidence."
+          ],
+          "weaknesses": [
+            "UBPY (USP8) has many cellular functions beyond ESCRT-associated deubiquitination (e.g., regulation of receptor tyrosine kinase trafficking, mitophagy), so the result is consistent with but does not uniquely support the microautophagy interpretation.",
+            "No direct evidence that the increased ubiquitinated proteins are the same as the ProteoStat-positive species.",
+            "The causal chain (UBPY KD → impaired deubiquitination at ESCRT → ubiquitin retention + aggregate accumulation) is plausible but not directly demonstrated."
+          ],
+          "alternative_interpretations": [
+            "UBPY KD could impair general endosomal sorting, leading to accumulation of ubiquitinated cargo in lysosomes regardless of microautophagy.",
+            "UBPY KD could affect ESCRT recycling, indirectly impairing lysosomal function."
+          ],
+          "required_assumptions": [
+            "UBPY's role in this context is primarily at the ESCRT/lysosomal interface.",
+            "The co-increase in ProteoStat and ubiquitin reflects the same molecular events."
+          ],
+          "notes": "The authors appropriately use 'consistent with' language.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Quantitative TMT-proteomics of lysosomal insoluble fractions reveals that 9 of t…",
+        "claim": "Quantitative TMT-proteomics of lysosomal insoluble fractions reveals that 9 of the top 12 insoluble proteins induced by MYLIP KD are ESCRT pathway components.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Remarkably, 9 of the top 12 insoluble proteins induced by MYLIP KD were components involved in the ESCRT pathway, including multiple ESCRT-III subunits (e.g. CHMP2A, CHMP4A & B), accessory proteins (ALIX and PTPN23), and ESCRT-III disassembling enzymes (VPS4A and VTA1).",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Quantitative TMT-proteomics provides unbiased identification of insoluble proteins.",
+            "The striking concentration of ESCRT components (9/12 top hits) is unlikely to occur by chance.",
+            "Multiple ESCRT complexes and functional classes are represented (ESCRT-III subunits, accessory proteins, disassembling enzymes), suggesting global ESCRT pathway disruption.",
+            "GSEA independently confirms enrichment of the multivesicular body gene set.",
+            "The Lyso-IP method is validated by recovering 67/70 core lysosomal proteins."
+          ],
+          "weaknesses": [
+            "The number of biological replicates for the proteomics experiment is not explicitly stated.",
+            "Only MYLIP KD vs control is analyzed; PSAP KD or other lipid perturbations were not included, limiting the generalizability of the ESCRT finding.",
+            "Inferential gap: insolubility of ESCRT components on lysosomes does not necessarily mean ESCRT function is impaired—it could reflect increased ESCRT activity/recruitment in response to membrane stress."
+          ],
+          "alternative_interpretations": [
+            "Increased ESCRT insolubility could reflect increased ESCRT recruitment (active repair attempts) rather than trapped/non-functional assemblies.",
+            "ESCRT-III polymers could be a consequence rather than a cause of the proteostasis defect.",
+            "The insoluble ESCRT components might represent material on late endosomes rather than lysosomes per se."
+          ],
+          "required_assumptions": [
+            "Detergent insolubility of ESCRT components indicates non-functional trapped assemblies rather than active polymers.",
+            "The MYLIP KD condition is representative of lipid-induced ESCRT disruption more broadly."
+          ],
+          "notes": "This is one of the most novel and striking findings of the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "ESCRT enrichment in the insoluble fraction is not simply a consequence of increa…",
+        "claim": "ESCRT enrichment in the insoluble fraction is not simply a consequence of increased total lysosomal abundance, as other proteins (notably vATPases) increased in total but not insoluble fractions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This enrichment of ESCRT components was not simply a consequence of increased abundance in the Lysosomal Total fraction, as multiple proteins (most notably vATPases) were also more abundant in the total, but not insoluble, fraction of MYLIP KD cells",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct comparison between total and insoluble fractions for the same proteins effectively controls for abundance effects.",
+            "vATPases serve as a clear counterexample: enriched in total but not insoluble fraction.",
+            "Figure 4—figure supplement 1A provides visual representation of this distinction."
+          ],
+          "weaknesses": [
+            "Only one comparison (MYLIP KD vs control) is available.",
+            "The argument would be stronger with additional conditions (e.g., PSAP KD) showing the same pattern."
+          ],
+          "alternative_interpretations": [
+            "vATPases are integral membrane proteins and may behave differently in detergent extraction regardless of their functional state."
+          ],
+          "required_assumptions": [
+            "RIPA solubility correctly distinguishes functional from aggregated/non-functional protein assemblies."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "An overabundance of SM may hinder coalescence of ceramide-rich domains and preve…",
+        "claim": "An overabundance of SM may hinder coalescence of ceramide-rich domains and prevent negative membrane curvature, thereby thwarting ESCRT resolution and vesicle budding.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "an overabundance of SM may hinder the coalescence of ceramide-rich domains and prevent negative membrane curvature, thereby thwarting ESCRT resolution and vesicle budding.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The hypothesis is mechanistically plausible and builds on existing literature about SM's role in membrane curvature and ILV formation (Trajkovic et al., 2008).",
+            "The VPS4A overexpression result (only modest rescue of MYLIP KD-induced effects) is consistent with the idea that SM interferes at a step before or independent of VPS4A-mediated ESCRT-III resolution."
+          ],
+          "weaknesses": [
+            "This is a hypothesis presented in the Discussion, not directly tested experimentally in this paper.",
+            "No direct measurement of membrane curvature, ceramide domain formation, or ILV budding is performed.",
+            "No direct evidence that SM levels in MYLIP KD cells reach levels sufficient to inhibit ceramide domain formation.",
+            "Inferential gap: the data show ESCRT insolubility and LMP, but the specific mechanistic step (SM → inhibited ceramide domain → impaired curvature → trapped ESCRT) is speculative.",
+            "The model extrapolates from in vitro GUV studies (Trajkovic et al., 2008) and HeLa cell experiments (Niekamp et al., 2022) to K562 cells under different conditions."
+          ],
+          "alternative_interpretations": [
+            "Cholesterol esters, rather than SM, might directly alter membrane rigidity and impair ESCRT function.",
+            "ESCRT components might be trapped by altered membrane composition through direct protein-lipid interactions rather than curvature effects.",
+            "The effect could be mediated by SM's role as a signaling molecule rather than a structural membrane component."
+          ],
+          "required_assumptions": [
+            "SM levels in the lysosomal membrane are sufficiently altered by MYLIP KD to affect membrane biophysics.",
+            "The ceramide/SM balance is the critical variable for membrane curvature, not other lipids.",
+            "In vitro GUV findings translate to the complex lysosomal membrane environment."
+          ],
+          "notes": "The authors present this as a mechanistic model rather than a proven mechanism, but 'may' still implies more evidence than is provided.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "MYLIP KD and, to a weaker degree, PSAP KD both increase LMP as measured by a GAL…",
+        "claim": "MYLIP KD and, to a weaker degree, PSAP KD both increase LMP as measured by a GAL3 puncta reporter.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "MYLIP KD and, to a much weaker degree, PSAP KD, both increased LMP, as did KDs of ESCRT-III subunits (CHMP2A and CHMP6) and ATP6V1E1",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GAL3 reporter is a well-established tool for measuring LMP.",
+            "Multiple conditions tested including positive controls (CHMP2A/CHMP6 KD, ATP6V1E1 KD).",
+            "Quantification from n=3 biological replicates.",
+            "Both MYLIP and PSAP KDs increase LMP, consistent with the lipid-ESCRT-LMP model."
+          ],
+          "weaknesses": [
+            "GAL3 puncta quantification methodology is not described in detail (manual vs. automated counting, thresholding criteria).",
+            "The weaker LMP with PSAP KD vs MYLIP KD is noted but not mechanistically explained.",
+            "The differential LMP magnitude between MYLIP and PSAP KDs complicates the simple model."
+          ],
+          "alternative_interpretations": [
+            "GAL3 puncta could reflect transient membrane damage that is rapidly repaired, not sustained LMP.",
+            "The degree of LMP may not directly correlate with the functional consequences for proteostasis."
+          ],
+          "required_assumptions": [
+            "TagBFP-GAL3 puncta accurately reflect lysosomal membrane permeabilization.",
+            "The degree of genetic knockdown is comparable across conditions."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Chemically induced LMP (LLOMe) is sufficient to cause moderate lysosomal protein…",
+        "claim": "Chemically induced LMP (LLOMe) is sufficient to cause moderate lysosomal protein aggregation, but the magnitude of LMP does not directly predict ProteoStat intensity across conditions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Chemically inducing LMP with LLOMe was sufficient to cause a moderate lysosomal accumulation of protein aggregates... However, the magnitude of LMP was not directly related to ProteoStat intensity across conditions, suggesting that while LMP is sufficient to promote lysosomal protein aggregation, other factors are likely to contribute.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "LLOMe treatment demonstrates sufficiency of LMP for lysosomal protein aggregation.",
+            "The dissociation between LMP magnitude and ProteoStat intensity across conditions is an important nuanced finding.",
+            "Quantification from n=3 replicates.",
+            "The authors appropriately conclude that 'other factors are likely to contribute' rather than overstating."
+          ],
+          "weaknesses": [
+            "LLOMe treatment is acute (4 hr) while genetic perturbations are chronic (7 days); temporal mismatch complicates direct comparison.",
+            "LLOMe causes massive LMP that may not be physiologically comparable to the more moderate LMP from genetic perturbations.",
+            "LLOMe can cause additional cellular stress beyond LMP (e.g., pH changes, osmotic stress)."
+          ],
+          "alternative_interpretations": [
+            "LLOMe-induced aggregation might result from the osmotic or pH consequences of membrane rupture rather than LMP per se.",
+            "The lack of direct correlation between LMP magnitude and ProteoStat could mean LMP is a confound rather than a contributor in the genetic perturbation context."
+          ],
+          "required_assumptions": [
+            "LLOMe-induced LMP is mechanistically similar to genetically induced LMP.",
+            "The ProteoStat signal in LLOMe-treated cells reflects genuine protein aggregation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "VPS4A overexpression almost completely rescues chemically induced LMP but this r…",
+        "claim": "VPS4A overexpression almost completely rescues chemically induced LMP but this rescue is largely negated in the MYLIP KD background, suggesting lipid dysregulation impairs ESCRT pathway in an orthogonal manner or upstream to ESCRT-III resolution.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This rescue of chemically induced LMP was largely negated in the background of MYLIP KD, suggesting that lipid dysregulation impairs ESCRT pathway in an orthogonal manner or upstream to ESCRT-III resolution.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "VPS4A overexpression provides a mechanistically targeted intervention.",
+            "The differential rescue (complete for LLOMe, largely negated in MYLIP KD background) is a key finding that distinguishes lipid-induced ESCRT impairment from generic LMP.",
+            "Biologically coherent: if lipid dysregulation impairs ESCRT upstream of or orthogonally to VPS4A-mediated resolution, VPS4A overexpression alone would be insufficient.",
+            "n=3 for quantification."
+          ],
+          "weaknesses": [
+            "VPS4A overexpression level is not quantified; variable or supra-physiological expression could affect interpretation.",
+            "The 'modest reduction' in MYLIP KD-induced LMP by VPS4A is described qualitatively.",
+            "Inferential gap: 'orthogonal manner or upstream to ESCRT-III resolution' is a two-part interpretation; the experiment cannot distinguish between these possibilities."
+          ],
+          "alternative_interpretations": [
+            "VPS4A overexpression might partially rescue LLOMe-induced LMP by accelerating membrane repair, while failing in MYLIP KD because the membrane composition continuously generates new damage faster than repair.",
+            "The MYLIP KD effect might overwhelm VPS4A capacity through sheer lipid load rather than through a specific mechanistic impairment of ESCRT."
+          ],
+          "required_assumptions": [
+            "Ectopic VPS4A expression achieves functional levels at the lysosome.",
+            "VPS4A overexpression specifically enhances ESCRT-III resolution without other effects."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "Lysosomal pH is not significantly affected by lipid-modifying perturbations (MYL…",
+        "claim": "Lysosomal pH is not significantly affected by lipid-modifying perturbations (MYLIP, PSAP, LDLR KDs), ruling out lysosomal deacidification as the mediating mechanism.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "lipid-modifying KDs – MYLIP, PSAP, and LDLR – did not significantly shift pHLys, suggesting their effects on proteostasis were not mediated via lysosomal deacidification.",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Ratiometric pHLARE reporter is a sensitive and specific tool for measuring lysosomal pH.",
+            "Reporter was validated with a pH buffer series and ionophores for use with flow cytometry.",
+            "Positive control (ATP6V1E1 KD) shows expected deacidification.",
+            "Three lipid-modifying KDs tested (MYLIP, PSAP, LDLR), all showing no significant pH change."
+          ],
+          "weaknesses": [
+            "pHLARE reports average lysosomal pH across the cell; subpopulations of damaged lysosomes with altered pH might be diluted by the larger pool of normal lysosomes.",
+            "The sensitivity of pHLARE to detect small pH changes (e.g., 0.2–0.3 pH units) is not explicitly characterized.",
+            "Statistical power for ruling out small pH changes is not discussed (what is the minimum detectable effect size?)."
+          ],
+          "alternative_interpretations": [
+            "A subset of lysosomes (those with lipid accumulation) could have altered pH while the average remains unchanged.",
+            "pH changes might be transient or oscillatory and not captured at the single time point measured."
+          ],
+          "required_assumptions": [
+            "Average lysosomal pH measured by pHLARE is representative of the lysosomes relevant to protein aggregation.",
+            "The experiment has sufficient power to detect physiologically relevant pH changes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "Lysosomal protease activity is affected only modestly and incoherently with resp…",
+        "claim": "Lysosomal protease activity is affected only modestly and incoherently with respect to the ProteoStat phenotype by lipid-modifying perturbations.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "lipid-modifying perturbations affected lysosomal protease function only modestly and incoherently with respect to the ProteoStat phenotype, with MYLIP KD reducing BODIPY unquenching and PSAP KD trending in the opposite direction",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "DQ-Red BSA is a standard assay for lysosomal protease activity.",
+            "Positive controls (ATP6V1E1 KD, CHMP2A KD) show expected reduction.",
+            "The 'incoherent' effects (MYLIP reducing, PSAP trending opposite) argue against a simple protease-impairment model."
+          ],
+          "weaknesses": [
+            "DQ-Red BSA assay is influenced by BSA uptake rate, which could be altered by MYLIP KD (via LDLR pathway effects on endocytosis), confounding the protease activity readout.",
+            "MYLIP KD upregulates LDLR and potentially increases overall endocytic uptake, which could affect DQ-Red BSA delivery kinetics.",
+            "n=3 but the modest and incoherent effects make it difficult to draw strong conclusions.",
+            "The assay measures bulk lysosomal protease activity and may miss changes in specific protease activities relevant to aggregate clearance."
+          ],
+          "alternative_interpretations": [
+            "MYLIP KD could increase DQ-Red BSA uptake through enhanced endocytosis, masking reduced per-lysosome protease activity.",
+            "Protease activity might be unchanged in terms of capacity but functionally impaired due to substrate inaccessibility (lipid-coated aggregates)."
+          ],
+          "required_assumptions": [
+            "DQ-Red BSA uptake and delivery to lysosomes is not significantly altered by the perturbations.",
+            "Bulk protease activity is a relevant measure for the types of protein aggregates observed."
+          ],
+          "notes": "The potential confound from MYLIP KD affecting endocytosis is a notable concern that is not addressed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3",
+        "label": "Proteasome activity is not significantly changed by SM/CE-modifying perturbation…",
+        "claim": "Proteasome activity is not significantly changed by SM/CE-modifying perturbations, and the proteasome-modulating effect of statins likely arises from other mevalonate pathway metabolites rather than cholesterol itself.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "in conditions that strongly modulated SM or CE levels (KD of MYLIP, PSAP, or LDLR), we did not see significant increase or decrease of proteasome activity",
+        "evaluation": {
+          "node_id": "c1.7.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Me4BoVS probe is validated with pharmacological inhibitors (MG132, Bortezomib) in both flow cytometry and in-gel fluorescence.",
+            "The result that MYLIP, PSAP, and LDLR KDs do not change proteasome activity is a useful negative result that narrows the mechanistic model."
+          ],
+          "weaknesses": [
+            "Critical evidential gap: the KD experiments are n=1 (Figure 6H), which is insufficient for making definitive claims about no effect. This is explicitly noted in the methods as n=1.",
+            "The secondary claim about statins and mevalonate pathway metabolites is based on n=1 experiments (Figure 6—figure supplement 1E), making it speculative rather than established.",
+            "Inferential gap: concluding that 'the proteasome modulating effect of statin likely arises from other mevalonate metabolites' is a causal inference from correlative, unreplicated data.",
+            "The proteasome activity probe measures active β-subunits but not overall proteasome complex assembly or substrate processing rates."
+          ],
+          "alternative_interpretations": [
+            "n=1 data could easily miss real effects; the claim of 'no change' in proteasome activity may be premature.",
+            "Proteasome activity might be unchanged in bulk but functionally impaired for specific aggregate substrates.",
+            "The mevalonate pathway effects could reflect cell health/viability issues rather than specific proteasome regulation."
+          ],
+          "required_assumptions": [
+            "n=1 is sufficient to detect meaningful changes in proteasome activity.",
+            "Me4BoVS labeling reflects functionally relevant proteasome activity."
+          ],
+          "notes": "The n=1 limitation for the proteasome experiments is a significant weakness that undermines the strength of both the negative result and the statin mechanism claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.4",
+        "label": "Lipid peroxidation increases with lipid dysregulation but is not causally relate…",
+        "claim": "Lipid peroxidation increases with lipid dysregulation but is not causally related to protein aggregation, as antioxidants uncouple lipid peroxidation from lysosomal protein aggregation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "While 5AO was effective in reducing lipid peroxidation, it did not rescue the Proteostat or Lysotracker phenotypes... We therefore conclude that protein aggregation and lysosomal content increase are likely upstream or independent of lipid peroxidation.",
+        "evaluation": {
+          "node_id": "c1.7.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clear experimental design: antioxidants effectively reduce lipid peroxidation but do not rescue ProteoStat or LysoTracker phenotypes.",
+            "The dissociation between lipid peroxidation rescue and lack of ProteoStat rescue provides strong evidence against a causal chain.",
+            "n=3 replicates for all conditions.",
+            "Multiple readouts (LiperFluo, ProteoStat, LysoTracker) assessed in parallel provide comprehensive phenotypic analysis.",
+            "The conclusion that protein aggregation is 'upstream or independent of lipid peroxidation' is appropriately hedged."
+          ],
+          "weaknesses": [
+            "5AO may not fully eliminate all forms of oxidative damage, particularly localized oxidation within lysosomal membranes.",
+            "The antioxidant cocktail is designed for neuronal culture; its effectiveness in K562 cells' specific oxidative environment is assumed but not independently validated (beyond LiperFluo reduction).",
+            "LiperFluo measures total cellular lipid peroxidation; lysosome-specific lipid peroxidation might not be fully captured or rescued."
+          ],
+          "alternative_interpretations": [
+            "Lipid peroxidation might contribute to a subset of the aggregation phenotype that is below the detection threshold of ProteoStat.",
+            "The antioxidants might rescue lipid peroxidation without rescuing the specific oxidative modifications (e.g., protein carbonylation) that drive aggregation.",
+            "Lipid peroxidation and protein aggregation might be independent downstream consequences of the same lipid accumulation, consistent with the authors' interpretation."
+          ],
+          "required_assumptions": [
+            "5AO effectively reduces all relevant forms of oxidative stress in K562 cells.",
+            "LiperFluo reduction confirms effective antioxidant protection.",
+            "The duration of antioxidant treatment is sufficient to prevent any oxidative damage-driven aggregation."
+          ],
+          "notes": "This is a well-designed experiment that cleanly addresses an important alternative hypothesis.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "Proteasome inhibition by MG132 increased ProteoStat intensity with numerous brig…",
+        "claim": "Proteasome inhibition by MG132 increased ProteoStat intensity with numerous bright puncta around the nucleus, and FACS-sorted high/low populations from mixed-phenotype cells showed distinct staining patterns.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "proteasome inhibition by MG132 increased ProteoStat intensity, with numerous bright puncta around the nucleus",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct visual evidence from microscopy showing perinuclear ProteoStat puncta upon MG132 treatment (Figure 1—figure supplement 1A).",
+            "FACS sorting into high/low populations followed by imaging provides orthogonal confirmation that ProteoStat intensity corresponds to distinct aggregate states (Figure 1A).",
+            "Well-established biology: proteasome inhibition is known to cause aggresome formation, making this a strong positive control."
+          ],
+          "weaknesses": [
+            "The mixed-phenotype experiment at lower MG132 dose is described only qualitatively; no quantitative comparison of puncta counts or fluorescence intensities between high/low populations is provided in the text."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat could be staining non-amyloid perinuclear structures induced by MG132 (e.g., enlarged lysosomes with undigested material), though later experiments address this partially."
+          ],
+          "required_assumptions": [
+            "ProteoStat staining faithfully reflects protein aggregation/amyloid-like cross-beta sheet structures and not other fixation or dye artifacts."
+          ],
+          "notes": "This serves as a validation experiment for the screening tool and is straightforward.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.2",
+        "label": "Effects on ProteoStat following proteasome and lysosomal acidification inhibitio…",
+        "claim": "Effects on ProteoStat following proteasome and lysosomal acidification inhibition were replicated using pharmacological inhibitors MG132 and Bafilomycin A1.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "These effects on ProteoStat following inhibition of proteasome and lysosomal acidification were replicated using pharmacological inhibitors",
+        "evaluation": {
+          "node_id": "c1.1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Pharmacological validation (MG132, Bafilomycin A1) provides an independent confirmation of the genetic screen results for proteasome and vATPase pathways.",
+            "Results referenced in Figure 1—figure supplement 1C."
+          ],
+          "weaknesses": [
+            "Details on replication (n numbers, statistical tests) for the pharmacological experiments are not provided in the main text for these specific conditions.",
+            "Bafilomycin A1 effects are shown but the dose (6.25 µM) is quite high and may have off-target effects beyond lysosomal deacidification."
+          ],
+          "alternative_interpretations": [
+            "Bafilomycin A1 at high doses can affect autophagosome-lysosome fusion and ER function, so the ProteoStat increase might reflect more than just lysosomal pH impairment."
+          ],
+          "required_assumptions": [
+            "Pharmacological agents act primarily through their intended targets at the doses used."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "KDs of 239 genes increased and 607 genes decreased ProteoStat (FDR <0.05) out of…",
+        "claim": "KDs of 239 genes increased and 607 genes decreased ProteoStat (FDR <0.05) out of 20,704 targeted protein-coding genes, with GSEA capturing known proteostasis ontologies.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "KDs of 239 genes increased ProteoStat, whereas KDs of 607 genes decreased it (out of 20,704 protein-coding genes targeted by the sgRNA library; FDR <0.05).",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Genome-wide screen covering 20,704 genes with a well-established CRISPRi library (hCRISPRi_v2.1_top5).",
+            "Two biological replicates analyzed with MAGeCK, a standard pipeline.",
+            "GSEA captures expected proteostasis pathways (ribosomal, proteasomal, vATPase), providing internal validation of screen quality.",
+            "FDR thresholds are clearly stated."
+          ],
+          "weaknesses": [
+            "Only two biological replicates for the genome-wide screen; while standard for pooled screens, this limits power for weaker hits.",
+            "The asymmetry between hits increasing (239) vs decreasing (607) ProteoStat is noted but not discussed; could reflect biological or technical bias."
+          ],
+          "alternative_interpretations": [
+            "Some hits could be driven by effects on cell fitness/size rather than proteostasis per se, though the authors describe size-correcting gates."
+          ],
+          "required_assumptions": [
+            "CRISPRi KD is effective for the majority of targeted genes.",
+            "FACS gating adequately corrects for cell-size confounds."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.2",
+        "label": "A reduced-scale batch retest validated the effects of a subset of sgRNAs from th…",
+        "claim": "A reduced-scale batch retest validated the effects of a subset of sgRNAs from the genome-wide screen.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We validated the results of a subset of genes by repeating the screen at a reduced scale (batch retest",
+        "evaluation": {
+          "node_id": "c1.1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Reduced-scale batch retest with 572 sgRNAs targeting 286 genes provides an internal validation step.",
+            "Includes positive (enriched high/low) and negative (unenriched, non-targeting) controls.",
+            "Data shown in Figure 1—figure supplement 1B."
+          ],
+          "weaknesses": [
+            "No quantitative concordance metric (e.g., correlation coefficient, FDR recalculation) is reported for the batch retest vs. the genome-wide screen.",
+            "The retest is described qualitatively ('validated') without specifying how many genes replicated and at what threshold."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The reduced-scale retest is conducted under sufficiently similar conditions to the original screen."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "KD of core autophagosome formation components (ATG5, ATG10, ATG12, ATG8 family) …",
+        "claim": "KD of core autophagosome formation components (ATG5, ATG10, ATG12, ATG8 family) and autophagy adaptors (NBR1, TAX1BP1, OPTN, SQSTM1) did not affect ProteoStat in either direction.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "KD of most of the major components directly involved in macroautophagy did not affect ProteoStat in either direction. These include the core autophagosome formation components (e.g. ATG5, ATG10, ATG12, and the ATG8 protein family) and the autophagy adaptors (NBR1, TAX1BP1, OPTN, SQSTM1 etc).",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Authors explicitly list the specific macroautophagy genes that did not score, lending transparency.",
+            "They note that perturbations of these genes have been validated to affect autophagic flux in K562 under similar conditions (Shoemaker et al., 2019), preempting the concern that CRISPRi was simply ineffective for these genes."
+          ],
+          "weaknesses": [
+            "A null result in a pooled FACS-based screen is harder to interpret: it could mean autophagy is not important, or that the readout (ProteoStat) is insensitive to autophagy-dependent aggregate clearance.",
+            "No independent validation of autophagy gene KD efficiency in this specific experiment is shown.",
+            "The screen was done under nutrient-replete conditions, which may limit the basal level of macroautophagy and thus its detectability."
+          ],
+          "alternative_interpretations": [
+            "Macroautophagy could be important for clearance of specific aggregate types not well captured by ProteoStat.",
+            "Functional redundancy between autophagy pathways may mask single-gene KD effects."
+          ],
+          "required_assumptions": [
+            "ProteoStat captures the relevant aggregate species that would be cleared by macroautophagy.",
+            "CRISPRi effectively knocks down these autophagy genes in K562 cells."
+          ],
+          "notes": "This is an important negative result that shapes the paper's interpretation. The claim is stated cautiously ('suggests') which is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "No perturbations of individual cathepsins, specific lipid hydrolases (GBA, LIPA,…",
+        "claim": "No perturbations of individual cathepsins, specific lipid hydrolases (GBA, LIPA, GALC), or solute carriers affected ProteoStat significantly.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "no perturbations of more discrete activities (e.g. individual cathepsins, lipid hydrolases – e.g. GBA, LIPA, and GALC – or solute carriers) did so",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Consistent with the paper's broader narrative about resilience of proteostasis to single-node perturbations.",
+            "Specific genes are named (GBA, LIPA, GALC)."
+          ],
+          "weaknesses": [
+            "This is a null result from the screen, subject to power limitations (two replicates, FDR < 0.05 threshold).",
+            "No validation of KD efficiency for these specific genes is shown.",
+            "Some of these enzymes (e.g., GBA) may have redundant isoforms (GBA2) that could compensate."
+          ],
+          "alternative_interpretations": [
+            "Individual hydrolase KDs may have too modest an effect on lipid accumulation to cross the ProteoStat detection threshold in a pooled screen.",
+            "Compensation by redundant enzymes or pathways could mask effects."
+          ],
+          "required_assumptions": [
+            "CRISPRi KD is sufficiently effective for these individual hydrolase genes.",
+            "The screen has adequate statistical power to detect effects of the expected magnitude."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6.1",
+        "label": "Pharmacological inhibition of chaperones showed a time-dependent biphasic respon…",
+        "claim": "Pharmacological inhibition of chaperones showed a time-dependent biphasic response: increasing ProteoStat at 30 minutes but decreasing it after 24 hours.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "pharmacological inhibition of chaperones increased ProteoStat after 30 min, but decreased after 24 hr",
+        "evaluation": {
+          "node_id": "c1.1.6.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Provides a mechanistic explanation for the paradoxical decrease in ProteoStat with chaperone KD in the screen (chronic ~6-day KD).",
+            "Consistent with well-established heat shock response negative feedback (Akerfelt et al., 2010).",
+            "Multiple chaperone inhibitors tested (VER-155008, Ganetespib, 17-DMAG) according to Figure 1—figure supplement 1C."
+          ],
+          "weaknesses": [
+            "Some inhibitor treatments noted as n=1, limiting statistical confidence.",
+            "Only two time points (30 min and 24 hr); the kinetics of the biphasic response are not fully characterized.",
+            "Different drugs (HSP70 vs HSP90 inhibitors) may have different kinetics, but these are grouped together."
+          ],
+          "alternative_interpretations": [
+            "The 24-hr decrease could reflect selective death/loss of cells with higher aggregate burden rather than true clearance.",
+            "Chaperone inhibitor-induced autophagy (rather than heat shock response) could contribute to aggregate clearance at later time points."
+          ],
+          "required_assumptions": [
+            "The biphasic pharmacological response is a valid model for the chronic CRISPRi phenotype."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Double KD experiment showed LDLR KD epistatic to MYLIP KD in ProteoStat phenotyp…",
+        "claim": "Double KD experiment showed LDLR KD epistatic to MYLIP KD in ProteoStat phenotype (Figure 2A).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the effect of LDLR KD was epistatic to MYLIP in cells with double KD",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clean epistasis experiment: double KD of LDLR + MYLIP shows LDLR KD dominates, consistent with MYLIP acting through LDLR.",
+            "n≥2 biological replicates with statistical testing (Figure 2A).",
+            "Logical experimental design directly addresses whether MYLIP's effect is mediated through LDLR."
+          ],
+          "weaknesses": [
+            "n≥2 is relatively modest for quantitative epistasis conclusions, though the direction of effect is clear."
+          ],
+          "alternative_interpretations": [
+            "LDLR KD could have such a strong floor effect on ProteoStat that any additional perturbation would be masked regardless of mechanism."
+          ],
+          "required_assumptions": [
+            "Both KDs are effective simultaneously in the double-KD cells."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Delipidated FBS reduced ProteoStat to LDLR KD levels and was sufficient to abrog…",
+        "claim": "Delipidated FBS reduced ProteoStat to LDLR KD levels and was sufficient to abrogate the effect of MYLIP KD (Figure 2B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Chronic depletion of exogenous LDL using media that contains delipidated serum reduced ProteoStat to a level similar to LDLR KD and was sufficient to abrogate the effect of MYLIP KD",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Environmental manipulation (delipidated serum) provides independent confirmation of the genetic result.",
+            "n=3 biological replicates (Figure 2B).",
+            "Phenocopies LDLR KD and abrogates MYLIP KD, establishing lipid uptake as the causative pathway."
+          ],
+          "weaknesses": [
+            "Delipidated FBS removes all lipids, not just LDL; so the effect could be attributable to depletion of other serum lipids or lipid-associated factors."
+          ],
+          "alternative_interpretations": [
+            "Cells in delipidated FBS may have altered metabolism or growth rates that independently affect proteostasis."
+          ],
+          "required_assumptions": [
+            "The primary effect of delipidated FBS on ProteoStat is through reduced LDL uptake rather than other nutritional changes."
+          ],
+          "notes": "Supplementation with LDL or cholesterol (Figure 2C) partially addresses the specificity concern.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4.1",
+        "label": "MBCD-mediated cholesterol extraction removed most free cholesterol (by Filipin I…",
+        "claim": "MBCD-mediated cholesterol extraction removed most free cholesterol (by Filipin III) but did not affect ProteoStat; ProteoStat and Filipin III staining did not overlap in either untreated or MG132-treated cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "MBCD removed most free cholesterol as determined by Filipin III staining, but did not affect ProteoStat. In neither untreated nor MG132-treated cells did ProteoStat and Filipin III staining overlap",
+        "evaluation": {
+          "node_id": "c1.2.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Two orthogonal readouts: Filipin III confirms cholesterol extraction, ProteoStat unchanged, arguing against direct dye-cholesterol interaction.",
+            "Co-staining in both untreated and MG132-treated conditions shows no overlap, tested under two relevant conditions.",
+            "Figure 2—figure supplement 1A-C provides visual evidence."
+          ],
+          "weaknesses": [
+            "MBCD extracts primarily plasma membrane cholesterol; intracellular/lysosomal cholesterol may be less affected, though this is noted implicitly."
+          ],
+          "alternative_interpretations": [
+            "MBCD could affect membrane integrity and indirectly alter ProteoStat binding to non-cholesterol targets, though no effect was seen."
+          ],
+          "required_assumptions": [
+            "MBCD primarily extracts free cholesterol without major effects on other cellular components relevant to ProteoStat."
+          ],
+          "notes": "This is an important control experiment that strengthens the paper's central claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4.2",
+        "label": "In giant unilamellar vesicles with cholesterol-rich and cholesterol-poor phases,…",
+        "claim": "In giant unilamellar vesicles with cholesterol-rich and cholesterol-poor phases, ProteoStat stained the lipid bilayer poorly and was not brighter at the cholesterol-rich phase.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "in an in vitro biphasic lipid bilayer system (giant unilamellar vesicles, GUVs), ProteoStat stained the lipid bilayer poorly and was not brighter at the cholesterol-rich phase",
+        "evaluation": {
+          "node_id": "c1.2.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "In vitro GUV system is an elegant reductionist approach to test direct ProteoStat-lipid interaction.",
+            "Tested at two dye concentrations (low and high) and includes unstained controls.",
+            "Biphasic GUVs with TopFluor Cholesterol labeling cholesterol-rich phase provide clear internal reference.",
+            "ProteoStat did not preferentially stain cholesterol-rich domains."
+          ],
+          "weaknesses": [
+            "GUVs may not perfectly recapitulate the complexity of cellular membranes with cholesterol esters embedded in a lipid bilayer context.",
+            "No quantification is described; assessment appears qualitative from images."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Behavior of ProteoStat on GUVs is representative of its behavior in cellular membranes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6.1",
+        "label": "PSAP KD effect on ProteoStat was dramatically exacerbated by MYLIP KD and allevi…",
+        "claim": "PSAP KD effect on ProteoStat was dramatically exacerbated by MYLIP KD and alleviated by LDLR KD (Figure 2D).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The effect of PSAP KD was dramatically exacerbated by MYLIP KD and alleviated by LDLR KD",
+        "evaluation": {
+          "node_id": "c1.2.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Combinatorial KD experiments (PSAP+MYLIP, PSAP+LDLR) demonstrate synergistic and epistatic relationships, strongly supporting the model that lipid uptake and catabolism converge on proteostasis.",
+            "n≥2 with statistical tests reported (Figure 2D).",
+            "Logical experimental design: MYLIP KD increases lipid load, LDLR KD decreases it, and both modulate PSAP KD phenotype in the predicted direction."
+          ],
+          "weaknesses": [
+            "The use of 'dramatically exacerbated' is qualitative; the fold-change should ideally be quantified explicitly in the text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Double KDs are both effective simultaneously."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "R² values for individual SM and CE species vs ProteoStat reached up to 0.968 and…",
+        "claim": "R² values for individual SM and CE species vs ProteoStat reached up to 0.968 and 0.843 respectively across lipid-modifying perturbations.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "R2 of up to 0.968 and 0.843, for SM and CE, respectively",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lipidomic analysis with triplicate biological replicates across multiple genetic and environmental perturbations.",
+            "Very high R² values (up to 0.968 for SM) across perturbations directly affecting lipid metabolism.",
+            "Quantitative and specific: individual lipid species within SM and CE classes are analyzed."
+          ],
+          "weaknesses": [
+            "R² values are computed across a small number of perturbation conditions; the high R² may partly reflect the limited degrees of freedom.",
+            "Correlation is shown only for perturbations that 'directly affect lipid uptake and metabolism,' which could be seen as cherry-picking the most concordant conditions."
+          ],
+          "alternative_interpretations": [
+            "Correlation does not establish causation; both SM/CE levels and ProteoStat could be independently driven by a shared upstream pathway (e.g., overall lysosomal dysfunction)."
+          ],
+          "required_assumptions": [
+            "The lipidomic measurements accurately reflect intracellular (and specifically lysosomal) lipid levels."
+          ],
+          "notes": "The insets showing that non-lipid perturbations (AMBRA1, CHMP2A) break the correlation are an important control that strengthens the interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.2",
+        "label": "SM and CE classes showed significantly better correlation with ProteoStat than t…",
+        "claim": "SM and CE classes showed significantly better correlation with ProteoStat than the full collection of lipid compounds, as assessed by K-S test (Figure 2F), while ceramides, lactosylceramides, and hexosylceramides did not.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "lipids belonging to these two classes were better correlated with the ProteoStat phenotype when compared with the full collection of lipid compounds assayed",
+        "evaluation": {
+          "node_id": "c1.3.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "K-S test is an appropriate statistical approach for comparing distributions of R² values across lipid classes.",
+            "The comparison against the full lipid collection provides a proper null distribution.",
+            "Negative counterexamples (ceramides, LacCers, HexCers) strengthen the specificity of the SM/CE finding."
+          ],
+          "weaknesses": [
+            "The number of individual species per class varies and may affect statistical power unevenly across classes.",
+            "The analysis is still correlational."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "R² distribution comparison across classes is a valid metric for identifying disease-relevant lipid species."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "Full-length PSAP largely rescued ProteoStat increase from PSAP KD (p=0.07 vs con…",
+        "claim": "Full-length PSAP largely rescued ProteoStat increase from PSAP KD (p=0.07 vs control), while PSAP with all four Saps inactivated failed to rescue (p=0.74 vs PSAP KD). No single Sap addition fully rescued, and inactivating any single Sap did not fully abrogate rescue.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Full-length PSAP largely rescued the increase in ProteoStat induced by PSAP KD (p=0.07 vs non-targeting, no-rescue control), while the variant with all four Saps inactivated (PSAP ΔABCD) failed to rescue... addition of any single Sap did not fully rescue the KD phenotype.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Systematic use of modular PSAP constructs (full-length, single Saps, all-but-one Saps, ΔABCD) to dissect contributions.",
+            "n=3 biological replicates with t-tests.",
+            "ΔABCD negative control and full-length positive control behave as expected."
+          ],
+          "weaknesses": [
+            "Full-length PSAP rescue reaches only p=0.07 vs control, which is not statistically significant at conventional thresholds. The authors use 'largely rescued' which is generous.",
+            "Expression levels of the various PSAP constructs are not verified, making it unclear if single-Sap constructs failed to rescue due to insufficient expression or genuine insufficiency.",
+            "The conclusion that 'multiple but not a single lipid' is responsible is consistent with the data but remains a negative inference from incomplete rescue."
+          ],
+          "alternative_interpretations": [
+            "Incomplete rescue by single Saps could reflect insufficient expression or improper folding of truncated constructs rather than true functional insufficiency.",
+            "The p=0.07 for full-length rescue could be interpreted as a failure to rescue."
+          ],
+          "required_assumptions": [
+            "All PSAP variants are expressed at comparable levels and properly processed/localized.",
+            "Overexpression constructs are resistant to the CRISPRi KD targeting endogenous PSAP."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "Confocal imaging of MYLIP and PSAP KD cells showed ProteoStat puncta colocalized…",
+        "claim": "Confocal imaging of MYLIP and PSAP KD cells showed ProteoStat puncta colocalized with LAMP1 (lysosomes) but not with ubiquitin staining, with only occasional cytoplasmic double-positive puncta (Figure 3A–B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Cells with lipid impairment (MYLIP or PSAP KD) exhibited lysosomal ProteoStat puncta that were non-ubiquitinated, in addition to occasional cytoplasmic double-positive puncta",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multi-channel confocal microscopy with maximum projection of z-stacks provides robust spatial information.",
+            "n=3 biological replicates with quantification of signal segregated by lysosomal colocalization (Figure 3B).",
+            "The observation of non-ubiquitinated lysosomal ProteoStat puncta is consistent with the microautophagy model."
+          ],
+          "weaknesses": [
+            "Colocalization analysis could benefit from quantitative metrics (e.g., Manders' coefficients) rather than visual assessment, though quantification is provided in Figure 3B."
+          ],
+          "alternative_interpretations": [
+            "ProteoStat-positive material in lysosomes could represent normal lysosomal content (e.g., lipofuscin-like material) rather than protein aggregates per se.",
+            "Fixation and permeabilization could alter apparent colocalization patterns."
+          ],
+          "required_assumptions": [
+            "LAMP1 staining accurately identifies lysosomes.",
+            "ProteoStat puncta in lysosomes represent protein aggregates rather than dye trapping in acidic compartments."
+          ],
+          "notes": "The Lyso-IP experiment (c1.4.3.1) provides important orthogonal confirmation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.1",
+        "label": "Lyso-IP followed by differential extraction into RIPA-soluble and Urea/SDS-insol…",
+        "claim": "Lyso-IP followed by differential extraction into RIPA-soluble and Urea/SDS-insoluble fractions confirmed detergent-insoluble protein accumulation in lysosomes of MYLIP and PSAP KD cells by silver stain (Figure 3C).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This orthogonal approach confirmed that lipid-perturbation (MYLIP and PSAP KDs) resulted in accumulation of detergent-insoluble protein aggregates in the lysosome",
+        "evaluation": {
+          "node_id": "c1.4.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Lyso-IP is a well-validated method (Abu-Remaileh et al., 2017) providing biochemical confirmation orthogonal to imaging.",
+            "Differential extraction into RIPA and Urea/SDS fractions distinguishes soluble from aggregated protein.",
+            "Triplicate experiments with representative silver stain shown.",
+            "Positive controls (ATP6V1E1 KD, MG132) show expected larger amounts of lysosomal aggregates."
+          ],
+          "weaknesses": [
+            "Silver stain is shown as representative image; quantification of total insoluble protein (e.g., densitometry across replicates) is not provided in the text.",
+            "Lyso-IP can co-purify late endosomes and other TMEM192-containing compartments."
+          ],
+          "alternative_interpretations": [
+            "Insoluble material in the lysosomal fraction could include membrane protein aggregates or lipid-protein complexes rather than classical amyloid-like aggregates."
+          ],
+          "required_assumptions": [
+            "TMEM192-based Lyso-IP primarily captures lysosomes with minimal contamination from other organelles.",
+            "Differential extraction faithfully separates detergent-soluble from aggregated proteins."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4.1",
+        "label": "UBPY KD increased lysosomal signals of both ProteoStat and mono-/poly-ubiquitina…",
+        "claim": "UBPY KD increased lysosomal signals of both ProteoStat and mono-/poly-ubiquitinated proteins (Figure 3—supplement 1E–F).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "UBPY KD increased lysosomal signals of both ProteoStat and mono-/poly-ubiquitinated proteins, consistent with a role for microautophagy in delivery of misfolded proteins to the lysosome",
+        "evaluation": {
+          "node_id": "c1.4.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "UBPY KD experiment directly tests the microautophagy model prediction.",
+            "n=3 with quantification (Figure 3—figure supplement 1F).",
+            "Co-staining for ProteoStat, ubiquitin, and LAMP1 provides spatial resolution."
+          ],
+          "weaknesses": [
+            "UBPY (USP8) has many cellular functions beyond deubiquitination at ESCRT/endosomes, so the result is consistent with but does not uniquely support the microautophagy interpretation.",
+            "The paper states this is 'consistent with' microautophagy rather than proving it, which is appropriate."
+          ],
+          "alternative_interpretations": [
+            "UBPY KD could impair overall ubiquitin recycling, leading to accumulation of ubiquitinated proteins in lysosomes through multiple pathways.",
+            "Effects could be mediated through impaired EGFR or other receptor trafficking rather than microautophagy."
+          ],
+          "required_assumptions": [
+            "UBPY KD primarily affects its deubiquitinase function at the endolysosomal system."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "35 proteins were over-represented (q-value <0.05) in lysosomal insoluble fractio…",
+        "claim": "35 proteins were over-represented (q-value <0.05) in lysosomal insoluble fractions of MYLIP KD vs control; 9 of top 12 were ESCRT components including CHMP2A, CHMP4A/B, ALIX, PTPN23, VPS4A, and VTA1.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "67 of 70 core lysosomal resident proteins were captured in the Lysosomal Total fraction... 35 proteins were over-represented (q-value <0.05) in MYLIP KD cells versus control. Remarkably, 9 of the top 12 insoluble proteins induced by MYLIP KD were components involved in the ESCRT pathway",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Quantitative TMT-based proteomics provides unbiased identification of insoluble lysosomal proteins.",
+            "Lyso-IP validated by capturing 67/70 core lysosomal proteins in the total fraction.",
+            "The enrichment of 9/12 top hits as ESCRT components is a striking and specific finding.",
+            "q-value < 0.05 threshold applied.",
+            "Multiple ESCRT pathway components are enriched (ESCRT-III subunits, accessory proteins, VPS4A), pointing to a coherent pathway rather than random hits."
+          ],
+          "weaknesses": [
+            "The number of biological replicates for the Lyso-IP proteomics is not explicitly stated in the excerpt.",
+            "The comparison is only MYLIP KD vs control; PSAP KD or other lipid perturbations were not included in the proteomics, limiting generalizability."
+          ],
+          "alternative_interpretations": [
+            "ESCRT components could become insoluble due to normal membrane association rather than pathological aggregation; however, the differential increase in MYLIP KD argues against this being simply a baseline phenomenon.",
+            "Increased ESCRT recruitment could be a compensatory response to LMP rather than a cause of dysfunction."
+          ],
+          "required_assumptions": [
+            "Detergent insolubility of ESCRT components reflects functional impairment rather than normal membrane-bound polymeric assembly.",
+            "The Lyso-IP insoluble fraction is not contaminated by non-lysosomal ESCRT complexes."
+          ],
+          "notes": "This is one of the paper's most novel and striking findings.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.2",
+        "label": "GSEA of insoluble lysosomal proteins enriched in MYLIP KD highlighted the Multiv…",
+        "claim": "GSEA of insoluble lysosomal proteins enriched in MYLIP KD highlighted the Multivesicular Body gene set (GO:0005771) (Figure 4B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "GSEA of insoluble lysosomal proteins enriched in MYLIP KD compared to control highlighted the Multivesicular Body gene set (GO:0005771",
+        "evaluation": {
+          "node_id": "c1.5.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GSEA provides an unbiased pathway-level validation of the individual protein findings.",
+            "The Multivesicular Body GO term is biologically coherent with ESCRT function.",
+            "Complements the individual protein-level analysis in c1.5.1.1."
+          ],
+          "weaknesses": [
+            "Only one comparison (MYLIP KD vs control) is shown; broader generalizability is uncertain."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "vATPases were more abundant in the lysosomal total fraction but not the insolubl…",
+        "claim": "vATPases were more abundant in the lysosomal total fraction but not the insoluble fraction of MYLIP KD cells, demonstrating selectivity of ESCRT insolubilization (Figure 4—supplement 1A).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "multiple proteins (most notably vATPases) were also more abundant in the total, but not insoluble, fraction of MYLIP KD cells",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Important internal control: shows that increased total lysosomal abundance of a protein does not automatically lead to increased insolubility.",
+            "vATPases serve as a clear counterexample to the ESCRT pattern.",
+            "Directly addresses the alternative interpretation that ESCRT insolubilization is simply due to increased lysosomal delivery."
+          ],
+          "weaknesses": [
+            "Only one comparison (MYLIP KD vs control)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "notes": "This control substantially strengthens the ESCRT-specific interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "TagBFP-GAL3 puncta quantification showed increased LMP with MYLIP KD and weaker …",
+        "claim": "TagBFP-GAL3 puncta quantification showed increased LMP with MYLIP KD and weaker increase with PSAP KD, as well as with CHMP2A, CHMP6, and ATP6V1E1 KDs (Figure 5A–B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "MYLIP KD and, to a much weaker degree, PSAP KD, both increased LMP, as did KDs of ESCRT-III subunits (CHMP2A and CHMP6) and ATP6V1E1",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "TagBFP-GAL3 reporter is a well-validated tool for detecting LMP.",
+            "n=3 with quantification across multiple genetic perturbations.",
+            "Positive controls (CHMP2A, CHMP6, ATP6V1E1 KDs) show expected LMP increases.",
+            "The differential magnitude between MYLIP (strong) and PSAP (weak) KDs adds nuance."
+          ],
+          "weaknesses": [
+            "GAL3 puncta quantification methodology is not described in detail (manual vs automated counting, thresholding criteria).",
+            "The difference between MYLIP and PSAP KDs in LMP magnitude is noted but not explained mechanistically."
+          ],
+          "alternative_interpretations": [
+            "GAL3 puncta could reflect transient membrane damage that is efficiently repaired, rather than sustained LMP."
+          ],
+          "required_assumptions": [
+            "TagBFP-GAL3 puncta formation is a reliable indicator of LMP in K562 cells.",
+            "Reporter expression does not itself alter lysosomal membrane properties."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "LLOMe treatment caused moderate lysosomal ProteoStat signal increase, but LMP ma…",
+        "claim": "LLOMe treatment caused moderate lysosomal ProteoStat signal increase, but LMP magnitude was not directly related to ProteoStat intensity across conditions (Figure 5C–E).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Chemically inducing LMP with LLOMe was sufficient to cause a moderate lysosomal accumulation of protein aggregates... the magnitude of LMP was not directly related to ProteoStat intensity across conditions",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Chemical induction of LMP with LLOMe demonstrates sufficiency for lysosomal ProteoStat increase.",
+            "Cross-condition comparison reveals dissociation between LMP magnitude and ProteoStat intensity, indicating LMP is not the sole driver.",
+            "n=3 with quantification."
+          ],
+          "weaknesses": [
+            "LLOMe treatment is acute (4 hr) while genetic perturbations are chronic (7 days); the temporal mismatch complicates direct comparison.",
+            "LLOMe can cause additional cellular stress beyond LMP."
+          ],
+          "alternative_interpretations": [
+            "The dissociation could reflect different types or severity of LMP between chemical and genetic perturbations, rather than indicating additional mechanisms."
+          ],
+          "required_assumptions": [
+            "LLOMe-induced LMP is mechanistically comparable to LMP caused by genetic perturbations."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "VPS4A overexpression almost completely rescued LLOMe-induced LMP but this rescue…",
+        "claim": "VPS4A overexpression almost completely rescued LLOMe-induced LMP but this rescue was largely negated in MYLIP KD background; VPS4A overexpression led to only modest reduction in LMP and lysosomal aggregation induced by MYLIP KD (Figure 5D–E).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Chemically induced LMP was almost completely rescued by ectopic VPS4A expression... This rescue of chemically induced LMP was largely negated in the background of MYLIP KD",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "VPS4A overexpression is a logical gain-of-function approach to test if ESCRT-III resolution can rescue LMP.",
+            "The differential rescue (complete for LLOMe-induced LMP, incomplete in MYLIP KD background) provides mechanistic insight.",
+            "n=3 with quantification and statistical testing.",
+            "The result that MYLIP KD negates VPS4A rescue of LLOMe-induced LMP is a particularly informative finding, suggesting lipid dysregulation acts upstream or orthogonally."
+          ],
+          "weaknesses": [
+            "VPS4A overexpression level is not quantified; variable expression could affect interpretation.",
+            "The 'modest reduction' in MYLIP KD-induced LMP by VPS4A is described qualitatively; the effect size matters for interpretation but is only shown in figures."
+          ],
+          "alternative_interpretations": [
+            "VPS4A overexpression might not reach the levels needed to overcome the lipid-induced ESCRT impairment, making the negative result a dose issue rather than a mechanistic one.",
+            "VPS4A might be itself functionally impaired in the context of altered lipid composition."
+          ],
+          "required_assumptions": [
+            "Ectopic VPS4A is properly folded and functional.",
+            "VPS4A overexpression levels are sufficient to test the hypothesis."
+          ],
+          "notes": "The authors' interpretation that lipid dysregulation impairs ESCRT in a VPS4A-resistant manner is a key mechanistic conclusion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1.1",
+        "label": "The pHLARE ratiometric reporter showed MYLIP, PSAP, and LDLR KDs did not signifi…",
+        "claim": "The pHLARE ratiometric reporter showed MYLIP, PSAP, and LDLR KDs did not significantly shift lysosomal pH, though ATP6V1E1 KD correctly reported deacidification (Figure 6B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "lipid-modifying KDs – MYLIP, PSAP, and LDLR – did not significantly shift pHLys",
+        "evaluation": {
+          "node_id": "c1.7.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Ratiometric pHLARE reporter is well-validated with buffer series and ionophores (Figure 6—figure supplement 1A).",
+            "Positive control (ATP6V1E1 KD) correctly shows deacidification.",
+            "Flow cytometry provides population-level quantification.",
+            "Testing three lipid-modifying KDs (MYLIP, PSAP, LDLR) provides comprehensive coverage."
+          ],
+          "weaknesses": [
+            "pHLARE reports average lysosomal pH; subpopulations of lysosomes with altered pH might not be detected.",
+            "The sensitivity of the reporter to detect small pH changes is not explicitly characterized."
+          ],
+          "alternative_interpretations": [
+            "Lysosomal pH might be locally altered at sites of lipid accumulation without affecting the bulk measurement."
+          ],
+          "required_assumptions": [
+            "pHLARE is sensitive enough to detect biologically meaningful changes in lysosomal pH.",
+            "Stable expression of pHLARE does not alter lysosomal properties."
+          ],
+          "notes": "This negative result is important for ruling out lysosomal deacidification as the mechanism linking lipid dysregulation to protein aggregation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2.1",
+        "label": "DQ-Red BSA unquenching showed MYLIP KD modestly reduced and PSAP KD trended oppo…",
+        "claim": "DQ-Red BSA unquenching showed MYLIP KD modestly reduced and PSAP KD trended oppositely for lysosomal protease activity, an incoherent pattern relative to ProteoStat (Figure 6A).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "lipid-modifying perturbations affected lysosomal protease function only modestly and incoherently with respect to the ProteoStat phenotype, with MYLIP KD reducing BODIPY unquenching and PSAP KD trending in the opposite direction",
+        "evaluation": {
+          "node_id": "c1.7.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "DQ-Red BSA is a standard lysosomal protease activity assay.",
+            "Positive controls (ATP6V1E1 KD, CHMP2A KD) show expected reductions.",
+            "The incoherent pattern (MYLIP down, PSAP up) relative to ProteoStat is an informative negative result."
+          ],
+          "weaknesses": [
+            "DQ-Red BSA reports bulk lysosomal protease activity and is influenced by BSA uptake rate, which could be altered by MYLIP/PSAP KDs independently of protease function.",
+            "MYLIP KD might alter endocytic uptake of DQ-Red BSA (via LDLR pathway effects), confounding the assay.",
+            "The modest nature of the effects makes them harder to interpret."
+          ],
+          "alternative_interpretations": [
+            "MYLIP KD might reduce DQ-Red BSA unquenching due to altered endocytic rates rather than reduced protease activity.",
+            "Lysosomal protease activity could be locally impaired at sites of lipid/aggregate accumulation but not globally."
+          ],
+          "required_assumptions": [
+            "DQ-Red BSA uptake is comparable across conditions.",
+            "Bulk protease activity measurement is representative of local protease function relevant to aggregate clearance."
+          ],
+          "notes": "The confound of altered endocytic uptake with MYLIP KD (which upregulates LDLR) should be acknowledged more explicitly.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3.1",
+        "label": "Me4BoVS proteasome activity probe showed no significant change in proteasome act…",
+        "claim": "Me4BoVS proteasome activity probe showed no significant change in proteasome activity with MYLIP, PSAP, or LDLR KD, validated by MG132 and Bortezomib controls (Figure 6G–H).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "in conditions that strongly modulated SM or CE levels (KD of MYLIP, PSAP, or LDLR), we did not see significant increase or decrease of proteasome activity",
+        "evaluation": {
+          "node_id": "c1.7.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Me4BoVS is a validated proteasome activity probe; positive controls with MG132 and Bortezomib confirm assay function (Figure 6G).",
+            "Testing MYLIP, PSAP, and LDLR KDs covers the key lipid perturbations."
+          ],
+          "weaknesses": [
+            "n=1 for the KD experiments (Figure 6H), which is insufficient for making definitive claims about no effect. This is a significant limitation.",
+            "The in-gel fluorescence validation is shown only for pharmacological treatments (Figure 6—figure supplement 1D), not for genetic perturbations."
+          ],
+          "alternative_interpretations": [
+            "With n=1, small but real effects on proteasome activity could be missed.",
+            "The probe measures catalytic site accessibility, not necessarily overall proteasomal degradation capacity in vivo."
+          ],
+          "required_assumptions": [
+            "n=1 is sufficient to exclude meaningful changes in proteasome activity.",
+            "Me4BoVS-based flow cytometry captures the full range of proteasome activity relevant to proteostasis."
+          ],
+          "notes": "The n=1 for genetic perturbations is a notable weakness that limits the strength of this important negative result. The claim would benefit from additional replicates.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3.2",
+        "label": "KD of HMGCR and IDI1 (mevalonate pathway) increased proteasome activity, but MYL…",
+        "claim": "KD of HMGCR and IDI1 (mevalonate pathway) increased proteasome activity, but MYLIP/PSAP/LDLR KDs did not, suggesting the statin-proteasome link arises from non-cholesterol mevalonate metabolites.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We conclude that the proteasome modulating effect of statin likely arises from changes in other metabolites along the mevalonate pathway.",
+        "evaluation": {
+          "node_id": "c1.7.3.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "HMGCR KD result is consistent with published statin effects on proteasome activity (van der Kant et al., 2019).",
+            "IDI1 KD providing a similar effect identifies a specific branch of the mevalonate pathway."
+          ],
+          "weaknesses": [
+            "Mevalonate pathway KD experiments are n=1 (Figure 6—figure supplement 1E), making the conclusion speculative.",
+            "The conclusion that 'the proteasome modulating effect of statin likely arises from non-cholesterol mevalonate metabolites' is a strong causal claim based on correlative data at n=1.",
+            "FDFT1 KD (which did not affect proteasome activity) targets cholesterol synthesis specifically, while IDI1 is upstream; but other non-cholesterol isoprenoid products are also downstream of IDI1, creating ambiguity about which metabolite is responsible.",
+            "No direct measurement of mevalonate pathway metabolites was performed."
+          ],
+          "alternative_interpretations": [
+            "IDI1 KD might have off-target or pleiotropic effects on proteasome activity unrelated to the mevalonate pathway.",
+            "HMGCR and IDI1 KDs could affect proteasome activity through changes in protein prenylation (a non-cholesterol function of the mevalonate pathway) rather than through lipid metabolites per se."
+          ],
+          "required_assumptions": [
+            "n=1 data are reliable enough to draw mechanistic conclusions.",
+            "CRISPRi effectively and specifically knocks down IDI1 and FDFT1."
+          ],
+          "notes": "This claim overreaches the evidence. The authors use 'we conclude' language for n=1 data, which is not warranted.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.4.1",
+        "label": "LiperFluo showed increased lipid peroxidation with MYLIP/PSAP KDs and decreased …",
+        "claim": "LiperFluo showed increased lipid peroxidation with MYLIP/PSAP KDs and decreased with LDLR KD, mirroring LysoTracker changes (Figure 6C–D).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "perturbations that increased or decreased SM and CE levels (MYLIP and PSAP KDs, vs LDLR KD) increased or decreased lipid peroxidation, respectively",
+        "evaluation": {
+          "node_id": "c1.7.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "LiperFluo is a validated lipid peroxidation indicator.",
+            "n=3 biological replicates.",
+            "Directional consistency: perturbations increasing lipids (MYLIP, PSAP KDs) increase lipid peroxidation, while LDLR KD decreases it.",
+            "Correlation with LysoTracker changes adds convergent evidence for lysosomal alterations."
+          ],
+          "weaknesses": [
+            "LysoTracker signal can be affected by lysosomal pH changes as well as lysosomal number/size; the interpretation as 'lysosomal content' relies on the pHLARE result showing no pH change.",
+            "Lipid peroxidation is a downstream consequence that could have many causes beyond direct lipid accumulation."
+          ],
+          "alternative_interpretations": [
+            "Increased lysosomal content could drive increased lipid peroxidation rather than both being independent consequences of lipid accumulation.",
+            "LysoTracker changes could reflect altered lysosomal biogenesis (e.g., TFEB activation) rather than simply more material."
+          ],
+          "required_assumptions": [
+            "LysoTracker signal changes primarily reflect changes in lysosomal mass/number rather than pH under these conditions."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.4.2",
+        "label": "A cocktail of five antioxidants (5AO) effectively reduced lipid peroxidation but…",
+        "claim": "A cocktail of five antioxidants (5AO) effectively reduced lipid peroxidation but did not rescue the ProteoStat or LysoTracker phenotypes (Figure 6E–F).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "While 5AO was effective in reducing lipid peroxidation, it did not rescue the Proteostat or Lysotracker phenotypes",
+        "evaluation": {
+          "node_id": "c1.7.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "5AO cocktail effectively reduces lipid peroxidation (Figure 6E), demonstrating the antioxidants work.",
+            "Despite this, ProteoStat and LysoTracker phenotypes persist (Figure 6F, Figure 6—figure supplement 1C), cleanly dissociating lipid peroxidation from protein aggregation.",
+            "n=3 biological replicates.",
+            "This is a well-designed experiment that directly tests a specific mechanistic hypothesis."
+          ],
+          "weaknesses": [
+            "5AO may not fully eliminate all forms of oxidative damage (e.g., protein oxidation, localized membrane oxidation within lysosomes).",
+            "The duration of 5AO treatment (entire duration of gene KD, per methods) is appropriate but assumes steady-state antioxidant protection."
+          ],
+          "alternative_interpretations": [
+            "Lipid peroxidation could have already caused irreversible damage before 5AO became effective.",
+            "Specific reactive oxygen species not targeted by 5AO could still contribute."
+          ],
+          "required_assumptions": [
+            "The 5AO cocktail provides sufficient antioxidant coverage to test the lipid peroxidation hypothesis.",
+            "The antioxidants penetrate to the relevant subcellular compartments (lysosomes)."
+          ],
+          "notes": "This is one of the cleaner mechanistic dissection experiments in the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.6",
+        "source": "c1.1",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.5",
+        "source": "c1.2",
+        "target": "c1.2.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.6",
+        "source": "c1.2",
+        "target": "c1.2.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.3",
+        "source": "c1.7",
+        "target": "c1.7.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.4",
+        "source": "c1.7",
+        "target": "c1.7.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.2",
+        "source": "c1.1.1",
+        "target": "c1.1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.2",
+        "source": "c1.1.2",
+        "target": "c1.1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.6_c1.1.6.1",
+        "source": "c1.1.6",
+        "target": "c1.1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.4_c1.2.4.1",
+        "source": "c1.2.4",
+        "target": "c1.2.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.4_c1.2.4.2",
+        "source": "c1.2.4",
+        "target": "c1.2.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.6_c1.2.6.1",
+        "source": "c1.2.6",
+        "target": "c1.2.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.2",
+        "source": "c1.3.1",
+        "target": "c1.3.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.1.1",
+        "source": "c1.4.2",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.1",
+        "source": "c1.4.3",
+        "target": "c1.4.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.4_c1.4.4.1",
+        "source": "c1.4.4",
+        "target": "c1.4.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.2",
+        "source": "c1.5.1",
+        "target": "c1.5.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.1_c1.7.1.1",
+        "source": "c1.7.1",
+        "target": "c1.7.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.2_c1.7.2.1",
+        "source": "c1.7.2",
+        "target": "c1.7.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.3_c1.7.3.1",
+        "source": "c1.7.3",
+        "target": "c1.7.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.3_c1.7.3.2",
+        "source": "c1.7.3",
+        "target": "c1.7.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.4_c1.7.4.1",
+        "source": "c1.7.4",
+        "target": "c1.7.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.4_c1.7.4.2",
+        "source": "c1.7.4",
+        "target": "c1.7.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 67,
+    "total_edges": 66,
+    "max_depth": 3,
+    "high_support_nodes": 41,
+    "low_support_nodes": 2,
+    "overall_assessment": "The paper's 67 claims show strong overall support when weighted by centrality (weighted support score 0.80, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “An overabundance of SM may hinder coalescence of ceramide-rich domains and prevent negative membrane curvature, thereby thwarting ESCRT resolution and vesicle b…” (2 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

@@ -1,0 +1,65 @@
+**eLife Assessment**
+
+This study presents a **valuable** resource of single-cell chromatin accessibility data from perinatal mouse testis, offering a systematic catalog of cell type-specific regulatory elements and transcription factor programs. The evidence supporting the core dataset and cell type classification is **solid**, but several of the paper's more novel biological claims — including the two-trajectory germ cell differentiation model, novel Sox9 enhancers, and GWAS-based disease connections — rest on **incomplete** evidence that lacks the functional validation needed to substantiate the interpretive conclusions drawn.
+
+**Summary**
+
+This paper reports scATAC-Seq profiling of 25,613 cells from mouse testis across four perinatal developmental time points (E18.5, P0, P2, P5), generating an atlas of chromatin accessibility across testicular cell types. The authors integrate these data with a published scRNA-Seq reference to annotate cell types, identify 214,890 accessible chromatin regions and 51,937 differentially accessible regions, and perform motif enrichment and chromVAR analyses to nominate cell type-specific transcription factor regulators. Additional analyses include peak-to-gene linkage to identify candidate cis-regulatory elements, pseudotime trajectory reconstruction for germ and somatic cell lineages, re-clustering to reveal subpopulations within Sertoli and Leydig cells, and LD score regression to connect GWAS variants to testicular cell types and putative target genes. The paper concludes by proposing novel regulatory elements for Sox9, a two-trajectory model for germ cell differentiation, and a role for Sertoli cells in coronary artery disease heritability.
+
+**Strengths**
+
+- **Cell type identification from scATAC-Seq is robustly supported.** The integration of gene activity scores with an independent scRNA-Seq reference dataset, combined with validation against published bulk Sertoli cell DNase-Seq data (Maatouk et al., 2017), provides strong multi-modal evidence that the major testicular cell populations are correctly resolved. Known marker genes (e.g., Amh in Sertoli cells) show expected accessibility patterns, and quality control is thorough with clearly defined thresholds.
+
+- **Differentially accessible regions are rigorously identified and genomically characterized.** The 51,937 DARs are identified with appropriate statistical thresholds (FDR ≤ 0.01, Log2FC ≥ 2), and their predominant location in distal and intronic regions is consistent with known enhancer biology. The heatmap visualization confirms clear cell type-specific patterns.
+
+- **Known transcription factor–cell type relationships are accurately recapitulated.** The identification of NR4A1/NR5A1 in Sertoli/Leydig cells, ESR2 in Leydig cells, MYOG in PTMs, DMRT1 and FOXO1 in germ cells, and C/EBP family in macrophages serves as effective positive controls, lending credibility to novel TF candidates identified by the same pipeline.
+
+- **Peak-to-gene linkage recapitulates known regulatory elements.** The successful identification of the TESCO enhancer linked to Sox9 in Sertoli cells and a known functional enhancer for Wt1 provides important validation, and the statistically significant overlap of 3,262 peak-to-gene links with previously catalogued testis enhancers (hypergeometric test) supports the approach.
+
+- **DLK1 cell type assignment is experimentally validated.** The finding that DLK1 marks stromal cells and PTMs rather than Leydig cells in mouse perinatal testis is supported by three independent experimental approaches (FACS sorting, RT-PCR with statistical analysis, and immunostaining in Oct4-GFP transgenic mice), representing one of the strongest experimentally validated findings.
+
+- **NR5A1 expression in germ cells is confirmed by immunostaining.** The co-localization of TRA98 and NR5A1 staining rules out somatic cell contamination as an alternative explanation and is corroborated by independent scRNA-Seq observations (Hermann et al., 2015).
+
+- **GWAS analysis includes appropriate controls.** The enrichment of testosterone-level heritability in Leydig cell peaks (positive control) and the absence of enrichment for unrelated traits (IgA deficiency, Parkinson disease, major depressive disorder) as negative controls increase confidence in the positive findings.
+
+**Weaknesses / Essential Revisions**
+
+- **The two-trajectory germ cell differentiation model lacks sufficient evidence (low support).** The claim that a second trajectory represents the first wave of spermatogenesis bypassing undifferentiated spermatogonia is based primarily on low Ngn3 gene activity in "Unknown-2" cells — an extremely indirect proxy. The unknown clusters have no validated identity, and the authors acknowledge that markers for gonocytes undergoing the first wave are lacking. The trajectory could equally represent technical artifacts (incompletely removed doublets, integration artifacts) or dying/stressed cells with globally reduced chromatin accessibility. Lineage tracing, additional marker validation, or at minimum targeted immunostaining for candidate markers is needed to support this claim. The authors should either provide experimental evidence or substantially temper their interpretation.
+
+- **Novel Sox9 regulatory elements are claimed without functional validation (low support).** Three previously unreported elements linked to Sox9 are described as "novel regulatory elements," but no reporter assays, CRISPR deletions, or chromatin conformation capture experiments validate that these are functional enhancers. Peak-to-gene correlation does not establish direct regulatory function. This claim should be downgraded to "candidate regulatory regions" unless validation is provided.
+
+- **The Sertoli cell–CAD heritability connection is highly speculative (low support).** The enrichment of CAD GWAS heritability in Sertoli cell peaks, interpreted through a testosterone-mediated mechanism, requires multiple inferential leaps: mouse-to-human regulatory conservation, Sertoli cell contribution to testosterone regulation affecting cardiovascular risk, and functional significance of the specific peak-to-gene links (Mras, Ptpn11). The enrichment could reflect shared regulatory grammar with cardiovascular cell types (smooth muscle, endothelium) not included in the comparison. Stromal cells also show enrichment, diluting specificity. The authors should either include cardiovascular cell type comparisons or substantially qualify this finding.
+
+- **The EMT-like transition claim in germ cells is poorly supported (low support).** The assertion that germ cells "may undergo mesenchymal-like transition" based solely on ZEB1 and SNAI2 motif enrichment is a strong biological claim based on weak evidence. No expression data for these TFs in germ cells is shown, no functional hallmarks of EMT are demonstrated, and these TFs have known non-EMT functions. This claim should be removed or presented only as a hypothesis requiring substantial future validation.
+
+- **The rs941576–Dlk1 regulatory connection is speculative (low support).** The claim that a T1D/rheumatoid arthritis-associated SNP in Meg3 intron 6 may alter Dlk1 regulation through a peak-to-gene link is particularly tenuous. The imprinted nature of the Dlk1-Meg3 locus means standard enhancer-promoter models may not apply, and the relevance to autoimmune disease through testicular Dlk1 regulation is extremely indirect.
+
+- **All regulatory claims are correlative and lack functional validation.** No perturbation experiments (knockdowns, knockouts, reporter assays) are performed for any identified TF or CRE. The positive regulator correlation strategy, while principled, has unknown false discovery rates and cannot distinguish upstream regulators from downstream consequences of cell type specification. The paper would benefit from at least one functional validation of a novel TF prediction (e.g., demonstrating that a candidate TF is required for chromatin accessibility at predicted targets).
+
+- **Cross-species extrapolation for GWAS analysis is a fundamental limitation requiring more explicit treatment.** The use of mouse perinatal testis DARs to interpret human GWAS variants introduces substantial uncertainty. The authors acknowledge this limitation but nonetheless present specific gene-level predictions (Wars→Slc25a47, peak-to-gene links for Mras, Ptpn11). Conservation of distal regulatory elements between mouse and human is generally limited; the paper should provide liftOver analysis or conservation scores for the specific DARs used in GWAS analysis.
+
+- **The Id4 "motif binding activity" description contains a conceptual error.** Id4 is not a DNA-binding transcription factor — it lacks a basic DNA-binding domain and functions by heterodimerizing with bHLH factors to inhibit their binding. The claim of declining "Id4 motif binding activity" in the pseudotime analysis needs clarification or correction.
+
+- **Somatic cell heterogeneity claims may reflect over-clustering.** The identification of 6 Sertoli, 3 Leydig, and 10 PTM/stromal subclusters is presented as revealing "previously unappreciated heterogeneity," but the biological significance of most subclusters is not established. Only SC1 in Sertoli cells receives any experimental validation (MBD3/AMH immunostaining), and the interpretation of SC1 as "less differentiated" is contradicted by its higher AMH expression, which typically decreases during Sertoli cell maturation. Sensitivity analysis across clustering parameters would help establish which subclusters are robust.
+
+**Minor Comments**
+
+- The number of cells per time point is not specified in the main text, making it difficult to assess whether each developmental stage is adequately powered for the analyses performed.
+
+- The correlation threshold for defining peak-to-gene links (mentioned as >0.5 for TF regulators) is not clearly stated for the general peak-to-gene analysis. This should be explicitly reported.
+
+- The prediction scores from scRNA-Seq integration are described qualitatively ("overall high") without quantitative thresholds or the percentage of cells with confident assignments. A histogram or table of prediction scores by cluster should be included in the main text.
+
+- The description of "constrained integration" for germ cell scRNA-Seq mapping is insufficiently detailed — the constraints applied and their rationale should be clearly stated.
+
+- The claim that the dataset represents a "comprehensive" atlas is overstated given only four perinatal time points are profiled, missing both embryonic sex determination stages and postnatal/adult spermatogenesis.
+
+- GO enrichment analysis results are relegated to supplementary figures without detail in the text; key findings should be summarized more explicitly.
+
+- The paper would benefit from a supplementary table providing cell numbers per cluster per time point.
+
+**Recommendation**
+
+Major Revisions
+
+While the core dataset is solid and represents a useful resource for the field, 6 of 57 claims have low support and several of the paper's most prominent novel biological conclusions — including the two-trajectory germ cell model, novel Sox9 enhancers, and Sertoli cell–CAD connection — lack the functional validation or rigorous evidence that eLife requires. The authors should either provide experimental validation for at least the key novel claims or substantially revise the interpretive framing to clearly distinguish well-supported findings from speculative hypotheses.

@@ -1,0 +1,55 @@
+**eLife Assessment**
+
+This study presents a **useful** investigation of how hippocampal CA1 neurons encode delay and reward information during delay-discounting decisions in mice, but the central claims regarding value coding by distinct neuronal subpopulations are supported by **incomplete** evidence. While the basic characterization of delay-modulated neurons is solid, the paper's most novel claims — particularly that identifiable subpopulations encode subjective value — lack the rigorous statistical foundations expected for publication in eLife.
+
+**Summary**
+
+This paper investigates how hippocampal CA1 neurons encode information relevant to delay-discounting decisions, whereby the subjective value of a reward declines when a delay is imposed. Using extracellular recordings in mice performing a T-maze delay-discounting task, the authors identify two populations of CA1 neurons: "delay-active" cells that increase firing and "delay-suppressed" cells that decrease firing during imposed delays. Through systematic manipulation of delay length, delay position, and reward amount across sessions, the authors report that both populations reflect these task variables but respond in opposing ways to reward size changes, which is interpreted as evidence for distinct roles in valuation. The authors further show that genetic deletion of NR1 (NMDA receptor subunit) in hippocampal pyramidal cells impairs delay-discounting behavior and disrupts delay-related neural coding, arguing that NMDA receptor-dependent plasticity is required for these representations. The central thesis is that distinct hippocampal neuronal subclasses concertedly support delay-based decisions by encoding an integrated signal of delay and value information.
+
+**Strengths**
+
+- **Comprehensive task design with multiple manipulations.** The use of four experimental protocols (original, switched, both-side, and sequential delay conditions) provides converging evidence that CA1 neurons are modulated by delay. The finding that 73.5% of delay-active and 64.9% of delay-suppressed neurons show side-selectivity, while more than a quarter encode delay independent of spatial location, is well-supported by three-way ANOVA and contributes meaningfully to understanding hippocampal conjunctive coding.
+
+- **Robust population decoding of delay length.** The SVM decoding analysis demonstrates that population activity can discriminate among five delay conditions with accuracy far exceeding shuffled controls (F₂ = 882.1, p < 0.001), using two types of shuffled baselines and leave-one-trial-out cross-validation across five animals. This provides strong evidence that delay-relevant information is present in CA1 population activity.
+
+- **Statistically supported opposing reward responses.** The log ratio of firing rates under reward manipulation was significantly different between delay-active and delay-suppressed populations (reward loss: Z = −2.6, p = 0.007; reward gain: Z = 2.1, p = 0.03), with opposing skew directions confirmed by one-sample t-tests (both p = 0.01). This bidirectional evidence supports the claim of differential reward sensitivity.
+
+- **Behavioral impairment in cKO mice with preserved basic physiology.** The genotype effect on delay-discounting behavior is robust (F₁ = 14.4, p < 0.001), and the demonstration that basic firing properties are preserved in cKO mice (p = 0.44) strengthens the argument that delay-specific coding, rather than general neural dysfunction, is disrupted. The authors' transparent acknowledgment that NR1 deletion extends beyond CA1 is commendable.
+
+- **Clear quantification of delay-modulated neurons.** The identification of 243/639 (38.0%) delay-active and 313/639 (48.9%) delay-suppressed neurons using permutation testing, with proportions far exceeding chance levels, provides a well-quantified foundation for the study.
+
+**Weaknesses / Essential Revisions**
+
+- **The claim that a "specific population" of CA1 neurons encodes subjective value is not adequately supported.** The scatter plot in Figure 7E shows no global correlation between delay and reward modulation effects, and the authors acknowledge this. The identification of a "subset" of putative value-coding neurons near the diagonal is based solely on visual inspection, with no formal statistical criterion, no test against a null distribution, and no quantification of how many neurons constitute this subset. This is the paper's most novel claim, and it requires, at minimum, a formal clustering or regression analysis, a permutation-based test of whether the number of neurons near the diagonal exceeds chance, and explicit reporting of this subpopulation's size and properties.
+
+- **The forced-choice experiment supporting "subjective value" encoding is based on anecdotal single-neuron examples.** The claim that delay-active neurons represent subjective value because they are silenced when animals are forced to choose unrewarded delayed options relies on examples from a supplementary figure, with no population-level analysis, no reported sample sizes, and no statistical tests. This evidence is inadequate to support the strong interpretive claim made. A population-level analysis across all recorded neurons in forced-choice sessions is essential.
+
+- **The claim that peak firing rates are "better indicators" of delay-length encoding than mean rates is unsupported and likely reflects a statistical artifact.** Peak firing rates mechanistically increase with longer observation windows (more time samples yield higher maxima from the same distribution), which could inflate the 79% correlation rate relative to the 35% for mean rates. The authors' reasoning about "deformative normalization" of mean rates is not demonstrated analytically or through simulation. This confound must be addressed — for example, by subsampling longer delays to match the duration of the shortest delay and recalculating peak rates.
+
+- **The ANOVA reporting for cKO behavioral data contains an apparent contradiction that could undermine the delay-discounting interpretation.** The paper reports "F₄ = 23.0, p < 0.001" and "interaction between delay length × genotype, F₁,₄ = 1.07, p = 0.37." If the interaction is truly non-significant (p = 0.37), then the genotype effect does not specifically impair delay discounting but rather reflects a general choice bias. This distinction is critical and must be clarified. If the interaction is non-significant, the conclusions about NMDAR involvement in delay discounting specifically (as opposed to general choice behavior) would need substantial revision.
+
+- **The classification of "functionally distinct" delay-active and delay-suppressed populations may reflect an artifact of thresholding a continuous distribution.** With 86.9% of all neurons classified into one of two categories, the categorization is overly inclusive and may not capture biologically meaningful subpopulations. No evidence is provided for distinct anatomical locations, projection targets, or molecular markers. The authors should demonstrate that the bimodal classification provides better explanatory power than a continuous model (e.g., using a mixture model analysis or demonstrating bimodality in the firing rate modulation distribution).
+
+- **The NMDAR knockout physiology is based on only 3 cKO and 4 control animals, and the deletion extends beyond CA1.** The authors acknowledge that NR1 knockout may affect CA3, dentate gyrus, and deep cortical layers at the ages used for recording, yet conclusions are framed in terms of "hippocampal NMDAR function." The small sample sizes and lack of regional specificity severely limit the mechanistic conclusions. Additionally, the direction of the behavioral effect (reduced delay discounting) is opposite to hippocampal lesion studies, which the authors note but do not resolve — this contradiction fundamentally challenges the interpretive framework linking hippocampal NMDAR to delay-based valuation.
+
+- **Delay and reward were not orthogonally manipulated within sessions, confounding the value-coding interpretation.** Delay length and reward size were changed across sequential sessions rather than independently varied within the same session. This design cannot rule out that apparent "value coding" reflects adaptation to different task contexts (e.g., changes in motivation, satiety, or arousal across sessions) rather than genuine integration of delay and reward into a value signal.
+
+**Minor Comments**
+
+- The claim that the hippocampal circuit "remains actively engaged" during the delay (based on theta activity and SWR rarity) is based on data from only three mice, and theta activity during the delay likely reflects the animals' active movement within the delay zone rather than cognitive engagement per se. This interpretation should be tempered.
+
+- The finding that only the both-side condition produces uniformly distributed peak firing times, while all other conditions show onset-biased distributions, undermines the generality of the "sequential activation" coding scheme. This condition-dependence should be explicitly discussed.
+
+- The observation that ~10% (4/33) of neurons shift from goal-related to delay-related firing is based on too few neurons to support the conclusion about experience-dependent plasticity. This should be presented as a preliminary observation rather than a supported finding.
+
+- Sample sizes for reward manipulation experiments should be clearly reported in the main text for each condition and cell type.
+
+- The speculative link between reduced delay discounting in cKO mice and obsessive-compulsive disorder is not supported by any behavioral measures of compulsivity and should be removed or clearly labeled as highly speculative.
+
+- The inhibitory neuron analysis is referenced only to a supplementary figure with no quantitative analysis in the main text. Either provide proper statistical analysis or remove the claim of "similar population codes."
+
+**Recommendation**
+
+Major Revisions
+
+The study addresses an interesting question about hippocampal coding during delay-based decisions, and several foundational observations (delay-modulated populations, population decoding, opposing reward responses) are solidly supported. However, the paper's most central and novel claims — that identifiable subpopulations encode subjective value, and that NMDAR-dependent mechanisms specifically support delay-based valuation — are supported by incomplete evidence (7 low-support claims out of 47, including the core value-coding claim). Essential revisions include formal statistical identification of value-coding neurons, population-level analysis of forced-choice data, resolution of the ANOVA reporting contradiction, and appropriate tempering of mechanistic conclusions given the non-specific NMDAR knockout.

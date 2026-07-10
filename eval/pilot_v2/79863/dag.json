@@ -1,0 +1,2369 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_79863",
+    "title": "Retinoic acid-gated BDNF synthesis in neuronal dendrites drives presynaptic homeostatic plasticity",
+    "authors": [
+      "Shruti Thapliyal",
+      "Kristin L Arendt",
+      "Anthony G Lau",
+      "Lu Chen"
+    ],
+    "url": "https://doi.org/10.7554/eLife.79863",
+    "abstract": "Homeostatic synaptic plasticity is a non-Hebbian synaptic mechanism that adjusts synaptic strength to maintain network stability while achieving optimal information processing. Among the molecular mediators shown to regulate this form of plasticity, synaptic signaling through retinoic acid (RA) and its receptor, RARα, has been shown to be critically involved in the homeostatic adjustment of synaptic transmission in both hippocampus and sensory cortices. In this study, we explore the molecular mechanism through which postsynaptic RA and RARα regulates presynaptic neurotransmitter release during prolonged synaptic inactivity at mouse glutamatertic synapses. We show that RARα binds to a subset of dendritically sorted brain-derived neurotrophic factor (Bdnf) mRNA splice isoforms and represses their translation. The RA-mediated translational de-repression of postsynaptic BDNF results in the retrograde activation of presynaptic tropomyosin receptor kinase B (TrkB) receptors, facilitating presynaptic homeostatic compensation through enhanced presynaptic release. Together, our study illustrates an RA-mediated retrograde synaptic signaling pathway through which postsynaptic protein synthesis during synaptic inactivity drives compensatory changes at the presynaptic site.",
+    "word_count": 7012,
+    "processed_at": "2026-07-10T01:31:21.915923+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "RA/RARα signaling in postsynaptic neurons drives a trans-synaptic retrograde BDN…",
+        "claim": "RA/RARα signaling in postsynaptic neurons drives a trans-synaptic retrograde BDNF-TrkB signaling pathway that modulates presynaptic function during homeostatic synaptic plasticity, with the locations of action for each signaling molecule unequivocally established through pre- and postsynaptic-specific genetic deletions.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Introduction",
+        "verbatim_quote": "Using pre- and postsynaptic specific genetic deletions of Rara, Bdnf, and Ntrk2, we unequivocally established the locations of the actions of each of these key signaling molecules during homeostatic modulation of presynaptic function.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The experimental design using conditional knockout mice with region-specific Cre-expressing AAV injections in CA3 vs CA1 is well-suited to dissect pre- vs. postsynaptic loci of action, and represents a significant advance over earlier pharmacological or global knockout approaches.",
+            "The study provides a logically coherent pathway: postsynaptic RARα binds dendritically localized Bdnf mRNAs (exon 2 and 6), RA de-represses their translation, newly synthesized BDNF acts retrogradely on presynaptic TrkB. The genetic dissection results for BDNF (postsynaptic KO blocks frequency change) and TrkB (presynaptic KO blocks frequency change) are internally consistent with this model.",
+            "Strong specificity controls are embedded: the F-domain deletion of RARα abolishes mRNA binding; RARβ does not bind the same transcripts; PSD95 mRNA does not respond to RA in synaptoneurosomes; amplitude changes (postsynaptic) are unaffected by BDNF/TrkB deletions, demonstrating pathway-specific effects.",
+            "The RARα conditional KO experiments (c1.2) show consistent results across both RA and CNQX treatments, with appropriate statistical F-values for the genotype main effect in the frequency data, strengthening the postsynaptic RARα requirement.",
+            "The approach builds on well-established prior work by the same group (Wang et al., 2011; Aoto et al., 2008; Poon and Chen, 2008) and is consistent with other groups' findings on BDNF retrograde signaling in homeostatic plasticity (Jakawich et al., 2010; Henry et al., 2012; Henry et al., 2018)."
+          ],
+          "weaknesses": [
+            "CRITICAL INFERENTIAL GAP (from c1.5): The word 'unequivocally' in the claim is not warranted given statistical problems. For TrkB CNQX data, the reported omnibus F-statistic for genotype effect on frequency is F(2,168) = 0.17, p > 0.8, meaning there is no statistical evidence that CNQX effects on frequency differ across genotypes. Claiming significant pairwise differences after a non-significant omnibus test is statistically invalid. This directly undermines the 'unequivocal' establishment of TrkB's presynaptic locus under CNQX conditions.",
+            "CRITICAL INFERENTIAL GAP (from c1.5): For BDNF CNQX data, the interaction/genotype F-statistic is F(2,195) = 2.53, p > 0.05, also non-significant, yet significant pairwise comparisons are reported. This weakens the claim for BDNF's postsynaptic locus under physiologically relevant (CNQX) conditions.",
+            "EVIDENTIAL GAP (from c1.3): The RNA-binding assay is semi-quantitative (gel-based RT-PCR, not qPCR), preventing rigorous quantification of binding enrichment. The in vitro assay uses purified recombinant proteins, which may not reflect in vivo binding dynamics in the presence of competing RNA-binding proteins and RNP complexes. No in vivo binding data (e.g., CLIP-seq, RIP-qPCR from neurons) is provided.",
+            "EVIDENTIAL GAP (from c1.4): The proBDNF increase in synaptoneurosomes is only marginally significant (p < 0.05) and effect sizes/confidence intervals are not reported. The number of independent experiments for this assay is unclear. Only proBDNF is measured; mature BDNF, which is the active TrkB ligand, is not assessed.",
+            "EVIDENTIAL GAP: No direct demonstration that BDNF is actually released from postsynaptic dendrites upon RA treatment or activity blockade. The pathway is inferred from genetic deletions but the secretion step — the actual retrograde signaling event — is not measured.",
+            "INFERENTIAL GAP (from c1.6): The temporal correlation between developmental BDNF expression increase and emergence of presynaptic homeostatic modulation is presented as supporting evidence but is not tested causally. No experiment directly manipulates developmental BDNF levels to test whether this correlation is necessary.",
+            "The F-statistics reported in figure legends for the RARα, BDNF, and TrkB experiments may represent genotype main effects rather than the critical genotype × treatment interaction terms. If these are only main effects, the statistical evidence for differential treatment effects across genotypes (the key claim) is weaker than presented.",
+            "INFERENTIAL GAP (from c1.1): The claim of cross-species conservation of presynaptic homeostatic mechanisms overreaches; the paper provides data only from mouse hippocampal slices, and the Drosophila NMJ mechanisms likely differ at the molecular level.",
+            "INFERENTIAL GAP (from c1.7): The discussion claims implications for neuropsychiatric disorders, but no disease model data is presented. This is entirely speculative and weakens overall calibration."
+          ],
+          "alternative_interpretations": [
+            "The mEPSC frequency increase could partially reflect changes in synapse number, postsynaptic receptor insertion at previously silent synapses, or changes in spontaneous vesicle release independent of evoked release probability (the failure rate analysis only tests classical silent synapses, not all possible mechanisms).",
+            "BDNF synthesized postsynaptically could act through autocrine signaling on postsynaptic TrkB (or p75NTR) to indirectly modulate presynaptic function via other retrograde messengers, rather than acting directly on presynaptic TrkB.",
+            "The mTORC1 pathway (Henry et al., 2012; Henry et al., 2018) may independently drive BDNF synthesis, and the RA/RARα pathway may be partially redundant rather than essential. The relationship between these two pathways is acknowledged as unresolved.",
+            "Given that PPR changes can reflect mechanisms beyond simple release probability changes (e.g., vesicle pool dynamics, calcium channel properties), the PPR data alone does not conclusively establish enhanced release probability."
+          ],
+          "required_assumptions": [
+            "AAV-Cre infection achieves complete or near-complete deletion of target genes in the targeted region (CA3 or CA1), with no ectopic expression.",
+            "The organotypic slice culture system faithfully recapitulates the synaptic physiology and homeostatic plasticity mechanisms operating in vivo.",
+            "ProBDNF measured in synaptoneurosomes is processed to mature BDNF and released from dendrites in sufficient quantities to activate presynaptic TrkB.",
+            "The in vitro RNA-binding specificity of purified RARα LBD for Bdnf exon 2 and exon 6 transcripts reflects the actual binding in neuronal dendrites.",
+            "Changes in mEPSC frequency in these experiments primarily reflect presynaptic changes rather than postsynaptic unsilencing or synaptogenesis.",
+            "Post-hoc pairwise comparisons following non-significant omnibus tests are valid (a problematic assumption for the CNQX conditions)."
+          ],
+          "notes": "The use of 'unequivocally' is the most problematic aspect of this claim. The RA treatment data provides stronger support than the CNQX data, where the omnibus statistics fail to reach significance for the critical genotype effects on frequency. The paper would be more accurately calibrated if it stated the pathway was 'strongly supported' rather than 'unequivocally established.' The overall model is biologically plausible and well-motivated, but several links in the chain have moderate rather than strong evidence. The paper's greatest strength is the systematic genetic dissection approach; its greatest weakness is the statistical inconsistencies in the CNQX condition and the lack of direct evidence for BDNF secretion.",
+          "literature_citations": [
+            {
+              "title": "Postsynaptic BDNF release mediates homeostatic presynaptic compensation",
+              "authors": [
+                "Jakawich",
+                "Nasser",
+                "Strong",
+                "McCartney",
+                "Bhatt",
+                "Bhatt",
+                "Henry",
+                "bhatt"
+              ],
+              "year": 2010,
+              "url": null,
+              "relevance": "Established the role of postsynaptic BDNF in homeostatic presynaptic compensation, which the current study extends by identifying the upstream RA/RARα pathway.",
+              "stance": "supports"
+            },
+            {
+              "title": "A rapidly activating dendritic mTORC1 signaling underlies BDNF-dependent homeostatic presynaptic compensation",
+              "authors": [
+                "Henry",
+                "Bhatt",
+                "bhatt"
+              ],
+              "year": 2012,
+              "url": null,
+              "relevance": "Proposed mTORC1-dependent BDNF synthesis as a parallel/alternative mechanism for homeostatic presynaptic changes; raises question of whether RARα pathway is independent or overlapping.",
+              "stance": "extends"
+            },
+            {
+              "title": "Regulation of presynaptic neurotransmission by macroautophagy",
+              "authors": [
+                "Wang",
+                "Bhatt",
+                "bhatt"
+              ],
+              "year": 2011,
+              "url": null,
+              "relevance": "Prior work from the same group establishing that RA synthesis is required for both amplitude and frequency increases in older cultures, providing the foundation for the current study.",
+              "stance": "supports"
+            },
+            {
+              "title": "Translational regulation by RARα in dendrites",
+              "authors": [
+                "Poon",
+                "Chen"
+              ],
+              "year": 2008,
+              "url": null,
+              "relevance": "Established the molecular mechanism of RARα-mediated translational regulation in dendrites, including the F-domain binding to mRNAs, which the current study extends to Bdnf transcripts.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "RA enhances presynaptic function at excitatory synapses in mature hippocampal ne…",
+        "claim": "RA enhances presynaptic function at excitatory synapses in mature hippocampal neurons, and this modification of presynaptic release is a conserved homeostatic mechanism operating across species.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "these results are consistent with previous findings from both rodent and Drosophila studies and demonstrate that modification of presynaptic release is a conserved homeostatic mechanism operating at glutamatergic synapses across species.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The paper demonstrates RA-induced increases in mEPSC frequency and reduced paired-pulse ratio in organotypic hippocampal slices, providing direct evidence for presynaptic enhancement.",
+            "The failure rate analysis at -60 and +40 mV rules out activation of silent synapses as an alternative explanation for frequency changes.",
+            "The maturation-dependence of the frequency increase (older but not younger cultures) is consistent with prior work (Wang et al., 2011) and argues against synaptogenesis as the mechanism."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim that this is a 'conserved homeostatic mechanism operating across species' overreaches the data presented. The study only provides new data from mouse hippocampal slices; the cross-species conservation claim relies entirely on citation of prior Drosophila studies (Davis and Müller, 2015; Subramanian and Dickman, 2015). The presynaptic mechanisms at Drosophila NMJ and mammalian central synapses may share a functional outcome but differ mechanistically (e.g., different retrograde messengers).",
+            "The PPR reduction is suggestive but not conclusive evidence for enhanced release probability — PPR changes can also reflect alterations in short-term plasticity mechanisms independent of baseline release probability.",
+            "Only two alternative explanations (silent synapses and new synapse formation) are formally addressed. Other mechanisms such as changes in readily releasable pool size, number of functional release sites, or multivesicular release are not excluded.",
+            "The 10 µM RA concentration is supraphysiological, though this is standard in the field. No dose-response is shown.",
+            "No explicit statement of blinding to treatment condition during recording or analysis."
+          ],
+          "alternative_interpretations": [
+            "The frequency increase could reflect changes in the number of functional release sites rather than release probability per se.",
+            "The cross-species 'conservation' may represent convergent evolution of a functional outcome (presynaptic compensation) rather than a conserved molecular mechanism, given that Drosophila NMJ and mammalian central synapses use different retrograde messengers."
+          ],
+          "required_assumptions": [
+            "PPR changes faithfully reflect changes in presynaptic release probability.",
+            "Functional parallels between Drosophila NMJ presynaptic homeostatic plasticity and mammalian central synapse presynaptic changes represent true mechanistic conservation.",
+            "The 10 µM RA treatment recapitulates the physiological RA synthesis triggered by activity blockade."
+          ],
+          "notes": "The strongest evidence for presynaptic enhancement is the PPR data, but the cross-species conservation claim is an inferential overreach from the data presented in this paper.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Postsynaptic RARα, but not presynaptic RARα, is required for RA-induced homeosta…",
+        "claim": "Postsynaptic RARα, but not presynaptic RARα, is required for RA-induced homeostatic increases in both mEPSC amplitude and frequency, meaning newly synthesized RA acts via postsynaptic RARα to promote homeostatic adjustment of synaptic strength in both pre- and postsynaptic compartments.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "newly synthesized RA acts via postsynaptic RARα to promote homeostatic adjustment of synaptic strength in both pre- and postsynaptic compartments.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Elegant use of region-specific Cre-AAV injection in conditional knockout mice to achieve pre- vs. postsynaptic-specific RARα deletion at Schaffer collateral-CA1 synapses.",
+            "High infection efficiency (>90%) in CA3 verified by imaging, lending confidence to the presynaptic deletion condition.",
+            "The same result is replicated with both acute RA treatment and chronic CNQX treatment, strengthening the conclusion through convergent evidence.",
+            "The effect is observed for both mEPSC amplitude (expected postsynaptic effect) and frequency (the novel trans-synaptic effect), and both are blocked only by postsynaptic RARα deletion.",
+            "Extension to inhibitory synapses (mIPSC data in supplementary figure) showing postsynaptic RARα-dependence is consistent with the broader framework."
+          ],
+          "weaknesses": [
+            "The specific F-statistics reported in figure legends may represent genotype main effects rather than the critical genotype × treatment interaction terms. If these are main effects, the statistical support for differential effects across genotypes is less clear.",
+            "Use of Mann-Whitney test as a post-hoc after two-way ANOVA is unconventional; while conservative, it does not account for multiple comparison correction in the standard way.",
+            "Incomplete washout of CNQX before recording could theoretically affect mEPSC detection, though the paper states washout was performed.",
+            "The mIPSC data showing reduced frequency with RA in older neurons (supplementary figure) is not pursued mechanistically, leaving a gap in understanding whether the same BDNF-TrkB mechanism operates at inhibitory synapses."
+          ],
+          "alternative_interpretations": [
+            "The postsynaptic RARα deletion could affect postsynaptic properties (e.g., receptor trafficking) that indirectly influence presynaptic function through mechanisms other than retrograde signaling (e.g., altered trans-synaptic adhesion complexes).",
+            "RARα deletion in CA1 could affect not only dendritic translational regulation but also transcriptional programs that influence retrograde signaling."
+          ],
+          "required_assumptions": [
+            "AAV-Cre expression achieves complete or near-complete RARα deletion in the targeted region.",
+            "RARα deletion does not have significant developmental or compensatory effects over the 21-25 day culture period that confound interpretation.",
+            "Uninfected neurons in the same slice serve as appropriate controls for virus-infected neurons."
+          ],
+          "notes": "This is one of the strongest results in the paper, supported by convergent evidence from two different induction paradigms (RA and CNQX).",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "RARα directly binds to specific dendritically localized Bdnf mRNA isoforms (cont…",
+        "claim": "RARα directly binds to specific dendritically localized Bdnf mRNA isoforms (containing exon 2 and exon 6) through its F domain, enabling RA-dependent translational regulation of BDNF.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "We show that RARα is directly associated with specific dendritically localized Bdnf mRNA isoforms. This enables RA-induced translational de-repression of BDNF synthesis in dendrites.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple controls strengthen the RNA-binding assay: GST alone, RARα LBD ΔF (F-domain deletion), and RARβ LBD as negative controls; GluA1 mRNA as a known positive control; and PSD95, CaMKII, and EF1α as negative mRNA controls.",
+            "The in silico identification of RARα-binding motifs in Bdnf exon 2 and exon 6 is corroborated by the in vitro binding data.",
+            "The F-domain requirement for binding is consistent with prior work on RARα-mRNA interactions (Poon and Chen, 2008).",
+            "Bdnf exon 1, which has only one binding motif and is not dendritically localized, fails to bind RARα, providing an internal negative control within the Bdnf gene family."
+          ],
+          "weaknesses": [
+            "The RNA-binding assay is semi-quantitative (gel-based RT-PCR), not quantitative (qPCR), so the degree of enrichment cannot be rigorously assessed.",
+            "In vitro RNA-binding assays with purified recombinant proteins may not recapitulate in vivo conditions where competing RNA-binding proteins and RNP complexes could modulate binding.",
+            "No direct demonstration of RARα binding to Bdnf mRNAs in intact neurons (e.g., CLIP-seq, RIP from neuronal lysates) is provided.",
+            "Deletion of the F domain could affect protein folding or stability, contributing to loss of binding independently of direct mRNA-binding function.",
+            "The dendritic localization of Bdnf exon 2 and 6 transcripts is cited from Baj et al. (2011) in dissociated cultures and not verified in the organotypic slices used in this study.",
+            "The exon 1 result conflates two variables: number of binding motifs and dendritic localization — both differ from exons 2/6, making it unclear which property drives the differential binding."
+          ],
+          "alternative_interpretations": [
+            "RARα may bind to Bdnf mRNAs in vitro but not regulate their translation in vivo if other RNA-binding proteins compete for the same sites.",
+            "The binding could be a general property of F-domain-containing proteins interacting with certain RNA structural motifs rather than a specific RARα-Bdnf regulatory interaction."
+          ],
+          "required_assumptions": [
+            "In vitro binding with recombinant GST-fusion proteins faithfully represents the in vivo RARα-mRNA interaction.",
+            "The RARα recognition motifs identified computationally are the actual binding sites.",
+            "Bdnf exon 2 and exon 6 transcripts are present in dendrites of organotypic slice culture neurons at 21-25 DIV."
+          ],
+          "notes": "The claim is appropriately scoped — the authors say 'directly associated' and 'enabling' rather than claiming definitive proof of translational de-repression through this specific interaction. The lack of in vivo validation (e.g., CLIP) is a notable but not fatal gap.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "RA induces local translation of BDNF protein in synaptic compartments, demonstra…",
+        "claim": "RA induces local translation of BDNF protein in synaptic compartments, demonstrating that RARα binding to Bdnf mRNAs conveys translational regulation of BDNF by RA.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Thus, RARα binding to Bdnf mRNAs does convey translational regulation of BDNF by RA.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The synaptoneurosome preparation is validated with appropriate controls (PSD95 enrichment, histone H3 absence).",
+            "GluA1 increase serves as a positive control confirming translational competency of the preparation.",
+            "PSD95, a dendritically localized mRNA that does not bind RARα, serves as a negative control and does not respond to RA, supporting specificity.",
+            "The result bridges the binding data (Figure 2D) with functional protein synthesis, forming a coherent argument."
+          ],
+          "weaknesses": [
+            "The proBDNF increase is only marginally significant (p < 0.05) and effect size/confidence intervals are not reported.",
+            "The number of independent experiments (N) for the synaptoneurosome translation assay is not clearly stated in the main text.",
+            "Only one negative control (PSD95) is shown for the translation assay; additional controls would strengthen the specificity claim.",
+            "PSD95 protein has a long half-life, so failure to detect changes in 30 minutes of RA treatment does not definitively prove its translation is unaffected.",
+            "The synaptoneurosome assay demonstrates RA-induced translation but cannot distinguish between RARα-dependent and RARα-independent translational mechanisms without RARα knockdown in this preparation.",
+            "Only proBDNF is measured; it is not shown whether this is processed to mature BDNF, which is the form that most potently activates TrkB."
+          ],
+          "alternative_interpretations": [
+            "The proBDNF increase could reflect RA-induced stabilization of proBDNF protein rather than de novo translation.",
+            "RA might activate translation through pathways other than RARα in synaptoneurosomes (e.g., through non-genomic RA signaling pathways).",
+            "The marginal significance could represent a weak or variable effect that may not be biologically meaningful."
+          ],
+          "required_assumptions": [
+            "Synaptoneurosome preparations faithfully recapitulate dendritic translational regulation.",
+            "The increase in proBDNF levels reflects de novo translation rather than protein stabilization.",
+            "RARα is the mediator of RA-induced BDNF translation in this preparation."
+          ],
+          "notes": "The marginal statistical significance (p < 0.05) for the key proBDNF result is a notable concern, though the claim is stated cautiously.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Postsynaptic BDNF acts as a retrograde messenger through presynaptic TrkB recept…",
+        "claim": "Postsynaptic BDNF acts as a retrograde messenger through presynaptic TrkB receptors to drive homeostatic increases in mEPSC frequency, while BDNF/TrkB signaling is exclusively involved in presynaptic function regulation and does not affect postsynaptic homeostatic amplitude changes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Deletion of either BDNF or TrkB pre- or postsynaptically did not affect the homeostatic increase in mEPSC amplitude, indicating that BDNF/TrkB signaling is exclusively involved in regulation of presynaptic function.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The experimental design using region-specific Cre-AAV injection in conditional BDNF and TrkB knockout mice is elegant and directly addresses loci of action.",
+            "The complementary pattern — postsynaptic BDNF deletion blocks frequency increase while presynaptic TrkB deletion blocks frequency increase — provides strong convergent evidence for retrograde BDNF-TrkB signaling.",
+            "Both RA and CNQX treatments are used, providing convergent evidence from two induction paradigms for the RA condition.",
+            "The lack of effect of BDNF/TrkB deletion on mEPSC amplitude is consistent with a specific role in presynaptic modulation."
+          ],
+          "weaknesses": [
+            "Critical statistical concern for the TrkB CNQX data: The reported F-statistic for the interaction/genotype effect on frequency is F(2,168) = 0.17, p > 0.8, indicating no evidence whatsoever that CNQX effects on frequency differ across genotypes. Yet the paper appears to claim significant pairwise differences. Conducting post-hoc pairwise tests after a clearly non-significant omnibus test is statistically invalid.",
+            "Similarly, for the BDNF CNQX data: the interaction term F(2,195) = 2.53, p > 0.05 is also not significant, yet significant pairwise comparisons are apparently reported.",
+            "The claim that BDNF/TrkB signaling is 'exclusively involved in regulation of presynaptic function' is strong language — only mEPSC amplitude was measured as a postsynaptic readout. Other postsynaptic parameters (e.g., surface AMPAR levels, spine density, dendritic morphology) were not assessed.",
+            "It is unclear whether the F-statistics reported represent genotype main effects or the critical genotype × treatment interaction terms, which is essential for interpreting the claim.",
+            "Absence of evidence (no significant effect on amplitude) should not be equated with evidence of absence, particularly without a formal power analysis for the amplitude comparison."
+          ],
+          "alternative_interpretations": [
+            "Given the non-significant omnibus tests for CNQX conditions, the apparent selective effects could be statistical artifacts of multiple pairwise comparisons.",
+            "BDNF released from postsynaptic neurons could act on TrkB receptors on other cell types (e.g., astrocytes, interneurons) that indirectly modulate presynaptic function.",
+            "The selectivity for frequency but not amplitude could reflect a floor effect if BDNF/TrkB has a small effect on amplitude that is below detection threshold."
+          ],
+          "required_assumptions": [
+            "The F-statistics reported support significant genotype × treatment interactions (not just main effects).",
+            "Complete deletion of BDNF and TrkB in the targeted regions is achieved.",
+            "No compensatory upregulation of other neurotrophins (e.g., NT-3, NT-4) occurs in BDNF or TrkB knockout neurons.",
+            "mEPSC amplitude is a sufficient readout for postsynaptic changes."
+          ],
+          "notes": "The RA treatment results appear statistically sound, but the CNQX results for both BDNF and TrkB experiments have serious statistical concerns with non-significant omnibus tests followed by significant pairwise comparisons. This undermines the claim that the result is replicated with CNQX. The claim should be more cautiously stated as primarily supported by the RA data.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "The developmental upregulation of BDNF expression coincides with the maturation-…",
+        "claim": "The developmental upregulation of BDNF expression coincides with the maturation-dependent emergence of presynaptic homeostatic modulation, and this developmental trajectory is preserved in the organotypic slice culture system.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "BDNF expression in the brain is developmentally regulated and exhibits a steep increase between postnatal day 15 and 20, a time period that coincides with the emergence of RA-dependent presynaptic homeostatic modulation observed in 21 DIV primary cultured hippocampal neurons.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Both in vivo hippocampal tissue and organotypic slice cultures show a concordant developmental increase in proBDNF expression, providing convergent evidence.",
+            "The developmental trajectory in slices recapitulates the in vivo pattern, validating the culture system for studying this phenomenon.",
+            "The temporal correlation between BDNF upregulation and the emergence of presynaptic homeostatic plasticity is internally consistent."
+          ],
+          "weaknesses": [
+            "Inferential gap: Temporal correlation between BDNF expression increase and emergence of presynaptic homeostatic modulation does not establish causation. No experiment directly tests whether the developmental increase in BDNF is necessary or sufficient for the maturation-dependent emergence of presynaptic homeostatic changes.",
+            "Only proBDNF is measured; mature BDNF levels, which activate TrkB, are not assessed at different developmental time points.",
+            "The claim implies a causal relationship ('coincides with') that is not tested. Many other molecular changes occur during the same developmental window (e.g., changes in presynaptic machinery, receptor expression, signaling molecules).",
+            "Organotypic slices from P7-8 pups maintained for 21 DIV correspond approximately to P28-29 in vivo, but the mapping between in vitro and in vivo developmental stages is imperfect."
+          ],
+          "alternative_interpretations": [
+            "The maturation-dependent emergence of presynaptic homeostatic plasticity could depend on developmental changes in presynaptic machinery, RA synthesis enzymes, or other signaling molecules rather than BDNF expression levels.",
+            "BDNF expression may increase because of increased synaptic activity during development rather than being a cause of maturation-dependent presynaptic homeostatic plasticity."
+          ],
+          "required_assumptions": [
+            "Temporal correlation implies mechanistic relevance.",
+            "proBDNF levels are a proxy for the availability of mature BDNF for retrograde signaling.",
+            "In vitro developmental trajectory faithfully recapitulates in vivo maturation."
+          ],
+          "notes": "This is primarily a correlative observation. While the correlation is interesting and motivates the study, the claim as stated implies a causal relationship that is not established.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The convergence of BDNF and RA signaling pathways in homeostatic plasticity has …",
+        "claim": "The convergence of BDNF and RA signaling pathways in homeostatic plasticity has implications for neuropsychiatric disorders, particularly fragile X syndrome where RA-RARα-regulated homeostatic plasticity is absent.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "The convergence of BDNF signaling and RA signaling for synaptic functions and homeostatic plasticity highlights the importance of understanding the intersections of various synaptic signaling pathways and their implications in cognitive function.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The discussion appropriately frames the translational relevance of the findings within the broader context of neuropsychiatric disorders.",
+            "The connection to FXS is grounded in published work showing absence of RA-RARα-mediated homeostatic plasticity in Fmr1 KO mice and human FXS neurons (Soden and Chen, 2010; Zhang et al., 2013; Zhong et al., 2018)."
+          ],
+          "weaknesses": [
+            "Inferential gap: No data in this paper examines BDNF signaling in any disease model. The claim that the convergence of BDNF and RA signaling has implications for neuropsychiatric disorders is entirely speculative.",
+            "The cited FXS studies examined RA-RARα signaling but not BDNF-dependent presynaptic changes specifically. Whether BDNF-TrkB retrograde signaling is disrupted in FXS is unknown.",
+            "The discussion does not address the complexity of BDNF signaling in disease — BDNF alterations in neuropsychiatric disorders may involve transcriptional, translational, and secretory mechanisms that are distinct from the RA-dependent pathway described here.",
+            "No new data addresses how RA/RARα and mTORC1 pathways interact in the context of homeostatic plasticity, despite this being raised as an important question."
+          ],
+          "alternative_interpretations": [
+            "The absence of RA-RARα homeostatic plasticity in FXS could be due to disruptions in RA synthesis or AMPAR trafficking rather than BDNF-dependent retrograde signaling.",
+            "BDNF signaling deficits in neuropsychiatric disorders may be independent of RA/RARα regulation and instead reflect transcriptional dysregulation."
+          ],
+          "required_assumptions": [
+            "RA-dependent BDNF regulation operates similarly in disease models as in wild-type neurons.",
+            "The RA-RARα and BDNF pathways interact in disease-relevant contexts.",
+            "Findings in organotypic hippocampal slice cultures are translatable to in vivo disease pathophysiology."
+          ],
+          "notes": "This is a discussion-level claim and is appropriately flagged as such. However, the language 'highlights the importance' implies a stronger connection than the data supports.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "RA treatment increases both mEPSC amplitude and frequency in CA1 pyramidal neuro…",
+        "claim": "RA treatment increases both mEPSC amplitude and frequency in CA1 pyramidal neurons of 21-25 DIV organotypic hippocampal slices, replicating previous findings in primary cultures.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "A significant increase in both mEPSC amplitude and frequency in CA1 pyramidal neurons was observed, replicating our previous findings in primary hippocampal neuronal cultures.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct electrophysiological measurement of mEPSCs in CA1 pyramidal neurons from organotypic slices with appropriate age (21-25 DIV).",
+            "Replication of prior findings from primary cultures (Wang et al., 2011) in a more intact preparation (organotypic slices) strengthens the generalizability.",
+            "Both amplitude and frequency data are shown with statistical analysis (two-way ANOVA)."
+          ],
+          "weaknesses": [
+            "The RA concentration used (10 µM) is supraphysiological, raising questions about physiological relevance, though this is standard in the field.",
+            "No explicit statement of blinding to treatment condition during recording/analysis.",
+            "The claim of 'replicating' prior findings in a different preparation (organotypic slices vs. dissociated cultures) is technically an extension rather than a strict replication."
+          ],
+          "alternative_interpretations": [
+            "The supraphysiological RA dose could activate signaling pathways not engaged at endogenous RA concentrations during homeostatic plasticity.",
+            "mEPSC frequency increases could reflect multiple mechanisms beyond presynaptic release changes."
+          ],
+          "required_assumptions": [
+            "10 µM RA engages the same signaling pathways as endogenously synthesized RA during synaptic inactivity.",
+            "Organotypic hippocampal slices adequately model in vivo hippocampal circuitry."
+          ],
+          "notes": "The sub-claim evaluation notes the supraphysiological dose but acknowledges field conventions. Overall the evidence is direct and the claim is appropriately scoped.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The RA-induced mEPSC frequency increase reflects enhanced presynaptic release pr…",
+        "claim": "The RA-induced mEPSC frequency increase reflects enhanced presynaptic release probability rather than unsilencing of silent synapses or new synapse formation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "activation of postsynaptic silent synapses is not a contributing factor to the mEPSC frequency changes observed",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Multiple complementary approaches used: PPR measurements to assess release probability, minimal stimulation to assess silent synapses.",
+            "PPR reduction is consistent with enhanced presynaptic release probability.",
+            "Silent synapse analysis at both -60 and +40 mV is methodologically appropriate."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim states the frequency increase 'reflects enhanced presynaptic release probability' but the evidence only rules out two alternative explanations (silent synapses and new synapse formation). Other mechanisms (e.g., increased number of release sites, changes in readily releasable pool size, multivesicular release) are not excluded.",
+            "The argument against new synapse formation is based on plausibility reasoning (frequency increase only in older cultures where synaptogenesis is less robust), not on direct measurement of synapse number.",
+            "PPR changes could also reflect changes in presynaptic calcium buffering or other mechanisms beyond simple release probability.",
+            "Sample sizes for supplementary experiments are not detailed in the text."
+          ],
+          "alternative_interpretations": [
+            "RA could increase the number of functional release sites without changing per-site release probability.",
+            "RA could promote maturation of pre-existing but non-functional synapses rather than changing release probability at existing active synapses.",
+            "PPR changes could reflect changes in presynaptic calcium dynamics rather than straightforward release probability changes."
+          ],
+          "required_assumptions": [
+            "PPR changes faithfully reflect release probability changes.",
+            "The failure rate analysis has sufficient statistical power to detect silent synapses if present.",
+            "The absence of frequency increase in younger cultures rules out synaptogenesis as a mechanism in older cultures."
+          ],
+          "notes": "The claim makes a positive assertion about mechanism (enhanced release probability) but the evidence primarily rules out two alternatives. The composite of sub-claims is moderate at best due to the weak evidential support for the new synapse formation argument and the moderate evidence from PPR and silent synapse analyses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "The homeostatic increase in mEPSC frequency only occurs in older (21 DIV), not y…",
+        "claim": "The homeostatic increase in mEPSC frequency only occurs in older (21 DIV), not younger (14 DIV) cultured neurons, indicating a maturation-dependent mechanism.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "in older (21 days in vitro [DIV]) but not younger (14 DIV) cultured primary hippocampal neurons, chronic treatment with postsynaptic activity blockers...results in a significant increase in both mEPSC frequency and mEPSC amplitude.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation is referenced to a prior publication (Wang et al., 2011) that directly compared young and old cultures.",
+            "The claim is appropriately stated as an observation rather than a mechanistic conclusion.",
+            "Consistent with the broader literature showing developmental regulation of homeostatic plasticity mechanisms."
+          ],
+          "weaknesses": [
+            "The current study does not present new data comparing young vs. old cultures; this is cited from prior work.",
+            "The data from Wang et al. (2011) was obtained in dissociated cultures, not organotypic slices used in the current study. No direct comparison of young vs. old organotypic slices is shown.",
+            "The term 'maturation-dependent mechanism' is somewhat interpretive; the data show a temporal correlation with culture age but do not identify the specific maturation event required."
+          ],
+          "alternative_interpretations": [
+            "The age-dependence could reflect changes in network connectivity or circuit composition rather than a cell-autonomous maturation event.",
+            "The difference could be due to changes in BDNF expression levels (as the authors later show) or other developmentally regulated factors."
+          ],
+          "required_assumptions": [
+            "The findings from Wang et al. (2011) in dissociated cultures generalize to the organotypic slice preparation used here.",
+            "Culture age is a meaningful proxy for neuronal maturation."
+          ],
+          "notes": "The claim is calibrated—it states an observation and its implication without overreaching. However, the evidence is from prior work, not the current study.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Selective deletion of RARα in postsynaptic (CA1) but not presynaptic (CA3) neuro…",
+        "claim": "Selective deletion of RARα in postsynaptic (CA1) but not presynaptic (CA3) neurons blocks RA-induced homeostatic increases in both mEPSC amplitude and frequency.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Selective deletion of RARα in postsynaptic neurons (Cre expressed in CA1 neurons), but not presynaptic neurons (Cre expressed in CA3 neurons), blocked RA-induced homeostatic increases in both mEPSC amplitude and frequency",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Elegant experimental design using region-specific AAV-Cre injection in conditional knockout mice to achieve pre- vs. postsynaptic-specific deletion.",
+            "High infection efficiency (>90%) in CA3 verified by imaging (Figure 1—figure supplement 1C).",
+            "Clear dissociation: postsynaptic KO blocks both amplitude and frequency changes while presynaptic KO does not.",
+            "Statistical analysis with two-way ANOVA shows significant genotype effects for both amplitude and frequency."
+          ],
+          "weaknesses": [
+            "The specific nature of the reported F-statistics (main effect vs. interaction term) is not entirely clear from the figure legend. The interaction term is the critical statistic for this claim.",
+            "Use of Mann-Whitney test as post-hoc after two-way ANOVA is somewhat unconventional, though Mann-Whitney is conservative for non-normal data.",
+            "Potential concern about off-target effects of AAV infection itself on synaptic properties, though the uninfected WT controls partially address this."
+          ],
+          "alternative_interpretations": [
+            "Postsynaptic RARα deletion could indirectly affect presynaptic function through chronic changes in postsynaptic activity levels rather than through acute RA-dependent signaling.",
+            "The effect could be partially mediated by loss of transcriptional functions of RARα in the nucleus, not just its translational regulatory role in dendrites."
+          ],
+          "required_assumptions": [
+            "AAV-Cre expression achieves complete or near-complete RARα deletion in targeted neurons.",
+            "The absence of Cre expression in the recording site (CA1) when Cre is injected into CA3 (and vice versa).",
+            "RARα deletion does not alter baseline synaptic properties sufficiently to confound the results."
+          ],
+          "notes": "The evidence is direct and the experimental design is well-suited to the claim. This is one of the stronger pieces of evidence in the paper.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "The same postsynaptic RARα requirement is observed when homeostatic plasticity i…",
+        "claim": "The same postsynaptic RARα requirement is observed when homeostatic plasticity is induced by chronic CNQX treatment, which triggers de novo RA synthesis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "these results were also observed when homeostatic plasticity was induced with chronic synaptic activity blocker CNQX (20 µM, 36 hr), which has been shown to induce de novo RA synthesis.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Replication of the RARα deletion results with a different induction method (CNQX vs. exogenous RA) strengthens the conclusion that postsynaptic RARα is required.",
+            "CNQX treatment represents a more physiologically relevant induction method as it triggers endogenous RA synthesis.",
+            "Significant genotype effects in two-way ANOVA for both amplitude and frequency."
+          ],
+          "weaknesses": [
+            "CNQX is washed out before recording, but residual effects on mEPSC detection could be a concern if washout is incomplete.",
+            "The 36-hour CNQX treatment could trigger additional compensatory mechanisms beyond RA synthesis.",
+            "Same statistical concern about whether the F-statistics represent genotype main effects vs. interaction terms."
+          ],
+          "alternative_interpretations": [
+            "CNQX-induced homeostatic plasticity may engage additional signaling pathways beyond RA synthesis (e.g., mTORC1), and the requirement for postsynaptic RARα could reflect disruption of one of several parallel pathways."
+          ],
+          "required_assumptions": [
+            "CNQX is fully washed out before mEPSC recording.",
+            "36-hour CNQX treatment primarily engages RA-dependent homeostatic mechanisms."
+          ],
+          "notes": "The convergent evidence from both RA and CNQX paradigms substantially strengthens the overall conclusion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "RA also modulates inhibitory synaptic transmission through postsynaptic RARα, re…",
+        "claim": "RA also modulates inhibitory synaptic transmission through postsynaptic RARα, reducing both mIPSC amplitude and frequency in mature neurons.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Acute RA treatment in 21–25 DIV cultured slices significantly reduced mIPSC amplitudes...the mIPSC frequency in these older neurons was also reduced by RA. These changes in inhibitory synaptic transmission were blocked by postsynaptic RARα deletion.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Extends the known role of RARα in mIPSC amplitude regulation (Sarti et al., 2013) to include frequency effects in mature neurons.",
+            "Postsynaptic RARα deletion blocks both amplitude and frequency changes, providing specificity.",
+            "Convergent with in vivo observations from visual cortex (Zhong et al., 2018)."
+          ],
+          "weaknesses": [
+            "Data is presented only in a supplementary figure and is not pursued mechanistically in the remainder of the study.",
+            "The comparison to visual cortex data (Zhong et al., 2018) involves different brain regions, preparations (in vitro vs. in vivo), and experimental conditions.",
+            "The mechanism by which postsynaptic RARα modulates inhibitory presynaptic function is not explored—it could be direct (through a retrograde signal to inhibitory terminals) or indirect (through changes in network activity)."
+          ],
+          "alternative_interpretations": [
+            "Reduced mIPSC frequency could reflect postsynaptic changes (receptor removal from inhibitory synapses) rather than presynaptic changes at inhibitory terminals.",
+            "The frequency change could be secondary to network effects of altered excitatory/inhibitory balance rather than a direct RA effect on inhibitory presynaptic terminals."
+          ],
+          "required_assumptions": [
+            "mIPSC frequency changes reflect presynaptic modifications at inhibitory synapses.",
+            "The mechanism of RA action on inhibitory synapses involves postsynaptic RARα signaling."
+          ],
+          "notes": "The authors appropriately limit the scope of this observation and focus subsequent experiments on excitatory synapses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "In silico analysis reveals that Bdnf exons 2 and 6 carry RARα-binding motifs in …",
+        "claim": "In silico analysis reveals that Bdnf exons 2 and 6 carry RARα-binding motifs in their sequences, and these transcripts are trafficked to distal dendrites and subject to activity-dependent translational regulation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This analysis revealed that at least two Bdnf exons (exon 2 and exon 6) carry RARα-binding motifs in their sequence.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "In silico identification of RARα-binding motifs in Bdnf exons 2 and 6 provides a clear rationale for subsequent binding experiments.",
+            "Convergence with published literature showing dendritic localization of these specific Bdnf transcripts (Baj et al., 2011; Song et al., 2017).",
+            "The temporal coincidence of increased dendritic localization of exon 2/6 transcripts with the onset of presynaptic homeostatic changes provides a plausible biological framework."
+          ],
+          "weaknesses": [
+            "The in silico analysis is not independently validated in this study—the binding motif identification relies on a consensus sequence from prior work, and the stringency of the search is not described.",
+            "The dendritic localization data is from Baj et al. (2011) in dissociated cultures, not verified in the organotypic slices used here.",
+            "Temporal coincidence (increased dendritic targeting of Bdnf transcripts around DIV 18) does not establish causality for the maturation-dependent frequency increase."
+          ],
+          "alternative_interpretations": [
+            "Other dendritically localized mRNAs with RARα-binding motifs could also contribute to presynaptic homeostatic changes.",
+            "The correlation between dendritic Bdnf transcript localization timing and onset of presynaptic homeostatic changes could be coincidental."
+          ],
+          "required_assumptions": [
+            "The RARα consensus binding motif identified in prior studies is specific and predictive.",
+            "Dendritic localization patterns from dissociated cultures (Baj et al., 2011) apply to organotypic slices."
+          ],
+          "notes": "The claim is appropriately framed as descriptive rather than mechanistic at this stage.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "In vitro RNA-binding assay shows Bdnf exon 2 and exon 6 transcripts exhibit sele…",
+        "claim": "In vitro RNA-binding assay shows Bdnf exon 2 and exon 6 transcripts exhibit selective enrichment through binding to RARα LBD, with specificity confirmed by multiple negative controls.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Bdnf transcripts containing exon 2 or exon 6 exhibited selective enrichment through binding to RARα LBD, along with Gria1 mRNAs, an mRNA substrate of RARα identified in our previous study.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple negative controls (GST alone, RARα LBD ΔF, RARβ LBD) establish specificity of the interaction.",
+            "Positive control (Gria1 mRNA, a known RARα target) validates the assay.",
+            "Additional negative controls (Psd95, Camk2a, Ef1a) that are dendritically localized but not RARα targets show expected lack of enrichment.",
+            "The experiment was performed three times with similar results."
+          ],
+          "weaknesses": [
+            "The assay is semi-quantitative RT-PCR (gel-based), not quantitative (qPCR), limiting assessment of binding affinity or enrichment magnitude.",
+            "In vitro RNA-binding assays with purified recombinant proteins and total RNA may not recapitulate in vivo conditions where competing RNA-binding proteins and RNP complexes exist.",
+            "No quantification of the gel images is presented; the data is evaluated visually from representative gel images.",
+            "The binding assay uses total hippocampal RNA, not RNA specifically from dendrites—it demonstrates RARα can bind these mRNAs, not that it does bind them in dendrites in situ."
+          ],
+          "alternative_interpretations": [
+            "Binding in vitro does not necessarily indicate functional binding in vivo; the interaction could be outcompeted by other RNA-binding proteins in the dendritic compartment.",
+            "The binding could occur but have different functional consequences than translational repression/de-repression."
+          ],
+          "required_assumptions": [
+            "In vitro RNA-protein binding reflects in vivo interactions.",
+            "Semi-quantitative RT-PCR adequately captures differential binding."
+          ],
+          "notes": "The assay approach is standard in the field (used previously in Poon and Chen, 2008) but has inherent limitations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The binding is mediated by the F domain of RARα, as deletion of the F domain abo…",
+        "claim": "The binding is mediated by the F domain of RARα, as deletion of the F domain abolishes all mRNA binding activity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "deletion of F domain, the mRNA-binding domain at the C-terminal end of RARα, abolished the binding activity of all mRNAs.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The F domain deletion construct provides a clear domain-mapping control.",
+            "Consistent with prior work identifying the F domain as the mRNA-binding domain of RARα (Poon and Chen, 2008).",
+            "Complete abolishment of binding with F domain deletion is a strong negative control."
+          ],
+          "weaknesses": [
+            "The result is shown only in the context of a semi-quantitative RT-PCR gel, without quantification.",
+            "Deletion of the F domain could affect protein folding or stability, which could contribute to loss of binding independently of direct mRNA-binding function.",
+            "No positive control demonstrating the ΔF construct retains other functions (e.g., ligand binding) to confirm structural integrity."
+          ],
+          "alternative_interpretations": [
+            "F domain deletion could cause misfolding that indirectly abolishes RNA binding rather than directly mediating the interaction."
+          ],
+          "required_assumptions": [
+            "The ΔF construct retains proper folding of the LBD domain.",
+            "Loss of binding with ΔF reflects loss of a specific RNA-binding function rather than general protein instability."
+          ],
+          "notes": "This is consistent with and extends the prior characterization of RARα's RNA-binding properties.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "The binding is specific to RARα: RARβ, which has a different F domain amino acid…",
+        "claim": "The binding is specific to RARα: RARβ, which has a different F domain amino acid sequence, shows only minimal association with dendritic mRNAs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This mRNA-binding ability is specific to RARα as another RA receptor family member RARβ, which has a different amino acid sequence in the F domain, shows only minimal association with dendritic mRNAs.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "RARβ serves as an excellent specificity control because it shares overall structural homology with RARα but differs in the F domain.",
+            "Consistent with prior findings (Poon and Chen, 2008) showing RARα-specific mRNA binding.",
+            "Comparable expression and bead-binding of GST fusion proteins (Figure 2C) rules out differences in protein loading."
+          ],
+          "weaknesses": [
+            "The claim says 'minimal association' but this is assessed visually from gel images without quantification.",
+            "'Minimal' rather than 'no' association suggests some residual binding by RARβ, which could reflect partial sequence similarity in the F domain—this is not discussed.",
+            "Semi-quantitative assessment limits the ability to distinguish 'minimal' from 'none' or 'moderate.'"
+          ],
+          "alternative_interpretations": [
+            "Some mRNA binding by RARβ could indicate that multiple RAR family members participate in dendritic mRNA regulation, albeit with different affinities."
+          ],
+          "required_assumptions": [
+            "The F domain is the sole determinant of mRNA-binding specificity between RARα and RARβ.",
+            "RARβ LBD construct is properly folded and functional for comparison."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5",
+        "label": "Bdnf exon 1 transcript, which carries only a single RARα recognition motif and i…",
+        "claim": "Bdnf exon 1 transcript, which carries only a single RARα recognition motif and is not dendritically sorted, fails to bind RARα LBD.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Bdnf transcript containing exon 1 that carries only a single RARα recognition motif and is not sorted to dendrites in hippocampal neurons failed to bind to RARα LBD.",
+        "evaluation": {
+          "node_id": "c1.3.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Provides an important internal negative control demonstrating selectivity among Bdnf transcript isoforms.",
+            "Consistent with the hypothesis that multiple RARα-binding motifs and/or dendritic localization are required for functional binding.",
+            "Exon 1 transcript has only a single RARα recognition motif vs. multiple motifs in exon 2 and 6 transcripts."
+          ],
+          "weaknesses": [
+            "Cannot distinguish whether the lack of binding is due to the single motif being insufficient for binding or due to the specific sequence context of the motif in exon 1.",
+            "The observation conflates two variables: number of binding motifs and dendritic localization—both differ between exon 1 and exons 2/6.",
+            "Semi-quantitative gel-based assessment."
+          ],
+          "alternative_interpretations": [
+            "The single motif in exon 1 may bind RARα with very low affinity that is below the detection threshold of this assay.",
+            "The lack of binding could be due to sequence context or secondary structure rather than motif number per se."
+          ],
+          "required_assumptions": [
+            "The in silico motif identification correctly assigned a single motif to exon 1.",
+            "The RT-PCR assay is sensitive enough to detect low-level binding."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Brief RA treatment (1 μM, 30 min) of hippocampal synaptoneurosomes significantly…",
+        "claim": "Brief RA treatment (1 μM, 30 min) of hippocampal synaptoneurosomes significantly increases proBDNF protein levels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the expression levels of proBDNF protein also increased significantly",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Synaptoneurosomes provide a preparation enriched for synaptic/dendritic compartments, appropriate for assessing local translation.",
+            "Purity of preparation verified by PSD95 enrichment and histone H3 absence.",
+            "GluA1 increase serves as a positive control confirming translational competency.",
+            "Significant increase in proBDNF with p < 0.05."
+          ],
+          "weaknesses": [
+            "The p-value is only marginally significant (p < 0.05) and the effect size and confidence intervals are not reported.",
+            "The number of independent experiments (N) for this specific measurement is not clearly stated in the text.",
+            "RA concentration used (1 µM) and treatment duration (30 min) in synaptoneurosomes—while the text says 30 min, the methods say 10 min, creating an inconsistency.",
+            "Synaptoneurosome purity was verified by only two markers; additional markers (glial, mitochondrial) would be more thorough.",
+            "Only proBDNF is measured; mature BDNF levels would provide additional information about the processing and availability of the retrograde signal."
+          ],
+          "alternative_interpretations": [
+            "The increase in proBDNF could reflect stabilization of existing protein rather than de novo synthesis; a protein synthesis inhibitor control (e.g., anisomycin) is not described for this specific experiment.",
+            "The proBDNF increase could reflect contributions from non-neuronal compartments present in the synaptoneurosome preparation."
+          ],
+          "required_assumptions": [
+            "The synaptoneurosome preparation faithfully reflects dendritic/synaptic translational capacity.",
+            "The proBDNF increase reflects de novo protein synthesis rather than protein stabilization.",
+            "The discrepancy in RA treatment duration between text (30 min) and methods (10 min) does not affect interpretation."
+          ],
+          "notes": "There is an apparent discrepancy: the results section states '30 min of RA treatment' while the methods state '10 min at 37°C.' This should be clarified.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "The translational regulation by RA is specific: PSD95, whose mRNA is dendritical…",
+        "claim": "The translational regulation by RA is specific: PSD95, whose mRNA is dendritically localized but does not bind RARα, fails to respond to RA stimulation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "PSD95, whose mRNAs are also dendritically localized but do not bind to RARα, failed to respond to RA stimulation.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "PSD95 is a well-chosen negative control: its mRNA is dendritically localized but does not bind RARα (established in Poon and Chen, 2008).",
+            "The absence of PSD95 protein increase upon RA treatment demonstrates selectivity of RA-dependent translation.",
+            "Consistent with the model that only RARα-binding mRNAs are translationally regulated by RA."
+          ],
+          "weaknesses": [
+            "Only one negative control mRNA/protein is shown in the synaptoneurosome translation assay.",
+            "PSD95 protein has a relatively long half-life, so even if translation were affected, changes in steady-state levels after a brief treatment might be difficult to detect.",
+            "The absence of a PSD95 increase does not definitively prove the selectivity is mediated through RARα binding; it could reflect differences in translational efficiency, mRNA abundance, or other factors."
+          ],
+          "alternative_interpretations": [
+            "PSD95 mRNA may be present at lower levels in synaptoneurosomes, making it harder to detect translational changes.",
+            "The selectivity could reflect differential mRNA abundance or translational machinery engagement rather than RARα binding per se."
+          ],
+          "required_assumptions": [
+            "PSD95 mRNA is present in sufficient quantities in the synaptoneurosome preparation to detect potential changes.",
+            "The brief RA treatment is sufficient to reveal changes in proteins with short half-lives but not those with longer half-lives."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Postsynaptic deletion of BDNF prevents the homeostatic increase in mEPSC frequen…",
+        "claim": "Postsynaptic deletion of BDNF prevents the homeostatic increase in mEPSC frequency, while presynaptic deletion of BDNF does not impair frequency changes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "While presynaptic deletion of BDNF did not impair either of these changes in mEPSCs, postsynaptic deletion of BDNF prevented the increase in mEPSC frequency.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Elegant experimental design with region-specific Cre-dependent BDNF deletion to distinguish pre- vs. postsynaptic locus of action.",
+            "Clear dissociation: postsynaptic BDNF KO selectively blocks frequency but not amplitude changes, while presynaptic BDNF KO blocks neither.",
+            "Results replicated with both RA and CNQX induction paradigms.",
+            "Significant two-way ANOVA genotype effect for frequency with RA treatment (F(2,199) = 6.244, p < 0.01)."
+          ],
+          "weaknesses": [
+            "Inferential concern: For the CNQX condition, the interaction term F(2,195) = 2.53, p > 0.05 is not significant, meaning there is no statistically significant evidence that the CNQX effect on frequency differs across genotypes. Yet the paper shows asterisks indicating significant pairwise comparisons (Figure 3C). Conducting post-hoc tests after a non-significant omnibus test is statistically problematic.",
+            "The ANOVA F-statistics reported may represent genotype main effects rather than the critical genotype × treatment interaction terms.",
+            "It is unclear whether BDNF deletion affects baseline synaptic properties, which could confound interpretation."
+          ],
+          "alternative_interpretations": [
+            "Postsynaptic BDNF deletion could chronically alter synaptic properties (e.g., reduced tonic BDNF signaling) that secondarily prevent homeostatic frequency increases.",
+            "Other postsynaptically synthesized retrograde signals could compensate for presynaptic BDNF deletion, explaining why presynaptic KO has no effect."
+          ],
+          "required_assumptions": [
+            "BDNF deletion does not substantially alter baseline synaptic function in ways that confound the homeostatic plasticity measurements.",
+            "AAV-Cre achieves complete deletion of BDNF in targeted regions.",
+            "The CNQX data, despite the non-significant omnibus interaction, still supports the claim."
+          ],
+          "notes": "The non-significant interaction term for the CNQX experiment (F(2,195) = 2.53, p > 0.05) is a notable statistical weakness that should be acknowledged. The RA experiment provides stronger statistical support.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Presynaptic deletion of TrkB blocks the homeostatic increase in mEPSC frequency,…",
+        "claim": "Presynaptic deletion of TrkB blocks the homeostatic increase in mEPSC frequency, while postsynaptic deletion of TrkB does not.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "presynaptic, but not postsynaptic deletion of TrkB blocked the increase in frequency induced by either RA or CNQX.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Complementary to the BDNF KO experiments, establishing that the retrograde signal (BDNF) acts through presynaptic TrkB.",
+            "Clear dissociation: presynaptic TrkB KO blocks frequency changes while postsynaptic TrkB KO does not, with RA treatment.",
+            "Significant interaction for frequency with RA treatment (F(2,147) = 14.87, p < 0.0001)—this is the strongest statistical support in the paper for any of the conditional KO experiments."
+          ],
+          "weaknesses": [
+            "Critical statistical problem: For the CNQX condition, the interaction/genotype effect for frequency is dramatically non-significant (F(2,168) = 0.17, p > 0.8). This essentially indicates no evidence whatsoever that CNQX effects on frequency differ across genotypes. Yet the paper claims significant pairwise differences (asterisks in Figure 3F). This is a serious statistical concern.",
+            "The paper claims the same result with 'either RA or CNQX' but the CNQX data does not statistically support the claim.",
+            "TrkB deletion could affect baseline presynaptic function (e.g., baseline release probability, synapse number), potentially confounding interpretation."
+          ],
+          "alternative_interpretations": [
+            "Presynaptic TrkB deletion may chronically impair presynaptic function or maturation, making the synapse unable to undergo any form of presynaptic plasticity, not specifically BDNF-dependent homeostatic plasticity.",
+            "The non-significant CNQX interaction could mean that CNQX-induced frequency changes do not actually require presynaptic TrkB, and only exogenous RA-induced changes do."
+          ],
+          "required_assumptions": [
+            "TrkB deletion does not fundamentally alter presynaptic function or capacity for plasticity.",
+            "The RA experiment alone is sufficient to support the claim even if the CNQX experiment fails to replicate it statistically.",
+            "Post-hoc pairwise comparisons are valid despite non-significant omnibus test for CNQX condition."
+          ],
+          "notes": "The dramatically non-significant F-statistic for the CNQX condition (F(2,168) = 0.17, p > 0.8) is a significant concern. The claim that presynaptic TrkB is required for CNQX-induced frequency changes is not supported by the statistical analysis as reported. The RA data is strong, but the extension to CNQX is overclaimed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Deletion of either BDNF or TrkB at any location does not affect the homeostatic …",
+        "claim": "Deletion of either BDNF or TrkB at any location does not affect the homeostatic increase in mEPSC amplitude, indicating BDNF/TrkB signaling is exclusively involved in presynaptic function regulation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Deletion of either BDNF or TrkB pre- or postsynaptically did not affect the homeostatic increase in mEPSC amplitude, indicating that BDNF/TrkB signaling is exclusively involved in regulation of presynaptic function.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Consistent across all genotypes (BDNF pre-KO, BDNF post-KO, TrkB pre-KO, TrkB post-KO) and both induction methods (RA, CNQX).",
+            "The preservation of amplitude increases with BDNF/TrkB deletion while frequency is selectively affected provides clean functional dissociation.",
+            "The non-significant genotype effects for amplitude in the ANOVA support this claim (e.g., F(2,199) = 1.062, p > 0.3 for BDNF; F(2,147) = 0.01, p > 0.9 for TrkB)."
+          ],
+          "weaknesses": [
+            "Absence of evidence (no effect on amplitude) is not as strong as presence of evidence. The experiments may be underpowered to detect small effects on amplitude.",
+            "The claim that BDNF/TrkB is 'exclusively involved in regulation of presynaptic function' is strong language given that only mEPSC amplitude was measured as a postsynaptic readout; other postsynaptic parameters were not assessed."
+          ],
+          "alternative_interpretations": [
+            "BDNF/TrkB signaling could affect postsynaptic parameters other than mEPSC amplitude that were not measured (e.g., NMDAR-mediated responses, synaptic ultrastructure).",
+            "The amplitude increase could have a BDNF/TrkB-independent component that masks a smaller BDNF/TrkB-dependent component."
+          ],
+          "required_assumptions": [
+            "mEPSC amplitude is a sufficient readout for postsynaptic function.",
+            "The experiments have adequate power to detect effects on amplitude if they existed."
+          ],
+          "notes": "The consistent null results across multiple genotypes and conditions strengthen this conclusion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Immunoblotting of proBDNF in hippocampal tissue shows a gradual increase in BDNF…",
+        "claim": "Immunoblotting of proBDNF in hippocampal tissue shows a gradual increase in BDNF expression during the first 4 postnatal weeks.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Immunoblotting of proBDNF in hippocampal tissue collected at different developmental stages showed a gradual increase in BDNF expression during the first 4 postnatal weeks.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct immunoblot measurement of proBDNF across multiple developmental time points (P1, P7, P14, P21, P28).",
+            "Appropriate statistical analysis with one-way ANOVA and Dunnett's multiple comparison test.",
+            "Consistent with published literature showing developmental upregulation of BDNF (Schoups et al., 1995; Dincheva et al., 2016)."
+          ],
+          "weaknesses": [
+            "Only proBDNF is measured; mature BDNF levels, which are the functionally relevant form for TrkB activation, are not assessed.",
+            "Sample sizes are described generically (N = number of independent experiments) without specific numbers in text.",
+            "This is descriptive/correlative data that supports the temporal framework but does not establish causality for the maturation-dependent onset of presynaptic homeostatic changes."
+          ],
+          "alternative_interpretations": [
+            "Increased proBDNF could reflect increased transcription, increased protein stability, or decreased processing to mature BDNF.",
+            "The developmental increase in BDNF may be permissive but not sufficient for the emergence of presynaptic homeostatic plasticity."
+          ],
+          "required_assumptions": [
+            "proBDNF levels are a reasonable proxy for BDNF signaling capacity.",
+            "The developmental increase in BDNF is functionally related to the onset of presynaptic homeostatic changes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "BDNF expression increases similarly in organotypic hippocampal slice cultures fr…",
+        "claim": "BDNF expression increases similarly in organotypic hippocampal slice cultures from 1 to 21 DIV, demonstrating that the developmental upregulation is preserved in the culture system.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Immunoblot analysis from cultured hippocampal slices (prepared from postnatal day 8 mouse pups) showed a similar trend where the expression of BDNF gradually increases as the cultures mature from 1 to 21 DIV",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct measurement of proBDNF across multiple time points in organotypic slices (1, 7, 14, 21 DIV).",
+            "Parallel developmental trajectory to in vivo data validates the culture system.",
+            "Appropriate statistical analysis (one-way ANOVA with Dunnett's test).",
+            "Important for establishing that the organotypic slice system recapitulates key developmental features relevant to the study."
+          ],
+          "weaknesses": [
+            "Organotypic slices are prepared from P7-8 pups, so DIV1 corresponds to ~P8 in vivo; the in vitro developmental trajectory may not perfectly map onto in vivo development.",
+            "Only proBDNF, not mature BDNF, is measured.",
+            "The 'similar trend' between in vitro and in vivo data is qualitative and not formally compared."
+          ],
+          "alternative_interpretations": [
+            "BDNF upregulation in organotypic slices could be driven by different mechanisms than in vivo (e.g., injury response, altered network activity in the slice)."
+          ],
+          "required_assumptions": [
+            "The developmental trajectory of BDNF expression in organotypic slices reflects genuine neuronal maturation rather than culture-specific artifacts.",
+            "P7-8 is an appropriate starting age for the organotypic cultures to capture the relevant developmental window."
+          ],
+          "notes": "This is a solid validation experiment for the culture system.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "RA-RARα-regulated homeostatic plasticity mechanisms are absent in both Fmr1 knoc…",
+        "claim": "RA-RARα-regulated homeostatic plasticity mechanisms are absent in both Fmr1 knockout mice and human neurons derived from FXS patient iPSCs, suggesting functional convergence of RA and BDNF signaling in disease-relevant contexts.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the absence of RA-RARα-regulated homeostatic plasticity mechanisms have been established in both Fmr1 knockout mice (a mouse model for fragile X syndrome [FXS]) and human neurons differentiated from FXS patient-derived induced pluripotent stem cells",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "References prior published work establishing the absence of RA-RARα homeostatic plasticity in FXS models (Soden and Chen, 2010; Zhang et al., 2013; Zhong et al., 2018).",
+            "The conceptual link between RA signaling and BDNF signaling in disease contexts is interesting and potentially important."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim suggests 'functional convergence of RA and BDNF signaling in disease-relevant contexts' but no data in this paper examines BDNF signaling in FXS models. The current study shows RA regulates BDNF in wild-type neurons; extending this to FXS is speculative.",
+            "The cited FXS studies examined RA-RARα signaling but not BDNF-dependent presynaptic changes specifically.",
+            "No new data is presented to support this claim; it is entirely based on inference from prior work in different contexts."
+          ],
+          "alternative_interpretations": [
+            "The absence of RA-RARα homeostatic plasticity in FXS could be independent of BDNF signaling.",
+            "FXS pathophysiology involves many disrupted signaling pathways, and the relevance of RA-BDNF convergence may be minor compared to other mechanisms."
+          ],
+          "required_assumptions": [
+            "The RA→RARα→BDNF pathway identified in wild-type neurons is also operative in FXS neurons.",
+            "Disruption of RA signaling in FXS would affect BDNF-dependent presynaptic changes."
+          ],
+          "notes": "This is a discussion-level speculation, not an evidence-supported claim. The 'suggesting' language is somewhat overclaimed for what is pure inference.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "Multiple signaling pathways including RA/RARα-dependent and mTORC1-dependent tra…",
+        "claim": "Multiple signaling pathways including RA/RARα-dependent and mTORC1-dependent translational activation may work in concert in postsynaptic compartments to regulate BDNF synthesis during homeostatic plasticity, though how they interact remains to be explored.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Thus, multiple signaling pathways may work in concert to regulate postsynaptic protein synthesis in the context of homeostatic plasticity.",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Appropriately framed as a possibility ('may work in concert') rather than a demonstrated fact.",
+            "References relevant prior literature on mTORC1 signaling in homeostatic plasticity (Henry et al., 2012; Henry et al., 2018).",
+            "The question of how RA/RARα and mTOR pathways interact is explicitly flagged as remaining to be explored.",
+            "References a prior study showing RARα clamps mTOR activity (Hsu et al., 2019), providing a potential mechanistic link."
+          ],
+          "weaknesses": [
+            "No new data in this paper addresses the relationship between RA/RARα and mTORC1 pathways.",
+            "The claim is entirely speculative/integrative, drawing on prior literature without new experimental support.",
+            "The cited interaction between RARα and mTOR (Hsu et al., 2019) was in a different context (neuronal activation), and its relevance to homeostatic plasticity is uncertain."
+          ],
+          "alternative_interpretations": [
+            "The RA/RARα and mTORC1 pathways could act independently rather than in concert.",
+            "mTORC1 activation could be upstream of, downstream of, or parallel to RA-dependent BDNF synthesis."
+          ],
+          "required_assumptions": [
+            "Both RA/RARα and mTORC1 pathways converge on common downstream effectors during homeostatic plasticity.",
+            "The interaction between RARα and mTOR observed in Hsu et al. (2019) is relevant to the homeostatic plasticity context."
+          ],
+          "notes": "The claim is appropriately calibrated as speculative and appropriately acknowledges the gap in knowledge. This is a reasonable discussion point rather than an evidence-based claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "Electrophysiological recordings show significant increases in both mEPSC amplitu…",
+        "claim": "Electrophysiological recordings show significant increases in both mEPSC amplitude and frequency after acute RA treatment (10 μM, 4 hr) in WT CA1 neurons from 21-25 DIV organotypic slices.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we measured mEPSCs in WT neurons from 21–25 DIV slice cultures after acute RA treatment (10 μM, 4 hr). A significant increase in both mEPSC amplitude and frequency in CA1 pyramidal neurons was observed",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct electrophysiological measurement of mEPSCs in CA1 neurons from organotypic slices provides the most relevant readout for this claim.",
+            "The result replicates the group's prior findings in primary hippocampal cultures (Wang et al., 2011), lending confidence.",
+            "Statistical analysis reported (two-way ANOVA with post-hoc tests) and example traces shown in Figure 1A-B.",
+            "RA concentration (10 µM) and treatment duration (4 hr) are consistent with the established literature for acute RA effects."
+          ],
+          "weaknesses": [
+            "RA at 10 µM is supraphysiological; the relevance of the dose to endogenous RA levels during homeostatic plasticity is unclear, though this is standard in the field.",
+            "The paper does not specify whether recordings were blinded to treatment condition."
+          ],
+          "alternative_interpretations": [
+            "The frequency increase could partially reflect postsynaptic changes in receptor sensitivity altering detection of small events, though the PPR data (c1.1.2.1) argues against a purely postsynaptic explanation."
+          ],
+          "required_assumptions": [
+            "mEPSC frequency is a reliable proxy for presynaptic release probability changes (standard assumption but not always valid).",
+            "4 hr RA treatment mimics endogenous RA signaling during chronic inactivity."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "RA treatment significantly reduced paired-pulse ratios of evoked EPSCs, suggesti…",
+        "claim": "RA treatment significantly reduced paired-pulse ratios of evoked EPSCs, suggesting enhanced presynaptic release probability.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "RA treatment significantly reduced the PPRs, suggesting potential enhancement of presynaptic function by RA",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "PPR is a well-established and widely accepted proxy for changes in presynaptic release probability.",
+            "Two-way ANOVA with repeated measures and pairwise comparisons at each ISI is an appropriate statistical approach.",
+            "Significant reductions in PPR at multiple ISIs strengthen the interpretation of enhanced presynaptic release."
+          ],
+          "weaknesses": [
+            "Data is presented in a supplemental figure (Figure 1—figure supplement 1A) and the paper describes it briefly; sample sizes and effect sizes are not detailed in the text.",
+            "PPR changes could also reflect changes in presynaptic calcium buffering or other mechanisms beyond simple release probability."
+          ],
+          "alternative_interpretations": [
+            "Reduced PPR could reflect changes in readily releasable pool size rather than release probability per se.",
+            "Postsynaptic receptor saturation/desensitization changes could influence apparent PPR if AMPAR properties change."
+          ],
+          "required_assumptions": [
+            "PPR changes predominantly reflect presynaptic release probability changes rather than postsynaptic receptor property changes."
+          ],
+          "notes": "The authors appropriately use the word 'suggesting' rather than making a definitive claim.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.2",
+        "label": "Failure rates at -60 and +40 mV were comparable in both DMSO- and RA-treated sli…",
+        "claim": "Failure rates at -60 and +40 mV were comparable in both DMSO- and RA-treated slices, indicating minimal postsynaptic silent synapses.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The failure rates were comparable between –60 and +40 mV in both DMSO- and RA-treated slices, indicating little if any presence of postsynaptic silent synapses in these slices",
+        "evaluation": {
+          "node_id": "c1.1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Minimal stimulation protocol comparing failure rates at -60 mV and +40 mV is a standard approach to detect AMPAR-lacking silent synapses (Arendt et al., 2013).",
+            "Paired t-test with p > 0.25 provides reasonable evidence for no difference.",
+            "The experiment directly addresses an important alternative explanation for mEPSC frequency changes."
+          ],
+          "weaknesses": [
+            "Absence of evidence is not strong evidence of absence; the failure to detect silent synapses could reflect insufficient power.",
+            "Sample size is not reported in the main text for this supplementary experiment.",
+            "The approach only tests for AMPAR-lacking synapses, not for other types of functionally silent synapses."
+          ],
+          "alternative_interpretations": [
+            "A small population of silent synapses might exist but be undetectable with the sample size used.",
+            "Unsilencing of presynaptically silent synapses (which this assay would not detect) could still contribute."
+          ],
+          "required_assumptions": [
+            "The minimal stimulation protocol adequately samples the synapse population.",
+            "Failure rate comparison at two voltages is sufficient to rule out silent synapse contribution."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.3",
+        "label": "New synapse formation is deemed unlikely to underlie the frequency increase beca…",
+        "claim": "New synapse formation is deemed unlikely to underlie the frequency increase because the effect only occurs in older cultures where synaptogenesis is less robust.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "given that the mEPSC frequency increase only occurs in older slices, but not in younger ones where synaptogenesis is more robust, we think it is unlikely that new synapse formation underlies frequency increase.",
+        "evaluation": {
+          "node_id": "c1.1.2.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The logical reasoning is stated transparently—they acknowledge this is indirect."
+          ],
+          "weaknesses": [
+            "This is an argument from plausibility, not from data. No direct measurement of synapse number (e.g., immunohistochemistry for synaptic markers, electron microscopy) was performed.",
+            "Inferential gap: the observation that frequency increase occurs only in older cultures does not logically exclude synaptogenesis in older cultures; RA could induce synaptogenesis through a mechanism only available in mature neurons.",
+            "The authors use 'we think it is unlikely,' which is appropriate hedging, but the claim as stated here is framed more definitively."
+          ],
+          "alternative_interpretations": [
+            "RA could activate a synaptogenesis program that requires mature molecular machinery not present in younger neurons.",
+            "Even in mature cultures, structural plasticity and new synapse formation have been documented (e.g., spine growth)."
+          ],
+          "required_assumptions": [
+            "Synaptogenesis rate is inversely correlated with culture age.",
+            "The mechanism driving mEPSC frequency increase in older cultures cannot be synaptogenesis."
+          ],
+          "notes": "This claim is the weakest of the controls used to argue for presynaptic release changes. However, combined with PPR and silent synapse data, the overall case is reasonable.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Two-way ANOVA for RA treatment experiments: mEPSC amplitude F(2,208) = 5.413, p …",
+        "claim": "Two-way ANOVA for RA treatment experiments: mEPSC amplitude F(2,208) = 5.413, p < 0.01; frequency F(2,208) = 11.81, p < 0.0001, with significant post-hoc differences for WT and presynaptic KO but not postsynaptic KO groups.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,208) = 5.413, p < 0.01; freq: F(2,208) = 11.81, p < 0.0001.",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clearly reported two-way ANOVA F-statistics and p-values for both amplitude and frequency.",
+            "The interaction terms are significant, indicating genotype-dependent effects of RA treatment.",
+            "The experimental design with pre- vs. postsynaptic-specific Cre expression is powerful and well-controlled.",
+            "High infection efficiency (>90% in CA3) is documented (Figure 1—figure supplement 1C)."
+          ],
+          "weaknesses": [
+            "The claim states 'significant post-hoc differences for WT and presynaptic KO but not postsynaptic KO groups' but this is inferred from the figure; the specific post-hoc p-values for each pairwise comparison are indicated only by asterisks in the figure.",
+            "Use of Mann-Whitney test as post-hoc after two-way ANOVA is somewhat unconventional; Tukey's or Bonferroni correction would be more standard. However, Mann-Whitney is conservative for non-normal data.",
+            "The two-way ANOVA reports the genotype main effect F-statistic, but the critical test is the genotype × treatment interaction, which is not explicitly reported."
+          ],
+          "alternative_interpretations": [
+            "Incomplete Cre-mediated deletion in CA1 could lead to residual RARα expression in some postsynaptic neurons, though >95% infectivity is claimed."
+          ],
+          "required_assumptions": [
+            "AAV-Cre injection results in complete and timely knockout of RARα protein by the time of recording.",
+            "No compensatory upregulation of other RAR family members occurs."
+          ],
+          "notes": "The F-values reported appear to be for the genotype factor in the two-way ANOVA, not the interaction term, which is the critical statistic for the claim about differential effects across genotypes.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Two-way ANOVA for CNQX treatment experiments: mEPSC amplitude F(2,135) = 6.004, …",
+        "claim": "Two-way ANOVA for CNQX treatment experiments: mEPSC amplitude F(2,135) = 6.004, p < 0.01; frequency F(2,135) = 5.23, p < 0.01.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,135) = 6.004, p < 0.01; freq: F(2,135) = 5.23, p < 0.01.",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "CNQX treatment (36 hr) represents a more physiologically relevant induction of homeostatic plasticity than exogenous RA, strengthening the overall narrative.",
+            "Replication of the RA findings with CNQX provides convergent evidence for the same molecular pathway.",
+            "Appropriate statistical approach (two-way ANOVA with post-hoc tests)."
+          ],
+          "weaknesses": [
+            "Same concern about whether the reported F-statistics represent genotype main effects vs. interaction terms.",
+            "CNQX is washed out before recording, but residual CNQX effects on mEPSC detection could be a concern if washout is incomplete."
+          ],
+          "alternative_interpretations": [
+            "CNQX treatment for 36 hr could induce multiple compensatory changes beyond RA signaling, complicating attribution to RA alone."
+          ],
+          "required_assumptions": [
+            "36 hr CNQX treatment specifically induces RA synthesis as the primary mediator of the observed changes.",
+            "Complete CNQX washout before recording."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "mIPSC changes in mature neurons are consistent with in vivo observations that vi…",
+        "claim": "mIPSC changes in mature neurons are consistent with in vivo observations that visual deprivation reduces both mIPSC amplitude and frequency in post-critical period visual cortical neurons.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This result is consistent with our previous observations showing that visual deprivation reduces both mIPSC amplitude and frequency in post-critical period layer 2/3 visual cortical neurons",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately stated as 'consistent with' rather than proven by the current data.",
+            "Cross-preparation (slice culture vs. in vivo) and cross-region (hippocampus vs. visual cortex) consistency strengthens the generalizability of RA effects on inhibitory synaptic transmission.",
+            "The observation that mIPSC frequency changes only appear in older/mature preparations parallels the excitatory synapse findings."
+          ],
+          "weaknesses": [
+            "The comparison is between organotypic hippocampal slice culture (current study) and in vivo visual cortex (Zhong et al., 2018), which differ in many respects (brain region, in vitro vs. in vivo, species, developmental stage).",
+            "The mIPSC data is shown only in a supplementary figure and is not the focus of subsequent mechanistic investigation."
+          ],
+          "alternative_interpretations": [
+            "The similarity could be coincidental rather than reflecting a conserved mechanism, given the many differences between preparations.",
+            "Visual deprivation involves complex circuit-level changes beyond RA signaling."
+          ],
+          "required_assumptions": [
+            "RA signaling mediates the mIPSC changes in both preparations.",
+            "The mechanisms operating in organotypic slice cultures are comparable to those in vivo."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "The dendritic localization of Bdnf exon 2 and exon 6 increases dramatically as c…",
+        "claim": "The dendritic localization of Bdnf exon 2 and exon 6 increases dramatically as cultures mature from 7 to 18 DIV, making them potential targets for RA/RARα-mediated translational regulation at the onset of homeostatic presynaptic changes.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "In cultured hippocampal pyramidal neurons, the localization of Bdnf exon 2 and exon 6 in distal dendrites increases dramatically as the culture matures from 7 to 18 DIV",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is based on published literature (Baj et al., 2011) showing developmental increase in dendritic localization of Bdnf exon 2 and exon 6 transcripts.",
+            "The temporal coincidence between Bdnf transcript dendritic localization and onset of presynaptic homeostatic changes is an intriguing correlation.",
+            "The claim is appropriately hedged with 'potential targets.'"
+          ],
+          "weaknesses": [
+            "This is correlational evidence from a published study in a different preparation (dissociated cultures vs. organotypic slices); no direct measurement of Bdnf transcript localization was performed in the current study's organotypic slices.",
+            "Temporal coincidence does not establish causality.",
+            "The dendritic localization data from Baj et al. (2011) is from rat neurons, while the current study uses mouse tissue."
+          ],
+          "alternative_interpretations": [
+            "Other developmentally regulated factors could coincide with the same timeline and be the critical determinants.",
+            "The increase in dendritic Bdnf transcripts could serve functions unrelated to homeostatic plasticity."
+          ],
+          "required_assumptions": [
+            "Dendritic localization patterns from dissociated rat hippocampal neurons apply to mouse organotypic slice cultures.",
+            "Dendritic localization is necessary for RARα-mediated translational regulation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "RT-PCR from RNA-binding assay shows Bdnf exon 2 and exon 6 enriched by RARα LBD;…",
+        "claim": "RT-PCR from RNA-binding assay shows Bdnf exon 2 and exon 6 enriched by RARα LBD; Gria1 serves as positive control; Psd95, Camk2a, and Ef1a are negative controls showing no enrichment (Figure 2D).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Transcripts of Psd95, Camk2a, and Ef1a, which are also dendritically localized but do not exhibit RARα binding in previous studies, served as negative controls.",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The RNA-binding assay with appropriate positive (Gria1) and negative (Psd95, Camk2a, Ef1a) controls strengthens the specificity claim.",
+            "The F-domain deletion control (RARα LBD ΔF) and RARβ LBD control address domain specificity and receptor family specificity, respectively.",
+            "Bdnf exon 1 (lacking predicted binding motifs and not dendritically localized) failing to bind provides an internal control within the Bdnf transcript family.",
+            "Multiple independent experiments (n=3) reported."
+          ],
+          "weaknesses": [
+            "The assay is semi-quantitative RT-PCR (gel-based), not quantitative (e.g., qPCR), limiting the ability to assess binding affinity or enrichment magnitude.",
+            "In vitro binding assays with purified proteins and total RNA may not fully recapitulate in vivo conditions where RNP complexes and competing binding partners exist.",
+            "No direct evidence of RARα binding to Bdnf mRNAs in intact neurons (e.g., CLIP-seq or RIP from neurons) is provided.",
+            "The in silico prediction of RARα binding motifs in Bdnf exon 2 and exon 6 is not independently validated beyond the binding assay itself."
+          ],
+          "alternative_interpretations": [
+            "The binding observed in vitro may not be functionally relevant in vivo if other RNA-binding proteins outcompete RARα for the same sites.",
+            "The GST-fusion protein may adopt a conformation different from native RARα, affecting binding specificity."
+          ],
+          "required_assumptions": [
+            "In vitro RNA-binding recapitulates in vivo mRNA-RARα interactions.",
+            "Semi-quantitative RT-PCR provides reliable readout of selective enrichment.",
+            "The F domain is sufficient for mRNA binding specificity."
+          ],
+          "notes": "A CLIP-seq or native RIP experiment from neurons would substantially strengthen this claim.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "Synaptoneurosome purity was verified by enrichment of PSD95 and absence of histo…",
+        "claim": "Synaptoneurosome purity was verified by enrichment of PSD95 and absence of histone H3, and translational competency was confirmed by RA-induced GluA1 increase (Figure 2-S1D,E).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The purity of synaptoneurosomal fraction was verified by the enrichment of synaptic protein PSD95 and the absence of nuclear protein histone H3.",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "PSD95 enrichment and histone H3 absence are standard and well-accepted markers for synaptoneurosome purity verification.",
+            "GluA1 increase upon RA treatment serves as a positive functional control, replicating previous findings (Aoto et al., 2008).",
+            "The combination of purity and functional competency controls makes the subsequent proBDNF result more interpretable."
+          ],
+          "weaknesses": [
+            "Only two markers (PSD95 and histone H3) are used for purity verification; additional markers (e.g., glial, mitochondrial) would be more thorough.",
+            "Quantification of enrichment/depletion is shown by representative blots rather than quantified across replicates for the purity markers."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "PSD95 enrichment and histone H3 absence are sufficient to confirm synaptoneurosome integrity.",
+            "The preparation preserves translational machinery in a physiologically relevant state."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.2",
+        "label": "Immunoblot analysis shows significant increase in proBDNF in synaptoneurosomal f…",
+        "claim": "Immunoblot analysis shows significant increase in proBDNF in synaptoneurosomal fraction after 30 min RA treatment (unpaired t-test, p < 0.05; Figure 2E).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Importantly, the expression levels of proBDNF protein also increased significantly",
+        "evaluation": {
+          "node_id": "c1.4.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct measurement of proBDNF protein levels in synaptoneurosomes after RA treatment addresses local translation.",
+            "Appropriate negative control (PSD95, which does not bind RARα) showing no change after RA treatment.",
+            "Positive control (GluA1 increase) confirms the preparation's translational competency.",
+            "Unpaired t-test is appropriate for this two-group comparison."
+          ],
+          "weaknesses": [
+            "p < 0.05 is marginally significant; the effect size and confidence intervals are not reported.",
+            "The number of independent experiments (N) is not clearly stated in the text for this specific experiment.",
+            "Immunoblotting for proBDNF measures total protein but cannot distinguish newly synthesized protein from pre-existing protein that was stabilized or prevented from being degraded.",
+            "The 30-min RA treatment in synaptoneurosomes may not fully recapitulate the 4-hr treatment used in the electrophysiology experiments.",
+            "No protein synthesis inhibitor control (e.g., anisomycin or cycloheximide) to confirm the increase is due to de novo translation."
+          ],
+          "alternative_interpretations": [
+            "RA could stabilize proBDNF protein (reduce degradation) rather than increase its synthesis.",
+            "RA could affect proBDNF processing (conversion to mature BDNF) rather than synthesis, leading to accumulation."
+          ],
+          "required_assumptions": [
+            "Increased proBDNF levels reflect increased de novo synthesis rather than decreased degradation or processing.",
+            "Synaptoneurosome translation is representative of dendritic translation in intact neurons."
+          ],
+          "notes": "A translation inhibitor control would substantially strengthen this claim by confirming the increase is synthesis-dependent.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Two-way ANOVA for BDNF KO with RA treatment: amplitude F(2,199) = 1.062, p > 0.3…",
+        "claim": "Two-way ANOVA for BDNF KO with RA treatment: amplitude F(2,199) = 1.062, p > 0.3 (no interaction); frequency F(2,199) = 6.244, p < 0.01 (significant interaction). Postsynaptic BDNF KO abolishes frequency increase (Figure 3B).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,199) = 1.062, p > 0.3; freq: F(2,199) = 6.244, p < 0.01.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The experimental design with region-specific Cre expression for pre- vs. postsynaptic BDNF deletion is elegant and directly addresses the locus of action.",
+            "The dissociation between amplitude (unaffected by BDNF KO) and frequency (affected only by postsynaptic BDNF KO) is clear and mechanistically informative.",
+            "The significant interaction F-statistic for frequency (p < 0.01) supports genotype-dependent effects.",
+            "The non-significant interaction for amplitude (p > 0.3) is consistent with BDNF not being involved in postsynaptic AMPAR scaling."
+          ],
+          "weaknesses": [
+            "Again, it is unclear whether the reported F-statistics represent the genotype × treatment interaction or the genotype main effect; the interaction term is the critical statistic.",
+            "Individual pairwise comparisons are indicated only by asterisks in figures."
+          ],
+          "alternative_interpretations": [
+            "BDNF deletion in CA1 could have secondary effects on circuit properties that indirectly affect presynaptic function.",
+            "Other neurotrophins (NT-3, NT-4) might partially compensate for BDNF loss in presynaptic neurons but not postsynaptic neurons."
+          ],
+          "required_assumptions": [
+            "AAV-Cre achieves complete and timely BDNF protein depletion in the targeted region.",
+            "No compensatory upregulation of other neurotrophins.",
+            "BDNF protein half-life is short enough for effective depletion within the culture period."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.2",
+        "label": "BDNF KO results with CNQX treatment replicate the RA results: amplitude F(2,195)…",
+        "claim": "BDNF KO results with CNQX treatment replicate the RA results: amplitude F(2,195) = 1.77, p > 0.15; frequency F(2,195) = 2.53, p > 0.05 (Figure 3C).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,195) = 1.77, p > 0.15; freq: F(2,195) = 2.53, p >0.05.",
+        "evaluation": {
+          "node_id": "c1.5.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Replication of the key finding with CNQX (a more physiological trigger) strengthens the overall narrative.",
+            "The amplitude result is consistent with the RA experiment."
+          ],
+          "weaknesses": [
+            "The interaction term for frequency with CNQX treatment is not significant (F(2,195) = 2.53, p > 0.05), which is a notable discrepancy from the RA experiment where it was significant. The claim states this 'replicates' the RA results, but the statistical evidence is weaker.",
+            "If significant pairwise comparisons are being claimed (asterisks in Figure 3C), they are obtained despite a non-significant interaction term, which is statistically problematic (post-hoc tests after non-significant omnibus test).",
+            "This weakens the robustness of the BDNF-dependency claim specifically under CNQX conditions."
+          ],
+          "alternative_interpretations": [
+            "The non-significant interaction for CNQX frequency data could indicate that the BDNF requirement for presynaptic changes is less absolute than suggested by the RA experiment.",
+            "CNQX may engage additional signaling pathways beyond RA that partially compensate for BDNF loss."
+          ],
+          "required_assumptions": [
+            "Post-hoc pairwise tests are valid despite non-significant interaction in the two-way ANOVA.",
+            "The RA and CNQX experiments are testing the same underlying pathway."
+          ],
+          "notes": "This is a notable weakness: the two-way ANOVA interaction for frequency is not significant with CNQX, yet significant pairwise differences are reported. This somewhat undermines the claim of replication. See contrast with c1.5.1.1.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "Two-way ANOVA for TrkB KO with RA treatment: amplitude F(2,147) = 0.01, p > 0.9;…",
+        "claim": "Two-way ANOVA for TrkB KO with RA treatment: amplitude F(2,147) = 0.01, p > 0.9; frequency F(2,147) = 14.87, p < 0.0001. Presynaptic TrkB KO abolishes frequency increase (Figure 3E).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,147) = 0.01, p > 0.9; freq: F(2,147) = 14.87, p < 0.0001.",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Very strong interaction effect for frequency (F(2,147) = 14.87, p < 0.0001) provides robust statistical support.",
+            "The complementary result to the BDNF KO experiments (presynaptic TrkB KO blocks frequency change while postsynaptic TrkB KO does not) is exactly as predicted by the retrograde signaling model.",
+            "Amplitude is completely unaffected by TrkB deletion (p > 0.9), cleanly dissociating pre- and postsynaptic homeostatic mechanisms.",
+            "The large F-statistic and very small p-value for frequency give high confidence."
+          ],
+          "weaknesses": [
+            "Same minor concern about whether F-statistics represent interaction vs. main effects.",
+            "TrkB deletion could affect baseline presynaptic function, potentially confounding the interpretation."
+          ],
+          "alternative_interpretations": [
+            "Presynaptic TrkB deletion could impair presynaptic function or plasticity capacity in general, not specifically BDNF-mediated retrograde signaling."
+          ],
+          "required_assumptions": [
+            "TrkB deletion does not grossly impair presynaptic function at baseline.",
+            "The specificity of presynaptic vs. postsynaptic TrkB KO effects is due to the retrograde signaling mechanism."
+          ],
+          "notes": "This is one of the strongest pieces of evidence in the paper, providing the clearest statistical support for the retrograde BDNF-TrkB mechanism.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.2",
+        "label": "TrkB KO results with CNQX treatment: amplitude F(2,168) = 2.33, p > 0.1; frequen…",
+        "claim": "TrkB KO results with CNQX treatment: amplitude F(2,168) = 2.33, p > 0.1; frequency F(2,168) = 0.17, p > 0.8 (Figure 3F).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amp: F(2,168) = 2.33, p > 0.1; freq: F(2,168) = 0.17, p> 0.8.",
+        "evaluation": {
+          "node_id": "c1.5.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "CNQX replication strengthens the TrkB result from the RA experiment.",
+            "The amplitude result is consistent (p > 0.1)."
+          ],
+          "weaknesses": [
+            "The interaction term for frequency is not significant (F(2,168) = 0.17, p > 0.8), which is dramatically non-significant—this could indicate no genotype-dependent effect at all, yet the paper claims significant pairwise differences (asterisks in Figure 3F).",
+            "A non-significant interaction F(2,168) = 0.17 essentially means there is no evidence of differential effects of CNQX across genotypes for frequency, which contradicts the main claim about presynaptic TrkB being required.",
+            "This is a serious statistical concern: if neither the interaction nor the main effect is significant for the CNQX condition, significant pairwise tests may represent Type I errors."
+          ],
+          "alternative_interpretations": [
+            "The CNQX treatment may involve additional mechanisms beyond BDNF-TrkB that maintain presynaptic changes even when TrkB is deleted.",
+            "The discrepancy between RA and CNQX results for TrkB KO weakens the universality of the proposed mechanism."
+          ],
+          "required_assumptions": [
+            "Post-hoc pairwise comparisons are valid despite a highly non-significant interaction term.",
+            "The RA and CNQX experiments are tapping the same molecular pathway."
+          ],
+          "notes": "The interaction F-statistic of 0.17 (p > 0.8) for frequency in TrkB KO with CNQX treatment is essentially null, yet significant pairwise differences appear to be reported. This creates a tension with the RA result (c1.5.2.1) and raises concerns about the consistency of the CNQX replication experiments across BDNF (c1.5.1.2) and TrkB (this claim) conditions.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "One-way ANOVA with Dunnett's test shows significant increases in proBDNF at P21 …",
+        "claim": "One-way ANOVA with Dunnett's test shows significant increases in proBDNF at P21 and P28 relative to P0 in hippocampal tissue (p < 0.001 and p < 0.05; Figure 2-S1A).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "one-way ANOVA with Dunnett's multiple comparison test, ***, p<0.001; *, p<0.05",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Developmental timecourse of proBDNF expression in hippocampal tissue is directly measured by immunoblotting across five timepoints.",
+            "Appropriate statistical test (one-way ANOVA with Dunnett's multiple comparison test) for comparison against a reference time point.",
+            "Consistent with prior literature showing steep BDNF increase between P15-P20 (Schoups et al., 1995; Dincheva et al., 2016)."
+          ],
+          "weaknesses": [
+            "Only proBDNF is measured; mature BDNF levels would provide a more complete picture.",
+            "Sample sizes are described generically (N = number of independent experiments) without specific numbers in text."
+          ],
+          "alternative_interpretations": [
+            "Developmental increase in BDNF could reflect many processes beyond homeostatic plasticity readiness."
+          ],
+          "required_assumptions": [
+            "proBDNF levels are a reasonable proxy for BDNF signaling capacity.",
+            "The developmental increase in BDNF is functionally relevant to the onset of presynaptic homeostatic plasticity."
+          ],
+          "notes": "This is descriptive/correlative but well-executed.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "One-way ANOVA with Dunnett's test on cultured slices shows significant proBDNF i…",
+        "claim": "One-way ANOVA with Dunnett's test on cultured slices shows significant proBDNF increases at 14 and 21 DIV relative to 1 DIV (Figure 2A).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "one-way ANOVA with Dunnett's multiple comparison test, ***, p<0.001; *, p<0.05",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Demonstrates that the developmental upregulation of BDNF is preserved in the organotypic slice culture system used throughout the study, validating the model system.",
+            "Four timepoints (1, 7, 14, 21 DIV) provide adequate temporal resolution.",
+            "Appropriate statistical test with Dunnett's correction.",
+            "Actin loading control is appropriate."
+          ],
+          "weaknesses": [
+            "Slices are prepared from P7-8 pups, so the in vitro developmental trajectory may not perfectly map onto in vivo development.",
+            "Only proBDNF, not mature BDNF, is measured."
+          ],
+          "alternative_interpretations": [
+            "The in vitro increase could reflect culture maturation effects unrelated to the specific developmental program seen in vivo."
+          ],
+          "required_assumptions": [
+            "In vitro culture maturation recapitulates relevant aspects of in vivo BDNF developmental expression.",
+            "proBDNF immunoblot accurately reflects total BDNF production capacity."
+          ],
+          "notes": "This experiment is important for validating the organotypic slice model used in the study.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.5",
+        "source": "c1.3",
+        "target": "c1.3.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.2",
+        "source": "c1.1.2",
+        "target": "c1.1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.3",
+        "source": "c1.1.2",
+        "target": "c1.1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.2",
+        "source": "c1.4.1",
+        "target": "c1.4.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.2",
+        "source": "c1.5.1",
+        "target": "c1.5.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.2",
+        "source": "c1.5.2",
+        "target": "c1.5.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 45,
+    "total_edges": 44,
+    "max_depth": 3,
+    "high_support_nodes": 15,
+    "low_support_nodes": 4,
+    "overall_assessment": "The paper's 45 claims show mixed overall support when weighted by centrality (weighted support score 0.67, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “The convergence of BDNF and RA signaling pathways in homeostatic plasticity has implications for neuropsychiatric disorders, particularly fragile X syndrome whe…” (4 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

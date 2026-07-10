@@ -1,0 +1,61 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to computational neuroscience by introducing a hybrid brain network model that integrates subject-specific EEG, structural connectivity, and biophysical neural mass dynamics to predict fMRI and link phenomena across temporal scales. However, the evidence supporting the central claims is **incomplete**, as several key assertions — particularly regarding the model's superiority over simpler approaches and its capacity to "reveal" neurophysiological mechanisms — are overclaimed relative to the data presented, with critical control analyses (e.g., the random permutation model matching FC predictions) undermining core claims.
+
+**Summary**
+
+The authors develop a connectome-based brain network model in which neural mass populations, connected via individual diffusion-MRI-derived structural connectomes, are driven by EEG source activity (rather than noise) to simulate subject-specific fMRI time series. The model is fitted with only three global parameters per subject and evaluated against empirical resting-state fMRI from 15 subjects over ~20 minutes of simultaneous EEG-fMRI recording. The paper claims this framework not only predicts individual fMRI time series and functional connectivity networks, but also reveals mechanistic explanations for six empirical phenomena spanning multiple temporal scales: (1) resting-state fMRI oscillations, (2) functional connectivity networks, (3) excitation-inhibition balance, (4–5) inverse α-rhythm/firing/fMRI relationships on fast and slow time scales, and (6) fMRI power-law scaling. The authors propose that these phenomena arise from a coherent mechanistic cascade — from α-phase-dependent firing modulation through half-wave rectification to frequency-dependent amplification by long-range structural coupling — and position the framework as a general tool for neurophysiological inference and multimodal data integration.
+
+**Strengths**
+
+- **Novel integrative framework (c1.6):** The simultaneous incorporation of three data modalities (structural MRI tractography, EEG, fMRI) within a single biophysically grounded generative model is a genuine methodological advance over approaches that treat modalities in isolation. The use of individual connectomes and individual EEG source activity ensures subject-specificity, and the parsimony of three global parameters is commendable.
+
+- **Cross-validation and robustness against overfitting (c1.1.3, c1.1.3.1):** Five-fold cross-validation with explicitly reported test statistics (p = 0.71, Cliff's delta = 0.0044) and convergence toward a single parameter optimum across different metrics convincingly demonstrate that the model is not overfitting, despite the modest sample size.
+
+- **Emergence of fast-scale phenomena from slow-scale fitting (c1.6.3):** The reproduction of α-phase-firing relationships and E/I balance from parameters optimized to predict fMRI (a much slower signal) is a notable result. That phenomena at time scales not used for fitting emerge from the model provides meaningful construct validity.
+
+- **Rigorous power-law analysis (c1.4.1):** The use of DFA-based Bayesian model selection in the time domain, rather than naïve spectral fitting, represents methodological rigor. The clean comparison between coupled (β = −0.73) and uncoupled (β = −0.54) conditions isolates the contribution of long-range structural connectivity to scale-free dynamics, and the demonstration that frequency-dependent amplification is visible in pre-hemodynamic signals (c1.4.6) is an important control.
+
+- **Transparent reporting of limitations and null results (c1.5.2, c1.6.4):** The authors commendably report that the hybrid model's FC prediction was not significantly better than the random permutation model, and they openly acknowledge the non-autonomous nature of the model and the limitations of using EEG as an EPSC proxy. This intellectual honesty strengthens the paper's credibility.
+
+- **Low-pass filtering chain (c1.3.4):** The demonstration that NMDA synaptic time constants (~100 ms) and the hemodynamic response function together produce a biophysically grounded low-pass filter that explains why only slow frequency components survive in fMRI is well-articulated and rests on established biophysical properties.
+
+**Weaknesses / Essential Revisions**
+
+- **FC prediction equivalent to random permutation model (c1.5.2, c1.5):** The hybrid model's functional connectivity prediction was NOT significantly better than the random permutation model. This is a critical finding that fundamentally undermines the claim that the temporal structure of subject-specific EEG meaningfully contributes to reproducing FC topology. The paper's primary claim (root) states the model "reproduces… functional connectivity networks," but this result indicates that structural connectivity alone — preserved under temporal permutation — drives FC prediction. The authors must either substantially qualify the FC claims or provide additional analyses demonstrating what the EEG temporal structure contributes beyond what random signals achieve.
+
+- **Comparable performance to zero-parameter α-regressor for time series (c1.1.4, c1.1):** The hybrid model, despite three free parameters, achieves fMRI time series prediction only comparable to the α-regressor (zero parameters). No formal model comparison (AIC, BIC, Bayesian model evidence) accounting for complexity is performed. This substantially weakens the claim that the biophysical model provides superior fMRI prediction, and the authors should either perform formal complexity-penalized model comparison or reframe the model's contribution as being primarily about mechanistic hypothesis generation rather than prediction.
+
+- **Pervasive "CAN vs. DOES" inferential gap (root, c1.2, c1.3, c1.4):** Throughout the paper, language oscillates between stating the model "reveals" and "identifies" mechanisms (Abstract, Results) and acknowledging these are "candidate hypotheses requiring empirical falsification" (Discussion). The model demonstrates that particular mechanisms CAN produce observed patterns, not that they DO operate in real brains. This distinction must be consistently maintained. The Abstract's claim that simulations "revealed precise neurophysiological mechanisms" should be revised to reflect that these are mechanistic hypotheses consistent with, but not proven by, the data.
+
+- **Qualitative-only reproduction of phase-firing relationship (c1.2.1, c1.2):** The claim that the model reproduces the Haegens et al. (2011) α-phase-firing relationship rests on qualitative visual comparison of histograms, with no formal statistical comparison between model and empirical phase-firing distributions. Given that this result is partially expected from the model architecture (monotonic transfer function + oscillatory input), a rigorous quantitative comparison is needed to establish that the model produces the correct magnitude and shape of phase modulation, not merely its direction.
+
+- **Demonstrations with artificial α-activity rather than realistic EEG (c1.3.2, c1.3):** The key mechanism transforming α-power fluctuations into slow fMRI oscillations (half-wave rectification) is demonstrated primarily with idealized pure sine waves, not with realistic broadband EEG. Whether the mechanism operates quantitatively the same way with real noisy, multifrequency neural signals is assumed rather than shown. The authors should demonstrate the rectification mechanism using the actual EEG source activity injected into the model, not only artificial inputs.
+
+- **Missing statistical comparison of power-law exponents (c1.4.1):** No confidence intervals or formal statistical tests comparing the simulated (−0.73) vs. empirical (−0.82) power-law exponents are reported. The residual gap of ~0.09 is non-trivial and could reflect missing model components. Inter-subject variability of exponents is also not reported. Without these, the claim that the model captures scale-free dynamics cannot be rigorously evaluated.
+
+- **Entirely speculative clinical claims (c1.7.2):** The claim that the modeling approach "may play a key role for identifying mechanisms underlying pathophysiology of disorders linked to disrupted E/I balance" is entirely unsupported by any disease-related data or analysis. This should either be removed or clearly labeled as speculation.
+
+- **Physiological noise claim unsupported (c1.3.6):** The assertion that "physiological noise correction methods may remove fMRI variance that is related to neuronal activity" is not tested in the paper (no comparison with/without such correction was performed) and should be clearly framed as speculative rather than as an implication of the results.
+
+- **Subject-specificity analysis conflated with parameter optimization (c1.1.1):** The subject-specificity test uses maximum correlation over all tested parameter combinations, but parameters were optimized on same-subject data. This conflates parameter overfitting with genuine subject-specificity. A fairer test would use cross-validated or fixed parameters across subjects. Exact p-values and effect sizes should also be reported.
+
+**Minor Comments**
+
+- The narrow frequency range tested for mechanism robustness (9–11 Hz; c1.3.5) is expected to produce near-identical results since the mechanism operates on the envelope, not the carrier. Testing across a broader range or with non-α frequencies would be more informative.
+
+- The failure to predict executive control and frontoparietal RSN time courses (c1.1.5) is notable given these are major cognitive networks. Even a brief mechanistic discussion of why these networks fail would strengthen the paper.
+
+- Exact p-values should replace "p<<0.01" throughout (c1.1.1).
+
+- The comparison of population-level model IPSC/EPSC ratios with single-cell empirical data (Xue et al., 2014; c1.2.3) is approximate and should be acknowledged as such, with inter-subject variability reported.
+
+- The FIC vs. single global inhibition comparison (c1.6.2.1) was performed only for time series prediction; extending this to FC and power-law metrics would strengthen the parsimony argument.
+
+- The 14 percentage point gap between empirical (83%) and simulated (69%) regions testing as scale-free deserves discussion.
+
+**Recommendation**
+
+Major Revisions
+
+The paper presents a genuinely novel and ambitious computational framework, but several critical evidential gaps — most notably the FC prediction equivalence with random permutation, the lack of formal model comparison accounting for complexity, the pervasive overclaiming of mechanistic "identification" versus hypothesis generation, and the reliance on artificial inputs for key demonstrations — must be addressed before the central claims meet eLife's standards for convincing evidence supporting a valuable contribution.

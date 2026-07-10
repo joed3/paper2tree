@@ -1,0 +1,55 @@
+**eLife Assessment**
+
+This paper presents a **valuable** contribution to understanding subunit specificity in GID/CTLH-type E3 ligases, supported by **solid** structural and biochemical evidence for the core claims regarding CRA-CRA interface determinants, though the broader claims about evolutionary conservation and applicability to ring engineering remain **incomplete**.
+
+**Summary**
+
+This study seeks to decode the molecular rules governing subunit-specific CRA-CRA pairing within the ring-shaped GID/CTLH E3 ligase complex. The authors determine five high-resolution crystal structures of individual CTLH-CRA domains (RanBP9, RanBP10, Twa1, Maea) and the RanBP9–muskelin heterodimer, complemented by co-crystal structures of engineered variants (R10_GLFF–Maea, Twa1_14–Maea). Through systematic mutagenesis — notably a graded series of Twa1-like substitutions in RanBP10 and a comprehensive screen of 52 Twa1 variants — the authors identify three key positions (phenylalanine for π-π stacking, tyrosine for hydrogen bonding, valine to avoid steric clash) that determine muskelin binding, and demonstrate bidirectional specificity rewiring: RanBP10 can be switched from muskelin to Maea (four mutations), and Twa1 from Maea to muskelin (eight mutations). The authors further use competitive ITC to measure picomolar affinities for near-full-length protein interactions and extend their analysis across eukaryotes using AlphaFold3 predictions, proposing that the identified specificity code is evolutionarily conserved and could serve as a blueprint for engineering novel ring architectures.
+
+**Strengths**
+
+- **High-resolution crystal structures provide definitive structural evidence.** Five CTLH-CRA domain structures (1.4–2.1 Å) and the RanBP9–muskelin co-crystal (2.0 Å) directly identify the CRA helix-mediated assembly interface with residue-level precision. These structures fill a critical gap left by prior cryo-EM work where this region was unresolved (Sherpa et al., 2021; Qiao et al., 2020), and PDB depositions enable independent verification.
+
+- **Systematic mutagenesis convincingly validates the three key specificity determinants.** The progressive substitution of RanBP10 residues with Twa1-like variants (seven combinatorial mutants, 3–6 ITC replicates each) produces a graded affinity reduction from low-nanomolar to undetectable, with SEC-MALS confirming that all mutants remain folded. This dose-response pattern across single, double, and triple substitutions provides rigorous functional validation of the structural model.
+
+- **Bidirectional specificity rewiring is experimentally demonstrated with structural validation.** The R10_GLFF switch to Maea binding is confirmed by three independent methods (SEC-MALS, ITC, NAGE) and validated by a co-crystal structure (3.5 Å) that revealed an unexpected stabilizing hydrogen bond (Maea Y254–Q540). The stepwise logic — R10_G gains dual specificity, R10_GLFF switches exclusively — is a particularly elegant experimental design.
+
+- **The Twa1 specificity switch, while more complex, is thoroughly documented.** The screen of 52 mutants, the intermediate Twa1_14 showing dual specificity (with crystal structure explanation for why the kinked CRA helix accommodates both partners), and the final Twa1_52 achieving muskelin binding represent a commendably thorough experimental campaign. The structural explanation for why Twa1 requires more extensive remodeling than RanBP10 — a kinked first CRA helix imposing distinct geometric constraints — is mechanistically insightful.
+
+- **The Maea dimer-of-dimers is a novel structural finding with clean validation.** The 1.4 Å structure identifies a previously undescribed Y272/Y275-mediated tetramer interface, and the Y272A/Y275A double mutation cleanly converts tetramer to dimer in SEC-MALS, providing rigorous functional support.
+
+- **The difficulty of swapping versus disrupting tight interfaces is well demonstrated.** The contrast between R10_LFF (disruption, three mutations) versus R10_GLFF (switch, four mutations), and Twa1_3 (disruption, two mutations) versus Twa1_52 (switch, eight mutations), clearly illustrates that coordinated loss of old contacts and formation of new ones is required — a finding with broader implications for protein interface engineering.
+
+**Weaknesses / Essential Revisions**
+
+- **The evolutionary conservation claim relies almost entirely on AlphaFold3 predictions and should be substantially tempered.** The claim that "the same mechanism of specificity is preserved from yeast to mammals" is rated low support because six of seven cross-species comparisons lack experimental validation. Moreover, the yeast interface explicitly differs from mammals (missing the phenylalanine required for π-π stacking, compensated by an N-terminal contact), directly contradicting the claim that the "same mechanism" is conserved. The C. elegans prediction is acknowledged as low-confidence. The authors should either validate key cross-species predictions experimentally (e.g., mutagenesis of Drosophila or zebrafish homologs) or reframe these results as predictions requiring future experimental testing, rather than established conservation.
+
+- **Claims about enabling rational manipulation of CTLH ring assembly are unsupported by any reconstitution or cellular experiment.** No alternative ring complex has been reconstituted using any engineered variant, and no cellular experiment demonstrates altered complex composition. The claim that specificity-switch mutations could "enable non-canonical CTLH ring architectures" or serve as "blueprints for designing other ring-shaped complexes beyond E3 ligases" is purely speculative. The ~100-fold affinity difference between isolated CTLH-CRA domains and full-length proteins (acknowledged in the manuscript) suggests that CRA interface mutations alone may be insufficient to redirect assembly in the full-length context. The authors should either perform reconstitution experiments with full-length proteins or significantly qualify these claims as untested hypotheses.
+
+- **The functional interchangeability of RanBP9 and RanBP10 is overstated.** The claim that these paralogs are "functionally interchangeable" is contradicted by the reported ~6-fold difference in Wdr26 binding (412 vs. 62 pM). More critically, the picomolar KD values carry very large uncertainties (e.g., 79.5 ± 37.9 pM, ~48% error), raising questions about whether the competitive ITC technique is being pushed beyond its reliable range. No functional assay (e.g., ubiquitylation activity) supports the "interchangeable" claim. The connection to RanBP10 substitution during erythrocyte maturation is acknowledged as speculative by the authors and should not be presented as a supported conclusion.
+
+- **The Twa1_52 specificity switch, while demonstrated, may not constitute a "full switch."** The 146 nM affinity for muskelin is ~30-fold weaker than wild-type RanBP10 (4.3 nM), and the thermodynamic signature shifts from enthalpy-driven to entropy-driven, possibly indicating a fundamentally different binding mode. No co-crystal structure of Twa1_52–muskelin was obtained. The authors should discuss whether this affinity would be sufficient in the context of full ring assembly and clarify whether the entropy-driven binding reflects a qualitatively different interaction.
+
+- **The tool/reagent claims for interface-disrupting mutations lack any functional validation.** The assertion that mutations like R10_LFF or Twa1_3 provide advantages over protein depletion is logically sound but entirely hypothetical — no experiment demonstrates selective perturbation of function while preserving other roles. At minimum, the authors should test whether these mutations alter CTLH complex composition in a co-immunoprecipitation or reconstitution assay.
+
+- **Hydrogen bond assignments at 3.3–3.5 Å resolution should be interpreted cautiously.** The Y254–Q540 hydrogen bond identified in the R10_GLFF–Maea structure (3.5 Å) and the analogous contact in Twa1_14–Maea (3.3 Å) are at resolutions where sidechain placement is uncertain. The authors should either validate these contacts by mutagenesis (e.g., Y254F) or explicitly acknowledge the resolution-limited confidence.
+
+**Minor Comments**
+
+- The CRAC helix classification as "an extension of the LisH domain" based on a single negative observation (absence of density) in one crystal form could be more conservatively stated. The disorder may reflect the absence of the binding partner (Twa1 LisH) rather than an intrinsic property.
+
+- The claim that the Maea dimer-of-dimers represents an "intermediate assembly state" is speculative and should be presented as one of several possible interpretations, including autoinhibition or an in vitro artifact.
+
+- RMSD values for the AlphaFold overlay validation should be reported quantitatively rather than described qualitatively.
+
+- The NAGE screening assay at 200 μM is acknowledged as high-concentration; the authors should discuss whether false positives at this concentration could have influenced the mutant selection pathway.
+
+- The ~7% discrepancy between measured (31.2 kDa) and theoretical (33.6 kDa) molecular weight for Twa1_52–muskelin by SEC-MALS is somewhat large and should be discussed.
+
+- Data collection and refinement statistics should be readily accessible (presumably in supplementary tables) and cross-referenced in the main text.
+
+**Recommendation**
+
+Major Revisions
+
+The core structural and biochemical work is rigorous and represents a genuine advance in understanding CTLH complex assembly specificity (32/57 claims with high support). However, the evolutionary conservation claims (based on unvalidated AlphaFold3 predictions), the ring engineering claims (lacking any reconstitution or cellular validation), and the over-interpretation of picomolar affinity measurements collectively represent significant gaps between the evidence presented and the conclusions drawn, requiring either additional experiments or substantial reframing of claims to meet eLife's standards for a conceptual advance supported by convincing evidence.

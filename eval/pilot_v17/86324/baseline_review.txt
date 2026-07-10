@@ -1,0 +1,42 @@
+**eLife Assessment**
+This valuable study provides solid evidence that transposable element insertion polymorphisms (TIPs) contribute to gene expression variation in rice and that some TIP-eQTLs show signatures of differential selection between indica and japonica subspecies, though several analytical concerns regarding confounding by population structure, linkage disequilibrium, and the causal interpretation of TIP-eQTL associations render some central claims incompletely supported.
+
+**Summary**
+The authors perform expression quantitative trait locus (eQTL) mapping using transposable element insertion polymorphisms (TIPs) as genetic markers in 208 rice varieties spanning indica and japonica subspecies, leveraging previously published resequencing and 3′ mRNA-seq data. They identify hundreds of TIP-eQTLs, show that TIPs frequently explain more expression variance than SNPs for the same genes, and find that TIP-eQTLs are enriched in upstream gene regions. Using Population Branch Statistics (PBS) comparing indica, japonica, and wild rice (rufipogon/nivara), they argue that TIP-eQTLs are enriched for signatures of positive selection. They present detailed case studies of three loci — EG2/OsJAZ1, OsGAP, and OsMPH1 — where TE-associated haplotypes with differential expression show evidence of selective sweeps in one or both subspecies. The study advances the important idea that standing structural variation involving TEs has been a substrate for adaptive gene expression changes during rice diversification.
+
+**Strengths**
+- The integration of TIP genotyping, eQTL mapping, and population genetic analyses (PBS, π, H12) across two rice subspecies and their wild progenitors provides a comprehensive framework for studying the functional impact of TE polymorphisms in crop evolution.
+- The benchmarking of TIP calling using the MH63 assembled genome (97.1% sensitivity, 92.2% precision) provides useful validation, though the assessment is limited to a single variety.
+- The observation that TIP-eQTLs are enriched in upstream regulatory regions relative to SNP-eQTLs is a compelling pattern consistent with TEs being causal rather than merely linked markers.
+- The rare variant effect analysis (Figure 2A–D), showing that low-frequency TIPs have the largest effect sizes, is consistent with theoretical expectations and adds credibility to the eQTL results.
+- The case studies (EG2, OsGAP, OsMPH1) are well-constructed, leveraging the rice super-pangenome to define haplotypes and applying complementary selection statistics (π, H12) with permutation-based significance testing.
+- The finding that ~66% of TIP-eQTLs are shared with rufipogon/nivara highlights the importance of standing variation for crop adaptation, an insight with broad relevance.
+
+**Weaknesses / Essential Revisions**
+- **Population structure confounding in eQTL mapping:** The authors state they include "subpopulation groups as covariates" in the linear model, but provide no detail on how subpopulations were defined or how many covariates were used. Given that indica and japonica each contain well-known subgroups (e.g., tropical/temperate japonica; indica subgroups), inadequate correction could inflate eQTL discovery. QQ plots or genomic inflation factors (λ) should be provided for both TIP- and SNP-eQTL analyses.
+
+- **Causal inference versus linkage disequilibrium:** The claim that TIPs are more frequently causal than SNPs is central but insufficiently supported. The comparison in Figure 1D is potentially circular: because there are far fewer TIPs than SNPs, TIPs in LD with a causal SNP could still appear to "explain more variance" if the SNP density around them is low. The subsampling analysis (Figure 1—figure supplement 1B) partially addresses this but needs more rigorous treatment — e.g., conditional analyses where TIP effects are tested after conditioning on the leading SNP (and vice versa) to formally assess independent contributions.
+
+- **PBS enrichment analysis may be confounded:** The enrichment of TIP-eQTLs among high-PBS TIPs could reflect the fact that TIPs near genes (where eQTLs are detected) are more likely to experience linked selection (hitchhiking) than intergenic TIPs. The authors should test whether the PBS enrichment persists after controlling for distance to the nearest gene or for local recombination rate.
+
+- **Multiple testing across conditions and subspecies:** The authors test for TIP-eQTLs across two subspecies and two conditions but do not clearly describe how they handle the multiplicity. The Venn diagram analysis (Figure 2E) and "relaxed cutoff" comparisons (p < 0.05 without FDR) are informal and could overstate sharing. A formal replication framework (e.g., π₁ statistics) would strengthen claims about condition- or subspecies-specificity.
+
+- **Selection analyses at candidate loci:** While π and H12 analyses at EG2, OsGAP, and OsMPH1 are informative, the permutation test (N = 1000 random pulls of the same number of individuals) tests whether the observed signal differs from a random subset of the same population, not whether the genomic region is an outlier genome-wide. A comparison to genome-wide empirical distributions of these statistics in matched window sizes would be more appropriate for claiming locus-specific selection.
+
+- **Haplotype definitions are ad hoc:** The haplotypes at EG2, OsGAP, and OsMPH1 are defined visually from pangenome alignments and the presence/absence of specific TIPs. It is unclear how individuals were assigned to haplotypes, whether intermediate or recombinant haplotypes exist, and how these were handled. Formal haplotype inference and classification criteria should be provided.
+
+- **Directionality of TIP effects on expression:** The claim that TIPs more frequently have negative effects on expression (59%) relative to SNPs (~50/50) is presented as evidence that TIPs are more often causal. However, this asymmetry could also arise from ascertainment bias if TIPs disrupting expression are easier to detect (larger effect sizes). The interpretation should be tempered.
+
+- **Limited functional validation:** None of the candidate TIP-eQTL associations are experimentally validated — e.g., by allele-specific expression, reporter assays, or CRISPR-mediated insertion/deletion of the TE. While this is acknowledged as outside the scope, the causal language used throughout should be softened accordingly.
+
+**Minor Comments**
+- The abbreviation "rufipogon/nivara" is introduced but "rufipogon" is misspelled as "rufigogon" in one instance.
+- Figure 1C: it would be helpful to show statistical tests for the comparison of TE order proportions between eQTLs and genome-wide TIPs, rather than stating "did not differ significantly" without providing the test.
+- The 3′ mRNA-seq method captures only one end of each transcript; it would be useful to discuss how this might bias detection of TIP-eQTLs, particularly for TIPs affecting alternative promoter usage or transcript isoforms.
+- The threshold of 5 kb for defining cis-eQTLs is reasonable but arbitrary; a sensitivity analysis at different distance cutoffs would strengthen the results.
+- Supplementary file organization is dense; a summary table of the top TIP-eQTLs with PBS values, gene annotations, and effect directions in both subspecies would improve accessibility.
+- The discussion of OsMPH1 and plant height draws a parallel to the Green Revolution SD1 locus that, while interesting, is speculative without phenotypic data linking TIP_45706 to height variation.
+
+**Recommendation**
+Major Revisions
+The study addresses an important question and presents interesting candidate loci, but the central claims regarding causality, enrichment for selection, and subspecies-specific effects require more rigorous statistical controls for population structure, linkage disequilibrium, and genomic context before they meet eLife's standard for convincing evidence.

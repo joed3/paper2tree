@@ -1,0 +1,47 @@
+**eLife Assessment**
+This valuable study provides solid evidence that output-null neural activity during brain-computer interface control is coupled with output-potent activity rather than being independently controlled or minimized, though the mechanistic interpretation of this coupling and its generalizability beyond the specific BCI paradigm remain incompletely addressed.
+
+**Summary**
+The paper investigates how the brain resolves neural redundancy — the existence of multiple population activity patterns that produce identical behavioral outputs. Using a brain-computer interface (BCI) in which the mapping between motor cortical activity and cursor velocity is fully known, the authors systematically test six hypotheses about what governs activity in output-null dimensions (those not affecting cursor movement). These hypotheses span a spectrum from highly constrained (minimal firing) to minimally constrained (uncontrolled/minimal intervention), with a middle-ground "Fixed Distribution" hypothesis positing that the conditional distribution of output-null activity given output-potent activity is preserved across different BCI mappings. Data from three rhesus macaques across 42 sessions show that the Fixed Distribution hypothesis best predicts observed output-null activity, suggesting that output-null and output-potent neural activity are coupled. The authors interpret this as a constraint on the extent to which output-null dimensions can be freely exploited for additional neural computations.
+
+**Strengths**
+
+- **Elegant experimental framework:** The BCI paradigm provides a rare and powerful setting in which the readout (output-potent vs. output-null dimensions) is precisely known, overcoming a fundamental challenge in studying neural redundancy in natural motor control. The use of two different BCI mappings within each session enables predictions to be built from one context and tested in another, avoiding circularity.
+
+- **Systematic hypothesis testing:** The six hypotheses are well-motivated, span a meaningful spectrum of possible constraints, and are tested with consistent methodology. The progression from minimal firing to minimal intervention to fixed distribution provides a logical narrative that clearly distinguishes the key factors at play.
+
+- **Thorough validation:** Multiple complementary error metrics (histogram error, mean error, covariance error), analyses across three animals, control analyses (predicting first mapping from second, analyses with and without internal model estimation), and assessment of the error floor all strengthen confidence in the conclusions.
+
+- **Internal model estimation:** Accounting for the animal's internal model of the BCI mapping, rather than assuming perfect knowledge of the actual mapping, is a thoughtful control that addresses concerns about incomplete learning of the second mapping.
+
+- **Clear presentation:** The figures are well-designed, with the simplified 2D illustrations (Figures 1–4) effectively communicating the logic of each hypothesis before showing the full results.
+
+**Weaknesses / Essential Revisions**
+
+- **The coupling may be a near-trivial consequence of preserved covariance structure:** The intrinsic manifold is defined by factor analysis, which captures the covariance structure across neurons. If this covariance structure is approximately preserved across the two BCI mappings (as expected for within-manifold perturbations that by design preserve the manifold), then the conditional distribution p(output-null | output-potent) is largely determined by this fixed covariance. The authors should explicitly quantify how much of the "coupling" they observe is explained simply by a fixed multivariate Gaussian distribution in the 10D factor space, and how much reflects higher-order structure beyond second-order statistics.
+
+- **Asymmetric information across hypotheses:** The Fixed Distribution hypothesis uses the conditional distribution of output-null activity given the output-potent activity (effectively leveraging the full joint distribution from the first mapping), while the Uncontrolled hypotheses use only the marginal distribution. This gives Fixed Distribution a structural advantage in prediction that is not purely about the underlying neuroscience. The authors should discuss this asymmetry more explicitly and, ideally, test intermediate hypotheses (e.g., conditioning on output-potent activity but with a parametric distribution estimated from the first mapping) to clarify what drives the improvement.
+
+- **Limited scope of mapping perturbations:** Only within-manifold perturbations (WMPs) were analyzed, specifically because animals learned them well. However, WMPs preserve the intrinsic manifold by design, which is precisely the structure that would produce the observed coupling. Testing with perturbations that more substantially alter the relationship between dimensions (or with more diverse BCI mappings) would strengthen the generalizability claim. The authors should discuss how their conclusions might differ under outside-manifold perturbations.
+
+- **Modest improvement of Fixed Distribution over Persistent Strategy:** The improvement from Persistent Strategy (17.4% error) to Fixed Distribution (13.4% error) is relatively small given an error floor of ~7%. While statistically significant, the practical and conceptual distinction between these two hypotheses deserves more discussion. What aspects of the data differentiate these predictions, and is the improvement uniform across sessions and animals?
+
+- **Interpretation of "constraints on computation" is speculative:** The claim that coupling between output-potent and output-null dimensions limits the computations that can be performed in output-null space is presented as a central implication but is not directly tested. The observed coupling could equally reflect the mechanism by which the brain coordinates computations across dimensions, rather than a limitation. The authors should temper this interpretation or provide more direct evidence.
+
+- **Short timescale and potential non-stationarity:** All analyses are performed within single sessions (~1–2 hours of learning). The authors acknowledge this but should discuss more concretely how their findings relate to longer-term learning scenarios. For instance, does the coupling weaken across sessions as animals gain more experience? Even within a session, is the coupling stable across early vs. late trials in the analyzed block?
+
+**Minor Comments**
+
+- The paper text appears truncated in the Methods section. If the full methods are available, the description of how physiologically plausible activity was ensured (bounding firing rates) and the cross-validation procedure for the Minimal Deviation hypothesis should be clearly detailed.
+
+- The choice to display only the first three (of eight) output-null dimensions in histograms, after PCA rotation, could mask important structure in the remaining dimensions. A supplementary figure showing all eight dimensions for representative sessions would be informative.
+
+- The error normalization (0% = perfect, 100% = complete mismatch) should be defined more precisely in the main text; the reader must go to Methods for the definition.
+
+- The relationship to Golub et al. (2018) is well-discussed, but given that the same data are analyzed, the authors should more clearly articulate what is uniquely learned from the present analysis that could not be inferred from the prior work's finding of a fixed repertoire.
+
+- Figure 6C: The error bars show mean ± 2 SE, which is unusual. The authors should note why this choice was made, or use a more standard convention (e.g., ± 1 SE or 95% CI).
+
+**Recommendation**
+Major Revisions
+The central finding of coupling between output-potent and output-null activity is interesting and well-supported by the data, but the interpretation requires stronger evidence that this coupling is not simply a consequence of preserved second-order statistics in the intrinsic manifold, and the speculative claims about constraints on neural computation need to be either substantiated or moderated.

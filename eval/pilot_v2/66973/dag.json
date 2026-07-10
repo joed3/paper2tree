@@ -1,0 +1,3079 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_66973",
+    "title": "5-Hydroxymethylcytosine-mediated active demethylation is required for mammalian neuronal differentiation and function",
+    "authors": [
+      "Elitsa Stoyanova",
+      "Michael Riad",
+      "Anjana Rao",
+      "Nathaniel Heintz"
+    ],
+    "url": "https://doi.org/10.7554/eLife.66973",
+    "abstract": "Although high levels of 5-hydroxymethylcytosine (5hmC) accumulate in mammalian neurons, our knowledge of its roles in terminal differentiation or as an intermediate in active DNA demethylation is incomplete. We report high-resolution mapping of DNA methylation and hydroxymethylation, chromatin accessibility, and histone marks in developing postmitotic Purkinje cells (PCs) in Mus musculus. Our data reveal new relationships between PC transcriptional and epigenetic programs, and identify a class of genes that lose both 5-methylcytosine (5mC) and 5hmC during terminal differentiation. Deletion of the 5hmC writers Tet1, Tet2, and Tet3 from postmitotic PCs prevents loss of 5mC and 5hmC in regulatory domains and gene bodies, and hinders transcriptional and epigenetic developmental transitions. Our data demonstrate that Tet-mediated active DNA demethylation occurs in vivo, and that acquisition of the precise molecular properties of adult PCs require continued oxidation of 5mC to 5hmC during the final phases of differentiation.",
+    "word_count": 9567,
+    "processed_at": "2026-07-10T01:47:23.402140+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "5hmC plays an essential, multifaceted role in postmitotic Purkinje cell differen…",
+        "claim": "5hmC plays an essential, multifaceted role in postmitotic Purkinje cell differentiation, including mediating Tet-dependent active DNA demethylation that is required for refined transcriptional and epigenetic maturation.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Introduction",
+        "verbatim_quote": "our data demonstrate that active demethylation occurs in select genes in postmitotic neurons, and that 5hmC plays an essential role in refining the transcriptional and epigenetic status of PCs during the final stages of differentiation.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The study provides multi-omic, single-nucleotide resolution data (OxBSSeq, RNASeq, ATACSeq, ChIPSeq) from FANS-purified Purkinje cells at three developmental timepoints, creating an unusually comprehensive epigenomic portrait of a single postmitotic cell type during differentiation.",
+            "The Pcp2TetTKO model is well-designed: Cre activation occurs postmitotically (~P7), which is critical for distinguishing active from passive demethylation — a key requirement that prior studies lacked.",
+            "The demonstration that late-forming DMVs (e.g., Gpr63, Grid2) fail to develop in the TKO while early-established DMVs (e.g., Hox clusters, Calb1) are unaffected provides a strong internal control for the timing of Tet loss.",
+            "High reproducibility across biological replicates (Pearson r > 0.9 for all assays) and appropriate quality controls (bisulfite conversion rates, oxidation efficiency, marker enrichment/depletion) support data quality.",
+            "The identification of a novel class of PC-specific DMV genes that lose both 5mCG and 5hmCG postmitotically is a genuinely new observation with functional implications."
+          ],
+          "weaknesses": [
+            "EVIDENTIAL GAP (inherited from c1.1): The mechanistic claim of 'active demethylation' via the TDG-BER pathway is not directly demonstrated. The key intermediates (5fC, 5caC) were not detected by mass spectrometry, and no sensitivity analysis for the mass spec assay is provided. The pathway is inferred as 'the simplest interpretation' but remains unconfirmed.",
+            "EVIDENTIAL GAP (inherited from c1.2): The p-value threshold for TKO differential expression (p < 0.05) is less stringent than for the developmental analysis (p < 0.01), and it is unclear whether this is FDR-adjusted. If unadjusted, a substantial fraction of the 1,269 differentially expressed genes could be false positives, weakening the claim about the scope of transcriptional impact.",
+            "EVIDENTIAL GAP (inherited from c1.2): No functional data (electrophysiology, behavior beyond rotarod) are presented to substantiate the claim that transcriptional changes are 'required for refined... maturation.' The word 'essential' in the root claim is therefore not functionally validated.",
+            "INFERENTIAL GAP (inherited from c1.6): The root claim's scope — 'essential, multifaceted role' — is supported by data from a single cell type. The Discussion generalizes to 'most differentiating postmitotic neurons' and 'pyramidal cells and other long range projection neurons,' but no data from any other cell type are presented. This is a significant overreach.",
+            "INFERENTIAL GAP: The word 'essential' implies necessity for a biological outcome, but without demonstrating a functional phenotype (e.g., PC degeneration, synaptic dysfunction, electrophysiological deficits beyond rotarod), the evidence shows that Tet loss alters transcription and epigenetic marks, not that PCs fail to mature or function properly. Indeed, the TKO mice show normal survival, weight, and rotarod performance.",
+            "EVIDENTIAL GAP (inherited from c1.5): The claim of passive demethylation in progenitors (Function 1 in the three-function framework) is entirely indirect — no progenitor data are presented.",
+            "The k-means clustering dichotomy (highCHmod vs. lowCHmod) forces a binary classification that may obscure a continuum of repressive epigenetic states."
+          ],
+          "alternative_interpretations": [
+            "The loss of both 5mC and 5hmC in DMV genes could reflect a non-enzymatic or non-TDG-BER mechanism. For instance, Tet-independent oxidative damage and repair, or an unknown demethylation pathway, could account for the loss. The failure to detect 5fC/5caC is consistent with this alternative.",
+            "The transcriptional changes in the TKO could be partly indirect: loss of Tet activity could alter chromatin structure globally, affecting transcription factor binding or enhancer-promoter interactions, rather than acting directly through demethylation of the affected genes.",
+            "The normal rotarod performance and survival of TKO mice raise the possibility that the transcriptional and epigenetic changes, while real, are not functionally 'essential' — PCs may have sufficient compensatory mechanisms to maintain basic function despite incomplete epigenetic maturation.",
+            "Some of the 'demethylation' observed could reflect technical artifacts of comparing very large, transcriptionally active genomic regions across developmental stages where chromatin accessibility changes dramatically, potentially affecting bisulfite conversion efficiency."
+          ],
+          "required_assumptions": [
+            "The TDG-BER pathway is the operative mechanism for active DNA demethylation in PCs (not demonstrated).",
+            "Pcp2-Cre achieves complete and uniform recombination of all six floxed Tet alleles in all PCs, such that residual Tet activity does not confound interpretation.",
+            "Itpr1-based FANS purification yields equivalent PC populations across genotypes and developmental stages, without systematic bias.",
+            "The OxBSSeq deconvolution of 5mCG and 5hmCG from combined signals is accurate at the low-input amounts used (~200k nuclei).",
+            "The transcriptional and epigenetic changes observed reflect cell-autonomous Tet requirements rather than secondary effects of altered cerebellar circuit development."
+          ],
+          "notes": "The disconnect between the severity of the molecular phenotype (~1,269 differentially expressed genes) and the absence of any detectable behavioral or morphological phenotype is notable and somewhat undermines the characterization of these changes as 'essential.' The authors' use of 'essential' and 'required' throughout the paper is stronger than what the evidence supports. The study would be substantially strengthened by (1) genetic evidence for the TDG-BER pathway (e.g., TDG knockout), (2) electrophysiological characterization of TKO PCs, and (3) data from at least one other neuronal type.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "Tet-mediated active DNA demethylation occurs in postmitotic neurons in vivo, pro…",
+        "claim": "Tet-mediated active DNA demethylation occurs in postmitotic neurons in vivo, providing critical evidence for a pathway previously demonstrated only in vitro and in cultured cells.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "A second principle that has emerged from our studies is that Tet-mediated active DNA demethylation occurs in postmitotic neurons.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The experimental design is well-suited to address this question: PC-specific TetTKO in postmitotic cells (Cre activation ~P7, well after final PC division at e10.5-e13.5) eliminates the confound of passive demethylation.",
+            "Multiple lines of converging evidence support the claim: loss of both 5mCG and 5hmCG at DMV genes (e.g., Gpr63, Grid2) in WT is blocked in TKO; ATAC-accessible regulatory sites that gain accessibility during differentiation retain methylation in TKO (Figure 4G).",
+            "Independent BSSeq data corroborate the OxBSSeq findings (Figure 3A), strengthening confidence in the methylation measurements.",
+            "The temporal logic is compelling: DMVs established before P7 (Hox, Calb1) are unaffected by TKO, while those forming after P7 are disrupted, serving as internal controls.",
+            "Two independent founder lines show consistent results."
+          ],
+          "weaknesses": [
+            "Evidential gap: the key intermediates in the proposed TDG-BER pathway (5fC and 5caC) were not detected by mass spectrometry, meaning the mechanistic pathway through which demethylation occurs remains unconfirmed. The authors acknowledge this but still assert active demethylation as 'the simplest interpretation.'",
+            "Evidential gap: no sensitivity/detection-limit analysis is provided for the mass spec assay, making it impossible to determine whether failure to detect 5fC/5caC is informative or simply a technical limitation.",
+            "Inferential gap: the claim that this is 'Tet-mediated active demethylation' specifically requires that 5hmC is further oxidized to 5fC/5caC and removed by TDG-BER, but alternative mechanisms (e.g., transcription-coupled nucleotide excision repair, direct excision) are not experimentally excluded.",
+            "The gradual and variable nature of Cre-mediated recombination at three independent loci introduces uncertainty about when Tet activity is fully lost, and residual Tet activity between P7 and complete recombination is not quantified.",
+            "Prior studies (Guo et al., 2011; Kaas et al., 2013; Rudenko et al., 2013) did provide suggestive in vivo evidence — the framing as 'previously demonstrated only in vitro and in cultured cells' slightly overstates novelty.",
+            "Statistical quantification of the difference between TKO and WT at specific DMV sites (e.g., effect sizes, confidence intervals) is not explicitly reported in the text."
+          ],
+          "alternative_interpretations": [
+            "Loss of 5mC and 5hmC could result from transcription-coupled DNA repair mechanisms rather than the TDG-BER active demethylation pathway.",
+            "High transcriptional activity through these gene bodies could displace or dilute modified bases through mechanisms independent of canonical active demethylation.",
+            "The retained methylation in TKO could reflect failure to convert 5mC to 5hmC (first step only), not necessarily blockade of the full active demethylation pathway."
+          ],
+          "required_assumptions": [
+            "Cre-mediated recombination at all three Tet loci is complete and results in total loss of Tet enzymatic activity in PCs.",
+            "The TDG-BER pathway is the primary mechanism for removing 5fC/5caC in postmitotic neurons.",
+            "Passive demethylation through any residual DNA replication does not occur in adult PCs.",
+            "The Pcp2-Cre BAC faithfully recapitulates endogenous Pcp2 expression timing."
+          ],
+          "notes": "The overall claim is well-supported as a descriptive finding (demethylation occurs and requires Tet), but the mechanistic specificity ('active demethylation via TDG-BER') is inferred rather than demonstrated. The calibration is appropriate because the authors do acknowledge the limitation regarding 5fC/5caC detection.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Continued Tet oxidase activity and 5hmC production after cell cycle exit is requ…",
+        "claim": "Continued Tet oxidase activity and 5hmC production after cell cycle exit is required for proper transcriptional maturation of postmitotic PCs, including expression of many ion channels and late-expressed genes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "A central finding of this study is that continued Tet activity and 5hmC accumulation during PC differentiation is necessary for acquisition of their refined transcriptional and epigenetic properties.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Large-scale transcriptomic changes (721 up, 548 down) are documented in the TKO, demonstrating that Tet activity has a substantial impact on the PC transcriptome.",
+            "GO analysis reveals biologically meaningful categories of affected genes (ion channels, synaptic transmission, neuron differentiation for upregulated; homeostasis and metabolic control for downregulated).",
+            "The experimental system (Pcp2-Cre TKO) is well-designed: PC-specific, postmitotic, two independent founder lines, proper controls (floxed Cre-negative littermates).",
+            "PCR genotyping and RNASeq both confirm deletion of Tet exons (Figure 4—figure supplement 1C-D).",
+            "Quality control metrics (Pearson correlations, marker enrichment) are strong.",
+            "The lack of gross motor phenotype and normal survival (Figure 4B-D) argue against trivial explanations like cell death or general toxicity."
+          ],
+          "weaknesses": [
+            "Evidential gap: the p < 0.05 threshold for the TKO differential expression analysis is notably less stringent than the p < 0.01 used for developmental analysis, potentially inflating the number of differentially expressed genes. It is unclear whether this p-value is FDR-adjusted; if unadjusted, ~1,000 false positives would be expected from ~20,000 genes.",
+            "Evidential gap: no electrophysiological data are provided. The claim about 'many ion channels' affecting 'fine-tuned physiology' is explicitly acknowledged as speculative ('difficult to predict the functional consequences').",
+            "Evidential gap: PCR genotyping is qualitative; no quantification of recombination efficiency or protein-level confirmation of Tet loss is provided.",
+            "Many ion channels are upregulated in TKO, which is counterintuitive for a model where Tet activity promotes gene expression — this suggests Tet normally represses these genes, complicating the narrative.",
+            "The comparison to MeCP2 loss-of-function studies (Chahrour et al., 2008) is qualitative ('reminiscent of') without formal statistical comparison of overlap or effect sizes.",
+            "The rotarod is a relatively insensitive behavioral test; more sophisticated assays (e.g., gait analysis, complex motor learning, eyeblink conditioning) might reveal deficits that the current analysis misses.",
+            "The 8-week observation period may be insufficient to detect progressive phenotypes."
+          ],
+          "alternative_interpretations": [
+            "The large number of expression changes could partly reflect indirect or compensatory effects rather than direct Tet-dependent regulation of each affected gene.",
+            "Upregulation of many genes (including ion channels) in TKO could indicate that Tet normally facilitates repression of these genes, perhaps via functional demethylation affecting MeCP2 binding dynamics.",
+            "Some expression changes could reflect altered chromatin organization as a secondary consequence of global 5hmC loss rather than specific regulatory effects at individual genes."
+          ],
+          "required_assumptions": [
+            "The expression changes observed in adult TKO PCs reflect the direct consequences of Tet loss rather than secondary developmental perturbations.",
+            "The p < 0.05 threshold yields a sufficiently controlled false discovery rate.",
+            "Itpr1 sorting remains effective and unbiased in TKO PCs despite potential altered chromatin states.",
+            "Complete recombination at all three Tet loci occurs in a majority of PCs."
+          ],
+          "notes": "The bidirectional nature of expression changes (many genes go both up and down) is consistent with 5hmC having complex regulatory roles beyond simple activation, which is biologically interesting but makes the claim somewhat more nuanced than stated. The absence of functional validation (electrophysiology, behavior) is a significant but acknowledged limitation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "A specific class of highly expressed, developmentally induced PC-specific genes …",
+        "claim": "A specific class of highly expressed, developmentally induced PC-specific genes undergoes complete loss of both 5mC and 5hmC during terminal postmitotic differentiation, forming unusually large DNA methylation valleys (DMVs).",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "we identify a class of developmentally induced PC-specific genes that are highly expressed and lose both 5mC and 5hmC in the final stages of PC differentiation.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Rigorous computational identification of DMVs using established methods (Jeong et al., 2014; Mo et al., 2015; Burger et al., 2013) with defined parameters (>5 kb UMRs, 1 kb merge distance).",
+            "Clear examples (Itpr1, Mtss1, Cep76, Gpr63, Grid2) demonstrate the phenomenon across multiple genes with independent BSSeq data corroborating OxBSSeq findings.",
+            "The temporal progression is well-documented across three timepoints (P0, P7, adult) showing gradual loss of both modifications.",
+            "Quantitative data (Figure 3B-E, Figure 3—figure supplement 1I-K) support the qualitative observations from genome browser tracks.",
+            "The internal control (early-established DMVs at Hox clusters vs. late-forming DMVs) demonstrates specificity of the phenomenon.",
+            "Multiple associated features are documented: spreading of H3K4me3 and ATAC accessibility, loss of H3K27me3, high expression levels.",
+            "GO analysis identifies biologically coherent functions (IP3/Ca2+ signaling) and disease associations (ataxia, autism).",
+            "The phenomenon is clearly distinct from previously described DMVs (polycomb-repressed, inactive) — these are active, highly expressed genes."
+          ],
+          "weaknesses": [
+            "Sensitivity analysis for DMV identification parameters (5 kb threshold, 1 kb merge distance) is not shown — different parameters could yield different gene sets.",
+            "The 5' to 3' directionality of DMV formation is described based on genome browser visualization of individual genes rather than systematic quantitative analysis across all DMV genes.",
+            "The claim about 'complete loss' of modifications should be tempered — some residual signal appears to remain in genome browser tracks.",
+            "Alternative mechanisms for modification loss (transcription-coupled repair, histone-mediated protection from de novo methylation) are not experimentally excluded.",
+            "The 'PC-specificity' claim is based on expression data from PCs alone; comparative OxBSSeq data from other cell types would strengthen this.",
+            "The causality between demethylation and increased expression is not established — both could be consequences of high transcriptional activity.",
+            "Mass spectrometry failed to detect 5fC/5caC intermediates, leaving the mechanism of modification loss formally unresolved."
+          ],
+          "alternative_interpretations": [
+            "High transcriptional activity could physically displace or prevent re-establishment of DNA modifications without invoking active enzymatic removal.",
+            "Loss of Dnmt3a activity or targeting at these loci could contribute to demethylation passively over developmental time, even without replication.",
+            "The large DMVs could be a consequence rather than a cause of high expression — they may represent a permissive chromatin state that is secondarily established."
+          ],
+          "required_assumptions": [
+            "OxBSSeq accurately distinguishes 5mC from 5hmC at these loci with sufficient coverage.",
+            "The DMV identification pipeline is robust to parameter choices.",
+            "Loss of modifications reflects enzymatic removal rather than prevention of re-methylation.",
+            "PCs do not undergo any DNA replication or endoreplication during postnatal development."
+          ],
+          "notes": "This is arguably the most novel descriptive finding of the paper. The convergence of multiple data types at multiple timepoints makes this observation quite robust, even if the underlying mechanism remains to be fully elucidated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Multi-omic profiling at single-nucleotide resolution reveals multiple novel mode…",
+        "claim": "Multi-omic profiling at single-nucleotide resolution reveals multiple novel modes of transcriptional activation and repression during PC differentiation, including distinct epigenetic patterns among repressed gene classes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "they reveal several novel modes of transcriptional activation and repression.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multi-omic approach (RNASeq, OxBSSeq, ATACSeq, H3K4me3/H3K27me3 ChIPSeq) at three developmental timepoints provides a comprehensive view.",
+            "OxBSSeq enables separation of 5mC and 5hmC contributions, which is a genuine advance over BSSeq alone, well-illustrated by the Prkg1 example.",
+            "The distinction between highCHmod and lowCHmod repressed genes (Figure 2F-J) is supported by k-means clustering with associated quantitative differences in accessibility, H3K27me3, and expression.",
+            "Finding that 5hmCG in gene bodies is not sufficient to maintain expression (Figure 2C) adds nuance to existing models.",
+            "Quality control is thorough: high Pearson correlations (>0.9), PC marker enrichment, absence of contaminating markers, bisulfite/oxidation rates within range.",
+            "Global trends (5mCG decrease, 5hmCG increase during development) are documented and consistent with prior literature.",
+            "The continuing accumulation of 5hmC in constitutively expressed genes without expression changes is a clearly documented observation."
+          ],
+          "weaknesses": [
+            "Inferential gap: the claim of 'multiple novel modes' is somewhat overstated — the highCHmod/lowCHmod distinction is novel, but many of the other observations (5hmCG/expression correlation, ATAC accessibility changes) confirm rather than extend prior work.",
+            "The k-means clustering with k=2 forces a dichotomy that may not reflect the true data structure — a continuum is possible.",
+            "MeCP2 involvement in highCHmod gene repression is inferred from CH modification levels but not directly measured (no MeCP2 ChIP).",
+            "The mechanism for repression of lowCHmod genes is explicitly unidentified ('will require close examination'), weakening the 'novel modes' claim.",
+            "Some tension exists: the general statement that repression 'is not correlated with changes in DNA methylation or H3K27me3' (Figure 2C) seems to conflict with the highCHmod subclass showing H3K27me3 association.",
+            "The observation about 5mCH/5hmCH in non-genic regions is acknowledged but not systematically analyzed, and the claim about Dnmt3a targeting is correlative.",
+            "OxBSSeq technical limitations (incomplete oxidation, potential DNA damage) are not discussed."
+          ],
+          "alternative_interpretations": [
+            "The highCHmod/lowCHmod distinction could reflect differences in gene body length, GC content, or other sequence features rather than distinct regulatory mechanisms.",
+            "Loss of promoter accessibility in repressed genes could be a consequence rather than a cause of transcriptional silencing.",
+            "The continued accumulation of 5hmC in stably expressed genes could simply reflect ongoing Tet activity without functional significance."
+          ],
+          "required_assumptions": [
+            "FANS-sorted nuclei are sufficiently pure to reflect true PC epigenomic profiles.",
+            "Low-input protocols do not introduce systematic biases across modalities.",
+            "OxBSSeq oxidation is complete enough to yield accurate 5mC/5hmC separation.",
+            "Two biological replicates are sufficient for reliable genomic profiling."
+          ],
+          "notes": "The multi-omic dataset itself is a significant resource. The claim about 'novel modes' is better supported for descriptive observations than for mechanistic insights, as the mechanisms underlying several of the observed patterns remain unidentified.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "5hmC serves three major distinct functions in the nervous system: passive demeth…",
+        "claim": "5hmC serves three major distinct functions in the nervous system: passive demethylation in dividing progenitors, stable functional demethylation via 5hmCG accumulation relieving MeCP2 repression, and active demethylation in postmitotic neurons.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "The data we have reported here advances our understanding of three major functions for 5hmC in the nervous system.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The three-function framework is logically coherent and well-articulated, synthesizing the authors' own data with prior literature.",
+            "Function 3 (active demethylation) is directly supported by the TKO data showing Tet-dependent loss of 5mC and 5hmC at DMV genes and regulatory sites.",
+            "Function 2 (functional demethylation) is supported by prior published work from this group (Mellén et al., 2017) and extended here by the finding that 5hmCG in gene bodies is insufficient to maintain expression.",
+            "The framework has explanatory power: it accounts for 5hmC functions in both dividing progenitors and postmitotic neurons with distinct mechanisms."
+          ],
+          "weaknesses": [
+            "Evidential gap for Function 1 (passive demethylation): no data from progenitor cells are presented in this paper. The evidence is indirect (demethylation at Lhx1/Lhx5/Ldb loci observed at P0 is inferred to have occurred in progenitors).",
+            "Alternative explanations for the P0 demethylation at transcription factor loci (these were never methylated, or active demethylation occurred before P0) are not excluded.",
+            "No new MeCP2 binding data are presented to directly support Function 2 in PCs specifically.",
+            "The finding that 5hmCG is not sufficient to maintain expression (c1.4.2, c1.5.4) complicates the functional demethylation model — the authors note this but do not resolve the tension.",
+            "Inferential gap: the three functions are presented as a comprehensive framework, but the paper provides direct evidence only for Function 3 and partial evidence for Function 2. Function 1 is essentially extrapolated from other systems.",
+            "The claim implicitly assumes these three functions are independent and exhaustive, but they could interact (e.g., residual effects of passive demethylation could influence active demethylation targets)."
+          ],
+          "alternative_interpretations": [
+            "5hmC may serve additional functions not captured in this three-part framework (e.g., structural roles in chromatin organization, effects on DNA-protein interactions beyond MeCP2).",
+            "The distinction between functional demethylation and active demethylation may be more of a continuum than a binary classification.",
+            "Passive demethylation at progenitor regulatory sites could have occurred through active mechanisms in the progenitor cells themselves."
+          ],
+          "required_assumptions": [
+            "MeCP2 binding dynamics in PCs follow the same rules established in other neuronal types.",
+            "Passive demethylation in progenitors precedes active demethylation in postmitotic neurons without overlap.",
+            "The TDG-BER pathway is the operative mechanism for active demethylation in neurons."
+          ],
+          "notes": "This is a synthetic framework claim. It is appropriately presented as a model rather than a demonstrated fact. The calibration is reasonable because the authors use tentative language for Function 1 ('it is probable') while being more assertive about Function 3 where they have direct data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "There is likely a continual requirement for 5hmC as a driver of epigenetic remod…",
+        "claim": "There is likely a continual requirement for 5hmC as a driver of epigenetic remodeling in most differentiating postmitotic neurons, particularly large projection neurons with prolonged developmental programs.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "It seems likely based on these findings and the gradual accumulation of 5hmC evident in our data that there is a continual requirement for 5hmC as a driver for epigenetic remodeling in most differentiating, postmitotic neurons.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The logic of extrapolation is reasonable: other large projection neurons share features (postmitotic, prolonged differentiation, complex morphology, abundant synapses) that make them plausible candidates for similar mechanisms.",
+            "The observation that Tet activity continues to be needed even when disrupted late in PC development (at P7) supports the idea of a 'continual requirement.'",
+            "The statement uses hedging language ('It seems likely') acknowledging the speculative nature."
+          ],
+          "weaknesses": [
+            "Inferential gap: this is a generalization from a single cell type (PCs) to 'most differentiating postmitotic neurons,' which is a very large extrapolation. No data from pyramidal cells or any other neuron type are presented.",
+            "The qualifier 'particularly large projection neurons' further highlights that this may not apply to all neurons, undermining the broader claim about 'most differentiating postmitotic neurons.'",
+            "The TKO mice show no behavioral phenotype (normal rotarod, normal survival, normal body weight at 8 weeks), which could suggest the requirement is less critical than implied.",
+            "No data on stimulus-dependent DNA methylation remodeling or neuronal plasticity are presented.",
+            "No data on neurodegeneration are presented; connections to Tet mutations and neurodegenerative disease are purely speculative.",
+            "The exact timeline of Tet protein loss after Cre activation is not characterized, and protein half-life is unknown, so the assertion about disruption timing has inherent uncertainty.",
+            "Different neuron types may have fundamentally different epigenetic regulatory mechanisms; cerebellar PCs are among the most morphologically complex and metabolically active neurons, making them potentially atypical."
+          ],
+          "alternative_interpretations": [
+            "The 5hmC requirement could be specific to PCs or a small subset of complex neurons rather than generalizable.",
+            "The continued 5hmC accumulation in other neurons could be a byproduct of ongoing Tet activity without functional importance.",
+            "Other neuron types might achieve similar transcriptional refinement through Tet-independent mechanisms."
+          ],
+          "required_assumptions": [
+            "The mechanisms operating in PCs are representative of those in other large projection neurons.",
+            "Tet expression and activity are comparable across different neuron types during postnatal differentiation.",
+            "The absence of gross behavioral phenotype at 8 weeks does not indicate that the molecular changes are functionally inconsequential."
+          ],
+          "notes": "This claim is the most speculative in the paper. While the hedging language is appropriate, extending findings from one cell type to 'most differentiating postmitotic neurons' remains a significant leap. The sub-claims about plasticity (c1.6.2) and neurodegeneration (c1.6.3) are purely speculative with no supporting data in this paper. The overclaimed rating reflects the gap between the single-cell-type evidence and the breadth of the generalization, even accounting for the hedging language.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "Loss of both 5mCG and 5hmCG at specific gene bodies and ATAC-accessible regulato…",
+        "claim": "Loss of both 5mCG and 5hmCG at specific gene bodies and ATAC-accessible regulatory sites requires ongoing Tet oxidase activity, as demonstrated by Pcp2TetTKO experiments.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Our finding that loss of both 5mC and 5hmC in a specific subset of highly expressed gene bodies and ATAC accessible regulatory sites requires Tet oxidase activity provides critical in vivo evidence.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple lines of evidence converge: the Pcp2TetTKO model shows retained 5mCG and 5hmCG at regulatory sites and gene bodies that normally lose both modifications in WT PCs.",
+            "The temporal control of the TKO (onset ~P7) provides a clean separation between pre-existing and ongoing demethylation events.",
+            "Both gene body DMVs (e.g., Gpr63, Grid2) and ATAC-accessible regulatory sites show the same dependence on Tet activity, supporting generality within PCs.",
+            "Independent BSSeq data corroborate the OxBSSeq findings."
+          ],
+          "weaknesses": [
+            "Evidential gap: statistical quantification of the difference between TKO and WT at specific sites is not explicitly reported in the text excerpt, though figure panels are referenced.",
+            "The gradual nature of Cre-mediated recombination means there is uncertainty about exactly when Tet activity is fully lost, and residual activity between P7 and complete recombination is not quantified.",
+            "No protein-level confirmation (e.g., Western blot) of Tet protein loss is provided; PCR and RNA-level evidence are shown but could allow some residual protein activity."
+          ],
+          "alternative_interpretations": [
+            "Some of the retained methylation in TKO could reflect incomplete recombination at floxed Tet loci rather than a true requirement for ongoing Tet activity.",
+            "Other oxidative enzymes could theoretically contribute to 5mC oxidation, though no known candidates exist at comparable efficiency."
+          ],
+          "required_assumptions": [
+            "Cre-mediated recombination at all three Tet loci is sufficiently complete to abolish functional Tet activity.",
+            "Itpr1+ sorting captures a representative population of PCs in both WT and TKO conditions.",
+            "The floxed Tet alleles produce no functional protein after recombination."
+          ],
+          "notes": "This is the central experimental claim of the paper and is well-supported by the convergence of genomic data from the TKO model. The sub-claims (c1.1.1.1, c1.1.1.2, c1.1.1.3) are all strong to moderate, composing well into this parent claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The simplest mechanistic interpretation is that active demethylation proceeds vi…",
+        "claim": "The simplest mechanistic interpretation is that active demethylation proceeds via continued oxidation of 5hmC to 5fC and 5caC, followed by their removal through the TDG-BER pathway.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The simplest interpretation of these data is that Tet-mediated active demethylation can occur in neurons as a result of continued oxidation of 5hmC to 5fC and 5caC, followed by their removal through the BER pathway.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors appropriately frame this as 'the simplest interpretation' rather than a proven mechanism, maintaining proper epistemic calibration.",
+            "The TDG-BER pathway has been demonstrated in vitro (Weber et al., 2016; He et al., 2011), making it a plausible mechanism.",
+            "The data showing loss of both 5mC and 5hmC (not just 5mC) in postmitotic cells is consistent with further oxidation beyond 5hmC."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.1.2.1): 5fC and 5caC were not detected by mass spectrometry, meaning the proposed intermediates remain unconfirmed in this system.",
+            "No sensitivity analysis for the mass spec detection limit is reported, making it impossible to assess whether 5fC/5caC levels would be expected to be detectable.",
+            "No genetic evidence from TDG knockout or BER pathway disruption is provided to test whether this specific pathway is responsible.",
+            "Alternative active demethylation mechanisms (e.g., direct deamination) are not explicitly excluded."
+          ],
+          "alternative_interpretations": [
+            "Active demethylation could proceed through other pathways, such as deamination followed by mismatch repair, though this is less favored in the literature.",
+            "5hmC could be passively lost through a non-replicative mechanism such as nucleotide excision repair, without the specific 5fC/5caC intermediates.",
+            "DNA repair-associated turnover during transcription could contribute to apparent demethylation without the canonical TDG-BER pathway."
+          ],
+          "required_assumptions": [
+            "The TDG-BER pathway is active and functional in postmitotic PCs.",
+            "5fC and 5caC are produced as transient intermediates but are rapidly removed, explaining their non-detection.",
+            "No other mechanism accounts for the loss of both 5mC and 5hmC in non-dividing cells."
+          ],
+          "notes": "The calibration as 'simplest interpretation' is appropriate. The claim is mechanistically plausible but remains a hypothesis rather than a demonstrated pathway in this system.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Prior evidence for active demethylation in vivo was lacking because definitive p…",
+        "claim": "Prior evidence for active demethylation in vivo was lacking because definitive proof requires loss or complete inhibition of all three Tet oxidases in a single cell type after permanent cell cycle exit.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "evidence that this can occur in vivo has been difficult to obtain because such a proof requires loss or complete inhibition of all three Tet oxidases in a single cell type after cells have exited the cell cycle permanently.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim correctly identifies why prior studies were insufficient: single or double Tet knockouts, or knockouts in dividing cells, cannot definitively demonstrate active demethylation in postmitotic cells.",
+            "The requirement for all three Tet enzymes to be ablated is logically sound given their partially redundant functions."
+          ],
+          "weaknesses": [
+            "This is a framing/contextual claim rather than a data-driven claim, so evidence strength is inherently limited.",
+            "Some prior studies did provide suggestive evidence of active demethylation in vivo (Guo et al., 2011; Kaas et al., 2013; Rudenko et al., 2013), which the authors themselves cite — the claim may slightly overstate the absence of prior evidence.",
+            "The phrasing 'was lacking' could be interpreted as dismissive of prior work that used different but valid approaches."
+          ],
+          "alternative_interpretations": [
+            "One could argue that prior pharmacological or single-gene studies provided reasonable evidence for active demethylation in vivo, even if not definitive by the strict criteria the authors propose.",
+            "The requirement for 'complete inhibition of all three Tet oxidases' may be unnecessarily stringent if the goal is to demonstrate active demethylation rather than to quantify Tet dependence."
+          ],
+          "required_assumptions": [
+            "The specific experimental design described (triple KO in postmitotic cells) is indeed the only definitive approach.",
+            "Partial Tet inhibition or single/double knockouts cannot provide equivalent evidence."
+          ],
+          "notes": "This claim sets up the novelty of the study. It is reasonable but somewhat strong in dismissing prior in vivo evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "DNA demethylation also occurs at putative regulatory sites (not just gene bodies…",
+        "claim": "DNA demethylation also occurs at putative regulatory sites (not just gene bodies) in postmitotic PCs, without requiring cell division.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These findings are consistent with prior studies indicating that enhancer activation is accompanied by enhanced ATAC accessibility and DNA demethylation. In this case, however, DNA demethylation does not require cell division.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis of differentially accessible ATAC peaks with concurrent DNA methylation changes provides direct evidence for demethylation at putative regulatory sites.",
+            "The observation that sites gaining accessibility lose both 5mCG and 5hmCG, while sites losing accessibility do not, provides a clear internal control.",
+            "Distinct transcription factor motifs in gained vs. lost accessibility sites add biological plausibility.",
+            "The postmitotic context rules out passive demethylation through replication."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.1.4.1): the stringent log2 FC > 4 threshold for differential accessibility may bias toward extreme cases; the behavior of moderately changed sites is unknown.",
+            "No statistical testing of methylation differences at ATAC peak centers is explicitly described.",
+            "Evidential gap (from sub-claim c1.1.4.2): the specific transcription factor motifs enriched in each class are not detailed in the text excerpt.",
+            "These ATAC peaks have not been functionally validated as enhancers, as the authors themselves acknowledge."
+          ],
+          "alternative_interpretations": [
+            "The correlation between accessibility gain and methylation loss could reflect parallel but mechanistically independent processes rather than a causal relationship.",
+            "Chromatin remodeling could precede and enable demethylation, rather than demethylation driving accessibility."
+          ],
+          "required_assumptions": [
+            "ATAC-accessible sites that gain accessibility are functionally analogous to enhancers or other regulatory elements.",
+            "The demethylation observed at these sites reflects the same Tet-dependent mechanism as in gene bodies."
+          ],
+          "notes": "The claim is well-calibrated — the authors note that these sites 'have not been identified as active enhancers.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Loss of all three Tet enzymes in PCs results in altered expression of 1269 genes…",
+        "claim": "Loss of all three Tet enzymes in PCs results in altered expression of 1269 genes (721 upregulated, 548 downregulated).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we identified 721 genes whose transcription increases in the Pcp2TetTKO PCs and 548 genes with decreased levels of expression.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The numbers are specific and derived from genome-wide RNASeq comparison with biological replicates.",
+            "The data are referenced to supplementary files for full transparency.",
+            "The experimental design uses Cre-negative floxed littermates as controls, minimizing genetic background effects."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.2.1.1): the p < 0.05 threshold used for the TKO comparison is less stringent than the p < 0.01 used for developmental analysis, potentially inflating the number of differentially expressed genes.",
+            "It is not clearly stated whether the p-value is adjusted for multiple comparisons in the TKO analysis; if not, at p < 0.05 with ~20,000 genes, ~1,000 false positives would be expected.",
+            "The log2 fold change threshold of 0.5 is relatively permissive (corresponding to ~1.4-fold change), which may include biologically insignificant changes."
+          ],
+          "alternative_interpretations": [
+            "A substantial fraction of the 1269 differentially expressed genes could be indirect effects of Tet loss rather than direct targets of DNA methylation changes.",
+            "With lenient thresholds, some of these changes could reflect noise, particularly given the challenges of low-input sequencing from rare cell populations."
+          ],
+          "required_assumptions": [
+            "The statistical thresholds used adequately control false discovery rate.",
+            "The Itpr1+ sorting captures comparable PC populations in WT and TKO.",
+            "The observed expression changes are not artifacts of Cre toxicity."
+          ],
+          "notes": "The claim itself is a factual statement of numbers and is well-supported, but the thresholds are less stringent than ideal.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Genes with increased expression in Pcp2TetTKO PCs are enriched for terminal deve…",
+        "claim": "Genes with increased expression in Pcp2TetTKO PCs are enriched for terminal developmental functions including cell projection organization, synaptic transmission, and neuron differentiation, and include many ion channels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "genes whose expression increases in the Pcp2TetTKO PCs are enriched for functions involved in terminal developmental events such as cell projection organization, synaptic transmission, and neuron differentiation. These include many ion channels.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GO analysis provides a systematic categorization of the upregulated genes.",
+            "The identification of ion channels as specifically affected is biologically relevant given the electrophysiological importance of PCs.",
+            "The finding is consistent with the idea that Tet activity is required for proper terminal differentiation."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.2.2.1): no electrophysiological data are provided to assess whether the ion channel expression changes functionally alter PC physiology.",
+            "The direction of change is somewhat counterintuitive — many ion channels are upregulated in the TKO, suggesting that Tet activity normally represses their expression, which complicates simple models of Tet-mediated activation.",
+            "GO categories can be broad and their statistical significance depends on the background gene set used, which is not specified."
+          ],
+          "alternative_interpretations": [
+            "Ion channel upregulation could represent a compensatory response to other changes rather than direct Tet-mediated regulation.",
+            "The enrichment in terminal developmental functions could reflect failed downregulation of developmental programs rather than failed activation."
+          ],
+          "required_assumptions": [
+            "GO analysis reflects genuine biological pathway enrichment rather than statistical artifacts.",
+            "The ion channel changes would meaningfully alter PC function if tested electrophysiologically."
+          ],
+          "notes": "The authors themselves note that 'it is difficult to predict the functional consequences of these changes' given PC complexity, which is appropriately cautious.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Genes with decreased expression in Pcp2TetTKO PCs are primarily involved in home…",
+        "claim": "Genes with decreased expression in Pcp2TetTKO PCs are primarily involved in homeostasis and metabolic control, enriched in transmembrane receptors and nucleic acid-binding proteins.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "genes whose expression is less in Pcp2TetTKO PCs are primarily involved in homeostasis and metabolic control. These are enriched in DNA transmembrane receptors and nucleic acid-binding proteins.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GO analysis provides a systematic basis for the claim.",
+            "The contrast between up- and down-regulated gene categories is informative."
+          ],
+          "weaknesses": [
+            "The phrase 'DNA transmembrane receptors' is unusual and possibly a transcription error — this should likely be 'transmembrane receptors' or relate to nucleic acid sensors.",
+            "The biological interpretation connecting homeostasis/metabolic genes to external signaling is somewhat speculative.",
+            "No mechanistic link is established between Tet loss and decreased expression of these specific gene categories."
+          ],
+          "alternative_interpretations": [
+            "Decreased expression of metabolic genes could be a secondary consequence of altered PC health rather than direct Tet-dependent regulation.",
+            "The downregulated gene set may simply reflect general cellular stress responses."
+          ],
+          "required_assumptions": [
+            "GO categories accurately capture the relevant biology.",
+            "The decreased expression reflects direct consequences of altered DNA methylation rather than indirect effects."
+          ],
+          "notes": "This claim is complementary to c1.2.2 and together they paint a picture of bidirectional transcriptional dysregulation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "The magnitude of transcriptional changes in Pcp2TetTKO is comparable to changes …",
+        "claim": "The magnitude of transcriptional changes in Pcp2TetTKO is comparable to changes documented in neurons in response to loss of MeCP2.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The large number of genes whose expression is impacted in the Pcp2TetTKO PCs is reminiscent of magnitude of changes documented in neurons in response to loss of MeCP2.",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison to MeCP2 loss-of-function is conceptually relevant given the established relationship between MeCP2 and DNA methylation/hydroxymethylation.",
+            "The number of affected genes (~1269 total) is indeed comparable in magnitude to MeCP2 studies."
+          ],
+          "weaknesses": [
+            "This is a qualitative comparison ('reminiscent of') without formal statistical comparison of effect sizes, directions, or overlap with MeCP2-dependent genes.",
+            "The different thresholds and experimental systems make direct comparison difficult.",
+            "MeCP2 mutations cause Rett syndrome with profound phenotypes, whereas the Pcp2TetTKO mice show no gross motor or survival deficits, suggesting the functional magnitude may differ substantially."
+          ],
+          "alternative_interpretations": [
+            "The similarity in number of affected genes could be coincidental given the different mechanisms and thresholds used.",
+            "A large number of affected genes may simply reflect that both MeCP2 and Tet proteins have genome-wide effects on chromatin, without implying mechanistic similarity."
+          ],
+          "required_assumptions": [
+            "The magnitude of gene expression changes is a meaningful metric for comparison between different perturbations.",
+            "The experimental designs are sufficiently similar to make this comparison informative."
+          ],
+          "notes": "The comparison is suggestive but not rigorous. It would be strengthened by direct overlap analysis between TKO- and MeCP2-affected gene sets.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5",
+        "label": "These Pcp2TetTKO phenotypes are evident despite loss of Tet function occurring l…",
+        "claim": "These Pcp2TetTKO phenotypes are evident despite loss of Tet function occurring late in PC differentiation (beginning ~P7).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "It is noteworthy that these phenotypes are evident despite loss of Tet function in the Pcp2TetTKO late in PC differentiation.",
+        "evaluation": {
+          "node_id": "c1.2.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The ROSA26-eGFP reporter data demonstrate that Cre activity begins ~P7, establishing the temporal window of Tet loss.",
+            "Despite this late onset, clear epigenetic and transcriptional phenotypes are observed.",
+            "The finding that 1269 genes are affected with clear GO enrichment categories supports the biological significance."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.2.5.1): rotarod is a relatively insensitive test; more sophisticated behavioral assays might reveal motor deficits.",
+            "The 8-week observation period may be too short to detect progressive phenotypes.",
+            "The absence of gross phenotype, while noted, raises the question of whether the transcriptional changes are functionally significant."
+          ],
+          "alternative_interpretations": [
+            "The transcriptional and epigenetic changes may be partially compensated by other mechanisms, explaining the lack of behavioral phenotype.",
+            "Some of the observed changes may reflect incomplete recombination or mosaicism in Cre activity."
+          ],
+          "required_assumptions": [
+            "Tet protein turnover after recombination is rapid enough for effective loss of function by the time of analysis.",
+            "The phenotypes observed at 8 weeks reflect steady-state consequences rather than ongoing dynamic changes."
+          ],
+          "notes": "The disconnect between molecular phenotypes and absence of behavioral phenotype is notable and deserves further investigation. Related to c1.6.4.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6",
+        "label": "The Pcp2TetTKO mouse model achieves PC-specific deletion of all three Tet genes …",
+        "claim": "The Pcp2TetTKO mouse model achieves PC-specific deletion of all three Tet genes beginning approximately P7, more than two weeks after PCs complete their last division, thereby enabling assessment of Tet loss specifically in postmitotic, differentiating neurons.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Cre recombinase activity, and thus recombination in the Tet genes, began at approximately P7 more than 2 weeks after PCs have completed their last division. These lines, therefore, allow assessment of the consequences of loss of Tet activity during the rapid phase of somatic and dendritic growth in postmitotic, differentiating Purkinje neurons.",
+        "evaluation": {
+          "node_id": "c1.2.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple validation approaches: PCR genotyping, RNASeq confirmation of exon deletion, ROSA26-eGFP reporter for Cre timing and specificity.",
+            "The use of an established Pcp2 BAC driver adds confidence in PC specificity.",
+            "Two independent founder lines show consistent results.",
+            "PCs complete their last division by e13, and Cre onset is ~P7, providing clear temporal separation."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.2.6.1): PCR genotyping is qualitative; quantification of recombination efficiency is not provided.",
+            "No protein-level confirmation (Western blot) of Tet protein loss is shown.",
+            "Evidential gap (from sub-claim c1.2.6.2): ROSA26 reporter recombination efficiency may not reflect recombination at the endogenous Tet loci, as different genomic locations may have different accessibility.",
+            "The time from P7 Cre onset to actual loss of Tet protein depends on protein half-life, which is not measured."
+          ],
+          "alternative_interpretations": [
+            "Incomplete recombination at one or more Tet loci could mean residual Tet activity persists, potentially underestimating the full effect of complete Tet loss."
+          ],
+          "required_assumptions": [
+            "The Pcp2 BAC drives expression faithfully replicating endogenous Pcp2 expression patterns.",
+            "Recombination at all three Tet loci occurs with comparable efficiency.",
+            "Tet protein turnover is sufficiently rapid after gene deletion."
+          ],
+          "notes": "This is a well-designed genetic model. The key technical limitation is the lack of protein-level validation, but the RNASeq evidence of exon deletion is a strong alternative.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The majority of very large DMVs in PCs arise during differentiation through loss…",
+        "claim": "The majority of very large DMVs in PCs arise during differentiation through loss of 5mC and 5hmC over active, highly expressed genes, rather than being present from early development.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The majority of very large DMVs in PCs, however, arise during differentiation through loss of 5mC and 5hmC over active, highly expressed genes as PCs mature.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The computational identification of DMVs uses established methods (Burger et al., 2013; Jeong et al., 2014; Mo et al., 2015).",
+            "The distinction between early-established (Hox cluster, inactive) and developmentally acquired (active, PC-specific) DMVs is clearly demonstrated.",
+            "Both OxBSSeq and independent BSSeq data support the loss of modifications.",
+            "Gene body quantification and metagene plots provide systematic evidence beyond individual gene examples.",
+            "Sub-claims c1.3.1.1, c1.3.1.2, and c1.3.1.3 are all strongly supported."
+          ],
+          "weaknesses": [
+            "Sensitivity analysis for DMV identification parameters (5 kb threshold, 1 kb merge distance) is not shown.",
+            "The fraction of the genome covered by these DMVs is small, which could affect the reliability of quantitative comparisons."
+          ],
+          "alternative_interpretations": [
+            "The progressive loss of modifications could reflect transcription-coupled DNA repair and replacement with unmodified cytosines, rather than a dedicated demethylation pathway.",
+            "High transcription rates through gene bodies could mechanically displace modified bases through nucleotide turnover."
+          ],
+          "required_assumptions": [
+            "The computational parameters for DMV identification capture the biologically relevant regions.",
+            "The loss of modifications is a specific biological process rather than a general consequence of high transcriptional activity."
+          ],
+          "notes": "The claim is well-supported and appropriately scoped to PCs.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "DMV formation involves progressive loss of 5mCG and 5hmCG, preceded by 5hmC accu…",
+        "claim": "DMV formation involves progressive loss of 5mCG and 5hmCG, preceded by 5hmC accumulation, with demethylation initiating at the 5' end and spreading toward the 3' end.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "DNA demethylation is initiated at the 5' end of the gene, and it spreads toward the 3' end as differentiation proceeds.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The 5' to 3' directionality of demethylation is visible in genome browser examples (Grid2, Gpr63).",
+            "The temporal progression (5hmC accumulation preceding loss of both marks) is consistent with a model of sequential oxidation.",
+            "The TKO data showing arrested DMV growth support the requirement for Tet activity in this progression."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.3.2.1): the claim about 5' to 3' directionality relies on genome browser visualization of individual genes rather than systematic quantitative analysis across all DMV genes.",
+            "The multi-factor model explaining variation in DMV formation is acknowledged as speculative ('We believe') without quantitative testing.",
+            "The temporal resolution (P0, P7, adult) may be insufficient to establish the precise sequence of events."
+          ],
+          "alternative_interpretations": [
+            "The apparent 5' to 3' progression could reflect higher Tet access near promoters (due to chromatin openness) rather than a directed spreading mechanism.",
+            "The correlation between 5hmC accumulation and subsequent loss could be coincidental — both could be independently driven by transcription."
+          ],
+          "required_assumptions": [
+            "Three timepoints are sufficient to infer a temporal sequence.",
+            "The 5' to 3' pattern is not an artifact of read density or mappability differences."
+          ],
+          "notes": "The mechanistic details of how demethylation spreads remain largely observational rather than experimentally tested.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "DMV formation is accompanied by spreading of ATAC accessibility and H3K4me3 acti…",
+        "claim": "DMV formation is accompanied by spreading of ATAC accessibility and H3K4me3 activating marks from the promoter into the gene body and loss of H3K27me3.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As differentiation proceeds and transcription increases, there is a gradual decrease in both 5mCG, 5hmCG, and H3K27me3 histone marks, and ATAC accessibility and H4K4me3 marks spread from the promoter into the gene body.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Quantitative data from metagene plots, boxplots, and heatmaps support the spreading of ATAC accessibility and H3K4me3 into gene bodies.",
+            "The concurrent loss of H3K27me3 adds another dimension to the epigenetic remodeling.",
+            "The temporal progression from P0 through P7 to adult is well-documented.",
+            "Sub-claim c1.3.3.1 is strongly supported."
+          ],
+          "weaknesses": [
+            "The characterization of the initial state as 'resembling moderately expressed genes' is qualitative rather than quantitative.",
+            "The causality between spreading of activating marks and demethylation is not established — both could be consequences of increased transcription."
+          ],
+          "alternative_interpretations": [
+            "Transcription itself could drive the spreading of accessible chromatin and loss of modifications, rather than these epigenetic changes enabling transcription.",
+            "H3K4me3 spreading into gene bodies could reflect transcription-coupled histone modification rather than an independent regulatory mechanism."
+          ],
+          "required_assumptions": [
+            "The observed epigenetic changes are cause rather than consequence of transcriptional activation.",
+            "The ChIPSeq and ATACSeq signal spreading is not a technical artifact of increased cell size or DNA content."
+          ],
+          "notes": "This is a descriptive finding that is well-supported by the data, even though causal relationships are not established.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "Active genes with large DMVs are PC-specific, involved in inositol triphosphate/…",
+        "claim": "Active genes with large DMVs are PC-specific, involved in inositol triphosphate/calcium signaling, and a subset is associated with ataxia and autism.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "many of the active genes associated with broad DMVs are PC-specific and highly expressed. GO analysis indicates that they are involved in the inositol triphosphate/calcium signaling pathways, and a subset is associated with ataxia and autism.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GO analysis systematically identifies the inositol triphosphate/calcium signaling pathway enrichment.",
+            "The disease associations (ataxia and autism) are biologically relevant given PC function.",
+            "The PC-specificity and high expression levels of DMV genes are supported by expression data."
+          ],
+          "weaknesses": [
+            "The specific disease associations are listed in a supplementary figure but not statistically tested for enrichment above background.",
+            "The claim that these genes are 'PC-specific' is based on expression data from PCs only; comparative data from other cell types would strengthen this claim."
+          ],
+          "alternative_interpretations": [
+            "Genes in the calcium/IP3 pathway may be large genes that are inherently more susceptible to demethylation due to their size, rather than being specifically selected."
+          ],
+          "required_assumptions": [
+            "GO enrichment accurately reflects the biological function of these genes.",
+            "The disease associations are meaningful rather than reflecting ascertainment bias."
+          ],
+          "notes": "The convergence on calcium/IP3 signaling is biologically compelling given known PC biology.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5",
+        "label": "These data provide strong evidence that DNA demethylation can occur in postmitot…",
+        "claim": "These data provide strong evidence that DNA demethylation can occur in postmitotic neurons and is enhanced in a specific class of very highly expressed, functionally important genes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These data provide strong evidence that DNA demethylation can occur in postmitotic neurons, and that it is enhanced in a specific class of genes that are very highly expressed and functionally important.",
+        "evaluation": {
+          "node_id": "c1.3.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is a summary claim well-supported by the convergence of OxBSSeq, BSSeq, ATACSeq, and TKO data.",
+            "The postmitotic context is well-established (PCs exit cell cycle by e13, analysis begins at P0).",
+            "The enrichment in specific gene classes (highly expressed, functionally important) adds biological significance.",
+            "The TKO experiments provide causal evidence that Tet activity is required."
+          ],
+          "weaknesses": [
+            "The 'specific class' of genes is defined descriptively (highly expressed, PC-specific, DMV-associated) rather than by a clear molecular criterion.",
+            "Alternative mechanisms for loss of modifications (e.g., transcription-coupled repair) are not experimentally excluded."
+          ],
+          "alternative_interpretations": [
+            "The loss of modifications could be a passive consequence of high transcription rates and DNA repair rather than a regulated demethylation process.",
+            "The enhancement in specific genes could reflect gene size or transcription rate effects rather than gene-specific regulatory mechanisms."
+          ],
+          "required_assumptions": [
+            "The loss of both 5mC and 5hmC reflects enzymatic demethylation rather than other modification-removing processes.",
+            "Tet-dependent loss of modifications is the primary pathway rather than one of several contributing mechanisms."
+          ],
+          "notes": "This is a well-calibrated summary claim that draws appropriately on the supporting evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Developmental gene repression in PCs is primarily associated with loss of promot…",
+        "claim": "Developmental gene repression in PCs is primarily associated with loss of promoter accessibility rather than changes in DNA methylation or H3K27me3 occupancy.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "A consistent finding is that in most genes decreased expression is associated with a loss of promoter accessibility as assayed by ATACSeq. These changes are not correlated with changes in DNA methylation or H3K27me3 occupancy.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "ATACSeq data directly demonstrate loss of promoter accessibility in repressed genes.",
+            "The finding is systematic across 922 developmentally repressed genes, not limited to individual examples.",
+            "The negative result for DNA methylation and H3K27me3 correlation is informative and adds to the claim's specificity.",
+            "Sub-claim c1.4.1.1 is strongly supported."
+          ],
+          "weaknesses": [
+            "The claim that changes 'are not correlated' with DNA methylation or H3K27me3 requires careful interpretation — the highCHmod subclass does show H3K27me3 association (c1.4.3), creating a tension with this more general statement.",
+            "The mechanism driving accessibility loss is not identified.",
+            "The asymmetry between repressed (922) and activated (432) genes is not discussed."
+          ],
+          "alternative_interpretations": [
+            "Loss of promoter accessibility could be a consequence rather than cause of transcriptional repression.",
+            "Transcription factor displacement could drive accessibility loss independently of epigenetic changes."
+          ],
+          "required_assumptions": [
+            "ATACSeq faithfully reports chromatin accessibility at promoters.",
+            "The 'not correlated' statement refers to the overall population of repressed genes rather than subsets."
+          ],
+          "notes": "The relationship between this claim and c1.4.3 needs careful parsing — the general statement here is qualified by the subclass analysis in c1.4.3.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Accumulated 5hmCG in gene bodies is not sufficient to maintain transcription, as…",
+        "claim": "Accumulated 5hmCG in gene bodies is not sufficient to maintain transcription, as shown by repressed genes that retain or increase 5hmCG levels.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "5hmCG accumulated over the genes bodies early in development is stable or continues to increase, suggesting that the presence of 5hmCG is not sufficient to maintain transcription.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that 5hmCG levels remain stable or increase in repressed gene bodies directly demonstrates that 5hmCG is not sufficient for transcriptional maintenance.",
+            "This finding is systematic across the class of repressed genes.",
+            "The conclusion modifies and extends the 'functional demethylation' model, adding nuance."
+          ],
+          "weaknesses": [
+            "The claim does not distinguish between genes where 5hmCG actively increases during repression versus those where it remains static — these could have different implications.",
+            "No mechanistic explanation is offered for why 5hmCG fails to maintain expression."
+          ],
+          "alternative_interpretations": [
+            "5hmCG may facilitate but not determine transcription — other factors (transcription factor availability, promoter accessibility) may be rate-limiting.",
+            "5hmCG accumulation in repressed genes could reflect continued Tet activity at these loci for reasons unrelated to transcription (e.g., genome maintenance)."
+          ],
+          "required_assumptions": [
+            "5hmCG levels measured by OxBSSeq accurately reflect the true modification state.",
+            "Gene body 5hmCG is the relevant metric for assessing 'functional demethylation.'"
+          ],
+          "notes": "This is an important finding that qualifies the functional demethylation model. Related to c1.5.4.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "Developmentally repressed genes fall into at least two distinct epigenetic class…",
+        "claim": "Developmentally repressed genes fall into at least two distinct epigenetic classes: 'highCHmod' genes that accumulate 5mCH/5hmCH with enhanced H3K27me3, and 'lowCHmod' genes that lack CH modifications and whose repressive mechanism remains unknown.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "analysis of the repressive marks 5mCH and 5hmCH reveals at least two distinctly recognizable epigenetic patterns in genes that become repressed in PC development.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "K-means clustering provides a systematic division of repressed genes into two classes.",
+            "The two classes show distinct epigenetic features (CH modification levels, H3K27me3, promoter accessibility).",
+            "GO analysis reveals distinct functional categories for the two classes.",
+            "The data are supported by metagene plots and violin plots."
+          ],
+          "weaknesses": [
+            "Inferential gap: the involvement of MeCP2 in highCHmod gene repression is inferred from CH modification levels but not directly measured (no MeCP2 ChIP data).",
+            "K-means with k=2 is a forced dichotomy — the data may show a continuum.",
+            "The mechanism for lowCHmod repression is unknown, limiting the actionability of this finding.",
+            "The choice of k=2 is not justified by gap statistics or silhouette analysis."
+          ],
+          "alternative_interpretations": [
+            "The two clusters could represent genes at different stages of the same repression pathway rather than distinct mechanisms.",
+            "The lowCHmod class could be repressed by mechanisms operating at distal enhancers or through chromatin looping that is not captured by gene-body-level analysis."
+          ],
+          "required_assumptions": [
+            "K-means with k=2 captures biologically meaningful groups.",
+            "Gene body CH modification levels are the appropriate metric for classification.",
+            "MeCP2 binding correlates with CH modification levels in PCs (inferred from prior literature)."
+          ],
+          "notes": "The identification of two epigenetic classes of repressed genes is an interesting descriptive finding, but the mechanistic implications remain largely inferential.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "OxBSSeq is significantly more informative than BSSeq alone for evaluating DNA me…",
+        "claim": "OxBSSeq is significantly more informative than BSSeq alone for evaluating DNA methylation status in neurons because it separates 5mC and 5hmC contributions that have distinct functions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "in many genes, 5mCG is depleted and 5hmCG accumulates in the gene body as its expression increases between P0 and adult. This is clearly evident for the gene encoding the cyclic GMP-dependent protein kinase (Prkg1)... the OxBSSeq data reveal a transition from 5mCG to 5hmCG that cannot be detected in the BSSeq data.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The Prkg1 example clearly illustrates how BSSeq alone misses the 5mCG-to-5hmCG transition that OxBSSeq reveals.",
+            "The argument is logically sound — since 5mC and 5hmC have distinct biological functions, distinguishing them is more informative.",
+            "The point is well-established in the field and the paper adds a concrete demonstration."
+          ],
+          "weaknesses": [
+            "Only one gene example (Prkg1) is highlighted to make this general point, though the principle applies broadly.",
+            "OxBSSeq has known technical limitations (incomplete oxidation, potential DNA damage) that are not discussed.",
+            "The claim that OxBSSeq is 'significantly more informative' is a strong statement that depends on the specific question being asked."
+          ],
+          "alternative_interpretations": [
+            "For some analyses (e.g., identifying DMVs where both modifications are lost), BSSeq alone would suffice.",
+            "The additional information from OxBSSeq may not always change biological conclusions."
+          ],
+          "required_assumptions": [
+            "The oxidation and conversion rates in OxBSSeq are sufficiently high and consistent (stated to be within expected range).",
+            "The distinction between 5mC and 5hmC is functionally meaningful for the specific analyses performed."
+          ],
+          "notes": "This is a methodological claim that is well-supported and important for interpreting the paper's findings. The bisulfite conversion and oxidation QC data support the technical validity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "There is a global decrease of 5mCG and global increase of 5hmCG across the PC ge…",
+        "claim": "There is a global decrease of 5mCG and global increase of 5hmCG across the PC genome during differentiation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As these programs unfold, there is a global decrease of 5mCG and global increase of 5hmCG.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Genome-wide quantification is referenced (Figure 2—figure supplement 1A).",
+            "The finding is consistent with extensive prior literature on neuronal 5hmC accumulation (Globisch et al., 2010; Kriaucionis and Heintz, 2009; Szulwach et al., 2011).",
+            "OxBSSeq provides definitive separation of 5mC and 5hmC."
+          ],
+          "weaknesses": [
+            "The specific values and statistical tests for global changes are referenced to a supplementary figure rather than reported in the text.",
+            "The claim is stated without quantitative details (e.g., percentage change)."
+          ],
+          "alternative_interpretations": [
+            "Global trends may mask gene-specific patterns that are more biologically relevant."
+          ],
+          "required_assumptions": [
+            "Genome-wide averages are meaningful summaries despite heterogeneity across loci."
+          ],
+          "notes": "A straightforward descriptive claim well-supported by the data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "The experimental pipeline using FANS-purified Itpr1+ PC nuclei with low-input op…",
+        "claim": "The experimental pipeline using FANS-purified Itpr1+ PC nuclei with low-input optimized protocols produces reproducible, high-quality data across all assays.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The Pearson correlation coefficients between each replicate at all timepoints and techniques (RNASeq, OxBSSeq, ATACSeq, and ChIPSeq) were high (over 0.9), establishing that our data are reproducible and of very high quality.",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Pearson correlation coefficients >0.9 across all assays and timepoints demonstrate high reproducibility.",
+            "Marker gene analysis (PC markers enriched, granule cell and glial markers depleted) confirms sorting specificity.",
+            "Bisulfite conversion and oxidation rates fall within expected ranges.",
+            "Multiple assays (RNASeq, OxBSSeq, ATACSeq, ChIPSeq) are independently validated."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.4.6.1): purity assessment relies on genome browser visualization of marker genes rather than quantitative contamination estimates.",
+            "Specific bisulfite conversion rates per sample are referenced to a supplementary figure but not reported in the text.",
+            "Low-input protocols may introduce biases that are not captured by Pearson correlation (e.g., systematic loss of certain genomic regions)."
+          ],
+          "alternative_interpretations": [
+            "High correlation between replicates does not guarantee accuracy — systematic biases would be correlated between replicates."
+          ],
+          "required_assumptions": [
+            "Itpr1 staining reliably identifies all PCs at all developmental stages.",
+            "The low-input optimizations do not introduce systematic biases.",
+            "Formaldehyde fixation does not preferentially alter specific genomic regions."
+          ],
+          "notes": "The QC evidence is thorough and supports the claim. The use of multiple independent assays adds confidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.7",
+        "label": "Constitutively expressed genes in PCs carry stable activating epigenetic marks a…",
+        "claim": "Constitutively expressed genes in PCs carry stable activating epigenetic marks and show continued conversion of 5mC to 5hmC in gene bodies without strong impact on expression.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As PCs mature, the conversion of 5mC to 5hmC continues to increase within the gene bodies of the most active constitutively expressed genes without a strong impact on expression.",
+        "evaluation": {
+          "node_id": "c1.4.7",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The constitutively expressed gene class (~3000 genes) is well-characterized with multiple epigenetic features.",
+            "The observation that 5mC-to-5hmC conversion continues without strong expression changes adds to the functional demethylation model.",
+            "Data are shown systematically across the gene class."
+          ],
+          "weaknesses": [
+            "The phrase 'without a strong impact on expression' is qualitative — the threshold for 'strong' is not defined.",
+            "The biological purpose of continued 5hmC accumulation in stably expressed genes is not explained."
+          ],
+          "alternative_interpretations": [
+            "Continued 5hmC accumulation may reflect constitutive Tet activity rather than serving a specific regulatory function.",
+            "The continued conversion may prepare genes for potential future regulation."
+          ],
+          "required_assumptions": [
+            "The lack of expression change is not due to ceiling effects or saturation in the RNASeq measurement."
+          ],
+          "notes": "This observation is interesting but largely descriptive.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.8",
+        "label": "The relationship between 5hmCH accumulation and de novo DNA methylation patterns…",
+        "claim": "The relationship between 5hmCH accumulation and de novo DNA methylation patterns suggests that 5hmCH localization reflects the pattern of de novo methylation rather than targeted Tet activity, unlike 5hmCG.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "5hmC accumulation directly reflects 5mCH levels suggesting 5hmCH localization reflects the pattern of de novo DNA methylation rather than targeted Tet activity.",
+        "evaluation": {
+          "node_id": "c1.4.8",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The correlation between 5hmCH and 5mCH levels is directly observable in the data.",
+            "The contrast with 5hmCG (which shows targeted enrichment in active genes) adds specificity to the claim.",
+            "The observation is internally consistent with known biology of Dnmt3a de novo methylation patterns."
+          ],
+          "weaknesses": [
+            "The claim is based on correlation rather than mechanistic testing.",
+            "No direct measurement of Dnmt3a localization or activity is provided.",
+            "The observation of 5mCH/5hmCH in intergenic regions complicates the interpretation."
+          ],
+          "alternative_interpretations": [
+            "Both 5mCH and 5hmCH could be independently targeted by de novo methylation and Tet activity, respectively, without one reflecting the other.",
+            "The correlation could reflect chromatin accessibility patterns that independently determine both Dnmt3a and Tet access."
+          ],
+          "required_assumptions": [
+            "5hmCH is produced primarily by Tet oxidation of 5mCH.",
+            "The relationship between 5mCH and 5hmCH is direct rather than mediated by a third factor."
+          ],
+          "notes": "This is a thoughtful observation that adds to the understanding of CG vs. CH modification patterns.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "5hmC mediates passive (replication-dependent) demethylation in dividing neuronal…",
+        "claim": "5hmC mediates passive (replication-dependent) demethylation in dividing neuronal progenitors to provide accessibility to regulatory sites required for gene expression during differentiation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "it is probable that 5hmC is required to provide accessibility to important regulatory sites as neuronal progenitors exit the cell cycle and begin differentiation.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately hedged ('it is probable') rather than stated as demonstrated.",
+            "The observation that transcription factor genes (Lhx5, Lhx1, Ldb) are already demethylated at P0 is consistent with passive demethylation during the progenitor phase.",
+            "Prior literature in ESCs and lymphocytes supports this model."
+          ],
+          "weaknesses": [
+            "Evidential gap (from sub-claim c1.5.1.1): no data from progenitor cells are presented to directly demonstrate passive demethylation during the progenitor phase.",
+            "Alternative explanations (these loci were never methylated, or active demethylation occurred early) are not experimentally excluded.",
+            "The claim extrapolates from demethylation patterns in ESCs and lymphocytes to neuronal progenitors without direct evidence."
+          ],
+          "alternative_interpretations": [
+            "These transcription factor loci may be maintained in an unmethylated state throughout development by transcription factor binding rather than undergoing demethylation.",
+            "Active demethylation before P0 could account for the observed pattern without invoking replication-dependent mechanisms."
+          ],
+          "required_assumptions": [
+            "Neuronal progenitors utilize the same passive demethylation mechanisms established in other dividing cell types.",
+            "The demethylation status at P0 reflects events that occurred during progenitor division."
+          ],
+          "notes": "This is the weakest of the three proposed 5hmC functions, as it is primarily inferred from prior literature rather than supported by new data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Stable 5hmCG accumulation within active gene bodies in mature neurons provides '…",
+        "claim": "Stable 5hmCG accumulation within active gene bodies in mature neurons provides 'functional demethylation' by converting high-affinity MeCP2-binding 5mCG sites to low-affinity 5hmCG sites, relieving repression.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "relief of the repressive functions of MeCP2 through Tet-mediated conversion of high-affinity 5mCG-binding sites to low-affinity 5hmCG sites, which we have referred to as functional demethylation, provides an important mechanism for modulation of chromatin structure and transcription.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The functional demethylation model is well-established from prior work by this group (Mellén et al., 2012, 2017).",
+            "The data on MeCP2 binding affinity differences between 5mCG and 5hmCG provide a clear mechanistic basis.",
+            "Single-molecule tracking data (Piccolo et al., 2019) support the sensitivity of MeCP2 binding to modification state."
+          ],
+          "weaknesses": [
+            "No new data specifically testing MeCP2 binding are presented in this paper.",
+            "The model is complicated by the finding (c1.4.2, c1.5.4) that functional demethylation is not sufficient to maintain gene expression.",
+            "The quantitative contribution of functional demethylation to gene expression is not assessed."
+          ],
+          "alternative_interpretations": [
+            "5hmCG accumulation in gene bodies could affect transcription through mechanisms other than MeCP2 displacement.",
+            "The relief of MeCP2 repression may be quantitatively minor compared to other regulatory mechanisms."
+          ],
+          "required_assumptions": [
+            "MeCP2 binding to 5mCG in gene bodies is quantitatively important for transcriptional repression in PCs.",
+            "The conversion from 5mCG to 5hmCG results in functionally significant displacement of MeCP2."
+          ],
+          "notes": "This claim synthesizes prior work by the group and is well-established in the context of the broader literature.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Tet-mediated active demethylation is required for proper expression of a subset …",
+        "claim": "Tet-mediated active demethylation is required for proper expression of a subset of highly expressed PC-specific genes, adding a third function for 5hmC in the nervous system.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "we report here that Tet-mediated active DNA demethylation is required for proper expression of a subset of highly expressed PC-specific genes, adding a third important function for 5hmC in the nervous system.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The TKO data directly demonstrate that continued Tet activity is required for full expression of DMV-associated genes.",
+            "The temporal specificity (loss of Tet after P7 in postmitotic cells) rules out passive demethylation.",
+            "The identification of this as a third function adds conceptual organization to the field.",
+            "Multiple lines of evidence (OxBSSeq, BSSeq, RNASeq, TKO comparison) converge."
+          ],
+          "weaknesses": [
+            "The causal link between demethylation and proper expression is correlative — it is not demonstrated that demethylation itself drives expression changes.",
+            "The TDG-BER pathway is not directly demonstrated (no 5fC/5caC detected, no TDG knockout).",
+            "The subset of genes affected is relatively small, raising questions about generalizability."
+          ],
+          "alternative_interpretations": [
+            "The expression changes in TKO could reflect loss of 5hmCG-mediated functional demethylation rather than loss of active demethylation.",
+            "Multiple functions of Tet loss could contribute simultaneously, making it difficult to attribute expression changes specifically to active demethylation."
+          ],
+          "required_assumptions": [
+            "Active demethylation (complete loss of modifications) is mechanistically distinct from functional demethylation (5mCG to 5hmCG conversion) in its transcriptional consequences.",
+            "The TDG-BER pathway or a functionally equivalent pathway operates in PCs."
+          ],
+          "notes": "This is the central novel claim of the paper and is well-supported, though the mechanistic details remain to be fully elucidated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "Functional demethylation (5hmCG accumulation) is not sufficient to maintain gene…",
+        "claim": "Functional demethylation (5hmCG accumulation) is not sufficient to maintain gene expression, as repressed genes retain elevated 5hmCG in their gene bodies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The finding that elevated 5hmC remains within genes that are repressed during PC differentiation adds to this model the fact that functional demethylation is not sufficient to maintain gene expression.",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The data directly show that repressed genes retain or increase 5hmCG levels, demonstrating insufficiency.",
+            "This finding appropriately modifies and refines the group's earlier model.",
+            "Systematic analysis across developmentally repressed genes provides robust evidence."
+          ],
+          "weaknesses": [
+            "The mechanism by which transcription is maintained or lost despite 5hmCG levels is not identified.",
+            "It is not clear whether the retained 5hmCG in repressed genes has any functional significance."
+          ],
+          "alternative_interpretations": [
+            "5hmCG may be necessary but not sufficient for transcription, requiring co-factor binding or promoter accessibility.",
+            "Retained 5hmCG in repressed genes may simply reflect slow dynamics of modification turnover rather than functional significance."
+          ],
+          "required_assumptions": [
+            "5hmCG levels are accurately measured and stable in repressed gene bodies.",
+            "The comparison between gene body 5hmCG and expression is the relevant metric for testing sufficiency."
+          ],
+          "notes": "This claim is essentially the same as c1.4.2, stated in the Discussion context.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Other large neurons with complex and prolonged postmitotic differentiation progr…",
+        "claim": "Other large neurons with complex and prolonged postmitotic differentiation programs, such as pyramidal cells and other projection neurons, likely share the requirement for continued 5hmC-mediated active demethylation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "a continual requirement for 5hmC may be particularly important for PCs, pyramidal cells, and other long range projection neurons whose differentiation program includes postmitotic development of sophisticated morphological features and abundant synapses.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The claim is biologically plausible given the extended postmitotic differentiation of pyramidal cells and other projection neurons.",
+            "The authors use qualifying language ('likely', 'may be particularly important')."
+          ],
+          "weaknesses": [
+            "Inferential gap: no data from pyramidal cells or other projection neurons are presented — this is purely extrapolation from PC data.",
+            "Different neuron types may have fundamentally different epigenetic regulatory mechanisms.",
+            "The absence of behavioral or physiological phenotype in the PC TKO weakens the argument for 'requirement.'"
+          ],
+          "alternative_interpretations": [
+            "Other neuron types may rely more heavily on passive demethylation during the progenitor phase, with less need for postmitotic active demethylation.",
+            "The requirement for active demethylation may be unique to PCs or a few specific neuron types."
+          ],
+          "required_assumptions": [
+            "The mechanisms operating in PCs generalize to other large projection neurons.",
+            "The extended postmitotic differentiation program is the key determinant of the requirement for active demethylation."
+          ],
+          "notes": "While appropriately hedged, this claim extends well beyond the data. It is speculation, not a supported finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Reports that DNA methylation remodeling occurs in response to various stimuli in…",
+        "claim": "Reports that DNA methylation remodeling occurs in response to various stimuli in adult mice suggest that 5hmC may function in neuronal plasticity beyond development.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "reports that remodeling of DNA methylation may occur in response to a wide variety of stimuli in adult mice suggest that additional studies of Pcp2TetTKO and other precisely constructed mouse models will help elucidate possible functions of 5hmC in neuronal plasticity.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The suggestion is appropriately framed as a possibility requiring further investigation.",
+            "Prior literature (Kaas et al., 2013; Rudenko et al., 2013) provides suggestive evidence for activity-dependent DNA methylation changes."
+          ],
+          "weaknesses": [
+            "No data on stimulus-dependent DNA methylation changes are presented in this paper.",
+            "The TKO mice show no behavioral phenotype at the timepoint tested, limiting the ability to connect methylation changes to plasticity.",
+            "The prior literature cited used different approaches and different brain regions."
+          ],
+          "alternative_interpretations": [
+            "DNA methylation changes in adult neurons may not require active demethylation through the Tet-TDG-BER pathway.",
+            "Plasticity-related changes may involve different mechanisms than developmental changes."
+          ],
+          "required_assumptions": [
+            "Developmental and plasticity-related DNA methylation changes share mechanistic pathways.",
+            "The Pcp2TetTKO model would reveal plasticity deficits with appropriate testing."
+          ],
+          "notes": "This is a speculative claim about future directions rather than a finding of this study. The calibration is appropriate because the authors frame it as a suggestion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "Recent studies linking Tet mutations to neurodegenerative disease underscore the…",
+        "claim": "Recent studies linking Tet mutations to neurodegenerative disease underscore the broader importance of 5hmC functions in the nervous system.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Given these data and recent studies linking Tet mutations to neurodegenerative disease, it is evident that further exploration of each of these functions in the context of development, aging, and degeneration will continue enhance our understanding of 5hmC and the brain.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors cite specific studies (Cochran et al., 2020; Marshall et al., 2020) linking Tet mutations to neurodegeneration.",
+            "The broader implication is biologically plausible."
+          ],
+          "weaknesses": [
+            "No data on neurodegeneration are presented in this paper.",
+            "The TKO mice show normal survival and no neurodegenerative phenotype at 8 weeks.",
+            "The connection between developmental Tet function and neurodegenerative disease is speculative."
+          ],
+          "alternative_interpretations": [
+            "Tet mutations may cause neurodegeneration through mechanisms unrelated to 5hmC-mediated transcriptional regulation.",
+            "The neurodegeneration link may involve Tet functions in non-neuronal cells."
+          ],
+          "required_assumptions": [
+            "The developmental and disease-related functions of Tet proteins share mechanistic pathways.",
+            "Longer observation of TKO mice would reveal neurodegenerative phenotypes."
+          ],
+          "notes": "This is a contextual claim connecting the findings to broader disease relevance. It is calibrated as a suggestion rather than a demonstrated finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "The TKO phenotypes are evident despite late loss of Tet function, implying that …",
+        "claim": "The TKO phenotypes are evident despite late loss of Tet function, implying that the continual requirement for 5hmC extends robustly through the final stages of differentiation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "It is noteworthy that these phenotypes are evident despite loss of Tet function in the Pcp2TetTKO late in PC differentiation.",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The ROSA26-eGFP reporter data establish late onset of Cre activity (~P7).",
+            "Clear epigenetic and transcriptional phenotypes are observed despite this late timing.",
+            "The contrast with early-established DMVs (unaffected) vs. late-established DMVs (impacted) provides internal validation of timing.",
+            "This directly addresses a potential criticism that phenotypes could be dismissed as reflecting earlier events."
+          ],
+          "weaknesses": [
+            "The exact timeline of Tet protein loss after Cre activation is not characterized (protein half-life unknown).",
+            "The absence of gross behavioral phenotype despite molecular changes could suggest the 'final stages' requirement is less critical than implied.",
+            "Residual Tet activity between P7 and full protein depletion could partially buffer the phenotype."
+          ],
+          "alternative_interpretations": [
+            "The molecular phenotypes may represent ongoing but ultimately compensated changes that do not affect PC function significantly.",
+            "Longer observation periods might reveal progressive deterioration that would strengthen the functional importance claim."
+          ],
+          "required_assumptions": [
+            "Tet proteins are depleted rapidly enough after recombination to produce a meaningful window of loss during the relevant developmental period.",
+            "The molecular changes observed at 8 weeks are stable and not still progressing."
+          ],
+          "notes": "This claim is essentially the same point as c1.2.5 but framed differently. Both are well-supported by the data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "In Pcp2TetTKO PCs, regulatory sites that gain accessibility during differentiati…",
+        "claim": "In Pcp2TetTKO PCs, regulatory sites that gain accessibility during differentiation retain higher levels of both 5mCG and 5hmCG compared to wild-type.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The increased 5mCG and 5hmCG evident over these sites in the Pcp2TetTKO relative to WT PCs indicates clearly that loss of both 5mCG and 5hmCG at these sites requires continued Tet oxidase activity.",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is directly supported by Figure 4G showing differential 5mCG and 5hmCG levels at regulatory sites in Pcp2TetTKO vs WT.",
+            "The experimental design is strong: comparing sites that gain accessibility during differentiation in WT vs TetTKO provides a clear internal control.",
+            "The use of OxBSSeq allows independent assessment of 5mCG and 5hmCG, which is critical for this claim."
+          ],
+          "weaknesses": [
+            "The paper does not provide statistical quantification of the difference between TKO and WT at these sites in the text, though the figure panel is referenced.",
+            "The magnitude of the retained methylation/hydroxymethylation is not explicitly stated."
+          ],
+          "alternative_interpretations": [
+            "Higher methylation in TKO could partly reflect indirect effects of altered transcription factor binding or chromatin remodeling rather than solely direct Tet catalytic activity at these sites."
+          ],
+          "required_assumptions": [
+            "Tet enzymes are the primary drivers of 5mC-to-5hmC conversion at these regulatory sites.",
+            "The sites identified by differential ATAC analysis between P0 and adult are genuine regulatory elements."
+          ],
+          "notes": "This is a key claim supporting the requirement of continued Tet activity for DNA demethylation at regulatory sites in postmitotic cells.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.2",
+        "label": "DMVs that form after P7 (post-recombination) fail to develop in Pcp2TetTKO, whil…",
+        "claim": "DMVs that form after P7 (post-recombination) fail to develop in Pcp2TetTKO, while DMVs established before P7 are unaffected.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Genes with very large DMVs that are acquired early in development, for example, Hox cluster genes and Calb1, are not impacted in the Pcp2TetTKO PCs... In contrast, for those genes that acquire large DMVs between P7 and adult, for example Gpr63 and Grid2, the loss of DNA methylation that is required for formation of the DMVs is strongly decreased.",
+        "evaluation": {
+          "node_id": "c1.1.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The internal timing control is elegant: DMVs established before Cre onset (~P7) serve as negative controls, while late-forming DMVs serve as the experimental condition.",
+            "Specific examples (Hox/Calb1 vs Gpr63/Grid2) with genome browser tracks in Figure 4H provide direct visualization.",
+            "Quantification of 5hmCG and 5mCG over both DMV classes (Figure 4I) supports the claim."
+          ],
+          "weaknesses": [
+            "The binary classification of 'before P7' vs 'after P7' is somewhat simplified; Cre-mediated recombination is gradual and may not be complete at P7.",
+            "The extent of residual Tet activity between P7 and when recombination is fully penetrant is not quantified."
+          ],
+          "alternative_interpretations": [
+            "Partial recombination could mean some cells retain Tet activity longer, and the observed effects represent a mixture of fully recombined and partially recombined cells."
+          ],
+          "required_assumptions": [
+            "Cre-mediated recombination is sufficiently efficient and timely to eliminate Tet function during the critical window of late DMV formation.",
+            "FANS purification does not preferentially select cells with incomplete recombination."
+          ],
+          "notes": "The authors acknowledge timing complexity in the Discussion, which is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.3",
+        "label": "In genes undergoing active demethylation, conversion of 5mCG to 5hmCG over the g…",
+        "claim": "In genes undergoing active demethylation, conversion of 5mCG to 5hmCG over the gene body is clearly evident between P0 and P7, and continued Tet activity is then required to remove both residual 5mCG and 5hmCG in the adult.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "For some genes (Gpr63, Grid2) the progression toward loss of modified C is easily appreciated. In these cases, conversion of 5mCG to 5hmCG over the gene body is clearly evident between P0 and P7, and continued Tet activity is required to remove both residual 5mCG and 5hmCG.",
+        "evaluation": {
+          "node_id": "c1.1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The OxBSSeq data at P0, P7, and adult timepoints for specific genes (Gpr63, Grid2) allow visualization of the 5mCG-to-5hmCG conversion followed by loss of both marks.",
+            "The TKO data provide a causal test: continued Tet activity is needed for the second phase of demethylation."
+          ],
+          "weaknesses": [
+            "The claim that conversion of 5mCG to 5hmCG is 'clearly evident between P0 and P7' relies on genome browser visualization of specific genes rather than systematic quantification across all genes in this class.",
+            "This appears in the Discussion rather than Results, and the quantitative evidence is somewhat distributed across figures."
+          ],
+          "alternative_interpretations": [
+            "The apparent two-phase process (first hydroxymethylation, then demethylation) could also be explained by concurrent processes occurring at different rates rather than a strict sequential mechanism."
+          ],
+          "required_assumptions": [
+            "The P0/P7/adult timepoints adequately capture the temporal dynamics of methylation changes.",
+            "5hmCG enrichment at P7 reflects ongoing Tet-mediated oxidation rather than a stable mark deposited earlier."
+          ],
+          "notes": "The two-step model is reasonable but the temporal resolution (only three timepoints) limits the ability to establish strict sequential ordering.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Mass spectrometry of adult PC genomic DNA failed to detect 5fC or 5caC intermedi…",
+        "claim": "Mass spectrometry of adult PC genomic DNA failed to detect 5fC or 5caC intermediates.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "our mass spectroscopic analysis of genomic DNA from differentiating PCs failed to detect 5fC or 5caC, their involvement as transient intermediates in the loss of 5mC and 5hmC cannot be ruled out because the small fraction of the genome covered by this gene class may preclude their detection.",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is an honest negative result reported transparently.",
+            "The authors provide a reasonable explanation for the failure to detect: the small fraction of the genome undergoing active demethylation and the transient nature of these intermediates.",
+            "Mass spectrometry is an appropriate and direct method for detecting these modifications."
+          ],
+          "weaknesses": [
+            "The failure to detect 5fC and 5caC, while honestly reported, means the proposed TDG-BER pathway remains unconfirmed at the biochemical level in this system.",
+            "No sensitivity analysis is reported (i.e., what is the detection limit and what levels would be expected?)."
+          ],
+          "alternative_interpretations": [
+            "The absence of detectable 5fC/5caC could indicate that an alternative demethylation mechanism (not involving TDG-BER) is operating, such as deamination-coupled repair.",
+            "5fC and 5caC may be present but below the detection threshold due to rapid turnover."
+          ],
+          "required_assumptions": [
+            "5fC and 5caC would be detectable by mass spectrometry if the TDG-BER pathway is operating genome-wide at sufficient scale.",
+            "The small fraction of genome affected is the reason for non-detection rather than the pathway not operating."
+          ],
+          "notes": "This is a gap in the active demethylation argument that the authors appropriately acknowledge. See also claims about TDG-BER being the 'simplest interpretation.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "ATAC peaks that gain accessibility lose both 5hmC and 5mC as PCs progress from P…",
+        "claim": "ATAC peaks that gain accessibility lose both 5hmC and 5mC as PCs progress from P0 to adult, whereas sites that lose accessibility show no significant methylation changes at peak centers.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "those ATAC peaks that gain accessibility lose both 5hmC and 5mC as cells progress from P0 to adult whereas no significant changes in methylation at ATAC peak centers occur in sites that lose accessibility.",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The computational approach of dividing ATAC peaks by directionality of change and then examining methylation/hydroxymethylation at those sites is methodologically sound.",
+            "Figure 2M-N provides metagene plots supporting the claim.",
+            "The asymmetry between gaining and losing sites provides a useful internal control."
+          ],
+          "weaknesses": [
+            "The stringent fold-change threshold (log2 FC > 4) may bias toward extreme cases; behavior of moderately changed sites is unknown.",
+            "No statistical testing of the methylation differences at ATAC peak centers is explicitly described in the text."
+          ],
+          "alternative_interpretations": [
+            "Loss of methylation at gaining ATAC sites could be a consequence rather than a cause of increased accessibility — transcription factor binding may displace maintenance methylation."
+          ],
+          "required_assumptions": [
+            "ATAC peak changes reflect genuine regulatory site activation/deactivation rather than technical artifacts.",
+            "The relationship between accessibility and methylation is direct rather than mediated by an intervening process."
+          ],
+          "notes": "Consistent with prior literature on enhancer activation and demethylation (Lio et al., 2016 as cited by the authors).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.2",
+        "label": "Transcription factor motifs found in ATAC sites gaining versus losing accessibil…",
+        "claim": "Transcription factor motifs found in ATAC sites gaining versus losing accessibility are distinct.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the transcription factor motifs found in these different classes of ATAC sites are distinct.",
+        "evaluation": {
+          "node_id": "c1.1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Motif analysis of differentially accessible ATAC sites is a standard and informative approach.",
+            "The data are shown in Figure 2—figure supplement 1H."
+          ],
+          "weaknesses": [
+            "The claim is stated briefly without specifying which motifs are enriched in each class, limiting the reader's ability to evaluate biological significance.",
+            "No statistical framework for the motif enrichment analysis is described in the text excerpt.",
+            "The supplementary figure is referenced but the actual motifs and their enrichment scores are not detailed in the text."
+          ],
+          "alternative_interpretations": [
+            "Distinct motifs could reflect different cell-type-of-origin regulatory programs rather than functionally meaningful differences in PC regulation."
+          ],
+          "required_assumptions": [
+            "Motif enrichment in ATAC peaks reflects actual transcription factor binding.",
+            "The ATAC peak classification into gaining/losing groups is robust."
+          ],
+          "notes": "This is presented as a secondary observation rather than a central finding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Differential expression analysis used p<0.05, log2 fold change >0.5 as significa…",
+        "claim": "Differential expression analysis used p<0.05, log2 fold change >0.5 as significance thresholds.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Using p < 0.05, log2 fold change of >0.5 in either direction to filter these data.",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The thresholds are clearly stated and standard for this type of analysis.",
+            "The verbatim quote directly matches the claim."
+          ],
+          "weaknesses": [
+            "The p < 0.05 threshold for the TKO comparison is less stringent than the p < 0.01 used for the developmental analysis, which could inflate the number of differentially expressed genes in the TKO.",
+            "It is not stated whether this is adjusted p-value or raw p-value for the TKO comparison, though the developmental analysis specifies 'p < 0.01' and the P7 vs adult supplementary mentions 'p-adj value of 0.05.'"
+          ],
+          "alternative_interpretations": [
+            "Using a more stringent threshold would likely reduce the 721 up and 548 down genes substantially, potentially weakening downstream GO enrichment claims."
+          ],
+          "required_assumptions": [
+            "The statistical framework and multiple testing correction are appropriate for the number of comparisons."
+          ],
+          "notes": "The relatively permissive thresholds for the TKO analysis (p<0.05, log2FC>0.5) compared to the developmental analysis (p<0.01, log2FC>2) is worth noting. This inconsistency may inflate the apparent transcriptional impact of the TKO.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "The dysregulated ion channels may impact the fine-tuned physiology of PCs, altho…",
+        "claim": "The dysregulated ion channels may impact the fine-tuned physiology of PCs, although given their complex firing patterns and action potential waveforms, functional consequences are difficult to predict.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "although given the complex firing patterns and action potential (AP) waveforms characteristic of PCs, it is difficult to predict the functional consequences of these changes.",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors appropriately hedge the claim by noting the difficulty of predicting functional consequences.",
+            "Ion channels are highlighted in Figure 4E with colored dots.",
+            "GO enrichment showing synaptic transmission and neuron differentiation categories supports the biological relevance."
+          ],
+          "weaknesses": [
+            "No electrophysiological data are provided to assess whether the ion channel expression changes actually alter PC physiology.",
+            "The direction of change (many ion channels are upregulated in TKO) is counterintuitive if Tet loss is expected to impair differentiation."
+          ],
+          "alternative_interpretations": [
+            "Upregulation of ion channels could represent a compensatory response rather than a direct consequence of altered methylation.",
+            "Expression changes may not translate to proportional changes in functional protein levels."
+          ],
+          "required_assumptions": [
+            "Changes in ion channel mRNA levels reflect changes in functional channel protein at the membrane."
+          ],
+          "notes": "The lack of functional data (electrophysiology, behavioral tests beyond rotarod) is a significant gap for interpreting the biological significance of these transcriptional changes.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5.1",
+        "label": "Pcp2TetTKO mice show no gross motor phenotype on rotarod, normal survival, and n…",
+        "claim": "Pcp2TetTKO mice show no gross motor phenotype on rotarod, normal survival, and normal body weight, despite extensive transcriptional and epigenetic changes.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The lines chosen for analysis displayed no gross motor phenotype as assessed by rotarod performance, survival was normal, and recombination activity was specific to PCs.",
+        "evaluation": {
+          "node_id": "c1.2.5.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Kaplan-Meier survival curves (Figure 4B), body weight data (Figure 4C), and rotarod data (Figure 4D) are provided with multiple founder lines.",
+            "Two independent founder lines (Founder13, Founder19) show consistent results.",
+            "Sample sizes (n=8 per group) are reasonable."
+          ],
+          "weaknesses": [
+            "Rotarod is a relatively insensitive test of motor function; more sensitive assays (beam walk, gait analysis, eyeblink conditioning) might reveal deficits.",
+            "The observation period for survival and motor testing may be too short (8 weeks) to detect degenerative changes that emerge later.",
+            "The juxtaposition of 'no gross phenotype' with >1200 dysregulated genes raises questions about the biological significance of the transcriptional changes."
+          ],
+          "alternative_interpretations": [
+            "The absence of a gross phenotype could indicate that many of the transcriptional changes are compensated for, or that the permissive statistical thresholds used inflate the apparent magnitude of transcriptional disruption.",
+            "Phenotypic consequences may emerge with aging or under challenge conditions."
+          ],
+          "required_assumptions": [
+            "Rotarod performance is a sufficient assay for detecting PC dysfunction.",
+            "Eight weeks is sufficient time for phenotypic consequences to manifest."
+          ],
+          "notes": "The disconnect between extensive molecular changes and absent behavioral phenotype deserves more discussion. This is a tension in the paper's narrative.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6.1",
+        "label": "PCR analysis of floxed regions and RNASeq confirmed deletion of exons from all t…",
+        "claim": "PCR analysis of floxed regions and RNASeq confirmed deletion of exons from all three Tet genes in purified PC genomic DNA.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "PCR analysis of the floxed regions of each Tet gene in purified PC genomic DNA, and RNASeq analysis confirmed the deletion of exons from all three TET proteins.",
+        "evaluation": {
+          "node_id": "c1.2.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Dual validation approaches (PCR genotyping and RNASeq) provide complementary evidence for gene deletion.",
+            "Figure 4—figure supplement 1C shows PCR genotyping, and Figure 4—figure supplement 1D shows exon deletion in RNASeq.",
+            "Validation is performed in purified PC genomic DNA rather than bulk tissue."
+          ],
+          "weaknesses": [
+            "Quantification of deletion efficiency (percentage of alleles recombined) is not provided — PCR is typically qualitative.",
+            "Western blot or protein-level confirmation of Tet protein loss is not shown."
+          ],
+          "alternative_interpretations": [
+            "Incomplete recombination could mean residual Tet activity persists in some PCs, potentially underestimating the true effect of complete Tet loss."
+          ],
+          "required_assumptions": [
+            "PCR and RNASeq validation are sufficient proxies for functional protein loss.",
+            "Recombination efficiency is high enough that residual Tet activity is negligible."
+          ],
+          "notes": "The lack of protein-level validation is a minor gap but common in studies of this type given the difficulty of obtaining sufficient PC-specific protein.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.6.2",
+        "label": "Cre expression was confirmed specific to PCs using ROSA26-eGFP reporter line, wi…",
+        "claim": "Cre expression was confirmed specific to PCs using ROSA26-eGFP reporter line, with no GFP expression at P0, onset at P7, and robust expression in adult PCs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "recombination activity was specific to PCs.",
+        "evaluation": {
+          "node_id": "c1.2.6.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "ROSA26-eGFP reporter line cross is a gold-standard approach for validating Cre specificity and timing.",
+            "Figure 4—figure supplement 2A-D shows developmental time course (P0, P7, P56) in two founder lines.",
+            "The temporal onset at P7 and restriction to PCs is clearly demonstrated."
+          ],
+          "weaknesses": [
+            "The verbatim quote is quite sparse ('recombination activity was specific to PCs') — the supplementary data provide the actual evidence.",
+            "Reporter activity doesn't guarantee that all three floxed Tet alleles recombine with the same efficiency as the ROSA26 locus."
+          ],
+          "alternative_interpretations": [
+            "ROSA26 locus recombination efficiency may not perfectly predict recombination efficiency at the three separate Tet loci, which have different floxed geometries."
+          ],
+          "required_assumptions": [
+            "ROSA26-eGFP reporter recombination kinetics approximate those of the Tet floxed alleles."
+          ],
+          "notes": "Good experimental validation of the genetic tool.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "DMVs were identified by filtering undermethylated regions for length >5 kb and m…",
+        "claim": "DMVs were identified by filtering undermethylated regions for length >5 kb and merging regions within 1 kb, revealing multiple regions longer than 15 kb, which is unusual given average DMV length of ~5 kb.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This revealed multiple regions longer than 15 kb, an unusual finding given that the average length of DMVs is ~5 kb.",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The computational method for DMV identification follows established approaches (Burger et al., 2013; Jeong et al., 2014; Mo et al., 2015).",
+            "The parameters (>5 kb, merge within 1 kb) are explicitly stated and reasonable.",
+            "The finding of very large DMVs (>15 kb) is appropriately contextualized as unusual.",
+            "Supplementary data (Figure 3—figure supplement 1A-B, D-E) provide distribution details."
+          ],
+          "weaknesses": [
+            "The choice of 5 kb threshold and 1 kb merge distance, while established, could influence the number and size of detected DMVs; sensitivity analysis to these parameters is not shown."
+          ],
+          "alternative_interpretations": [
+            "Very large DMVs could partly reflect the merging algorithm rather than biologically contiguous demethylated regions, though the BSSeq tracks in Figure 3A argue against this."
+          ],
+          "required_assumptions": [
+            "The computational parameters for DMV calling are appropriate for this cell type and developmental context."
+          ],
+          "notes": "The finding of unusually large DMVs is a novel and interesting observation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.2",
+        "label": "Independent BSSeq experiments detecting combined 5mC+5hmC confirm the DMV findin…",
+        "claim": "Independent BSSeq experiments detecting combined 5mC+5hmC confirm the DMV findings and show that hypo-DMRs present at P0 expand and fuse as PCs mature.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "hypo-DMRs (differentially methylated regions) present at P0 expand and fuse as PCs lose both methylation and hydroxymethylation to form the very large DMRs that are characteristics of these genes.",
+        "evaluation": {
+          "node_id": "c1.3.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Independent BSSeq data provide orthogonal confirmation of the OxBSSeq-derived DMV findings.",
+            "The hypo-DMR expansion and fusion is directly visualized in the genome browser tracks (Figure 3A, BSSeq and hypo-DMR tracks).",
+            "The convergence of two independent experimental approaches strengthens the conclusion."
+          ],
+          "weaknesses": [
+            "BSSeq cannot distinguish 5mC from 5hmC, so while it confirms total modification loss, it cannot independently confirm the specific contributions of each.",
+            "The hypo-DMR calling parameters and statistical framework are referenced (Burger et al., 2013) but not fully detailed in the excerpt."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "BSSeq and OxBSSeq are measuring the same biological phenomenon through complementary chemistry."
+          ],
+          "notes": "Good use of orthogonal validation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.3",
+        "label": "These genes do not accumulate modified cytosines in CpH context.",
+        "claim": "These genes do not accumulate modified cytosines in CpH context.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "They do not accumulate modified cytosines in CpH context.",
+        "evaluation": {
+          "node_id": "c1.3.1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Figure 3—figure supplement 1G directly shows the lack of CpH modification accumulation at DMV-associated genes.",
+            "This is an important observation distinguishing these genes from the repressed genes that accumulate CpH modifications."
+          ],
+          "weaknesses": [
+            "The statement is categorical ('do not accumulate') without specifying a threshold for what constitutes absence vs. low-level accumulation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "OxBSSeq sensitivity is sufficient to detect CpH modifications if present."
+          ],
+          "notes": "This observation is consistent with the active, highly expressed status of these genes.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "Variation in DMV growth across genes reflects a complex relationship between tim…",
+        "claim": "Variation in DMV growth across genes reflects a complex relationship between timing of transcription initiation, rate of transcription, local Tet oxidase activity, and timing of Tet oxidase loss after recombination.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We believe this reflects a complex relationship between the timing at which transcription is initiated, the rate of transcription over the entire gene body, the local activity of Tet oxidase within the gene as differentiation proceeds, and the timing of Tet oxidase loss.",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The observation of variation in DMV growth across genes is well documented (Figure 4—figure supplement 2G-H).",
+            "The authors identify relevant variables that could explain the variation."
+          ],
+          "weaknesses": [
+            "This is presented as an explanation but is essentially speculation — no data are provided to quantitatively test the contribution of each proposed factor (timing, transcription rate, local Tet activity, recombination timing).",
+            "The claim uses 'We believe' language, appropriately signaling this is interpretation, but the multi-factor model is not tested.",
+            "No correlation analyses between DMV growth and transcription rate, gene length, or other measurable parameters are reported."
+          ],
+          "alternative_interpretations": [
+            "Variation in DMV formation could reflect chromatin accessibility differences, local DNA sequence composition, or other factors not considered.",
+            "Stochastic recombination timing across PCs in the population could account for much of the variation."
+          ],
+          "required_assumptions": [
+            "The four proposed factors are the primary determinants of DMV growth variation.",
+            "These factors can be independently assessed."
+          ],
+          "notes": "This is an interpretive claim that would benefit from quantitative modeling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "Example genes Itpr1 and Mtss1 show at P0 that they are actively transcribed with…",
+        "claim": "Example genes Itpr1 and Mtss1 show at P0 that they are actively transcribed with 5hmCG enrichment, 5mCG depletion, accessible promoters, and H3K4me3 at promoters—resembling moderately expressed genes—then progressively lose all DNA modifications as PCs mature.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "At birth, these genes are actively transcribed, 5hmCG is enriched in the gene body and 5mCG is depleted, their promoters are accessible, and H3K4me3 is present over their promoters. These epigenetic properties resemble moderately expressed genes in many cell types.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple data types (RNASeq, OxBSSeq, ATACSeq, H3K4me3 ChIPSeq) converge on the same genes (Itpr1, Mtss1) shown in Figure 3A.",
+            "Quantitative metagene analyses across all DMV genes (Figure 3B-E) support the individual gene examples.",
+            "The comparison to 'moderately expressed genes in many cell types' is appropriate framing."
+          ],
+          "weaknesses": [
+            "The characterization at P0 as 'moderately expressed' is qualitative; absolute expression levels are not compared to a defined reference set."
+          ],
+          "alternative_interpretations": [
+            "The progressive loss of all modifications could reflect a non-specific consequence of very high transcription rates (e.g., polymerase-mediated displacement of modified bases) rather than a regulated active demethylation process."
+          ],
+          "required_assumptions": [
+            "The multi-omic profiles at each timepoint accurately reflect the state of individual PCs rather than population-level averaging artifacts."
+          ],
+          "notes": "Well-supported descriptive claim with strong multi-modal evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "922 genes are developmentally repressed (enriched in cell signaling and axon gui…",
+        "claim": "922 genes are developmentally repressed (enriched in cell signaling and axon guidance) and 432 genes increase in expression (enriched in calcium ion buffering, IP3 signaling, RNA splicing) between P0 and adult.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "there were 922 developmentally repressed genes (down-regulated in adult) enriched in categories involved in cell signaling and axon guidance pathways... We identified 432 genes with increased expression as PCs differentiate.",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clear statistical criteria (p < 0.01, log2FC > 2) are applied consistently.",
+            "MA plot (Figure 2A) and GO analysis (Figure 2B) directly support the numbers and categories stated.",
+            "The gene numbers (922 repressed, 432 activated) are specific and verifiable.",
+            "GO categories are biologically coherent with known PC biology."
+          ],
+          "weaknesses": [
+            "The asymmetry between repressed (922) and activated (432) genes is not discussed — this could reflect biology or technical biases."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Nuclear RNA from FANS-sorted nuclei accurately reflects cellular transcriptional programs.",
+            "The DESeq2 or equivalent framework handles the low-input data appropriately."
+          ],
+          "notes": "Straightforward descriptive claim well supported by standard analyses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.1",
+        "label": "HighCHmod repressed genes are associated with lower promoter accessibility and e…",
+        "claim": "HighCHmod repressed genes are associated with lower promoter accessibility and enhanced H3K27me3 accumulation, consistent with repression through both polycomb complexes and MeCP2 binding.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Repressed genes that accumulate 5mCH and 5hmCH over their gene bodies are associated with lower promoter accessibility and enhanced accumulation of H3K27me3.",
+        "evaluation": {
+          "node_id": "c1.4.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "K-means clustering separates two classes of repressed genes with distinct epigenetic profiles (Figure 2F-J).",
+            "Metagene plots for 5mCH, 5hmCH, ATAC, and H3K27me3 (Figure 2G-I) clearly show the differential features.",
+            "The interpretation linking highCHmod genes to polycomb and MeCP2 repression is consistent with established literature (Gabel et al., 2015; Li et al., 2018)."
+          ],
+          "weaknesses": [
+            "The claim that MeCP2 binding is involved is inferred from CH modification levels rather than directly measured (no MeCP2 ChIP data).",
+            "K-means with k=2 is a forced dichotomy — there may be a continuum of CH modification levels."
+          ],
+          "alternative_interpretations": [
+            "H3K27me3 accumulation and CH modification could be independently regulated rather than cooperating in repression.",
+            "CH modifications could be a consequence rather than a cause of transcriptional silencing."
+          ],
+          "required_assumptions": [
+            "5mCH accumulation in gene bodies reflects MeCP2-mediated repression as established in prior literature.",
+            "Two clusters adequately represent the diversity of repressive mechanisms."
+          ],
+          "notes": "The dual repression model is interesting but would benefit from MeCP2 binding data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.2",
+        "label": "LowCHmod repressed genes encode preferentially proteins related to cell morphoge…",
+        "claim": "LowCHmod repressed genes encode preferentially proteins related to cell morphogenesis and axonal projection, and their mechanism of repression remains unidentified.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the genes that do not accumulate 5mCH and 5hmCH encode preferentially proteins related to cell morphogenesis and axonal projection... our data do not identify the mechanisms responsible for repression of the lowCHmod gene class.",
+        "evaluation": {
+          "node_id": "c1.4.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GO analysis (Figure 2J) showing enrichment for cell morphogenesis and axonal projection is specific and informative.",
+            "The authors honestly acknowledge that the repression mechanism for this class is unknown."
+          ],
+          "weaknesses": [
+            "The claim is partly negative (mechanism unidentified), limiting its informational value.",
+            "Without intergenic regulatory domain analysis, the statement that such analysis is needed remains untested.",
+            "The distinction between lowCHmod and highCHmod repressed genes could be influenced by gene length or CpH density differences."
+          ],
+          "alternative_interpretations": [
+            "These genes may be repressed by loss of activating transcription factors rather than acquisition of repressive marks.",
+            "Repression may occur through distal enhancer deactivation not captured by gene-body-centric analyses."
+          ],
+          "required_assumptions": [
+            "Gene body CpH modification levels are the appropriate metric for distinguishing repression mechanisms.",
+            "The two clusters represent biologically distinct regulatory programs."
+          ],
+          "notes": "An honest identification of a gap in understanding. The suggestion to examine intergenic regulatory domains is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4.1",
+        "label": "The Prkg1 gene shows a 5mCG-to-5hmCG transition as it is activated between P0 an…",
+        "claim": "The Prkg1 gene shows a 5mCG-to-5hmCG transition as it is activated between P0 and adult that is invisible to BSSeq alone.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the OxBSSeq data reveal a transition from 5mCG to 5hmCG that cannot be detected in the BSSeq data as the gene is activated between P0 and adult.",
+        "evaluation": {
+          "node_id": "c1.4.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The Prkg1 example (Figure 1—figure supplement 1H) directly shows the BSSeq vs OxBSSeq comparison, making the methodological point concrete.",
+            "This is a well-chosen example given Prkg1's known functional importance in PC LTD (Feil et al., 2003).",
+            "The argument for OxBSSeq over BSSeq alone is well justified."
+          ],
+          "weaknesses": [
+            "Only one gene example is highlighted to make this point, though the paper implies it applies broadly."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "OxBSSeq chemistry accurately separates 5mCG and 5hmCG signals.",
+            "The conversion and oxidation rates are within acceptable ranges (supported by Figure 1—figure supplement 1G)."
+          ],
+          "notes": "This is primarily a methodological claim that effectively motivates the use of OxBSSeq.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6.1",
+        "label": "Sorted nuclei expressed PC markers (Itpr1, Calb1, Car8, Pcp2) and did not expres…",
+        "claim": "Sorted nuclei expressed PC markers (Itpr1, Calb1, Car8, Pcp2) and did not express granule cell or glial markers.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the sorted nuclei expressed markers of Purkinje neurons, and did not express genes marking the two most abundant cerebellar cell types, granule cells and glia.",
+        "evaluation": {
+          "node_id": "c1.4.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Figure S1B/Figure 1—figure supplement 1B shows genome browser tracks for PC markers (Itpr1, Calb1, Car8, Pcp2, etc.) and absence of granule cell and glial markers.",
+            "Multiple positive and negative markers are assessed.",
+            "Consistent across all timepoints."
+          ],
+          "weaknesses": [
+            "Purity assessment is qualitative (genome browser visualization) rather than quantitative (e.g., percentage contamination estimated from marker gene expression)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The marker genes used are sufficiently specific to distinguish PCs from other cerebellar cell types.",
+            "Itpr1-based FANS sorting provides high purity."
+          ],
+          "notes": "Essential quality control that supports all downstream analyses.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6.2",
+        "label": "Bisulfite conversion and oxidation rates for OxBSSeq datasets were within expect…",
+        "claim": "Bisulfite conversion and oxidation rates for OxBSSeq datasets were within expected range (≥90% hmC conversion in OxBS, <10% hmC conversion error in BS, <5% mC over-conversion).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Bisulfite conversion and oxidation rates for the OxBSSeq datasets were within the expected range.",
+        "evaluation": {
+          "node_id": "c1.4.6.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Specific numerical thresholds are stated in the methods (≥90% hmC conversion in OxBS, <10% hmC/BS error, <5% mC over-conversion).",
+            "Spike-in controls (Digestion Control and Sequencing Control) provide independent assessment.",
+            "The CEGX pipeline for quality assessment is standardized."
+          ],
+          "weaknesses": [
+            "Actual measured values per sample are not reported in the text, only that they fell 'within the expected range.'",
+            "Figure 1—figure supplement 1G is referenced but specific values per sample are not detailed in the excerpt."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Spike-in control performance accurately reflects conversion efficiency across the genome."
+          ],
+          "notes": "Standard and appropriate QC for OxBSSeq experiments.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Transcription factor genes (Lhx5, Lhx1, Ldb) expressed immediately after PCs exi…",
+        "claim": "Transcription factor genes (Lhx5, Lhx1, Ldb) expressed immediately after PCs exit the cell cycle are already demethylated at P0, suggesting passive demethylation occurred in dividing progenitors.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "The lack of DNA methylation we have observed at P0 over transcription factor genes (Lhx5, Lhx1, Ldb) that are expressed immediately after PCs exit from the cell cycle suggests that this may result from passive demethylation in dividing progenitors.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that these transcription factor loci are demethylated at P0 is directly supported by the OxBSSeq data.",
+            "The interpretation that this reflects passive demethylation in progenitors is biologically reasonable given that PCs exit the cell cycle at e10.5-e13.5, well before P0.",
+            "The authors appropriately use hedging language ('suggests that this may result')."
+          ],
+          "weaknesses": [
+            "No data from progenitor cells are presented to directly demonstrate that these loci undergo demethylation during the progenitor phase.",
+            "Alternative explanations (these loci were never methylated, or active demethylation occurred early) are not discussed.",
+            "This is an inference from a single timepoint (P0) about a process that would have occurred much earlier."
+          ],
+          "alternative_interpretations": [
+            "These transcription factor loci may never have been methylated in the neural lineage, as some developmental genes are constitutively unmethylated.",
+            "Active demethylation by Tet enzymes during the progenitor phase could also explain the demethylated state at P0."
+          ],
+          "required_assumptions": [
+            "These loci were methylated at some prior developmental stage and subsequently demethylated.",
+            "Passive demethylation through cell division is the primary mechanism for demethylation in dividing progenitors."
+          ],
+          "notes": "This is a reasonable but speculative inference. Data from progenitors or earlier developmental timepoints would be needed to test it directly.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.5",
+        "source": "c1.2",
+        "target": "c1.2.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.6",
+        "source": "c1.2",
+        "target": "c1.2.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.5",
+        "source": "c1.3",
+        "target": "c1.3.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.7",
+        "source": "c1.4",
+        "target": "c1.4.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.8",
+        "source": "c1.4",
+        "target": "c1.4.8",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.2",
+        "source": "c1.1.1",
+        "target": "c1.1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.3",
+        "source": "c1.1.1",
+        "target": "c1.1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.2",
+        "source": "c1.1.4",
+        "target": "c1.1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.5_c1.2.5.1",
+        "source": "c1.2.5",
+        "target": "c1.2.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.6_c1.2.6.1",
+        "source": "c1.2.6",
+        "target": "c1.2.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.6_c1.2.6.2",
+        "source": "c1.2.6",
+        "target": "c1.2.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.2",
+        "source": "c1.3.1",
+        "target": "c1.3.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.3",
+        "source": "c1.3.1",
+        "target": "c1.3.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.1",
+        "source": "c1.4.3",
+        "target": "c1.4.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.2",
+        "source": "c1.4.3",
+        "target": "c1.4.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.4_c1.4.4.1",
+        "source": "c1.4.4",
+        "target": "c1.4.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.6_c1.4.6.1",
+        "source": "c1.4.6",
+        "target": "c1.4.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.6_c1.4.6.2",
+        "source": "c1.4.6",
+        "target": "c1.4.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 61,
+    "total_edges": 60,
+    "max_depth": 3,
+    "high_support_nodes": 39,
+    "low_support_nodes": 5,
+    "overall_assessment": "The paper's 61 claims show strong overall support when weighted by centrality (weighted support score 0.79, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “There is likely a continual requirement for 5hmC as a driver of epigenetic remodeling in most differentiating postmitotic neurons, particularly large projection…” (5 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

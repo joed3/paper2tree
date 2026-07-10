@@ -1,0 +1,43 @@
+**eLife Assessment**
+This useful study presents incomplete evidence that experimental evolution of a genome-reduced *E. coli* proceeds through diverse mutational paths while maintaining homeostatic transcriptome architecture, but the central "divergent-to-convergent" evolutionary claim is insufficiently supported by the correlative analyses, lacks functional validation, and the network analysis is underpowered given the sample sizes involved.
+
+**Summary**
+The authors performed experimental evolution of a genome-reduced *E. coli* strain (~21% smaller than wild-type W3110) across nine independent lineages for ~1000 generations, then characterized mutations by whole-genome resequencing and transcriptome changes by RNA-seq. They report that (i) growth fitness was recovered in most lineages, albeit with reduced carrying capacity; (ii) the 65 fixed mutations were highly diverse across lineages with no common mutation; (iii) despite mutational diversity, chromosomal periodicity of gene expression was conserved; and (iv) WGCNA identified three gene modules separately correlated with growth rate, differentially expressed genes, and mutation frequency. The authors conclude that "multiple evolutionary paths" lead to fitness recovery of the reduced genome—a "divergent-to-convergent" evolutionary strategy—while transcriptome homeostasis is maintained.
+
+**Strengths**
+- Nine independent evolutionary lineages provide reasonable biological replication for an evolution experiment, and the use of multiple dilution rates to maintain exponential-phase selection is methodologically sound.
+- The combination of genome resequencing and transcriptomics offers a multi-level view of evolutionary changes, going beyond single-omics approaches common in many evolution studies.
+- The random mutation simulation to test for locational bias near genomic scars is a thoughtful control analysis that addresses a biologically relevant question about whether genome reduction creates mutational hotspots.
+- The observation that mutations are enriched in essential genes is intriguing and, if validated, could point to important constraints on how reduced genomes adapt.
+- The conserved chromosomal periodicity across all evolved lineages, despite diverse mutations, is a potentially interesting finding about genome organization constraints.
+
+**Weaknesses / Essential Revisions**
+- **Limited conceptual novelty relative to prior work:** The recovery of growth fitness by experimental evolution of reduced genomes has been demonstrated multiple times, including by this group (Kurokawa et al., 2022; Choe et al., 2019; Nishimura et al., 2017; Moger-Reischer et al., 2023). The "multiple roads to Rome" concept is well-established in evolutionary biology (historical contingency, clonal interference). The paper must clearly articulate what new biological insight is provided beyond confirming this principle in another context.
+
+- **The "convergent" component of the central claim is weakly supported:** The convergence argument rests largely on (a) conserved chromosomal periodicity and (b) similar PCA directionality. However, the authors' own prior work (Matsui et al., 2023; Nagai et al., 2020) showed that chromosomal periodicity is invariant across genomic and environmental perturbations—if the six-period structure never changes, its conservation here is uninformative about evolutionary convergence. The PCA (Figure 4—figure supplement 1) shows evolved transcriptomes clustering away from both WT and ancestor, which could indicate shared stress responses rather than convergent adaptation. The authors need to define convergence more precisely and provide quantitative metrics (e.g., transcriptomic distances between evolved lineages versus ancestor-to-evolved distances).
+
+- **No functional validation of mutations:** Not a single mutation was reconstructed in the ancestral background to test its causal contribution to fitness recovery. Without this, the claim that these mutations are beneficial (rather than hitchhiking or neutral) is unsupported. The statement that "most or all mutations were assumed to benefit the fitness increase" is speculative. At minimum, a subset of the most frequently mutated genes (e.g., *rpoB*, *rpoD*) should be reconstructed and tested.
+
+- **WGCNA is severely underpowered:** Constructing gene co-expression networks with 3290 genes from approximately 9–13 transcriptome samples is statistically unreliable. Standard recommendations for WGCNA suggest ≥15–20 samples as a minimum. The three "significant" module-trait correlations identified could easily be false discoveries. The authors should justify their sample size, report confidence intervals for the correlations, and ideally validate module membership with independent data.
+
+- **Population-level versus clonal analysis:** Evolved populations were sequenced and profiled as bulk populations, not isolated clones. This means (a) "fixed" mutations may not co-exist in the same genome, complicating epistatic interpretation; (b) transcriptomes reflect mixed genotypes. The authors should clarify whether dominant clones were isolated, or acknowledge this as a significant limitation.
+
+- **No wild-type evolution control:** Parallel evolution of the wild-type strain under identical conditions is essential to distinguish reduced-genome-specific evolutionary dynamics from general adaptation to the culture conditions (e.g., adaptation to M63 medium, 37°C shaking, microplate growth).
+
+- **The enrichment of mutations in essential genes requires careful correction:** Gene length, expression level, and replication timing all influence mutation rates. The chi-square test comparing essential gene fractions does not account for these covariates. A logistic regression or permutation test controlling for gene length and expression level is needed.
+
+- **The r/K trade-off discussion is underdeveloped and speculative:** The positive correlation in Figure 1D is based on ~10 data points with high variance. The discussion oscillates between trade-off and drift explanations without resolving the question. This section should either be substantiated with targeted experiments or significantly shortened.
+
+- **DEG overlap analysis (Figure 4A–B) lacks statistical framing:** The declining overlap of DEGs across lineages is presented descriptively but not compared to a null expectation. If DEGs were randomly drawn from 3290 genes, what overlap would be expected? Without this, the "no universal rule" conclusion is not rigorous.
+
+**Minor Comments**
+- The manuscript contains numerous grammatical errors that impair readability (e.g., "fastened the slow-growing synthetic genome" should be "accelerated"; "gene modules correlated to evolution were newly evaluated" is vague; "of few overlaps" is ungrammatical). Thorough language editing is needed.
+- Figure 7 proposes three evolutionary strategies but strategy (iii) is the only one tested here; the comparison to (i) and (ii) from literature is schematic rather than data-driven. Consider removing or qualifying this figure.
+- The Methods state biological replicates of N = 2–4 for RNA-seq; N = 2 is generally insufficient for DESeq2 to reliably estimate dispersion. The authors should report how many conditions had only two replicates and discuss the impact on DEG detection power.
+- Supplementary file 3 is referenced frequently but not shown in the main text; key information (e.g., the list of essential mutated genes, RNA polymerase subunit mutations) should be presented more prominently.
+- The connection between iron-related biological functions enriched in module M2 and growth rate is left unexplored, despite the medium containing iron(II) sulfate. This deserves comment.
+- The RankProd validation (Figure 5—figure supplement 1) is mentioned in passing but should be compared more systematically to DESeq2 results to strengthen confidence in the DEG calls.
+
+**Recommendation**
+Major Revisions
+The paper addresses a relevant question about the evolutionary dynamics of reduced genomes, but the central "divergent-to-convergent" claim requires substantially stronger evidence—including functional validation of key mutations, properly powered network analyses, wild-type evolution controls, and more rigorous statistical treatment—before it meets eLife's standards for a conceptual advance supported by convincing evidence.

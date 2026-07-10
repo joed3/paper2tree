@@ -1,0 +1,50 @@
+**eLife Assessment**
+This valuable study provides solid evidence linking lysosomal lipid homeostasis to endogenous protein aggregation through genome-wide CRISPRi screening, but the central mechanistic claim—that ESCRT pathway disruption causally mediates lipid-induced proteostasis impairment—rests on incomplete evidence that would benefit from direct functional tests and validation in physiologically relevant cell types.
+
+**Summary**
+The authors perform genome-wide CRISPRi screens in K562 cells using the ProteoStat aggresome-staining dye to identify genetic regulators of endogenous protein aggregation. The screens recover expected proteostasis regulators (proteasome, ribosome, vATPases) and reveal an unexpected connection between lysosomal lipid homeostasis and protein aggregation. Through epistasis experiments, lipidomics, and pharmacological manipulations, the authors demonstrate that increased levels of sphingomyelins (SMs) and cholesterol esters (CEs)—driven by enhanced LDL uptake (via MYLIP knockdown) or impaired lysosomal catabolism (via PSAP knockdown)—promote accumulation of detergent-insoluble protein aggregates predominantly within lysosomes. Lyso-IP proteomics identifies accumulation of insoluble ESCRT pathway components in lysosomes of lipid-perturbed cells, and the authors propose that lipid dysregulation impairs ESCRT-mediated microautophagy and membrane repair. The study systematically rules out several alternative mechanisms (lysosomal pH changes, protease impairment, proteasome inhibition, lipid peroxidation) and demonstrates that lysosomal membrane permeabilization (LMP) contributes partially but does not fully account for the phenotype.
+
+**Strengths**
+- **Novel screening approach**: To the authors' knowledge, this is the first genome-wide CRISPRi screen interrogating endogenous protein aggregation in unmodified mammalian cells, representing a conceptual advance over screens that rely on overexpressed aggregation-prone proteins or exogenous seeds. The discovery of the lipid-proteostasis axis is unexpected and of broad interest.
+
+- **Rigorous epistasis and genetic dissection**: The MYLIP/LDLR epistasis experiment (Figure 2A) convincingly demonstrates that MYLIP acts through LDLR, and the MYLIP/PSAP/LDLR epistasis (Figure 2D) elegantly shows convergence of lipid uptake and catabolism pathways on proteostasis. The PSAP modular rescue experiments further demonstrate pleiotropic lipid involvement.
+
+- **Systematic elimination of alternative mechanisms**: The authors thoroughly investigate and rule out several plausible mechanistic hypotheses—lysosomal pH, protease activity, proteasome activity, and lipid peroxidation—using well-validated reporters (pHLARE, DQ-Red BSA, Me4BoVS, LiperFluo), strengthening the case for a more specific ESCRT-related mechanism.
+
+- **Striking Lyso-IP proteomics finding**: The identification of 9 of 12 top insoluble proteins as ESCRT pathway components (Figure 4A) is a compelling and unexpected result that provides a concrete molecular hypothesis for the lipid-proteostasis connection.
+
+- **Strong lipidomics correlations**: The correlation between SM/CE levels and ProteoStat phenotype across lipid-perturbing perturbations (Figure 2E–F) provides quantitative support for the specificity of these lipid classes.
+
+**Weaknesses / Essential Revisions**
+
+- **ProteoStat specificity remains a concern**: While the authors demonstrate that ProteoStat does not directly stain free cholesterol (MBCD experiment, GUV assay), it remains unresolved whether accumulated sphingolipids, lipid-protein complexes, or other lipid-rich lysosomal deposits could contribute to the ProteoStat signal. The lysosomal ProteoStat puncta observed under lipid perturbation could reflect altered membrane structures rather than bona fide protein aggregates with cross-beta sheet character. Orthogonal validation with amyloid-specific antibodies (e.g., OC or A11) or filter trap assays on whole-cell lysates would substantially strengthen the claim that these are protein aggregates.
+
+- **Causal role of ESCRT disruption is not established**: The central mechanistic claim—that ESCRT pathway impairment mediates lipid-induced protein aggregation—is supported by correlative proteomics (ESCRT components become insoluble) but lacks direct causal evidence. The VPS4A overexpression rescue experiment (Figure 5D–E) shows only modest effects, and the authors acknowledge that lipid dysregulation may impair ESCRT function "upstream to ESCRT-III resolution." Experiments directly testing whether ESCRT knockdown is epistatic to lipid perturbations, or whether constitutively active ESCRT variants can rescue the aggregation phenotype, are needed.
+
+- **Insolubility of ESCRT components does not necessarily equal dysfunction**: ESCRT-III subunits naturally form detergent-resistant polymers during their functional cycle. The accumulation of insoluble ESCRT components could reflect increased demand (more membrane repair events due to LMP) rather than impaired function. The authors should address this alternative interpretation and ideally provide functional evidence of ESCRT impairment (e.g., impaired multivesicular body formation, reduced intraluminal vesicle number by EM, or altered ESCRT dynamics by live imaging).
+
+- **Reliance on a single, non-physiological cell type**: All experiments are performed in K562 cells, a rapidly dividing chronic myelogenous leukemia line. The authors frame the work in the context of aging and neurodegeneration, yet the biological relevance of findings in K562 cells to post-mitotic neurons or aging tissues is unclear. Validation of key findings (lipid-induced aggregation, ESCRT involvement) in at least one additional cell type—ideally a post-mitotic or disease-relevant model—would significantly strengthen the manuscript's impact.
+
+- **Proteasome activity and lysosomal function assays lack replication**: The proteasome activity experiments (Figure 6G–H) are reported with n=1, which is insufficient to draw firm conclusions that lipid perturbations do not affect proteasome function. Given that this is presented as a key negative result ruling out an alternative mechanism, biological replicates with statistical analysis are essential.
+
+- **Microautophagy model is speculative**: The proposed role of microautophagy in delivering misfolded proteins to lysosomes is supported only by indirect evidence (absence of macroautophagy involvement, ubiquitination patterns, UBPY KD experiment). Direct evidence for microautophagy engagement—such as monitoring delivery of specific substrates via ESCRT-dependent routes, or using established microautophagy reporters—would strengthen this aspect of the model.
+
+- **The Lyso-IP silver stain (Figure 3C) is semi-quantitative and not replicated in a quantitative manner**: While representative images from triplicates are shown, densitometric quantification across replicates with statistical analysis should be provided to support the claim of increased lysosomal insoluble protein under lipid perturbation conditions.
+
+**Minor Comments**
+
+- The GSEA scoring function used for ranking genes is non-standard and should be more thoroughly justified or compared with standard ranking approaches (e.g., simple log fold-change or signed p-value products).
+
+- Figure 2—figure supplement 2D: The PSAP full-length rescue reaches only p=0.07 versus non-targeting control, which the authors interpret as "largely rescued." This borderline result should be discussed more cautiously, or additional replicates should be performed.
+
+- The manuscript would benefit from a more explicit discussion of how the K562 findings relate to known lipid changes during aging (e.g., age-related changes in SM and CE levels in human tissues).
+
+- The TEM images (Figure 6—figure supplement 1F) are shown without quantification or description of what structures are visible; their inclusion without analysis is not informative.
+
+- Some key reagent details are missing: the specific sgRNA sequences used for individual gene knockdowns, and validation of knockdown efficiency for key targets (MYLIP, PSAP, LDLR) by Western blot or qPCR.
+
+- The relationship between macroautophagy independence and the microautophagy hypothesis should be discussed more carefully—macroautophagy components not scoring in the screen could also reflect redundancy or incomplete knockdown rather than pathway irrelevance.
+
+**Recommendation**
+Major Revisions
+The study presents an intriguing and potentially important connection between lipid metabolism and protein aggregation, but the central ESCRT-mediated mechanism requires stronger causal evidence, key negative results need biological replication, and validation in a second cell type would be needed to support the broad claims made about proteostasis regulation.

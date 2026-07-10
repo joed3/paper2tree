@@ -1,0 +1,51 @@
+**eLife Assessment**
+
+This study presents a **valuable** investigation into the molecular mechanism linking postsynaptic retinoic acid signaling to presynaptic homeostatic plasticity via BDNF/TrkB retrograde signaling. However, the evidence is **incomplete** because the central claims about the necessity of the BDNF/TrkB pathway are robustly supported only under supraphysiological RA application but fail to reach statistical significance under the more physiologically relevant CNQX-induced endogenous RA condition, undermining the generalizability of the proposed model.
+
+**Summary**
+
+This paper proposes a molecular pathway for retrograde signaling during homeostatic synaptic plasticity at mouse hippocampal glutamatergic synapses. The authors argue that postsynaptic RARα directly binds dendritically localized *Bdnf* mRNA isoforms (containing exon 2 and exon 6), repressing their translation. Upon synaptic inactivity, newly synthesized retinoic acid relieves this translational repression, leading to local BDNF synthesis in dendrites, retrograde BDNF release, and activation of presynaptic TrkB receptors to enhance neurotransmitter release probability. The study employs region-specific (CA1 vs. CA3) Cre-mediated conditional knockouts of *Rara*, *Bdnf*, and *Ntrk2* in organotypic hippocampal slice cultures, combined with in vitro RNA-binding assays, synaptoneurosome translation assays, and electrophysiology. Two induction protocols are used: acute exogenous RA (10 μM, 4 hr) and chronic AMPAR blockade with CNQX (20 μM, 36 hr), the latter being designed to trigger endogenous RA synthesis.
+
+**Strengths**
+
+- **Postsynaptic RARα requirement is convincingly demonstrated.** The region-specific Cre approach cleanly separates pre- versus postsynaptic contributions. Deletion of RARα in CA1 (postsynaptic) but not CA3 (presynaptic) blocks both mEPSC amplitude and frequency increases, with significant ANOVA interaction terms under both exogenous RA and CNQX conditions (Figure 1B–C). High infection efficiency (>90%) was verified, and results are internally consistent and concordant with prior work.
+
+- **RARα binding specificity is well-characterized.** The in vitro RNA-binding assay demonstrates that *Bdnf* exon 2 and exon 6 transcripts selectively bind RARα through its F domain. The inclusion of appropriate positive (GluA1) and negative (PSD95, CaMKIIα, EF1α) controls, along with the demonstrations that RARβ LBD and RARα LBD lacking the F domain fail to pull down *Bdnf* transcripts despite comparable protein expression, establishes domain and receptor specificity convincingly.
+
+- **Paired-pulse ratio data strongly supports presynaptic changes.** RA treatment significantly reduces PPR at multiple inter-stimulus intervals using appropriate repeated-measures ANOVA, consistent with enhanced presynaptic release probability. Combined with the silent synapse analysis (comparable failure rates at −60 mV and +40 mV), the evidence supports a presynaptic locus for the frequency changes under RA treatment conditions.
+
+- **Developmental BDNF expression data is robust.** ProBDNF immunoblotting at multiple developmental timepoints both in vivo (P1–P28) and in vitro (1–21 DIV) shows concordant progressive increases with appropriate statistical analyses, validating the organotypic culture system and providing a plausible temporal framework for the emergence of presynaptic homeostatic plasticity.
+
+- **Specificity of RA-induced translation in synaptoneurosomes.** GluA1 (RARα target, p<0.005) increases while PSD95 (non-RARα target) does not change, replicating prior findings and demonstrating that RA does not globally enhance local translation.
+
+**Weaknesses / Essential Revisions**
+
+- **The CNQX condition fails to support the BDNF/TrkB requirement for presynaptic homeostatic changes — a critical gap.** For CNQX + BDNF KO, the frequency interaction term is not significant (F(2,195)=2.53, p>0.05; Figure 3C). For CNQX + TrkB KO, the interaction is essentially absent (F(2,168)=0.17, p>0.8; Figure 3F). Yet the paper reports significant pairwise comparisons in the figures, which is statistically inappropriate following non-significant omnibus interaction terms. Since CNQX induces endogenous RA synthesis and is the more physiologically relevant paradigm, the failure to demonstrate BDNF/TrkB necessity under this condition is a fundamental problem. The authors must either (1) adequately power these experiments to detect the predicted interaction, (2) provide a principled justification for reporting pairwise comparisons after non-significant interactions, or (3) revise the claims to accurately reflect that the BDNF/TrkB pathway is demonstrably required only under supraphysiological RA conditions.
+
+- **The RNA-binding data lacks in vivo validation.** The claim that RARα directly binds dendritic *Bdnf* mRNAs rests entirely on in vitro pulldown assays using purified recombinant protein and total hippocampal RNA, assessed by semi-quantitative RT-PCR. No in vivo approaches (CLIP-seq, RNA immunoprecipitation from neurons, or even RIP from cultured slices) are provided. Quantitative enrichment ratios across the N=3 replicates are not shown. This is a significant limitation for a central mechanistic claim. At minimum, quantification across replicates should be presented, and ideally, an in vivo RNA-binding approach should be attempted.
+
+- **No direct demonstration that RA-induced BDNF synthesis requires RARα.** The translational de-repression model predicts that RARα knockout synaptoneurosomes should not show RA-induced proBDNF increases. This experiment is absent. Without it, the causal chain from RARα binding → translational repression → RA-dependent de-repression is assembled from separate experiments that are not directly linked. Additionally, no protein synthesis inhibitor control (e.g., anisomycin or cycloheximide) is shown for the synaptoneurosome BDNF translation experiment, leaving open the possibility that proBDNF accumulation reflects reduced degradation rather than new synthesis.
+
+- **The proBDNF synaptoneurosome result is statistically marginal.** The increase reaches only p<0.05 by unpaired t-test (Figure 2E), with the number of replicates not clearly stated. Additionally, there is an apparent discrepancy between the methods section (10-minute RA treatment) and the figure legend (30-minute treatment) that must be clarified. Only proBDNF was measured; whether this is processed to mature BDNF and secreted remains unaddressed.
+
+- **The cross-species conservation claim is not supported by the data in this study.** The assertion that presynaptic homeostatic plasticity represents a "conserved mechanism" across species is based solely on citations to Drosophila NMJ studies, where the molecular mechanisms (BMP, ENaC) are entirely different from the BDNF/TrkB pathway described here. This claim should be substantially tempered or removed.
+
+- **Statistical methodology concerns.** The use of two-way ANOVA followed by nonparametric Mann-Whitney pairwise comparisons (rather than standard parametric post-hoc tests) is unusual and not justified in the text. Additionally, the mIPSC statistics (F(1,137)=5.78 yielding p<0.001; Figure 1—figure supplement 1D) appear internally inconsistent — an F-value of 5.78 with df=(1,137) would typically yield p≈0.017, not p<0.001. The authors should verify and correct all reported statistics.
+
+**Minor Comments**
+
+- The term "unequivocally established" in the abstract/introduction overstates the certainty of the findings given the statistical issues with the CNQX conditions and should be modulated.
+
+- The dendritic localization of *Bdnf* exon 2 and exon 6 transcripts is cited from Baj et al. (2011) using dissociated cultures but is not independently verified in the organotypic slice system used throughout this study. A brief acknowledgment of this assumption would be appropriate.
+
+- The developmental timing argument against new synapse formation (younger cultures have more synaptogenesis but no frequency increase) is logical but would benefit from at least a brief morphological analysis or synapse count to complement the electrophysiological inference.
+
+- Sample sizes (n cells/N animals or cultures) should be consistently and clearly reported in the text for all experiments, particularly the synaptoneurosome immunoblotting experiments.
+
+- The 10 μM RA concentration used for acute treatment is supraphysiological and should be acknowledged as a limitation, particularly given the divergent results between RA and CNQX conditions.
+
+**Recommendation**
+
+Major Revisions
+
+The study addresses an important question and employs an elegant experimental design with region-specific genetic manipulations, but the systematic failure of the CNQX condition to statistically support the BDNF/TrkB requirement (2 of the 3 low-support claims), combined with the absence of direct evidence linking RARα to BDNF translational regulation in intact neurons, means the central mechanistic claims are not yet adequately supported for publication at eLife's standards.

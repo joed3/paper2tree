@@ -1,0 +1,40 @@
+**eLife Assessment**
+This valuable study presents a creative approach to dissecting feedforward and recurrent processing in the human ventral visual pathway using ultra-rapid serial visual presentation combined with MEG and MEG-fMRI fusion, but the central claim that the observed temporal dynamics specifically index recurrent processing rests on incomplete evidence, as key alternative explanations — particularly masking-induced signal truncation and noisy feedforward evidence accumulation — are not adequately ruled out.
+
+**Summary**
+The paper uses ultra-rapid serial visual presentation (ultra-RSVP) at 17 ms and 34 ms per picture during MEG recording to investigate the temporal dynamics of feedforward and recurrent processing in human visual object recognition. The authors report two key findings: (1) an inverse relationship between the peak latency of the initial visual sweep (which shifts earlier with faster rates) and the peak latency of categorical face/object information (which shifts later), which they interpret as evidence that disrupted early feedforward signals require additional recurrent processing; and (2) a bimodal activation profile in early visual cortex (EVC) revealed by MEG-fMRI fusion, with a second peak coinciding with the emergence of categorical information in inferior temporal cortex (IT), interpreted as feedback from IT to EVC. Temporal generalization analyses confirm that neural representations become increasingly transient under RSVP conditions. The authors conclude that recurrent processing compensates for degraded feedforward signals and that its locus is in early visual cortex.
+
+**Strengths**
+- The experimental design is creative and well-motivated: using ultra-RSVP to suppress sustained activity and reveal transient processing dynamics is a clever strategy to temporally segregate processing stages that normally overlap.
+- Multiple converging analytic approaches (time-resolved decoding, temporal generalization, categorical division analysis, and MEG-fMRI fusion) provide a rich characterization of the neural dynamics.
+- The use of MEG-fMRI fusion to gain spatial specificity for temporally resolved signals is a methodological strength, allowing the authors to anchor temporal dynamics to specific cortical regions (EVC and IT).
+- Behavioral results confirm that participants can still perform face detection even at 17 ms/picture, establishing that the neural signals analyzed are functionally relevant.
+- The use of ecologically valid natural image stimuli extends beyond prior work using artificial stimuli (e.g., Kanizsa figures, oriented bars) to study recurrent processing.
+- The temporal generalization analysis provides clear evidence that RSVP suppresses sustained neural representations, validating the core premise of the experimental approach.
+
+**Weaknesses / Essential Revisions**
+- **Confound between masking and recurrent processing disruption.** The RSVP paradigm simultaneously shortens stimulus duration and introduces forward/backward masking from flanking images. These factors are fully confounded: the authors cannot distinguish whether the observed dynamics reflect disrupted recurrent processing of the target, interference from mask-driven feedforward signals, or reduced signal-to-noise ratio. A critical control would be to vary mask effectiveness independently of presentation rate (e.g., using phase-scrambled masks that preserve low-level features but reduce object-level masking).
+
+- **The "inverse relationship" argument is not decisive against feedforward models.** The authors claim the inverse relationship between early sweep peak latency and categorical peak latency "discounts a feedforward cascade as the sole explanation." However, in a noisy feedforward model, if the initial signal is truncated (earlier peak due to mask onset), downstream areas would naturally require more time to accumulate sufficient evidence for categorical discrimination. This alternative — a feedforward cascade with degraded input — is not addressed. Without computational modeling or causal interventions (e.g., TMS to disrupt feedback at the time of the second EVC peak), the temporal dissociation alone does not establish that recurrent processing is responsible.
+
+- **The second EVC peak for 17 ms/picture is not significant.** The authors nonetheless mark and interpret this non-significant peak as supporting feedback dynamics, stating it shows "comparable temporal dynamics" to the 34 ms condition. This undermines the generalizability of the bimodal EVC finding across RSVP conditions and should be acknowledged more transparently.
+
+- **MEG-fMRI fusion uses fMRI data from a different task and different subjects.** The fMRI RDMs were derived from a 500 ms per picture experiment with a different cohort. Spatial activation patterns under ultra-RSVP conditions may differ substantially from those at 500 ms presentation, potentially biasing the fusion results. The authors should discuss how this mismatch could affect the interpretation of the second EVC peak specifically.
+
+- **Face-specificity of the task limits generalizability.** The task was face detection, and face vs. object is a superordinate category distinction supported by dedicated neural circuitry (e.g., fusiform face area). The claim that results reflect general principles of recurrent processing in object recognition would be strengthened by demonstrating similar dynamics for non-face category distinctions.
+
+- **Onset latency interpretation is overreached.** The authors interpret progressively later onset latencies as evidence that "recurrent activity exerts its influence even as the first decoding onsets emerged." However, later onsets are equally (or more parsimoniously) explained by reduced signal-to-noise ratio at faster presentation rates requiring more time to reach the statistical detection threshold.
+
+- **No direct test of the relationship between feedforward disruption and recurrent engagement.** The paper argues that "the extent of disruption of the initial sweep is related to longer processing times at subsequent stages," but does not perform a formal statistical test of this relationship (e.g., across-subject correlation between early peak latency and categorical peak latency).
+
+**Minor Comments**
+- The paper would benefit from showing individual subject data for key results (e.g., peak latencies) to assess variability and robustness.
+- The claim that motor preparation signals are unlikely confounds would be strengthened by showing that results hold when analyzing only correct trials or only trials with specific response types.
+- The discussion of implications for computational models is interesting but speculative without accompanying modeling work. Consider toning down or clearly labeling as speculative.
+- Figure 5 panels (f–h) are described in the legend but the panel labels (a, b) are confusing relative to the text references — please verify consistency.
+- The paper mentions that the exact stimulus set is at a URL (https://megrsvp.github.io) — the reviewers should verify this link is functional and the stimuli are accessible.
+- The low-pass filter at 20 Hz is quite aggressive and may remove relevant high-frequency neural signals. The authors should justify this choice or show results are robust to less aggressive filtering.
+
+**Recommendation**
+Major Revisions
+The study addresses an important question with a creative experimental approach, but the central mechanistic claim — that the observed temporal dynamics specifically index increased recurrent processing — requires stronger evidence to rule out alternative explanations, particularly masking-driven signal degradation within a feedforward framework and the non-significance of the key second EVC peak in the fastest condition.

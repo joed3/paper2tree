@@ -1,0 +1,2472 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_52466",
+    "title": "The hippocampus encodes delay and value information during delay-discounting decision making",
+    "authors": [
+      "Akira Masuda",
+      "Chie Sano",
+      "Qi Zhang",
+      "Hiromichi Goto",
+      "Thomas J McHugh",
+      "Shigeyoshi Fujisawa",
+      "Shigeyoshi Itohara"
+    ],
+    "url": "https://doi.org/10.7554/eLife.52466",
+    "abstract": "The hippocampus, a region critical for memory and spatial navigation, has been implicated in delay discounting, the decline in subjective reward value when a delay is imposed. However, how delay information is encoded in the hippocampus is poorly understood. Here, we recorded from CA1 of mice performing a delay-discounting decision-making task, where delay lengths, delay positions, and reward amounts were changed across sessions, and identified subpopulations of CA1 neurons that increased or decreased their firing rate during long delays. The activity of both delay-active and -suppressed cells reflected delay length, delay position, and reward amount; but manipulating reward amount differentially impacted the two populations, suggesting distinct roles in the valuation process. Further, genetic deletion of the N-methyl-D-aspartate (NMDA) receptor in hippocampal pyramidal cells impaired delay-discount behavior and diminished delay-dependent activity in CA1. Our results suggest that distinct subclasses of hippocampal neurons concertedly support delay-discounting decisions in a manner that is dependent on NMDA receptor function.",
+    "word_count": 7585,
+    "processed_at": "2026-07-10T01:31:24.542692+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Distinct subpopulations of hippocampal CA1 neurons have unique contributions to …",
+        "claim": "Distinct subpopulations of hippocampal CA1 neurons have unique contributions to valuation processes required for delay-based decision making, encoding delay and reward information in opposing ways.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Introduction",
+        "verbatim_quote": "These results suggest that distinct subpopulation of neurons in the hippocampus can have unique contributions to the valuation processes that are required for delay-based decisions.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The study uses a well-designed multi-condition paradigm that independently manipulates delay length, delay position, and reward size, allowing partial dissociation of these variables — this is a genuine methodological strength for addressing the question.",
+            "The identification of delay-act and delay-sup populations with statistically defined criteria (permutation testing on firing rate ratios) provides a reasonable foundation for claiming distinct subpopulations exist.",
+            "The opposing responses of delay-act and delay-sup cells to reward manipulation (Figure 7C-D) are statistically supported (Mann-Whitney U tests, one-sample t-tests) and represent the strongest piece of evidence for the root claim.",
+            "The SVM decoding analysis (Figure 5—figure supplement 1) provides convergent evidence that population activity encodes delay length, complementing single-neuron analyses.",
+            "The CA1-NR1cKO manipulation provides causal evidence linking hippocampal synaptic plasticity to both the neural populations and delay-discounting behavior, strengthening the functional relevance argument."
+          ],
+          "weaknesses": [
+            "INFERENTIAL GAP (from c1.5): The claim that the authors 'identified a specific population of neurons that fit the criteria of value coding' (Abstract) is unsupported by formal analysis. The scatter plot (Figure 7E) shows neurons near the 'delay effect = reward effect' line, but no statistical criterion defines membership, no test determines whether more neurons fall near this line than expected by chance, and no formal definition of 'near the line' is operationalized. This is the most direct sub-claim for 'valuation processes' and it is the weakest.",
+            "INFERENTIAL GAP (from c1.3): The opposing reward responses of delay-act and delay-sup cells could reflect general arousal, engagement, or motivational state differences rather than positive/negative outcome coding per se. The claim that these populations 'encode delay and reward information in opposing ways' is interpretively strong given the data do not rule out simpler accounts.",
+            "EVIDENTIAL GAP (from c1.2): The peak firing rate correlations (79.3% delay-act, 72.3% delay-sup) are likely inflated by a sampling artifact — longer delays provide more time for a higher peak to be observed stochastically. The authors highlight peak firing rate as a 'better indicator' without addressing this confound. The more reliable mean firing rate correlations are much more modest (34.5%, 37.3%).",
+            "EVIDENTIAL GAP (from c1.1): Population vector segmentation into start/delay/goal phases (Figure 4D) is assessed only visually from correlation matrices — no formal statistical testing is reported. Moreover, the three phases correspond to distinct maze locations, so the segmentation could substantially reflect spatial coding rather than distinct functional populations.",
+            "INFERENTIAL GAP (from c1.6): The behavioral claim of impaired delay-discounting in cKO mice is undermined by a non-significant genotype × delay interaction (F1,4=1.07, p=0.37). Without this interaction, the data show only a general preference difference, not differential sensitivity to delay. The F-statistic notation (F1, F4 without denominator df) is also unusual and may reflect reporting errors.",
+            "The forced-choice experiment (Figure 7—figure supplement 2) used to argue for subjective value representation is purely qualitative — no statistics, only example neurons shown — yet it is used to support the interpretive claim that 'firing of delay-act neurons represents the animal's subjective value.'",
+            "The study uses sequential rather than randomized condition order (delay lengths extended stepwise), which could introduce order/habituation confounds that are not fully controlled for.",
+            "The cKO physiological recordings were done at ages when NR1 deletion may have spread beyond CA1, as the authors themselves acknowledge, weakening the specificity of the causal claim."
+          ],
+          "alternative_interpretations": [
+            "The opposing responses of delay-act and delay-sup populations to reward manipulations could reflect differences in spatial coding, movement-related activity, or general arousal states rather than representing a valuation computation per se.",
+            "The delay-length correlations in firing rate could partly reflect movement or behavioral state differences across delay conditions (e.g., grooming, exploration) rather than encoding of delay duration.",
+            "The 'value-coding' neurons identified near the diagonal in Figure 7E could represent chance scatter of independently varying delay and reward sensitivities, rather than a true value-coding population.",
+            "The cKO behavioral phenotype could reflect a general spatial learning deficit (as established by Tsien et al., 1996; Rondi-Reig et al., 2001) or compulsive perseveration rather than impaired delay-discounting specifically — the non-significant interaction term supports this alternative."
+          ],
+          "required_assumptions": [
+            "Peak firing rate correlations with delay length are not artifactually inflated by the increased observation window in longer delays.",
+            "The sequential (non-randomized) presentation of delay conditions does not introduce systematic order confounds that explain the neural correlates.",
+            "Spatial coding differences between left and right arms do not fully account for the observed delay-related activity patterns.",
+            "The opposing reward responses of delay-act vs delay-sup cells reflect genuine valence coding rather than differences in baseline firing properties, spatial selectivity, or arousal.",
+            "NR1 deletion in the cKO mice is sufficiently restricted to CA1 at the ages of physiological recording to draw hippocampus-specific conclusions.",
+            "Neurons near the 'delay = reward' line in Figure 7E represent a meaningful functional population rather than chance scatter."
+          ],
+          "notes": "The root claim as stated in the abstract ('distinct subpopulations...have unique contributions to the valuation processes') is broader and stronger than what the evidence collectively supports. The strongest evidence is for distinct populations with opposing reward sensitivity; the weakest link is the 'value coding' claim (c1.5), which is central to the root claim's emphasis on 'valuation processes.' The discussion appropriately hedges ('there may be value-coding neurons'), but the abstract does not. The non-significant genotype × delay interaction for the cKO behavioral data (c1.6) is a notable concern that is not acknowledged by the authors.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "CA1 neuronal activity during delay segregates into two distinct populations: del…",
+        "claim": "CA1 neuronal activity during delay segregates into two distinct populations: delay-active neurons that increase firing and delay-suppressed neurons that decrease firing during the delay period.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "our results show that CA1 neuronal activity during delay is segregated into two populations, delay active and delay suppressed neurons.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Large dataset: 639 CA1 excitatory neurons from 28 mice, with 38.0% and 48.9% classified as delay-act and delay-sup respectively — percentages far exceeding chance (5% threshold).",
+            "Permutation test used to classify neurons provides a principled statistical approach to identifying delay-modulated activity.",
+            "Population vector analysis shows visually clear segmentation of activity into start/delay/goal periods for both populations.",
+            "Supporting evidence from both excitatory and inhibitory neurons (Figure 4—figure supplement 1) adds convergent support.",
+            "LFP data showing theta dominance and rare SWRs during delay is consistent with an active, engaged circuit state."
+          ],
+          "weaknesses": [
+            "Evidential gap: The population vector segmentation (c1.1.4) lacks formal statistical testing — it relies on visual inspection of correlation matrices, which could be misleading.",
+            "The segmentation into start/delay/goal could substantially reflect spatial coding rather than temporal task-phase coding, since each phase occurs in a distinct maze location. This is an inferential gap — the evidence for 'distinct populations' could partly reflect spatial place field differences rather than fundamentally different delay-related computations.",
+            "The delay-discounting behavioral validation (c1.1.1) lacks formal statistical testing of the preference decrease as a function of delay length.",
+            "LFP analyses (c1.1.2) are based on very small samples (3 mice, 6 sessions) with marginal p-values.",
+            "The threshold for classification (5% permutation test) is applied per-neuron without correction for multiple comparisons across 639 neurons, though the very high percentages (86.9% total) mitigate this concern.",
+            "Neurons are pooled across all task conditions — stability of classification across different conditions is not demonstrated."
+          ],
+          "alternative_interpretations": [
+            "The two populations could simply reflect neurons with place fields inside versus outside the delay zone, rather than functionally distinct delay-coding populations.",
+            "The large percentage of delay-suppressed neurons (48.9%) could reflect normal place cell behavior — neurons with fields elsewhere naturally fire less when the animal is stationary in the delay zone."
+          ],
+          "required_assumptions": [
+            "The permutation test (shuffling inter-spike intervals) generates appropriate null distributions for the task structure.",
+            "The classification of excitatory vs inhibitory neurons based on waveform characteristics is accurate.",
+            "Pooling across conditions and animals is justified despite potential heterogeneity."
+          ],
+          "notes": "The claim as stated is relatively descriptive and well-matched to the evidence. The more important question — whether these populations are functionally distinct versus simply reflecting spatial coding — is addressed in subsequent claims (c1.3, c1.4).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "The hippocampus encodes delay length through dual coding schemes: population-lev…",
+        "claim": "The hippocampus encodes delay length through dual coding schemes: population-level temporal coding and single-neuron rate coding.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Taken together, the hippocampus may encode delay length using dual coding schemes.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Population-level temporal coding is supported by the distribution of peak firing times across the delay period (Figure 4C) and by the SVM decoding analysis that successfully distinguishes delay lengths above chance.",
+            "Single-neuron rate coding is supported by significant correlations between firing rate and delay length in 34.5–37.3% of neurons (mean firing rate) — well above the 5% chance level.",
+            "The SVM decoding analysis provides a complementary, independent line of evidence for population-level coding of delay length.",
+            "The permutation test for assessing significance of the percentage of correlated neurons adds rigor."
+          ],
+          "weaknesses": [
+            "Critical evidential gap (from c1.2.2): The peak firing rate correlations (79.3% and 72.3%) are very likely inflated by a sampling artifact — longer delays provide more time samples, mechanically increasing the probability of observing a higher peak firing rate. This is a fundamental concern that the authors do not address, yet they highlight peak firing rate as the 'better indicator.'",
+            "The mean firing rate correlations (34.5% and 37.3%), while more reliable, are more modest and the authors themselves note potential 'deformative normalization' issues.",
+            "The population-level coding claim (c1.2.1) relies partly on a non-significant KS test (p=0.46) that merely fails to reject uniformity — this is not evidence of uniformity, especially with potentially low power.",
+            "In most experimental conditions, the temporal distribution of peak firing rates is biased toward delay onset, which is inconsistent with the time-cell-like sequential tiling that would be expected for robust population temporal coding.",
+            "The SVM decoding (c1.2.3) does not report absolute accuracy in the main text, making practical significance hard to assess.",
+            "The claim of 'dual coding schemes' implies two independent mechanisms, but rate coding and population temporal coding are not necessarily independent — they could be manifestations of the same underlying process."
+          ],
+          "alternative_interpretations": [
+            "The peak firing rate correlations could be entirely artifactual due to the sampling duration confound, leaving only modest mean firing rate correlations as evidence for rate coding.",
+            "Population decoding success could reflect general arousal, anxiety, or motivational state differences across delay conditions rather than delay-length encoding per se.",
+            "The bias toward delay-onset activity in most conditions suggests the population code may primarily reflect a delay-onset event detector rather than temporal tiling of the delay period."
+          ],
+          "required_assumptions": [
+            "Peak firing rate is not systematically biased by delay duration (this assumption appears violated).",
+            "The SVM classifier is not overfitting given the relatively small number of trials per condition.",
+            "Population temporal coding and single-neuron rate coding are meaningfully dissociable coding schemes."
+          ],
+          "notes": "The claim of 'dual coding schemes' is stated assertively in the abstract and results but the evidence for peak firing rate coding is compromised by a likely sampling artifact. The mean firing rate evidence is more credible but more modest. The population coding evidence is reasonable but the temporal distributions are not uniform in most conditions.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Delay-active and delay-suppressed neurons show opposing responses to reward size…",
+        "claim": "Delay-active and delay-suppressed neurons show opposing responses to reward size manipulations, independently reflecting positive and negative outcomes in different CA1 subpopulations.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "These results suggest that firing during the delay independently reflected positive and negative outcomes in these different subpopulations of CA1 neurons.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The Mann-Whitney U tests comparing delay-act vs delay-sup responses to reward loss (p=0.007) and reward gain (p=0.03) provide direct statistical evidence for opposing responses.",
+            "The one-sample t-tests confirming negative skew in delay-act (p=0.01) and positive skew in delay-sup (p=0.01) provide convergent within-group evidence.",
+            "The experimental design includes both reward loss and reward gain conditions, providing bidirectional evidence.",
+            "The forced-choice manipulation (Figure 7—figure supplement 2) provides an additional line of evidence, albeit qualitative."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim that these populations 'independently reflect positive and negative outcomes' is a strong interpretive leap. The opposing responses could reflect general arousal/engagement differences rather than coding of positive vs negative valence.",
+            "The forced-choice evidence (c1.3.3) that is used to support 'subjective value' representation is only qualitative — no statistics are provided, and only example neurons are shown.",
+            "The p-values (0.03 for reward gain; 0.01 for t-tests) are modest and would not clearly survive correction for the numerous statistical tests conducted across the paper.",
+            "Sample sizes for reward manipulation conditions are not explicitly stated.",
+            "The terminology 'skew' is imprecise — the one-sample t-test tests whether the mean differs from zero, not distributional skewness.",
+            "The direction of the effect (delay-act decrease with reward loss, delay-sup increase) could reflect general motivational state changes rather than specific outcome representation."
+          ],
+          "alternative_interpretations": [
+            "Delay-act neurons may simply track engagement/motivation (higher with better rewards), while delay-sup neurons track stress/frustration (higher with worse rewards), without encoding 'outcomes' per se.",
+            "The opposing responses could reflect correlated changes in locomotor activity, general arousal, or attention during different reward conditions, given that the animals are behaving differently.",
+            "Neurons could be responding to contextual cues associated with different reward conditions rather than reward value itself."
+          ],
+          "required_assumptions": [
+            "Changes in firing rate during the delay period specifically reflect reward information rather than general behavioral or motivational state changes.",
+            "Delay-act and delay-sup classifications are stable across reward manipulation sessions.",
+            "The reward manipulation does not alter other aspects of behavior (movement, attention) that could independently affect firing rates."
+          ],
+          "notes": "The statistical evidence for opposing responses is present but modest. The interpretation as 'positive and negative outcome' coding is a significant inferential leap beyond what the data directly demonstrate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "A significant fraction of delay-active and delay-suppressed neurons carry spatia…",
+        "claim": "A significant fraction of delay-active and delay-suppressed neurons carry spatially tuned delay information, suggesting they encode integrated location-delay information rather than purely temporal information.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "the activity of most delay-act and delay-sup cells in dorsal CA1 does not appear to represent solely delay information, but rather, may represent integrated information of the chosen option, reflecting both location and delay.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "High percentage of side-selective neurons (73.5% delay-act, 64.9% delay-sup) clearly demonstrates spatial tuning in the majority of delay-responsive neurons.",
+            "The use of switched and both-side conditions provides a well-designed experimental approach to dissociating spatial and delay coding.",
+            "The finding that 26.5% and 35.1% of neurons are location-independent demonstrates that a non-trivial minority encode delay independent of position.",
+            "Three-way ANOVA with side, delay-length, and timing as factors provides appropriate statistical framework."
+          ],
+          "weaknesses": [
+            "The high percentage of side-selective neurons (73.5%) in hippocampal place cells is expected and not surprising — this largely confirms that CA1 neurons have spatial selectivity, which is their well-established primary characteristic.",
+            "The criteria for determining side-selectivity from the three-way ANOVA are not fully specified — it is unclear which main effects or interactions defined 'side-selective' vs 'side-independent.'",
+            "The location-independent percentage is the complement of side-selectivity, so any threshold or criterion issues propagate to both categories.",
+            "No additional analysis characterizes the location-independent neurons to confirm they are genuinely encoding delay information through an independent means."
+          ],
+          "alternative_interpretations": [
+            "The ~70% side-selectivity simply reflects normal place cell behavior — neurons with place fields on one side of the maze will appear side-selective regardless of delay coding.",
+            "The ~25-35% 'location-independent' neurons could include neurons with bilateral place fields or poorly tuned spatial representations rather than genuinely non-spatial delay coders.",
+            "The claim of 'integrated location-delay information' could alternatively be described as 'place cells that happen to be active during the delay because the delay occurs in their place field.'"
+          ],
+          "required_assumptions": [
+            "The three-way ANOVA appropriately separates spatial from non-spatial contributions to firing rate.",
+            "Switched and both-side conditions are comparable enough to pool for side-selectivity analysis.",
+            "Location-independent neurons reflect genuine non-spatial delay coding rather than methodological artifacts."
+          ],
+          "notes": "The claim is stated cautiously ('may represent integrated information') and is well-calibrated to the evidence. The finding is consistent with the broader literature on conjunctive coding in the hippocampus (Eichenbaum, 2014).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "A specific subset of CA1 neurons fit the criteria of value coding, responding in…",
+        "claim": "A specific subset of CA1 neurons fit the criteria of value coding, responding in the same way to delay length changes and reward size changes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Finally, we were able to identify a specific population of neurons that fit the criteria of value coding.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The experimental design manipulating both delay and reward size is well-suited to test for value coding.",
+            "The scatter plot (Figure 7E) provides a visual framework for identifying neurons that respond similarly to delay and reward manipulations.",
+            "The absence of a global correlation between delay and reward effects at the population level is a useful observation."
+          ],
+          "weaknesses": [
+            "Critical inferential gap: Neurons falling near the 'delay effect = reward effect' line could do so by chance. No statistical criterion is provided for identifying 'value-coding neurons,' no formal test is conducted to determine whether more neurons fall near this line than expected by chance, and no definition of 'near the line' is operationalized.",
+            "The abstract states 'we were able to identify a specific population of neurons that fit the criteria of value coding' — this is a strong claim unsupported by formal analysis. The discussion appropriately softens this to 'there may be value-coding neurons.'",
+            "No quantification of how many neurons qualify as 'value-coding' is provided.",
+            "The authors themselves note 'there are no global trends' (Figure 7E), which undermines the claim that value coding is a systematic feature of the population.",
+            "The scatter plot analysis sample size is not clearly stated.",
+            "Value coding would require demonstrating that neurons integrate delay and reward into a common currency — simply showing that some neurons respond in the same direction to both manipulations is necessary but not sufficient."
+          ],
+          "alternative_interpretations": [
+            "Neurons near the identity line could be responding to general motivational state or arousal, which covaries with both delay increases and reward decreases.",
+            "Random variability in neuronal responses could produce neurons that happen to fall near the identity line without any underlying value computation.",
+            "The absence of a global trend argues against systematic value coding, and the handful of neurons near the line could represent noise."
+          ],
+          "required_assumptions": [
+            "Neurons near the delay=reward line are statistically more numerous than expected by chance (not tested).",
+            "Responding in the same direction to delay and reward changes is sufficient to identify value coding (debatable — it could reflect confounded motivational variables).",
+            "The delay and reward manipulations affect value in comparable, quantifiable ways."
+          ],
+          "notes": "This is the weakest of the primary claims. The abstract's strong statement about identifying value-coding neurons is not supported by the analysis presented. The discussion is more appropriately cautious but the abstract overreaches substantially.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "NMDAR-dependent plasticity mechanisms in the hippocampus are required for the fo…",
+        "claim": "NMDAR-dependent plasticity mechanisms in the hippocampus are required for the formation of delay-related firing patterns and for delay-discounting behavior.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "NMDAR-dependent plasticity mechanisms appear to be required for the formation of the firing patterns during delay and for the delay-discounting.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The behavioral impairment in CA1-NR1cKO mice is supported by two-way ANOVA with significant genotype effect (F1=14.4, p<0.001) and post-hoc comparisons showing differences at 5s, 10s, 20s, and 40s delays.",
+            "Multiple converging physiological measures show disruption in cKO mice: altered delay-act/delay-sup ratios (Fisher's exact test), disrupted population vector segmentation, and loss of negative skew in reward-related firing rate ratios.",
+            "Basic firing properties (mean firing rate) are not significantly different between genotypes, arguing against a gross disruption of neural activity.",
+            "The genetic model provides a cleaner manipulation than pharmacological approaches."
+          ],
+          "weaknesses": [
+            "Critical interpretive concern: The reported interaction term for behavior (F1,4=1.07, p=0.37) is non-significant. Without a significant genotype × delay interaction, one cannot claim differential delay-discounting — only a general preference difference between genotypes. This substantially undermines the behavioral claim.",
+            "The F-statistic notation is unusual (F1, F4 without denominator df) and may reflect reporting errors, making it difficult to verify the statistical claims.",
+            "Very small sample sizes for physiology (cKO n=3 mice, control n=4 mice) with neuron independence assumptions violated — Fisher's exact test and Mann-Whitney U treat neurons as independent observations when they are clustered within animals.",
+            "The authors acknowledge that NR1 deletion may extend beyond CA1 in the cKO animals at the ages used for recording (slightly >2 months), undermining the specificity of the claim about hippocampal NMDAR requirements. This is a critical confound for all physiological findings.",
+            "The marginal p-value for reward ratio differences (p=0.04) would not survive correction for the multiple genotype comparisons made.",
+            "The characterization of cKO population activity as 'non-specific' and 'sparse' is largely qualitative with no formal statistical comparison of temporal distributions between genotypes.",
+            "Inferential gap: The claim that NMDAR-dependent 'plasticity mechanisms' are required conflates the genetic manipulation (chronic NMDAR deletion) with acute plasticity. The effects could reflect developmental consequences or chronic circuit reorganization rather than ongoing plasticity requirements.",
+            "The discussion's suggestion of parallels to OCD/compulsive behavior (c1.6.5) is highly speculative with no direct evidence."
+          ],
+          "alternative_interpretations": [
+            "The cKO behavioral phenotype could reflect a general spatial learning deficit (well-documented in these mice by Tsien et al. 1996) rather than a specific impairment in delay discounting.",
+            "The non-significant interaction term suggests cKO mice may simply have a stronger side or reward-size preference, not altered delay sensitivity per se.",
+            "Physiological differences could reflect non-CA1 effects given the age-dependent spread of NR1 deletion beyond CA1.",
+            "The altered delay-act/delay-sup ratio could reflect abnormal place field formation (McHugh et al. 1996 showed less specific spatial representation) rather than delay-specific coding deficits."
+          ],
+          "required_assumptions": [
+            "NR1 deletion is sufficiently restricted to CA1 at the ages used for recording (the authors acknowledge this may not hold).",
+            "The behavioral phenotype reflects delay-discounting specifically rather than general learning or spatial deficits.",
+            "Neurons from 3 cKO and 4 control mice are representative of the populations.",
+            "The non-significant interaction term does not invalidate the delay-discounting interpretation."
+          ],
+          "notes": "The non-significant genotype × delay interaction is a serious concern that undermines the specific claim about delay-discounting. The authors do not discuss this. The physiological data are suggestive but compromised by very small animal numbers and potential non-CA1 effects. The claim would be better stated as 'CA1 NMDAR may contribute to delay-based decision making' rather than 'are required for.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "Mice performing the T-maze delay-discounting task show decreasing preference for…",
+        "claim": "Mice performing the T-maze delay-discounting task show decreasing preference for the large reward arm as delay length increases, validating the behavioral paradigm.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "With the inclusion of a delay, preference for the large reward arm decreased as a function of delay length.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The behavioral result is consistent with decades of delay-discounting literature in both humans and rodents (Ainslie, 1975; 1992).",
+            "The stepwise delay extension protocol (0, 5, 10, 20, 40 s) is a reasonable design for demonstrating delay-dependent preference shifts.",
+            "Figure 1C is provided showing the trend."
+          ],
+          "weaknesses": [
+            "Evidential gap: No formal statistical test (e.g., repeated-measures ANOVA or regression) is reported for the decrease in preference as a function of delay length — only the descriptive figure is shown.",
+            "The number of mice contributing to the behavioral curve in Figure 1C is not explicitly stated in the results text.",
+            "The criterion for advancing to longer delays (>80% preference) introduces a selection bias — only mice that achieved high preference were advanced, which could artificially steepen the apparent discounting curve."
+          ],
+          "alternative_interpretations": [
+            "The sequential block design (always increasing delay) means the apparent discounting could partly reflect satiety, fatigue, or session order effects rather than purely delay-dependent preference change."
+          ],
+          "required_assumptions": [
+            "The stepwise (non-randomized) delay presentation does not confound the apparent delay-discounting effect with order or satiation effects.",
+            "The >80% criterion for advancing does not create selection bias that distorts the shape of the discounting function."
+          ],
+          "notes": "The claim is descriptive and modest ('validating the behavioral paradigm'), so the calibration is appropriate despite the lack of formal statistics.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The hippocampal circuit remains actively engaged during delay periods rather tha…",
+        "claim": "The hippocampal circuit remains actively engaged during delay periods rather than entering an offline state.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "sharp-wave/ripples (SWRs) were rarely observed...and the LFP was dominated by theta-range (7–11 Hz) activity, suggesting that the circuit remained engaged during this phase.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The combination of SWR suppression and theta dominance provides two converging lines of evidence for active engagement.",
+            "The logic is well-established: theta oscillations are associated with active exploration and online processing, while SWRs are associated with offline states.",
+            "Statistical tests are provided for SWR comparisons between zones."
+          ],
+          "weaknesses": [
+            "Evidential gap: Very small sample — only 3 mice (6 sessions) contribute to the spectrogram and power spectrum analyses.",
+            "The p-values (0.03 and 0.02) are marginal, and with Mann-Whitney U tests on such small samples, statistical power is low.",
+            "The claim that SWRs were 'rarely observed' is relative — the actual rate of SWRs in the delay zone is not clearly quantified in the text."
+          ],
+          "alternative_interpretations": [
+            "Theta dominance during delay could reflect the animal's continued movement or postural adjustments in the delay zone rather than cognitive engagement per se.",
+            "The absence of SWRs could reflect the physical constraints of the delay zone (e.g., small space limiting immobility) rather than active processing."
+          ],
+          "required_assumptions": [
+            "Theta-range activity is a reliable indicator of 'active engagement' of the hippocampal circuit.",
+            "The 3-mouse sample is representative of the broader population."
+          ],
+          "notes": "The claim is cautiously worded ('suggesting'), which is appropriate given the limited sample.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Large fractions of CA1 neurons exhibit significant changes in firing rate during…",
+        "claim": "Large fractions of CA1 neurons exhibit significant changes in firing rate during the delay period across all task conditions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We found that across all task conditions, large numbers of neurons exhibited significant increases (CA1: 243/639 units: 38.0%) or decreases (CA1: 313/639: 48.9%) in their firing rates during the delay.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The numbers are large: 243/639 (38.0%) delay-act and 313/639 (48.9%) delay-sup, totaling 86.9%, which vastly exceeds the ~10% expected by chance at a 5% two-tailed threshold.",
+            "A permutation test was used to determine significance, which is appropriate for this type of classification.",
+            "The total sample of 639 excitatory neurons provides reasonable statistical power."
+          ],
+          "weaknesses": [
+            "Evidential gap: The authors do not explicitly discuss false discovery rate or multiple comparison considerations, though the 86.9% greatly exceeds chance expectations.",
+            "Neurons are pooled across all task conditions — it is unclear whether classification is stable across different delay lengths, raising questions about robustness.",
+            "The remaining ~13% of neurons are unclassified; it is not discussed whether these represent a genuinely distinct population or borderline cases."
+          ],
+          "alternative_interpretations": [
+            "Some delay-related firing changes could reflect motor or postural differences during the delay period rather than cognitive processing of delay per se.",
+            "The high percentage could partly reflect general arousal or motivational state changes during the delay rather than specific delay encoding."
+          ],
+          "required_assumptions": [
+            "The permutation test adequately controls for temporal autocorrelation in spike trains.",
+            "Firing rate changes during the delay zone genuinely reflect delay-related processing rather than other correlated variables (movement, posture, arousal)."
+          ],
+          "notes": "The very high combined percentage (87%) is remarkable. Even accounting for some inflation, the effect is clearly real.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "Population activity of both delay-act and delay-sup cells is segmented into thre…",
+        "claim": "Population activity of both delay-act and delay-sup cells is segmented into three distinct periods — start, delay, and goal — with differential patterns of sustained activity in each.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The population activity of both delay-act and delay-sup cells was clearly segmented into three periods — start, delay and goal — with differential patterns of sustained activity in each.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Population vector autocorrelation analysis is a standard and appropriate method for demonstrating temporal segmentation.",
+            "The visual evidence in Figure 4D appears to show clear block-diagonal structure.",
+            "Separate analyses for delay-act and delay-sup populations strengthen the claim."
+          ],
+          "weaknesses": [
+            "No formal statistical test is reported for the segmentation — the claim relies on visual inspection of the correlation matrix.",
+            "The segmentation into start/delay/goal corresponds to distinct spatial locations in the maze, so it could reflect spatial coding rather than temporal segmentation of the task.",
+            "The analysis is conducted under 'long-delay conditions' but it is unclear whether this holds equally under shorter delays."
+          ],
+          "alternative_interpretations": [
+            "The three-period segmentation could simply reflect the spatial coding of hippocampal place cells in three distinct maze zones rather than temporal segmentation of task events.",
+            "Different sensory inputs in each zone (visual, olfactory) could drive distinct population states without requiring temporal coding."
+          ],
+          "required_assumptions": [
+            "The population vector autocorrelation reflects task-relevant temporal segmentation rather than mere spatial segmentation of the maze."
+          ],
+          "notes": "The confound between spatial location and task phase is important but inherent to this type of maze task.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "Similar population codes for delay were found in inhibitory CA1 neurons.",
+        "claim": "Similar population codes for delay were found in inhibitory CA1 neurons.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Similar population codes were found in inhibitory CA1 neurons.",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Data are shown in a supplementary figure (Figure 4—figure supplement 1) with similar analyses to those performed on excitatory neurons.",
+            "Extending the analysis to inhibitory neurons adds generality."
+          ],
+          "weaknesses": [
+            "The claim is stated very briefly with no statistics or detailed comparison between excitatory and inhibitory population codes.",
+            "The number of inhibitory neurons is not stated in this context (total n=169 for WT from methods, but how many were delay-act vs delay-sup is unclear).",
+            "'Similar' is vague — no quantitative comparison is provided between excitatory and inhibitory population codes."
+          ],
+          "alternative_interpretations": [
+            "Inhibitory neurons could show superficially similar patterns simply because they are driven by the same excitatory population, without independently encoding delay information."
+          ],
+          "required_assumptions": [
+            "The waveform-based classification of excitatory vs inhibitory neurons is accurate.",
+            "The inhibitory neuron sample is large enough to support population-level conclusions."
+          ],
+          "notes": "This is a secondary claim that is reasonably supported by supplementary data but lacks quantitative rigor.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "At the population level, peak firing times of both delay-act and delay-sup cells…",
+        "claim": "At the population level, peak firing times of both delay-act and delay-sup cells are distributed across the time spent in the delay zone, forming time-cell-like sequences.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "At the population level, peak firing times of both CA1 delay-act and delay-sup cells were highly distributed across the time spent in the delay zone.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Peak firing time distributions are shown visually in Figure 4C, with ordering by peak time.",
+            "The comparison across experimental conditions (Figure 4—figure supplement 2) adds nuance, showing that uniform distribution is only found under the both-side condition.",
+            "Consistency with the time cell literature (MacDonald et al., 2011; Pastalkova et al., 2008)."
+          ],
+          "weaknesses": [
+            "Evidential gap: The KS test (p=0.46) for both-side conditions does not demonstrate uniformity — it merely fails to reject it, and with potentially small sample sizes, the test has very low power.",
+            "The claim says 'highly distributed' but does not quantify the coverage or uniformity; in most conditions, the distribution is biased toward delay onset.",
+            "Inferential gap: The claim mentions 'time-cell-like sequences' but the analysis does not demonstrate true sequential activation — only that peak times are distributed. Sequential structure requires showing temporal ordering within trials."
+          ],
+          "alternative_interpretations": [
+            "The distributed peak firing times could reflect heterogeneous place fields within the delay zone rather than temporal coding.",
+            "Bias toward delay onset in most conditions suggests that the distribution may reflect salience of the transition event rather than time encoding."
+          ],
+          "required_assumptions": [
+            "Distributed peak firing times imply sequential population coding of time.",
+            "The both-side condition sample is large enough for the KS test to be meaningful."
+          ],
+          "notes": "The claim is cautiously worded ('distributed across') which is appropriate, though the 'time-cell-like sequences' framing in the claim text is somewhat overclaimed relative to the evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "A substantial fraction of individual neurons demonstrate a significant correlati…",
+        "claim": "A substantial fraction of individual neurons demonstrate a significant correlation between firing rate and delay length, indicating single-cell-level encoding of delay length.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This indicates that the hippocampus may encode delay length at the level of individual neurons.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Both peak and mean firing rate correlations with delay length are reported, providing two complementary measures.",
+            "The permutation test for assessing significance of the percentages adds rigor.",
+            "Substantial fractions of neurons show significant correlations (34.5%/37.3% for mean FR; 79.3%/72.3% for peak FR)."
+          ],
+          "weaknesses": [
+            "Evidential gap (critical): The extremely high percentages for peak firing rate correlations (79.3% and 72.3%) are likely inflated by a systematic artifact — longer delay periods mechanically provide more samples, increasing the probability of observing a higher peak firing rate due to sampling variability alone. This creates a spurious positive correlation between peak firing rate and delay length.",
+            "The authors acknowledge that 'mean firing rates at different delay lengths will result in deformative normalization' but do not adequately address whether peak firing rate has analogous biases.",
+            "The mean firing rate percentages (34.5% and 37.3%) are more conservative and reliable but still lack correction for the fact that neurons are being tested across multiple conditions."
+          ],
+          "alternative_interpretations": [
+            "The peak firing rate correlation could largely reflect a statistical artifact of longer recording windows rather than genuine encoding of delay length.",
+            "Changes in arousal, anxiety, or motor behavior during different delay lengths could drive firing rate correlations without requiring delay-length encoding per se."
+          ],
+          "required_assumptions": [
+            "Peak firing rate is not systematically biased by recording window length.",
+            "The correlation between firing rate and delay length reflects genuine neural encoding rather than behavioral or statistical confounds."
+          ],
+          "notes": "The peak firing rate artifact concern is significant and could undermine a major quantitative result. The mean firing rate percentages (~35%) are more credible but still need careful interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "SVM decoding analysis confirms that population activity can predict delay length…",
+        "claim": "SVM decoding analysis confirms that population activity can predict delay length, even prior to delay initiation during short delay blocks.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "decoding analysis using support vector machine (SVM) confirmed that the population codes of firing pattern can also predict delay length",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "SVM decoding with leave-one-trial-out cross-validation is a standard and appropriate approach.",
+            "Shuffled controls (neuron-shuffled and neuron+condition-shuffled) provide adequate baselines.",
+            "The ANOVA comparing observed vs shuffled is highly significant (F2=882.1, p<0.001).",
+            "Data from 5 animals are used, providing some degree of cross-animal validation."
+          ],
+          "weaknesses": [
+            "Evidential gap: Absolute decoding accuracy is not reported in the main text — only the comparison to shuffled is given, making it difficult to assess practical significance.",
+            "Neuron counts vary substantially across animals (17-43), and it is unclear how this affects decoding performance or whether results are driven by specific animals.",
+            "The claim about decoding 'prior to delay initiation' is made in the discussion but the evidence for this specific sub-claim is not clearly quantified."
+          ],
+          "alternative_interpretations": [
+            "Pre-delay decoding could reflect the animal's behavioral preparation or approach trajectory rather than prospective coding of delay length.",
+            "Decoding success could partly reflect different behavioral states or movement patterns associated with different delay conditions rather than pure delay-length encoding."
+          ],
+          "required_assumptions": [
+            "The SVM classifier is not overfitting despite variable neuron counts across animals.",
+            "The five delay conditions are sufficiently distinct in neural activity to support meaningful multiclass classification."
+          ],
+          "notes": "The decoding analysis is a reasonable complement to the single-neuron correlation analysis but would benefit from reporting absolute accuracy values.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "The onset of firing in CA1 neurons is influenced by the experience of waiting an…",
+        "claim": "The onset of firing in CA1 neurons is influenced by the experience of waiting and/or learning of the delay, with firing fields shifting dynamically with delay changes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the onset of firing in the CA1 neurons was influenced by the experience of waiting and/or learning of the delay.",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that some neurons shifted from goal-related to delay-period activity upon delay introduction is interesting and suggestive.",
+            "The analysis of pre- vs post-long-delay firing patterns adds a within-neuron comparison."
+          ],
+          "weaknesses": [
+            "Evidential gap: Only 4/33 neurons (~12%) showed the initial shift from goal to delay activity — far too few for strong conclusions.",
+            "No statistical test is provided for this specific observation.",
+            "About 10% of neurons shifted positively or negatively in the pre/post comparison — this is close to what might be expected by chance at conventional significance thresholds.",
+            "The irreversibility of the shift (not returning to goal activity after delay removal) is based on an even smaller subset and is anecdotal."
+          ],
+          "alternative_interpretations": [
+            "The firing field shifts could reflect natural drift in hippocampal representations (representational drift) rather than experience-dependent plasticity.",
+            "Recording instability over extended sessions could produce apparent shifts in firing fields."
+          ],
+          "required_assumptions": [
+            "The same neurons are being tracked reliably across conditions within a session.",
+            "The observed shifts reflect learning-dependent plasticity rather than drift or recording artifact."
+          ],
+          "notes": "The claim is appropriately hedged ('influenced by the experience of waiting and/or learning'), but the evidence is quite thin.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The majority of delay-act cells decreased their firing rate in response to rewar…",
+        "claim": "The majority of delay-act cells decreased their firing rate in response to reward loss, whereas delay-sup neurons had the opposite response, increasing their activity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The majority of delay-act cells decreased their firing rate in response to reward loss, whereas delay-sup neurons had the opposite response, increasing their activity.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The opposing responses of delay-act and delay-sup neurons to reward loss provide a clear dissociation.",
+            "Mann-Whitney U tests show significant differences between the two populations (p=0.007 for reward loss; p=0.03 for reward gain).",
+            "Both reward loss and reward gain conditions are tested, providing bidirectional evidence."
+          ],
+          "weaknesses": [
+            "The sample sizes for reward manipulation conditions are not explicitly stated in the results.",
+            "The p-value for reward gain (p=0.03) is modest and might not survive stringent multiple comparison correction across all tests performed.",
+            "The within-population analysis (what fraction of delay-act cells decreased vs increased) is described qualitatively ('the majority') without precise numbers."
+          ],
+          "alternative_interpretations": [
+            "Changes in firing rate with reward manipulation could reflect changes in motivation, arousal, or movement patterns rather than value encoding.",
+            "Animals may behave differently (e.g., different waiting postures or movements) when reward is reduced, which could drive firing rate changes."
+          ],
+          "required_assumptions": [
+            "Behavioral confounds (movement, arousal) are not driving the observed firing rate changes.",
+            "The reward loss and gain conditions are matched for other variables."
+          ],
+          "notes": "This is one of the stronger results in the paper, showing a clear dissociation between the two populations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The firing rate ratio distribution is negatively skewed in delay-act cells and p…",
+        "claim": "The firing rate ratio distribution is negatively skewed in delay-act cells and positively skewed in delay-sup cells across reward manipulations.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio was negatively skewed in the delay-act cells (T = −2.5, p=0.01, one-sample t-test) but positively skewed in delay-sup cells (T = 2.7, p=0.01, one-sample t-test)",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "One-sample t-tests provide formal statistical support (T=-2.5, p=0.01 for delay-act; T=2.7, p=0.01 for delay-sup).",
+            "The opposing directions of the skew in the two populations strengthen the claim."
+          ],
+          "weaknesses": [
+            "The use of 'skew' in the text is imprecise — the one-sample t-test tests whether the mean differs from zero, not distributional skewness.",
+            "Both p-values are exactly 0.01, which is marginally significant and may not survive correction for the multiple comparisons conducted across the paper.",
+            "The sample sizes for these specific analyses are not clearly stated."
+          ],
+          "alternative_interpretations": [
+            "A mean shift in the log ratio could be driven by a few outlier neurons rather than a population-wide property."
+          ],
+          "required_assumptions": [
+            "The log ratio of firing rates is approximately normally distributed, as assumed by the t-test.",
+            "The neurons contributing to this analysis are independent observations."
+          ],
+          "notes": "The terminological imprecision ('skewed' vs 'shifted mean') is a minor issue but worth noting for scientific communication.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The firing of delay-act neurons in CA1 represents the animal's subjective value …",
+        "claim": "The firing of delay-act neurons in CA1 represents the animal's subjective value of the chosen options.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These results suggest that the firing of delay-act neurons in the CA1 region represents the animal's subjective value of the chosen options.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The forced-choice experiment provides a creative approach to test whether activity depends on preference/value.",
+            "The logic is sound: if neurons encode subjective value, they should be silent when the chosen option has no value."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim that neurons represent 'subjective value' is a strong interpretive leap from the observation that some neurons were silent during unrewarded forced choices.",
+            "Evidential gap: No quantification or statistical analysis is provided — only example neurons are shown (Figure 7—figure supplement 2).",
+            "No population-level analysis is reported for this experiment.",
+            "The forced-choice manipulation changes multiple variables simultaneously (choice, reward, preference), making it impossible to attribute the silence specifically to subjective value."
+          ],
+          "alternative_interpretations": [
+            "Neurons could be silent because of different behavioral states (frustration, disengagement) rather than encoding subjective value.",
+            "The neurons could encode reward expectation specifically, not the broader concept of subjective value.",
+            "Changes in movement patterns during forced unrewarded choices could explain the silencing."
+          ],
+          "required_assumptions": [
+            "Silence during unrewarded forced choices specifically reflects value encoding rather than other correlated variables.",
+            "The example neurons shown are representative of the population."
+          ],
+          "notes": "This is a particularly overclaimed result — the word 'subjective value' implies a precise computational quantity, but the evidence is qualitative and based on example neurons only.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "The majority of delay-active and delay-suppressed neurons are side-selective, en…",
+        "claim": "The majority of delay-active and delay-suppressed neurons are side-selective, encoding delay information conjunctively with spatial location.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The percentage of side-selective neurons was high in both CA1 delay-act (114/155: 73.5%) and delay-sup(124/191: 64.9%) neurons",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "High percentages of side-selective neurons in both delay-act (73.5%) and delay-sup (64.9%) populations.",
+            "The experimental design (switched and both-side conditions) provides appropriate manipulations to test spatial selectivity.",
+            "Three-way ANOVA with side, delay-length, and timing is an appropriate analytical framework.",
+            "Results are consistent with the well-established spatial coding properties of hippocampal neurons."
+          ],
+          "weaknesses": [
+            "Given that hippocampal neurons are well-known place cells, finding ~70% side-selectivity is expected rather than informative about delay-specific coding.",
+            "The criteria for determining side-selectivity from the three-way ANOVA are not fully specified — which main effects or interactions were used is unclear.",
+            "The Mann-Whitney U test for comparing percentages (p<0.01) between delay-act and delay-sup is not clearly motivated."
+          ],
+          "alternative_interpretations": [
+            "Side selectivity could simply reflect the spatial coding of place cells rather than a conjunctive delay-location representation.",
+            "Neurons could be selective for the trajectory to a particular side rather than encoding delay at a particular location."
+          ],
+          "required_assumptions": [
+            "Side selectivity in this context reflects conjunctive coding of delay and location, not just spatial selectivity."
+          ],
+          "notes": "The claim is well-supported statistically but the interpretation could be more nuanced regarding the expected baseline of spatial selectivity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "More than a quarter of delay neurons encode delay information independent of spa…",
+        "claim": "More than a quarter of delay neurons encode delay information independent of spatial location.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "however more than a quarter of the neurons of both groups encoded delay independent of location.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The finding that 26.5% of delay-act and 35.1% of delay-sup neurons are side-independent is derived directly from the same analysis as c1.4.1.",
+            "This is a meaningful finding suggesting some neurons encode delay information independent of spatial context."
+          ],
+          "weaknesses": [
+            "The percentage of location-independent neurons is the complement of the side-selective percentage, so it inherits any issues with the classification criteria.",
+            "No additional analysis is provided to characterize these location-independent neurons or confirm their delay sensitivity through independent means.",
+            "It is possible that some of these neurons simply had weak spatial tuning overall rather than specifically encoding delay independent of location."
+          ],
+          "alternative_interpretations": [
+            "Location-independent neurons could have receptive fields that span both arms equally rather than genuinely encoding location-free delay information.",
+            "These neurons could be encoding other task-related variables (e.g., time, motor state) that happen to be consistent across sides."
+          ],
+          "required_assumptions": [
+            "Failure to reach significance for the side factor in the ANOVA genuinely indicates location-independent coding rather than insufficient statistical power."
+          ],
+          "notes": "This claim is a direct consequence of c1.4.1 and is appropriately modest.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "There is no global correlation between delay and reward manipulation responses a…",
+        "claim": "There is no global correlation between delay and reward manipulation responses across the CA1 population, suggesting independent encoding of delay and reward at the population level.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "there are no global trends, suggesting that the CA1 neurons exhibit independent relationship between delay and reward manipulation responses.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The scatter plot (Figure 7E) directly shows the relationship between delay and reward manipulation effects.",
+            "Correlation coefficients and p-values are reported."
+          ],
+          "weaknesses": [
+            "Absence of a global correlation does not prove independence — it could reflect heterogeneity in the population masking subpopulation-level correlations.",
+            "The sample size for the scatter plot analysis is not clearly stated.",
+            "No formal test of independence is conducted beyond reporting a non-significant correlation."
+          ],
+          "alternative_interpretations": [
+            "The lack of global correlation could reflect measurement noise rather than true independence of delay and reward coding.",
+            "Different subpopulations could have opposing correlations that cancel out at the population level."
+          ],
+          "required_assumptions": [
+            "A non-significant correlation at the population level implies independent encoding of delay and reward."
+          ],
+          "notes": "The claim is appropriately hedged ('suggesting') and the evidence supports the cautious interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "A fraction of neurons respond in the same direction to both delay extension and …",
+        "claim": "A fraction of neurons respond in the same direction to both delay extension and reward loss, plotted near the line 'delay effect = reward effect,' and can be interpreted as value-coding neurons.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "a subset of neurons, plotted around the line of 'delay effect = reward effect', can be interpreted as value-coding neurons.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The conceptual framework connecting delay and reward effects to value coding is theoretically motivated by work on VTA dopamine neurons (Roesch et al., 2007).",
+            "The scatter plot provides visual evidence that some neurons fall near the identity line."
+          ],
+          "weaknesses": [
+            "Inferential gap: Neurons falling near the 'delay effect = reward effect' line could do so by chance — no statistical criterion is provided for identifying 'value-coding neurons'.",
+            "No formal test is conducted to determine whether more neurons fall near this line than expected by chance.",
+            "The term 'value-coding' implies a precise computational role that is not established by the correlational analysis alone.",
+            "The authors themselves note this is an 'interpretation' rather than a demonstrated finding."
+          ],
+          "alternative_interpretations": [
+            "Neurons near the identity line could encode general motivation or arousal rather than subjective value specifically.",
+            "Random scatter of data points around zero would naturally place some neurons near any arbitrary line.",
+            "Without a model-based definition of value (e.g., hyperbolic discounting), it is impossible to distinguish value coding from correlated reward/delay coding."
+          ],
+          "required_assumptions": [
+            "Neurons whose firing rate changes similarly with delay extension and reward loss are encoding subjective value.",
+            "The identity line 'delay effect = reward effect' is the correct expected relationship for value-coding neurons."
+          ],
+          "notes": "This is one of the weaker claims in the paper. The concept is interesting but the evidence is insufficient to support the 'value-coding' interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "CA1-NR1cKO mice exhibit impaired delay discounting, maintaining preference for t…",
+        "claim": "CA1-NR1cKO mice exhibit impaired delay discounting, maintaining preference for the larger reward despite increasing delays.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "they exhibited impaired delay discounting, demonstrating a significant bias for the larger reward even when the delay was extended",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Two-way ANOVA shows significant genotype effect (F1=14.4, p<0.001) and post-hoc tests at individual delay lengths show increasing significance with longer delays.",
+            "The behavioral result is clear and biologically interpretable.",
+            "Both cKO (n=8) and control (n=9) mouse numbers are reasonable for behavioral studies."
+          ],
+          "weaknesses": [
+            "The reported interaction term (F1,4=1.07, p=0.37) is non-significant, which would appear to contradict a differential effect of delay across genotypes. The F4=23.0 appears to be the delay main effect rather than the interaction, and the notation is confusing.",
+            "The F-statistic notation is unusual and may reflect reporting errors — 'F1' and 'F4' appear to omit denominator degrees of freedom.",
+            "The multiple post-hoc comparisons across 5 delay lengths raise multiple comparison concerns, though the significant results at longer delays are compelling."
+          ],
+          "alternative_interpretations": [
+            "The cKO mice may have a general learning deficit rather than a specific delay-discounting impairment.",
+            "Since NR1 knockout may extend beyond CA1 (acknowledged by authors), the behavioral phenotype could reflect broader circuit dysfunction.",
+            "The phenotype could reflect perseverative behavior or spatial learning deficits rather than impaired delay discounting specifically."
+          ],
+          "required_assumptions": [
+            "The cKO and control mice are otherwise matched on motivational and motor variables.",
+            "The NR1 knockout effect on delay discounting is attributable to hippocampal dysfunction rather than broader cortical effects."
+          ],
+          "notes": "The confusing ANOVA notation deserves clarification but does not undermine the core finding. See c1.6.8 for the important caveat about regional specificity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "NMDAR deficiency disrupts the proportion of delay-act and delay-sup cells in CA1…",
+        "claim": "NMDAR deficiency disrupts the proportion of delay-act and delay-sup cells in CA1.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "there was a lower and higher proportion of delay-act and delay-sup neurons, respectively, in the cKO and the ratio of delay-act/delay-sup was significantly lower in the cKO than in the control mice",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Fisher's Exact Test provides appropriate statistical assessment (p=0.02).",
+            "The direction of the effect (lower delay-act/delay-sup ratio in cKO) is biologically interpretable.",
+            "Supplementary data (Figure 8—figure supplement 1B) provide additional detail."
+          ],
+          "weaknesses": [
+            "Evidential gap: Very small sample sizes (cKO n=3 mice, 123 units; control n=4 mice, 69 units) with significant clustering by animal.",
+            "Fisher's Exact Test treats each neuron as independent, but neurons within an animal are not independent — this inflates significance.",
+            "The proportions could be driven by one or two animals rather than reflecting a genuine genotype effect.",
+            "The specificity caveat (c1.6.8) applies — NR1 deletion may extend beyond CA1."
+          ],
+          "alternative_interpretations": [
+            "The altered proportion could reflect broader network changes due to widespread NR1 deletion rather than CA1-specific effects.",
+            "Individual animal variability in recording quality or electrode placement could drive the observed differences."
+          ],
+          "required_assumptions": [
+            "Neurons from the same animal can be treated as independent observations.",
+            "The small number of animals is representative of the genotype difference."
+          ],
+          "notes": "The statistical concern about treating neurons as independent is a common issue in electrophysiology studies but is particularly problematic with only 3-4 animals per group.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "NMDAR deficiency disrupts population coding for the delay, eliminating the segme…",
+        "claim": "NMDAR deficiency disrupts population coding for the delay, eliminating the segmented three-period activity pattern.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "population vector analysis revealed that the activity was not segmented into three periods in the cKO mice",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Population vector analysis provides a visual comparison between cKO and control mice (Figure 8D).",
+            "The contrast between segmented (control) and non-segmented (cKO) activity is visually apparent."
+          ],
+          "weaknesses": [
+            "Evidential gap: The characterization of cKO activity as 'non-specific' and 'sparse' is largely qualitative — no formal statistical test compares temporal distributions between genotypes.",
+            "Only 3 cKO animals contribute to this analysis, making it highly susceptible to individual animal effects.",
+            "No quantitative metric for 'segmentation' is defined or tested between groups.",
+            "The claim 'eliminating the segmented three-period activity pattern' implies a complete loss, but the evidence is visual only."
+          ],
+          "alternative_interpretations": [
+            "Reduced segmentation could reflect fewer delay-act neurons (as in c1.6.2) rather than a fundamentally different population code.",
+            "Recording quality differences between cKO and control animals could affect population vector analyses."
+          ],
+          "required_assumptions": [
+            "Visual inspection of population vector correlation matrices is sufficient to claim elimination of temporal segmentation.",
+            "The 3 cKO animals are representative."
+          ],
+          "notes": "This claim would benefit greatly from a formal statistical comparison of segmentation metrics between genotypes.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "The expected negatively skewed firing rate ratio distribution in delay-act cells…",
+        "claim": "The expected negatively skewed firing rate ratio distribution in delay-act cells during reward manipulation was absent in cKO mice.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio of CA1 firing of cKO was significantly different than that observed in control mice and lacked the expected negatively skewed distribution",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Mann-Whitney U test provides statistical support (Z=2.0, p=0.04).",
+            "The result is consistent with the other cKO findings (c1.6.2, c1.6.3), forming a coherent narrative."
+          ],
+          "weaknesses": [
+            "The p-value (0.04) is marginal and would not survive correction for the multiple comparisons made across genotype analyses.",
+            "Small sample sizes (3 cKO, 4 control mice) limit generalizability.",
+            "The number of neurons contributing to this specific analysis is not clearly stated.",
+            "Again, neurons within animals are not independent."
+          ],
+          "alternative_interpretations": [
+            "The difference could be driven by one outlier animal in either group.",
+            "Changes in general motivation or behavior in cKO mice could alter the firing rate distribution without reflecting value coding disruption."
+          ],
+          "required_assumptions": [
+            "The firing rate ratio metric is comparable between genotypes despite different sample sizes.",
+            "The marginal p-value reflects a genuine genotype effect."
+          ],
+          "notes": "This result is part of a pattern of findings in cKO mice but individually, the evidence is marginal.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5",
+        "label": "The lowered delay discounting phenotype in NMDAR KO mice may be interpreted as c…",
+        "claim": "The lowered delay discounting phenotype in NMDAR KO mice may be interpreted as compulsive behavior, suggesting hippocampal NMDARs may be associated with compulsive disorders.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The phenotype of 'lowered delay discounting' caused by a loss of the NMDAR may also be interpreted as an abnormal repetition of an unpleasant choice, referred to as 'compulsive behavior'.",
+        "evaluation": {
+          "node_id": "c1.6.5",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The connection to compulsive behavior is creative and potentially clinically relevant.",
+            "Citations to relevant OCD literature (Albelda et al., 2010; Arnold et al., 2004) are provided.",
+            "The authors frame this as a possibility ('may be interpreted') rather than a definitive claim."
+          ],
+          "weaknesses": [
+            "Inferential gap: The leap from 'lowered delay discounting in NR1 KO mice' to 'compulsive behavior analogous to OCD' is a substantial inferential gap with no direct evidence for compulsivity in these mice.",
+            "No compulsivity-specific behavioral measures were collected.",
+            "The behavior could equally reflect insensitivity to delay, perseveration, or spatial learning deficits rather than compulsivity.",
+            "The cited NMDAR-OCD literature involves systemic drug manipulation, not hippocampus-specific knockout, making the parallel tenuous."
+          ],
+          "alternative_interpretations": [
+            "The cKO phenotype could reflect impaired learning of the delay-reward contingency rather than compulsive behavior.",
+            "The mice may simply fail to update their preference because of a memory/learning deficit, not because of a compulsive drive.",
+            "Perseveration due to cognitive inflexibility would look similar behaviorally but has a different mechanistic interpretation than compulsivity."
+          ],
+          "required_assumptions": [
+            "Reduced delay discounting is a valid behavioral proxy for compulsive behavior.",
+            "The NMDAR-OCD connection generalizes from systemic pharmacology to hippocampus-specific genetic manipulation."
+          ],
+          "notes": "This is a speculative interpretation in the discussion and would require dedicated behavioral testing (e.g., marble burying, signal attenuation) to evaluate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.6",
+        "label": "The effect of NMDAR knockout on delay discounting is opposite to that of hippoca…",
+        "claim": "The effect of NMDAR knockout on delay discounting is opposite to that of hippocampal lesions, which produce higher discount rates, suggesting considerable differences between these manipulations on the full network.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "in contrast to previous studies showing that rats with hippocampal lesions exhibit higher discount rates, the NMDA KO mice demonstrated the opposite phenotype.",
+        "evaluation": {
+          "node_id": "c1.6.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors explicitly acknowledge the discrepancy between lesion and KO effects, which is scientifically honest and important.",
+            "Citations to relevant lesion studies are provided (Cheung and Cardinal, 2005; Mariano et al., 2009; McHugh et al., 2008).",
+            "The claim is appropriately framed as an observation rather than an explanation."
+          ],
+          "weaknesses": [
+            "No mechanistic explanation is offered for why the effects are opposite, though the authors note this is an area for future research.",
+            "Species differences (rats in lesion studies vs mice in the present study) could contribute to the discrepancy independently of the manipulation type.",
+            "The confound of potential NR1 deletion beyond CA1 (c1.6.8) makes the comparison with CA1/hippocampal lesions less direct."
+          ],
+          "alternative_interpretations": [
+            "Lesions remove all hippocampal function while NMDAR KO preserves some but alters plasticity — the opposite effects could reflect different degrees of hippocampal dysfunction.",
+            "Compensatory mechanisms in developmental KO animals could produce paradoxical phenotypes not seen with acute lesions."
+          ],
+          "required_assumptions": [
+            "The comparison between rat lesion studies and mouse KO studies is meaningful despite species and methodological differences."
+          ],
+          "notes": "This is an important observation that highlights the complexity of hippocampal contributions to delay discounting.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.7",
+        "label": "Basic firing properties were not significantly different between cKO and control…",
+        "claim": "Basic firing properties were not significantly different between cKO and control mice, indicating the NMDAR disruption specifically affects delay-related patterning rather than general excitability.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We could not detect significant difference among the genotypes in basic firing property during the task (mean firing rate, cKO — 3.07 Hz, control — 3.39 Hz, Z = −0.76, p=0.44, Mann-Whitney's U-test).",
+        "evaluation": {
+          "node_id": "c1.6.7",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple comparisons of basic firing properties are provided (overall, delay-act, delay-sup subpopulations).",
+            "All comparisons are non-significant, supporting the claim that general excitability is preserved.",
+            "The claim is important for ruling out a trivial explanation of the cKO neural findings."
+          ],
+          "weaknesses": [
+            "Non-significant p-values do not prove equivalence — absence of evidence is not evidence of absence. A Bayesian or equivalence test would be more appropriate.",
+            "The p=0.14 for delay-sup subpopulation firing rates approaches marginal significance and may indicate a trend.",
+            "Small sample sizes (3 cKO, 4 control mice) provide limited power to detect differences in basic firing properties."
+          ],
+          "alternative_interpretations": [
+            "Basic firing rates could be preserved while other firing properties (e.g., burstiness, temporal precision, theta modulation) differ between genotypes.",
+            "The mean firing rate comparison may be too coarse to detect subtle changes in excitability."
+          ],
+          "required_assumptions": [
+            "Mean firing rate is an adequate measure of general excitability.",
+            "The failure to detect a difference reflects true equivalence rather than insufficient power."
+          ],
+          "notes": "The claim serves an important role in the argument structure by ruling out trivial explanations, but the evidence would be stronger with equivalence testing.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.8",
+        "label": "The NR1 knockout may extend beyond CA1 to other telencephalic regions in the cKO…",
+        "claim": "The NR1 knockout may extend beyond CA1 to other telencephalic regions in the cKO animals used, limiting specificity of the mechanistic conclusions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion/Methods",
+        "verbatim_quote": "It should be noted that the NR1 knockout may be extended to other telencephalic regions (CA3, dentate gyrus, deep cortical layers) in the cKO animals in the present study.",
+        "evaluation": {
+          "node_id": "c1.6.8",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors honestly acknowledge this important limitation.",
+            "They cite relevant literature (Fukaya et al., 2003) regarding the developmental timeline of NR1 deletion.",
+            "The caveat is appropriately placed in both the discussion and methods sections."
+          ],
+          "weaknesses": [
+            "The authors note that physiological recording animals were 'slightly more than 2 months old' (Table 5), beyond the age when deletion is restricted to CA1, but the exact ages are not stated in the main text.",
+            "This caveat significantly weakens the interpretation of all cKO physiology results (c1.6.2 through c1.6.4) because the recordings may reflect effects of NR1 deletion in CA3, dentate gyrus, and deep cortical layers.",
+            "No histological or molecular verification of the extent of NR1 deletion at the time of recording is reported."
+          ],
+          "alternative_interpretations": [
+            "All physiological differences between cKO and control mice could reflect network-level consequences of widespread NR1 deletion rather than CA1-specific effects."
+          ],
+          "required_assumptions": [
+            "The reader must assess how much the potential spread of NR1 deletion undermines the CA1-specificity of the conclusions."
+          ],
+          "notes": "This is a critical caveat that should be prominently considered when evaluating claims c1.6.2, c1.6.3, c1.6.4, and c1.6.5. The authors' honesty in raising it is commendable, but the limitation is substantial.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "Mice showed >80% preference for the large reward arm before delay introduction, …",
+        "claim": "Mice showed >80% preference for the large reward arm before delay introduction, which decreased as a function of delay length (0, 5, 10, 20, 40 s).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Once mice showed a preference for the large reward arm (>80%) we increased the length of delay in a stepwise fashion (e.g., 0, 5, 10, 20, and 40 s)",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The behavioral result is consistent with the well-established delay discounting phenomenon across species (Ainslie, 1975, 1992).",
+            "The protocol is clearly described with stepwise delay increments.",
+            "Figure 1C is referenced with source data available."
+          ],
+          "weaknesses": [
+            "No statistical test is reported for the decrease in preference as a function of delay length — only the figure and description are provided.",
+            "The number of mice contributing to this specific behavioral curve is not explicitly stated in the results text; whether all 28 mice or a subset contributed is unclear.",
+            "The sequential design (always increasing delay) may confound delay length effects with satiety, fatigue, or time-in-session effects."
+          ],
+          "alternative_interpretations": [
+            "The decrease in preference could partly reflect within-session satiation or reduced motivation rather than pure delay discounting."
+          ],
+          "required_assumptions": [
+            "The >80% criterion was reliably reached before delay introduction.",
+            "Food restriction was sufficient to maintain motivation across all delay conditions."
+          ],
+          "notes": "The sequential design is acknowledged in the methods but could introduce order effects that are not controlled for.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "SWRs were significantly less frequent in the delay zone compared to start/stem z…",
+        "claim": "SWRs were significantly less frequent in the delay zone compared to start/stem zones (Z=2.19, p=0.03) and goal zone (Z=2.40, p=0.02).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "sharp-wave/ripples (SWRs) were rarely observed (Z=2.19, p=0.03, for start and stem zones vs delay zone; Z=2.40, p=0.02, for delay zone vs goal zone; Mann-Whitney U Test",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The finding that SWRs are rare during active locomotion is consistent with established literature (e.g., Buzsáki, 2015).",
+            "Complementary theta-band dominance during delay is demonstrated (Figure 2C, D).",
+            "Statistical tests are provided with specific test statistics."
+          ],
+          "weaknesses": [
+            "The sample size is very small — data are from only 3 mice (6 sessions of delay 20 s), limiting generalizability.",
+            "The p-values (0.03 and 0.02) are marginal, and with nonparametric tests on small samples, power is low.",
+            "It is unclear how zones were exactly delineated for SWR counting, and whether occupancy time was normalized."
+          ],
+          "alternative_interpretations": [
+            "Lower SWR rates in the delay zone could simply reflect that the animal is still actively engaged in locomotion/exploration rather than indicating a specific circuit engagement mode."
+          ],
+          "required_assumptions": [
+            "SWR detection threshold (3 SD of log-power in 120-230 Hz) is appropriate and consistent across zones.",
+            "Time spent in each zone was accounted for in the comparison."
+          ],
+          "notes": "The claim is used to argue the circuit remains 'engaged' during delay, but this is a relatively indirect inference.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3.1",
+        "label": "243/639 (38.0%) of CA1 units were classified as delay-active, and 313/639 (48.9%…",
+        "claim": "243/639 (38.0%) of CA1 units were classified as delay-active, and 313/639 (48.9%) as delay-suppressed based on permutation testing of firing rate ratios.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "large numbers of neurons exhibited significant increases (CA1: 243/639 units: 38.0%) or decreases (CA1: 313/639: 48.9%) in their firing rates during the delay",
+        "evaluation": {
+          "node_id": "c1.1.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Permutation testing (1000 shuffles) is an appropriate method for assessing significance of firing rate changes.",
+            "A large number of neurons (639) was analyzed across conditions.",
+            "The proportions (38% and 48.9%) together account for ~87% of neurons, suggesting robust modulation during delay."
+          ],
+          "weaknesses": [
+            "The classification uses a 5% threshold on each tail, meaning ~10% of neurons would be expected to be classified by chance alone. The observed 87% greatly exceeds this, but the authors do not explicitly discuss false discovery considerations.",
+            "Neurons are pooled across 'all task conditions' — it is unclear whether a neuron classified as delay-act under one delay length would also be classified as such under another, raising questions about the stability of classification.",
+            "The classification is based on long-delay trials only, and how 'long delay' is defined (20 s? 40 s? both?) is not entirely clear from the text."
+          ],
+          "alternative_interpretations": [
+            "Some delay-suppressed neurons may simply be place cells with fields outside the delay zone, rather than being suppressed by the delay per se."
+          ],
+          "required_assumptions": [
+            "The permutation of inter-spike-intervals preserves the temporal statistics of firing sufficiently to serve as an appropriate null.",
+            "The firing rate ratio (Rdelay/Rtotal) is a valid metric for classifying delay-related activity."
+          ],
+          "notes": "The high percentage of classified neurons (87%) suggests strong modulation but also raises questions about specificity of the classification criterion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "A uniform-like distribution of peak firing times was found only under the both-s…",
+        "claim": "A uniform-like distribution of peak firing times was found only under the both-side condition (KS test p=0.46), while all other conditions showed distributions biased toward early delay (p<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We found a uniform-like distribution only under the both-side condition (Kolmogorov–Smirnov test; Salz et al., 2016; p=0.46 for the both-side condition; p<0.05 for all other conditions)",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Use of the Kolmogorov-Smirnov test to assess uniformity of peak firing time distribution is appropriate and follows Salz et al. (2016).",
+            "The contrast between conditions provides useful information about how spatial and task context affect temporal coding."
+          ],
+          "weaknesses": [
+            "A KS test p=0.46 does not demonstrate uniformity — it merely fails to reject it. With small sample sizes, this test has low power to detect deviations from uniformity.",
+            "The number of neurons contributing to the both-side condition is not clearly stated, making it difficult to assess statistical power.",
+            "The interpretation that other conditions show 'biased toward early delay' is based on p<0.05 but the nature and magnitude of the bias is not quantified beyond visual inspection."
+          ],
+          "alternative_interpretations": [
+            "The 'uniform' distribution under both-side conditions could reflect a mixture of two populations (one from each side) with different biases that average to apparent uniformity."
+          ],
+          "required_assumptions": [
+            "The KS test has adequate power given the sample size to distinguish uniform from non-uniform distributions.",
+            "Peak firing time is a meaningful summary statistic for the temporal coding properties of these neurons."
+          ],
+          "notes": "Failure to reject uniformity is not the same as demonstrating uniformity. This distinction matters for the interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "For peak firing rate, 79.3% of delay-act and 72.3% of delay-sup cells showed sig…",
+        "claim": "For peak firing rate, 79.3% of delay-act and 72.3% of delay-sup cells showed significant correlation with delay length; for mean firing rate, 34.5% and 37.3% respectively (p=0.01, permutation test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "a substantial fraction of units demonstrating a significant correlation between firing rate and delay length (mean firing rate, 20/58 [34.5%], peak firing rate, 46/58 [79.3%] for delay-act; mean firing rate 31/83 [37.3%], peak firing rate, 60/83 [72.3%] for delay-sup; p=0.01, permutation test",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Both peak and mean firing rate correlations are examined, showing different sensitivities.",
+            "Permutation testing (p=0.01) confirms that the observed percentages exceed chance.",
+            "The distinction between peak and mean firing rate as measures is thoughtful and acknowledged by the authors."
+          ],
+          "weaknesses": [
+            "The very high percentages for peak firing rate correlations (79.3% and 72.3%) are striking but may be inflated: peak firing rate mechanically increases with longer recording periods in longer delays due to sampling variability, creating a systematic positive correlation artifact.",
+            "The authors note 'mean firing rates at different delay lengths will result in deformative normalization' but do not fully address whether peak firing rate has analogous biases.",
+            "The sample sizes (58 delay-act, 83 delay-sup) represent subsets of the total 639 neurons — presumably those recorded across all five delay conditions — but the selection criteria for this subset are not entirely transparent.",
+            "The p=0.01 permutation test for percentages is reported for both categories combined; individual category significance is unclear."
+          ],
+          "alternative_interpretations": [
+            "Peak firing rate correlations with delay length could be a statistical artifact of longer sampling windows yielding higher maximum rates, rather than reflecting true rate coding of delay length."
+          ],
+          "required_assumptions": [
+            "Peak firing rate is not systematically biased by the duration of the observation window.",
+            "Neurons were stably recorded across all five delay conditions (sequential sessions)."
+          ],
+          "notes": "The potential confound of peak firing rate scaling with observation window duration is a significant concern that is not addressed.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "SVM decoding of delay length from population spikes was significantly above shuf…",
+        "claim": "SVM decoding of delay length from population spikes was significantly above shuffled controls across five animals (F2=882.1, p<0.001, two-way ANOVA).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Red **: observed vs neuron shuffled, p<0.001; magenta **, observed vs neuron and condition shuffled, p<0.001; group effect, F2=882.1, p<0.001, two-way ANOVA.",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "SVM decoding with leave-one-trial-out cross-validation is a reasonable approach.",
+            "Comparison against two shuffled controls (neuron-shuffled and neuron+condition-shuffled) strengthens the interpretation.",
+            "The highly significant F-statistic (F2=882.1) provides strong evidence of above-chance decoding.",
+            "Data from five animals are included."
+          ],
+          "weaknesses": [
+            "The number of neurons varies substantially across animals (17-43), and it is unclear how this affects decoding performance.",
+            "The absolute decoding accuracy is not reported in the main text — only the ANOVA comparing observed vs. shuffled is given.",
+            "With only ~10 trials per condition, the training set is small, which could affect reliability.",
+            "The finding that delay length can be decoded 'even prior to delay initiation' complicates the interpretation — this could reflect different behavioral states or running speeds rather than delay-length encoding per se."
+          ],
+          "alternative_interpretations": [
+            "Pre-delay decoding of delay length could reflect behavioral correlates (e.g., running speed, anticipatory behavior) that co-vary with delay condition rather than neural encoding of delay information.",
+            "Since conditions are run in blocks (sequential delay extension), the decoder might be capturing slow drift in neural activity rather than delay-specific coding."
+          ],
+          "required_assumptions": [
+            "Neural activity patterns are not confounded by systematic behavioral differences across delay conditions.",
+            "The sequential block design does not introduce temporal confounds into the decoding analysis."
+          ],
+          "notes": "The block design (sequential delay extension) is a concern for decoding analyses, as time-varying factors could masquerade as delay-specific coding.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4.1",
+        "label": "About 10% (4/33) of delay-act cells initially fired after reaching the goal in 0…",
+        "claim": "About 10% (4/33) of delay-act cells initially fired after reaching the goal in 0 s delay, then shifted to firing during the delay period once delay was introduced, and did not return to goal-related activity when delay was eliminated.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "about 10% (4/33) of delay-act cells initially fired after the animal reached the goal in the 0 s delay condition, then shifted their firing to the delay period once a delay was introduced",
+        "evaluation": {
+          "node_id": "c1.2.4.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation of experience-dependent shifts in firing is consistent with Gill et al. (2011) findings of learning-dependent hippocampal activity.",
+            "The irreversibility of the shift (not returning to goal-related activity) is an interesting observation."
+          ],
+          "weaknesses": [
+            "Only 4/33 neurons showed this pattern — too few to draw strong conclusions.",
+            "No statistical test is provided for this specific observation.",
+            "It is unclear whether these 4 neurons were tracked reliably across sessions or whether this could reflect different neurons being recorded.",
+            "The interpretation of 'shifted firing' versus 'different neuron sampled' is difficult to distinguish with extracellular recording across sessions."
+          ],
+          "alternative_interpretations": [
+            "Electrode drift between sessions could result in recording different neurons, creating the appearance of a firing shift.",
+            "The small number (4/33) is within the range of chance occurrences and may not represent a meaningful phenomenon."
+          ],
+          "required_assumptions": [
+            "The same neurons were reliably tracked across sessions with different delay conditions.",
+            "The 4 neurons are representative of a biologically meaningful subpopulation."
+          ],
+          "notes": "The authors appropriately describe this as 'about 10%' rather than making strong claims, but the evidence is still quite thin.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "The log ratio of firing rates (large/small reward) was significantly different b…",
+        "claim": "The log ratio of firing rates (large/small reward) was significantly different between delay-act and delay-sup cells under both reward loss (Z=-2.6, p=0.007) and reward gain (Z=2.1, p=0.03) conditions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the log ratio of the firing rates (large reward/small reward) under both reward loss and gain conditions was significantly different between delay-act and delay-sup cells (Z = −2.6, p=0.007 for reward loss; Z = 2.1, p=0.03 for reward gain, Mann-Whitney's U-test)",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Both reward loss and reward gain conditions are tested, providing bidirectional evidence.",
+            "The statistical tests are appropriate (Mann-Whitney U) for comparing the two cell populations.",
+            "The effect is consistent across two independent manipulations (loss and gain), strengthening the interpretation.",
+            "Source data is made available."
+          ],
+          "weaknesses": [
+            "The sample sizes for the reward manipulation conditions are not explicitly stated in this part of the text.",
+            "The p-values (0.007 and 0.03) are modest, particularly for the reward gain condition.",
+            "The order of reward manipulations (loss first, then gain) could introduce order effects, though the authors attempt to address this with the opposite-flow control."
+          ],
+          "alternative_interpretations": [
+            "The differential responses could reflect motivational state changes rather than reward-specific coding.",
+            "The classification into delay-act and delay-sup groups was done independently of reward manipulation — the observed differences could partly reflect regression to the mean."
+          ],
+          "required_assumptions": [
+            "The animals' motivational state was comparable across reward loss and gain conditions.",
+            "The delay-act/delay-sup classification is stable across reward manipulations."
+          ],
+          "notes": "The bidirectional design (loss and gain) is a strength of the experimental approach.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "One-sample t-tests confirmed negative skew in delay-act cells (T=-2.5, p=0.01) a…",
+        "claim": "One-sample t-tests confirmed negative skew in delay-act cells (T=-2.5, p=0.01) and positive skew in delay-sup cells (T=2.7, p=0.01).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio was negatively skewed in the delay-act cells (T = −2.5, p=0.01, one-sample t-test) but positively skewed in delay-sup cells (T = 2.7, p=0.01, one-sample t-test",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The one-sample t-tests against 0 are appropriate for testing whether the distributions are shifted.",
+            "Both populations show significant effects in opposite directions, consistent with dissociable coding.",
+            "The effect sizes appear reasonable given the reported T-statistics."
+          ],
+          "weaknesses": [
+            "The use of 'skew' in the text is imprecise — the one-sample t-test tests whether the mean differs from zero, not whether the distribution is skewed in the statistical sense.",
+            "The p-values are both exactly 0.01, which is marginally significant and would not survive stringent multiple comparison correction.",
+            "The underlying distributions of firing rate ratios are not described — if non-normal, the t-test may not be appropriate.",
+            "Sample sizes for these specific analyses are not clearly stated."
+          ],
+          "alternative_interpretations": [
+            "The mean shift could be driven by a small number of outlier neurons rather than reflecting a population-level property."
+          ],
+          "required_assumptions": [
+            "The distribution of firing rate ratios is approximately normal, or the sample is large enough for the t-test to be robust.",
+            "The ratio metric (large reward / small reward) is the appropriate measure for this comparison."
+          ],
+          "notes": "The terminology 'negatively skewed' and 'positively skewed' appears to refer to the sign of the mean rather than statistical skewness, which could confuse readers.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "Under forced conditions with unrewarded delay, CA1 neurons indicating choice pre…",
+        "claim": "Under forced conditions with unrewarded delay, CA1 neurons indicating choice preference were silent, and firing re-emerged when preference recovered to the rewarded side.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "When faced with an unrewarded delayed option, CA1 neurons indicating choice preference were silent.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The forced-choice paradigm is a creative design to observe activity for less-preferred options.",
+            "The result is consistent with the interpretation that delay-act neurons encode subjective value."
+          ],
+          "weaknesses": [
+            "No quantification or statistical analysis is provided — only the qualitative statement that neurons 'were silent'.",
+            "Only example neurons are shown (Figure 7—figure supplement 2), with no population-level analysis.",
+            "The number of neurons and animals contributing to this observation is not reported.",
+            "The forced-choice condition introduces multiple confounds (barrier, stress, frustration) that could affect firing independent of value coding.",
+            "The claim that 'firing re-emerged when preference recovered' is described in the figure supplement but not statistically tested."
+          ],
+          "alternative_interpretations": [
+            "Silencing of neurons under forced conditions could reflect the animal's awareness that a barrier is present (a spatial/contextual change) rather than value coding.",
+            "Stress or frustration from forced choice could globally suppress firing in certain populations."
+          ],
+          "required_assumptions": [
+            "The forced-choice paradigm does not alter the spatial or contextual variables that CA1 neurons encode.",
+            "The observed silencing is specific to value/preference rather than behavioral state changes."
+          ],
+          "notes": "This is presented as evidence for subjective value coding but lacks the quantitative rigor needed to support that interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "73.5% (114/155) of delay-act and 64.9% (124/191) of delay-sup neurons showed sig…",
+        "claim": "73.5% (114/155) of delay-act and 64.9% (124/191) of delay-sup neurons showed significant side-selectivity under three-way ANOVA (side × delay-length × timing).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The percentage of side-selective neurons was high in both CA1 delay-act (114/155: 73.5%) and delay-sup(124/191: 64.9%) neurons",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Three-way ANOVA (side × delay-length × timing) is an appropriate statistical approach for assessing side-selectivity.",
+            "Large sample sizes (155 delay-act, 191 delay-sup neurons) provide adequate power.",
+            "The use of switched and both-side conditions to assess spatial selectivity is well-designed.",
+            "The finding that ~25-35% of neurons encode delay independent of location is an important result."
+          ],
+          "weaknesses": [
+            "Given that hippocampal neurons are well-known place cells, finding that ~70% are side-selective is not surprising and the high percentage could partly reflect the spatial code rather than a specific delay-location interaction.",
+            "The criteria for determining side-selectivity from the three-way ANOVA are not fully specified — it is unclear which main effects or interactions were used to classify a neuron as side-selective.",
+            "Confidence intervals are provided but no effect sizes for the ANOVA results."
+          ],
+          "alternative_interpretations": [
+            "The high percentage of side-selective neurons could simply reflect underlying place cell properties rather than an integration of delay and spatial information.",
+            "Side-independent neurons (~25-35%) may represent a distinct functional subpopulation or may simply have bilateral place fields."
+          ],
+          "required_assumptions": [
+            "The three-way ANOVA appropriately separates spatial from temporal and delay-related contributions.",
+            "Recording the same neurons across switched and both-side conditions is reliable."
+          ],
+          "notes": "The finding that a substantial minority of neurons encode delay independent of location is perhaps more novel and interesting than the majority that show spatial selectivity.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "Two-way ANOVA revealed significant genotype effect (F1=14.4, p<0.001) and genoty…",
+        "claim": "Two-way ANOVA revealed significant genotype effect (F1=14.4, p<0.001) and genotype × delay interaction (F4=23.0, p<0.001), with cKO mice showing significantly higher large-reward preference at delays 5-40 s.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "F1 = 14.4, p<0.001, genotype (CA1-NR1cKO vs NR1 f/f); F4 = 23.0, p<0.001, interaction between delay length x genotype",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The two-way ANOVA with genotype × delay interaction is appropriate.",
+            "The significant interaction (p<0.001) demonstrates that the genotype effect is delay-dependent, as expected for a delay discounting deficit.",
+            "Post-hoc comparisons at each delay length provide detailed information about where the effect emerges.",
+            "No difference at 0 s delay (p=0.61) demonstrates that basic reward preference is intact."
+          ],
+          "weaknesses": [
+            "The F-statistic notation is unusual — 'F1 = 14.4' and 'F4 = 23.0' appear to omit denominator degrees of freedom.",
+            "The interaction F-statistic is reported as 'F1,4 = 1.07, p=0.37' which appears to be non-significant, contradicting the claim that there is a significant genotype × delay interaction. The F4 = 23.0 appears to be the delay main effect, not the interaction.",
+            "Sample sizes for cKO (n=8) and control (n=9) groups are relatively small for behavioral studies.",
+            "The sequential design of delay extension could interact with learning differences between genotypes."
+          ],
+          "alternative_interpretations": [
+            "The cKO mice may have impaired learning of delay contingencies rather than altered delay discounting per se.",
+            "The behavioral phenotype could be interpreted as reduced behavioral flexibility or perseveration rather than lower delay discounting.",
+            "Given the authors' own acknowledgment that NR1 deletion may extend beyond CA1 by the testing age, the behavioral effect may not be CA1-specific."
+          ],
+          "required_assumptions": [
+            "The CaMK2-Cre driven NR1 deletion is primarily affecting CA1 at the time of behavioral testing.",
+            "Motivational and sensory processing are comparable between genotypes."
+          ],
+          "notes": "There is an apparent contradiction in the reported statistics: F4=23.0 (p<0.001) is labeled as 'interaction between delay length x genotype' but F1,4=1.07 (p=0.37) also appears to be an interaction term. This needs clarification — the reported statistics may contain an error.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "The ratio of delay-act/delay-sup cells was significantly lower in cKO compared t…",
+        "claim": "The ratio of delay-act/delay-sup cells was significantly lower in cKO compared to control mice (p=0.02, Fisher's Exact Test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio of delay-act/delay-sup was significantly lower in the cKO than in the control mice (Figure 8C, p=0.02, Fisher's Exact Test",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Fisher's Exact Test is appropriate for comparing proportions.",
+            "The result is consistent with the behavioral deficit observed in cKO mice."
+          ],
+          "weaknesses": [
+            "The sample sizes are quite small (cKO n=3 mice, 123 units; control n=4 mice, 69 units), with significant clustering by animal.",
+            "Fisher's Exact Test treats each neuron as independent, but neurons within an animal are not independent — this violates the assumption and could inflate significance.",
+            "The control group has fewer total units (69) than the cKO group (123), making direct comparison of proportions potentially problematic.",
+            "95% Clopper-Pearson confidence intervals are mentioned but the actual proportions for each genotype are not clearly stated in the text."
+          ],
+          "alternative_interpretations": [
+            "The different proportions could reflect differences in electrode placement or recording quality rather than a genuine biological difference.",
+            "With only 3 cKO and 4 control mice, individual animal variation could drive the group difference."
+          ],
+          "required_assumptions": [
+            "Neurons from different animals within a genotype can be pooled and treated as independent observations.",
+            "Recording quality and electrode placement were comparable between genotypes."
+          ],
+          "notes": "The non-independence of neurons within animals is a significant statistical concern for this claim. A mixed-effects model or animal-level analysis would be more appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "Delay-act cells in cKO mice showed non-specific activation during the delay peri…",
+        "claim": "Delay-act cells in cKO mice showed non-specific activation during the delay period, and their temporal distribution was sparse and not specific to delay-onset.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Delay-act cells in the cKO mice showed non-specific activation during the delay period...the temporal distribution of all delay-act cells in the cKO was sparse and not specific to delay-onset.",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Population vector analysis provides a visual comparison between cKO and control mice.",
+            "The qualitative difference in temporal distribution is evident from the figures.",
+            "Example neurons from cKO mice are shown with non-specific activation (Figure 8—figure supplement 1A)."
+          ],
+          "weaknesses": [
+            "The characterization of activity as 'non-specific' and 'sparse' is largely qualitative with no formal statistical test comparing temporal distributions between genotypes.",
+            "Only 3 cKO animals contribute to this analysis, making it susceptible to individual animal effects.",
+            "No statistical test is provided to compare the population vector segmentation between genotypes.",
+            "The term 'not specific to delay-onset' is vague and not quantified."
+          ],
+          "alternative_interpretations": [
+            "The 'non-specific' activation could reflect that the few delay-act neurons identified in cKO mice are simply place cells with fields overlapping the delay zone, rather than delay-coding neurons.",
+            "With fewer delay-act cells in cKO (as per c1.6.2.1), the temporal distribution analysis has less power and the 'sparseness' could be a sample size artifact."
+          ],
+          "required_assumptions": [
+            "The same classification criteria applied to control mice are appropriate for cKO mice despite potential differences in firing patterns.",
+            "The qualitative comparison of population vectors is meaningful without formal quantification."
+          ],
+          "notes": "This claim would benefit from quantitative statistical comparison between genotypes rather than relying on visual comparison of figures.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4.1",
+        "label": "The firing rate ratio of cKO delay-act cells was significantly different from co…",
+        "claim": "The firing rate ratio of cKO delay-act cells was significantly different from controls and lacked the negatively skewed distribution (Z=2.0, p=0.04, Mann-Whitney's U-test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the ratio of CA1 firing of cKO was significantly different than that observed in control mice and lacked the expected negatively skewed distribution (Z = 2.0, p=0.04, Mann-Whitney's U-Test",
+        "evaluation": {
+          "node_id": "c1.6.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The Mann-Whitney U test is appropriate for this comparison given likely non-normal distributions.",
+            "The result is consistent with the broader pattern of disrupted value coding in cKO mice."
+          ],
+          "weaknesses": [
+            "The p-value (0.04) is marginal and would not survive correction for multiple comparisons across all genotype comparisons made.",
+            "Small sample sizes (3 cKO mice, 4 control mice) again raise concerns about generalizability.",
+            "The comparison is between the firing rate ratios of delay-act cells specifically, but the delay-act classification may itself be different between genotypes (as noted in c1.6.2.1), potentially confounding the comparison.",
+            "The neuron non-independence issue (neurons nested within animals) applies here as well."
+          ],
+          "alternative_interpretations": [
+            "The difference in firing rate ratios could reflect differences in how delay-act cells are classified in cKO mice (i.e., different populations are being compared) rather than a genuine disruption of value coding."
+          ],
+          "required_assumptions": [
+            "The delay-act classification identifies comparable functional populations in cKO and control mice.",
+            "The reward manipulation was conducted comparably in both genotypes."
+          ],
+          "notes": "The marginal p-value and small animal sample sizes make this result suggestive but not definitive.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.7.1",
+        "label": "No significant differences in mean firing rate between genotypes: overall (cKO 3…",
+        "claim": "No significant differences in mean firing rate between genotypes: overall (cKO 3.07 Hz vs control 3.39 Hz, p=0.44), delay-act (p=0.35), or delay-sup (p=0.14).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "mean firing rate, cKO — 3.07 Hz, control — 3.39 Hz, Z = −0.76, p=0.44, Mann-Whitney's U-test",
+        "evaluation": {
+          "node_id": "c1.6.7.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Testing basic firing properties rules out the possibility that the genotype effects on delay coding are simply due to altered excitability.",
+            "Three separate comparisons (overall, delay-act, delay-sup) are provided.",
+            "The non-significant results are clearly reported with exact p-values."
+          ],
+          "weaknesses": [
+            "Non-significant p-values do not prove equivalence — a Bayesian or equivalence test would be more informative.",
+            "The p=0.14 for delay-sup subpopulation firing rates approaches marginal significance and might indicate a trend worth noting.",
+            "The same neuron non-independence issue applies."
+          ],
+          "alternative_interpretations": [
+            "Absence of evidence for a difference is not evidence of absence — the comparison may be underpowered."
+          ],
+          "required_assumptions": [
+            "Mean firing rate is a sufficient summary statistic for 'basic firing property' comparisons.",
+            "The Mann-Whitney U test has adequate power to detect meaningful differences given the sample sizes."
+          ],
+          "notes": "This is an important control analysis. The limitation is the standard caveat about null results in frequentist statistics.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.8.1",
+        "label": "The ages of cKO animals in the recording sessions were slightly more than 2 mont…",
+        "claim": "The ages of cKO animals in the recording sessions were slightly more than 2 months old, beyond the age at which NR1 deletion is restricted to CA1 pyramidal cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Methods",
+        "verbatim_quote": "Physiological characterization, however, may have harbored a more widespread deletion of the NR1 gene as the ages of cKO animals in the recording session were slightly more than 2 months old",
+        "evaluation": {
+          "node_id": "c1.6.8.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors transparently acknowledge this limitation.",
+            "The specific timeline of Cre-mediated recombination is referenced (Fukaya et al., 2003).",
+            "This caveat is appropriately placed in the methods and discussed further in the discussion."
+          ],
+          "weaknesses": [
+            "This caveat significantly weakens the interpretation of all cKO physiology results (c1.6.2.1 through c1.6.4.1) because the NR1 deletion may extend to CA3, dentate gyrus, and deep cortical layers.",
+            "The exact ages of the cKO animals used for recording are referenced (Table 5) but not stated in the main text, making it difficult for readers to assess the extent of this concern without consulting supplementary materials."
+          ],
+          "alternative_interpretations": [
+            "Any physiological differences observed could be due to NMDAR loss in regions other than CA1, such as CA3 input deficits or cortical dysfunction affecting hippocampal inputs."
+          ],
+          "required_assumptions": [
+            "The primary effect of the NR1 deletion on the observed phenotypes is mediated through CA1 pyramidal cells."
+          ],
+          "notes": "This is a significant caveat that the authors acknowledge. It means that claims about CA1-specific NMDAR requirements should be interpreted with caution. This caveat applies to c1.6.1.1, c1.6.2.1, c1.6.3.1, and c1.6.4.1.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.5",
+        "source": "c1.6",
+        "target": "c1.6.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.6",
+        "source": "c1.6",
+        "target": "c1.6.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.7",
+        "source": "c1.6",
+        "target": "c1.6.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.8",
+        "source": "c1.6",
+        "target": "c1.6.8",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.3_c1.1.3.1",
+        "source": "c1.1.3",
+        "target": "c1.1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.4_c1.2.4.1",
+        "source": "c1.2.4",
+        "target": "c1.2.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.4_c1.6.4.1",
+        "source": "c1.6.4",
+        "target": "c1.6.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.7_c1.6.7.1",
+        "source": "c1.6.7",
+        "target": "c1.6.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.8_c1.6.8.1",
+        "source": "c1.6.8",
+        "target": "c1.6.8.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 48,
+    "total_edges": 47,
+    "max_depth": 3,
+    "high_support_nodes": 9,
+    "low_support_nodes": 7,
+    "overall_assessment": "The paper's 48 claims show mixed overall support when weighted by centrality (weighted support score 0.60, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “A specific subset of CA1 neurons fit the criteria of value coding, responding in the same way to delay length changes and reward size changes.” (7 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

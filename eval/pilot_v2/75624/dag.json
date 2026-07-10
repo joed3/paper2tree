@@ -1,0 +1,3178 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_75624",
+    "title": "The single-cell chromatin accessibility landscape in mouse perinatal testis development",
+    "authors": [
+      "Hoi Ching Suen",
+      "Shitao Rao",
+      "Alfred Chun Shui Luk",
+      "Ruoyu Zhang",
+      "Lele Yang",
+      "Huayu Qi",
+      "Hon Cheong So",
+      "Robin M Hobbs",
+      "Tin-lap Lee",
+      "Jinyue Liao"
+    ],
+    "url": "https://doi.org/10.7554/eLife.75624",
+    "abstract": "Spermatogenesis depends on an orchestrated series of developing events in germ cells and full maturation of the somatic microenvironment. To date, the majority of efforts to study cellular heterogeneity in testis has been focused on single-cell gene expression rather than the chromatin landscape shaping gene expression. To advance our understanding of the regulatory programs underlying testicular cell types, we analyzed single-cell chromatin accessibility profiles in more than 25,000 cells from mouse developing testis. We showed that single-cell sequencing assay for transposase-accessible chromatin (scATAC-Seq) allowed us to deconvolve distinct cell populations and identify cis-regulatory elements (CREs) underlying cell-type specification. We identified sets of transcription factors associated with cell type-specific accessibility, revealing novel regulators of cell fate specification and maintenance. Pseudotime reconstruction revealed detailed regulatory dynamics coordinating the sequential developmental progressions of germ cells and somatic cells. This high-resolution dataset also unveiled previously unreported subpopulations within both the Sertoli and Leydig cell groups. Further, we defined candidate target cell types and genes of several genome-wide association study (GWAS) signals, including those associated with testosterone levels and coronary artery disease. Collectively, our data provide a blueprint of the ‘regulon’ of the mouse male germline and supporting somatic cells.",
+    "word_count": 9224,
+    "processed_at": "2026-07-10T01:18:21.105938+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Single-cell ATAC-Seq profiling of the perinatal mouse testis provides a comprehe…",
+        "claim": "Single-cell ATAC-Seq profiling of the perinatal mouse testis provides a comprehensive epigenetic regulatory atlas that identifies cell type-specific transcription factors, cis-regulatory elements, differentiation trajectories, and target cell types for disease-associated genetic variants.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Introduction/Discussion",
+        "verbatim_quote": "Here, we applied scATAC-Seq to deconvolve cell populations and identify cell type-specific epigenetic regulatory circuits during perinatal testis development. The dataset led to identification of key cell type-specific TFs, defined the cellular differentiation trajectory, and characterized regulatory dynamics of distinct cell types.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The study is technically well-executed with 25,613 cells across four developmental time points (E18.5, P0, P2, P5), providing reasonable temporal coverage of perinatal testis development.",
+            "Integration of scATAC-Seq with published scRNA-Seq data (Tan et al., 2020) to annotate cell types and validate TF predictions is a sound analytical approach, and high prediction scores support reliable cell-type assignments.",
+            "Multiple validation approaches are employed: immunostaining confirms NR5A1 expression in a subset of germ cells (Figure 4D), DLK1 expression in stromal cells/PTMs (Figure 3F-G), and MBD3/AMH heterogeneity in Sertoli cells (Figure 5F).",
+            "Overlap of peak-to-gene links with known testis enhancers (3,262 regions) and successful recovery of the known TESCO enhancer for Sox9 provide important positive controls for the analytical framework.",
+            "The study recovers multiple well-established TF-cell type associations (e.g., DMRT1 in germ cells, NR5A1/GATA4 in Leydig/Sertoli cells, AR in PTMs), demonstrating the method accurately identifies known biology.",
+            "The LD score regression analysis showing enrichment of testosterone-level GWAS heritability in Leydig cell peaks and male infertility heritability in Sertoli cell peaks is biologically coherent."
+          ],
+          "weaknesses": [
+            "Inferential gap (from c1.2): The root claim implies scATAC-Seq provides capabilities that scRNA-Seq cannot, but no systematic head-to-head comparison is performed to show which TFs are missed by scRNA-Seq and uniquely discovered by the chromatin accessibility approach. The claim that TFs 'cannot be adequately identified from scRNA-Seq alone' remains an assertion rather than a demonstrated finding.",
+            "Inferential gap (from c1.4): The 'two distinct differentiation trajectories' for germ cells is a computational inference from snapshot data at four time points without lineage tracing. The second trajectory (putative first wave of spermatogenesis) is supported only by low Ngn3 gene activity, which is insufficient evidence to establish it as a bona fide developmental path rather than an artifact of computational ordering.",
+            "Inferential gap (from c1.6): The root claim states the atlas 'identifies target cell types for disease-associated genetic variants,' but the GWAS integration uses mouse chromatin accessibility data with human GWAS results, a fundamental cross-species gap that limits the reliability of these predictions. While acknowledged in the discussion, the claim language implies greater certainty than warranted.",
+            "Evidential gap (from c1.2): The statement that cell type-specific TFs 'likely regulate chromatin accessibility' is a correlation-to-causation leap. No perturbation experiments (knockdowns, knockouts, inhibitors) are performed to establish that identified TFs actually drive the observed chromatin accessibility patterns.",
+            "Evidential gap (from c1.3): All novel cis-regulatory elements (e.g., three additional Sox9 elements, Wt1 enhancer candidates) are entirely computational predictions without any experimental validation such as reporter assays, CRISPR deletions, or chromatin conformation capture experiments. The 250 kb window for peak-to-gene linking is large and the false positive rate is not assessed.",
+            "Evidential gap (from c1.5): Novel subpopulations such as SC1 Sertoli cells are identified through sub-clustering, but over-clustering is a well-known risk in single-cell analyses. Statistical power and the number of cells in each sub-cluster are not discussed, making it difficult to assess whether these represent true biological states.",
+            "Evidential gap (from c1.6): The Sertoli cell–CAD connection is highly speculative, relying on an indirect chain of reasoning (Sertoli cells → testosterone regulation → CAD risk) that is not experimentally tested.",
+            "Pooling three mice per sample at each time point prevents assessment of biological variability, and all samples were processed in a single batch, making it impossible to assess technical reproducibility.",
+            "The word 'comprehensive' in the root claim overstates the scope: the atlas covers only four perinatal time points in mouse and does not include adult stages, female reproductive tissues for comparison, or complementary epigenetic marks (e.g., histone modifications, DNA methylation)."
+          ],
+          "alternative_interpretations": [
+            "The two germ cell differentiation trajectories could represent computational artifacts of pseudotime ordering rather than biologically distinct developmental paths; without lineage tracing, a single trajectory with variable kinetics cannot be ruled out.",
+            "The 'positive TF regulators' identified through correlation of motif accessibility and gene expression may reflect co-regulation by upstream factors rather than direct regulatory activity of the identified TFs themselves.",
+            "The GWAS heritability enrichment in specific cell types could partially reflect cell type differences in the total number and genomic distribution of accessible peaks rather than true biological enrichment of causal variants.",
+            "The SC1 Sertoli cell subpopulation with high AMH/MBD3 and low SOX9/DMRT1 could represent cells at a specific cell cycle stage or technical doublets rather than a distinct biological subpopulation."
+          ],
+          "required_assumptions": [
+            "Chromatin accessibility measured by scATAC-Seq is a reliable proxy for active gene regulation and enhancer activity.",
+            "Integration of scATAC-Seq gene activity scores with scRNA-Seq gene expression provides accurate cell-type annotation across modalities.",
+            "Correlation between TF motif accessibility and TF gene expression indicates that the TF is a functional regulator of chromatin state in that cell type.",
+            "Peak-to-gene links identified by co-accessibility within 250 kb represent genuine regulatory interactions rather than coincidental co-variation.",
+            "Mouse chromatin accessibility patterns are sufficiently conserved with human to enable meaningful integration with human GWAS data.",
+            "Pooling three mice per time point yields a representative sample and does not mask biologically meaningful inter-individual variation."
+          ],
+          "notes": "The root claim aggregates five major sub-claims spanning cell-type identification, TF discovery, CRE mapping, differentiation trajectories, and GWAS integration. While each component has some supporting evidence, most are at the 'moderate' level with notable inferential or evidential gaps. The claim as stated ('comprehensive epigenetic regulatory atlas') overpromises relative to what the data deliver—largely correlative/predictive insights from a single modality at four time points. The acknowledged limitations in the discussion (lack of multiomics, no 3D chromatin data, no protein measurements) are appropriate but do not sufficiently temper the framing of the main claims.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "scATAC-Seq enables robust detection and assignment of cell identities in the dev…",
+        "claim": "scATAC-Seq enables robust detection and assignment of cell identities in the developing testis based on chromatin accessibility profiles, comparable to scRNA-Seq.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "we showed that similar to scRNA-Seq, the chromatin accessibility information obtained from scATAC-Seq is able to define cell types in the testis.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple layers of evidence support cell type identification: gene activity scores, integration with scRNA-Seq, DARs corresponding to marker genes, and validation against bulk DNase-Seq from Maatouk et al. (2017).",
+            "25,613 cells after stringent QC across four developmental time points provides reasonable coverage.",
+            "Prediction scores from scRNA-Seq integration are reported as high for the majority of cells, supporting confident cell type assignment.",
+            "Cell type proportions show expected developmental dynamics (e.g., germ cell expansion), providing biological plausibility.",
+            "Fragment size distribution shows expected nucleosomal patterns, confirming technical quality."
+          ],
+          "weaknesses": [
+            "The qualifier 'comparable to scRNA-Seq' is somewhat vague—no formal quantitative comparison of cell type resolution between modalities is presented.",
+            "Pooling three mice per sample limits assessment of biological variability.",
+            "Not all 11 clusters correspond to known cell types—unknown populations exist, so 'robust detection and assignment' is slightly overstated for all cells.",
+            "The reference scRNA-Seq dataset is from the same lab (Tan et al., 2020), limiting independence of validation.",
+            "Per-time-point cell numbers are not explicitly stated, making it difficult to assess whether coverage is balanced."
+          ],
+          "alternative_interpretations": [
+            "The apparent ability to define cell types may partly reflect the constraints imposed by the integration with scRNA-Seq rather than scATAC-Seq's standalone resolution.",
+            "Some clusters may represent technical artifacts (doublets, ambient signal) rather than true biological populations."
+          ],
+          "required_assumptions": [
+            "Gene activity scores derived from chromatin accessibility reliably approximate gene expression.",
+            "The scRNA-Seq reference dataset accurately captures the full diversity of cell types in the perinatal testis.",
+            "Harmony integration does not over-merge biologically distinct populations."
+          ],
+          "notes": "The claim is well-supported overall. The main caveat is that standalone scATAC-Seq cell type identification relied heavily on scRNA-Seq integration, so the 'comparable to scRNA-Seq' phrasing slightly overstates the independence of the two modalities. The authors do appropriately note that gene activity scores alone provided only broad classification.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Integration of chromatin accessibility motif analysis with gene expression data …",
+        "claim": "Integration of chromatin accessibility motif analysis with gene expression data identifies cell type-specific transcription factors that cannot be adequately identified from scRNA-Seq alone.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "identification of TFs has been challenging solely based on gene expression information from scRNA-Seq. Our scATAC-Seq provides additional information on TF regulation by correlating motif accessibility and predicted gene activity, which allows us to reveal cell type-specific TFs.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The multi-step strategy of combining motif enrichment, chromVAR analysis, footprinting, and correlation with gene expression is methodologically sound and addresses known limitations of each individual approach.",
+            "The identification of known TF regulators (NR4A1, NR5A1, GATA1, DMRT1, SOX9, MYOG) validates the approach.",
+            "The authors explicitly address the SOX family motif redundancy problem and propose a principled solution via gene-motif correlation.",
+            "GATA1 example is well-supported by convergent motif activity, gene accessibility, and gene expression data plus human disease connection (Nichols et al., 2000)."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim that TFs 'cannot be adequately identified from scRNA-Seq alone' is not directly tested—no systematic comparison showing TFs missed by scRNA-Seq but found by this approach is provided.",
+            "Evidential gap from sub-claim c1.2.5: The conclusion that cell type-specific TFs 'likely regulate chromatin accessibility' is an inferential leap from correlation to causation—no perturbation experiments support this.",
+            "Motif enrichment and footprinting from sparse scATAC-Seq data require pseudo-bulk aggregation, which may mask within-cluster heterogeneity.",
+            "For novel candidates (ZEB1, SNAI2 in germ cells), no expression data is provided to confirm these are the actual TFs driving the signal rather than family members, despite the authors acknowledging this exact problem for SOX9.",
+            "Specific correlation values for individual TFs are not reported, limiting ability to assess confidence of individual calls.",
+            "No functional validation (knockdown, knockout, reporter assays) of any identified positive TF regulators."
+          ],
+          "alternative_interpretations": [
+            "The correlation between TF expression and motif accessibility could reflect downstream consequences of chromatin states rather than TF-driven regulation.",
+            "Many identified TFs may be expressed in the cell types but not functionally important as regulators of chromatin accessibility.",
+            "Some novel TF candidates may be false positives arising from motif similarity across TF families."
+          ],
+          "required_assumptions": [
+            "TF expression correlates linearly with TF motif accessibility.",
+            "Motif accessibility reflects actual TF binding rather than passive chromatin opening.",
+            "The chromVAR approach correctly accounts for Tn5 insertion bias.",
+            "Gene activity scores from scATAC-Seq are a reliable proxy for gene expression when scRNA-Seq integration is used."
+          ],
+          "notes": "The claim that scATAC-Seq 'provides additional information on TF regulation' is fair, but the stronger claim that TFs 'cannot be adequately identified from scRNA-Seq alone' is not empirically tested. The approach is computationally sophisticated but lacks any experimental validation of novel TF candidates.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Peak-to-gene links identify cell type-specific cis-regulatory elements and their…",
+        "claim": "Peak-to-gene links identify cell type-specific cis-regulatory elements and their target genes, many of which overlap with known testis enhancers, demonstrating diverse regulatory configurations across cell types.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "our results highlight the occurrence of diverse cell type-specific regulatory configurations among CREs and their target genes in the testis.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "35,245 peak-to-gene links identified with 3,262 overlapping known testis enhancers from Gao and Qian (2020), providing independent validation.",
+            "The TESCO/TES enhancer example for Sox9 is a strong positive control—the method recovers a well-characterized enhancer and links it to the correct gene in the correct cell type.",
+            "The Wt1 functional enhancer example provides additional validation.",
+            "Clustering analysis reveals cell type-specific regulatory configurations, with GO enrichment confirming functional relevance.",
+            "DLK1 finding is supported by both computational prediction and experimental validation (FACS sorting and immunostaining)."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claim c1.3.3: Novel regulatory elements (e.g., three additional Sox9 elements) are entirely computational predictions without experimental validation (no reporter assays, CRISPR deletion, or 3C/Hi-C).",
+            "The 250 kb window for peak-to-gene linking is quite large and the false positive rate is neither assessed nor discussed.",
+            "The overlap with testis enhancers (3,262 of 35,245 = ~9%) means the vast majority of links are unvalidated.",
+            "DLK1+ sorted population likely contains multiple cell types; Igf1 enrichment suggests stromal cell enrichment but not purity.",
+            "Only P6 was examined by immunostaining for DLK1, limiting temporal scope.",
+            "The hypergeometric test for enhancer overlap does not account for potential confounders like genomic distribution biases."
+          ],
+          "alternative_interpretations": [
+            "Many peak-to-gene links may reflect coincidental co-variation rather than true regulatory connections.",
+            "The 9% overlap with known enhancers could indicate either that most links are novel enhancers or that many are false positives.",
+            "Some links may reflect shared responses to developmental timing rather than direct regulatory relationships."
+          ],
+          "required_assumptions": [
+            "Correlated chromatin accessibility and gene expression across cells indicates a direct regulatory relationship.",
+            "The 250 kb window captures the relevant regulatory landscape without excessive false positives.",
+            "Known testis enhancers from Gao and Qian (2020) are a representative ground truth."
+          ],
+          "notes": "The claim is stated with appropriate hedging ('putative CREs') and the overlap with known enhancers provides meaningful validation. The lack of experimental validation for novel elements is a real limitation but is partly acknowledged in the discussion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Germ cell chromatin accessibility analysis reveals two distinct differentiation …",
+        "claim": "Germ cell chromatin accessibility analysis reveals two distinct differentiation trajectories, one of which may represent the first wave of spermatogenesis, along with novel transcription factor regulators.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "Two possible trajectories were observed, as germ cell differentiation appeared to diverge at P0 via two distinct branches.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Re-clustering of germ cells without Harmony integration is a sound approach for revealing developmental dynamics.",
+            "Integration with scRNA-Seq provides cell type labels with generally high prediction scores.",
+            "Known TF regulators (Foxo1, Dmrt1, E2f4) are correctly identified, validating the approach.",
+            "The NR5A1 finding in germ cells is intriguing and supported by immunostaining showing co-expression with TRA98.",
+            "The Ngn3-low expression in the second trajectory is consistent with Yoshida et al. (2006)'s observation that first-wave spermatogenesis bypasses the Ngn3-expressing stage.",
+            "Pseudotime analysis recovers expected patterns (Id4 decline, ETS/Sp/KLF increase)."
+          ],
+          "weaknesses": [
+            "Inferential gap: The claim of 'two distinct differentiation trajectories' is a computational inference from snapshot data across four time points—without lineage tracing, this cannot be confirmed as representing two real developmental paths rather than alternative computational orderings of the data.",
+            "Only one feature (low Ngn3 gene activity) supports the first-wave interpretation; this is insufficient to make this a primary finding.",
+            "Evidential gap from sub-claim c1.4.4: The claim that immunostaining 'ruled out the possible contamination from somatic cells' is overclaimed—co-expression of TRA98 and NR5A1 in tissue sections does not rule out doublets in scATAC-Seq data. No quantification of the fraction of NR5A1+ germ cells is provided.",
+            "Gene activity scores from scATAC-Seq are an indirect proxy for gene expression; low gene activity does not definitively mean low transcription.",
+            "The 'unknown' clusters could represent technical artifacts, doublets, or transitional states not captured by the reference scRNA-Seq.",
+            "No experimental validation of any novel TF candidates (Ybx2, Smad3, Msc for T1-ProSG)."
+          ],
+          "alternative_interpretations": [
+            "The two trajectories could be an artifact of the UMAP embedding or insufficient temporal resolution rather than representing biologically distinct pathways.",
+            "The 'unknown' populations could represent doublets or cells with mixed identities rather than a distinct differentiation path.",
+            "NR5A1 expression in germ cells could represent aberrant expression in a small fraction of cells rather than a functional state.",
+            "The second trajectory could represent stressed or apoptotic cells rather than first-wave spermatogenesis."
+          ],
+          "required_assumptions": [
+            "Pseudotime from snapshot scATAC-Seq data accurately reconstructs real developmental trajectories.",
+            "Gene activity scores from scATAC-Seq are a reliable proxy for actual gene expression.",
+            "The scRNA-Seq reference captures all relevant germ cell states, and cells not matching are truly novel populations.",
+            "Low Ngn3 gene activity is sufficient evidence to link a population to first-wave spermatogenesis."
+          ],
+          "notes": "The two-trajectory finding is the most speculative claim in the paper. While the authors appropriately use cautious language ('raised the possibility'), framing it as a primary finding with 'may represent' still overclaims relative to the evidence. This hypothesis warrants lineage tracing experiments or at minimum additional marker validation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Somatic cell populations in the testis display significant previously uncharacte…",
+        "claim": "Somatic cell populations in the testis display significant previously uncharacterized heterogeneity in chromatin accessibility and regulatory programs, including novel subpopulations.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "Our scATAC-Seq analysis revealed novel cell populations not previously reported in scRNA-Seq studies, such as a distinct subpopulation of Sertoli cells.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple cell types (Sertoli, Leydig, PTM/stromal, immune) are sub-clustered revealing heterogeneity, with distinct marker genes and TF programs for each sub-cluster.",
+            "The SC1 Sertoli cell subpopulation finding is supported by immunostaining showing diverse MBD3/AMH expression patterns.",
+            "Known TFs are correctly identified in somatic cells (Hic1 in Sertoli cells with KO evidence from Uchida et al., 2020; Gata4 in PTMs; C/EBP proteins in macrophages).",
+            "PTM/stromal cell analysis identifies 10 sub-clusters with reasonable marker gene assignments, including potential telocyte-like cells (PC2).",
+            "The three Leydig cell clusters with distinct marker profiles are biologically plausible (FLC vs. SLC subtypes)."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claim c1.5.1: Whether SC1 represents a true biological state or a technical artifact is not fully addressed—the number of cells and statistical power are not discussed.",
+            "The claim of 'novel subpopulations' requires stronger evidence than sub-clustering and marker gene analysis alone. Over-clustering is a known risk in single-cell analyses.",
+            "The LC1 interpretation as 'later developmental stage of SLC' is speculative without temporal or lineage tracing evidence (sub-claim c1.5.3).",
+            "Small cell numbers for some populations (especially Leydig cells and immune cells) may limit reliability of sub-clustering.",
+            "No functional validation of any identified novel subpopulations or TF candidates.",
+            "The telocyte-like identity of PC2 is based solely on marker gene activity, with no experimental confirmation.",
+            "For immune cells, the perinatal testis population is likely small, raising concerns about statistical power for sub-clustering and TF identification."
+          ],
+          "alternative_interpretations": [
+            "Some sub-clusters may represent cells at different cell cycle stages rather than distinct subpopulations.",
+            "SC1 could represent Sertoli cells at a different maturation stage captured by the developmental time course rather than a distinct subpopulation.",
+            "Apparent heterogeneity may partly reflect technical variation in capture efficiency or tagmentation.",
+            "The 10 PTM/stromal clusters may represent over-clustering given the developmental time course spanning E18.5-P5."
+          ],
+          "required_assumptions": [
+            "Sub-clustering resolution is appropriate and does not over-split biological populations.",
+            "Gene activity scores and chromVAR deviations accurately reflect biological heterogeneity rather than technical noise.",
+            "The developmental time course does not confound sub-population identification with developmental staging."
+          ],
+          "notes": "The claim is stated with appropriate hedging ('significant previously uncharacterized heterogeneity') and is reasonable given the data. The immunostaining for MBD3/AMH in Sertoli cells provides some experimental support. However, the novelty of specific subpopulations would benefit from independent validation, especially given known risks of over-clustering in single-cell data.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Integration of cell type-specific chromatin accessibility data with GWAS variant…",
+        "claim": "Integration of cell type-specific chromatin accessibility data with GWAS variants enables prediction of target cell types and target genes for disease-associated polymorphisms.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "a combination of our scATAC-Seq data with human traits or disease-relevant SNPs enables the prediction of target cell types and target genes for GWAS variants.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The approach is methodologically sound, using LD score regression which is a well-established method for partitioned heritability analysis.",
+            "The positive control result—Leydig cell enrichment for testosterone level GWAS—is biologically expected and validates the framework.",
+            "Specific GWAS variants (rs4919685, rs743572) at the Cyp17a1 locus in Leydig cells represent a compelling example with known biological relevance.",
+            "Negative controls work appropriately—traits unrelated to testis (Parkinson's, depression, IgA deficiency) show no enrichment.",
+            "Peak-to-gene links connect specific variants to target genes (e.g., rs2400899 to Slc25a47), providing testable hypotheses.",
+            "The authors acknowledge the cross-species limitation in the discussion."
+          ],
+          "weaknesses": [
+            "Inferential gap: The fundamental issue is that mouse chromatin accessibility data is being integrated with human GWAS data. While acknowledged in the discussion, the claim 'enables prediction' implies greater reliability than the cross-species analysis warrants.",
+            "Evidential gap from sub-claim c1.6.3: The Sertoli cell-CAD connection is speculative and indirect, relying on a chain of reasoning (Sertoli cells → testosterone regulation → CAD risk) that is not tested.",
+            "No experimental validation that any identified variant affects the predicted target gene expression.",
+            "The mechanistic link between rs2400899 in Wars and regulation of nearby Slc25a47 is not well explained.",
+            "For immune disease enrichments, no specific variants or genes are discussed, making these findings superficial.",
+            "Enrichment statistics (p-values, fold enrichment) for most traits are not provided in the text.",
+            "The Meg3/Dlk1 rs941576 example conflates mouse and human genomic coordinates without explicit liftover validation."
+          ],
+          "alternative_interpretations": [
+            "GWAS enrichment in testicular cell types could reflect shared regulatory elements with non-testicular cell types that are the actual disease-relevant cells.",
+            "The Sertoli cell-CAD association could be driven by shared regulatory architecture between Sertoli cells and vascular smooth muscle cells rather than a direct biological connection.",
+            "Peak-to-gene links connecting GWAS variants to target genes may be coincidental co-accessibility rather than functional regulatory connections.",
+            "Some enrichments may reflect the large number of DARs in certain cell types rather than genuine biological signal."
+          ],
+          "required_assumptions": [
+            "Mouse chromatin accessibility landscapes are sufficiently conserved with human to make cross-species GWAS interpretation valid.",
+            "Cell type-specific DARs capture the regulatory elements relevant to human disease biology.",
+            "LD score regression assumptions hold for this cross-species application.",
+            "Peak-to-gene links represent true regulatory connections that are affected by GWAS variants."
+          ],
+          "notes": "The approach generates interesting hypotheses but the claim 'enables prediction of target cell types and target genes for disease-associated polymorphisms' overstates what the evidence supports. The cross-species nature of the analysis is a fundamental limitation that should be more prominently caveated. The positive control (Leydig-testosterone) is convincing, but the more speculative findings (Sertoli-CAD) would need substantial additional evidence. The authors do acknowledge the cross-species limitation in the discussion, but the primary claim text does not reflect this caveat.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "25,613 individual cells across four developmental time points (E18.5, P0, P2, P5…",
+        "claim": "25,613 individual cells across four developmental time points (E18.5, P0, P2, P5) passed stringent quality control filtration and doublet removal.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we profiled chromatin accessibility in 25,613 individual cells after stringent quality control filtration and heterotypic doublet removal",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paper provides detailed QC metrics including TSS enrichment, fragment numbers, and fragment size distributions shown in supplementary figures.",
+            "Multiple QC parameters were applied: read depth (>2000), TSS enrichment (>4), and doublet removal.",
+            "Fragment size distribution shows expected nucleosome-free and mono-nucleosome-bound patterns, confirming data quality."
+          ],
+          "weaknesses": [
+            "The number of cells per time point is not explicitly broken down in the text, making it hard to assess whether coverage is balanced across developmental stages.",
+            "Each sample pooled three mice, which limits ability to assess biological variability between individuals."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The QC thresholds chosen are appropriate and not overly permissive or stringent.",
+            "Pooling three mice per time point adequately represents biological variation."
+          ],
+          "notes": "This is a straightforward methodological claim well supported by the described pipeline.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "Harmony integration and unbiased iterative clustering identified 11 distinct cel…",
+        "claim": "Harmony integration and unbiased iterative clustering identified 11 distinct cell clusters corresponding to known testicular cell types.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Unbiased iterative clustering of these single cells after integration identified 11 distinct clusters.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Harmony integration is a well-established method for batch correction across time points.",
+            "11 clusters were identified and validated through gene activity scores of known marker genes.",
+            "UMAP visualizations and heatmaps of marker genes across clusters are provided."
+          ],
+          "weaknesses": [
+            "The claim says clusters correspond to 'known testicular cell types' but the paper also identifies unknown populations, so 'corresponding to known testicular cell types' may be slightly overstated for all 11 clusters.",
+            "The resolution of clustering (number of clusters) is somewhat arbitrary and dependent on parameter choices not fully justified."
+          ],
+          "alternative_interpretations": [
+            "Some clusters may represent technical artifacts or intermediate states rather than biologically distinct cell types."
+          ],
+          "required_assumptions": [
+            "Harmony integration preserves genuine biological variation while removing batch effects.",
+            "The chosen clustering resolution appropriately captures the true cellular diversity."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Integration with published scRNA-Seq data enables confident cell type prediction…",
+        "claim": "Integration with published scRNA-Seq data enables confident cell type prediction, with the vast majority of cells having high prediction scores assigned to single cell types.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The results showed that the vast majority of cells had a high prediction score and were confidently assigned to a single cell type",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Integration with an independent scRNA-Seq dataset (Tan et al., 2020) provides orthogonal validation.",
+            "Prediction scores are shown in supplementary figures, and the authors state the vast majority are high.",
+            "The approach of comparing gene activity scores with gene expression matrices is methodologically sound."
+          ],
+          "weaknesses": [
+            "The distribution of prediction scores is shown but not quantified with specific percentages or thresholds for what constitutes 'high'.",
+            "The reference scRNA-Seq dataset is from the same lab, limiting independence.",
+            "Cells with lower prediction scores could represent novel cell states not captured in the reference."
+          ],
+          "alternative_interpretations": [
+            "High prediction scores could partly reflect overfitting if the reference and query datasets share systematic biases."
+          ],
+          "required_assumptions": [
+            "Gene activity scores from scATAC-Seq are a reasonable proxy for gene expression.",
+            "The reference scRNA-Seq dataset comprehensively captures all cell types present."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "214,890 accessible chromatin regions were identified, and cell type-specific dif…",
+        "claim": "214,890 accessible chromatin regions were identified, and cell type-specific differentially accessible regions (DARs) correspond to known marker genes from scRNA-Seq.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "After identifying 214,890 accessible chromatin regions in the scATAC-Seq library, we investigated cell type-specific chromatin accessibility profiles.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "214,890 peaks represents a comprehensive catalog of accessible chromatin.",
+            "DARs were identified with appropriate statistical testing (Wilcoxon test) controlling for confounders (TSS enrichment, fragment count).",
+            "Correspondence with known marker genes (e.g., Amh in Sertoli cells) provides biological validation."
+          ],
+          "weaknesses": [
+            "The claim that DARs 'correspond to known marker genes' is supported by selected examples rather than a systematic quantitative assessment.",
+            "FDR ≤ 0.01 and Log2FC ≥ 2 thresholds are stated but sensitivity to these thresholds is not explored."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Peak calling is accurate and not biased by cell type-specific fragment distributions."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "Accessible sites in DARs are primarily located in distal and intron regions (>3 …",
+        "claim": "Accessible sites in DARs are primarily located in distal and intron regions (>3 kb from TSS), suggesting enrichment of gene regulatory elements rather than promoters.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Deconvolution of chromatin accessibility by cell types revealed that accessible sites are primarily located in the distal and intron region (>3 kb from TSS), suggesting an enrichment of gene regulatory elements",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The genomic distribution of DARs is shown in supplementary figures.",
+            "The finding that accessible sites are primarily distal is consistent with known biology of enhancer elements.",
+            "Validated by comparison with bulk Sertoli cell DNase-Seq data from Maatouk et al., 2017."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: No statistical quantification of enrichment is provided in the text for the distal element finding specifically.",
+            "The bulk DNase-Seq reference used a Sox9-transgenic line, which may introduce some bias.",
+            "This is a confirmatory rather than novel finding."
+          ],
+          "alternative_interpretations": [
+            "Enrichment in distal regions could partly reflect the larger genomic space of distal regions compared to promoters."
+          ],
+          "required_assumptions": [
+            "The >3 kb threshold from TSS is an appropriate definition of distal regulatory elements."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Motif enrichment analysis of DARs identifies both known cell type-specific TF re…",
+        "claim": "Motif enrichment analysis of DARs identifies both known cell type-specific TF regulators and previously uncharacterized potential regulators.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Assessment of enriched TFs and their cognate motifs identified several known cell type-specific regulators – including the nuclear receptors (NR4A1 and NR5A1) in Sertoli cells and Leydig cells, ESR2 in Leydig cells, MYOG in PTMs, and previously uncharacterized TFs as potential cell type-specific regulators",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Recovery of known TFs (NR4A1, NR5A1, ESR2, MYOG) in expected cell types validates the approach.",
+            "The claim appropriately distinguishes between 'known' and 'previously uncharacterized' regulators."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: Motif enrichment alone does not prove functional TF binding.",
+            "For novel candidates like ZEB1 and SNAI2 in germ cells, no expression data is provided to confirm these are the actual TFs driving the signal rather than family members with similar motifs—the same limitation they acknowledge for SOX9.",
+            "Inferential gap: motif enrichment in DARs indicates potential binding sites but does not establish that these TFs actually function as regulators."
+          ],
+          "alternative_interpretations": [
+            "Enriched motifs could reflect binding of related family members rather than the specific TFs named.",
+            "Some enrichments could be driven by co-occurrence of motifs with other TFs that are the true regulators."
+          ],
+          "required_assumptions": [
+            "Motif databases are sufficiently complete and accurate.",
+            "Motif enrichment in accessible chromatin reflects actual TF binding."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "TF footprinting analysis validates cell type-dependent differential occupancy of…",
+        "claim": "TF footprinting analysis validates cell type-dependent differential occupancy of identified TFs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Examining the footprint validated the cell type-dependent differential footprint occupancy of identified TFs",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "TF footprinting provides an additional layer of evidence beyond motif enrichment.",
+            "Differential footprint occupancy across cell types is consistent with cell type-specific TF binding."
+          ],
+          "weaknesses": [
+            "Footprint depth depends heavily on read depth; with scATAC-Seq's sparse data, footprint quality per cell is limited and relies on pseudo-bulk aggregation.",
+            "No quantitative metrics for footprint quality or significance are described.",
+            "Footprinting in scATAC-Seq data is generally less reliable than in bulk ATAC-Seq due to sparsity."
+          ],
+          "alternative_interpretations": [
+            "Apparent footprints could reflect nucleosome positioning rather than specific TF binding."
+          ],
+          "required_assumptions": [
+            "Sufficient read depth after aggregation to detect genuine footprints.",
+            "Tn5 insertion bias is adequately controlled for."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Simple motif enrichment in DARs is insufficient because TFs from the same family…",
+        "claim": "Simple motif enrichment in DARs is insufficient because TFs from the same family share similar motifs; correlating chromVAR motif activity with gene expression reduces false discovery.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Since TFs from the same family often share a similar motif, this makes it challenging to identify the specific TFs that actually drive the observed changes in chromatin accessibility.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The SOX9/SOX3 example clearly illustrates the motif ambiguity problem.",
+            "The solution of correlating chromVAR motif activity with gene expression is a principled approach to reduce false discovery.",
+            "The authors appropriately acknowledge the limitation before presenting their solution."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: No direct evidence confirms SOX3 is the actual driver of the germ cell signal; this remains inferential.",
+            "The correlation-based approach assumes that TF expression and motif accessibility are linearly related, which may not hold for all TFs."
+          ],
+          "alternative_interpretations": [
+            "Some true regulators may be filtered out if their expression and motif activity are uncorrelated (e.g., constitutively expressed TFs whose activity is regulated post-translationally)."
+          ],
+          "required_assumptions": [
+            "TF protein activity correlates with mRNA expression.",
+            "Gene activity scores from scATAC-Seq reasonably approximate gene expression."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "Positive TF regulators identified by correlation show diverse combinatorial TF m…",
+        "claim": "Positive TF regulators identified by correlation show diverse combinatorial TF motif landscapes across cell types that closely mirror gene accessibility profiles.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Clustering analysis of positive regulators showed that diverse combinatorial TF motif landscapes were apparent across cell types and closely mirrored gene accessibility profiles of respective TFs",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The heatmap analysis (Figure 2G) demonstrates clear cell type-specific patterns.",
+            "Recovery of known regulators (GATA1 in Sertoli cells, DMRT1 in germ cells) validates the approach.",
+            "Shared and unique regulatory programs across cell types (e.g., NR5A1 and GATA4 in both Leydig and Sertoli cells, but SOX family only in Sertoli cells) add biological plausibility."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: Specific correlation values for individual TFs (GATA1, DMRT1) are not reported.",
+            "No functional validation of any identified positive TF regulators is performed.",
+            "The statistical thresholds (correlation >0.5, adjusted p-value <0.01) are somewhat arbitrary."
+          ],
+          "alternative_interpretations": [
+            "Correlation between motif activity and gene expression does not prove causation; a TF could be correlated by coincidence if it shares expression patterns with the true driver."
+          ],
+          "required_assumptions": [
+            "The correlation threshold of 0.5 effectively separates true from false positive regulators.",
+            "The scRNA-Seq reference dataset accurately captures TF expression levels."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.5",
+        "label": "Individual cell types can be defined by TF activity alone, suggesting that cell …",
+        "claim": "Individual cell types can be defined by TF activity alone, suggesting that cell type-specific TFs likely regulate chromatin accessibility.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we observed that individual cell types can be defined by TF 'activity', suggesting that cell type-specific TFs likely regulate chromatin accessibility.",
+        "evaluation": {
+          "node_id": "c1.2.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The demonstration that cell types cluster based on TF activity in UMAP space is consistent with the claim.",
+            "Multiple TFs showing cell type-specific activity patterns support this observation."
+          ],
+          "weaknesses": [
+            "Inferential gap: The observation that cell types can be distinguished by TF activity does not logically establish that TFs 'likely regulate chromatin accessibility.' Correlation does not imply causation—the TFs could be downstream consequences of chromatin states rather than causes.",
+            "No perturbation experiments (knockdown, knockout) are performed to test whether TFs actually regulate chromatin accessibility.",
+            "The claim is broadly stated but supported only by correlative evidence."
+          ],
+          "alternative_interpretations": [
+            "Cell type-specific chromatin accessibility could be established by pioneer factors or epigenetic mechanisms, with the observed TF activity being a consequence rather than a cause.",
+            "TF activity patterns may simply reflect cell identity rather than actively maintaining it."
+          ],
+          "required_assumptions": [
+            "Correlation between TF motif accessibility and cell type identity implies a causal regulatory relationship."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "35,245 peak-to-gene links were identified by correlating chromatin accessibility…",
+        "claim": "35,245 peak-to-gene links were identified by correlating chromatin accessibility changes with gene expression across cells, with 3,262 overlapping known testis enhancers.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We identified 35,245 peak-to-gene links by correlating accessibility changes of ATAC peaks within 250 kb of the gene promoter with the mRNA expression of the gene from scRNA-Seq.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "35,245 peak-to-gene links is a comprehensive catalog.",
+            "The overlap with 3,262 known testis enhancers provides validation (hypergeometric test mentioned).",
+            "The 250 kb window is a commonly used distance for cis-regulatory element identification."
+          ],
+          "weaknesses": [
+            "A 250 kb window is quite large and could include many spurious correlations.",
+            "The false positive rate of peak-to-gene links is not assessed or discussed.",
+            "The hypergeometric test for enhancer overlap p-value is mentioned but the actual value is not provided in the main text."
+          ],
+          "alternative_interpretations": [
+            "Some peak-to-gene links could reflect co-regulation by shared upstream signals rather than direct regulatory connections.",
+            "Correlated accessibility and expression could be driven by shared cell type composition rather than direct regulatory relationships."
+          ],
+          "required_assumptions": [
+            "Correlated chromatin accessibility and gene expression within 250 kb reflects genuine cis-regulatory relationships.",
+            "The scRNA-Seq integration provides accurate expression estimates."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "Clustering of peak-to-gene links reveals cell type-specific putative cis-regulat…",
+        "claim": "Clustering of peak-to-gene links reveals cell type-specific putative cis-regulatory elements enriched in GO terms relevant to each cell type.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Gene Ontology (GO) analysis of the targets of peak-to-gene links in each cluster confirmed that they were highly enriched in terms related to regulations of each cell type",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clustering of peak-to-gene links and GO analysis in each cluster provide biologically interpretable results.",
+            "The enrichment of relevant GO terms in each cluster supports cell type specificity.",
+            "Full supplementary data is available."
+          ],
+          "weaknesses": [
+            "GO enrichment can be driven by a few dominant gene categories and may not reflect the majority of links.",
+            "No correction for the background distribution of genes in the testis transcriptome."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "GO enrichment accurately reflects the biological function of linked genes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The analysis successfully recovers the known TESCO enhancer linked to Sox9 in Se…",
+        "claim": "The analysis successfully recovers the known TESCO enhancer linked to Sox9 in Sertoli cells and a known Wt1 enhancer, validating the approach.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Comparison of the genomic region around Sox9 among all cell types revealed a region 13 kb upstream formed a peak-to-gene link with the Sox9 TSS, which is unique to the Sertoli cell population and overlapped with the 3 kb TES enhancer including the TESCO elements",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Recovery of the TESCO enhancer is a compelling validation using a well-characterized regulatory element.",
+            "The identified peak-to-gene link at 13 kb upstream overlaps with the known 3 kb TES enhancer region.",
+            "Recovery of the Wt1 enhancer provides a second validation case."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: These are computational predictions without experimental validation (reporter assays, CRISPR deletion, 3C/Hi-C).",
+            "The three additional novel Sox9 regulatory elements are entirely unvalidated.",
+            "Peak-to-gene links within 250 kb could include many false positives, making individual link reliability uncertain."
+          ],
+          "alternative_interpretations": [
+            "The peak-to-gene links could reflect passive co-accessibility with the Sox9 locus rather than functional enhancer-promoter interactions."
+          ],
+          "required_assumptions": [
+            "Correlated chromatin accessibility and gene expression across cells reflects genuine cis-regulatory interactions.",
+            "The TESCO overlap is not coincidental given the broad 250 kb search window."
+          ],
+          "notes": "The authors appropriately frame these as 'novel candidate' regulatory elements rather than confirmed enhancers.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "DLK1 is expressed in stromal cells and PTMs, not primarily in Leydig cells, in t…",
+        "claim": "DLK1 is expressed in stromal cells and PTMs, not primarily in Leydig cells, in the mouse neonatal testis, contrary to its use as a marker for immature Leydig cells in humans.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Although DLK1 is considered as a marker for immature Leydig cells in human, the Dlk1-Gtl2 locus demonstrated preferential accessibility in stromal cells and PTMs.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Multiple lines of evidence converge: scATAC-Seq peak accessibility, FACS sorting with RT-PCR, and immunostaining.",
+            "FACS-sorted DLK1+ cells showed enrichment for stromal cell marker Igf1 (p<0.001, n=3).",
+            "Immunostaining at P6 confirms DLK1 expression in stromal cells and PTMs."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: n=3 is modest; DLK1+ sorted population likely contains multiple cell types; Igf1 enrichment indicates stromal cell enrichment but not purity.",
+            "Only P6 was examined by immunostaining; temporal scope is limited.",
+            "No quantification of DLK1+ cell proportions across different cell types is provided.",
+            "The species difference (human vs. mouse) in DLK1 expression patterns limits the strength of the contrast with human studies."
+          ],
+          "alternative_interpretations": [
+            "DLK1 could be expressed at low levels in mouse Leydig cells below detection thresholds of the methods used.",
+            "Species-specific differences in DLK1 expression may not indicate a fundamental biological difference but rather differential regulation."
+          ],
+          "required_assumptions": [
+            "The antibody used is specific for DLK1.",
+            "P6 expression patterns are representative of the broader perinatal period."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Re-clustering of germ cells reveals seven cell clusters, with E18.5 and P0 cells…",
+        "claim": "Re-clustering of germ cells reveals seven cell clusters, with E18.5 and P0 cells clustering together indicating minimal chromatin accessibility changes at birth.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Notably, germ cells from E18.5 and P0 are largely clustered together and occupy clusters GC1 and GC3, indicating a minimal change of chromatin accessibility before and after birth.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "UMAP visualization clearly shows E18.5 and P0 cells co-localizing in clusters GC1 and GC3.",
+            "The biological interpretation (minimal chromatin changes at birth) is consistent with the known biology of T1-ProSG mitotic arrest during this period.",
+            "The analytical choice to avoid Harmony integration preserves developmental stage information."
+          ],
+          "weaknesses": [
+            "Co-clustering of E18.5 and P0 could partly reflect batch effects despite processing in one batch.",
+            "Seven clusters from re-clustering may not fully capture the heterogeneity; resolution sensitivity is not discussed."
+          ],
+          "alternative_interpretations": [
+            "Similarity between E18.5 and P0 could also reflect technical similarity in sample processing rather than biological similarity."
+          ],
+          "required_assumptions": [
+            "UMAP faithfully represents the global structure of chromatin accessibility differences.",
+            "Technical variation between E18.5 and P0 samples is minimal."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "The first trajectory represents the conventional model from gonocyte to undiffer…",
+        "claim": "The first trajectory represents the conventional model from gonocyte to undifferentiated to differentiating spermatogonia.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The first trajectory represents the differentiation fit into the conventional model as it charts a trajectory from gonocyte to undifferentiated and then differentiating spermatogonia in P5.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The trajectory from T1-ProSG through T2-ProSG to undifferentiated and differentiating spermatogonia is consistent with established developmental biology.",
+            "Integration with scRNA-Seq data provides cell type labels along the trajectory."
+          ],
+          "weaknesses": [
+            "Pseudotime trajectories are computational inferences that may not accurately reflect real developmental progression.",
+            "The trajectory is inferred from a snapshot dataset across time points, not from lineage tracing.",
+            "No experimental validation of the trajectory is provided."
+          ],
+          "alternative_interpretations": [
+            "The apparent trajectory could represent cell state variation within a time point rather than a true developmental progression."
+          ],
+          "required_assumptions": [
+            "Pseudotime ordering reflects actual developmental progression.",
+            "Cells at different time points can be meaningfully ordered along a continuous trajectory."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "The second trajectory bypasses the undifferentiated spermatogonial state, passes…",
+        "claim": "The second trajectory bypasses the undifferentiated spermatogonial state, passes through two unknown populations, and may represent the first wave of spermatogenesis.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "The second path bypassed the undifferentiated state but passed through the unknown populations and directly reached the differentiating state by P5.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation of two branching trajectories is an interesting finding consistent with the known biology of first-wave spermatogenesis.",
+            "Low Ngn3 gene activity in the unknown population is concordant with Yoshida et al., 2006, who showed the first round bypasses Ngn3+ undifferentiated spermatogonia.",
+            "The authors appropriately use tentative language ('raised the possibility')."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: Gene activity scores from scATAC-Seq are an indirect proxy for gene expression; low gene activity does not definitively mean low transcription.",
+            "Only one feature (low Ngn3) supports the first-wave interpretation; additional markers would strengthen this claim substantially.",
+            "The unknown populations could represent technical artifacts (doublets, contamination) rather than genuine cell states.",
+            "No lineage tracing or functional validation supports this trajectory interpretation."
+          ],
+          "alternative_interpretations": [
+            "The second trajectory could represent a technical artifact from poorly annotated cell populations rather than a biological pathway.",
+            "The unknown populations could be cells with aberrant or transitional chromatin states that do not represent a coherent developmental program."
+          ],
+          "required_assumptions": [
+            "The unknown populations represent genuine biological cell states.",
+            "Pseudotime trajectory inference accurately captures bifurcating developmental paths.",
+            "Low Ngn3 gene activity score reflects low Ngn3 expression."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "Nr5a1, conventionally considered a somatic cell marker, is identified as a posit…",
+        "claim": "Nr5a1, conventionally considered a somatic cell marker, is identified as a positive TF regulator in germ cell clusters with unknown identity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "this analysis identified Nr5a1 as the positive TF regulators in the unknown clusters",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Computational identification of Nr5a1 as a positive TF regulator in unknown germ cell clusters is a novel finding.",
+            "Immunostaining shows co-localization of TRA98 (germ cell marker) and NR5A1 in some cells.",
+            "Previous scRNA-Seq study (Hermann et al., 2015) independently identified a spermatogonial cluster expressing Sertoli cell markers including Nr5a1."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: The claim that immunostaining 'ruled out the possible contamination from somatic cells' is overclaimed. Co-expression of TRA98 and NR5A1 in tissue sections does not rule out doublets in scATAC-Seq data.",
+            "No quantification of what fraction of germ cells express NR5A1.",
+            "The biological significance of Nr5a1 expression in germ cells is not explored.",
+            "Inferential gap: demonstrating that some germ cells express NR5A1 protein does not establish that Nr5a1 functions as a TF regulator in these cells."
+          ],
+          "alternative_interpretations": [
+            "NR5A1+ germ cells could represent rare transitional cells or cells undergoing apoptosis with deregulated gene expression.",
+            "The scATAC-Seq signal could reflect doublets despite computational filtering.",
+            "NR5A1 expression in germ cells could be non-functional, representing stochastic or residual transcription."
+          ],
+          "required_assumptions": [
+            "Doublet removal is sufficiently thorough that Nr5a1 activity in germ cell clusters is not artifactual.",
+            "NR5A1 expression in germ cells has a functional role."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "Pseudotime trajectory analysis reveals a model of germ cell differentiation invo…",
+        "claim": "Pseudotime trajectory analysis reveals a model of germ cell differentiation involving progressive loss of gonocyte-specific TF activities and gradual increase of spermatogonia-relevant TF activities.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The pattern of TF dynamics suggested a model of differentiation as a transition between two phases involving progressive loss of gonocyte-specific TF activities and gradual increase of TF activities relevant to spermatogonia.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The two-phase model (loss of gonocyte TFs, gain of spermatogonia TFs) is biologically plausible and consistent with known biology.",
+            "Recovery of known regulators (Id4 declining, ETS/Sp/KLF increasing) supports the validity of the approach.",
+            "57 putative positive TF regulators provides a comprehensive candidate list."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: Pseudotime is a computational inference and may not accurately reflect real biological time.",
+            "Id4 motif binding activity is assessed from chromatin accessibility, which is an indirect measure.",
+            "57 TFs are identified computationally without functional validation of any novel candidates.",
+            "The correlation threshold (>0.5, adjusted p-value <0.01) is somewhat arbitrary; sensitivity to threshold choices is not assessed."
+          ],
+          "alternative_interpretations": [
+            "The apparent progressive transition could reflect cell composition changes across time points rather than continuous differentiation within individual lineages.",
+            "The two-phase model could be an oversimplification of a more complex, multi-stage process."
+          ],
+          "required_assumptions": [
+            "Pseudotime ordering accurately reflects developmental progression.",
+            "Chromatin accessibility changes precede or accompany gene expression changes in a biologically meaningful way."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "12,819 putative peak-to-gene links were identified in germ cells, connecting reg…",
+        "claim": "12,819 putative peak-to-gene links were identified in germ cells, connecting regulatory elements to stem cell, progenitor, and T1-ProSG-associated genes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We further predicted regulatory interactions from scATAC-Seq data, identifying 12,819 putative peak-to-gene links",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "12,819 peak-to-gene links in germ cells alone is a substantial catalog.",
+            "Clustering analysis reveals biologically interpretable patterns (stem cell genes, proliferation markers, T1-ProSG genes).",
+            "Examples like Sdc4, Cdh1, Top2a, and Fbxo4 are biologically relevant."
+          ],
+          "weaknesses": [
+            "No experimental validation of any peak-to-gene links.",
+            "The large number of links within germ cells alone suggests potentially high false positive rates.",
+            "Specific examples are cherry-picked; genome-wide accuracy is not assessed."
+          ],
+          "alternative_interpretations": [
+            "Many links could be correlational artifacts from cell composition changes across time points."
+          ],
+          "required_assumptions": [
+            "Peak-to-gene correlation reflects genuine cis-regulatory relationships.",
+            "Sufficient cell numbers per germ cell subset for reliable correlation analysis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Sertoli cells contain a distinct subpopulation (SC1) characterized by higher Amh…",
+        "claim": "Sertoli cells contain a distinct subpopulation (SC1) characterized by higher Amh and Mbd3 but lower Sox9, Dmrt1, Wt1, and FOS activity, which may represent a less differentiated state.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "SC1 cells might represent a less differentiated state of Sertoli cells, which warrant further investigation",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "SC1 is clearly distinguished from other clusters in the computational analysis with 11 positive TF regulators showing extreme activity.",
+            "Immunostaining confirms heterogeneous expression patterns of MBD3 and AMH consistent with the computational prediction.",
+            "The observation of lower Sox9, Dmrt1, Wt1, and FOS is consistent with a less differentiated state.",
+            "The authors appropriately hedge the interpretation with 'warrant further investigation.'"
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: The number of cells in SC1 and statistical power are not discussed.",
+            "Whether SC1 represents a real biological state or a technical artifact is not fully addressed.",
+            "Only P6 immunostaining is shown; temporal dynamics of this subpopulation are not characterized.",
+            "Quantification of proportions of cells in each MBD3/AMH expression pattern is not provided.",
+            "Inferential gap: Lower expression of mature Sertoli markers does not necessarily indicate a 'less differentiated state'—it could reflect an alternative functional state."
+          ],
+          "alternative_interpretations": [
+            "SC1 could represent dying or stressed Sertoli cells rather than less differentiated ones.",
+            "SC1 could be a functionally distinct subpopulation rather than a developmental precursor.",
+            "The MBD3-high/AMH-high pattern could reflect cell cycle state rather than differentiation status."
+          ],
+          "required_assumptions": [
+            "Lower expression of Sertoli cell maturation markers implies a less differentiated state.",
+            "SC1 contains sufficient cells for reliable analysis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Sertoli cell pseudotime trajectory reveals TF dynamics including early enrichmen…",
+        "claim": "Sertoli cell pseudotime trajectory reveals TF dynamics including early enrichment of Gata2 and Ppara, and later upregulation of Hic1 and Cebpd.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Gata2 and Ppara were enriched at early developmental stages... In contrast, Hic1 and Cebpd were upregulated at the later stage",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Pseudotime analysis reveals temporally ordered TF dynamics.",
+            "Each named TF has literature support for Sertoli cell function: Gata2 (AR target), Ppara (cholesterol metabolism), Hic1 (Sertoli cell number), Cebpd (FSH regulation).",
+            "The pattern of early vs. late TF enrichment is biologically plausible."
+          ],
+          "weaknesses": [
+            "Pseudotime is a computational inference; real temporal dynamics may differ.",
+            "No experimental validation of the temporal dynamics.",
+            "The number of Sertoli cells and the number of clusters (six) may raise concerns about overclustering."
+          ],
+          "alternative_interpretations": [
+            "Temporal TF patterns could reflect compositional changes in Sertoli cell subpopulations across time points rather than within-cell differentiation."
+          ],
+          "required_assumptions": [
+            "Pseudotime faithfully recapitulates Sertoli cell developmental trajectory.",
+            "Gene score changes along pseudotime reflect real transcriptional dynamics."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Leydig cells resolve into three subpopulations: LC2 likely representing fetal Le…",
+        "claim": "Leydig cells resolve into three subpopulations: LC2 likely representing fetal Leydig cells, and LC1/LC3 showing enrichment of different stem Leydig cell markers.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "cluster LC2 is likely to represent FLCs, while LC1 and LC3 showed enrichment in different sets of SLC markers",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Three Leydig cell clusters is consistent with the known biology of FLC and SLC populations in perinatal testis.",
+            "Assignment of LC2 as FLC and LC1/LC3 as SLC subtypes is based on established marker genes.",
+            "40 TF regulators identified provides a comprehensive candidate list.",
+            "Col4a1/Col4a2 peak-to-gene links in LC1 suggest a biologically plausible later developmental stage."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: The LC1 as 'later developmental stage' interpretation is speculative without temporal or lineage tracing evidence.",
+            "The number of Leydig cells captured is likely small (three clusters), potentially affecting reliability.",
+            "No functional validation of any TF candidates.",
+            "GO terms for LC1 could also indicate a different lineage rather than a developmental stage."
+          ],
+          "alternative_interpretations": [
+            "LC1 and LC3 could represent spatial rather than temporal heterogeneity of SLCs.",
+            "The collagen IV expression in LC1 could indicate a peritubular/stromal contamination rather than a genuine SLC subtype."
+          ],
+          "required_assumptions": [
+            "Sufficient Leydig cells are captured for reliable clustering and TF identification.",
+            "Marker gene expression faithfully distinguishes FLC from SLC subtypes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "PTM and stromal cells resolve into 10 clusters with distinct regulatory programs…",
+        "claim": "PTM and stromal cells resolve into 10 clusters with distinct regulatory programs, including a putative telocyte population (PC2) co-expressing Tcf21, Cd34, and Pdgfra.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the gene expression pattern of PC2 resembles telocytes, a recently described stromal cell type, which co-expresses Tcf21, Cd34, and Pdgfra",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "10 clusters reveal substantial heterogeneity in the PTM/stromal compartment.",
+            "Identification of PTM clusters (PC8-10) based on Myh11 and stromal clusters based on other markers is methodologically sound.",
+            "The putative telocyte population (PC2) is identified based on known telocyte markers (Tcf21, Cd34, Pdgfra positive; Pecam1, Kit, Acta2 negative).",
+            "Known TF-function relationships (AR in PTMs, GATA4, SMAD3) are recovered."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: PGR enrichment in PTMs is not discussed biologically.",
+            "No statistical assessment of whether 9/46 homeobox genes is significant.",
+            "No functional validation of any candidates.",
+            "10 clusters may represent overclustering given the likely modest cell numbers.",
+            "The telocyte identification is based solely on marker gene activity scores without experimental validation."
+          ],
+          "alternative_interpretations": [
+            "PC2 could represent a transitional stromal cell state rather than genuine telocytes.",
+            "Some PTM/stromal clusters could represent contamination from other cell types."
+          ],
+          "required_assumptions": [
+            "Marker gene activity scores accurately reflect cell identity.",
+            "The resolution of clustering is appropriate for the cell numbers captured."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5",
+        "label": "Testicular immune cells resolve into T cells/NK cells, myeloid cells, and dendri…",
+        "claim": "Testicular immune cells resolve into T cells/NK cells, myeloid cells, and dendritic cells, with myeloid cell analysis identifying known macrophage TFs and novel candidates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Re-clustering of all the immune cells generated four-cell clusters... which can be re-grouped as three main groups based on the expression of their corresponding marker genes, including T cells/NK cells (IC1 and IC2), myeloid cells (IC3), and dendritic cells (IC4)",
+        "evaluation": {
+          "node_id": "c1.5.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Recovery of known macrophage TFs (C/EBP, KLFs) validates the approach.",
+            "Identification of well-known myeloid TFs (Zeb1, Creb1, Fosl2, Egr1, Nfat5) further supports reliability.",
+            "Novel candidates (Nfya, Zfp42, Tef) are linked to known testicular functions."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: Immune cell population in perinatal testis is likely small, raising concerns about statistical power.",
+            "No functional validation of novel candidates.",
+            "Four clusters from a presumably small immune cell population may represent overclustering.",
+            "The paper focuses on IC3 (myeloid cells) but does not adequately characterize the other immune clusters."
+          ],
+          "alternative_interpretations": [
+            "Some identified TFs could be markers of contaminating non-immune cells given the small population size."
+          ],
+          "required_assumptions": [
+            "Sufficient immune cells are captured for reliable analysis.",
+            "Immune cell populations are correctly identified and not contaminated by other cell types."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Leydig cell-specific peaks show significant heritability enrichment for testoste…",
+        "claim": "Leydig cell-specific peaks show significant heritability enrichment for testosterone level GWAS variants.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Cell type-specific LD score regression using testosterone level GWAS results revealed a significant increase in per-SNP heritability for testosterone level in the Leydig cell peak set",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "LD score regression is an established and appropriate method for heritability enrichment analysis.",
+            "Enrichment for testosterone level GWAS in Leydig cells is biologically expected and serves as a positive control.",
+            "Specific GWAS variants (rs4919685, rs743572) at the Cyp17a1 locus provide concrete examples.",
+            "rs743572 has been previously suggested as a functional SNP related to testosterone levels."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: This is essentially a positive control validating the approach rather than a novel finding.",
+            "Cross-species analysis (mouse chromatin data, human GWAS) introduces uncertainty about conservation of regulatory elements.",
+            "The statistical significance of the enrichment is stated but the actual enrichment score and p-value are not provided in the text."
+          ],
+          "alternative_interpretations": [
+            "Some enrichment could reflect the ubiquity of steroidogenic gene regulatory regions rather than Leydig cell-specific biology."
+          ],
+          "required_assumptions": [
+            "Regulatory elements are sufficiently conserved between mouse and human for cross-species GWAS interpretation.",
+            "The DARs used in LD score regression capture the relevant regulatory variation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Sertoli cell peaks show significant enrichment in SNP heritability for male infe…",
+        "claim": "Sertoli cell peaks show significant enrichment in SNP heritability for male infertility and abnormal spermatozoa traits.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Similar analyses in male infertility and abnormal spermatozoa traits showed significant enrichment in SNP heritability in Sertoli cells",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Enrichment in Sertoli cells for male infertility and abnormal spermatozoa is biologically plausible given Sertoli cells' essential role in spermatogenesis.",
+            "This provides additional validation of the GWAS enrichment approach."
+          ],
+          "weaknesses": [
+            "No specific GWAS variants or genes are discussed for these traits, unlike the testosterone example.",
+            "The actual enrichment statistics (p-values, fold enrichment) are not provided in the text.",
+            "Cross-species analysis limitations apply."
+          ],
+          "alternative_interpretations": [
+            "Enrichment could partly reflect shared regulatory elements between Sertoli cells and germ cells."
+          ],
+          "required_assumptions": [
+            "Human GWAS variants for male infertility/abnormal spermatozoa have conserved regulatory context in mouse testis.",
+            "Sertoli cell DARs in neonatal mouse testis are relevant to adult male infertility phenotypes."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "Sertoli cells and stromal cells show higher heritability enrichment for coronary…",
+        "claim": "Sertoli cells and stromal cells show higher heritability enrichment for coronary artery disease (CAD) GWAS variants, hypothesized to be linked to androgens in cardiovascular physiology.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "we found that the GWAS variants related to coronary artery disease (CAD) were highly enriched in Sertoli cell and stromal cell peaks. This may be linked to the role of androgens in cardiovascular physiology",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The finding is novel and potentially interesting—CAD enrichment in testicular cell types is unexpected.",
+            "Specific peak-to-gene links connecting GWAS variants to Mras and Ptpn11 provide concrete examples.",
+            "The hypothesis linking Sertoli cells to CAD through androgen regulation is logically constructed.",
+            "The authors appropriately use hedging language ('This may be linked to')."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: The biological link between Sertoli cells and CAD is speculative and indirect.",
+            "Cross-species analysis introduces substantial uncertainty.",
+            "The connection through androgen regulation is multi-step and unvalidated.",
+            "No experimental evidence supports the causal chain from Sertoli cell regulatory variants to CAD risk.",
+            "Perinatal mouse testis regulatory elements may not be relevant to adult human cardiovascular disease."
+          ],
+          "alternative_interpretations": [
+            "The enrichment could be a statistical artifact from the large number of cell type × trait combinations tested.",
+            "Shared regulatory motifs between Sertoli cells and vascular smooth muscle cells could explain the enrichment without a direct Sertoli cell–CAD connection.",
+            "Multiple testing across many traits and cell types may inflate the apparent significance."
+          ],
+          "required_assumptions": [
+            "Mouse perinatal Sertoli cell regulatory elements are relevant to human adult CAD biology.",
+            "The Sertoli cell–androgen–CAD connection is biologically valid.",
+            "Multiple testing across traits has been adequately corrected."
+          ],
+          "notes": "This is one of the more speculative claims in the paper, though the authors do acknowledge the need for validation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "Peak-to-gene links enable connection of non-coding GWAS variants to predicted ta…",
+        "claim": "Peak-to-gene links enable connection of non-coding GWAS variants to predicted target genes in specific cell types.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Using our catalog of cell type-specific peak-to-gene links, we linked TSS-distal GWAS variants to target genes.",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analytical framework of connecting GWAS variants to target genes through peak-to-gene links is methodologically sound.",
+            "Specific examples (rs2400899→Slc25a47, rs2306374→Mras, rs11066320→Ptpn11, rs941576→Dlk1) are provided.",
+            "Mras and Ptpn11 are known CAD-relevant genes, supporting the biological plausibility."
+          ],
+          "weaknesses": [
+            "From sub-claim evaluation: The rs2400899 variant within Wars linked to Slc25a47 is not well explained mechanistically—why would a variant in one gene regulate another nearby gene?",
+            "No experimental validation that any of these variants affect the predicted target gene expression.",
+            "The rs941576→Dlk1 connection for T1D/rheumatoid arthritis in testicular cells is not mechanistically explained.",
+            "All predictions are computational and require experimental confirmation."
+          ],
+          "alternative_interpretations": [
+            "Peak-to-gene links could connect variants to coincidentally co-accessible genes rather than their true regulatory targets.",
+            "The predicted target genes may not be the actual causal genes affected by these variants."
+          ],
+          "required_assumptions": [
+            "Peak-to-gene links accurately identify regulatory target genes.",
+            "Cross-species conservation of regulatory elements is sufficient for translating mouse data to human GWAS.",
+            "The direction of effect (enhancing or repressing) is correctly inferred."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5",
+        "label": "Immune cell peaks are predicted as targets of GWAS variants for immune diseases …",
+        "claim": "Immune cell peaks are predicted as targets of GWAS variants for immune diseases (lupus, celiac disease, Crohn's disease), while non-testis-related traits show no enrichment in any testicular cell type.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we predicted immune cell types as the targets of GWAS variants related to several immune diseases, such as lupus, celiac disease, and Crohn's disease. In contrast, the heritability of GWAS SNPs from traits not directly related to testis...was not enriched in any of the testicular cell types.",
+        "evaluation": {
+          "node_id": "c1.6.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Positive enrichment for immune diseases in immune cell peaks is biologically expected and validates the approach.",
+            "Negative results for non-testis-related traits (Parkinson's, depression, IgA deficiency) provide important specificity controls.",
+            "The combination of positive and negative controls strengthens confidence in the overall GWAS enrichment framework."
+          ],
+          "weaknesses": [
+            "The specific immune cell types (T cells, myeloid, dendritic) in perinatal testis may differ from those mediating systemic autoimmune diseases.",
+            "No specific GWAS variants or genes are discussed for the immune disease enrichments.",
+            "The number of immune cells captured is likely small, potentially limiting statistical power.",
+            "The negative controls could simply reflect insufficient power rather than true biological non-enrichment."
+          ],
+          "alternative_interpretations": [
+            "Immune cell enrichment for immune diseases could reflect general immune cell regulatory programs shared across tissues rather than testis-specific biology.",
+            "Lack of enrichment in non-testis traits could reflect low power from small cell numbers rather than biological specificity."
+          ],
+          "required_assumptions": [
+            "Testicular immune cells share sufficient regulatory element conservation with circulating/tissue immune cells for GWAS enrichment to be detectable.",
+            "Sufficient immune cells are captured for reliable LD score regression."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.6",
+        "label": "The authors acknowledge that the data were generated on mouse testis and whether…",
+        "claim": "The authors acknowledge that the data were generated on mouse testis and whether implications translate to human testis needs validation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "it should be noted that our data were generated on mouse testis. Whether a similar implication could be translated into human testis needs to be validated.",
+        "evaluation": {
+          "node_id": "c1.6.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is an appropriate and important acknowledgment of a fundamental limitation.",
+            "The authors explicitly state the need for human validation rather than overgeneralizing.",
+            "They cite existing human scRNA-Seq studies, demonstrating awareness of the literature."
+          ],
+          "weaknesses": [
+            "Despite acknowledging this limitation, some of the GWAS analyses in the paper implicitly assume cross-species conservation without sufficiently flagging this caveat in each instance."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "notes": "This acknowledgment appropriately tempers the GWAS-related claims (c1.6.1-c1.6.5).",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "Amh shows increased ATAC peaks in Sertoli cells, matching its known cell type-sp…",
+        "claim": "Amh shows increased ATAC peaks in Sertoli cells, matching its known cell type-specific expression.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Amh is a marker gene in Sertoli cells, and it showed increases in both number and amplitude of ATAC peaks within its promoter and gene body.",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Amh is a well-established Sertoli cell marker, making this a strong positive control for the scATAC-Seq methodology.",
+            "The claim is specific and directly supported by the aggregated scATAC-Seq profiles shown in Figure 2B.",
+            "Both number and amplitude of peaks are described, providing quantitative characterization."
+          ],
+          "weaknesses": [
+            "This is essentially a validation result rather than a novel finding; the biology is already well known.",
+            "No statistical quantification of the enrichment is provided in the text for this specific example."
+          ],
+          "alternative_interpretations": [
+            "Increased accessibility at the Amh locus in Sertoli cells could partly reflect higher overall chromatin accessibility in that cell type rather than gene-specific regulation."
+          ],
+          "required_assumptions": [
+            "Gene score calculations from scATAC-Seq accurately reflect chromatin accessibility at the locus.",
+            "Cell type assignments are correct."
+          ],
+          "notes": "This serves as an important positive control for the overall methodology.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.2",
+        "label": "DNase I hypersensitive sites from previously published bulk Sertoli cell DNase-S…",
+        "claim": "DNase I hypersensitive sites from previously published bulk Sertoli cell DNase-Seq are specifically enriched in the Sertoli cell cluster of the scATAC-Seq data.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we further compared DARs to a previously published DNase-Seq experiments in bulk Sertoli cells and found that DNase I hypersensitive sites were clearly enriched in the Sertoli cell population in our scATAC-Seq",
+        "evaluation": {
+          "node_id": "c1.1.5.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Cross-platform validation using an independent bulk DNase-Seq dataset from Maatouk et al. (2017) is a rigorous approach.",
+            "The enrichment is shown in Figure 2—figure supplement 1B with chromVAR deviation scores.",
+            "This provides important orthogonal validation of cell type assignments."
+          ],
+          "weaknesses": [
+            "The bulk Sertoli cell DNase-Seq data was obtained from a Sox9-transgenic line, which may introduce some bias in the reference dataset.",
+            "Quantitative statistical testing of the enrichment specificity across all cell types would strengthen the claim."
+          ],
+          "alternative_interpretations": [
+            "Some overlap could be expected simply because Sertoli cells represent a large fraction of testicular cells, though the specific enrichment in the Sertoli cluster argues against this."
+          ],
+          "required_assumptions": [
+            "The Sox9-transgenic sorted Sertoli cells from Maatouk et al. (2017) are representative of the Sertoli cell population in this study.",
+            "DHSs identified by DNase-Seq correspond to accessible regions detectable by ATAC-Seq."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "ZEB1 and SNAI2 motifs are enriched in germ cells, indicating germ cells may unde…",
+        "claim": "ZEB1 and SNAI2 motifs are enriched in germ cells, indicating germ cells may undergo mesenchymal-like transition during perinatal development.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found that ZEB1 and SNAI2 motifs were enriched in germ cells, indicating they may undergo mesenchymal-like transition in perinatal development",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The authors appropriately use hedging language ('indicating they may undergo'), acknowledging this is a hypothesis rather than a definitive conclusion.",
+            "ZEB1 and SNAI2 are well-characterized EMT-related TFs, so the biological interpretation is grounded.",
+            "References to prior work (Hammoud et al., 2015; Liao et al., 2020) support the plausibility."
+          ],
+          "weaknesses": [
+            "Motif enrichment alone does not prove functional TF binding or actual mesenchymal-like transition.",
+            "No expression data for ZEB1 and SNAI2 in germ cells is provided to confirm these are the actual TFs binding these motifs (the same motif-family ambiguity problem they acknowledge for SOX9).",
+            "No functional validation of mesenchymal-like transition phenotype is provided."
+          ],
+          "alternative_interpretations": [
+            "Other TF families sharing similar motifs could be responsible for the observed enrichment.",
+            "The motif enrichment could reflect chromatin remodeling unrelated to mesenchymal transition."
+          ],
+          "required_assumptions": [
+            "Motif enrichment reflects actual TF binding activity.",
+            "ZEB1 and SNAI2, rather than other TFs with similar motifs, are the ones driving the accessibility pattern."
+          ],
+          "notes": "The claim is appropriately cautious given the level of evidence.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3.1",
+        "label": "SOX9 motif activity is enriched in both Sertoli and germ cell clusters despite S…",
+        "claim": "SOX9 motif activity is enriched in both Sertoli and germ cell clusters despite SOX9 expression only in Sertoli cells, illustrating the false discovery problem from motif similarity.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This is illustrated by SOX9, which exhibited enriched TF activity in both Sertoli and germ cell clusters, despite being known to be expressed only in Sertoli cells.",
+        "evaluation": {
+          "node_id": "c1.2.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is an honest and transparent acknowledgment of a known methodological limitation of motif-based analyses.",
+            "The explanation invoking SOX3 expression in germ cells (citing Raverot et al., 2005) is biologically plausible and well-referenced.",
+            "This example effectively motivates the authors' subsequent positive TF regulator correlation approach."
+          ],
+          "weaknesses": [
+            "The claim that SOX9 is 'known to be expressed only in Sertoli cells' may be slightly overstated given recent evidence of low-level expression in other cell types in some contexts.",
+            "No direct evidence is shown to confirm that SOX3 is the actual driver of the signal in germ cells."
+          ],
+          "alternative_interpretations": [
+            "Other SOX family members beyond SOX3 could also contribute to the germ cell signal.",
+            "Low-level SOX9 expression in germ cells, below scRNA-Seq detection threshold, cannot be entirely excluded."
+          ],
+          "required_assumptions": [
+            "SOX family members share sufficiently similar motifs to produce cross-reactivity in chromVAR analysis.",
+            "SOX9 expression is truly absent in perinatal germ cells."
+          ],
+          "notes": "This is primarily a methodological point rather than a biological claim, and serves well as motivation for the positive TF regulator approach.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4.1",
+        "label": "GATA1 shows concordant increased TF motif activity, chromatin accessibility, and…",
+        "claim": "GATA1 shows concordant increased TF motif activity, chromatin accessibility, and gene expression in Sertoli cells, consistent with known roles in cryptorchidism.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "There was an increased GATA1 TF 'activity' (motif activity) in the Sertoli cell cluster, in addition to increased chromatin accessibility in Gata1 (gene activity) and increased Gata1 transcription (gene expression)",
+        "evaluation": {
+          "node_id": "c1.2.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Triple concordance (motif activity, gene activity, gene expression) provides strong evidence for GATA1 as a positive TF regulator in Sertoli cells.",
+            "The finding is well-grounded in prior literature: GATA1 mutation causes cryptorchidism (Nichols et al., 2000) and GATA1 expression in Sertoli cells is conserved (Yomogida et al., 1994).",
+            "The claim is appropriately scoped—it presents concordance rather than claiming functional causation."
+          ],
+          "weaknesses": [
+            "The statistical thresholds for the positive TF regulator identification (correlation >0.5, adjusted p-value <0.01) are described but the specific correlation value for GATA1 is not reported.",
+            "No functional validation of GATA1's regulatory role in Sertoli cells is performed in this study."
+          ],
+          "alternative_interpretations": [
+            "Concordant accessibility and expression do not prove direct regulatory function; GATA1 could be a downstream responder rather than a driver."
+          ],
+          "required_assumptions": [
+            "Integration of scRNA-Seq and scATAC-Seq data accurately reflects co-variation of gene expression and motif accessibility.",
+            "GATA1 motif is sufficiently distinct from other GATA family motifs."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4.2",
+        "label": "DMRT1 is identified as a positive TF regulator in germ cells, consistent with it…",
+        "claim": "DMRT1 is identified as a positive TF regulator in germ cells, consistent with its known enrichment in human SSC-specific ATAC-Seq peaks.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "A similar pattern was seen for DMRT1 in germ cells, which is one of the top motifs enriched in human SSC-specific ATAC-Seq peaks",
+        "evaluation": {
+          "node_id": "c1.2.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "DMRT1 is a well-established germ cell regulator with strong prior literature support.",
+            "Cross-species validation is provided by referencing human SSC-specific ATAC-Seq data (Guo et al., 2017).",
+            "The identification follows the rigorous positive TF regulator framework requiring concordance of motif activity and expression."
+          ],
+          "weaknesses": [
+            "The comparison to human SSC-specific data is indirect—different developmental stages and species.",
+            "Specific correlation statistics for DMRT1 are not individually reported."
+          ],
+          "alternative_interpretations": [
+            "DMRT1 enrichment could reflect its role in multiple germ cell states rather than specifically SSCs."
+          ],
+          "required_assumptions": [
+            "Mouse perinatal germ cell DMRT1 regulation is comparable to human SSC DMRT1 regulation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "Three additional novel regulatory elements located 9 kb 5', 21 kb 3', and 68 kb …",
+        "claim": "Three additional novel regulatory elements located 9 kb 5', 21 kb 3', and 68 kb 3' of Sox9 are predicted as novel cis-regulatory elements.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "our data linked an additional three elements located 9 kb 5′, 21 kb 3', and 68 kb 3' to Sox9 representing novel regulatory elements of Sox9 gene regulation.",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The known TESCO enhancer is successfully identified as a positive control, lending credibility to the novel predictions.",
+            "The peak-to-gene linkage approach using correlation of accessibility and expression is a reasonable computational method.",
+            "Specific genomic distances are provided, enabling reproducibility."
+          ],
+          "weaknesses": [
+            "These are computational predictions without any experimental validation (e.g., reporter assays, CRISPR deletion, 3C/Hi-C).",
+            "Peak-to-gene links within 250 kb could include many false positives.",
+            "The authors acknowledge in the limitations section that they did not experimentally assign regulatory sequences to gene promoters."
+          ],
+          "alternative_interpretations": [
+            "Co-accessibility at these loci could reflect broader chromatin domain organization rather than direct enhancer-promoter regulation.",
+            "The linked peaks could regulate other nearby genes rather than Sox9."
+          ],
+          "required_assumptions": [
+            "Correlation between peak accessibility and gene expression reflects direct regulatory relationships.",
+            "The 250 kb window is appropriate for capturing enhancer-promoter interactions."
+          ],
+          "notes": "The term 'novel regulatory elements' is appropriately used rather than 'novel enhancers,' reflecting the computational nature of the prediction.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.1",
+        "label": "FACS-sorted DLK1+ testicular cells show higher Igf1 (stromal marker) expression …",
+        "claim": "FACS-sorted DLK1+ testicular cells show higher Igf1 (stromal marker) expression than whole testis, indicating enrichment for stromal cells (p<0.001, n=3).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We sorted DLK1+ mouse testicular cells using fluorescence-activated cell sorting and observed higher expression of Igf1 mRNA compared to whole testis samples.",
+        "evaluation": {
+          "node_id": "c1.3.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "FACS sorting followed by RT-PCR provides direct experimental validation.",
+            "Statistical significance is established (p<0.001, n=3, one-way ANOVA).",
+            "Igf1 is a well-accepted stromal cell marker, making the enrichment assessment straightforward."
+          ],
+          "weaknesses": [
+            "n=3 biological replicates is modest, though adequate for the claim made.",
+            "The sorted DLK1+ population likely contains multiple cell types; higher Igf1 expression indicates enrichment for stromal cells but does not prove purity.",
+            "Expression of the PTM marker Acta2 and Leydig cell marker Cyp11a1 in sorted cells is mentioned in the figure legend but not discussed in terms of their levels relative to whole testis."
+          ],
+          "alternative_interpretations": [
+            "DLK1+ cells could be a mixed population containing stromal cells along with PTMs and possibly other cell types, with Igf1 enrichment reflecting predominance of stromal cells rather than exclusive expression."
+          ],
+          "required_assumptions": [
+            "Igf1 expression level is a reliable indicator of stromal cell enrichment.",
+            "The FACS gating strategy effectively separates DLK1+ from DLK1- cells."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.2",
+        "label": "Immunostaining of P6 testis tissue confirms DLK1 protein expression in stromal c…",
+        "claim": "Immunostaining of P6 testis tissue confirms DLK1 protein expression in stromal cells and PTMs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Immunostaining of neonatal testis tissue demonstrated that stromal cells and PTMs were positive for DLK1",
+        "evaluation": {
+          "node_id": "c1.3.4.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Direct protein-level validation via immunostaining provides strong evidence.",
+            "Use of Oct4-GFP transgenic mice allows simultaneous identification of germ cells, aiding cell type discrimination.",
+            "Representative confocal images are provided (Figure 3G) showing DLK1 in stromal cells and some PTMs.",
+            "This validates the scATAC-Seq prediction that Dlk1 accessibility is enriched in stromal cells and PTMs rather than Leydig cells."
+          ],
+          "weaknesses": [
+            "Only P6 testis was examined; the temporal scope is limited.",
+            "Quantification of DLK1-positive cells across different cell types is not provided.",
+            "PTM identification by morphology/location without a co-stain for a PTM marker (e.g., αSMA) may be subjective."
+          ],
+          "alternative_interpretations": [
+            "Some DLK1+ cells identified as PTMs based on location could be other interstitial cell types."
+          ],
+          "required_assumptions": [
+            "Antibody specificity for DLK1 is reliable.",
+            "Cell type identification based on morphology and position in tissue sections is accurate."
+          ],
+          "notes": "This finding contradicts the literature suggesting DLK1 marks immature Leydig cells in human (Lottrup et al., 2014), highlighting a potential species difference.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3.1",
+        "label": "The unknown population (Unknown-2) displays the lowest level of Ngn3 gene activi…",
+        "claim": "The unknown population (Unknown-2) displays the lowest level of Ngn3 gene activity, consistent with the known Ngn3-negative origin of the first round of spermatogonia.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the unknown population (Unknown-2) displayed the lowest level of Ngn3 gene activity, which raised the possibility that the second trajectory represents the origin of the first wave of spermatogenesis",
+        "evaluation": {
+          "node_id": "c1.4.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation of low Ngn3 gene activity aligns with the published model that first-round spermatogonia bypass the Ngn3-expressing stage (Yoshida et al., 2006).",
+            "The authors use appropriately cautious language ('raised the possibility').",
+            "The finding emerges naturally from the data rather than being forced."
+          ],
+          "weaknesses": [
+            "Gene activity scores from scATAC-Seq are an indirect proxy for gene expression; low gene activity does not definitively mean low transcription.",
+            "Only one feature (low Ngn3) is used to support this interpretation; additional markers of first-wave spermatogenesis would strengthen the claim.",
+            "The 'Unknown-2' cluster identity remains undefined, and other explanations for its properties are not thoroughly explored.",
+            "No functional validation that these cells actually contribute to the first wave of spermatogenesis."
+          ],
+          "alternative_interpretations": [
+            "Unknown-2 could represent a technical artifact, damaged cells, or a transitional state unrelated to first-wave spermatogenesis.",
+            "Low Ngn3 activity could reflect cells at a very early stage before Ngn3 activation rather than cells that bypass Ngn3 expression entirely."
+          ],
+          "required_assumptions": [
+            "Gene activity scores from scATAC-Seq correlate with actual gene expression.",
+            "The clustering resolution is sufficient to distinguish biologically meaningful subpopulations."
+          ],
+          "notes": "An interesting hypothesis but would require lineage tracing or functional studies to confirm.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4.1",
+        "label": "Immunostaining at P6 confirms that a subset of germ cells (TRA98+) express NR5A1…",
+        "claim": "Immunostaining at P6 confirms that a subset of germ cells (TRA98+) express NR5A1 protein, ruling out somatic cell contamination.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Indeed, a subset of germ cells expressed NR5A1, which ruled out the possible contamination from somatic cells.",
+        "evaluation": {
+          "node_id": "c1.4.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Immunostaining provides direct protein-level evidence of NR5A1 expression in TRA98+ germ cells.",
+            "The finding is supported by prior observations: Hermann et al. (2015) identified spermatogonial clusters with Sertoli cell gene expression, and Wen et al. (2021) observed WT1 in some germ cells.",
+            "Representative confocal images are provided (Figure 4D)."
+          ],
+          "weaknesses": [
+            "The claim that immunostaining 'ruled out the possible contamination from somatic cells' is overclaimed. Immunostaining shows co-expression of TRA98 and NR5A1 in the same cells, but this does not definitively rule out that the scATAC-Seq signal comes from doublets or cross-contamination during sample preparation.",
+            "No quantification of what fraction of germ cells express NR5A1.",
+            "A single time point (P6) is examined.",
+            "The biological significance of NR5A1 expression in germ cells is unclear."
+          ],
+          "alternative_interpretations": [
+            "NR5A1 protein in germ cells could be due to intercellular protein transfer from adjacent Sertoli cells rather than endogenous transcription.",
+            "Low-level NR5A1 expression in germ cells could be biologically insignificant noise.",
+            "Doublets in scATAC-Seq could still contribute to the signal even if some individual germ cells express NR5A1."
+          ],
+          "required_assumptions": [
+            "TRA98 and NR5A1 antibodies are specific and not cross-reactive.",
+            "Co-localization in tissue sections accurately reflects endogenous expression rather than artifacts."
+          ],
+          "notes": "The statement 'ruled out the possible contamination' is too strong for immunostaining evidence alone. While the staining supports that some germ cells express NR5A1, it does not exclude that scATAC-Seq signals might also be influenced by doublets.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5.1",
+        "label": "Id4 motif binding activity is initially high but declines after birth, while ETS…",
+        "claim": "Id4 motif binding activity is initially high but declines after birth, while ETS and Sp/KLF family members increase in spermatogonia.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We observed that the motif binding activity of Id4 was initially high but then declined after birth, while that of ETS and Sp/KLF family members increased in spermatogonia",
+        "evaluation": {
+          "node_id": "c1.4.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Dynamic TF motif changes along pseudotime are biologically plausible and consistent with the known role of Id4 in undifferentiated spermatogonia.",
+            "The pattern of progressive replacement of gonocyte TFs with spermatogonial TFs is a coherent developmental model.",
+            "Visualized in supplementary figure with pseudotime ordering."
+          ],
+          "weaknesses": [
+            "Pseudotime is a computational inference and may not accurately reflect real biological time.",
+            "Id4 motif binding activity is assessed from chromatin accessibility, which is an indirect measure of actual TF binding.",
+            "No validation of Id4 protein dynamics during this transition is provided.",
+            "Id4 is a transcriptional inhibitor that lacks a canonical DNA-binding motif, so 'motif binding activity' for Id4 needs clarification—it likely refers to E-box motifs."
+          ],
+          "alternative_interpretations": [
+            "Changes in motif accessibility could reflect changes in other TFs that bind similar motifs.",
+            "The temporal pattern could be an artifact of pseudotime ordering rather than reflecting true developmental dynamics."
+          ],
+          "required_assumptions": [
+            "Pseudotime accurately recapitulates developmental progression.",
+            "ChromVAR motif accessibility changes reflect actual TF binding dynamics."
+          ],
+          "notes": "Id4 is an HLH protein that typically acts by sequestering bHLH TFs rather than directly binding DNA, so the motif interpretation requires caution.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5.2",
+        "label": "57 putative positive TF regulators were identified in germ cell development, inc…",
+        "claim": "57 putative positive TF regulators were identified in germ cell development, including known regulators (Foxo1, Dmrt1, E2f4) and novel candidates (Ybx2, Atf4, Smad3, Msc).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we identified the TFs important for each cluster, revealing 57 putative positive TF regulators in germ cell development",
+        "evaluation": {
+          "node_id": "c1.4.5.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The identification of 57 TF regulators provides a comprehensive resource.",
+            "Recovery of known regulators (Foxo1, Dmrt1, E2f4) validates the approach.",
+            "Literature support is provided for each known regulator (Goertz et al., 2011; Matson et al., 2010; Danielian et al., 2016).",
+            "Novel candidates (Ybx2, Atf4) are linked to known male fertility phenotypes (Fischer et al., 2004; Yang et al., 2005)."
+          ],
+          "weaknesses": [
+            "The 57 TFs are identified computationally without functional validation of any novel candidates.",
+            "The correlation threshold (>0.5, adjusted p-value <0.01) is somewhat arbitrary; sensitivity analysis with different thresholds is not reported.",
+            "The full list of 57 TFs is not individually discussed; it is unclear how many are known versus truly novel.",
+            "Some candidates like Smad3 and Msc may have broad developmental roles not specific to germ cells."
+          ],
+          "alternative_interpretations": [
+            "Correlation between motif accessibility and gene expression does not prove regulatory function.",
+            "Some of the 57 TFs may be passengers of chromatin remodeling rather than drivers."
+          ],
+          "required_assumptions": [
+            "Positive TF regulator identification framework correctly captures functional regulators.",
+            "The scRNA-Seq integration provides accurate gene expression estimates."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "11 positive TF regulators either have highest or lowest activity specifically in…",
+        "claim": "11 positive TF regulators either have highest or lowest activity specifically in SC1 compared to other Sertoli cell clusters.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the SC1 cluster could be clearly distinguished from the other cell clusters as the 11 identified potential positive TF regulators either have highest or lowest activity in SC1",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Clear distinction of SC1 from other clusters provides evidence for Sertoli cell heterogeneity.",
+            "The 11 TF regulators are identified through the positive TF regulator framework with defined thresholds.",
+            "Specific examples (SP/KLF family) are linked to known Sertoli cell functions."
+          ],
+          "weaknesses": [
+            "The number of cells in SC1 and statistical power for TF identification within this subset are not discussed.",
+            "Whether SC1 represents a real biological state or a technical artifact is not fully addressed.",
+            "No functional validation of any of the 11 TFs in SC1."
+          ],
+          "alternative_interpretations": [
+            "SC1 could represent cells at a different cell cycle phase rather than a distinct differentiation state.",
+            "SC1 could be enriched for doublets or cells with lower quality despite QC filtering."
+          ],
+          "required_assumptions": [
+            "The clustering resolution appropriately distinguishes biologically meaningful subpopulations.",
+            "The positive TF regulator framework works well within subclusters of a single cell type."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.2",
+        "label": "Immunostaining confirms heterogeneous MBD3 and AMH expression patterns across Se…",
+        "claim": "Immunostaining confirms heterogeneous MBD3 and AMH expression patterns across Sertoli cells, including MBD3-high/AMH-high, MBD3-low/AMH-high, and MBD3-low/AMH-low populations.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Immunostaining results confirm the properties of SC1 cells as MBD3-high cells tend to have higher levels of AMH (MBD3-high/AMH-high).",
+        "evaluation": {
+          "node_id": "c1.5.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Protein-level validation via immunostaining directly demonstrates heterogeneous expression patterns.",
+            "Three distinct patterns (MBD3-high/AMH-high, MBD3-low/AMH-high, MBD3-low/AMH-low) are documented with representative images (Figure 5F).",
+            "The patterns correspond well to predicted cluster properties from scATAC-Seq."
+          ],
+          "weaknesses": [
+            "Quantification of the proportion of cells in each pattern is not provided.",
+            "Only one time point (P6) is shown.",
+            "The correspondence between immunostaining patterns and specific scATAC-Seq clusters is inferred rather than directly demonstrated (e.g., via sorting and sequencing)."
+          ],
+          "alternative_interpretations": [
+            "The heterogeneity could reflect cells at different stages of the cell cycle or different maturation states within a single continuum rather than distinct subpopulations."
+          ],
+          "required_assumptions": [
+            "MBD3 and AMH protein levels are faithful indicators of the transcriptomic/epigenomic states identified by scATAC-Seq.",
+            "Antibody staining intensities accurately reflect protein abundance."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.1",
+        "label": "LC1 shows enrichment for extracellular structure organization and connective tis…",
+        "claim": "LC1 shows enrichment for extracellular structure organization and connective tissue development genes including Col4a1/Col4a2, suggesting it may represent a later developmental stage of stem Leydig cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "GO terms associated with the marker genes in LC1 include extracellular structure organization and connective tissue development",
+        "evaluation": {
+          "node_id": "c1.5.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "GO analysis provides unbiased functional annotation of the marker genes.",
+            "The connection to collagen IV-mediated signaling in progenitor Leydig cell proliferation is supported by prior work (Anbalagan and Rao, 2004).",
+            "Peak-to-gene links to the bidirectional Col4a1/Col4a2 promoter provide specific regulatory evidence."
+          ],
+          "weaknesses": [
+            "The interpretation that LC1 represents a 'later developmental stage of SLC' is speculative—GO terms related to extracellular structure could also indicate a different lineage or state.",
+            "No temporal or lineage tracing evidence supports the developmental stage assignment.",
+            "The distinction between LC1 and LC3 (both showing SLC markers) needs more robust characterization."
+          ],
+          "alternative_interpretations": [
+            "LC1 could represent a functionally distinct subpopulation of SLCs rather than a later developmental stage.",
+            "Extracellular matrix gene expression could indicate a supportive/structural role rather than developmental maturity."
+          ],
+          "required_assumptions": [
+            "GO term enrichment accurately reflects the biological state of the cluster.",
+            "Collagen IV expression is a reliable indicator of Leydig cell developmental progression."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.2",
+        "label": "40 putative positive TF regulators were identified in Leydig cells, including th…",
+        "claim": "40 putative positive TF regulators were identified in Leydig cells, including thyroid hormone receptors Thra and Thrb upregulated in the FLC cluster.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we identified 40 putative positive TF regulators of Leydig cells. For instance, thyroid hormone receptors Thra and Thrb were upregulated in LC2.",
+        "evaluation": {
+          "node_id": "c1.5.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Identification of 40 TF regulators provides a substantial catalog for the field.",
+            "Thyroid hormone receptors in FLCs are consistent with known roles of thyroid hormones in Leydig cell function.",
+            "The positive TF regulator framework with defined statistical thresholds lends methodological rigor."
+          ],
+          "weaknesses": [
+            "No functional validation of any TF candidates.",
+            "The number of Leydig cells captured may be small (three clusters suggest limited cell numbers), potentially affecting the reliability of the 40 TF identifications.",
+            "Whether thyroid hormone receptor enrichment in LC2 (FLCs) reflects a genuine biological role or is an artifact of a small cluster needs consideration."
+          ],
+          "alternative_interpretations": [
+            "Thyroid hormone receptor accessibility in LC2 could reflect broader endocrine signaling rather than FLC-specific regulation.",
+            "Some of the 40 TFs may be shared with other steroidogenic cell types rather than being Leydig cell-specific."
+          ],
+          "required_assumptions": [
+            "LC2 accurately represents FLCs.",
+            "The positive TF regulator framework is reliable with the number of cells available in each Leydig cell cluster."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4.1",
+        "label": "AR, PGR, and muscle-specific TF motifs are enriched in PTM clusters, while WT1 a…",
+        "claim": "AR, PGR, and muscle-specific TF motifs are enriched in PTM clusters, while WT1 and SP family motifs are enriched in stromal cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "AR, PGR (progesterone receptor), and muscle-specific TF motifs were enriched in PTM clusters... WT1 and SP family members exhibited higher TF motif activity in stromal cell cluster PC3.",
+        "evaluation": {
+          "node_id": "c1.5.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "AR and muscle-specific TF enrichment in PTMs is biologically expected given the smooth muscle identity of PTMs.",
+            "The distinction between PTM and stromal cell TF signatures is clearly presented.",
+            "WT1 enrichment in stromal cells is consistent with its known role in mesenchymal cells."
+          ],
+          "weaknesses": [
+            "PGR enrichment in PTMs is noted but not discussed—its biological significance in testicular PTMs is unclear.",
+            "No functional validation.",
+            "The PTM/stromal distinction relies on re-clustering of a merged population, which could be sensitive to parameter choices."
+          ],
+          "alternative_interpretations": [
+            "PGR motif enrichment could reflect cross-reactivity with other nuclear receptor motifs rather than genuine progesterone receptor activity in PTMs."
+          ],
+          "required_assumptions": [
+            "The re-clustering accurately separates PTMs from stromal cells.",
+            "Motif enrichment in DARs reflects actual TF binding."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4.2",
+        "label": "9 of 46 TFs along the PTM developmental trajectory are homeobox genes, including…",
+        "claim": "9 of 46 TFs along the PTM developmental trajectory are homeobox genes, including Hoxc6 implicated in steroid hormone regulation.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "9 of the 46 TFs along the trajectory are homeobox genes. For example, Hoxc6 is upregulated at the early stages and has been implicated in steroid hormone regulation",
+        "evaluation": {
+          "node_id": "c1.5.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The observation that ~20% (9/46) of trajectory TFs are homeobox genes is a notable finding.",
+            "Hoxc6 link to steroid hormone regulation is supported by prior literature (Ansari et al., 2011).",
+            "The pseudotime trajectory analysis provides developmental context."
+          ],
+          "weaknesses": [
+            "No statistical assessment of whether 9/46 is significantly enriched for homeobox genes compared to background expectations.",
+            "No functional validation of any of the homeobox gene candidates in PTM development.",
+            "Hoxc6 implicated in steroid regulation comes from prostate cancer studies (Ansari et al., 2011), which may not directly translate to testicular PTMs."
+          ],
+          "alternative_interpretations": [
+            "Homeobox gene enrichment could reflect general mesenchymal identity rather than PTM-specific regulatory programs.",
+            "The 9/46 fraction may not be statistically significant given the large number of homeobox genes in the genome."
+          ],
+          "required_assumptions": [
+            "PTM pseudotime accurately reflects developmental trajectory.",
+            "Hoxc6 steroid hormone regulation findings from other tissues are relevant to testicular PTMs."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5.1",
+        "label": "The analysis identifies C/EBP and KLF TFs in myeloid cells, as well as novel can…",
+        "claim": "The analysis identifies C/EBP and KLF TFs in myeloid cells, as well as novel candidates Nfya, Zfp42, and Tef not previously associated with testicular immune cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This accurately identified C/EBP proteins governing macrophage differentiation and mobilization and KLFs controlling macrophage activation and polarization... Our analysis also revealed new candidates potentially regulating testis myeloid cells, such as Nfya, Zfp42, and Tef.",
+        "evaluation": {
+          "node_id": "c1.5.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Recovery of well-known myeloid TFs (C/EBP, KLF families) validates the approach.",
+            "Multiple literature references support the identified known TFs.",
+            "Novel candidates Nfya and Zfp42 are linked to known testicular functions through literature."
+          ],
+          "weaknesses": [
+            "The immune cell population in perinatal testis is likely small, raising concerns about statistical power and reliability of TF identification.",
+            "No functional validation of novel candidates.",
+            "The distinction between testis-specific and general myeloid cell TF programs is not clearly made.",
+            "Tef as a novel candidate is listed without any supporting rationale."
+          ],
+          "alternative_interpretations": [
+            "The identified TFs could reflect general myeloid cell identity rather than testis-specific immune cell programs.",
+            "Small cluster sizes could lead to spurious TF identifications."
+          ],
+          "required_assumptions": [
+            "Sufficient numbers of immune cells are captured to reliably identify cell type-specific TF regulators.",
+            "The positive TF regulator framework is robust at low cell numbers."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "GWAS variants rs4919685 (p=4.203e-15) and rs743572 (p=3.622e-07) overlap Leydig …",
+        "claim": "GWAS variants rs4919685 (p=4.203e-15) and rs743572 (p=3.622e-07) overlap Leydig cell DARs at the Cyp17a1 locus, a known testosterone-related enzyme.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Examining the variants overlapping Leydig cell DARs revealed rs4919685 (p=4.203e-15) and rs743572 (p=3.622e-07) located in the TSS-distal regions and the promoter of Cyp17a1, respectively",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Two specific GWAS variants are identified with strong p-values at a biologically relevant locus (Cyp17a1).",
+            "CYP17A1 is a well-characterized enzyme in testosterone biosynthesis.",
+            "rs743572 has prior literature support as a functional SNP related to testosterone levels (Kakinuma et al., 2004).",
+            "The overlap with Leydig cell DARs is biologically coherent given Leydig cells' role in steroidogenesis."
+          ],
+          "weaknesses": [
+            "This is essentially a positive control that validates the GWAS enrichment approach rather than a novel finding.",
+            "The analysis is based on mouse chromatin data while the GWAS are from humans; cross-species extrapolation has limitations.",
+            "Whether these specific variants alter chromatin accessibility is not tested."
+          ],
+          "alternative_interpretations": [
+            "Overlap of GWAS variants with DARs could be coincidental in highly gene-dense regions.",
+            "The functional mechanism of these variants may not involve chromatin accessibility changes."
+          ],
+          "required_assumptions": [
+            "Mouse testicular chromatin accessibility patterns are sufficiently conserved with human to enable meaningful GWAS overlap analysis.",
+            "DARs identified in perinatal mouse testis are relevant to adult human phenotypes."
+          ],
+          "notes": "The cross-species limitation is appropriately acknowledged in the Discussion.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "Peak-to-gene links connect CAD variant rs2306374 to Mras and rs11066320 to the P…",
+        "claim": "Peak-to-gene links connect CAD variant rs2306374 to Mras and rs11066320 to the Ptpn11 locus in Sertoli cells, both known CAD-associated genes.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We found the variant rs2306374 (p=6.49e-09) was located in a Sertoli cell-specific peak and was linked to Mras, which was reported to be associated with CAD",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Both Mras and Ptpn11 are established CAD-associated genes from prior GWAS (CARDIoGRAMplusC4D Deloukas et al., 2013; Richardson et al., 2020).",
+            "The peak-to-gene link analysis provides a mechanistic framework connecting non-coding variants to target genes.",
+            "Specific p-values for the GWAS associations are provided."
+          ],
+          "weaknesses": [
+            "The biological link between Sertoli cells and CAD is speculative and indirect.",
+            "Cross-species analysis (mouse chromatin, human GWAS) introduces uncertainty.",
+            "No experimental validation that these variants actually affect chromatin accessibility or gene expression in Sertoli cells.",
+            "The peak-to-gene links are computational predictions that could include false positives."
+          ],
+          "alternative_interpretations": [
+            "These variants may exert their CAD-related effects in other tissues (e.g., vascular cells, liver) rather than in testicular Sertoli cells.",
+            "The enrichment of CAD variants in Sertoli cell peaks could be a statistical artifact or reflect shared regulatory elements with other cell types.",
+            "Mras and Ptpn11 could be regulated by the identified peaks in multiple cell types, with Sertoli cells being incidental."
+          ],
+          "required_assumptions": [
+            "Peak-to-gene links in mouse perinatal testis are relevant to human CAD biology.",
+            "Sertoli cell-specific regulatory elements identified in mouse are conserved in human.",
+            "The testosterone-CAD link proposed in the discussion is sufficient to justify Sertoli cell involvement."
+          ],
+          "notes": "The authors appropriately note in the Discussion that these are 'immediately testable hypotheses' and acknowledge the cross-species limitation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4.1",
+        "label": "A testosterone level GWAS variant within Wars (rs2400899) is linked to the nearb…",
+        "claim": "A testosterone level GWAS variant within Wars (rs2400899) is linked to the nearby gene Slc25a47 (mitochondrial transporter) in Leydig cells.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found the variant within Wars (rs2400899: p=4.993e-10) was connected to the nearby gene Slc25a47, which encodes a mitochondrial transporter",
+        "evaluation": {
+          "node_id": "c1.6.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The variant rs2400899 has a strong GWAS p-value (4.993e-10) for testosterone levels.",
+            "The connection to a mitochondrial transporter is biologically plausible given mitochondrial roles in steroidogenesis.",
+            "The peak-to-gene link provides a specific mechanistic hypothesis."
+          ],
+          "weaknesses": [
+            "The variant is within Wars, yet is linked to Slc25a47—the logic for the regulatory connection is not well explained.",
+            "No experimental validation that rs2400899 affects Slc25a47 expression.",
+            "The mitochondrial steroidogenesis link is speculative.",
+            "Cross-species analysis limitations apply."
+          ],
+          "alternative_interpretations": [
+            "rs2400899 may affect Wars expression or function directly rather than Slc25a47.",
+            "The peak-to-gene link to Slc25a47 could be a false positive correlation.",
+            "The variant's effect on testosterone could be mediated through a completely different mechanism."
+          ],
+          "required_assumptions": [
+            "The peak-to-gene link from the variant region to Slc25a47 reflects a genuine regulatory interaction.",
+            "Mouse Leydig cell chromatin data is relevant to human testosterone GWAS."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4.2",
+        "label": "The T1D/rheumatoid arthritis-associated SNP rs941576 in intron 6 of Meg3 lies wi…",
+        "claim": "The T1D/rheumatoid arthritis-associated SNP rs941576 in intron 6 of Meg3 lies within a peak linked to Dlk1, suggesting this variant may alter Dlk1 regulation.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Our data show that this SNP in the mouse genome lies within a peak linked to Dlk1. Therefore, it is plausible that this SNP alters the regulation of the paternally expressed Dlk1.",
+        "evaluation": {
+          "node_id": "c1.6.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "rs941576 has established associations with T1D and rheumatoid arthritis from prior literature (Wahba et al., 2020; Wallace et al., 2010).",
+            "The imprinted Dlk1-Meg3 locus is well-studied, and the regulatory connection is biologically plausible.",
+            "The peak-to-gene link provides a specific testable hypothesis.",
+            "The authors use appropriately cautious language ('it is plausible')."
+          ],
+          "weaknesses": [
+            "The connection between a testicular regulatory element and T1D/rheumatoid arthritis susceptibility is not explained mechanistically.",
+            "No experimental validation that this SNP affects Dlk1 regulation.",
+            "This is a single variant example without broader context.",
+            "Cross-species analysis from mouse to human GWAS applies."
+          ],
+          "alternative_interpretations": [
+            "rs941576 may affect Meg3 regulation in cis rather than Dlk1.",
+            "The SNP's disease association could be mediated through immune cells or pancreatic beta cells rather than testicular cells.",
+            "The peak-to-gene link between Meg3 intron 6 and Dlk1 could reflect the known imprinting control region rather than a novel regulatory mechanism."
+          ],
+          "required_assumptions": [
+            "The peak-to-gene link identified in mouse testicular cells is relevant to the human disease context.",
+            "The SNP's functional effect operates through Dlk1 regulation rather than Meg3."
+          ],
+          "notes": "The authors present this as illustrative of how their data can generate hypotheses rather than making strong causal claims, which is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.5",
+        "source": "c1.2",
+        "target": "c1.2.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.5",
+        "source": "c1.5",
+        "target": "c1.5.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.5",
+        "source": "c1.6",
+        "target": "c1.6.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.6",
+        "source": "c1.6",
+        "target": "c1.6.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.2",
+        "source": "c1.1.5",
+        "target": "c1.1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.3_c1.2.3.1",
+        "source": "c1.2.3",
+        "target": "c1.2.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.4_c1.2.4.1",
+        "source": "c1.2.4",
+        "target": "c1.2.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.4_c1.2.4.2",
+        "source": "c1.2.4",
+        "target": "c1.2.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.1",
+        "source": "c1.3.4",
+        "target": "c1.3.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.2",
+        "source": "c1.3.4",
+        "target": "c1.3.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.3_c1.4.3.1",
+        "source": "c1.4.3",
+        "target": "c1.4.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.4_c1.4.4.1",
+        "source": "c1.4.4",
+        "target": "c1.4.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.5_c1.4.5.1",
+        "source": "c1.4.5",
+        "target": "c1.4.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.5_c1.4.5.2",
+        "source": "c1.4.5",
+        "target": "c1.4.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.2",
+        "source": "c1.5.1",
+        "target": "c1.5.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.3_c1.5.3.1",
+        "source": "c1.5.3",
+        "target": "c1.5.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.3_c1.5.3.2",
+        "source": "c1.5.3",
+        "target": "c1.5.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.4_c1.5.4.1",
+        "source": "c1.5.4",
+        "target": "c1.5.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.4_c1.5.4.2",
+        "source": "c1.5.4",
+        "target": "c1.5.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.5_c1.5.5.1",
+        "source": "c1.5.5",
+        "target": "c1.5.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.4_c1.6.4.1",
+        "source": "c1.6.4",
+        "target": "c1.6.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.4_c1.6.4.2",
+        "source": "c1.6.4",
+        "target": "c1.6.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 62,
+    "total_edges": 61,
+    "max_depth": 3,
+    "high_support_nodes": 23,
+    "low_support_nodes": 0,
+    "overall_assessment": "The paper's 62 claims show strong overall support when weighted by centrality (weighted support score 0.73, where the central thesis counts far more than peripheral evidence). No central claim was found to be weakly supported."
+  },
+  "final_review": null
+}

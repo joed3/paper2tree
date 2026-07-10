@@ -1,0 +1,57 @@
+**eLife Assessment**
+
+This study presents a *valuable* investigation into the temporal dynamics of feedforward and recurrent processing in the ventral visual pathway using ultra-rapid serial visual presentation combined with MEG and MEG-fMRI fusion. The evidence supporting the core empirical observations is *solid*, but the central interpretive claims — that the observed dynamics specifically require recurrent processing and that early visual cortex reengagement reflects feedback from inferior temporal cortex — rest on *incomplete* evidence, as key alternative explanations are not formally excluded and critical statistical tests fall short of significance for the most challenging viewing condition.
+
+**Summary**
+
+This paper uses ultra-rapid serial visual presentation (ultra-RSVP) at 17 and 34 ms per picture to suppress sustained neural activity and thereby temporally dissect visual processing into two putatively distinct stages. Using MEG multivariate pattern classification, the authors report that the initial bottom-up sweep peaks progressively earlier with faster presentation rates (121 → 100 → 96 ms), while categorical information (face vs. object) peaks progressively later (136 → 169 → 197 ms). This inverse relationship is argued to be inconsistent with purely feedforward processing and instead to index increased recurrent processing demands. MEG-fMRI fusion localizes a second peak in early visual cortex (EVC) that temporally coincides with the inferior temporal (IT) peak, interpreted as feedback from IT to EVC. The authors conclude that three "fundamental processing principles" govern object recognition: compensatory longer processing for early disruptions, delays indexing recurrent processing, and EVC reengagement coinciding with categorical information emergence in IT.
+
+The experimental approach is creative and the empirical observations are interesting, but the interpretive framework rests heavily on the assumption that feedforward processing would produce invariant temporal dynamics regardless of input quality — an assumption that is not formally tested and may not hold for feedforward models with signal-dependent noise or variable gain.
+
+**Strengths**
+
+- **Progressive disruption of the feedforward sweep (high support):** The empirical finding of progressively earlier peak latencies and lower decoding accuracies with faster RSVP rates is clearly demonstrated with appropriate statistical tests (sign permutation with FDR correction), replicated across grand total, within-face, and within-object analyses, and is internally consistent with behavioral results showing reduced d' at faster rates.
+
+- **Temporal generalization analysis (high support):** The demonstration that RSVP conditions produce increasingly transient rather than sustained representations (narrow diagonal vs. broad off-diagonal temporal generalization maps) is methodologically rigorous, uses a well-established analysis framework, and provides clear visual evidence that the paradigm achieves its stated goal of suppressing persistent activity.
+
+- **Inverse peak latency relationship (high support):** The striking inverse relationship between early sweep peaks (decreasing: 121 → 100 → 96 ms) and categorical division peaks (increasing: 136 → 169 → 197 ms) is one of the paper's most compelling findings. The categorical division peak latencies have non-overlapping confidence intervals across all conditions, and the effect size is large.
+
+- **Behavioral validation (high support):** Participants performed face detection well above chance even at 17 ms/pic (d' = 1.95 ± 0.11), establishing that meaningful visual recognition occurs under these extreme viewing conditions. This grounds the neural analyses in behaviorally relevant processing.
+
+- **Motor confound controls (high support):** The delayed response design (0.7–1 s post-stimulus), the motor-free 500 ms/pic baseline, and consistency with prior literature on motor preparation timing (300–400 ms) collectively provide strong evidence against motor-related confounds contaminating the early neural effects.
+
+- **Within-category replication (high support):** Demonstration that the ordinal relationship of peak and onset latencies holds for within-face and within-object classifications separately strengthens the generality of findings beyond gross category-level differences.
+
+**Weaknesses / Essential Revisions**
+
+- **The assumption that feedforward processing produces invariant dynamics is not formally tested.** The central interpretive claim — that delayed categorical information contradicts purely feedforward processing — rests on the premise that a feedforward cascade would produce "comparable dynamics regardless of stimulus presentation rates." This is a strong and potentially incorrect assumption. Feedforward models with signal-dependent noise, variable gain, or threshold-based accumulation could show delayed outputs with weaker inputs without requiring recurrence. The authors should implement or cite a computational model demonstrating that feedforward architectures cannot reproduce the observed inverse peak latency pattern, or substantially temper this claim.
+
+- **The non-significant second EVC peak at 17 ms/pic creates an internal contradiction.** The paper argues that faster presentation rates demand *more* recurrent processing, yet the key evidence for recurrent processing (the second EVC peak) fails to reach significance in the fastest (17 ms/pic) condition. This creates a tension: if recurrent processing is increasingly needed at faster rates, the neural signature of that processing should be more, not less, detectable. The authors should address this tension directly rather than attributing the non-significance to "compromised neural representations."
+
+- **The p = 0.06 for EVC-IT temporal coincidence in the 34 ms/pic condition does not meet conventional significance.** The claim that EVC reengagement temporally coincides with IT categorical information emergence relies on this borderline result. Moreover, for the 17 ms/pic condition, the significant p-value (p ≪ 0.001 for Δ = 7 ms) actually demonstrates that EVC and IT peaks are *different* in timing, which is used paradoxically to argue they are "similar." The statistical logic here requires clarification.
+
+- **The 500 ms/pic baseline condition uses a different participant cohort and a different task**, introducing potential confounds that could account for observed differences in neural dynamics. Behavioral and neural differences between conditions may reflect cohort-level variability, task demands (face detection vs. paper clip detection), or both, rather than purely stimulus-timing effects. At minimum, the authors should present analyses showing that representational structures are comparable across cohorts, or acknowledge this limitation more prominently.
+
+- **The fMRI data for MEG-fMRI fusion was acquired under non-RSVP conditions (500 ms/pic presentation).** The representational geometry captured by fMRI may differ substantially under RSVP conditions due to masking, adaptation, or changed attentional demands. The assumption that fMRI RDMs are stable across viewing conditions is critical but untested, and violations of this assumption could fundamentally alter the fusion results and their interpretation.
+
+- **Mask-driven feedforward activity is not distinguished from target-related feedback.** In the RSVP paradigm, mask images continuously drive feedforward input to EVC. The second EVC peak could reflect feedforward processing of mask stimuli rather than feedback from IT about the target. No analysis is presented to differentiate these possibilities — for instance, one could test whether the second EVC peak carries target-specific or mask-specific information, or whether its representational content resembles IT representations of the target.
+
+- **The term "fundamental processing principles" overstates the evidence.** Labeling three correlational observations from a single study (n = 17, one task, one stimulus set) as "fundamental processing principles of object recognition" goes beyond what the data warrant. These are interesting empirical observations that are *consistent with* specific processing principles, but establishing them as fundamental requires replication across tasks, stimulus domains, and methods, as well as causal evidence.
+
+**Minor Comments**
+
+- The MDS visualizations (Figure 3) are informative but no stress values or goodness-of-fit metrics are reported, making it difficult to assess whether the 2D projections adequately represent the 24-dimensional representational structures.
+
+- The onset latency for the 500 ms/pic condition (28 ms, CI: 9–53 ms) has an extremely wide confidence interval, and the interpretation that onset differences across conditions reflect "interactions with recurrent activity" is speculative. Forward masking from preceding images in the RSVP stream is a more parsimonious explanation for later onsets.
+
+- The paper uses the phrase "consistent with" recurrent processing in several places, which is appropriate, but this is occasionally elevated to stronger causal language (e.g., "recurrent processing is required," "compensates for disrupted feedforward signals") without corresponding escalation of evidence.
+
+- The claim that feedback activity in EVC is demonstrated under "more ecologically valid conditions" than prior studies is somewhat undermined by the ultra-RSVP presentation format itself, which is highly unnatural.
+
+- Exact decoding accuracies for each condition are not reported, making it difficult to assess effect sizes and compare the magnitude of stimulus information across conditions.
+
+**Recommendation**
+
+Major Revisions
+
+The core empirical observations (inverse peak latencies, transient dynamics under RSVP, behavioral performance) are solid and well-documented, but the paper's central interpretive claims require stronger evidence: specifically, formal testing of whether feedforward models can account for the observed dynamics, resolution of the non-significant second EVC peak at 17 ms/pic, clarification of the cross-cohort design limitations, and analyses distinguishing mask-driven feedforward activity from target-related feedback in EVC. These issues affect the paper's primary conclusions and must be addressed before the claims meet eLife's standards for a conceptual advance.

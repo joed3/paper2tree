@@ -1,0 +1,2262 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_86324",
+    "title": "Transposons are important contributors to gene expression variability under selection in rice populations",
+    "authors": [
+      "Raúl Castanera",
+      "Noemia Morales-Díaz",
+      "Sonal Gupta",
+      "Michael Purugganan",
+      "Josep M Casacuberta"
+    ],
+    "url": "https://doi.org/10.7554/eLife.86324",
+    "abstract": "Transposable elements (TEs) are an important source of genome variability. Here, we analyze their contribution to gene expression variability in rice by performing a TE insertion polymorphism expression quantitative trait locus mapping using expression data from 208 varieties from the Oryza sativa ssp. indica and O. sativa ssp. japonica subspecies. Our data show that TE insertions are associated with changes of expression of many genes known to be targets of rice domestication and breeding. An important fraction of these insertions were already present in the rice wild ancestors, and have been differentially selected in indica and japonica rice populations. Taken together, our results show that small changes of expression in signal transduction genes induced by TE insertions accompany the domestication and adaptation of rice populations.",
+    "word_count": 6290,
+    "processed_at": "2026-07-09T23:56:27.009585+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Transposable element insertion polymorphisms (TIPs) are a major source of gene e…",
+        "claim": "Transposable element insertion polymorphisms (TIPs) are a major source of gene expression variability in rice, frequently associated with expression changes, and many TIPs altering expression of regulatory genes have been positively selected during the divergence of indica and japonica subspecies, establishing TEs as a major driver of gene expression variation selected during crop adaptation and breeding.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract/Discussion",
+        "verbatim_quote": "We show that TIPs are frequently associated with changes of expression of rice genes and that many TIPs altering the expression of regulatory genes have been positively selected in indica and japonica rice subspecies.",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The paper presents a comprehensive multi-faceted analysis combining TIP-eQTL mapping, PBS selection statistics, and detailed case studies of individual loci.",
+            "The statistical evidence for enrichment of TIP-eQTLs among extreme PBS values is compelling (OR=4.87, p<0.01).",
+            "The paper provides multiple specific examples of genes with known agronomic functions (EG2, OsGAP, OsMPH1) that have TIP-eQTLs under selection."
+          ],
+          "weaknesses": [
+            "The root claim states TEs are 'a major driver of gene expression variation selected during crop adaptation and breeding,' but TIP-eQTLs affect only 3.1% (indica) and 2% (japonica) of expressed genes — this is a modest fraction that does not obviously support 'major driver' language.",
+            "The claim that 'many TIPs altering the expression of regulatory genes have been positively selected' conflates enrichment in extreme PBS values with direct evidence of positive selection. PBS detects frequency differentiation, which can arise from drift during domestication bottlenecks, not only positive selection.",
+            "No functional validation is provided for any TIP being the causal variant; all evidence is correlational.",
+            "The paper does not control for the possibility that TIP-eQTLs are in LD with other structural variants that are the actual targets of selection.",
+            "The claim about 'regulatory genes' specifically is not systematically supported — the paper provides anecdotal examples but no GO enrichment or systematic analysis showing regulatory genes are preferentially affected."
+          ],
+          "alternative_interpretations": [
+            "The higher PBS values for TIP-eQTLs could reflect hitchhiking with nearby selected SNPs or SVs rather than direct selection on TIPs themselves.",
+            "The domestication bottleneck in rice could produce extreme PBS values through drift rather than positive selection, and the permutation approach for π and H12 may not adequately control for demographic history.",
+            "The term 'major driver' is subjective — with only 2-3% of genes affected and only a fraction of those showing selection signals, one could equally argue TIPs are a minor but non-negligible contributor."
+          ],
+          "required_assumptions": [
+            "TIP-eQTLs reflect causal relationships rather than LD with other variants.",
+            "PBS extreme values reflect positive selection rather than drift during bottlenecks.",
+            "The expression data from two conditions (wet and drought) in leaves of adult plants is representative of the relevant expression variation under selection.",
+            "The population structure correction in the eQTL analysis is adequate to prevent spurious associations."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This root claim aggregates many sub-claims, some of which are better supported than others. The eQTL mapping itself appears solid, but the leap to 'major driver' and 'positively selected' is not fully substantiated.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "TIPs are frequently associated with cis-changes of gene expression in rice, as d…",
+        "claim": "TIPs are frequently associated with cis-changes of gene expression in rice, as demonstrated by the identification of hundreds of TIP-eQTLs in both indica and japonica populations.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "We found a total of 563 significant associations between TIPs and gene expression levels in the indica population and 356 in the japonica population.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantitative results: 563 TIP-eQTLs in indica and 356 in japonica, with FDR correction at 5%.",
+            "The analysis was conducted separately for indica and japonica to account for population structure, which is methodologically appropriate.",
+            "The TIP calling pipeline was validated with MH63 data showing 97.1% sensitivity and 92.2% precision.",
+            "The requirement for significance in at least one replicate provides some control for reproducibility."
+          ],
+          "weaknesses": [
+            "The word 'frequently' is subjective — 3.1% and 2% of expressed genes is a relatively modest fraction.",
+            "The requirement for 'significance in at least one replicate' is weak — requiring consistency across replicates would be more rigorous.",
+            "The use of simple linear regression (Matrix eQTL) with subpopulation groups as covariates may not fully account for fine-scale population structure, potentially inflating false positives.",
+            "MAF >3% is a very low threshold, especially with sample sizes of 126 and 82 — this could lead to unreliable associations for rare TIPs."
+          ],
+          "alternative_interpretations": [
+            "Some TIP-eQTLs may be tagging nearby causal SNPs or structural variants rather than representing direct TE-mediated effects on expression.",
+            "With MAF >3% in 82 individuals (japonica), some 'significant' associations may involve only ~2-3 individuals carrying the minor allele, making them statistically fragile."
+          ],
+          "required_assumptions": [
+            "The linear model with subpopulation covariates adequately controls for population structure.",
+            "FDR correction at 5% provides adequate multiple testing control for the number of tests performed.",
+            "3′ mRNA-seq expression data adequately captures expression variation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The claim as stated ('frequently associated') is somewhat generous given 2-3% of genes, but the statistical evidence for these associations is presented clearly.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "TIPs uncover genetic associations with gene expression changes that are not obse…",
+        "claim": "TIPs uncover genetic associations with gene expression changes that are not observed when using SNPs as molecular markers, and TIPs often explain more expression variance than SNPs.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "This demonstrates that TIPs uncover genetic associations with changes of expression that are not observed when using SNPs as molecular markers.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The comparison is performed in multiple ways: TIPs alone, SNPs alone, combined, and with subsampled SNPs, which strengthens the robustness of the finding.",
+            "The R2 comparison for individual genes is a direct and appropriate measure.",
+            "The result that ~62-73% of TIP-eQTLs explain more variance than associated SNPs is a clear quantitative result."
+          ],
+          "weaknesses": [
+            "The comparison is inherently biased: there are ~45,000 TIPs vs ~800,000 SNPs. When subsampling SNPs to match TIP numbers, the SNP density is artificially reduced, which would naturally reduce SNP-eQTL detection power.",
+            "The claim that TIPs 'uncover associations not observed with SNPs' could simply reflect that TIPs tag different LD blocks — it doesn't necessarily mean TIPs are the causal variants or that the associations are biologically distinct.",
+            "The higher R2 for TIPs could be partly explained by the fact that TE insertions are multi-nucleotide variants that inherently capture more local haplotype information than individual SNPs.",
+            "No formal statistical test is presented for whether TIPs explain significantly more variance than SNPs — the comparison is purely descriptive (percentage-based)."
+          ],
+          "alternative_interpretations": [
+            "TIPs may simply be better LD tags for nearby causal structural variants that are missed by both individual SNPs and TIPs.",
+            "The higher variance explained by TIPs could reflect that TIPs are in stronger LD with causal variants due to their recent origin, not that TIPs are themselves causal.",
+            "Comparing individual TIPs to individual SNPs is not the same as comparing to SNP haplotypes, which could capture similar or more variance."
+          ],
+          "required_assumptions": [
+            "The comparison of variance explained by single TIPs vs single SNPs is the appropriate comparison (rather than, e.g., haplotype-based SNP associations).",
+            "TIPs and SNPs are genotyped with comparable accuracy.",
+            "The greater variance explained is not an artifact of TIP calling methodology."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim is partially supported but overstated. The fact that TIPs capture additional associations is plausible and demonstrated, but the inference that this is because TIPs are more likely causal is not directly tested.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "An important fraction of TIP-eQTLs are the actual causal mutations underlying ge…",
+        "claim": "An important fraction of TIP-eQTLs are the actual causal mutations underlying gene expression variation, rather than merely being in linkage disequilibrium with causal variants.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "This suggests that although some TIP-eQTLs could be in linkage disequilibrium with the causal mutation for the change of expression, an important fraction of TIP-eQTLs could be the actual causal mutation inducing expression variation.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The enrichment of TIP-eQTLs in the 1 kb upstream region is biologically plausible and consistent with the known biology of transcriptional regulation.",
+            "The negative bias in TIP-eQTL effects is consistent with the expectation that insertions disrupt gene expression and aligns with findings in Capsella (Uzunović et al., 2019)."
+          ],
+          "weaknesses": [
+            "The claim that 'an important fraction of TIP-eQTLs could be the actual causal mutation' is an interpretation, not a demonstrated result. No experimental validation (e.g., allele-specific expression, reporter assays, CRISPR editing) is provided.",
+            "The enrichment in upstream regions could also be explained by the fact that TIPs are generally enriched near genes (81.3% within 5 kb), and promoter regions are known hotspots for MITE insertion, creating an ascertainment bias.",
+            "The negative directional bias could arise from LD between TIPs and nearby deletions or other SVs that reduce expression, rather than the TIPs themselves being causal.",
+            "The logic that a negative bias in effect direction implies causality is not rigorous — linked causal variants could also show directional bias."
+          ],
+          "alternative_interpretations": [
+            "The upstream enrichment could reflect insertion preferences of certain TE families (especially MITEs) rather than causal effects on expression.",
+            "The directional bias could reflect that TIPs in LD with deleterious SVs are preferentially detected, not that TIPs themselves cause the expression change.",
+            "Even if TIPs are in regulatory regions, they could be neutral passengers in haplotypes defined by other causal mutations."
+          ],
+          "required_assumptions": [
+            "Enrichment in regulatory regions implies causality rather than insertion preference.",
+            "Directional bias in expression effects implies causality rather than LD structure.",
+            "LD between TIPs and other variants has been adequately ruled out."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is one of the weakest claims in the paper. The evidence is circumstantial and correlational. The authors appropriately use hedging language ('suggests,' 'could be') but the claim as evaluated here presents it more definitively.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Most TIP-eQTLs are shared across growth conditions but differ substantially betw…",
+        "claim": "Most TIP-eQTLs are shared across growth conditions but differ substantially between indica and japonica, with most representing relatively old insertions already present in wild rice ancestors that have been differentially retained in the two subspecies.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the vast majority of TIP-eQTLs found in this study (90%) correspond to TIPs present in both subspecies, which suggests that these insertions are relatively old and were already present in the ancestor of indica and japonica rice.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The condition-specific analysis is well-designed, with relaxed thresholds used appropriately to assess overlap.",
+            "The finding that 90% of TIP-eQTLs overlap between conditions (with relaxed thresholds) is convincing evidence for condition-independence.",
+            "The comparison of TIP-eQTL frequency distributions between subspecies vs non-eQTL TIPs is a creative and informative analysis.",
+            "The validation using rufipogon/nivara data (66% of TIP-eQTLs found in wild ancestors) provides independent support for the age of these insertions."
+          ],
+          "weaknesses": [
+            "The 'relaxed threshold' comparison (p<0.05 without FDR correction) is very permissive and could inflate the apparent overlap between conditions.",
+            "The low overlap between indica and japonica could partly reflect differences in statistical power (126 vs 82 accessions) and different allele frequencies rather than genuine biological differences.",
+            "The claim that differential retention is 'linked to their impact on expression' (Figure 2H vs 2I comparison) could reflect ascertainment bias — TIP-eQTLs may have been identified precisely because they have different frequencies, which gives them more power in association analyses.",
+            "The presence of TIPs in rufipogon/nivara does not conclusively prove they are 'old' — horizontal transfer or independent insertions at the same site are theoretically possible."
+          ],
+          "alternative_interpretations": [
+            "The different frequency distributions of eQTL vs non-eQTL TIPs between subspecies could be an artifact of the association mapping: TIPs at intermediate frequencies have more power to detect eQTLs, and different intermediate frequencies between subspecies would create apparent differential retention.",
+            "The subspecies-specificity of TIP-eQTLs could reflect different LD patterns rather than different functional effects."
+          ],
+          "required_assumptions": [
+            "The relaxed threshold comparison provides a meaningful estimate of true overlap.",
+            "Differences in sample size and allele frequencies between indica and japonica do not systematically bias the subspecies-specificity results.",
+            "The rufipogon/nivara sample is representative of the ancestral population."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This multi-part claim is generally well-supported for the descriptive aspects but the interpretive elements (differential retention linked to expression impact) are less certain.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Many TIP-eQTLs have been under strong differential positive selection during the…",
+        "claim": "Many TIP-eQTLs have been under strong differential positive selection during the divergence of indica and japonica rice subspecies, as evidenced by extreme Population Branch Statistic values.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "TIPs with the most extreme PBS values (above 95 percentile) are enriched for TIP-eQTLs (Fisher's exact test odds ratio = 4.87, p < 0.01), suggesting that a high fraction of TIP-eQTLs have been positively selected in indica or japonica.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The PBS analysis is a well-established method for detecting selection (Yi et al., 2010).",
+            "The statistical tests are appropriate: Wilcoxon test for mean comparison and Fisher's exact test for enrichment.",
+            "The enrichment signal is strong (OR=4.87) and statistically significant."
+          ],
+          "weaknesses": [
+            "PBS detects frequency differentiation, which can result from drift during the domestication bottleneck, not only positive selection. The paper does not adequately discuss or control for demographic confounders.",
+            "The sample sizes for the three populations are unbalanced (126 indica, 82 japonica, 82 rufipogon/nivara), which could affect FST estimation and therefore PBS values.",
+            "Using the word 'positive selection' based on PBS alone is an overstatement — the paper provides additional π and H12 analyses for only three specific loci, not genome-wide.",
+            "The comparison of PBS values between eQTL and non-eQTL TIPs could be confounded: TIP-eQTLs may be in regions of higher gene density where background selection or linked selection could inflate PBS values.",
+            "The permutation test for π and H12 (N=1000 random samples) does not account for genome-wide variation in recombination rates or gene density."
+          ],
+          "alternative_interpretations": [
+            "The higher PBS values for TIP-eQTLs could reflect that eQTL-TIPs tend to be in genic regions where background selection drives frequency differentiation between populations.",
+            "Genetic drift during the domestication bottleneck could produce extreme PBS values without any positive selection.",
+            "TIP-eQTLs might be identified precisely because they show frequency differences between populations (which is also what PBS measures), creating a circular or confounded analysis."
+          ],
+          "required_assumptions": [
+            "PBS values in this context reflect selection rather than drift.",
+            "The three-population PBS framework is valid despite the complex demographic history of rice domestication.",
+            "There is no systematic confounding between eQTL detection power and PBS values.",
+            "The rufipogon/nivara sample adequately represents the ancestral population."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is a critical claim that underlies much of the paper's narrative. The enrichment signal is real but the interpretation as 'positive selection' is not adequately supported without controlling for demographic history.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "Selected TIP-eQTLs are associated with genes controlling important agronomic tra…",
+        "claim": "Selected TIP-eQTLs are associated with genes controlling important agronomic traits including plant architecture, grain development, and abiotic stress responses, and specific expression variants of signal transduction genes have been differentially selected in indica and japonica.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results/Discussion",
+        "verbatim_quote": "Among the genes with TIP-eQTLs that have extreme PBS values in indica or japonica we can find several examples that are known to regulate plant architecture, plant and grain development or abiotic stress responses.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Multiple specific examples are provided (EG2/OsJAZ1, OsGAP, OsMPH1) with detailed haplotype characterization using super-pangenome data.",
+            "The examples are biologically plausible with prior functional knowledge from the literature (e.g., EG2 as spikelet regulator, OsMPH1 as height regulator).",
+            "The π and H12 analyses for individual loci provide additional evidence beyond PBS."
+          ],
+          "weaknesses": [
+            "The examples are anecdotal and cherry-picked (extreme PBS values); no systematic GO enrichment or pathway analysis is presented to support the claim that 'signal transduction' genes are preferentially affected.",
+            "The connection to actual phenotypic differences between indica and japonica is speculative — no phenotype data for these specific accessions is presented.",
+            "For the EG2 example, the link to spikelet number differences between subspecies relies on a citation (Ansari et al., 2003) that is about general trends, not about the specific accessions studied here.",
+            "The claim mentions 'plant architecture, grain development, and abiotic stress responses' but only a few genes in each category are discussed — this does not constitute a systematic demonstration."
+          ],
+          "alternative_interpretations": [
+            "The selected examples could represent confirmation bias — genes with known functions are more likely to be highlighted, while hundreds of other TIP-eQTLs with unknown functions are not discussed.",
+            "The expression changes could be incidental correlates of selection on linked variants rather than the targets of selection themselves.",
+            "The phenotypic consequences of the expression changes are assumed based on prior literature for individual genes, not demonstrated in these specific rice populations."
+          ],
+          "required_assumptions": [
+            "The expression changes associated with TIPs translate into phenotypic effects.",
+            "The prior functional characterization of these genes (from other studies) applies to the specific contexts studied here.",
+            "Cherry-picked examples are representative of the broader pattern."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The individual case studies are interesting but insufficient to support the broad claim about 'important agronomic traits.' A systematic analysis would strengthen this considerably.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "TIPs are an important source of gene expression variability particularly in gene…",
+        "claim": "TIPs are an important source of gene expression variability particularly in genes that have been strongly selected during recent rice evolution, with multiple TIPs sometimes defining opposing haplotypes that have been differentially selected in the two subspecies.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "This suggests that TIPs are an important source of gene expression variability in rice, in particular in genes that may have been strongly selected during its recent evolution.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The observation that 43% of high-PBS genes have multiple TIP-eQTLs (vs 18% overall) is a notable enrichment suggesting TIPs cluster around selected genes.",
+            "The OsJAZ1 and OsGAP examples convincingly illustrate opposing haplotypes with differential selection."
+          ],
+          "weaknesses": [
+            "The claim that TIPs are 'an important source' is not quantitatively compared against other sources of expression variability (e.g., cis-regulatory SNPs, epigenetic variation, structural variants).",
+            "The enrichment of multiple TIP-eQTLs in high-PBS genes could reflect that genes under selection have more complex regulatory architectures in general, not that TIPs specifically are driving this.",
+            "No formal statistical test is provided for the enrichment of multiple TIP-eQTLs in high-PBS genes (43% vs 18%).",
+            "The 'particularly in genes that have been strongly selected' interpretation is circular if selection is inferred from the same TIP frequency data."
+          ],
+          "alternative_interpretations": [
+            "Multiple TIPs near a single gene could reflect that certain genomic regions are hotspots for TE insertion rather than reflecting functional importance.",
+            "The opposing haplotypes could be maintained by balancing selection or population structure rather than directional selection in each subspecies."
+          ],
+          "required_assumptions": [
+            "Multiple TIP-eQTLs per gene reflect functional importance rather than insertion hotspots.",
+            "The 18% vs 43% comparison is not confounded by gene length or other genomic features."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim is suggestive but the evidence is descriptive rather than rigorously tested.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "563 significant TIP-eQTLs were identified in the indica population and 356 in ja…",
+        "claim": "563 significant TIP-eQTLs were identified in the indica population and 356 in japonica, involving 477 and 317 genes, representing 3.1% and 2% of expressed genes respectively.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These involve 477 and 317 genes, in indica and japonica, respectively, representing 3.1% and 2% of the expressed genes.",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The numbers are clearly stated and the methodology (Matrix eQTL with FDR correction) is standard and appropriate.",
+            "The analysis was performed separately for indica and japonica, appropriately accounting for population structure."
+          ],
+          "weaknesses": [
+            "The requirement for significance in 'at least one replicate' rather than consistency across replicates is a concern — some of these associations may not be reproducible.",
+            "No power analysis is presented to assess whether the sample sizes (126 indica, 82 japonica) are adequate for detecting eQTLs at the given MAF thresholds."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "FDR correction at 5% adequately controls for multiple testing.",
+            "The simple linear regression model with subpopulation covariates is adequate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is a straightforward descriptive claim that is well-supported by the reported numbers.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The proportion of TE orders found in significant TIP-eQTLs does not differ signi…",
+        "claim": "The proportion of TE orders found in significant TIP-eQTLs does not differ significantly from their genome-wide representation, suggesting no TE order is inherently more or less likely to be an eQTL.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the proportion of TE orders found in the significant TIPs did not differ significantly from their representation across the genome.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "This is a useful null result showing no TE order-specific bias in eQTL discovery."
+          ],
+          "weaknesses": [
+            "No formal test statistic or method is described for this comparison — we are told the proportions 'did not differ significantly' but the test used is not specified.",
+            "Absence of evidence for a difference is not evidence of absence, especially if the test is underpowered."
+          ],
+          "alternative_interpretations": [
+            "The proportional comparison may be underpowered for detecting modest enrichment or depletion of specific TE orders."
+          ],
+          "required_assumptions": [
+            "The statistical test used was appropriate and adequately powered."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Low- and high-frequency TIPs (corresponding to rare alleles) show the largest po…",
+        "claim": "Low- and high-frequency TIPs (corresponding to rare alleles) show the largest positive or negative effects on expression, consistent with the rare variant effect whereby deleterious mutations are maintained at lower frequencies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "low- and high-frequency TIPs (corresponding to rare alleles) show the highest positive or negative effect on the expression of the associated gene.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The U-shaped relationship between allele frequency and effect size is consistent with the rare variant effect described in the literature (Josephs et al., 2015; Lye et al., 2022).",
+            "The pattern is shown separately for positive and negative effects in both subspecies."
+          ],
+          "weaknesses": [
+            "No formal statistical test of the U-shaped relationship is presented — the claim appears to be based on visual inspection of Figure 2A-D.",
+            "The pattern could be an artifact of the 'winner's curse' in GWAS, where effect sizes for rare variants are systematically overestimated due to noise.",
+            "The interpretation assumes rare alleles are deleterious, but rare TIPs could also be recently derived and not yet purged."
+          ],
+          "alternative_interpretations": [
+            "Winner's curse / estimation bias at low MAF could produce this pattern without any biological explanation.",
+            "Rare alleles having large effects could reflect recent origin (not yet subject to selection) rather than deleterious effects maintained by mutation-selection balance."
+          ],
+          "required_assumptions": [
+            "Effect size estimates for rare variants are not systematically biased upward.",
+            "The relationship reflects biological processes rather than statistical artifacts."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "45,050 TIPs were identified across the 12 rice chromosomes, with 81.3% located l…",
+        "claim": "45,050 TIPs were identified across the 12 rice chromosomes, with 81.3% located less than 5 kb from an annotated gene, resulting in 81.4% of rice genes having a nearby TIP.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The 45,050 TIPs are distributed along the 12 chromosomes and 81.3% of them are less than 5 kb away from an annotated gene.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "These are straightforward descriptive statistics from the TIP calling pipeline.",
+            "The high proportion of TIPs near genes is consistent with known TE biology, particularly for MITEs which preferentially insert near genes."
+          ],
+          "weaknesses": [
+            "The 5 kb distance threshold is somewhat arbitrary.",
+            "The high proportion near genes partly reflects the dense gene space in rice and the predominance of short DNA transposons/MITEs in the TIP set."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The TIP calling is accurate (validated at 97.1% sensitivity, 92.2% precision).",
+            "The 5 kb threshold is biologically meaningful."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "For most genes with an associated TIP, either there is no associated SNP or the …",
+        "claim": "For most genes with an associated TIP, either there is no associated SNP or the TIP explains more expression variance than the associated SNP (~62% of indica TIP-eQTLs and ~73% of japonica TIP-eQTLs).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "For most genes that have an associated TIP, either there is no associated SNP or the TIP explains more expression variance than the associated SNP (~62% of the indica TIP-eQTLs and ~73% of the japonica TIP-eQTLs).",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The comparison is clearly presented with specific percentages.",
+            "The R2 comparison is gene-by-gene, which is the appropriate unit of analysis."
+          ],
+          "weaknesses": [
+            "This combines two different scenarios ('no associated SNP' and 'TIP explains more variance') into a single percentage, making it difficult to assess each separately.",
+            "For genes where there is no associated SNP, the TIP explaining 'more variance' is trivially true and inflates the percentage.",
+            "The comparison is between single TIPs and single SNPs — SNP haplotypes or multi-SNP models could explain more variance."
+          ],
+          "alternative_interpretations": [
+            "The high percentage could be driven largely by genes with no SNP association, which would not demonstrate TIP superiority but rather complementarity."
+          ],
+          "required_assumptions": [
+            "Single-variant comparisons are meaningful (vs multi-variant models).",
+            "The combination of 'no SNP association' and 'TIP > SNP' into one metric is informative."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "TIP-eQTLs are over-represented in the 1 kb upstream region of genes (promoter re…",
+        "claim": "TIP-eQTLs are over-represented in the 1 kb upstream region of genes (promoter region), while SNP-eQTLs are more evenly distributed across the genic region.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "TIP-eQTLs are over-represented in the 1 kb region upstream of the gene, which is the region that most frequently contains promoter elements regulating transcription.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The upstream enrichment is biologically consistent with the known promoter-disrupting or promoter-providing functions of TEs.",
+            "The comparison with SNP-eQTLs (more evenly distributed) provides a useful contrast."
+          ],
+          "weaknesses": [
+            "No formal statistical test for the enrichment is described — the claim appears based on visual comparison of Figure 1E vs 1F.",
+            "MITEs (which dominate the TIP set at ~44%) are known to preferentially insert near genes and in upstream regions, which could explain the enrichment without invoking causality.",
+            "The 'per Mb' normalization may not account for differences in the density of TIPs vs SNPs across different genic features."
+          ],
+          "alternative_interpretations": [
+            "The upstream enrichment could reflect insertion bias of TEs rather than functional enrichment of causal eQTLs."
+          ],
+          "required_assumptions": [
+            "The enrichment reflects functional relevance rather than insertion bias.",
+            "The normalization (per Mb) is appropriate."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "TIP-eQTLs more frequently have a negative effect on gene expression (59%) compar…",
+        "claim": "TIP-eQTLs more frequently have a negative effect on gene expression (59%) compared to the near-even distribution of SNP-eQTLs (47% positive, 53% negative), suggesting TIPs are more likely the causal mutation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In contrast, TIPs more frequently have a negative effect (59%). The proportion varies among TE superfamilies, with TIR/MULEs being close to 50%, and LTR/Gypsy having the most frequently negative impact on gene expression (67%).",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The directional bias is quantified and varies by TE superfamily in a biologically plausible manner (LTR/Gypsy most negative).",
+            "Consistency with findings in Capsella (Uzunović et al., 2019) strengthens the biological interpretation."
+          ],
+          "weaknesses": [
+            "The logical leap from 'negative directional bias' to 'more likely causal' is not well-justified. LD with other variants that reduce expression could produce the same pattern.",
+            "The 59% negative effect is only modestly different from 50% — no formal test of whether this deviation from 50% is significant is provided.",
+            "The comparison with SNP-eQTLs (47/53%) should include a formal test of whether the difference in directionality between TIP-eQTLs and SNP-eQTLs is statistically significant."
+          ],
+          "alternative_interpretations": [
+            "The negative bias could reflect that TIPs are preferentially in LD with deletions or other loss-of-function variants.",
+            "Ascertainment bias could contribute if negative expression effects are easier to detect for TIPs."
+          ],
+          "required_assumptions": [
+            "The directional bias is statistically significant.",
+            "Negative directional bias implies causality rather than LD structure."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "The majority of TIP-eQTLs are general associations with changes of expression ac…",
+        "claim": "The majority of TIP-eQTLs are general associations with changes of expression across both wet and drought conditions, with ~90% overlap when using relaxed thresholds.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Such overlap increases to 90% (average of indica and japonica, wet) and 71% (average of indica and japonica, drought stress) when we compare TIP-eQTLs of one condition with non-FDR-corrected TIP-eQTLs in the other environment.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The analysis is performed in both directions (wet eQTLs checked against drought, and vice versa).",
+            "The observation that all shared associations have the same effect direction is reassuring."
+          ],
+          "weaknesses": [
+            "The relaxed threshold (p<0.05, no FDR) is very permissive — at p<0.05 with thousands of tests, many spurious overlaps are expected.",
+            "The asymmetry between 90% (wet) and 71% (drought) overlap is not explained and could suggest power differences between conditions.",
+            "No comparison to what overlap would be expected by chance under the relaxed threshold is provided."
+          ],
+          "alternative_interpretations": [
+            "The high overlap at relaxed thresholds could be inflated by the large number of nominally significant associations expected by chance."
+          ],
+          "required_assumptions": [
+            "The relaxed threshold comparison provides meaningful information about biological overlap.",
+            "The expression data quality is comparable between wet and drought conditions."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Only a small number of TIP-eQTLs (81 in indica, 78 in japonica) are associated w…",
+        "claim": "Only a small number of TIP-eQTLs (81 in indica, 78 in japonica) are associated with stress-specific changes of expression, though some involve known drought tolerance genes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "only a small number of TIP-eQTLs (81 in indica and 78 in japonica) are associated with stress-specific changes of expression.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The specific examples of drought-relevant genes (OsSYT-5, OsSAPK10, OsEULS2) are biologically plausible and supported by cited literature.",
+            "The numbers of condition-specific TIP-eQTLs (81 in indica, 78 in japonica) are clearly stated."
+          ],
+          "weaknesses": [
+            "The condition-specific designation depends on the threshold used — these TIP-eQTLs may simply have weaker effects that fall below the detection threshold in one condition.",
+            "No formal GxE interaction test is performed to determine whether these TIPs have truly condition-specific effects.",
+            "Three anecdotal examples do not demonstrate that condition-specific TIP-eQTLs are enriched for drought-related genes."
+          ],
+          "alternative_interpretations": [
+            "Apparently condition-specific effects could reflect statistical noise rather than genuine GxE interactions."
+          ],
+          "required_assumptions": [
+            "The distinction between condition-specific and shared eQTLs reflects biology rather than statistical power.",
+            "The examples cited are representative."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "The overlap between indica and japonica TIP-eQTLs is low, with ~69% of indica an…",
+        "claim": "The overlap between indica and japonica TIP-eQTLs is low, with ~69% of indica and ~60% of japonica TIP-eQTLs appearing as subspecies-specific.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "as much as ~69% of indica and ~60% of japonica TIP-eQTLs appear as subspecies specific.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The low overlap is clearly quantified using both strict and relaxed thresholds.",
+            "The analysis is symmetric (checking both directions)."
+          ],
+          "weaknesses": [
+            "The different sample sizes (126 indica vs 82 japonica) and different allele frequency spectra between subspecies could contribute to the low overlap through differences in statistical power, not just biological differences.",
+            "Different allele frequencies in the two subspecies mean different TIPs have sufficient MAF for detection, which could artifactually create subspecies-specificity."
+          ],
+          "alternative_interpretations": [
+            "Much of the subspecies-specificity could be a statistical artifact of different allele frequencies and sample sizes."
+          ],
+          "required_assumptions": [
+            "Power differences between subspecies do not substantially inflate the apparent specificity."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "TIP-eQTLs are found at very different frequencies in indica and japonica, wherea…",
+        "claim": "TIP-eQTLs are found at very different frequencies in indica and japonica, whereas non-eQTL TIPs are more frequently found at similar frequencies in both subspecies, suggesting preferential retention of TIP-eQTLs is linked to their impact on expression.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Interestingly, an analysis of all non-eQTL-TIPs shows that an important fraction is found at the same frequency in both genomes.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "support_level": "medium",
+          "confidence_level": "low",
+          "is_well_supported": false,
+          "strengths": [
+            "The comparison between eQTL and non-eQTL TIP frequency distributions is a creative analysis.",
+            "The analysis is replicated considering only upstream gene regions."
+          ],
+          "weaknesses": [
+            "This comparison is potentially circular or confounded: TIPs at different frequencies between subspecies have more power to be detected as eQTLs in one subspecies but not the other, naturally creating the observed pattern.",
+            "No formal statistical test comparing the distributions (Figure 2H vs 2I) is described in the text.",
+            "The claim of 'preferential retention linked to impact on expression' assumes a causal direction that is not demonstrated."
+          ],
+          "alternative_interpretations": [
+            "The different frequency distributions of eQTL vs non-eQTL TIPs could be an ascertainment artifact: eQTLs are detected when allele frequencies provide power, and different frequencies between populations naturally lead to subspecies-specific detection.",
+            "Background selection and linked selection could produce different frequency patterns for TIPs near functional genes vs those in intergenic regions."
+          ],
+          "required_assumptions": [
+            "The comparison is not confounded by ascertainment bias in eQTL detection.",
+            "The non-eQTL TIPs serve as an appropriate null distribution."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is a potentially important finding but the confounding between eQTL detection power and frequency differences makes the interpretation unreliable.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "66% of the 829 TIP-eQTLs present in indica and/or japonica can be found in rufip…",
+        "claim": "66% of the 829 TIP-eQTLs present in indica and/or japonica can be found in rufipogon/nivara, confirming that an important fraction are relatively old insertions present in wild ancestors.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Up to 552 of the 829 TIP-eQTLs present in indica and/or japonica (66%), can be found in rufipogon/nivara varieties, confirming that an important fraction of TIP-eQTLs found in indica and japonica may be relatively old insertions already present in the wild ancestors of domesticated rice.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The percentage is clearly stated and derived from direct comparison with rufipogon/nivara data.",
+            "The use of wild ancestor data provides valuable evolutionary context."
+          ],
+          "weaknesses": [
+            "The rufipogon/nivara sample size (82) may be insufficient to detect TIPs at low frequency, potentially underestimating the true overlap.",
+            "The 34% not found in wild relatives could be genuinely new insertions or could be missed due to detection limitations."
+          ],
+          "alternative_interpretations": [
+            "Some TIPs not found in rufipogon/nivara could be false negatives due to limited sample size or sequencing coverage rather than truly new insertions."
+          ],
+          "required_assumptions": [
+            "The rufipogon/nivara sample is representative and adequate for TIP detection.",
+            "PopoolationTE2 has comparable performance in the wild rice data."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "Some TIPs are completely subspecies-specific (59 in indica, 21 in japonica), sug…",
+        "claim": "Some TIPs are completely subspecies-specific (59 in indica, 21 in japonica), suggesting TEs have been actively inserting or eliminated very recently, likely post-domestication.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This suggests that TEs have been actively inserting (or have been excised or eliminated from the population) very recently during rice evolution, likely post-domestication and during the crop diversification phase.",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The numbers of truly subspecies-specific TIPs are clearly stated.",
+            "The finding that some of these are present in wild relatives helps distinguish ancestral polymorphism from new insertions."
+          ],
+          "weaknesses": [
+            "The claim of 'post-domestication' timing is speculative — the absence of a TIP from one subspecies could also reflect loss rather than recent gain.",
+            "With the 3% MAF threshold, 'completely absent' could mean present at very low frequency but below detection.",
+            "The sample sizes (especially 82 for japonica) make 'completely absent' a strong claim."
+          ],
+          "alternative_interpretations": [
+            "Subspecies-specific TIPs could reflect loss from one subspecies due to drift during the domestication bottleneck rather than recent insertion.",
+            "The low number of japonica-specific TIPs (21) could simply reflect the smaller sample size."
+          ],
+          "required_assumptions": [
+            "Complete absence from a subspecies is reliable given the sample sizes.",
+            "The timing inference (post-domestication) is valid."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "TIP-eQTLs show significantly higher PBS values compared to non-eQTL TIPs (mean a…",
+        "claim": "TIP-eQTLs show significantly higher PBS values compared to non-eQTL TIPs (mean absolute PBS 0.06 vs 0.02, p<0.01 Wilcoxon test).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "TIP-eQTLs showed much higher PBS values in comparison to those not identified as eQTLs (mean absolute PBS of 0.06 vs 0.02, respectively, p < 0.01, Wilcoxon test).",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The statistical test (Wilcoxon) is appropriate for comparing distributions.",
+            "The effect is substantial (3-fold difference in means)."
+          ],
+          "weaknesses": [
+            "Mean PBS values may be driven by outliers — median comparison would be more robust.",
+            "The 'absolute PBS' metric combines indica and japonica selection signals, which could obscure patterns.",
+            "No correction for potential confounders (e.g., genomic location, gene density) is described."
+          ],
+          "alternative_interpretations": [
+            "Higher PBS values for eQTL-TIPs could reflect their tendency to be in genic regions where background selection and linked selection are stronger."
+          ],
+          "required_assumptions": [
+            "The comparison is not confounded by genomic context differences between eQTL and non-eQTL TIPs."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "TIPs with the most extreme PBS values (above 95th percentile) are significantly …",
+        "claim": "TIPs with the most extreme PBS values (above 95th percentile) are significantly enriched for TIP-eQTLs (Fisher's exact test OR=4.87, p<0.01).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Furthermore, TIPs with the most extreme PBS values (above 95 percentile) are enriched for TIP-eQTLs (Fisher's exact test odds ratio = 4.87, p < 0.01).",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Fisher's exact test is appropriate for this 2x2 comparison.",
+            "The odds ratio of 4.87 is substantial and highly significant."
+          ],
+          "weaknesses": [
+            "Same concern as c1.5.1 about potential confounding with genomic context.",
+            "The 95th percentile threshold is somewhat arbitrary — sensitivity analysis with different thresholds would strengthen the claim."
+          ],
+          "alternative_interpretations": [
+            "See c1.5.1 alternative interpretations."
+          ],
+          "required_assumptions": [
+            "The enrichment reflects selection rather than confounding genomic features."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "The EG2/OsJAZ1 locus shows two MITE-defined haplotypes with opposite effects on …",
+        "claim": "The EG2/OsJAZ1 locus shows two MITE-defined haplotypes with opposite effects on expression that have been differentially selected in indica (toward lower expression) and japonica (toward higher expression), potentially explaining differences in spikelet number between subspecies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This suggests positive selection toward higher expression of EG2 in japonica, and lower expression of EG2 in indica, which could potentially explain the higher number of spikelets per panicle observed in the latter.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The haplotype characterization using super-pangenome data is thorough and well-presented.",
+            "The opposing selection signals in indica and japonica (confirmed by π and H12 analyses) are compelling.",
+            "The biological connection to spikelet development through OsJAZ1 function is well-supported by prior literature (Cai et al., 2014)."
+          ],
+          "weaknesses": [
+            "No actual spikelet count data for these specific accessions is presented — the phenotypic connection relies entirely on external literature.",
+            "The π and H12 analyses show selection at this locus but cannot attribute causality to the TIPs specifically vs other variants in the haplotypes.",
+            "The two haplotypes differ by more than just the TIPs (structural variants shown in Figure 4A), making it impossible to attribute expression differences specifically to the MITEs.",
+            "The stronger evidence of selection for Hap B in indica is described as present but less definitive than for Hap A in japonica, creating an asymmetry in the argument."
+          ],
+          "alternative_interpretations": [
+            "Selection could be acting on other structural or sequence differences between the two haplotypes rather than the MITE insertions specifically.",
+            "The expression difference between haplotypes could be driven by non-TIP variants within the haplotype block."
+          ],
+          "required_assumptions": [
+            "The MITE insertions are the causal variants for expression differences (not other variants in the haplotype).",
+            "The expression differences translate to phenotypic differences in spikelet number."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "The OsGAP locus shows two TIP-defined haplotypes with differential expression ef…",
+        "claim": "The OsGAP locus shows two TIP-defined haplotypes with differential expression effects, and positive selection for increased OsGAP expression (Hap A) specifically in japonica, potentially linked to dormancy control.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "there are clear and strong signs of selection for increased expression of OsGAP in japonica, wherein Hap A was under positive selection, and Hap B was selectively neutral.",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The haplotype analysis and π/H12 statistics provide converging evidence for selection on Hap A in japonica.",
+            "The biological connection to dormancy control through OsGAP function is supported by prior literature (Xu et al., 2019)."
+          ],
+          "weaknesses": [
+            "The TIPs do not correlate with expression changes in indica despite Hap B being at ~95% frequency, which undermines the claim that these TIPs are causal — if they were, one might expect some association in indica as well.",
+            "The near-fixation in indica without selection signals suggests drift may be responsible rather than selection in at least one subspecies.",
+            "As with EG2, other structural differences between haplotypes could be driving the expression differences and selection signals.",
+            "The connection to dormancy is speculative and not demonstrated in these accessions."
+          ],
+          "alternative_interpretations": [
+            "Near-fixation of Hap B in indica without selection evidence could indicate hitchhiking with a linked selected variant rather than selection on OsGAP itself.",
+            "The lack of association in indica could mean the TIPs are not causal but are in LD with other variants that differ between subspecies."
+          ],
+          "required_assumptions": [
+            "The TIPs are the causal variants for expression differences.",
+            "OsGAP expression differences have phenotypic consequences related to dormancy."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The observation that TIPs associate with expression changes in japonica but not indica, despite being present at high frequency in both, is actually somewhat problematic for the causal interpretation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.6",
+        "label": "A gypsy-like LTR-RT insertion (TIP_45706) upstream of OsMPH1 has been strongly s…",
+        "claim": "A gypsy-like LTR-RT insertion (TIP_45706) upstream of OsMPH1 has been strongly selected in both indica and japonica, associated with reduced OsMPH1 expression and shorter plant height.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This is further reinforced by strong selection acting on the haplotype containing the TIP_45706 insertion in both indica and japonica, leading to reduced expression of OsMPH1 and thus shorter plants.",
+        "evaluation": {
+          "node_id": "c1.6.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The frequency shift from 11% in wild ancestors to 70-95% in cultivated rice is dramatic and suggestive of selection.",
+            "Selection signals are confirmed by π and H12 analyses in both subspecies.",
+            "The biological function of OsMPH1 in plant height regulation is well-established (Zhang et al., 2017).",
+            "The parallel between this finding and the SD1-mediated Green Revolution is intellectually compelling."
+          ],
+          "weaknesses": [
+            "The expression reduction is described as 'associated with a decrease in the expression of OsMPH1 in indica and possibly japonica' — the 'possibly' qualifier for japonica weakens the claim.",
+            "No plant height measurements for these specific accessions are presented.",
+            "The parallel to SD1/Green Revolution is speculative and assumes the expression change translates to a similar phenotypic effect.",
+            "A single LTR-RT insertion upstream of a gene could easily be in LD with other causal variants."
+          ],
+          "alternative_interpretations": [
+            "The high frequency in both subspecies could reflect hitchhiking with a linked variant under selection.",
+            "The increase in frequency could reflect the domestication bottleneck rather than active selection."
+          ],
+          "required_assumptions": [
+            "The LTR-RT insertion is the causal variant for reduced OsMPH1 expression.",
+            "Reduced OsMPH1 expression leads to reduced plant height in these accessions.",
+            "The frequency increase reflects positive selection rather than drift."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The π and H12 analyses provide the strongest evidence for selection at this locus, strengthening the case beyond PBS alone.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.9",
+        "label": "Several TIP-eQTLs with extreme PBS values are associated with genes involved in …",
+        "claim": "Several TIP-eQTLs with extreme PBS values are associated with genes involved in hormone signal transduction, including brassinosteroids, ABA, ethylene, jasmonic acid, and auxin.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Some of the most extreme PBS values are for TIPs associated with changes of expression of genes involved in the signal transduction of hormones, including brassinosteroids, ABA, ethylene, jasmonic acid (JA) and auxin.",
+        "evaluation": {
+          "node_id": "c1.6.9",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The claim is directly supported by the data in Supplementary file 5.",
+            "The involvement of multiple hormone pathways is biologically plausible given the central role of hormones in plant development and stress responses."
+          ],
+          "weaknesses": [
+            "The claim lists hormone categories but does not quantify how many TIP-eQTLs are in each category or whether this represents an enrichment above chance.",
+            "No systematic pathway enrichment analysis is presented — the association with hormone signaling could be anecdotal."
+          ],
+          "alternative_interpretations": [
+            "Hormone signaling genes are numerous in the genome and could be overrepresented among TIP-eQTLs by chance."
+          ],
+          "required_assumptions": [
+            "The gene function annotations are correct.",
+            "The representation of hormone signaling genes is above chance expectation."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "Among the 718 genes with TIP-eQTLs, 18% have two or more TIPs associated with ex…",
+        "claim": "Among the 718 genes with TIP-eQTLs, 18% have two or more TIPs associated with expression changes, and among the 30 genes with the highest PBS values, 43% have multiple TIP-eQTLs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "among the 718 genes with TIP-eQTLs described here, 18% have two or more TIPs associated with changes of expression. Interestingly, among the 30 genes with TIPs in indica and japonica that have the highest PBS – an indicator of strong differential selection – 43% have more than one TIP-eQTL.",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The percentages are clearly stated (18% overall, 43% among top PBS genes).",
+            "The enrichment of multiple TIP-eQTLs in high-PBS genes is a notable pattern."
+          ],
+          "weaknesses": [
+            "No formal statistical test (e.g., Fisher's exact test) is presented for the 18% vs 43% comparison.",
+            "The sample of '30 genes with highest PBS' is small, making the 43% figure unstable.",
+            "Genes with more TIPs nearby may naturally have higher PBS values because there are more variants to show differentiation."
+          ],
+          "alternative_interpretations": [
+            "Genes with multiple TIPs could be in regions with higher TE density, which might correlate with higher recombination rates or other genomic features that influence PBS."
+          ],
+          "required_assumptions": [
+            "The enrichment is not confounded by local TE density or gene length.",
+            "The small sample of 30 genes is representative."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "In some cases, multiple TIPs linked to a single gene are associated with opposit…",
+        "claim": "In some cases, multiple TIPs linked to a single gene are associated with opposite effects on expression and present in different haplotypes, both showing signs of selection, suggesting TIPs played a role in rice subspecies diversification.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "In some cases, the different TIPs linked to a gene are associated with opposite effects on its expression and are present in different haplotypes. In these instances, as shown for the OsJAZ1 and OsGAP genes, the two haplotypes have strong signs of selection.",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The OsJAZ1 and OsGAP examples clearly illustrate the phenomenon of opposing haplotypes.",
+            "Both examples include haplotype characterization and selection statistics."
+          ],
+          "weaknesses": [
+            "Only two examples are provided — this is insufficient to claim a general pattern.",
+            "The selection signals at both haplotypes are not equally strong in all cases (e.g., for OsGAP, only Hap A shows selection in japonica).",
+            "The claim that TIPs 'played a role' in diversification assumes causality that has not been demonstrated."
+          ],
+          "alternative_interpretations": [
+            "The opposing haplotypes could be maintained by factors other than TIP-mediated expression changes.",
+            "Selection could be acting on other features of the haplotypes."
+          ],
+          "required_assumptions": [
+            "The TIPs are the causal variants defining the haplotypes' functional differences.",
+            "Two examples are sufficient to suggest a general pattern."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3",
+        "label": "The standing variation in TIP-eQTLs already present in wild ancestors, while tol…",
+        "claim": "The standing variation in TIP-eQTLs already present in wild ancestors, while tolerated in wild rice, translates into selectable phenotypic differences under the agroecological conditions of cultivated rice.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the presence of TIPs associated with expression variation of genes in the wild ancestors of rice, suggests that this variation can be well tolerated in wild rice. Interestingly, we show here that many of these TIPs have been positive or negative selected in rice populations, which shows that they translate into selectable phenotypic differences in the agroecological conditions of cultivated rice.",
+        "evaluation": {
+          "node_id": "c1.7.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is sound: variation tolerated in wild populations could become phenotypically relevant under different selection pressures in agriculture.",
+            "The finding that 66% of TIP-eQTLs are present in wild ancestors supports the standing variation hypothesis."
+          ],
+          "weaknesses": [
+            "This is a narrative interpretation rather than a directly tested hypothesis.",
+            "No evidence is provided that the TIP-associated variation is 'tolerated' in wild rice — it could also be under selection there.",
+            "The claim that variation 'translates into selectable phenotypic differences' is not demonstrated with any phenotype data.",
+            "The transformation from 'tolerated' to 'selectable' under cultivation conditions is assumed, not shown."
+          ],
+          "alternative_interpretations": [
+            "The standing variation could be under selection (not neutral/tolerated) in wild rice as well, just with different fitness consequences.",
+            "The frequency changes could reflect drift during domestication bottlenecks rather than selection on phenotypic differences."
+          ],
+          "required_assumptions": [
+            "TIP-associated variation is phenotypically neutral or nearly neutral in wild rice.",
+            "The same variation becomes phenotypically consequential under cultivation.",
+            "Frequency changes between wild and cultivated rice reflect selection rather than drift."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is an interesting evolutionary narrative but remains speculative given the evidence presented.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "Most detected TIPs are DNA transposons (84%), especially MITEs belonging to Stow…",
+        "claim": "Most detected TIPs are DNA transposons (84%), especially MITEs belonging to Stowaway (24%) and Tourist (20%) superfamilies; LTR retrotransposons make up only 9%.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Most of the TIPs detected are DNA transposons (84%), especially MITEs belonging to the Stowaway (24%) and Tourist (20%) superfamilies; LTR retrotransposons make up a minor fraction (9 %).",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "These are descriptive statistics from the TIP calling pipeline and are straightforwardly reported.",
+            "The dominance of DNA transposons, especially MITEs, is consistent with known rice genome composition."
+          ],
+          "weaknesses": [
+            "The composition partly reflects the detection method — short-read data may preferentially detect short elements (MITEs) over longer LTR retrotransposons.",
+            "The 9% LTR retrotransposon fraction seems low given their genomic abundance, suggesting potential detection bias."
+          ],
+          "alternative_interpretations": [
+            "The low proportion of LTR retrotransposons could reflect detection bias rather than true polymorphism rates."
+          ],
+          "required_assumptions": [
+            "PopoolationTE2 detects TIPs of different TE types with comparable efficiency."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The possible underrepresentation of LTR retrotransposon TIPs due to detection limitations should be acknowledged.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "TIP genotyping performance was estimated using MH63 assembled genome data at 97.…",
+        "claim": "TIP genotyping performance was estimated using MH63 assembled genome data at 97.1% sensitivity and 92.2% precision.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we estimated the performance of the TIP genotyping on this dataset to have 97.1% sensitivity and 92.2% precision.",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The benchmarking uses an independent assembled genome (MH63) which is appropriate.",
+            "The sensitivity and precision values are high."
+          ],
+          "weaknesses": [
+            "The validation is done on a single genome (MH63) and may not represent performance across diverse varieties.",
+            "The MH63 data was subsampled to 15× coverage to match the mean of the dataset, but individual samples may have much lower coverage, reducing real-world performance.",
+            "The validation was performed in the context of 48 indica samples — performance in japonica or across more diverse samples is unknown.",
+            "RepeatMasker annotation used as ground truth may itself have errors, particularly for fragmented or degenerate TEs."
+          ],
+          "alternative_interpretations": [
+            "Performance on MH63 (an elite indica variety) may not generalize to aus, basmati, or wild rice accessions."
+          ],
+          "required_assumptions": [
+            "MH63 assembly quality is sufficient for benchmarking.",
+            "RepeatMasker annotations provide reliable ground truth.",
+            "Performance generalizes across varieties."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "A single-genome validation is a limitation, though the results are reassuring.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "The result that TIPs explain more variance is robust to running combined SNP-TIP…",
+        "claim": "The result that TIPs explain more variance is robust to running combined SNP-TIP association analysis and to subsampling SNPs to the same number as TIPs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This result could be reproduced by running the association using SNPs and TIPs together, and also by subsampling SNPs to the same number of TIPs.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple analytical approaches (separate, combined, subsampled) all support the same conclusion, providing robustness."
+          ],
+          "weaknesses": [
+            "The subsampling approach randomly selects SNPs, but TIPs and SNPs occupy different genomic spaces — a fair comparison would match by genomic location or gene proximity.",
+            "Details of the combined analysis (e.g., how collinearity between TIPs and nearby SNPs was handled) are not provided."
+          ],
+          "alternative_interpretations": [
+            "Robustness to subsampling may simply reflect that TIPs capture different LD blocks than randomly sampled SNPs."
+          ],
+          "required_assumptions": [
+            "Random subsampling of SNPs is a fair comparison.",
+            "The combined analysis adequately handles multicollinearity."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "SNP-eQTL mapping identified 4913 SNP-eQTLs in indica and 3308 in japonica, corre…",
+        "claim": "SNP-eQTL mapping identified 4913 SNP-eQTLs in indica and 3308 in japonica, corresponding to ~31.6% and ~21.3% of genes respectively, providing a baseline for comparison with TIP-eQTLs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We obtained 4913 SNP-eQTLs in indica and 3308 SNP-eQTLs in japonica associated with SNPs located less than 5 kb from the gene.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantitative baseline for comparison.",
+            "The much larger number of SNP-eQTLs (4913/3308) compared to TIP-eQTLs (563/356) is expected given the ~18-fold difference in marker number."
+          ],
+          "weaknesses": [
+            "No power analysis comparing detection power for TIPs vs SNPs given different allele frequency spectra."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The SNP genotyping quality from Groen et al. (2020) is adequate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The negative bias of TIP-eQTLs on expression is consistent with analyses in Caps…",
+        "claim": "The negative bias of TIP-eQTLs on expression is consistent with analyses in Capsella, especially for long elements such as LTR retrotransposons.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the effect of the insertion is more generally negative, in line with recent analyses done in Capsella (Uzunović et al., 2019), especially for long elements such as LTR retrotransposons.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Cross-species consistency (rice and Capsella) strengthens the biological interpretation.",
+            "The gradient of negative bias by element size (LTR/Gypsy most negative) is biologically sensible."
+          ],
+          "weaknesses": [
+            "Consistency with one other study is not strong evidence — it could reflect similar confounders in both systems.",
+            "The Capsella study (Uzunović et al., 2019) may have used different methods and definitions, making direct comparison uncertain."
+          ],
+          "alternative_interpretations": [
+            "Both studies could suffer from similar biases (e.g., LD between TIPs and nearby deletions)."
+          ],
+          "required_assumptions": [
+            "The comparison between rice and Capsella is methodologically valid."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.7",
+        "label": "56% of indica-specific and 24% of japonica-specific TIPs were found in wild rice…",
+        "claim": "56% of indica-specific and 24% of japonica-specific TIPs were found in wild rice O. rufipogon and O. nivara populations.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We looked for these TIPs in 82 Oryza rufipogon and Oryza nivara varieties and found that 56% of the indica-specific and 24% of the japonica-specific TIPs were present in such population.",
+        "evaluation": {
+          "node_id": "c1.4.7",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct quantification of wild relative sharing provides useful evolutionary context."
+          ],
+          "weaknesses": [
+            "The asymmetry (56% indica-specific vs 24% japonica-specific found in wild rice) is not explained — this could reflect sampling or power issues.",
+            "Limited sample sizes of rufipogon/nivara may miss low-frequency TIPs."
+          ],
+          "alternative_interpretations": [
+            "The higher proportion of indica-specific TIPs found in wild rice could reflect closer phylogenetic relationship between indica and certain wild populations."
+          ],
+          "required_assumptions": [
+            "Detection power in wild rice samples is adequate."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.8",
+        "label": "TIP-eQTLs associated with drought-relevant genes include TIP_49046 (reducing OsS…",
+        "claim": "TIP-eQTLs associated with drought-relevant genes include TIP_49046 (reducing OsSYT-5 expression, whose silencing enhances drought tolerance), TIP_23764 (increasing OsSAPK10 expression), and TIP_52367 (increasing OsEULS2 expression).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "TIP_49046 is associated with a reduction of the expression of the gene synaptotagmin-5 (OsSYT-5). OsSYT-5 encodes a Ca2+ sensing protein with a C2 domain, is expressed in both stressed and non-stressed plants, and it has been recently shown that its silencing enhances drought tolerance in rice.",
+        "evaluation": {
+          "node_id": "c1.4.8",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Each example gene has published evidence for drought-related function.",
+            "The direction of TIP-associated expression change is consistent with the expected beneficial effect (e.g., reduced OsSYT-5 enhances drought tolerance)."
+          ],
+          "weaknesses": [
+            "These are three cherry-picked examples from 159 condition-specific TIP-eQTLs — no systematic enrichment for drought genes is demonstrated.",
+            "The functional relevance of the expression changes has not been validated in these specific accessions.",
+            "These TIP-eQTLs appear to be significant in both conditions (not strictly condition-specific), somewhat undermining their use as examples of drought-specific effects."
+          ],
+          "alternative_interpretations": [
+            "The association with drought-related genes could be coincidental given the large number of TIP-eQTLs."
+          ],
+          "required_assumptions": [
+            "The cited functional studies apply to the expression differences observed here.",
+            "These examples are representative rather than cherry-picked."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The paper explicitly states these genes are among TIP-eQTLs significant in 'both wet and drought stress,' which somewhat contradicts their presentation as examples of drought-related associations.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Up to 35% of TIP-eQTLs (associated with 119 genes) fall within the top 10% of ab…",
+        "claim": "Up to 35% of TIP-eQTLs (associated with 119 genes) fall within the top 10% of absolute PBS values for all TIPs.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "up to 35% of the TIP-eQTLs identified here, associated with 119 genes, fell within the top 10% of absolute PBS values for all TIPs.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The 35% figure represents a substantial enrichment — only 10% would be expected if TIP-eQTLs were randomly distributed with respect to PBS.",
+            "The association with 119 specific genes provides concrete data."
+          ],
+          "weaknesses": [
+            "No formal enrichment test is presented for this 35% vs expected 10% comparison.",
+            "The top 10% threshold is broader than the 95th percentile used elsewhere, which could include many TIPs with modest frequency differentiation."
+          ],
+          "alternative_interpretations": [
+            "See c1.5.1 and c1.5.2 for alternative interpretations related to confounding."
+          ],
+          "required_assumptions": [
+            "The enrichment is not confounded by genomic location."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "The PBS analysis was conducted on 11,698 TIPs present in japonica, indica, and r…",
+        "claim": "The PBS analysis was conducted on 11,698 TIPs present in japonica, indica, and rufipogon/nivara, including 354 TIP-eQTLs, using pairwise FST values to estimate frequency change since divergence from wild ancestors.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results/Methods",
+        "verbatim_quote": "We calculated PBS values for a total of 11,698 TIPs present in the japonica, indica, and rufipogon/nivara populations, which included 354 TIPs that are eQTLs in in indica and/or japonica populations.",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The PBS method (Yi et al., 2010) is well-established and appropriate for this three-population comparison.",
+            "The filtering criteria (MAF >5%, <5% missing data) are reasonable.",
+            "Imputation of remaining missing data is handled with a standard method."
+          ],
+          "weaknesses": [
+            "The rufipogon/nivara population likely does not represent a single ancestral population — it includes both O. rufipogon and O. nivara with different demographic histories.",
+            "The complex demographic history of rice domestication (possible multiple domestication events) may violate the assumptions of the simple three-population PBS model.",
+            "The unequal representation of O. rufipogon (72) and O. nivara (10) in the 'ancestral' group is concerning."
+          ],
+          "alternative_interpretations": [
+            "Treating rufipogon/nivara as a single outgroup may bias PBS values if there is strong population structure within wild rice."
+          ],
+          "required_assumptions": [
+            "The three-population model is a reasonable approximation of rice evolutionary history.",
+            "The rufipogon/nivara sample adequately represents the ancestral population."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Four Tourist-family MITE TIPs define two EG2 haplotypes: Hap A (three linked MIT…",
+        "claim": "Four Tourist-family MITE TIPs define two EG2 haplotypes: Hap A (three linked MITEs, higher expression) at high frequency in rufipogon/nivara (48%) and japonica (65%) but low in indica (16%), and Hap B (intronic MITE, lower expression) at high frequency in indica (83%).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Hap A was identified to be at high frequency in rufipogon/nivara (48%), whereas Hap B is at lower frequency (16%). The frequency of both Hap A and Hap B is slightly increased in japonica (65% and 28%, respectively). In indica, however, there is a clear reduction in the frequency of Hap A and a concomitant strong frequency increase of Hap B.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The haplotype frequencies across populations are clearly quantified.",
+            "The use of super-pangenome data provides high-resolution structural characterization.",
+            "The three linked MITE insertions (r2=0.88) provide internal consistency."
+          ],
+          "weaknesses": [
+            "The haplotype classification appears binary, but there may be additional haplotypes or recombinants not captured.",
+            "The frequencies don't sum to 100% (e.g., rufipogon/nivara: 48% + 16% = 64%), suggesting other haplotypes exist that are not discussed."
+          ],
+          "alternative_interpretations": [
+            "The frequency differences could reflect founder effects during domestication rather than selection."
+          ],
+          "required_assumptions": [
+            "The two-haplotype model adequately captures the variation at this locus.",
+            "The super-pangenome data accurately represents haplotype structure."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "Nucleotide diversity (π) and haplotype homozygosity (H12) analyses confirm posit…",
+        "claim": "Nucleotide diversity (π) and haplotype homozygosity (H12) analyses confirm positive selection on Hap A in japonica and Hap B in indica for the EG2 locus.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we found that in japonica the haplotype associated with increased EG2 expression (Hap A) was under positive selection, whereas the haplotype associated with decreased expression of EG2 (Hap B) did not show any sign of selection.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Both π and H12 statistics are used, providing complementary evidence.",
+            "The permutation test (N=1000) provides a significance assessment.",
+            "The opposing selection patterns in indica vs japonica are biologically compelling."
+          ],
+          "weaknesses": [
+            "The permutation test randomly samples individuals regardless of subspecies or haplotype, which may not adequately control for demographic history.",
+            "Window sizes (25 SNPs for π, 50 SNPs for H12) are relatively small and may be noisy.",
+            "The selection evidence for Hap B in indica is described as 'stronger evidence' but with less certainty ('the opposite pattern appears to prevail'), suggesting the signal is not as clean.",
+            "The analysis does not account for recombination rate variation, which could create spurious selection signals."
+          ],
+          "alternative_interpretations": [
+            "Reduced π and elevated H12 could reflect recent bottlenecks or background selection rather than positive selection specifically on the TIPs.",
+            "The pattern could be driven by hitchhiking with other selected variants in the region."
+          ],
+          "required_assumptions": [
+            "The permutation test adequately controls for demographic effects.",
+            "The selection signals are specific to the TIP-containing haplotype and not a genome-wide pattern."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5",
+        "label": "OsGAP Hap B (reduced expression) is near fixation in indica (~95%) without evide…",
+        "claim": "OsGAP Hap B (reduced expression) is near fixation in indica (~95%) without evidence of selection, suggesting the trait is regulated by different genes/alleles in the two subspecies.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "In contrast, there is no evidence for selection in indica varieties despite the near fixation of one haplotype.",
+        "evaluation": {
+          "node_id": "c1.6.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The observation that near-fixation without selection evidence is interesting and contrasts with the japonica pattern.",
+            "The interpretation (regulation by different genes in different subspecies) is consistent with prior literature (Magwa et al., 2016)."
+          ],
+          "weaknesses": [
+            "Near-fixation without selection evidence could also indicate ancient fixation followed by loss of selection signal, or hitchhiking with a linked variant.",
+            "The lack of eQTL association in indica could reflect different genetic backgrounds rather than different regulatory mechanisms.",
+            "The inference about different regulatory mechanisms is speculative."
+          ],
+          "alternative_interpretations": [
+            "Near-fixation through drift during the domestication bottleneck.",
+            "The eQTL signal may be absent in indica due to the near-fixation itself (insufficient allele frequency variation to detect the association)."
+          ],
+          "required_assumptions": [
+            "The lack of selection signal is real and not due to power limitations.",
+            "The lack of eQTL signal in indica reflects biology rather than statistical artifacts of near-fixation."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The near-fixation itself (~95%) means there are very few individuals without the TIP in indica, making both eQTL and selection analyses underpowered. This is a fundamental limitation that the paper does not adequately address.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.7",
+        "label": "TIP_45706 is found at low frequency in rufipogon/nivara (~11%) but at high frequ…",
+        "claim": "TIP_45706 is found at low frequency in rufipogon/nivara (~11%) but at high frequency in indica (70%) and japonica (95%), suggesting parallel selection during domestication.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This insertion is associated with a decrease in the expression of OsMPH1 in indica and possibly japonica varieties, and is found at low frequency in rufipogon/nivara (~11%) but at high frequency in both indica (70%) and japonica (95%).",
+        "evaluation": {
+          "node_id": "c1.6.7",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The frequency shift (11% → 70-95%) across independent subspecies is striking and suggestive of parallel selection.",
+            "The presence at low frequency in wild ancestors confirms this is an ancestral variant."
+          ],
+          "weaknesses": [
+            "Parallel increase in both subspecies could also reflect a single domestication event or gene flow rather than independent parallel selection.",
+            "The low frequency in wild rice could be a false estimate if the wild sample is not representative."
+          ],
+          "alternative_interpretations": [
+            "The high frequency in both subspecies could reflect a single selective sweep prior to the indica-japonica split.",
+            "The apparent low frequency in wild rice could be inflated by detection issues."
+          ],
+          "required_assumptions": [
+            "The frequency estimates are accurate across all three populations.",
+            "The indica-japonica split predates or is contemporaneous with the frequency increase."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.8",
+        "label": "OsMPH1 encodes an MYB-like transcription factor regulating plant height, and the…",
+        "claim": "OsMPH1 encodes an MYB-like transcription factor regulating plant height, and the TIP-associated reduction in its expression results in shorter plants, representing possible parallel selection similar to the SD1-mediated height reduction in the Green Revolution.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "OsMPH1 encodes an MYB-like transcription factor that has been shown to regulate plant height, its reduced expression resulting in shorter plants.",
+        "evaluation": {
+          "node_id": "c1.6.8",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The prior functional characterization of OsMPH1 (Zhang et al., 2017) provides a strong biological foundation.",
+            "The parallel to SD1/Green Revolution is well-contextualized."
+          ],
+          "weaknesses": [
+            "No plant height data for these specific accessions is presented.",
+            "The causal chain (TIP insertion → reduced OsMPH1 expression → shorter plants → selection advantage) is entirely inferential.",
+            "The comparison to SD1/Green Revolution is illustrative but could overstate the importance of this particular variant.",
+            "The expression reduction is described as 'in indica and possibly japonica' — uncertainty about the japonica effect weakens the parallel selection narrative."
+          ],
+          "alternative_interpretations": [
+            "The TIP insertion could be hitchhiking with selection on a nearby variant.",
+            "Plant height in rice is controlled by many genes; the contribution of OsMPH1 variation to height differences between subspecies is unknown."
+          ],
+          "required_assumptions": [
+            "The TIP is the causal variant for reduced OsMPH1 expression.",
+            "Reduced OsMPH1 expression produces a selectable height phenotype."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.6",
+        "source": "c1.6",
+        "target": "c1.6.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.9",
+        "source": "c1.6",
+        "target": "c1.6.9",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.3",
+        "source": "c1.7",
+        "target": "c1.7.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.5",
+        "source": "c1.1.4",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.6",
+        "source": "c1.1.4",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.2",
+        "source": "c1.2.1",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.3",
+        "source": "c1.2.1",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.3",
+        "source": "c1.3.2",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.6_c1.4.7",
+        "source": "c1.4.6",
+        "target": "c1.4.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.8",
+        "source": "c1.4.2",
+        "target": "c1.4.8",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.3",
+        "source": "c1.5.2",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.4",
+        "source": "c1.5.1",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.2",
+        "source": "c1.6.1",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.3",
+        "source": "c1.6.1",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.4_c1.6.5",
+        "source": "c1.6.4",
+        "target": "c1.6.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.6_c1.6.7",
+        "source": "c1.6.6",
+        "target": "c1.6.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.6_c1.6.8",
+        "source": "c1.6.6",
+        "target": "c1.6.8",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 44,
+    "total_edges": 43,
+    "max_depth": 3,
+    "high_support_nodes": 20,
+    "low_support_nodes": 1,
+    "overall_assessment": "The paper presents 44 claims with mixed overall support (20 high, 1 low)."
+  },
+  "final_review": null
+}

@@ -1,0 +1,57 @@
+**eLife Assessment**
+
+This study presents a valuable investigation into the contribution of transposable element insertion polymorphisms to gene expression variation in rice, combining eQTL mapping with population genetics analyses across two major subspecies. The evidence supporting the central claims is solid for the association between TIPs and expression variation but incomplete for the assertions of causality, positive selection, and phenotypic relevance during domestication, owing to uncontrolled confounds in the selection analysis, absence of experimental validation, and a quantitative disconnect between the data and the "major driver" framing.
+
+**Summary**
+
+This paper investigates whether transposable element insertion polymorphisms (TIPs) contribute to gene expression variation in rice and whether such variation has been subject to selection during domestication. The authors perform TIP-eQTL mapping in 208 *Oryza sativa* varieties (126 *indica*, 82 *japonica*), identifying 563 and 356 TIP-eQTLs in the two subspecies, respectively. They show that TIPs often explain more expression variance than nearby SNPs, are enriched in upstream gene regions, and tend to reduce expression. Using Population Branch Statistics (PBS) with wild rice (*O. rufipogon/nivara*) as an outgroup, they report that TIP-eQTLs are enriched among loci with extreme population differentiation. Three case studies—EG2/OsJAZ1, OsGAP, and OsMPH1—are presented as examples of TIP-eQTLs under differential selection in *indica* and *japonica*, with inferred connections to spikelet number, seed dormancy, and plant height. The authors conclude that TEs are a major driver of gene expression variation selected during crop adaptation.
+
+**Strengths**
+
+- **TIP-eQTL identification (claim c1.1):** The identification of hundreds of TIP-eQTLs in both subspecies (563 in *indica*, 356 in *japonica*) using a well-benchmarked genotyping pipeline (97.1% sensitivity, 92.2% precision against the MH63 assembly) and appropriate FDR correction provides a solid descriptive resource. The separate analysis by subspecies appropriately handles population structure, and the proportional representation of TE orders among significant TIPs argues against systematic bias toward specific element families.
+
+- **TIPs as complementary markers to SNPs (claim c1.2):** The demonstration that ~62–73% of TIP-eQTLs either lack a corresponding SNP-eQTL or explain more expression variance than the best SNP, replicated using joint SNP+TIP analysis and SNP subsampling controls, convincingly shows that TIPs capture genetic associations missed by SNP panels alone. This has practical implications for crop genomics.
+
+- **Upstream enrichment of TIP-eQTLs (claim c1.3.1):** The over-representation of TIP-eQTLs in the 1 kb upstream region compared to the more even distribution of SNP-eQTLs is a clear and biologically compelling pattern, consistent with TE-mediated effects on promoter function.
+
+- **Standing variation in wild ancestors (claim c1.4.1):** The finding that 66% of TIP-eQTLs are shared with *rufipogon/nivara* wild relatives provides strong quantitative support for the conclusion that most expression-altering TIPs represent ancestral standing variation rather than recent transposition events.
+
+- **Case study depth (claims c1.6.1–c1.6.3):** The three case studies are impressively detailed, integrating pangenome-based haplotype characterization, expression data, and selection statistics (π, H12). The EG2/OsJAZ1 example, with reciprocal selection patterns in *indica* and *japonica* and well-documented gene function, is the most compelling illustration of the paper's thesis.
+
+**Weaknesses / Essential Revisions**
+
+- **PBS confound with distance to genes (claims c1.5, c1.5.1):** The central selection analysis comparing PBS values of TIP-eQTLs versus non-eQTL TIPs is potentially confounded by a critical uncontrolled variable: TIP-eQTLs are by definition within 5 kb of genes, while non-eQTL TIPs include many intergenic insertions. Gene-proximal regions experience stronger linked and background selection, which would elevate PBS regardless of whether the TIP itself is under selection. The authors must compare TIP-eQTLs to non-eQTL TIPs matched for distance to genes (e.g., non-eQTL TIPs also within 5 kb of expressed genes) to demonstrate that the enrichment is specific to expression-altering TIPs. Without this control, the odds ratio of 4.87 and the mean PBS difference (0.06 vs. 0.02) cannot be confidently attributed to selection on TIP-mediated expression variation.
+
+- **Overclaiming "major driver" status (root claim, claim c1.7):** The paper frames TEs as "a major driver of gene expression variation selected during crop adaptation," yet TIP-eQTLs account for only 2–3% of expressed genes compared to 21–32% for SNP-eQTLs. While TIPs clearly contribute additional, non-redundant associations, characterizing them as a "major driver" is not supported by the quantitative data. The language should be revised to "important contributor" or similar, which is both accurate and still highlights the study's novelty.
+
+- **No experimental validation of causality (claim c1.3):** The claim that "an important fraction of TIP-eQTLs are the actual causal mutations" rests entirely on circumstantial evidence (upstream enrichment, negative effect bias, R² comparisons). No direct functional validation—reporter assays, CRISPR-mediated insertion/deletion, or even allele-specific expression analysis—is provided for any TIP-eQTL. The authors should either provide experimental evidence for at least one candidate or substantially temper causality claims to reflect the correlational nature of the evidence.
+
+- **Absence of phenotypic data for trait claims (claim c1.6):** The paper claims that selected TIP-eQTLs "explain aspects of subspecies differentiation" for spikelet development, seed dormancy, and plant height. However, no phenotypic measurements are collected or analyzed. The connection between TIP-eQTLs and agronomic traits is made entirely by citing published gene functions. This inferential chain (TIP → expression change → phenotype → selection) is only directly demonstrated for the first link. The authors should either incorporate available phenotypic data from these or similar panels, or clearly frame these as hypotheses rather than explanations.
+
+- **Lenient replicate criterion for eQTL calling (claim c1.1.2):** Requiring significance in "at least one replicate" rather than across multiple replicates is a permissive threshold that may inflate false positive rates among the reported TIP-eQTLs. The authors should report how many TIP-eQTLs are significant in ≥2 or all 3 replicates, and assess whether the main conclusions (enrichment patterns, PBS analysis) are robust to this stricter criterion.
+
+- **No formal statistical test for differential frequency patterns (claim c1.4.2):** The contrast between eQTL-TIP and non-eQTL-TIP frequency distributions across subspecies (Figures 2H vs. 2I) is presented as visual evidence without formal statistical testing. A quantitative comparison (e.g., Kolmogorov-Smirnov test on the bivariate frequency distributions) is needed to support the claim of "preferential retention linked to impact on gene expression."
+
+- **Benchmark limited to a single variety (claim c1.1.1):** The TIP genotyping accuracy was benchmarked exclusively against MH63, an *indica* variety. Performance on *japonica* or highly divergent accessions is unknown. Given that half the study concerns *japonica*, validation against at least one assembled *japonica* genome would substantially strengthen confidence in the TIP calls across the full dataset.
+
+- **Incomplete haplotype accounting in case studies (claims c1.6.1.1):** For EG2, haplotype frequencies do not sum to 100% in rufipogon (48% + 16% = 64%), indicating that substantial additional haplotypic diversity exists but is not discussed. This complicates the two-haplotype narrative and should be addressed explicitly.
+
+**Minor Comments**
+
+- The R² comparison between TIPs and SNPs for genes with significant TIP-eQTLs (Figure 1D) is subject to ascertainment bias—by selecting genes because they have a significant TIP association, the comparison is predisposed to show TIPs outperforming SNPs. This should be explicitly acknowledged in the discussion.
+
+- The asymmetry in condition overlap rates (~90% wet, ~71% drought) is not discussed; this could reflect genuine biology or power differences and deserves brief comment.
+
+- The claim that LTR/Gypsy elements have 67% negative effects is potentially based on very few observations (LTR retrotransposons are only 9% of TIPs); sample sizes per superfamily should be reported, and statistical tests for between-superfamily differences should be provided.
+
+- The observation that 43% of top-30 PBS genes have multiple TIP-eQTLs versus 18% overall is based on only 30 genes; a statistical test (e.g., Fisher's exact test) should be provided.
+
+- Figure 2—figure supplement 2 (upstream-only frequency analysis) is referenced but insufficiently described. Methodological details and quantitative results should be provided in the supplement or main text.
+
+- The possibility of introgression from cultivated rice into wild *rufipogon/nivara* populations—which would inflate estimates of ancestral TIP sharing—should be acknowledged as a caveat.
+
+**Recommendation**
+
+Major Revisions
+
+The paper addresses an important question and presents a rich dataset, but several central claims—particularly regarding positive selection on TIP-eQTLs, causality, and phenotypic relevance—are overclaimed relative to the evidence provided. The most critical issue is the uncontrolled distance-to-gene confound in the PBS analysis, which undermines the paper's primary selection argument. With appropriate controls, tempered language, and additional statistical rigor, the manuscript could meet eLife's standards for a valuable contribution to our understanding of TE-mediated gene regulation in crop evolution.

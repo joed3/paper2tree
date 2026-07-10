@@ -1,0 +1,3551 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_93646",
+    "title": "CaBP1 and 2 enable sustained CaV1.3 calcium currents and synaptic transmission in inner hair cells",
+    "authors": [
+      "David Oestreicher",
+      "Shashank Chepurwar",
+      "Kathrin Kusch",
+      "Vladan Rankovic",
+      "Sangyong Jung",
+      "Nicola Strenzke",
+      "Tina Pangrsic"
+    ],
+    "url": "https://doi.org/10.7554/eLife.93646",
+    "abstract": "To encode continuous sound stimuli, the inner hair cell (IHC) ribbon synapses utilize calcium-binding proteins (CaBPs), which reduce the inactivation of their CaV1.3 calcium channels. Mutations in the CABP2 gene underlie non-syndromic autosomal recessive hearing loss DFNB93. Besides CaBP2, the structurally related CaBP1 is highly abundant in the IHCs. Here, we investigated how the two CaBPs cooperatively regulate IHC synaptic function. In Cabp1/2 double-knockout mice, we find strongly enhanced CaV1.3 inactivation, slowed recovery from inactivation and impaired sustained exocytosis. Already mild IHC activation further reduces the availability of channels to trigger synaptic transmission and may effectively silence synapses. Spontaneous and sound-evoked responses of spiral ganglion neurons in vivo are strikingly reduced and strongly depend on stimulation rates. Transgenic expression of CaBP2 leads to substantial recovery of IHC synaptic function and hearing sensitivity. We conclude that CaBP1 and 2 act together to suppress voltage- and calcium-dependent inactivation of IHC CaV1.3 channels in order to support sufficient rate of exocytosis and enable fast, temporally precise and indefatigable sound encoding.",
+    "word_count": 10374,
+    "processed_at": "2026-07-10T00:40:31.966117+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "CaBP1 and CaBP2 together provide sufficient attenuation of CaV1.3 channel inacti…",
+        "claim": "CaBP1 and CaBP2 together provide sufficient attenuation of CaV1.3 channel inactivation at IHC ribbon synapses to sustain Ca2+ currents and exocytosis for temporally precise, indefatigable neurotransmission, and their combined loss causes severe hearing impairment that is partially rescuable by CaBP2 gene therapy.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract",
+        "verbatim_quote": "Together, they provide sufficient attenuation of channel inactivation to sustain Ca2+ currents and exocytosis required for temporally precise, indefatigable neurotransmission at this synapse.",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The paper provides multi-level evidence spanning from single-channel biophysics (VDI/CDI quantification) through synaptic function (exocytosis) to systems-level hearing (ABRs, SGN recordings), creating a coherent narrative.",
+            "The DKO phenotype is dramatically more severe than either single KO, consistent with the claimed synergistic/overlapping role, and aligns with prior work showing CaBPs suppress CaV1.3 inactivation (Haeseleer et al., 2000; Picher, 2017).",
+            "The gene therapy rescue experiment provides a causal test linking CaBP2 expression to restoration of channel function, exocytosis, and hearing."
+          ],
+          "weaknesses": [
+            "The claim of 'indefatigable neurotransmission' is strong language not fully supported: even WT IHCs show some inactivation, and the paper does not demonstrate truly indefatigable transmission.",
+            "The rescue is explicitly partial — thresholds do not fully recover, and the paper acknowledges possible irreversible changes and confounding effects of missing CaBP1. The claim that gene therapy is viable is overstated for a proof-of-concept with incomplete recovery.",
+            "The comparison across genotypes (DKO vs single KOs) relies partly on previously published data acquired under potentially different conditions (different tonotopic positions for Cabp2-KO, different ages, different labs), weakening the quantitative comparison.",
+            "The claim of 'temporally precise' neurotransmission is not directly tested in WT with CaBP manipulation; rather it is inferred from the loss-of-function phenotype."
+          ],
+          "alternative_interpretations": [
+            "The hearing impairment could partly reflect developmental consequences of chronic Ca2+ signaling disruption (e.g., reduced BK channel expression, altered synaptic morphology) rather than solely acute channel inactivation.",
+            "Off-target effects of CaBP2 overexpression (acknowledged by the authors, citing Oestreicher et al., 2021) could contribute to the rescue phenotype through mechanisms unrelated to CaV1.3 modulation."
+          ],
+          "required_assumptions": [
+            "CaBP1 and CaBP2 are the dominant modulators of CaV1.3 inactivation in IHCs, with negligible contribution from CaBP4, CaBP5, or other mechanisms.",
+            "The DKO phenotype primarily reflects loss of CaBP function in IHCs rather than other cell types.",
+            "In vitro electrophysiology at room temperature with perforated patch faithfully reflects in vivo channel behavior."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is a composite root claim aggregating several sub-claims, some of which are better supported than others. The gene therapy claim is the weakest link due to incomplete rescue and lack of controls for surgical effects.",
+          "literature_citations": [
+            {
+              "title": "Calcium-binding proteins: a family of modulators of voltage-gated calcium channels",
+              "authors": [
+                "Haeseleer",
+                "Bhagwat",
+                "Bhattacharya",
+                "Bhattacharya",
+                "Bhattacharya"
+              ],
+              "year": 2000,
+              "url": null,
+              "relevance": "Established the CaBP family and their modulation of CaV channels, foundational to this claim.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 mutations cause DFNB93",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Established CaBP2 role in hearing and CaV1.3 modulation in IHCs; this paper extends those findings to the DKO.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "Combined loss of CaBP1 and CaBP2 dramatically enhances both VDI and CDI of IHC C…",
+        "claim": "Combined loss of CaBP1 and CaBP2 dramatically enhances both VDI and CDI of IHC CaV1.3 channels, far beyond what is observed in either single knockout.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The lack of CaBP1 and 2 significantly enhanced both, VDI and CDI of IHC CaV1.3 channels, which were approx. two and six times larger than those in WT IHCs",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct quantification of VDI and CDI using Ba2+/Ca2+ substitution following the established Tadross et al. (2010) method provides rigorous separation of inactivation types.",
+            "Both VDI (~2-fold increase) and CDI (~6-fold increase) are dramatically enhanced in DKO, with highly significant p-values (p<0.0001).",
+            "The comparison with single KOs (Picher, 2017; Yang et al., 2018) demonstrates synergistic enhancement beyond either single KO, strengthening the claim of combined effects.",
+            "The observation that CaBP2 loss alone primarily affects VDI (Picher, 2017) while the DKO massively enhances CDI is a novel finding suggesting CaBP1 contributes substantially to CDI suppression."
+          ],
+          "weaknesses": [
+            "The comparison with single KO data relies on previously published recordings that may have been acquired under slightly different conditions (e.g., the Cabp2-KO data was from lower apex/mid-cochlear positions).",
+            "Sample sizes for VDI/CDI analysis are not explicitly stated in the text for the 2 mM divalent condition.",
+            "The claim 'far beyond what is observed in either single knockout' depends partly on historical data; ideally all genotypes would be recorded simultaneously with identical protocols."
+          ],
+          "alternative_interpretations": [
+            "Enhanced inactivation could partly reflect compensatory downregulation of other modulatory proteins (e.g., changes in CaV1.3 splice variants or auxiliary subunits) rather than solely the direct absence of CaBP-mediated modulation."
+          ],
+          "required_assumptions": [
+            "Ba2+ currents faithfully report VDI without confounding effects of Ba2+ on channel gating beyond blocking CDI.",
+            "The Tadross et al. (2010) formalism accurately separates VDI and CDI in IHC CaV1.3 channels.",
+            "Comparison across studies with different conditions and tonotopic positions is valid."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is one of the best-supported claims in the paper with direct electrophysiological measurements and appropriate controls.",
+          "literature_citations": [
+            {
+              "title": "Tadross et al. quantitative framework for CDI/VDI separation",
+              "authors": [
+                "Tadross",
+                "Dick",
+                "Bhatt",
+                "Yang",
+                "Bhatt"
+              ],
+              "year": 2010,
+              "url": null,
+              "relevance": "Method used to separate VDI and CDI, validating the analytical approach.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 and IHC CaV1.3 inactivation",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Showed CaBP2 loss primarily affects VDI; DKO data reveals additional CDI enhancement.",
+              "stance": "extends"
+            },
+            {
+              "title": "CaBP1 KO IHC phenotype",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Showed modest CaBP1-KO effect, making the dramatic DKO enhancement a novel finding.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "The combined absence of CaBP1 and CaBP2 almost abolishes sustained exocytosis an…",
+        "claim": "The combined absence of CaBP1 and CaBP2 almost abolishes sustained exocytosis and impairs exocytosis efficiency beyond what can be explained by reduced Ca2+ influx, suggesting additional roles for CaBPs in synaptic processes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "the combined absence of CaBP1 and 2 almost abolishes sustained, and, upon increased hair cell synaptic activity, the fast component of exocytosis.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Capacitance measurements directly quantify exocytosis, and the impairment of sustained exocytosis is statistically significant at multiple time points.",
+            "The reduced exocytosis efficiency (ΔCm/QCa) points to an additional mechanism beyond reduced Ca2+ influx, which is an important observation.",
+            "Rescue by CaBP2 expression reverses the efficiency deficit, supporting a causal link to CaBP function.",
+            "The finding that neither single KO shows this exocytosis defect (Picher, 2017; Yang et al., 2018) establishes the novel synergistic phenotype."
+          ],
+          "weaknesses": [
+            "The claim that CaBPs have 'additional roles in synaptic processes' beyond channel modulation is speculative and not directly tested. The reduced efficiency could reflect indirect consequences of altered Ca2+ dynamics (e.g., different Ca2+ microdomain geometry due to faster channel inactivation).",
+            "The exocytosis efficiency calculation assumes a simple linear relationship between QCa and ΔCm, but the relationship between Ca2+ and exocytosis is highly nonlinear and depends on the spatiotemporal profile of Ca2+ signals, which would be fundamentally altered by enhanced inactivation.",
+            "Endocytic contributions to ΔCm measurements during long stimuli could confound the interpretation of sustained exocytosis.",
+            "The authors note but do not adequately address that cells used for train stimuli had lower-than-average inactivation (0.36 vs 0.47), introducing selection bias."
+          ],
+          "alternative_interpretations": [
+            "The apparent reduction in exocytosis efficiency could be entirely explained by the altered spatiotemporal profile of Ca2+ at active zones due to rapid inactivation, rather than a direct CaBP role in vesicle fusion/replenishment.",
+            "If CaV1.3 channels inactivate rapidly during sustained stimulation, the remaining Ca2+ influx may be carried by channels at non-synaptic locations, inflating QCa relative to synaptically relevant Ca2+, thus artifactually reducing the efficiency ratio.",
+            "CaBP1 and 2 modulation of CaMKII (Haeseleer et al., 2000) could affect otoferlin phosphorylation (Meese et al., 2017), but this is entirely speculative without direct evidence."
+          ],
+          "required_assumptions": [
+            "ΔCm/QCa is a valid proxy for exocytosis efficiency, and QCa proportionally reflects Ca2+ available at release sites.",
+            "Endocytic contributions during long stimuli are comparable between genotypes.",
+            "The nonlinear Ca2+-exocytosis relationship does not confound the efficiency calculation."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim of 'additional roles beyond channel modulation' is the weakest part. The reduced efficiency could be a secondary consequence of altered Ca2+ dynamics rather than a direct CaBP role in exocytosis.",
+          "literature_citations": [
+            {
+              "title": "CaBPs modulate CaMKII",
+              "authors": [
+                "Haeseleer"
+              ],
+              "year": 2000,
+              "url": null,
+              "relevance": "Provides a potential mechanism for CaBP effects on exocytosis via CaMKII, but this remains untested.",
+              "stance": "neutral"
+            },
+            {
+              "title": "CaBP2 KO exocytosis",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "No exocytosis defect in single KO establishes that the DKO phenotype is novel.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "Cabp1/2-DKO animals exhibit severe, progressive hearing impairment with drastica…",
+        "claim": "Cabp1/2-DKO animals exhibit severe, progressive hearing impairment with drastically impaired sound encoding by spiral ganglion neurons.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Already in young (3- to 4-week-old) Cabp1/2-DKO animals, ABR thresholds were highly elevated, with tone bursts up to a maximum intensity of 90 dB SPL barely eliciting any ABR response.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "ABR thresholds are unambiguously elevated at 3-4 weeks with clear progression by 7-13 weeks, documented with adequate sample sizes (N=7-9).",
+            "Multi-method assessment (ABR thresholds, wave amplitudes, latencies, SGN single-unit recordings) provides convergent evidence.",
+            "The SGN recording data, despite low yield (0.3 vs 2.5 neurons/hour), shows dramatically impaired sound encoding with quantitative statistics.",
+            "Progressive nature documented across two age groups.",
+            "Consistent with the known DFNB93 phenotype in humans (Schrauwen et al., 2012; Picher, 2017)."
+          ],
+          "weaknesses": [
+            "SGN recordings suffer from severe selection bias: only neurons with residual activity could be detected, potentially missing the most severely affected neurons entirely.",
+            "The classification of some DKO units as SGNs vs cochlear nucleus neurons is acknowledged as uncertain (13 of 16 assumed SGNs, 3 potentially bushy/multipolar cells).",
+            "The authors cannot exclude contributions from impaired mechanotransduction, as noted in the discussion.",
+            "DPOAEs were reduced in about half of DKO animals, complicating the claim that the deficit is purely IHC synaptic."
+          ],
+          "alternative_interpretations": [
+            "Some hearing impairment could reflect outer hair cell dysfunction given the DPOAE abnormalities in ~50% of animals.",
+            "Progressive impairment could reflect neurodegeneration secondary to reduced synaptic activity rather than worsening channel function per se."
+          ],
+          "required_assumptions": [
+            "The hearing impairment is primarily synaptic rather than reflecting mechanotransduction or cochlear amplification deficits.",
+            "The SGN recording yield difference reflects genuine physiological differences rather than technical factors."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The hearing impairment itself is very well documented. The 'progressive' component and attribution to specific mechanisms have some caveats.",
+          "literature_citations": [
+            {
+              "title": "DFNB93 hearing impairment",
+              "authors": [
+                "Schrauwen"
+              ],
+              "year": 2012,
+              "url": null,
+              "relevance": "Human genetic evidence linking CaBP2 mutations to hearing loss, consistent with the mouse DKO phenotype.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 and hearing",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Established CaBP2 KO hearing phenotype; DKO is more severe.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "The functions of CaBP1 and CaBP2 partially overlap at the IHC ribbon synapse, wi…",
+        "claim": "The functions of CaBP1 and CaBP2 partially overlap at the IHC ribbon synapse, with each partially compensating for the loss of the other.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Our findings indicate that the functions of CaBP1 and 2 partially overlap at the IHC ribbon synapse.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The logic is compelling: if DKO >> single KO phenotypes, the remaining CaBP must partially compensate in each single KO.",
+            "This is supported at multiple levels: channel inactivation, exocytosis, hearing thresholds, and SGN spiking.",
+            "Consistent with the high structural homology between CaBP1 and CaBP2 (Haeseleer et al., 2000).",
+            "The observation that CaBP1 loss alone has minimal early effects (Yang et al., 2018) while CaBP2 loss causes progressive impairment (Picher, 2017), yet their combined loss is devastating, logically supports partial overlap with CaBP2 being the more critical player."
+          ],
+          "weaknesses": [
+            "The paper does not directly demonstrate that CaBP1 compensates in Cabp2-KO IHCs (e.g., by showing upregulation of CaBP1 in Cabp2-KO or by rescue experiments with CaBP1 overexpression).",
+            "The conclusion of 'partial overlap' could alternatively reflect non-overlapping additive effects (i.e., each protein independently prevents a fraction of inactivation, and their combined loss is simply additive rather than reflecting functional redundancy).",
+            "No protein-level quantification of CaBP1 in Cabp2-KO IHCs (or vice versa) is provided to test compensatory upregulation."
+          ],
+          "alternative_interpretations": [
+            "Rather than functional overlap (each can do the other's job), the two proteins might independently suppress different aspects or pools of inactivation, and the DKO phenotype is simply additive.",
+            "The synergistic phenotype could partly reflect loss of CaBP heterodimerization or cooperative binding effects rather than simple redundancy."
+          ],
+          "required_assumptions": [
+            "The DKO phenotype reflects direct loss of CaBP function rather than developmental or compensatory changes unique to the DKO.",
+            "CaBP1 and CaBP2 modulate the same pool of CaV1.3 channels."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The claim of partial overlap is well-supported by the comparative phenotypic data, though the mechanistic basis (redundancy vs. additivity) is not resolved.",
+          "literature_citations": [
+            {
+              "title": "CaBP family members",
+              "authors": [
+                "Haeseleer"
+              ],
+              "year": 2000,
+              "url": null,
+              "relevance": "Structural homology between CaBP1 and CaBP2 supports the claim of functional overlap.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP1 KO hearing",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Normal early hearing in CaBP1 KO establishes that CaBP2 compensates.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 KO hearing",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Progressive hearing loss in CaBP2 KO shows incomplete compensation by CaBP1.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "Viral delivery of CaBP2 substantially rescues auditory function in DKO animals, …",
+        "claim": "Viral delivery of CaBP2 substantially rescues auditory function in DKO animals, supporting the view that reversible CaV1.3 inactivation is the main mechanism of hearing loss in CaBP-related deafness and that gene therapy is a viable treatment strategy.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "This successful viral rescue supports the view that a reversible inactivation of IHC CaV1.3 currents is the main mechanism of hearing loss in CaBP-related deafness, which can be targeted by gene therapy in the future.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The rescue experiment is well-designed: viral delivery of CaBP2 produces measurable improvements in CaV1.3 inactivation, exocytosis, and ABR thresholds/amplitudes.",
+            "The approach follows prior successful work (Oestreicher et al., 2021) with the same vector system.",
+            "Suprathreshold ABR responses were restored to WT-like levels, demonstrating substantial functional recovery.",
+            "The partial rescue supports the interpretation that the phenotype is primarily due to reversible channel inactivation rather than irreversible developmental defects."
+          ],
+          "weaknesses": [
+            "The rescue is explicitly incomplete: ABR thresholds did not fully recover, and Ca2+ current inactivation was only partially restored. This undermines the strong claim that 'reversible CaV1.3 inactivation is the main mechanism.'",
+            "The gene therapy uses only the L-isoform of CaBP2, while the alt-isoform may be more abundant in IHCs (Yang et al., 2016). This is a significant design limitation.",
+            "No controls for surgical effects on hearing are mentioned for the injected ears.",
+            "CaBP1 remains absent in rescued animals, so the rescue cannot be attributed solely to CaBP2 restoring normal CaV1.3 function — it may also partly reflect CaBP2 overexpression compensating in ways distinct from its normal function.",
+            "The claim that gene therapy is 'viable' is premature: this is a proof-of-concept in mice with an incomplete rescue, no long-term follow-up data, and no demonstration of safety.",
+            "Possible adverse effects of exogenous CaBP2 overexpression are acknowledged but not systematically assessed."
+          ],
+          "alternative_interpretations": [
+            "The incomplete rescue could indicate that irreversible developmental changes (e.g., reduced BK expression, altered synaptic morphology) contribute significantly to the phenotype and cannot be reversed by later CaBP2 expression.",
+            "The suprathreshold over-recovery (wave I amplitudes larger than expected) might reflect pathological overexpression effects rather than normal restoration.",
+            "Recovery might be partly due to non-specific effects of AAV transduction or surgical procedure."
+          ],
+          "required_assumptions": [
+            "The L-isoform of CaBP2 is functionally equivalent to the native alt-isoform in IHCs.",
+            "The timing of gene delivery (postnatal) is sufficient to reverse effects that may have accumulated during development.",
+            "Partial rescue demonstrates the principle despite incomplete recovery.",
+            "Surgical procedure does not independently affect hearing outcomes."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim about gene therapy viability is the most speculative part of the paper. The rescue data is encouraging but the interpretation overreaches the evidence.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 gene therapy in Cabp2 KO",
+              "authors": [
+                "Oestreicher"
+              ],
+              "year": 2021,
+              "url": null,
+              "relevance": "Prior gene therapy work with same vector system in single KO; this paper extends to DKO.",
+              "stance": "extends"
+            },
+            {
+              "title": "CaBP2 splice variants",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2016,
+              "url": null,
+              "relevance": "Shows alt-isoform may be most abundant in IHCs, raising concern about using L-isoform for rescue.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "The severity of the synaptic phenotype is strongly activity-dependent: even mild…",
+        "claim": "The severity of the synaptic phenotype is strongly activity-dependent: even mild stimulation drives CaV1.3 channels into prolonged inactivation in the absence of CaBPs, and in vivo a large fraction of IHC CaV1.3 channels are predicted to be in a state of prolonged inactivation.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "We propose that in vivo in the absence of CaBP1 and 2 a large fraction of IHC CaV1.3 channels are in a state of prolonged inactivation.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple experimental approaches demonstrate activity-dependence: holding potential variation (-85 to -55 mV), sine wave amplitude variation, and in vivo stimulus rate variation all converge on the same conclusion.",
+            "The in vivo SGN data showing rate-dependent recovery (0.2-0.5 Hz plateau in DKO vs 150 ms in WT) provides compelling physiological validation.",
+            "The 2-min sine wave experiments revealing slow recovery with a double-exponential component in DKO IHCs are novel and informative.",
+            "Consistent with the concept of deep-state inactivation described for other voltage-gated channels (Bezanilla et al., 1982; Payandeh et al., 2012)."
+          ],
+          "weaknesses": [
+            "The prediction that 'in vivo a large fraction of IHC CaV1.3 channels are in a state of prolonged inactivation' is an extrapolation from in vitro data at room temperature. In vivo conditions (body temperature, endogenous Ca2+ buffering, resting potential) may differ substantially.",
+            "The sine wave stimulation protocol is an approximation of in vivo conditions; actual receptor potentials are more complex.",
+            "The paradoxical finding that recovery after 500-ms depolarization is fastest in DKO (where the most inactivation occurs) complicates the interpretation and is explained post hoc with a Ca2+ clearance hypothesis that is not directly tested."
+          ],
+          "alternative_interpretations": [
+            "The activity-dependent worsening could partly reflect rundown of Ca2+ currents or dialysis effects during prolonged recordings rather than solely deep-state inactivation.",
+            "The in vivo stimulus rate effects could partly reflect synaptic vesicle depletion rather than solely CaV1.3 recovery kinetics."
+          ],
+          "required_assumptions": [
+            "In vitro holding potential manipulations and sine wave stimulation adequately model in vivo IHC activity.",
+            "Room temperature recordings faithfully predict in vivo behavior at body temperature.",
+            "The deep-state inactivation model from other channels applies to CaV1.3 in IHCs."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is one of the most interesting and well-supported claims, though the extrapolation to in vivo conditions requires caution.",
+          "literature_citations": [
+            {
+              "title": "Slow inactivation in Nav channels",
+              "authors": [
+                "Bezanilla"
+              ],
+              "year": 1982,
+              "url": null,
+              "relevance": "Conceptual framework for deep-state inactivation applied to CaV1.3.",
+              "stance": "supports"
+            },
+            {
+              "title": "Structural basis of slow inactivation",
+              "authors": [
+                "Payandeh"
+              ],
+              "year": 2012,
+              "url": null,
+              "relevance": "Provides molecular context for slow/deep inactivation states.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The hearing impairment in DKO animals is primarily due to defects in IHC functio…",
+        "claim": "The hearing impairment in DKO animals is primarily due to defects in IHC function rather than SGN dysfunction or impaired cochlear amplification.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Since Cabp1 KO animals show normal hearing several weeks after birth, and CaBP2 is absent from SGNs, we interpret the hearing impairment of the Cabp1/2 DKO animals to be primarily due to defects of hair cell function and judge contribution by SGN dysfunction as rather unlikely",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The argument is logical: CaBP2 is absent from SGNs (Yang et al., 2016), and CaBP1 KO alone has normal early hearing (Yang et al., 2018), so SGN dysfunction from CaBP1 loss alone should be minimal.",
+            "The DPOAE data suggests largely preserved cochlear amplification in most DKO animals.",
+            "The IHC-level electrophysiology (channel inactivation, exocytosis impairment) provides a clear mechanism for the hearing deficit."
+          ],
+          "weaknesses": [
+            "DPOAEs are reduced in ~50% of DKO animals, which the authors acknowledge but downplay. This suggests outer hair cell dysfunction may contribute in a significant fraction of animals.",
+            "The paper does not directly test or rule out SGN dysfunction. CaBP1 (caldendrin isoform) is expressed in SGNs (Yang et al., 2016), and its loss could affect SGN excitability or survival, particularly in combination with reduced synaptic drive.",
+            "The BK channel reduction could affect IHC receptor potentials and thus contribute to hearing impairment through a mechanism distinct from synaptic CaV1.3 inactivation.",
+            "The authors cannot exclude mechanotransduction defects, as they explicitly acknowledge, and note similarities between CaBPs and CIB2 (associated with hair bundle defects).",
+            "No direct recordings of IHC receptor potentials are provided."
+          ],
+          "alternative_interpretations": [
+            "SGN dysfunction due to loss of caldendrin (CaBP1 splice variant) could contribute to hearing impairment, especially at later ages.",
+            "Outer hair cell dysfunction (evidenced by reduced DPOAEs in half the animals) could contribute significantly to elevated thresholds.",
+            "Reduced BK channel expression could impair IHC receptor potential dynamics, contributing to hearing loss independently of CaV1.3 inactivation.",
+            "CaBP interactions with CIB2 or mechanotransduction components (Giese et al., 2017; Riazuddin et al., 2012) could affect hair bundle function."
+          ],
+          "required_assumptions": [
+            "CaBP1 loss in SGNs does not significantly affect SGN function.",
+            "Outer hair cell dysfunction in ~50% of animals is either minor or unrelated to CaBP loss.",
+            "BK channel reduction does not significantly contribute to the hearing phenotype.",
+            "Mechanotransduction is normal in DKO IHCs."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This claim requires multiple assumptions that are not directly tested. The DPOAE findings in particular weaken the claim that cochlear amplification is fully preserved.",
+          "literature_citations": [
+            {
+              "title": "CaBP expression in cochlea",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2016,
+              "url": null,
+              "relevance": "Shows CaBP2 absent from SGNs but caldendrin present, relevant to SGN contribution assessment.",
+              "stance": "neutral"
+            },
+            {
+              "title": "CaBP1 KO hearing",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Normal early hearing in CaBP1 KO supports the IHC-centric interpretation.",
+              "stance": "supports"
+            },
+            {
+              "title": "CIB2 and hair bundle defects",
+              "authors": [
+                "Giese"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Structural similarity to CaBPs raises possibility of mechanotransduction effects.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "500-ms depolarization steps reveal pronounced inactivation of CaV1.3 channels in…",
+        "claim": "500-ms depolarization steps reveal pronounced inactivation of CaV1.3 channels in DKO IHCs, significantly stronger than in Cabp1 or Cabp2 single KOs measured in comparable conditions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This was significantly stronger when compared to the inactivation observed in the IHCs of Cabp1 or Cabp2 single KOs in similar conditions",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct measurement with 500-ms depolarization steps is a standard protocol for assessing CaV inactivation.",
+            "Comparison with single KO data from Picher (2017) and Yang et al. (2018) is provided.",
+            "Statistical significance is reported.",
+            "The comparison extends to physiological temperature data from Cabp2-KO (Figure 1 supplement 1D)."
+          ],
+          "weaknesses": [
+            "The single KO comparison data was acquired in different studies under potentially different conditions (e.g., Cabp2-KO data from mid-cochlear positions, different ages).",
+            "The paper combines WT data from current and previous studies, which introduces potential batch effects.",
+            "Exact p-values and sample sizes for the cross-study comparisons are not always clearly stated."
+          ],
+          "alternative_interpretations": [
+            "Differences could be partly due to tonotopic position effects rather than purely genotype effects."
+          ],
+          "required_assumptions": [
+            "Cross-study comparisons with different recording conditions are valid.",
+            "Tonotopic position differences between the Cabp2-KO and DKO recordings do not confound the comparison."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim is supported but the cross-study comparison introduces uncertainties.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 and CaV1.3 inactivation",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Source of Cabp2-KO comparison data.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP1 KO IHC phenotype",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Source of Cabp1-KO comparison data.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "Both VDI and CDI are significantly enhanced in DKO IHCs, with VDI approximately …",
+        "claim": "Both VDI and CDI are significantly enhanced in DKO IHCs, with VDI approximately 2-fold and CDI approximately 6-fold larger than in WT.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "VDI: 0.30 ± 0.02 vs 0.13 ± 0.02 and CDI: 0.65 ± 0.01 vs 0.11 ± 0.02 in Cabp1/2 DKO and WT IHCs, respectively; p < 0.0001",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantification with mean ± SEM and p-values provided.",
+            "Ba2+/Ca2+ comparison using Tadross et al. (2010) methodology is rigorous.",
+            "The 6-fold increase in CDI is particularly striking and represents a major finding."
+          ],
+          "weaknesses": [
+            "Sample sizes for the 2 mM divalent conditions are stated in the supplement (n=13 for DKO) but not in the main text for VDI/CDI specifically.",
+            "The use of Student's t-test assumes normal distribution, which is not verified."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Ba2+ does not affect VDI differently than Ca2+ beyond eliminating CDI.",
+            "Data are normally distributed for t-test validity."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-quantified direct measurements.",
+          "literature_citations": [
+            {
+              "title": "Quantitative CDI/VDI analysis",
+              "authors": [
+                "Tadross"
+              ],
+              "year": 2010,
+              "url": null,
+              "relevance": "Methodology used for separating VDI and CDI.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "Maximal Ca2+-current amplitudes upon short stimuli are comparable between DKO an…",
+        "claim": "Maximal Ca2+-current amplitudes upon short stimuli are comparable between DKO and WT IHCs, indicating that channel expression/density is not grossly affected.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Short stimuli at different potentials revealed maximal Ca2+-current amplitudes in the IHCs of DKO mice that were comparable to controls",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "IV curves from short stimuli (Figure 1E) directly demonstrate comparable peak amplitudes.",
+            "This is consistent with normal CaV1.3 immunofluorescence clustering (Figure 5A).",
+            "Important control showing that the inactivation phenotype is not due to reduced channel expression."
+          ],
+          "weaknesses": [
+            "The IV curves in Figure 1E actually show 'slightly reduced amplitudes' in injected DKO IHCs, raising the question of whether a mild reduction also exists in non-injected DKO (though the text states they are comparable).",
+            "No statistical test is reported for the peak amplitude comparison between DKO and WT."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Short stimuli are brief enough to avoid significant inactivation.",
+            "Peak current reflects total functional channel number."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The lack of a formal statistical comparison of peak amplitudes is a minor weakness but the IV curves appear convincing.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "A small but significant shift in voltage dependence of CaV1.3 activation toward …",
+        "claim": "A small but significant shift in voltage dependence of CaV1.3 activation toward more hyperpolarized values occurs in DKO IHCs, which is surprising because the opposite would be expected from heterologous expression data.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This finding is somewhat surprising as the opposite would be expected based on data from heterologous expression systems",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The shift in V0.5 (~2.7 mV) is statistically significant (p<0.0001) with quantified values.",
+            "The authors honestly acknowledge that the direction is opposite to expectations from heterologous expression data (Haeseleer et al., 2004; Picher, 2017; Shaltiel et al., 2012).",
+            "The persistence of the shift upon CaBP2 re-expression is informative."
+          ],
+          "weaknesses": [
+            "The biological significance of a ~2.7 mV shift is unclear.",
+            "The authors cannot explain the discrepancy with heterologous expression data, acknowledging possible changes in splice variants or auxiliary subunits.",
+            "This finding weakens the simple interpretation that CaBPs directly modulate CaV1.3 gating in a predictable manner."
+          ],
+          "alternative_interpretations": [
+            "The shift could reflect compensatory changes in CaV1.3 splice variant composition or auxiliary subunit expression rather than a direct CaBP effect on activation.",
+            "In heterologous systems (Haeseleer et al., 2004), CaBP effects may differ due to absence of native IHC protein partners."
+          ],
+          "required_assumptions": [
+            "The shift is a genuine biophysical effect rather than an artifact of the recording conditions."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The surprise finding is transparently reported but unexplained, which is appropriate.",
+          "literature_citations": [
+            {
+              "title": "CaBP effects on CaV gating in heterologous systems",
+              "authors": [
+                "Haeseleer"
+              ],
+              "year": 2004,
+              "url": null,
+              "relevance": "Shows opposite V0.5 shift in heterologous expression, contradicting the native IHC finding.",
+              "stance": "contradicts"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "Ca2+ currents are greatly reduced upon short train stimuli in DKO IHCs.",
+        "claim": "Ca2+ currents are greatly reduced upon short train stimuli in DKO IHCs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Similarly, Ca2+ currents were greatly reduced upon application of short train stimuli",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Train stimuli directly test the functional impact of channel inactivation during repetitive activity.",
+            "Rescue by CaBP2 expression validates the finding."
+          ],
+          "weaknesses": [
+            "The authors explicitly note selection bias: cells used for train stimuli had lower-than-average inactivation (0.36 vs 0.47 for DKO), making the train results an underestimate of the true deficit.",
+            "Small sample size (n=5) for the train protocol.",
+            "The reduced current during trains could partly reflect use-dependent block by intracellular Cs+ rather than solely inactivation."
+          ],
+          "alternative_interpretations": [
+            "The cells selected for train protocols may not be representative of the DKO population."
+          ],
+          "required_assumptions": [
+            "The cells selected for train recordings are representative (despite the acknowledged bias).",
+            "Cs+-based solutions do not differentially affect DKO vs WT channels during train stimulation."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Selection bias is honestly reported but undermines generalizability. See also c1.1.5.1.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "CaV1.3 channel clustering and presynaptic morphology appear normal in DKO IHCs, …",
+        "claim": "CaV1.3 channel clustering and presynaptic morphology appear normal in DKO IHCs, with comparable ribbon synapse numbers.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Immunolabeling of the organs of Corti indicated normal presynaptic CaV1.3 clustering with no apparent change in size or shape of the clusters",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct immunofluorescence imaging of CaV1.3 clusters and ribbon synapses.",
+            "Quantification of ribbon synapse numbers (12.9 vs 12.8) with small SEM values.",
+            "Consistent with preserved peak Ca2+ current amplitudes."
+          ],
+          "weaknesses": [
+            "Immunofluorescence is semi-quantitative; no biochemical quantification of CaV1.3 protein levels.",
+            "Normal 'appearance' of clusters does not rule out subtle changes in channel density or composition."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Immunofluorescence intensity and cluster morphology reflect functional channel density."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim is well-supported by both immunostaining and electrophysiology (comparable peak currents).",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Exocytosis in response to short stimuli (recruiting the RRP) is comparable betwe…",
+        "claim": "Exocytosis in response to short stimuli (recruiting the RRP) is comparable between DKO and WT, while sustained exocytosis evoked by long stimuli is significantly reduced.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In response to short stimuli [primarily recruiting the readily releasable pool (RRP) of vesicles], increases in capacitance were comparable, while long stimuli (reporting sustained exocytosis) evoked significantly smaller responses",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Capacitance measurements with graded pulse durations systematically probe RRP and sustained exocytosis.",
+            "Statistical significance demonstrated at multiple time points (p<0.05 for 20 ms, p<0.001 for 100-200 ms).",
+            "Complementary QCa data shows reduced Ca2+ influx for longer pulses (p<0.005).",
+            "The dissociation between short (comparable) and long (impaired) stimuli logically follows from channel inactivation kinetics."
+          ],
+          "weaknesses": [
+            "Holding potential of -85 mV is not physiological, and the authors themselves argue it underestimates the phenotype.",
+            "The boundary between 'RRP' and 'sustained' exocytosis depends on the somewhat arbitrary distinction between short and long stimuli."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Capacitance measurements faithfully report exocytosis.",
+            "Endocytic contributions are comparable between genotypes for the time points measured."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-executed standard IHC exocytosis measurement.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "The reduction in sustained exocytosis cannot completely be explained by diminish…",
+        "claim": "The reduction in sustained exocytosis cannot completely be explained by diminished Ca2+ influx; exocytosis efficiency (ΔCm/QCa) is also reduced, suggesting an additional impairment in exo- or endocytic processes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "calculating exocytosis efficiency revealed that the reduction in sustained exocytosis cannot completely be explained by the diminished Ca2+ influx",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The reduced ΔCm/QCa ratio is statistically significant (p<0.005 for longest pulses).",
+            "Rescue by CaBP2 expression reverses the efficiency deficit, supporting its link to CaBP function."
+          ],
+          "weaknesses": [
+            "The ΔCm/QCa ratio assumes a linear relationship between whole-cell Ca2+ charge and exocytosis, but the Ca2+-exocytosis relationship is highly nonlinear and depends on Ca2+ concentration at release sites, not total charge.",
+            "Rapid CaV1.3 inactivation would dramatically alter the spatiotemporal Ca2+ profile at active zones. This alone could account for reduced efficiency without invoking additional exo/endocytic defects.",
+            "Endocytosis during long stimuli would reduce net ΔCm, potentially more so in conditions of less exocytosis (DKO), artifactually reducing the efficiency ratio.",
+            "The claim of 'additional impairment in exo- or endocytic processes' is stated to have an 'unknown underlying mechanism,' making it essentially speculative."
+          ],
+          "alternative_interpretations": [
+            "The altered Ca2+ microdomain profile due to rapid inactivation could fully account for reduced efficiency without any direct CaBP role in exocytosis.",
+            "Enhanced endocytosis (compensatory response to reduced exocytosis) could reduce net ΔCm and thus apparent efficiency."
+          ],
+          "required_assumptions": [
+            "QCa is a valid proxy for Ca2+ available at release sites.",
+            "Endocytic contributions are equal between genotypes.",
+            "The Ca2+-exocytosis relationship is sufficiently linear for the efficiency ratio to be meaningful."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The statistical observation is real but the interpretation (additional exocytic/endocytic impairment) is one of several possibilities and not directly tested.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Such exocytosis defect was not observed in either Cabp2-KO or Cabp1-KO single mu…",
+        "claim": "Such exocytosis defect was not observed in either Cabp2-KO or Cabp1-KO single mutants.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Such exocytosis defect was not observed in Cabp2-KOs, suggesting that when IHCs are held at hyperpolarized potential at RT, CaBP1 provides sufficient compensation to obscure the synaptic phenotype",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "References to published data (Picher, 2017; Yang et al., 2018) provide the comparison with single KOs.",
+            "The lack of exocytosis defect in single KOs combined with the strong DKO defect is the key novel finding establishing synergistic roles."
+          ],
+          "weaknesses": [
+            "Cross-study comparison introduces potential confounds from different recording conditions.",
+            "The explanation that 'CaBP1 provides sufficient compensation' in Cabp2-KO at hyperpolarized holding potential/RT is an interpretation, not a directly tested mechanism."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The absence of exocytosis defects in single KOs is a genuine result rather than a failure to detect a subtle phenotype."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-supported by published literature.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 KO exocytosis",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Normal exocytosis in Cabp2-KO at hyperpolarized holding potential.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP1 KO IHC",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "No obvious IHC defects in CaBP1 KO.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "CaBPs may have direct roles in exocytosis beyond channel modulation, potentially…",
+        "claim": "CaBPs may have direct roles in exocytosis beyond channel modulation, potentially affecting vesicle coupling, otoferlin function via CaMKII modulation, or expression of other synaptic proteins.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "it is worth noting that CaBP1 and 2 have been reported to modulate CaMKII activity, which in turn may through phosphorylation modify the Ca2+ affinity of otoferlin C2 domains",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The hypothesis is biologically plausible: CaBPs are known to modulate CaMKII (Haeseleer et al., 2000), and CaMKII can phosphorylate otoferlin (Meese et al., 2017).",
+            "The paper correctly identifies this as a hypothesis requiring future testing."
+          ],
+          "weaknesses": [
+            "No experimental evidence is presented in this paper to support direct CaBP roles in exocytosis.",
+            "The cited interactions (CaBP-CaMKII, CaMKII-otoferlin) are from different systems and have not been demonstrated in IHCs.",
+            "The reduced exocytosis efficiency could be fully explained by altered Ca2+ dynamics without invoking additional mechanisms (see c1.2.2).",
+            "Multiple alternative mechanisms are listed without any being tested."
+          ],
+          "alternative_interpretations": [
+            "All exocytosis changes could be secondary to altered Ca2+ channel kinetics without any direct CaBP role in vesicle fusion."
+          ],
+          "required_assumptions": [
+            "CaBPs interact with exocytic machinery in IHCs.",
+            "The reduced exocytosis efficiency is not fully explained by altered Ca2+ dynamics."
+          ],
+          "supporting_evidence_quality": "absent",
+          "notes": "This is explicitly a speculative hypothesis, not a supported claim. The paper is transparent about this.",
+          "literature_citations": [
+            {
+              "title": "CaBPs modulate CaMKII",
+              "authors": [
+                "Haeseleer"
+              ],
+              "year": 2000,
+              "url": null,
+              "relevance": "Provides the mechanistic basis for the hypothesis.",
+              "stance": "neutral"
+            },
+            {
+              "title": "CaMKII phosphorylation of otoferlin",
+              "authors": [
+                "Meese"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Links CaMKII to synaptic function, supporting the hypothetical pathway.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "ABR thresholds are highly elevated in young (3-4 week old) DKO animals and furth…",
+        "claim": "ABR thresholds are highly elevated in young (3-4 week old) DKO animals and further worsen with age.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "At 7–13 weeks of age, further worsening of the click thresholds was observed (68 ± 5 dB SPL in DKO vs 30 ± 1 dB SPL in WT mice)",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "ABR thresholds are quantified at two age groups with adequate sample sizes (N=7-9).",
+            "Progressive worsening (59→68 dB SPL clicks) is documented.",
+            "Tone burst thresholds at 90 dB SPL ceiling demonstrate severe impairment.",
+            "Consistent with human DFNB93 phenotype (Picher, 2017; Schrauwen et al., 2012)."
+          ],
+          "weaknesses": [
+            "For tone burst thresholds exceeding 90 dB, an arbitrary value of 100 dB was assigned, which limits quantitative precision.",
+            "The progressive component between 3-4 weeks and 7-13 weeks could reflect cochlear aging on the C57Bl/6 background (known for early-onset hearing loss) rather than solely CaBP-related progression."
+          ],
+          "alternative_interpretations": [
+            "C57Bl/6 background carries the Cdh23ahl mutation causing age-related hearing loss, which could contribute to the progressive component."
+          ],
+          "required_assumptions": [
+            "The C57Bl/6 background does not significantly confound the DKO phenotype at the ages tested.",
+            "Arbitrary threshold assignment at ceiling does not distort the comparison."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-documented with standard methods.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 and DFNB93",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Established progressive hearing loss in Cabp2-KO mice on the same background.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "SGN sound encoding is drastically impaired, with greatly reduced peak and adapte…",
+        "claim": "SGN sound encoding is drastically impaired, with greatly reduced peak and adapted firing rates, enhanced adaptation, increased first spike latency and jitter, and reduced spontaneous rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "16 out of 19 DKO units responded with a relatively high onset rate but strong adaptation to a minimal sustained spiking",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Single-unit recordings provide direct evidence of SGN dysfunction in vivo.",
+            "Multiple metrics (peak rate, adapted rate, latency, jitter, spontaneous rate) are quantified with statistical tests.",
+            "The rate-dependent recovery data is particularly informative for understanding the mechanism."
+          ],
+          "weaknesses": [
+            "Severe selection bias: only 0.3 neurons/hour vs 2.5 in WT, meaning most DKO neurons were undetectable.",
+            "Classification uncertainty: 13/16 assumed SGNs, 3 possibly cochlear nucleus neurons.",
+            "High-intensity stimulation (80+ dB) was required, making direct comparison with WT suprathreshold responses problematic.",
+            "Small sample size (16-19 DKO units analyzed)."
+          ],
+          "alternative_interpretations": [
+            "The detected DKO units may represent the least affected neurons, meaning the true impairment is even worse than reported.",
+            "Some 'SGN' responses could be cochlear nucleus neurons, confounding the interpretation."
+          ],
+          "required_assumptions": [
+            "The detected DKO neurons are representative of the SGN population (or at least of its least affected fraction).",
+            "Unit classification is reasonably accurate despite the acknowledged uncertainty."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Selection bias is the main concern but is honestly discussed. The low yield itself is informative evidence of severe dysfunction.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "Cochlear amplification by outer hair cells is largely preserved in DKO animals.",
+        "claim": "Cochlear amplification by outer hair cells is largely preserved in DKO animals.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Our results suggest that cochlear amplification is largely preserved also in DKO animals",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "DPOAEs were measured at two age groups and show preservation in approximately half of animals.",
+            "Consistent with prior data showing intact OHC function in Cabp2-KO (Yang et al., 2018; Picher, 2017)."
+          ],
+          "weaknesses": [
+            "About half of DKO animals showed reduced DPOAEs, which is not 'largely preserved' — it suggests a variable OHC phenotype that is not 'largely preserved' across the population.",
+            "At 7-13 weeks, DPOAE threshold increase was significant (p<0.002, two-way ANOVA), undermining the 'largely preserved' characterization.",
+            "The qualifier 'largely' is doing substantial work in this claim."
+          ],
+          "alternative_interpretations": [
+            "The DPOAE data actually suggests partial OHC dysfunction in a significant subset of DKO animals, which could contribute to hearing thresholds.",
+            "Variable DPOAE outcomes could reflect variable penetrance of the CaBP DKO effect on OHCs."
+          ],
+          "required_assumptions": [
+            "Reduced DPOAEs in half the animals do not significantly contribute to ABR threshold elevation.",
+            "DPOAE changes are secondary rather than primary effects of CaBP loss."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The characterization of cochlear amplification as 'largely preserved' is somewhat generous given that ~50% of animals show reduced DPOAEs. This affects c1.7.",
+          "literature_citations": [
+            {
+              "title": "CaBP1 KO DPOAEs",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Normal DPOAEs in CaBP1-KO supports OHC-independent phenotype.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 and OHC function",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Intact OHC function in Cabp2-KO.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "IHC maturation proceeds largely normally in DKO animals (SK2 downregulation, BK …",
+        "claim": "IHC maturation proceeds largely normally in DKO animals (SK2 downregulation, BK transition), but BK channel clusters are significantly smaller and fewer, and pre- and postsynaptic immunofluorescence intensities are increased.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As expected for normal maturation, the SK2 puncta were mostly absent from DKO IHCs by 3 weeks of age and the BK puncta underwent a typical transition",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SK2 downregulation and BK transition pattern documented by immunofluorescence, indicating normal maturational program.",
+            "BK cluster quantification using Imaris with adequate sample size (N=6 organs per genotype) and strong statistical significance (p<0.0001).",
+            "Pre/postsynaptic intensity changes quantified with large numbers of immunospots (614 and 441).",
+            "Partial rescue of BK by CaBP2 expression provides additional evidence.",
+            "Similar findings in other CaV1.3 channelopathies (Eckrich et al., 2019; Brandt et al., 2003) provide context."
+          ],
+          "weaknesses": [
+            "BK channel quantification by immunofluorescence volume is semi-quantitative and influenced by antibody staining variability.",
+            "The mechanism linking CaBP loss to BK reduction is speculative (transcription factor hypothesis).",
+            "Occasional SK2 spots in 3-week DKO IHCs are noted but also seen in some WT IHCs, making their significance unclear."
+          ],
+          "alternative_interpretations": [
+            "BK reduction could be secondary to reduced Ca2+ signaling during development (as in CaV1.3 KO, Brandt et al., 2003) rather than a direct CaBP effect.",
+            "Increased synaptic puncta intensity could reflect reduced synaptic activity leading to compensatory postsynaptic scaling."
+          ],
+          "required_assumptions": [
+            "Immunofluorescence volume is a valid proxy for channel protein abundance.",
+            "BK changes are secondary to CaBP loss rather than an independent phenotype."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-quantified morphological data.",
+          "literature_citations": [
+            {
+              "title": "CaV1.3 channelopathy and IHC maturation",
+              "authors": [
+                "Brandt"
+              ],
+              "year": 2003,
+              "url": null,
+              "relevance": "Similar BK changes in CaV1.3 mutants support the indirect mechanism.",
+              "stance": "supports"
+            },
+            {
+              "title": "IHC development in CaV1.3 mutants",
+              "authors": [
+                "Eckrich"
+              ],
+              "year": 2019,
+              "url": null,
+              "relevance": "Altered synaptic morphology in other CaV1.3 channelopathies.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Loss of CaBP2 alone results in early-onset, progressive hearing impairment in mi…",
+        "claim": "Loss of CaBP2 alone results in early-onset, progressive hearing impairment in mice and DFNB93 in humans.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "Deletion of CaBP2 results in an early-onset, progressive hearing impairment in the KO mouse model and moderate to severe hearing impairment, DFNB93, in affected human patients",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Well-established in prior literature: mouse model (Picher, 2017) and human genetic studies (Schrauwen et al., 2012; Koohiyan, 2019; Sheyanth et al., 2021; Tabatabaiefar et al., 2011).",
+            "Not a novel claim in this paper — citing prior published evidence."
+          ],
+          "weaknesses": [],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is background context, not a novel finding of this paper.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 mutations and DFNB93",
+              "authors": [
+                "Schrauwen"
+              ],
+              "year": 2012,
+              "url": null,
+              "relevance": "Original identification of DFNB93.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 KO mouse model",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Mouse model showing progressive hearing impairment.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Loss of CaBP1 alone leaves hearing unperturbed in the first few months after bir…",
+        "claim": "Loss of CaBP1 alone leaves hearing unperturbed in the first few months after birth.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Introduction",
+        "verbatim_quote": "Loss of CaBP1 in mice, on the other hand, leaves hearing unperturbed in the first few months after birth",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Directly supported by Yang et al. (2018), who showed normal ABR thresholds in CaBP1-KO at 4 weeks.",
+            "Not a novel claim in this paper."
+          ],
+          "weaknesses": [
+            "Yang et al. (2018) also showed that CaBP1-KO hearing deteriorates starting at 9 weeks, so 'first few months' may be generous."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Background context from prior work.",
+          "literature_citations": [
+            {
+              "title": "CaBP1 KO hearing",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Source data for this claim.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "The DKO phenotype is significantly more severe than either single KO at every le…",
+        "claim": "The DKO phenotype is significantly more severe than either single KO at every level of analysis (channel inactivation, exocytosis, SGN firing, ABR thresholds), demonstrating that each CaBP partially compensates for loss of the other.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The impairment was significantly stronger as compared to the phenotype in the absence of CaBP2 alone. This suggests that under in vivo conditions the roles of CaBP1 and 2 are partially overlapping.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Systematic comparison across multiple levels (inactivation: Figure 1C; exocytosis: Figure 3; SGN spiking: in vivo recordings; ABR: Figure 6) consistently shows DKO > single KO impairment.",
+            "The dramatically enhanced CDI in DKO (6-fold vs WT) compared to modest effects in single KOs is the strongest evidence.",
+            "The novel exocytosis impairment in DKO but not single KOs directly demonstrates non-redundant cumulative roles."
+          ],
+          "weaknesses": [
+            "Some comparisons with single KOs rely on published data from different studies/conditions.",
+            "The paper does not systematically record from all genotypes (WT, Cabp1-KO, Cabp2-KO, DKO) side by side."
+          ],
+          "alternative_interpretations": [
+            "The effects could be additive rather than synergistic, meaning 'partial compensation' may be an overinterpretation — the two proteins might independently suppress different fractions of inactivation."
+          ],
+          "required_assumptions": [
+            "Cross-study comparisons are valid for establishing the hierarchy of phenotype severity."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The comparative analysis is compelling despite reliance on published data for single KOs.",
+          "literature_citations": [
+            {
+              "title": "CaBP1 KO",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Single KO comparison data.",
+              "stance": "supports"
+            },
+            {
+              "title": "CaBP2 KO",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "Single KO comparison data.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "CaBP1 cannot fully replace CaBP2 in CaBP2-deficient IHCs, possibly due to too lo…",
+        "claim": "CaBP1 cannot fully replace CaBP2 in CaBP2-deficient IHCs, possibly due to too low concentration of CaBP1 or distinct functional properties enabling CaBP2 to exert more potent suppression of CaV1.3 inactivation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The inability of CaBP1 to fully replace CaBP2 in the CaBP2-deficient IHCs may stem from either too low concentration of CaBP1 (and other CaBPs), or from distinct properties of the two proteins",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logical reasoning is sound: if CaBP1 fully compensated, Cabp2-KO would have no phenotype, but it does (Picher, 2017).",
+            "Two plausible explanations (concentration and distinct properties) are offered."
+          ],
+          "weaknesses": [
+            "Neither explanation is experimentally tested in this paper.",
+            "No measurement of CaBP1 protein levels in Cabp2-KO IHCs.",
+            "No overexpression of CaBP1 in Cabp2-KO to test whether sufficient CaBP1 could compensate."
+          ],
+          "alternative_interpretations": [
+            "CaBP1 may suppress a different subset of CaV1.3 inactivation (e.g., CDI vs VDI) rather than simply being less potent or less abundant.",
+            "Expression timing differences could matter — if CaBP1 expression changes with age, compensation could be dynamic."
+          ],
+          "required_assumptions": [
+            "The inability to compensate reflects either quantity or quality differences between CaBP1 and CaBP2."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Reasonable interpretation but essentially speculative without supporting experiments.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 and VDI",
+              "authors": [
+                "Picher"
+              ],
+              "year": 2017,
+              "url": null,
+              "relevance": "CaBP2 loss primarily affects VDI, suggesting functional distinction from CaBP1.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Transgenic CaBP2 expression partially restores the non-inactivating nature of IH…",
+        "claim": "Transgenic CaBP2 expression partially restores the non-inactivating nature of IHC CaV1.3 channels in DKO IHCs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The 'non-inactivating' nature of the IHC CaV1.3 channels was partially restored in the Cabp1/2-DKOs by transgenic expression of WT CaBP2",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct electrophysiological measurement with p<0.0001.",
+            "Clear partial restoration visible in Figure 1B traces.",
+            "Consistent with prior CaBP2 rescue in single KO (Oestreicher et al., 2021)."
+          ],
+          "weaknesses": [
+            "Rescue is partial, not complete, leaving uncertainty about the extent of CaBP2's contribution vs CaBP1's.",
+            "The L-isoform was used rather than the potentially more abundant alt-isoform.",
+            "No dose-response or expression level correlation provided."
+          ],
+          "alternative_interpretations": [
+            "Partial rescue could reflect inadequate expression levels or timing rather than a fundamental inability of CaBP2 alone to fully compensate."
+          ],
+          "required_assumptions": [
+            "CaBP2 L-isoform provides functionally relevant modulation of CaV1.3 in IHCs.",
+            "Viral expression is sufficient and reaches the relevant cellular compartments."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-supported claim of partial restoration.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 rescue in Cabp2-KO",
+              "authors": [
+                "Oestreicher"
+              ],
+              "year": 2021,
+              "url": null,
+              "relevance": "Prior rescue work with same approach.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Transgenic CaBP2 expression largely restores exocytosis efficiency and sustained…",
+        "claim": "Transgenic CaBP2 expression largely restores exocytosis efficiency and sustained exocytosis in DKO IHCs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Transgenic expression of CaBP2 largely restored the efficiency of exocytosis, indicating that the impairment as observed in the IHCs of DKOs is related to the absence of the CaBPs.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Statistical significance demonstrated: ΔCm improved for 100- and 200-ms steps (p<0.01), QCa for 200-ms step (p<0.05).",
+            "Exocytosis efficiency also recovered (p<0.01 and 0.05 for 100- and 200-ms pulses).",
+            "Restoration of both Ca2+ influx and exocytosis supports the channel-mediated mechanism."
+          ],
+          "weaknesses": [
+            "Rescue is described as 'largely' restored but quantitative comparison with WT is not provided for all metrics.",
+            "The exocytosis efficiency recovery could partly reflect CaBP2 overexpression effects rather than restoration of normal function."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The improved exocytosis reflects restored Ca2+ channel function rather than CaBP2 effects on exocytic machinery."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-supported by multiple statistical comparisons.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "ABR thresholds are significantly improved, wave I amplitudes strongly recovered,…",
+        "claim": "ABR thresholds are significantly improved, wave I amplitudes strongly recovered, and wave I latency shortened upon CaBP2 gene transfer in DKO animals.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Transgenic expression of CaBP2 in DKO animals led to significantly improved hearing with lower ABR thresholds, increased click-evoked ABR amplitudes, and shortened wave I latency",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "ABR wave I amplitude recovery with p≤0.0001 is very strong.",
+            "Threshold improvement significant for all tone burst frequencies and clicks.",
+            "Latency improvement adds functional relevance.",
+            "Multiple statistical tests (Tukey's multicomparison, Šidak's) appropriately used."
+          ],
+          "weaknesses": [
+            "Thresholds did not fully recover to WT levels.",
+            "No non-injected surgical control (sham) to exclude surgical effects.",
+            "Contralateral ear also showed some eGFP expression, potentially confounding bilateral comparisons."
+          ],
+          "alternative_interpretations": [
+            "Some threshold improvement could reflect natural maturation or surgical-related changes rather than CaBP2 expression."
+          ],
+          "required_assumptions": [
+            "The surgical procedure itself does not improve hearing.",
+            "Contralateral eGFP expression does not confound the analysis."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Strong statistical evidence for functional recovery.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "Suprathreshold ABR responses (summated waves I-IV) were restored to WT-like leve…",
+        "claim": "Suprathreshold ABR responses (summated waves I-IV) were restored to WT-like levels, but tone burst and click thresholds did not completely recover, suggesting potentially distinct CaBP requirements at different synapse types.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "suprathreshold responses of ABR wave I were very large and the summated wave I–IV responses were not distinguishable from WT responses. However, tone burst and click thresholds did not completely recover to WT levels.",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Suprathreshold data (wave I-IV summation) directly compared to WT with no statistical difference.",
+            "The dissociation between threshold and suprathreshold recovery is an interesting observation."
+          ],
+          "weaknesses": [
+            "The interpretation of 'distinct CaBP requirements at different synapse types' is speculative — no direct evidence for differential CaBP distribution across ribbon AZs.",
+            "Multiple alternative explanations are provided but none tested.",
+            "The wave I over-recovery raises questions about whether the rescue produces a physiologically normal state."
+          ],
+          "alternative_interpretations": [
+            "Incomplete threshold rescue could reflect timing of intervention rather than synapse-specific CaBP requirements.",
+            "CaBP2 overexpression could enhance high-threshold SGN responses while not fully restoring low-threshold responses, without invoking different CaBP requirements at different AZs."
+          ],
+          "required_assumptions": [
+            "Threshold and suprathreshold responses depend on different populations of synapses/SGN fibers with potentially different CaBP requirements."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The observation is interesting but the interpretation is speculative.",
+          "literature_citations": [
+            {
+              "title": "Ribbon AZ heterogeneity",
+              "authors": [
+                "Ohn"
+              ],
+              "year": 2016,
+              "url": null,
+              "relevance": "Describes voltage activation differences across AZs, relevant to differential CaBP requirements.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.5",
+        "label": "The lack of complete rescue may be due to inadequate transgenic expression, irre…",
+        "claim": "The lack of complete rescue may be due to inadequate transgenic expression, irreversible adaptive changes prior to gene delivery, or confounding effects of CaBP1 absence.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The lack of complete recovery suggests either an inadequate expression of transgenic material or irreversible adaptive changes in response to the lack of major CaBPs that may occur prior to gene delivery.",
+        "evaluation": {
+          "node_id": "c1.5.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Multiple plausible explanations are offered for incomplete rescue.",
+            "The possibility of irreversible changes is consistent with the BK channel reduction observed."
+          ],
+          "weaknesses": [
+            "None of the explanations are experimentally tested.",
+            "The distinction between 'inadequate expression' and 'irreversible changes' cannot be made from the data.",
+            "No dose-response data (expression level vs rescue extent) is provided."
+          ],
+          "alternative_interpretations": [
+            "Use of the wrong isoform (L vs alt) could explain incomplete rescue.",
+            "Late timing of gene delivery could mean critical developmental windows were missed.",
+            "CaBP2 overexpression could have adverse effects that counteract rescue (Oestreicher et al., 2021)."
+          ],
+          "required_assumptions": [
+            "At least one of the proposed explanations is correct."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Honest acknowledgment of limitations but no data to discriminate between explanations.",
+          "literature_citations": [
+            {
+              "title": "CaBP2 overexpression concerns",
+              "authors": [
+                "Oestreicher"
+              ],
+              "year": 2021,
+              "url": null,
+              "relevance": "Discussed possible adverse effects of overexpression.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Raising holding potential to -55 mV causes a 60±4% reduction in maximal Ca2+ cur…",
+        "claim": "Raising holding potential to -55 mV causes a 60±4% reduction in maximal Ca2+ currents in DKO versus 25±4% in WT, resulting in complete loss of sustained exocytosis in DKO.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Raising the holding voltage to –55 mV resulted in a significant reduction in the maximal Ca2+ currents, which was more pronounced in the CaBP1/2-deficient IHCs as compared to controls (60 ± 4% vs 25 ± 4% reduction in DKO and WT IHCs, respectively)",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct quantification of the holding potential effect with clear statistics (60±4% vs 25±4%, p<0.005).",
+            "Complete loss of sustained exocytosis at -55 mV is a dramatic and well-documented finding.",
+            "CaBP2 rescue reverses the phenotype (p<0.05).",
+            "This experiment addresses the physiological relevance by using a more realistic holding potential."
+          ],
+          "weaknesses": [
+            "The actual IHC resting potential in vivo is debated and may differ from -55 mV (Russell and Sellick, 1983; Dierich et al., 2020; Oliver et al., 2003 cite different values).",
+            "Room temperature recordings may underestimate or overestimate the effect at body temperature."
+          ],
+          "alternative_interpretations": [
+            "Some of the current reduction at -55 mV could reflect activation of other conductances (e.g., potassium currents) rather than solely CaV1.3 inactivation, though TEA and 4-AP were used to block K+ currents."
+          ],
+          "required_assumptions": [
+            "-55 mV is a reasonable approximation of the IHC resting potential in vivo.",
+            "K+ channel blockers adequately isolate Ca2+ currents at -55 mV."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Important experiment bridging in vitro and in vivo conditions.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "Even mild but prolonged stimulation (2-min sine wave from -55 mV) drives CaV1.3 …",
+        "claim": "Even mild but prolonged stimulation (2-min sine wave from -55 mV) drives CaV1.3 channels into a 'deep-state' of inactivation with very slow recovery in DKO IHCs, requiring a second slow exponential component not seen in WT.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "in the absence of CaBP1 and 2 even mild but prolonged stimulation of IHCs in vivo may drive a significant fraction of CaV1.3 channels into 'deep-state' of inactivation with very slow recovery",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The double-exponential recovery kinetics in DKO vs single-exponential in WT is clearly documented in Table 1.",
+            "The experimental design (2-min sine wave from -55 mV) is creative and physiologically relevant.",
+            "The concept of deep-state inactivation is well-established for other channel types (Bezanilla et al., 1982; Payandeh et al., 2012)."
+          ],
+          "weaknesses": [
+            "The 2-min protocol is long and could be affected by rundown or other technical issues.",
+            "The distinction between 'deep-state inactivation' and other slow processes (e.g., slow Ca2+-dependent modulation) is not directly tested.",
+            "Sample sizes for recovery experiments are not clearly stated in the text."
+          ],
+          "alternative_interpretations": [
+            "The slow recovery component could reflect slow Ca2+ clearance rather than true deep-state channel inactivation.",
+            "Changes in intracellular milieu during the 2-min protocol could affect recovery kinetics independently of channel inactivation state."
+          ],
+          "required_assumptions": [
+            "The 2-min protocol does not cause recording artifacts or channel rundown.",
+            "Deep-state inactivation in CaV1.3 is analogous to what has been described in other channel types."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Novel and informative experiment, though mechanistic interpretation is inferential.",
+          "literature_citations": [
+            {
+              "title": "Slow inactivation in NaV",
+              "authors": [
+                "Bezanilla"
+              ],
+              "year": 1982,
+              "url": null,
+              "relevance": "Conceptual framework for deep-state inactivation.",
+              "stance": "supports"
+            },
+            {
+              "title": "Structural basis of slow inactivation",
+              "authors": [
+                "Payandeh"
+              ],
+              "year": 2012,
+              "url": null,
+              "relevance": "Molecular basis for slow inactivation concept.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "DKO SGN responses greatly improve at lower stimulus repetition rates (0.5 Hz, pl…",
+        "claim": "DKO SGN responses greatly improve at lower stimulus repetition rates (0.5 Hz, plateauing at 0.2 Hz), suggesting that recovery of CaV1.3 channels after 1-2 s of silence is the limiting factor for maximal onset spiking rates.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "DKO responses greatly improved when we lowered the stimulus repetition rate to 0.5 Hz, and plateaued at 0.2 Hz",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The stimulus rate dependence (improvement at 0.5 Hz, plateau at 0.2 Hz) is clearly demonstrated in Figure 7C,D.",
+            "The 1-2 s recovery time aligns with the in vitro recovery kinetics from the sine wave protocol.",
+            "The contrast with WT (150 ms recovery) is striking and mechanistically interpretable."
+          ],
+          "weaknesses": [
+            "The hypothesis that CaV1.3 recovery is 'the limiting factor' is not directly proven — vesicle replenishment could also be rate-limiting.",
+            "Small sample sizes and selection bias in SGN recordings (see c1.3.2).",
+            "The use of high-intensity stimuli (80+ dB) for DKO neurons complicates rate comparisons with WT."
+          ],
+          "alternative_interpretations": [
+            "Vesicle replenishment rate could be the limiting factor rather than channel recovery, particularly given the reduced exocytosis efficiency.",
+            "The rate dependence could also reflect postsynaptic mechanisms (e.g., receptor desensitization) rather than purely presynaptic CaV1.3 recovery."
+          ],
+          "required_assumptions": [
+            "CaV1.3 channel recovery, not vesicle replenishment, limits SGN onset rates in DKO.",
+            "The SGN recording sample is representative despite selection bias."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The correlation between in vitro recovery kinetics and in vivo rate dependence is compelling but causal linkage is not demonstrated.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "In vivo, even spontaneous activity may effectively silence DKO synapses, explain…",
+        "claim": "In vivo, even spontaneous activity may effectively silence DKO synapses, explaining the very low experimental yield of sound-responsive neurons (0.3 vs 2.5 per hour in WT).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "We believe that any sound stimulation and potentially even spontaneous activity may effectively silence DKO synapses.",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The very low yield (0.3 vs 2.5 neurons/hour) and reduced spontaneous rates support the prediction.",
+            "Logically consistent with the in vitro data showing channel inactivation at resting potential.",
+            "The reduced spontaneous rates provide indirect evidence for steady-state inactivation in vivo."
+          ],
+          "weaknesses": [
+            "This is an inference/prediction, not directly demonstrated.",
+            "Low yield could also reflect technical factors (different tissue properties in DKO, altered neural anatomy).",
+            "No direct measurement of in vivo CaV1.3 inactivation state.",
+            "The claim that 'spontaneous activity may silence synapses' is paradoxical — if synapses are silenced, there would be no spontaneous activity to maintain the inactivation, potentially leading to oscillatory behavior."
+          ],
+          "alternative_interpretations": [
+            "Low yield could reflect SGN degeneration or reduced SGN excitability rather than presynaptic silencing.",
+            "Reduced spontaneous rates could reflect reduced spontaneous transmitter release independent of CaV1.3 inactivation."
+          ],
+          "required_assumptions": [
+            "The in vitro inactivation data at -55 mV translates to the in vivo situation.",
+            "Spontaneous activity levels are sufficient to maintain steady-state inactivation."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "Interesting prediction but essentially speculative without direct in vivo evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5",
+        "label": "CaBPs speed up recovery of CaV1.3 channels from inactivation induced by prolonge…",
+        "claim": "CaBPs speed up recovery of CaV1.3 channels from inactivation induced by prolonged mild stimulation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "In the IHCs of injected DKO animals, this second component appeared smaller and faster, suggesting that CaBPs speed-up recovery of CaV1.3 channels from inactivation.",
+        "evaluation": {
+          "node_id": "c1.6.5",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The sine wave recovery data shows faster recovery in CaBP2-injected DKO (smaller, faster slow component) compared to non-injected DKO, supporting the claim.",
+            "Multiple recovery protocols (500-ms step, 2-min sine wave) provide complementary data."
+          ],
+          "weaknesses": [
+            "The paradoxical finding of fastest recovery in DKO after 500-ms depolarization directly contradicts this claim for one of the two protocols, requiring a complex post hoc explanation involving Ca2+ clearance.",
+            "The Ca2+ clearance hypothesis is not experimentally tested.",
+            "The claim conflates two potentially different processes: recovery from deep-state inactivation (sine wave) and CDI recovery dependent on Ca2+ clearance (step).",
+            "Cannot distinguish whether CaBPs speed intrinsic channel recovery or simply prevent channels from entering deep inactivation states in the first place."
+          ],
+          "alternative_interpretations": [
+            "CaBPs may prevent entry into deep inactivation rather than speed recovery from it.",
+            "The faster recovery in DKO after 500-ms step could mean that in the absence of CaBPs, channels enter a different inactivation state (pure VDI) that recovers faster than CDI."
+          ],
+          "required_assumptions": [
+            "Recovery from sine wave-induced inactivation reflects intrinsic channel recovery kinetics.",
+            "Recovery from step-induced inactivation is confounded by Ca2+ clearance kinetics.",
+            "CaBPs directly modulate recovery kinetics rather than just preventing entry into inactivated states."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The data are complex and the interpretation requires accepting the authors' distinction between the two recovery protocols, which is reasonable but not directly validated. The paradoxical step-recovery finding (c1.6.5.1) is a significant complication.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "CaBP2 is absent from SGNs and Cabp1-KO animals show normal hearing several weeks…",
+        "claim": "CaBP2 is absent from SGNs and Cabp1-KO animals show normal hearing several weeks after birth, so hearing impairment in DKO is primarily attributed to IHC dysfunction.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Since Cabp1 KO animals show normal hearing several weeks after birth, and CaBP2 is absent from SGNs, we interpret the hearing impairment of the Cabp1/2 DKO animals to be primarily due to defects of hair cell function",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The argument is logically structured: CaBP2 absent from SGNs + CaBP1 KO hearing normal at 4 weeks → SGN dysfunction unlikely to cause the DKO hearing phenotype.",
+            "Consistent with Yang et al. (2016) expression data."
+          ],
+          "weaknesses": [
+            "Caldendrin (CaBP1 variant) is expressed in SGNs (Yang et al., 2016), and its role in SGN function has not been characterized.",
+            "The argument only holds for early postnatal weeks — at later ages, SGN dysfunction from caldendrin loss could compound the phenotype.",
+            "No direct SGN function assessment independent of IHC input (e.g., SGN response to electrical stimulation or direct current injection).",
+            "CaBP1 KO hearing deterioration starting at 9 weeks (Yang et al., 2018) could reflect delayed SGN dysfunction."
+          ],
+          "alternative_interpretations": [
+            "Caldendrin loss in SGNs could affect SGN excitability or survival, contributing to the progressive component of hearing loss.",
+            "Even if the initial phenotype is IHC-driven, SGN dysfunction could develop secondarily due to reduced synaptic activity."
+          ],
+          "required_assumptions": [
+            "Caldendrin/CaBP1 in SGNs does not significantly affect SGN function at the ages tested.",
+            "The DKO hearing impairment is primarily presynaptic in origin."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The argument is reasonable but not conclusive. Direct evidence ruling out SGN dysfunction is lacking.",
+          "literature_citations": [
+            {
+              "title": "CaBP expression patterns",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2016,
+              "url": null,
+              "relevance": "Shows caldendrin in SGNs, relevant to potential SGN dysfunction.",
+              "stance": "neutral"
+            },
+            {
+              "title": "CaBP1 KO progressive hearing loss",
+              "authors": [
+                "Yang"
+              ],
+              "year": 2018,
+              "url": null,
+              "relevance": "Late-onset hearing deterioration in CaBP1 KO could reflect SGN dysfunction.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "CaBPs may directly regulate BK channel expression, for example as transcription …",
+        "claim": "CaBPs may directly regulate BK channel expression, for example as transcription factors, a notion that needs future testing.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We hypothesize that CaBPs may directly (e.g. as transcription factors) regulate BK expression, a notion that needs to be tested in the future.",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The paper correctly identifies this as a hypothesis requiring testing."
+          ],
+          "weaknesses": [
+            "No evidence is presented for CaBPs acting as transcription factors.",
+            "CaBPs are cytoplasmic calcium-binding proteins with no known nuclear localization or DNA-binding domains.",
+            "The hypothesis seems biologically implausible without substantial additional evidence.",
+            "Alternative indirect mechanisms (e.g., reduced Ca2+ signaling affecting BK expression through known Ca2+-dependent transcriptional pathways) are more parsimonious."
+          ],
+          "alternative_interpretations": [
+            "BK reduction is likely secondary to altered Ca2+ signaling during development, as seen in CaV1.3 mutants (Brandt et al., 2003; Eckrich et al., 2019), rather than direct CaBP transcriptional regulation.",
+            "Activity-dependent regulation of BK expression through known pathways (CREB, NFAT) could explain the phenotype."
+          ],
+          "required_assumptions": [
+            "CaBPs can function as transcription factors or directly regulate gene expression.",
+            "No known structural basis for this function exists."
+          ],
+          "supporting_evidence_quality": "absent",
+          "notes": "The transcription factor hypothesis is speculative and biologically implausible without evidence. The indirect mechanism (altered Ca2+ signaling) is far more likely.",
+          "literature_citations": [
+            {
+              "title": "CaV1.3 and IHC maturation",
+              "authors": [
+                "Brandt"
+              ],
+              "year": 2003,
+              "url": null,
+              "relevance": "BK changes in CaV1.3 mutants support indirect mechanism via Ca2+ signaling.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "VDI was 0.30±0.02 in DKO versus 0.13±0.02 in WT, and CDI was 0.65±0.01 in DKO ve…",
+        "claim": "VDI was 0.30±0.02 in DKO versus 0.13±0.02 in WT, and CDI was 0.65±0.01 in DKO versus 0.11±0.02 in WT (both p<0.0001, Student's t-test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "VDI: 0.30 ± 0.02 vs 0.13 ± 0.02 and CDI: 0.65 ± 0.01 vs 0.11 ± 0.02 in Cabp1/2 DKO and WT IHCs, respectively; p < 0.0001, Student's t-test",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantitative data with means, SEMs, and highly significant p-values.",
+            "Standard electrophysiological measurements with established methods."
+          ],
+          "weaknesses": [
+            "N not explicitly stated for VDI/CDI measurements in the main text (n=13 stated in supplement for 2 mM condition)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Standard electrophysiology methods produce reliable measurements."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Direct quantitative evidence.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "V0.5 shifted from -30.9±0.5 mV (WT) to -33.6±0.5 mV (DKO), p<0.0001; Boltzmann s…",
+        "claim": "V0.5 shifted from -30.9±0.5 mV (WT) to -33.6±0.5 mV (DKO), p<0.0001; Boltzmann slope increased from 7.1±0.1 to 7.6±0.1, p<0.0001.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "V0.5 of –33.6 ± 0.5 to –30.9 ± 0.5 mV in Cabp1/2 DKO and WT IHCs, respectively; p < 0.0001",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Precise quantification of V0.5 and slope with highly significant p-values.",
+            "Boltzmann fitting is a standard analysis for activation curves."
+          ],
+          "weaknesses": [
+            "The biological significance of these small shifts (~2.7 mV, ~0.5 slope) is unclear.",
+            "Direction opposite to heterologous expression predictions complicates interpretation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Boltzmann fit parameters accurately describe CaV1.3 activation."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Raw data is well-quantified.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "Cells in which train stimuli were applied showed considerably lower calcium curr…",
+        "claim": "Cells in which train stimuli were applied showed considerably lower calcium current inactivation upon 500-ms step than the DKO average (0.36 vs 0.47), potentially biasing train stimulus results.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "it has to be noted that the cells in which train stimuli were applied showed a considerably lower calcium current inactivation upon a 500-ms step depolarization than the average (0.36 (n = 5) vs 0.47 (n = 21))",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Transparent reporting of the selection bias with specific numbers (0.36 vs 0.47, n=5 vs n=21).",
+            "Important caveat for interpreting the train data."
+          ],
+          "weaknesses": [
+            "The bias means train stimulus results likely underestimate the true DKO deficit.",
+            "No explanation for why these particular cells had lower inactivation — could represent a distinct subpopulation or recording artifact."
+          ],
+          "alternative_interpretations": [
+            "If cells with lower inactivation are a genuine subpopulation, the train results may reflect the behavior of less affected IHCs."
+          ],
+          "required_assumptions": [
+            "The selection of cells with lower inactivation for train protocols was unintentional."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Honest reporting of a methodological limitation.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6.1",
+        "label": "Ribbon synapse numbers were comparable: 12.9±0.2 in WT versus 12.8±0.8 in DKO at…",
+        "claim": "Ribbon synapse numbers were comparable: 12.9±0.2 in WT versus 12.8±0.8 in DKO at 3 weeks of age.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "comparable abundance of ribbon synapses in the apical IHCs of WT and DKO animals (12.9 ± 0.2 vs 12.8 ± 0.8, respectively)",
+        "evaluation": {
+          "node_id": "c1.1.6.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Direct quantification with tight SEM values.",
+            "Standard immunohistochemistry approach."
+          ],
+          "weaknesses": [
+            "Only apical IHCs examined; mid-cochlear or basal positions not reported.",
+            "N (number of organs/animals) for synapse counting not stated in the text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Straightforward quantification.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Significant impairment of sustained exocytosis at p<0.05 for 20 ms and p<0.001 f…",
+        "claim": "Significant impairment of sustained exocytosis at p<0.05 for 20 ms and p<0.001 for 100- and 200-ms depolarization steps; reduced cumulative Ca2+ influx at p<0.005 for the longest two pulses.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "CaBP1/2-deficient inner hair cells (IHCs) showed significant impairment of the sustained exocytosis (p < 0.05 for 20 ms, and <0.001 for 100- and 200-ms step, respectively)",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple pulse durations tested with statistical significance at relevant time points.",
+            "Both ΔCm and QCa reported.",
+            "Welch correction applied appropriately for unequal variances."
+          ],
+          "weaknesses": [
+            "Exact sample sizes per group and condition are not stated in the text excerpt.",
+            "Multiple comparisons across many pulse durations without clear correction for multiple testing."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Standard exocytosis measurements with appropriate statistics.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2.1",
+        "label": "Reduced efficiency of Ca2+-dependent exocytosis at p<0.005 for the two longest t…",
+        "claim": "Reduced efficiency of Ca2+-dependent exocytosis at p<0.005 for the two longest test pulses, rescued by PHP.eB-Cabp2 (p<0.01 and 0.05 for 100- and 200-ms pulses).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Note a reduced efficiency of Ca2+-dependent exocytosis (p < 0.005 for the two longest test pulses; black asterisks), which can be efficiently rescued by intracochlear delivery of PHP.eB-Cabp2",
+        "evaluation": {
+          "node_id": "c1.2.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Efficiency ratio (ΔCm/QCa) is a standard metric in IHC synaptic physiology.",
+            "Both the deficit and rescue are statistically significant."
+          ],
+          "weaknesses": [
+            "As noted in c1.2.2, the efficiency ratio has limitations when Ca2+ dynamics are fundamentally altered.",
+            "Statistical comparisons across multiple pulse durations without explicit multiple comparison correction."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "QCa proportionally reflects synaptically relevant Ca2+."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The data are sound; the interpretation is where the limitation lies (see c1.2.2).",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "At 3-4 weeks, click thresholds were 59±2 dB SPL in DKO (N=9) vs 30±2 dB SPL in W…",
+        "claim": "At 3-4 weeks, click thresholds were 59±2 dB SPL in DKO (N=9) vs 30±2 dB SPL in WT (N=8); at 7-13 weeks, 68±5 dB SPL in DKO vs 30±1 dB SPL in WT (N=7 each).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Click responses were better preserved (thresholds of 59 ± 2 dB SPL in DKO (N = 9) vs 30 ± 2 dB SPL in WT (N = 8) mice) but greatly reduced in amplitude",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantitative ABR threshold data with sample sizes and SEM.",
+            "Two age groups demonstrate progression.",
+            "Standard ABR methodology."
+          ],
+          "weaknesses": [
+            "10 dB precision for threshold determination is standard but somewhat coarse.",
+            "C57Bl/6 background may contribute to age-related threshold elevation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Standard well-quantified ABR data.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.2",
+        "label": "No sizable ABR wave I was detected in average traces of DKO animals at 80 dB SPL…",
+        "claim": "No sizable ABR wave I was detected in average traces of DKO animals at 80 dB SPL click stimulation at either age tested.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Upon 80 dB SPL click stimulation, no sizable ABR wave I was detected in average traces of DKO animals at either age tested",
+        "evaluation": {
+          "node_id": "c1.3.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear from the grand average waveforms in Figure 6—figure supplement 1B.",
+            "Consistent with severely impaired IHC-SGN transmission."
+          ],
+          "weaknesses": [
+            "Grand averages can obscure individual variability; some animals might have small but detectable wave I."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Straightforward observation from ABR waveforms.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "Only 1/20 neurons recorded from DKO animals showed a normal response; peak and a…",
+        "claim": "Only 1/20 neurons recorded from DKO animals showed a normal response; peak and adapted rates were greatly reduced compared to WT.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "only one out of the 20 neurons we recorded and analyzed from DKO animals showed a normal response in our automated tuning curve algorithm",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The 1/20 ratio is striking and clearly documents severe impairment.",
+            "Consistent with the ABR data."
+          ],
+          "weaknesses": [
+            "Small overall sample size (20 DKO neurons) limits generalizability.",
+            "Selection bias means these may represent the least affected neurons."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The automated tuning curve algorithm adequately tested these neurons."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The low yield itself is informative evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.2",
+        "label": "First spike latency was 12.5±2.8 ms in DKO vs 4.8±0.2 ms in WT (p<0.001); jitter…",
+        "claim": "First spike latency was 12.5±2.8 ms in DKO vs 4.8±0.2 ms in WT (p<0.001); jitter was 18.3±5.0 vs 1.5±0.4 (p<0.00001).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "an increased latency (12.5 ± 2.8 ms vs WT 4.8 ± 0.2 ms; p < 0.001, Wilcoxon rank-sum test) and increased jitter (18.3 ± 5.0 vs WT 1.5 ± 0.4; p < 0.00001)",
+        "evaluation": {
+          "node_id": "c1.3.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Clear quantification with means, SEMs, and highly significant p-values.",
+            "Wilcoxon rank-sum test appropriate for potentially non-normal data."
+          ],
+          "weaknesses": [
+            "Different stimulus intensities used for WT vs DKO could partially confound latency/jitter comparisons.",
+            "Small DKO sample with high variability (large SEM)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Latency and jitter are comparable metrics when measured at different absolute stimulus intensities (30 dB above threshold)."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-quantified direct evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.3",
+        "label": "During 5-Hz stimulation, adaptation strength was greatly enhanced: peak-to-adapt…",
+        "claim": "During 5-Hz stimulation, adaptation strength was greatly enhanced: peak-to-adapted ratio 12.5±3.0 in DKO vs 3.4±0.2 in WT (p<0.00001), while adaptation time constant was unchanged (7.9±2.0 vs 6.9±0.4 ms, p=0.5).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the strength of adaptation was greatly enhanced (peak to adapted ratio 12.5 ± 3.0 vs WT 3.4 ± 0.2; p < 0.00001, Wilcoxon rank-sum test) whereas the time constant of adaptation was unchanged",
+        "evaluation": {
+          "node_id": "c1.3.2.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Greatly enhanced adaptation strength (12.5 vs 3.4) with p<0.00001.",
+            "Unchanged adaptation time constant (7.9 vs 6.9 ms, p=0.5) is an interesting dissociation.",
+            "Wilcoxon test appropriate for non-normal data."
+          ],
+          "weaknesses": [
+            "Different stimulus intensities between WT and DKO recordings.",
+            "The unchanged time constant with enhanced strength is not mechanistically explained."
+          ],
+          "alternative_interpretations": [
+            "Unchanged time constant with enhanced strength could reflect a presynaptic vesicle depletion mechanism with normal kinetics but reduced vesicle pool, rather than channel inactivation per se."
+          ],
+          "required_assumptions": [
+            "Adaptation kinetics measured at different absolute intensities are comparable."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The dissociation between adaptation strength and time constant deserves further investigation.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3.1",
+        "label": "About half of DKO animals had normal DPOAEs; in the other half they were reduced…",
+        "claim": "About half of DKO animals had normal DPOAEs; in the other half they were reduced but still detectable, suggesting partially hampered cochlear amplification in a subset.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "In about half of the DKO animals in both age groups, the DPOAEs were normal. In the other half, they were reduced in amplitude but still detectable",
+        "evaluation": {
+          "node_id": "c1.3.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "DPOAE data presented for two age groups with amplitude growth functions.",
+            "Honest reporting that ~50% of animals showed reduced DPOAEs."
+          ],
+          "weaknesses": [
+            "The characterization of 'largely preserved' is generous given 50% show reductions.",
+            "Different calibration setups for the two age groups complicates comparison."
+          ],
+          "alternative_interpretations": [
+            "The ~50% with reduced DPOAEs may have significant OHC dysfunction contributing to their hearing impairment."
+          ],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The raw evidence is clearly reported; the interpretation as 'largely preserved' is arguable.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.1",
+        "label": "BK cluster volumes were significantly smaller in DKO IHCs (p<0.0001, N=6); cumul…",
+        "claim": "BK cluster volumes were significantly smaller in DKO IHCs (p<0.0001, N=6); cumulative BK-cluster volume per IHC was 14.2±2.1 µm³ in WT versus 6.6±1.1 µm³ in DKO (p<0.01).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "This analysis revealed significantly smaller (Figure 5H; Student's t-test, p < 0.0001, N = 6 organs per genotype) and fewer clusters in DKO IHCs",
+        "evaluation": {
+          "node_id": "c1.3.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Quantified with Imaris analysis, adequate N (6 organs per genotype), highly significant p-values.",
+            "Both cluster volume and cumulative volume per IHC reported."
+          ],
+          "weaknesses": [
+            "Semi-quantitative immunofluorescence-based measurement.",
+            "Antibody staining variability could contribute to differences despite parallel processing."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Immunofluorescence volume is a valid proxy for protein abundance."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-quantified morphological evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4.2",
+        "label": "Pre- (RibeyeA/CtBP2) and postsynaptic (Homer1) immunofluorescent puncta intensit…",
+        "claim": "Pre- (RibeyeA/CtBP2) and postsynaptic (Homer1) immunofluorescent puncta intensities were significantly increased in DKO versus WT IHCs (p<0.005, 614 and 441 immunospots analyzed).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the intensities of pre- (RibeyeA/CtBP2) and postsynaptic (Homer1) immunofluorescent puncta were increased in the CaBP1/2-deficient IHCs as compared to age-matched controls",
+        "evaluation": {
+          "node_id": "c1.3.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Large sample sizes (614 and 441 immunospots).",
+            "Parallel processing of WT and DKO organs minimizes technical variability.",
+            "Wilcoxon rank-sum test appropriate for intensity data."
+          ],
+          "weaknesses": [
+            "Intensity differences could reflect changes in protein density, number of molecules, or accessibility to antibody rather than functional differences.",
+            "The biological significance of increased puncta intensity is unclear."
+          ],
+          "alternative_interpretations": [
+            "Increased intensity could reflect compensatory postsynaptic scaling in response to reduced activity, as the authors suggest."
+          ],
+          "required_assumptions": [
+            "Immunofluorescence intensity differences reflect genuine changes in protein abundance."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-powered quantification.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Fraction of remaining current after 500-ms step significantly improved in CaBP2-…",
+        "claim": "Fraction of remaining current after 500-ms step significantly improved in CaBP2-injected DKO versus non-injected DKO (p<0.0001).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The 'non-inactivating' nature of the IHC CaV1.3 channels was partially restored in the Cabp1/2-DKOs by transgenic expression of WT CaBP2 (Student's t-test: p < 0.0001)",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant p-value (p<0.0001).",
+            "Direct comparison within the same study."
+          ],
+          "weaknesses": [
+            "Sample size for injected group not stated in this text excerpt."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Clear statistical evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "AAV-mediated CaBP2 delivery improved ΔCm upon 100- and 200-ms steps (p<0.01) and…",
+        "claim": "AAV-mediated CaBP2 delivery improved ΔCm upon 100- and 200-ms steps (p<0.01) and QCa upon 200-ms step (p<0.05) compared to non-injected DKO.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "AAV-mediated delivery of Cabp2 improved IHC synaptic function as compared to non-injected Cabp1/2-DKO controls (p < 0.01 for ΔCm upon 100- and 200-ms step, and p < 0.05 for QCa upon 200-ms step)",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Multiple metrics showing improvement with significant p-values.",
+            "Both ΔCm and QCa improvements reported."
+          ],
+          "weaknesses": [
+            "P-values are more modest (p<0.01 and p<0.05) compared to some other comparisons.",
+            "The green asterisks comparing injected DKO to non-injected DKO — sample sizes for injected group not stated."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Solid rescue evidence at the synaptic level.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.1",
+        "label": "Strong recovery of ABR wave I amplitude (p≤0.0001 for DKO vs WT or vs injected D…",
+        "claim": "Strong recovery of ABR wave I amplitude (p≤0.0001 for DKO vs WT or vs injected DKO) and significant improvement of ABR thresholds for all tone burst frequencies and click stimuli.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "A strong recovery of the amplitude of the ABR wave I (asterisks, Tukey's multicomparison test; p ≤ 0.0001 for DKO vs WT or vs injected DKO)",
+        "evaluation": {
+          "node_id": "c1.5.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Highly significant wave I recovery (p≤0.0001).",
+            "Tukey's multicomparison test appropriate for three-group comparison.",
+            "Improvement across all tested frequencies."
+          ],
+          "weaknesses": [
+            "Sample sizes for the injected group not stated in the excerpt.",
+            "No sham control."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The injection procedure itself does not affect ABR outcomes."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Strong systems-level rescue evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.2",
+        "label": "Summated wave I-IV responses in CaBP2-injected DKO were not distinguishable from…",
+        "claim": "Summated wave I-IV responses in CaBP2-injected DKO were not distinguishable from WT responses.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "suprathreshold responses of ABR wave I were very large and the summated wave I–IV responses were not distinguishable from WT responses",
+        "evaluation": {
+          "node_id": "c1.5.3.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Summated wave I-IV comparison provides a comprehensive assessment of auditory brainstem function.",
+            "Statistical comparison showing no difference from WT."
+          ],
+          "weaknesses": [
+            "The suprathreshold wave I amplitudes being 'very large' (potentially larger than WT) raises questions about normal vs abnormal neural responses in rescued animals.",
+            "Only suprathreshold at 80 dB — the claim applies to one intensity level."
+          ],
+          "alternative_interpretations": [
+            "Over-recovery of suprathreshold responses could reflect CaBP2 overexpression-driven hyperexcitability rather than normal restoration."
+          ],
+          "required_assumptions": [
+            "Suprathreshold responses at 80 dB are representative of overall auditory function."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The over-recovery is concerning and should be discussed more critically.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "At -55 mV holding potential, DKO IHCs showed 60±4% reduction in maximal Ca2+ cur…",
+        "claim": "At -55 mV holding potential, DKO IHCs showed 60±4% reduction in maximal Ca2+ currents vs 25±4% in WT (p<0.005), with complete loss of sustained exocytosis (p<0.005) restored by AAV-CaBP2 (p<0.05).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Raising the holding voltage to –55 mV resulted in a significant reduction in the maximal Ca2+ currents, which was more pronounced in the CaBP1/2-deficient IHCs as compared to controls (60 ± 4% vs 25 ± 4% reduction in DKO and WT IHCs, respectively; p < 0.005)",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Precise quantification with significant p-values.",
+            "Multiple holding potentials tested systematically.",
+            "CaBP2 rescue confirms causal link."
+          ],
+          "weaknesses": [
+            "Room temperature recordings.",
+            "Exact sample sizes per condition not stated in the excerpt."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "Well-quantified evidence for activity-dependent phenotype.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "After 2-min sine wave, Ca2+-current recovery in DKO IHCs required fitting with a…",
+        "claim": "After 2-min sine wave, Ca2+-current recovery in DKO IHCs required fitting with a double exponential function (with a slow component), while WT recovery followed a single exponential.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Upon 2-min sine wave, the current recovery in DKO IHCs (both, injected and non-injected group) also required fitting with a double exponential function.",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Exponential fitting parameters documented in Table 1.",
+            "Clear difference between WT (single exponential) and DKO (double exponential).",
+            "Injected DKO also shows double exponential but with different parameters."
+          ],
+          "weaknesses": [
+            "The biological interpretation of the second exponential component (deep-state inactivation vs other slow processes) is inferential.",
+            "Sample sizes for recovery experiments not stated."
+          ],
+          "alternative_interpretations": [
+            "The second exponential could reflect slow Ca2+-dependent processes or channel trafficking rather than deep-state inactivation."
+          ],
+          "required_assumptions": [
+            "Double exponential fitting is the appropriate model.",
+            "The slow component reflects a specific channel inactivation state."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Clear quantitative data; interpretation is where the uncertainty lies.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3.1",
+        "label": "DKO peak rates plateaued at 0.2 Hz stimulus rate; in WT, maximal spike rates are…",
+        "claim": "DKO peak rates plateaued at 0.2 Hz stimulus rate; in WT, maximal spike rates are mostly recovered after 150 ms silent interval.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "We hypothesize that in DKO SGNs, recovery of CaV1.3 channels after a silent interval in the range of 1–2 s is the limiting factor for determining the maximal SGN spiking rate at the sound onset.",
+        "evaluation": {
+          "node_id": "c1.6.3.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The rate-dependent recovery pattern in Figure 7D clearly shows DKO neurons requiring longer recovery intervals.",
+            "The plateau at 0.2 Hz provides a quantitative estimate of recovery time."
+          ],
+          "weaknesses": [
+            "The 1-2 s recovery estimate is a hypothesis, not a direct measurement of channel state.",
+            "Small sample sizes and selection bias in the SGN data.",
+            "The 150 ms recovery in WT is attributed to vesicle replenishment (Strenzke et al., 2016; Pangrsic et al., 2010), making the comparison with DKO channel recovery potentially apples-to-oranges."
+          ],
+          "alternative_interpretations": [
+            "Both channel recovery and vesicle replenishment could be rate-limiting in DKO, making it impossible to attribute the recovery solely to channel kinetics."
+          ],
+          "required_assumptions": [
+            "CaV1.3 recovery is the dominant rate-limiting factor in DKO (not vesicle replenishment)."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The observation is clear; the causal attribution to channel recovery is inferential.",
+          "literature_citations": [
+            {
+              "title": "Vesicle replenishment at IHC synapses",
+              "authors": [
+                "Pangrsic"
+              ],
+              "year": 2010,
+              "url": null,
+              "relevance": "Vesicle replenishment kinetics in WT may limit onset rate recovery.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5.1",
+        "label": "Paradoxically, upon 500-ms depolarization, recovery was fastest in DKO IHCs and …",
+        "claim": "Paradoxically, upon 500-ms depolarization, recovery was fastest in DKO IHCs and slowest in CaBP2-injected DKO IHCs (time constants 0.62 and >0.75 s respectively), which the authors hypothesize reflects faster Ca2+ clearance from DKO synapses rather than faster channel recovery.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the recovery from the step-evoked inactivation was slowest in the Cabp2-injected DKO IHCs. We hypothesize that this may be related to the speed at which the intracellular [Ca2+] after depolarization is restored to the basal level",
+        "evaluation": {
+          "node_id": "c1.6.5.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Time constants are quantified and reported in Table 1.",
+            "The paradox is honestly reported and a plausible hypothesis (Ca2+ clearance) is offered."
+          ],
+          "weaknesses": [
+            "The Ca2+ clearance hypothesis is not experimentally tested (no Ca2+ imaging).",
+            "The finding directly contradicts the claim (c1.6.5) that CaBPs speed recovery — at least for this protocol.",
+            "The post hoc explanation is reasonable but unfalsifiable without additional data.",
+            "The double exponential required for injected DKO recovery but not DKO is unexplained."
+          ],
+          "alternative_interpretations": [
+            "DKO channels may enter a different (faster-recovering) inactivation state compared to channels in the presence of CaBPs.",
+            "CaBP2 binding to inactivated channels could slow their recovery (a direct effect opposite to the claim)."
+          ],
+          "required_assumptions": [
+            "Ca2+ clearance rate, not intrinsic channel recovery, determines the kinetics observed after 500-ms depolarization.",
+            "This protocol does not report intrinsic channel recovery kinetics."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Tension with c1.6.5 should be noted. The data is robust but the interpretation is complex and unresolved.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.5.2",
+        "label": "After the 2-min sine wave, the slow component of recovery in CaBP2-injected DKO …",
+        "claim": "After the 2-min sine wave, the slow component of recovery in CaBP2-injected DKO IHCs was smaller and faster than in non-injected DKO, suggesting CaBPs speed up recovery from deep-state inactivation.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "In the IHCs of injected DKO animals, this second component appeared smaller and faster, suggesting that CaBPs speed-up recovery of CaV1.3 channels from inactivation.",
+        "evaluation": {
+          "node_id": "c1.6.5.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The slower and smaller second component in injected DKO vs non-injected DKO is quantified in Table 1.",
+            "Consistent with the claim that CaBPs speed recovery from deep-state inactivation."
+          ],
+          "weaknesses": [
+            "The improvement in the injected group could reflect prevention of entry into deep states rather than faster recovery from them.",
+            "Small sample sizes likely.",
+            "Cannot distinguish CaBP effects on entry vs. recovery from inactivation."
+          ],
+          "alternative_interpretations": [
+            "CaBP2 may prevent channels from entering deep inactivation states rather than accelerating their exit.",
+            "Changes in the slow component could reflect different Ca2+ buffering by overexpressed CaBP2 rather than direct channel modulation."
+          ],
+          "required_assumptions": [
+            "The sine wave protocol specifically reports channel recovery kinetics at Ca2+ equilibrium.",
+            "CaBP2 directly modulates recovery kinetics rather than just preventing deep inactivation."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The evidence is consistent with the claim but cannot distinguish between prevention of entry and acceleration of exit from deep inactivation.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.6",
+        "source": "c1.1",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.5",
+        "source": "c1.5",
+        "target": "c1.5.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.5",
+        "source": "c1.6",
+        "target": "c1.6.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.1.1",
+        "source": "c1.1.2",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.6_c1.1.6.1",
+        "source": "c1.1.6",
+        "target": "c1.1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.2_c1.2.2.1",
+        "source": "c1.2.2",
+        "target": "c1.2.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.2",
+        "source": "c1.3.1",
+        "target": "c1.3.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.2",
+        "source": "c1.3.2",
+        "target": "c1.3.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.3",
+        "source": "c1.3.2",
+        "target": "c1.3.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.3_c1.3.3.1",
+        "source": "c1.3.3",
+        "target": "c1.3.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.1",
+        "source": "c1.3.4",
+        "target": "c1.3.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.4_c1.3.4.2",
+        "source": "c1.3.4",
+        "target": "c1.3.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.3_c1.5.3.1",
+        "source": "c1.5.3",
+        "target": "c1.5.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.4_c1.5.3.2",
+        "source": "c1.5.4",
+        "target": "c1.5.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.3_c1.6.3.1",
+        "source": "c1.6.3",
+        "target": "c1.6.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.5_c1.6.5.1",
+        "source": "c1.6.5",
+        "target": "c1.6.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.5_c1.6.5.2",
+        "source": "c1.6.5",
+        "target": "c1.6.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 61,
+    "total_edges": 60,
+    "max_depth": 3,
+    "high_support_nodes": 43,
+    "low_support_nodes": 2,
+    "overall_assessment": "The paper presents 61 claims with strong overall support (43 high, 2 low)."
+  },
+  "final_review": null
+}

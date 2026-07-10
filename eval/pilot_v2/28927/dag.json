@@ -1,0 +1,2521 @@
+{
+  "schema_version": 3,
+  "paper": {
+    "paper_id": "elife_28927",
+    "title": "Inferring multi-scale neural mechanisms with brain network modelling",
+    "authors": [
+      "Michael Schirner",
+      "Anthony Randal McIntosh",
+      "Viktor Jirsa",
+      "Gustavo Deco",
+      "Petra Ritter"
+    ],
+    "url": "https://doi.org/10.7554/eLife.28927",
+    "abstract": "The neurophysiological processes underlying non-invasive brain activity measurements are incompletely understood. Here, we developed a connectome-based brain network model that integrates individual structural and functional data with neural population dynamics to support multi-scale neurophysiological inference. Simulated populations were linked by structural connectivity and, as a novelty, driven by electroencephalography (EEG) source activity. Simulations not only predicted subjects' individual resting-state functional magnetic resonance imaging (fMRI) time series and spatial network topologies over 20 minutes of activity, but more importantly, they also revealed precise neurophysiological mechanisms that underlie and link six empirical observations from different scales and modalities: (1) resting-state fMRI oscillations, (2) functional connectivity networks, (3) excitation-inhibition balance, (4, 5) inverse relationships between α-rhythms, spike-firing and fMRI on short and long time scales, and (6) fMRI power-law scaling. These findings underscore the potential of this new modelling framework for general inference and integration of neurophysiological knowledge to complement empirical studies.",
+    "word_count": 13926,
+    "processed_at": "2026-07-10T01:44:59.564326+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "The hybrid brain network model — where each subject's EEG data drives neural mas…",
+        "claim": "The hybrid brain network model — where each subject's EEG data drives neural mass dynamics instead of noise — reproduces ongoing subject-specific fMRI time series and multiple empirical phenomena, and more importantly reveals neurophysiological mechanisms underlying these phenomena and connects them across multiple temporal scales.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Abstract",
+        "verbatim_quote": "simulation results not only predict ongoing subject-specific resting-state fMRI time series and several empirical phenomena observed with invasive electrophysiology methods, but more importantly, they also show how the network interaction of neural populations leads to the emergence of these phenomena and how they are connected across multiple temporal scales in a time scale hierarchy.",
+        "evaluation": {
+          "node_id": "c1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The hybrid model is a genuinely novel framework that integrates subject-specific EEG, structural connectivity, and biophysical neural mass models to predict fMRI — this is a non-trivial technical achievement that goes beyond either pure simulation or simple statistical fusion.",
+            "The paper demonstrates multiple empirical phenomena across temporal scales (α-phase-firing relationship, α-power-fMRI anticorrelation, power-law scaling, E/I balance, functional connectivity) from a single model framework, which is a meaningful form of construct validity.",
+            "Cross-validation shows no significant difference between training and validation datasets, and subject-specificity is demonstrated (within-subject correlations exceed between-subject correlations), providing some evidence against overfitting.",
+            "The parameter space exploration showing convergence toward a single optimal region across different metrics (time series, FC, power-law exponent) provides some support for model identifiability, though the space is low-dimensional.",
+            "The paper honestly acknowledges key limitations including the non-autonomous nature of the model, the approximation involved in treating EEG source activity as EPSCs, and that inferred mechanisms are candidate hypotheses requiring empirical falsification."
+          ],
+          "weaknesses": [
+            "INFERENTIAL GAP (critical): The root claim states the model 'reveals neurophysiological mechanisms' and 'shows how the network interaction of neural populations leads to the emergence of these phenomena.' This overstates what modeling can establish. The model demonstrates that particular mechanisms CAN produce observed patterns, not that they DO operate in real brains. This inferential gap pervades subclaims c1.2, c1.3, and c1.4 and is inherited by the root claim. The authors partially acknowledge this in the Discussion ('inferred mechanisms constitute candidate hypotheses') but the Abstract and Results use language of identification and revelation.",
+            "EVIDENTIAL GAP (inherited from c1.1): The hybrid model's fMRI time series prediction is comparable to the α-regressor, a zero-parameter statistical model. The marginal improvement with three free parameters does not strongly support the claim that the biophysical model provides superior fMRI prediction. The paper explicitly acknowledges this but the root claim does not reflect this qualification.",
+            "EVIDENTIAL GAP (inherited from c1.5): The hybrid model's FC prediction was NOT significantly better than the random permutation model. This critically undermines the claim that EEG's temporal structure contributes meaningfully to FC prediction — the structural connectome alone (present in both models) appears to drive FC. This is a major finding that contradicts the claim that subject-specific EEG dynamics are essential for reproducing FC.",
+            "EVIDENTIAL GAP (inherited from c1.2): The reproduction of the Haegens et al. (2011) α-phase-firing relationship is qualitative only. No statistical comparison of model-generated phase-firing histograms with empirical data is provided, weakening the claim of 'reproducing' this phenomenon.",
+            "EVIDENTIAL GAP (inherited from c1.3): The mechanism transforming α-power to fMRI oscillations is demonstrated primarily with idealized artificial α-activity (pure sine waves), not with realistic broadband EEG. Generalizability to actual neural signals is assumed rather than demonstrated rigorously.",
+            "EVIDENTIAL GAP (inherited from c1.4): No confidence intervals or formal statistical tests comparing power-law exponents (simulated −0.73 vs. empirical −0.82) are reported. The residual gap (~0.09) is not assessed for significance, and alternative mechanisms for power-law scaling (self-organized criticality, synaptic plasticity) are not tested or excluded.",
+            "INFERENTIAL GAP: The claim of connecting phenomena 'across multiple temporal scales in a time scale hierarchy' implies a unified mechanistic account. However, the connections between scales emerge from separate analyses with different inputs (real EEG for some, artificial sine waves for others) and different parameter regimes, making the 'hierarchy' more of a narrative linking than a formally demonstrated cascade.",
+            "The sample size of 15 subjects is modest, and the generalizability of results to larger, more diverse populations is unknown.",
+            "The paper acknowledges but does not adequately address the contribution of non-neural physiological signals (cardiac, respiratory) to fMRI variance. The claim of a 'neural origin of fMRI RSN oscillations' is therefore not fully supported since these confounds are not explicitly modeled or removed."
+          ],
+          "alternative_interpretations": [
+            "The comparable performance of the α-regressor (zero parameters) suggests that a simple linear convolution of α-power with the HRF captures most of the EEG-fMRI relationship, and the biophysical model's added complexity may not be necessary for fMRI prediction per se — its value lies primarily in generating mechanistic hypotheses, not in prediction accuracy.",
+            "The equivalent FC prediction by hybrid and random-permutation models suggests that structural connectivity, not EEG-derived functional information, is the primary driver of FC topology. The hybrid model's FC results may therefore reflect the quality of the structural connectome rather than the EEG input.",
+            "The power-law scaling result could reflect properties of the hemodynamic response function and NMDA receptor kinetics (both low-pass filters) rather than specifically long-range network dynamics. The paper's own analysis shows these filters contribute substantially to spectral shaping.",
+            "The inverse α-phase-firing relationship in the model may be a near-inevitable consequence of the neural mass equations' monotonic input-output relationship combined with oscillatory input, rather than reflecting a specific biological mechanism of 'gating by inhibition.'",
+            "The half-wave rectification mechanism for α-power to fMRI conversion, while elegant, may be an artifact of the specific neural mass model's firing rate function (which clips at zero) rather than a phenomenon that generalizes to real cortical circuits where baseline firing rates are typically above zero."
+          ],
+          "required_assumptions": [
+            "EEG source activity is a reasonable approximation of excitatory postsynaptic currents (EPSCs) — this is a strong assumption acknowledged by the authors as a limitation.",
+            "The neural mass model (Deco et al., 2013; Wong and Wang, 2006) adequately captures the relevant dynamics of neural populations despite extreme simplification of cortical circuitry.",
+            "Structural connectomes derived from diffusion-weighted MRI tractography accurately reflect the strengths of anatomical connections between brain regions.",
+            "The hemodynamic forward model (Balloon-Windkessel or equivalent) accurately transforms neural activity into BOLD signal.",
+            "Neurovascular coupling is mediated exclusively by excitatory synaptic activity — the authors explicitly state this assumption.",
+            "When the model optimally fits observable brain activity, the underlying unobservable activity is also faithfully reproduced — this is a strong identifiability assumption acknowledged by the authors.",
+            "Three global parameters are sufficient to capture the relevant inter-subject variability in brain dynamics.",
+            "The parcellation scheme used for both structural connectivity and EEG source imaging provides adequate spatial resolution for the phenomena studied."
+          ],
+          "notes": "The paper is ambitious in scope and the framework is genuinely novel. However, there is a persistent tension between the strong mechanistic language used in the Abstract and Results ('reveals,' 'identifies,' 'shows how') and the more appropriate qualifying language in the Discussion ('candidate hypotheses requiring empirical falsification'). The root claim as stated in the Abstract inherits the overclaiming from multiple subclaims. The most damaging finding for the overall narrative is that random permutation of EEG input yields equivalent FC predictions (c1.5), which suggests that the temporal structure of EEG — central to the mechanistic claims — is irrelevant for at least one of the key predicted phenomena. The paper would benefit from more explicit quantitative comparisons with empirical data for the mechanistic claims (e.g., comparing model-generated waveforms statistically with invasive recording data) and from formal model comparison that accounts for the multiple phenomena predicted.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "Individualized hybrid models predict ongoing empirical subject-specific resting-…",
+        "claim": "Individualized hybrid models predict ongoing empirical subject-specific resting-state fMRI time series significantly better than control scenarios (noise-driven model, permuted EEG, and α-regressor).",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Predictions from the hybrid model correlated significantly better with empirical fMRI time series than predictions from the two random models and the α-regressor.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "Multiple control scenarios tested (noise-driven, permuted EEG, α-regressor) provide a reasonable baseline comparison framework.",
+            "Five-fold cross-validation showed no significant difference between training and validation datasets, addressing within-subject overfitting concerns to some degree.",
+            "Subject-specificity was tested by cross-correlating simulations with other subjects' fMRI, finding significantly higher correlations for same-subject pairs.",
+            "Sliding-window analysis reveals that prediction quality covaries with RSN temporal mode variance, adding nuance to the prediction quality assessment."
+          ],
+          "weaknesses": [
+            "Inferential gap: the hybrid model's time series prediction quality is comparable to the α-regressor (a zero-parameter model), yet the hybrid model uses three free parameters — this actually undermines the claim of superior prediction, as the marginal improvement does not clearly justify the added complexity.",
+            "Evidential gap inherited from c1.1.1: subject-specificity analysis uses maximum correlation over all tested parameter combinations, introducing selection bias that conflates parameter optimization with genuine subject-specificity.",
+            "Evidential gap inherited from c1.1.1: 'p<<0.01' is reported without exact p-values or effect sizes for the subject-specificity test.",
+            "Evidential gap inherited from c1.1.5: the hybrid model fails to significantly predict executive control and frontoparietal RSN time courses over 20 min, which are major cognitive networks — this is noted but unexplained.",
+            "Evidential gap inherited from c1.1.4: the comparable performance of the α-regressor suggests the hybrid model's advantage may be largely attributable to α-band information, not the full biophysical model dynamics.",
+            "No formal model comparison (e.g., BIC, AIC, Bayesian model evidence) accounting for model complexity is performed — the authors acknowledge this but defer to future work.",
+            "Cross-validation is temporal within-subject, not across subjects, so generalizability to new subjects is not established."
+          ],
+          "alternative_interpretations": [
+            "The α-regressor achieving comparable time series prediction with zero parameters suggests that a simple convolution of α-power with the HRF captures most of the predictive information, and the hybrid model's biophysical machinery adds minimal predictive value for time series.",
+            "Higher prediction during high-variance RSN epochs could reflect trivially higher SNR rather than genuinely better model performance."
+          ],
+          "required_assumptions": [
+            "EEG source reconstruction is sufficiently accurate to meaningfully constrain the model.",
+            "The three global parameters adequately capture inter-subject variability in brain dynamics.",
+            "Pearson correlation is an appropriate metric for assessing prediction quality of fMRI time series."
+          ],
+          "notes": "The claim of 'significantly better' prediction is technically supported by rank-sum tests, but the practical significance is questionable given the comparable α-regressor performance. The paper's own discussion acknowledges the lack of formal model comparison. The failure for executive control and frontoparietal networks (c1.1.5) is a notable gap that partially undermines the generality of the claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "The model identifies an explicit mechanism whereby the ongoing balancing of exci…",
+        "claim": "The model identifies an explicit mechanism whereby the ongoing balancing of excitatory and inhibitory synaptic currents (E/I balance) produces the empirically observed inverse relationship between α-phase and neural firing rates on the fast time scale (~100 ms).",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Analyses revealed that periodically alternating states of excitation and inhibition resulted from the ongoing balancing of EPSCs by feedback IPSCs, which explains α-phase-related neural firing.",
+        "evaluation": {
+          "node_id": "c1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The mechanism is described in detailed, step-by-step terms tracing input currents through population dynamics to firing rate outputs, making the proposed mechanism transparent and reproducible.",
+            "The resulting EPSC-to-IPSC ratio (~1:3) is consistent with published electrophysiology data (Xue et al., 2014), providing some external validation.",
+            "The inverse phase-firing relationship qualitatively matches invasive recording results from Haegens et al. (2011).",
+            "The mechanism emerges from parameter optimization targeting fMRI prediction, not from explicit construction to reproduce phase-firing relationships, which adds some credibility."
+          ],
+          "weaknesses": [
+            "Inferential gap: the claim states the model 'identifies' an explicit mechanism, but this is a model-internal result — it demonstrates that a particular mechanism CAN produce the observed pattern, not that this mechanism DOES operate in the real brain. The language of 'identification' overclaims what is actually hypothesis generation.",
+            "Evidential gap from c1.2.1: the reproduction of Haegens et al. (2011) is qualitative, not quantitative — no statistical comparison of phase-firing histograms between model and empirical data is provided.",
+            "Evidential gap from c1.2.2: the E/I balance is a model property, not independently verified against intracellular recordings from the same subjects.",
+            "The result is partially expected from the model architecture: α-oscillating input through monotonic transfer functions will inevitably produce some phase-dependent firing modulation. The degree to which this is 'emergent' versus architecturally guaranteed is unclear.",
+            "Evidential gap from c1.2.3: comparison to Xue et al. (2014) is informal, with no statistical test of whether the model ratio falls within the empirical confidence interval, and no inter-subject or inter-region variability is reported."
+          ],
+          "alternative_interpretations": [
+            "The inverse phase-firing relationship may be a near-inevitable consequence of injecting oscillatory input into a model with monotonic input-output curves and recurrent inhibition, rather than reflecting a specific biological mechanism.",
+            "The E/I balance observed in the model may reflect parameter optimization constraints rather than a genuine mechanistic insight about cortical circuits."
+          ],
+          "required_assumptions": [
+            "EEG source activity is a reasonable approximation of excitatory postsynaptic currents (EPSCs).",
+            "The neural mass model's transfer function (monotonic sigmoid) adequately captures the input-output relationship of real neuronal populations.",
+            "The mean-field reduction from spiking models preserves the relevant dynamics of phase-firing relationships."
+          ],
+          "notes": "The paper appropriately notes in the Discussion that 'inferred mechanisms constitute candidate hypotheses that require empirical falsification,' but the Results section language ('identifies a mechanism,' 'explains') is stronger than this caveat. The claim would be better calibrated if framed as 'proposes' rather than 'identifies.'",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "The model identifies an explicit mechanism that transforms ongoing α-power fluct…",
+        "claim": "The model identifies an explicit mechanism that transforms ongoing α-power fluctuations into slow fMRI oscillations, which explains both the anti-correlation between α-power and fMRI and posits a neural origin of fMRI resting-state network oscillations.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "The second model outcome posits a neural origin of fMRI RSN oscillations by identifying an explicit mechanism that transforms ongoing α-power fluctuations into slow fMRI oscillations, which also explains the empirically observed anti-correlations between α-power and fMRI time series.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The half-wave rectification mechanism is clearly articulated and biophysically grounded — the constraint that firing rates cannot go below zero is a genuine biological constraint that produces the described asymmetry.",
+            "The mechanism is demonstrated with multiple artificial α-activity configurations (burst and sustained amplitude modulation), showing consistency.",
+            "Robustness to carrier frequency (9, 10, 11 Hz) is demonstrated with very high correlations (r > 0.99).",
+            "The chain from α-power fluctuations → inhibitory firing rate rectification → IPSC modulation → excitatory firing modulation → NMDA low-pass filtering → hemodynamic low-pass filtering → fMRI oscillations is logically coherent and each step is grounded in known physiology.",
+            "The mechanism naturally produces the anti-correlation between α-power and fMRI that is well-established empirically (Goldman et al., 2002; Moosmann et al., 2003; de Munck et al., 2008)."
+          ],
+          "weaknesses": [
+            "Inferential gap: the claim states the model 'identifies an explicit mechanism' and 'posits a neural origin of fMRI RSN oscillations,' but this is a demonstration that a mechanism CAN produce fMRI-like oscillations, not proof that RSN oscillations DO originate from this mechanism. Other sources (hemodynamic, respiratory, cardiac) are not modeled or excluded.",
+            "Evidential gap from c1.3.2: the mechanism is demonstrated with idealized artificial α-activity (pure sine waves with controlled modulation), which is considerably simpler than real broadband EEG. Whether the mechanism operates identically with realistic noisy input is not thoroughly tested.",
+            "Evidential gap from c1.3.6: the subsidiary claim that physiological noise correction may remove neurally-relevant variance is entirely speculative — no comparison with/without such correction is performed.",
+            "The assumption that neurovascular coupling is mediated exclusively by excitatory synaptic activity is a significant simplification; inhibitory activity can also drive hemodynamic responses (Logothetis, 2008).",
+            "Evidential gap from c1.3.1: the p<0.001 significance test on model-generated data (firing rate vs. α-power bins) has limited inferential value since sample sizes are arbitrary in simulations.",
+            "The frequency range tested for robustness (9-11 Hz) is narrow, and as noted in sub-claims, the result is expected since the mechanism operates on the envelope."
+          ],
+          "alternative_interpretations": [
+            "Non-neuronal processes (respiration, cardiac pulsation) correlated with both α-power and fMRI could produce the observed anti-correlation without requiring the proposed neural mechanism.",
+            "The half-wave rectification mechanism may operate but be only one of several contributors to α-fMRI anti-correlations; thalamic mechanisms (not modeled) could play a dominant role.",
+            "The mechanism may be an artifact of using neural mass models where individual neuron heterogeneity is averaged out — in reality, individual neurons fire at various phases, and the population-level rectification effect may be weaker."
+          ],
+          "required_assumptions": [
+            "EEG source activity adequately approximates EPSCs.",
+            "Neurovascular coupling is primarily driven by excitatory synaptic activity.",
+            "The NMDA and GABA time constants used are representative of real cortical dynamics.",
+            "The canonical hemodynamic response function accurately captures neurovascular coupling dynamics.",
+            "The half-wave rectification effect is not diminished by neuronal adaptation, synaptic depression, or other nonlinear dynamics not modeled."
+          ],
+          "notes": "This is arguably the most interesting and well-developed mechanistic claim in the paper. The half-wave rectification mechanism is elegant and plausible. However, the overclaiming lies in the language of 'identifying' rather than 'proposing,' and in the subsidiary implication about physiological noise correction (c1.3.6), which is unsupported.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Scale invariance (power-law scaling) of fMRI power spectra results from self-rei…",
+        "claim": "Scale invariance (power-law scaling) of fMRI power spectra results from self-reinforcing feedback excitation via long-range structural connectivity, which leads to frequency-dependent amplification of neural oscillations — amplifying slower oscillations more than faster ones.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Our third model outcome indicates that scale invariance of fMRI power spectra results from self-reinforcing feedback excitation via long-range structural connectivity, which leads to frequency-dependent amplification of neural oscillations.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The comparison between coupled and uncoupled network conditions provides a clear manipulation that isolates the effect of long-range connectivity on power-law scaling.",
+            "The simulated fMRI exponent (βsim = −0.73) is closer to the empirical exponent (βemp = −0.82) than the uncoupled exponent (βsim_Gzero = −0.54), providing quantitative support.",
+            "The mechanism — that slower oscillations accumulate more excitatory activity due to the NMDA time constant — is physically intuitive and well-articulated.",
+            "The E/I balance analysis (diagonal pattern in parameter space) provides complementary evidence that balanced dynamics are needed for power-law emergence.",
+            "The effect is shown to be present in pre-hemodynamic signals (firing rates, synaptic gating), excluding the hemodynamic forward model as the sole explanation.",
+            "Rigorous time-domain model selection criteria were used for power-law testing, rather than relying solely on straight-line fits to power spectra."
+          ],
+          "weaknesses": [
+            "Inferential gap from c1.4.5: the model demonstrates that long-range coupling CAN produce power-law scaling, but does not prove this is the mechanism in real brains. Self-organized criticality, synaptic plasticity, and other mechanisms are not tested or excluded.",
+            "Evidential gap from c1.4.1: no confidence intervals or statistical tests comparing the power-law exponents (−0.73 vs. −0.82 vs. −0.54) are reported. The gap between simulated (−0.73) and empirical (−0.82) exponents may be meaningful.",
+            "Evidential gap from c1.4.3: the frequency-dependent amplification argument is qualitative — no formal transfer function analysis or mathematical derivation is provided to characterize the amplification as a function of frequency.",
+            "Evidential gap from c1.4.4: the diagonal pattern in parameter space shows that balanced parameters are needed for good predictions generally, but does not specifically demonstrate causation between E/I balance and scale invariance — it could reflect that balanced parameters are needed for any reasonable brain-like output.",
+            "The mechanism relies on the specific NMDA time constant (100 ms); sensitivity analysis varying this parameter is not reported.",
+            "The power-law analysis was conducted on the same data used for model fitting, not on held-out data.",
+            "Inter-subject variability of power-law exponents is not reported."
+          ],
+          "alternative_interpretations": [
+            "Power-law scaling in fMRI could arise from the hemodynamic response function itself, which acts as a frequency-dependent filter — though the authors show the effect in pre-hemodynamic signals, the hemodynamic model could still modify the exponent.",
+            "Self-organized criticality or balanced amplification mechanisms at the synaptic level could produce similar power-law scaling without requiring the specific long-range feedback mechanism proposed.",
+            "The power-law scaling could partially reflect the spectral properties of the injected EEG source activity being amplified by any recurrent network, not specifically by the proposed mechanism."
+          ],
+          "required_assumptions": [
+            "The NMDA synaptic time constant is the dominant factor in excitatory synaptic gating dynamics.",
+            "Long-range structural connectivity estimates from tractography accurately reflect the relevant coupling strengths.",
+            "The mean-field approximation preserves the frequency-dependent amplification properties that would be present in more detailed network models.",
+            "Power-law scaling in fMRI is a genuine neural phenomenon rather than an artifact of measurement or preprocessing."
+          ],
+          "notes": "The claim about 'self-reinforcing feedback excitation' is suggestive of positive feedback instability, but the authors do not address how the system remains stable (E/I balance presumably prevents runaway excitation, but this is not formally analyzed). The paper acknowledges that power-laws alone do not prove criticality, which is appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "The hybrid model reproduces spatial topologies of fMRI functional connectivity n…",
+        "claim": "The hybrid model reproduces spatial topologies of fMRI functional connectivity networks (both static and dynamic FC), significantly outperforming the α-regressor and the noise-driven model.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Furthermore, hybrid model simulation results correlated significantly better with empirical network topology than predictions obtained from the noise-driven model.",
+        "evaluation": {
+          "node_id": "c1.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "FC predictions are compared across four scenarios, providing context for the hybrid model's performance.",
+            "Both static (long-epoch) and dynamic (sliding-window) FC are evaluated, providing a more comprehensive assessment.",
+            "The hybrid model significantly outperforms the α-regressor for FC prediction, which is notable given that the α-regressor achieves comparable time series correlations.",
+            "Group-average FC prediction is also shown to be better for the hybrid model versus α-regressor."
+          ],
+          "weaknesses": [
+            "Critical evidential gap from c1.5.2: the hybrid model's FC prediction was NOT significantly better than the random permutation model. This is a major finding that substantially undermines the claim — it means that the temporal structure of injected EEG contributes nothing to FC prediction beyond what random signals with the same spectral characteristics provide.",
+            "Inferential gap: the claim states the hybrid model 'significantly outperforms the noise-driven model,' but the fact that temporally scrambled EEG performs equally well suggests that the improvement over noise may reflect spectral properties of EEG rather than meaningful neural dynamics.",
+            "The claim in the paper title wording 'reproduces spatial topologies' is overclaimed given that FC correlations, while significant, may be modest in absolute terms — the paper does not report the actual correlation values prominently enough to assess practical significance.",
+            "The structural connectome itself is known to predict a substantial portion of FC (Honey et al., 2009); the added value of EEG injection specifically for FC is unclear given the permutation result."
+          ],
+          "alternative_interpretations": [
+            "FC prediction may be primarily driven by the structural connectome (which is present in all model-based scenarios) rather than by the injected EEG dynamics, explaining why permuted EEG achieves similar FC predictions.",
+            "The improvement over the noise-driven model may simply reflect that EEG source activity, even permuted, has more realistic spectral characteristics than white noise, which better drives the structural network to produce realistic FC patterns."
+          ],
+          "required_assumptions": [
+            "Pearson correlation between FC matrices is an appropriate metric for comparing spatial topologies.",
+            "The structural connectome estimated from tractography accurately reflects anatomical connectivity.",
+            "Static and dynamic FC computed from 20 min of data are stable estimates of true functional network topology."
+          ],
+          "notes": "The equivalence between hybrid and permutation models for FC is one of the most important results in the paper, yet it is somewhat downplayed. It directly contradicts the narrative that the hybrid model's use of temporally structured, subject-specific EEG is critical for reproducing brain network topology. For FC, the structural connectome appears to be doing the heavy lifting.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "The hybrid modeling approach constitutes a novel form of multimodal data fusion …",
+        "claim": "The hybrid modeling approach constitutes a novel form of multimodal data fusion under a generative model that is both physiologically and anatomically grounded, simultaneously incorporating structural connectivity, EEG, and fMRI from individual subjects.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "Because it uses empirical EEG data to generate predictions of fMRI responses, it can be regarded as a form of multimodal fusion under a generative model that is both physiologically and anatomically grounded.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The framework genuinely integrates three data modalities (structural MRI/tractography, EEG, fMRI) within a single generative model, which is a legitimate advance over approaches that analyze modalities separately.",
+            "The biophysical grounding through neural mass models derived from mean-field reductions of spiking networks (Deco et al., 2013; Wong and Wang, 2006) provides a principled connection to cellular-level dynamics.",
+            "The anatomical grounding through individual structural connectomes provides subject-specific coupling constraints.",
+            "The paper honestly acknowledges key limitations, including that the model is not autonomous and that EEG source activity is an approximation of EPSCs.",
+            "The emergence of phenomena at time scales not used for fitting (fast α-phase dynamics) supports the claim that the framework captures aspects of brain function beyond the fitting target."
+          ],
+          "weaknesses": [
+            "Evidential gap from c1.6.1: the claim of 'increased biological plausibility' compared to noise-driven models is assumed rather than demonstrated — EEG source activity's fidelity as an EPSC approximation is unknown and acknowledged as a limitation.",
+            "Evidential gap from c1.6.2: convergence of parameter optima across metrics is shown for only three parameters, which is a low-dimensional space — 'identifiability' in this narrow sense does not establish model validity.",
+            "The model's non-autonomous nature (dependence on external EEG injection) is a fundamental limitation that distinguishes it from truly generative models of brain dynamics. This is acknowledged but could be discussed more prominently.",
+            "The EEG source reconstruction step introduces substantial uncertainty (volume conduction, inverse problem ill-posedness) that propagates through all model results but is not formally quantified.",
+            "The lack of formal Bayesian model comparison (acknowledged by the authors) means the claim of 'multimodal fusion under a generative model' cannot be rigorously compared to alternative fusion approaches."
+          ],
+          "alternative_interpretations": [
+            "The framework could be viewed less as 'multimodal fusion' and more as using EEG as a sophisticated input signal for a model that predicts fMRI — the 'fusion' aspect is more aspirational than realized in the current implementation.",
+            "Traditional multimodal fusion approaches (e.g., Valdes-Sosa et al., 2009; Friston, 2009) may achieve comparable integration with more principled statistical frameworks."
+          ],
+          "required_assumptions": [
+            "EEG source reconstruction provides a sufficiently accurate approximation of cortical source activity.",
+            "The neural mass model framework adequately captures the relevant dynamics of cortical populations.",
+            "Three global parameters are sufficient to characterize the relevant inter-subject variability in brain dynamics.",
+            "The structural connectome from tractography represents the relevant anatomical constraints on large-scale dynamics."
+          ],
+          "notes": "The claim is framed carefully ('can be regarded as') and the authors acknowledge many limitations explicitly, which supports a 'calibrated' assessment. The novelty of the framework is genuine — using subject-specific EEG to drive biophysical models constrained by individual connectomes is a meaningful methodological contribution, even if the individual components are not new.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The inferred mechanisms constitute candidate hypotheses that make concrete, empi…",
+        "claim": "The inferred mechanisms constitute candidate hypotheses that make concrete, empirically testable predictions about waveforms of input currents, firing rates, synaptic activities, and fMRI signals, and are intended to be iteratively refined through falsification.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "It is important to point out that the inferred mechanisms constitute candidate hypotheses that require empirical falsification. The model-derived mechanisms make concrete predictions on the waveforms of different input currents, output firing rates, synaptic activities and fMRI signals, which can be empirically tested.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The paper explicitly and repeatedly acknowledges that the inferred mechanisms are 'candidate hypotheses that require empirical falsification,' which is appropriately cautious.",
+            "The mechanisms do make specific, testable predictions about waveform shapes (e.g., EPSC/IPSC ratios, phase-firing relationships, rectification of inhibitory firing rates) that could in principle be tested with intracellular recordings.",
+            "The iterative refinement framework described (ongoing integration of biological knowledge, falsification, refinement) is a sound scientific methodology.",
+            "The model's predictions about the relationship between α-power and fMRI are consistent with existing empirical data (Goldman et al., 2002; Moosmann et al., 2003), providing some external validation of the predictions' plausibility."
+          ],
+          "weaknesses": [
+            "Evidential gap from c1.7.1: no empirical evidence is provided for whether the proposed mechanisms apply to non-α frequency bands — this remains entirely speculative despite being mentioned as a future direction.",
+            "Evidential gap from c1.7.2: the claim about clinical applications and E/I imbalance in disorders is entirely speculative with no supporting data.",
+            "The 'concrete predictions' are largely about model state variables, not about directly observable quantities — testing them would require simultaneous intracellular recordings, EEG, and fMRI, which is currently infeasible in humans.",
+            "The testability claim is somewhat weakened by the model's dependence on many assumptions (EEG as EPSC proxy, specific time constants, hemodynamic model) — a failed prediction could reflect flawed assumptions rather than a wrong mechanism.",
+            "No specific experimental protocol is proposed for testing the predictions, reducing the practical testability."
+          ],
+          "alternative_interpretations": [
+            "The model may generate predictions that are empirically indistinguishable from predictions of simpler models, making falsification practically difficult.",
+            "The iterative refinement process described could lead to overfitting to known empirical phenomena over successive model versions, rather than genuine progressive understanding."
+          ],
+          "required_assumptions": [
+            "The model's state variables correspond sufficiently to biological quantities that empirical measurements can meaningfully test the predictions.",
+            "The predictions are specific enough to be distinguishable from alternative mechanistic accounts.",
+            "Future experimental techniques will enable the simultaneous multi-scale measurements needed for testing."
+          ],
+          "notes": "This claim is appropriately framed as a methodological contribution and philosophical position about the role of computational models in neuroscience, rather than as a specific empirical result. The calibration is appropriate — the authors do not overclaim the status of their mechanistic inferences. However, the practical path to falsification is underdeveloped.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "The hybrid model's fMRI time series prediction quality is subject-specific: maxi…",
+        "claim": "The hybrid model's fMRI time series prediction quality is subject-specific: maximum correlations over all tested parameters were significantly larger when empirical and simulated data belonged to the same subject compared to different subjects.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We found that the maximum correlation coefficients over all tested parameters were significantly larger when empirical and simulated data sets belonged to the same subject compared to when they came from different subjects (p<<0.01, Wilcoxon rank sum test).",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The authors performed an explicit cross-subject comparison, which is the right test for subject-specificity.",
+            "Statistical significance is reported (p<<0.01, Wilcoxon rank sum test)."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claim: reporting 'p<<0.01' is imprecise; exact p-values and effect sizes should be reported.",
+            "Inferential gap: taking the maximum correlation over all tested parameter combinations for each subject introduces a selection bias — parameters were optimized on same-subject data, so the within-subject advantage conflates parameter overfitting with genuine subject-specificity. A fairer test would use cross-validated parameter sets or fixed parameters across subjects.",
+            "No effect sizes (e.g., Cliff's delta, Cohen's d) are reported for this comparison, unlike other analyses in the paper."
+          ],
+          "alternative_interpretations": [
+            "The apparent subject-specificity could partly reflect that parameters are tuned to each subject's fMRI, so the 'maximum over all parameters' inherently favors the same subject. The result may overestimate the true subject-specificity of the EEG-driven predictions."
+          ],
+          "required_assumptions": [
+            "The parameter optimization procedure does not systematically inflate within-subject correlations relative to between-subject correlations beyond what genuine subject-specific dynamics would produce."
+          ],
+          "notes": "The cross-validation result in c1.1.3 partially mitigates overfitting concerns for temporal generalization but does not address the cross-subject confound raised here.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "Prediction quality varies over time, regions, and subjects, and is highest durin…",
+        "claim": "Prediction quality varies over time, regions, and subjects, and is highest during epochs where RSN temporal modes have the highest standard deviation (variance), which may reflect increased synchrony of electrical activity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "window-wise prediction quality was highly correlated with the standard deviation of RSN temporal modes...the higher the variance contributed to overall fMRI activity by an RSN in a given subject and time window, the better the prediction of empirical fMRI, which might reflect increased synchrony of electrical activity.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The sliding-window analysis provides temporal granularity beyond a single correlation over the full time series.",
+            "The quartile comparison provides a clean, intuitive demonstration of the variance-prediction relationship.",
+            "The authors appropriately qualify the mechanistic interpretation ('might reflect increased synchrony') with hedging language."
+          ],
+          "weaknesses": [
+            "Evidential gap: as noted in sub-claim evaluation, higher-variance epochs have intrinsically higher signal-to-noise ratio, which could trivially inflate correlations for any predictor, not just the hybrid model. The paper does not control for this (e.g., by normalizing correlations by expected SNR).",
+            "Statistical details of the quartile comparison (exact p-values, effect sizes) are referenced only via figure panels, not explicitly in the text."
+          ],
+          "alternative_interpretations": [
+            "The variance-prediction relationship could be a statistical artifact: when the target signal has low variance, any predictor will have low correlations. The relationship may reflect measurement properties rather than underlying neural synchrony."
+          ],
+          "required_assumptions": [
+            "The signal-to-noise ratio of EEG source imaging does not systematically covary with fMRI RSN variance in a way that would trivially produce this result."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "The hybrid model's parameter space search converges toward a single optimal solu…",
+        "claim": "The hybrid model's parameter space search converges toward a single optimal solution, and cross-validation shows no significant difference between training and validation sets, indicating the model is not overfitting.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We confirmed identifiability of the model by showing that parameter space search converges toward a single optimal solution yielding best predictions.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Five-fold cross-validation with explicit reporting of test statistics (p=0.71, t=0.54, Cliff's delta d=0.0044) provides quantitative evidence against overfitting.",
+            "The parameter space convergence toward a single optimum (shown via heat maps) is a strong indicator of identifiability.",
+            "Effect sizes are very small, supporting the no-difference conclusion."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claims: cross-validation is temporal (within-subject), not across subjects (leave-one-subject-out), so generalizability to new subjects is not established.",
+            "The non-significant result could in principle reflect low power (n=15), though the very small effect sizes argue against this.",
+            "Only three parameters are tuned, which inherently limits overfitting risk — the claim of identifiability would be more impressive with more parameters."
+          ],
+          "alternative_interpretations": [
+            "With only three parameters and a smooth parameter landscape, overfitting is intrinsically unlikely regardless of cross-validation — the result may be more about the low complexity of the model than about any principled avoidance of overfitting."
+          ],
+          "required_assumptions": [
+            "Temporal cross-validation adequately captures the risk of overfitting in this model class.",
+            "The parameter space was searched with sufficient resolution to identify the global optimum."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "The α-rhythm was the main driver for the hybrid model's fMRI time series predict…",
+        "claim": "The α-rhythm was the main driver for the hybrid model's fMRI time series prediction, as indicated by the comparable time series correlations of the α-regressor and the hybrid model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "it is interesting to note that the time series correlations obtained by the α-regressor and the hybrid model are comparable, which indicates that the α-rhythm was the main driver for the hybrid model's fMRI time series prediction.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison between α-regressor and hybrid model time series correlations is a direct and informative test.",
+            "The authors correctly note the absence of formal model comparison and frame this as an observation rather than a definitive conclusion."
+          ],
+          "weaknesses": [
+            "Inferential gap: comparable time series correlations between the α-regressor and hybrid model are consistent with α being the main driver, but do not prove it. Other frequency bands in the injected EEG could contribute modestly but non-negligibly.",
+            "The hybrid model has three free parameters while the α-regressor has zero, making the comparison inherently unbalanced — the hybrid model's comparable (not substantially better) performance despite additional parameters actually weakens rather than strengthens the hybrid model's claim to add value beyond α.",
+            "No frequency-specific ablation was performed (e.g., injecting only non-α EEG content) to quantify the α-specific contribution."
+          ],
+          "alternative_interpretations": [
+            "The comparable performance could indicate that the biophysical model adds little beyond what a simple convolution of α-power achieves for time series prediction, with the hybrid model's advantages being primarily in FC and electrophysiological phenomena prediction."
+          ],
+          "required_assumptions": [
+            "The α-regressor captures the relevant α-band information as well as the hybrid model does."
+          ],
+          "notes": "This claim is somewhat in tension with the broader narrative that the hybrid model provides substantial advantages over simpler approaches — for time series prediction specifically, the advantage appears marginal.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The hybrid model predicts time courses of different commonly observed RSNs signi…",
+        "claim": "The hybrid model predicts time courses of different commonly observed RSNs significantly better than noise-driven and permutation control models for most RSNs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "correlation coefficients of the hybrid model were significantly larger than the control network models for most RSNs.",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison across nine RSNs provides a comprehensive assessment across different functional networks.",
+            "Statistical tests (one-tailed Wilcoxon rank sum) are reported with significance levels.",
+            "The qualifier 'most RSNs' is appropriately calibrated — the authors do not claim all RSNs."
+          ],
+          "weaknesses": [
+            "Evidential gap inherited from sub-claims: the failure for executive control and frontoparietal networks is notable and unexplained. These are major cognitive networks.",
+            "No correction for multiple comparisons across nine RSNs is mentioned, though this is a minor concern given the pattern of results.",
+            "The null hypothesis tests for zero median correlation rejected for all RSNs except executive control and frontoparietal, meaning the model adds no predictive value for these networks."
+          ],
+          "alternative_interpretations": [
+            "The failure for frontoparietal and executive control networks could indicate that these networks rely more on non-α EEG activity or higher-order cognitive processes not captured by the model."
+          ],
+          "required_assumptions": [
+            "The ICA-derived RSN spatial maps accurately capture the relevant functional networks.",
+            "One-tailed tests are justified by the directional hypothesis."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "Structural coupling is critical for fMRI prediction, as prediction quality decre…",
+        "claim": "Structural coupling is critical for fMRI prediction, as prediction quality decreases for sub-optimal global coupling strengths or when global coupling is deactivated.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Parameter space exploration shows that structural coupling is critical for fMRI prediction, as prediction quality decreases for sub-optimal global coupling strengths or when global coupling is deactivated altogether.",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is supported by systematic parameter space exploration showing degraded performance at sub-optimal coupling values.",
+            "The comparison between coupled and uncoupled conditions (G=0) provides a clean test.",
+            "This is corroborated by the power-law analysis (c1.4.1) where deactivated coupling led to loss of empirical-like scaling."
+          ],
+          "weaknesses": [
+            "The claim is about necessity but does not quantify the magnitude of the effect — how much does prediction quality decrease?",
+            "Specific statistical tests for the coupled vs. uncoupled comparison are not reported in this section."
+          ],
+          "alternative_interpretations": [
+            "Structural coupling could be important simply because it smooths or correlates activity across regions, improving correlation with fMRI that is itself spatially smooth — this would be a statistical rather than mechanistic contribution."
+          ],
+          "required_assumptions": [
+            "The tractography-derived structural connectivity is a reasonable approximation of actual white matter connectivity.",
+            "The global coupling parameter adequately captures the effect of structural connectivity."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "In optimized hybrid models, EPSCs dominate the sum of synaptic input current to …",
+        "claim": "In optimized hybrid models, EPSCs dominate the sum of synaptic input current to inhibitory populations, causing inhibitory firing rates and synaptic gating to closely follow the waveform of injected EPSCs.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As a result of optimizing the three model parameters, EPSCs dominated the sum of synaptic input current to inhibitory populations. Consequently, inhibitory populations' firing rates and synaptic gating closely followed the shape of EPSCs.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The mechanistic chain from EPSCs through inhibitory dynamics is clearly articulated and follows logically from the model equations.",
+            "Grand average waveforms provide visual evidence of the claimed dynamics."
+          ],
+          "weaknesses": [
+            "Evidential gap: this is entirely a model-internal result — the firing rates are simulated, not empirically measured. The 'reproduction' of Haegens et al. (2011) is qualitative, not quantitative.",
+            "The result is somewhat expected by construction: the model uses α-oscillating input and monotonic input-output relationships, so some phase-dependent modulation is nearly guaranteed.",
+            "The grand averaging procedure may obscure variability across regions and subjects."
+          ],
+          "alternative_interpretations": [
+            "The phase-firing relationship could be a trivial consequence of the model architecture (monotonic transfer function + oscillatory input) rather than an informative emergent property."
+          ],
+          "required_assumptions": [
+            "The neural mass model's input-output transfer function adequately captures the essential population-level dynamics.",
+            "EEG source activity is a reasonable proxy for EPSCs."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Stronger EPSCs precede and help generate stronger IPSCs (proportional amplitude …",
+        "claim": "Stronger EPSCs precede and help generate stronger IPSCs (proportional amplitude fluctuation), producing E/I balance during each α-cycle, consistent with published electrophysiology results.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "stronger EPSCs preceded and helped to generate stronger IPSCs. In other words, excitation and inhibition were balanced during each cycle, which is in accordance with published electrophysiology results.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The proportional relationship between EPSCs and IPSCs is demonstrated in model waveforms.",
+            "The connection to empirical E/I balance literature (Haider et al., 2016; Isaacson and Scanziani, 2011; Okun and Lampl, 2008) is appropriate."
+          ],
+          "weaknesses": [
+            "The E/I balance is a property of the model dynamics — it is not independently verified against empirical intracellular recording data from the same subjects.",
+            "The claim of 'balance during each cycle' is qualitative; no formal test of cycle-by-cycle balance is reported.",
+            "E/I balance in the model may be partially imposed by the parameter optimization rather than being a truly emergent property."
+          ],
+          "alternative_interpretations": [
+            "The proportional EPSC-IPSC relationship could be an artifact of the simplified two-population (E/I) model architecture, which forces a tight coupling between excitation and inhibition that may not reflect the full complexity of cortical circuits."
+          ],
+          "required_assumptions": [
+            "The two-population (E/I) neural mass model adequately captures the relevant E/I dynamics.",
+            "The optimized parameters reflect biologically plausible regimes rather than artifacts of the fitting procedure."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "Fitting the models to fMRI activity resulted in a biologically plausible ratio o…",
+        "claim": "Fitting the models to fMRI activity resulted in a biologically plausible ratio of EPSCs to IPSCs, with IPSC amplitudes being about three times larger than EPSC amplitudes.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Fitting the models to fMRI activity resulted in a biologically plausible ratio of EPSCs to IPSCs, with IPSC amplitudes being about three times larger than EPSC amplitudes.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The ~3:1 IPSC/EPSC amplitude ratio is explicitly compared to empirical data (Xue et al., 2014), providing a concrete biological benchmark.",
+            "The ratio emerged from fMRI fitting rather than being imposed, which supports biological plausibility."
+          ],
+          "weaknesses": [
+            "The comparison to Xue et al. (2014) is informal — no statistical test of whether the model ratio falls within the empirical range is provided.",
+            "A single ratio value is reported without inter-subject or inter-region variability.",
+            "The ratio is for population-level model currents, not individual synaptic currents, so the comparison to empirical single-cell data is approximate."
+          ],
+          "alternative_interpretations": [
+            "The ~3:1 ratio could be constrained by the model architecture and the limited parameter space rather than reflecting a genuine biological constraint discovered through fitting."
+          ],
+          "required_assumptions": [
+            "The population-level IPSC/EPSC ratio in the model is comparable to single-cell ratios measured empirically.",
+            "The cited empirical ratio (Xue et al., 2014) is representative of the relevant cortical circuits."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.4",
+        "label": "Because IPSCs dominate excitatory population inputs, excitatory populations' fir…",
+        "claim": "Because IPSCs dominate excitatory population inputs, excitatory populations' firing rates peak during the trough and fall to minimum during the peak of the α-cycle, reproducing the empirical relationship.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Because IPSCs have dominated excitatory population inputs, excitatory populations' firing rates showed a similar shape as IPSCs, that is, they peaked during the trough of the α-cycle and fell to their minimum during the peak of the α-cycle, thereby reproducing the empirical relationship between α-cycle and firing rate.",
+        "evaluation": {
+          "node_id": "c1.2.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The logical chain is clearly described: EPSCs drive inhibitory populations → IPSCs dominate excitatory input → excitatory firing follows IPSC waveform → inverse α-phase relationship.",
+            "Consistency with Haegens et al. (2011) is noted."
+          ],
+          "weaknesses": [
+            "This is a model-internal observation, not an empirical verification. The 'reproduction' of the empirical relationship is qualitative.",
+            "As noted for c1.2.1, the result may be partly expected from the model architecture.",
+            "The mechanism depends on IPSCs dominating excitatory input, which emerged from parameter optimization — this dominance is not independently validated."
+          ],
+          "alternative_interpretations": [
+            "The inverse phase-firing relationship could arise from multiple mechanisms in real cortex (e.g., thalamocortical interactions, intrinsic membrane properties) that are absent from this model."
+          ],
+          "required_assumptions": [
+            "The two-population neural mass model captures the essential mechanism underlying α-phase-firing relationships.",
+            "The parameter regime where IPSCs dominate excitatory input is biologically realistic."
+          ],
+          "notes": "Depends on c1.2.1 and c1.2.2 being valid.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The mechanism operates through half-wave rectification by inhibitory populations…",
+        "claim": "The mechanism operates through half-wave rectification by inhibitory populations: while positive α-deflections generate peaks in inhibitory firing, negative deflections are bounded by 0 Hz, so average per-cycle inhibitory firing rates increase with increasing α-power.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "while positive deflections of α-cycles generated large peaks in ongoing firing rates of inhibitory populations, negative deflections were bounded by 0 Hz...Because of this rectification of high-amplitude negative half-cycles, average per-cycle firing rates of inhibitory populations increased with increasing α-power.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The half-wave rectification mechanism is clearly explained and is a mathematically inevitable consequence of the 0 Hz firing rate floor.",
+            "The mechanism is elegant and parsimonious — it requires only the physiological constraint that firing rates cannot be negative."
+          ],
+          "weaknesses": [
+            "Inferential gap inherited from sub-claims: the claim of 'replicating invasive monkey recordings' (Haegens et al., 2011) is overclaimed in the broader context — this is a model-internal result, not an empirical replication.",
+            "The p<0.001 significance test on model-generated data is of limited value since sample sizes can be made arbitrarily large.",
+            "The rectification mechanism operates in the model because of specific parameter choices (where inhibitory firing rates are driven close enough to zero). Whether real inhibitory neurons operate in this regime is not established."
+          ],
+          "alternative_interpretations": [
+            "In biological systems, the inverse relationship between α-power and firing may involve additional mechanisms beyond simple rectification, such as thalamocortical feedback loops or neuromodulatory effects."
+          ],
+          "required_assumptions": [
+            "Inhibitory population firing rates are driven sufficiently close to zero during negative α-deflections for rectification to be meaningful.",
+            "The 0 Hz floor constraint in the model accurately reflects biological firing rate constraints at the population level."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The α-power modulation is introduced as a new slow frequency component into firi…",
+        "claim": "The α-power modulation is introduced as a new slow frequency component into firing rates through half-wave rectification, analogous to envelope detection (AM demodulation) in radio communication.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The activity of inhibitory populations can be compared to envelope detection used in radio communication for AM signal demodulation. The new frequency component introduced by half-wave rectification of α-activity modulated feedback inhibition.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The AM demodulation analogy is intuitive and mathematically precise — half-wave rectification is indeed a standard demodulation technique.",
+            "The mechanism provides a concrete, testable prediction about how α-power modulation enters the fMRI frequency range."
+          ],
+          "weaknesses": [
+            "The mechanism is demonstrated with artificial α-activity (pure sine waves with controlled amplitude modulation), which is considerably simpler than real EEG. Whether it operates identically with broadband, noisy EEG is less clear.",
+            "The analogy to envelope detection, while pedagogically useful, may overstate the precision of the mechanism in biological systems where multiple frequency bands coexist."
+          ],
+          "alternative_interpretations": [
+            "Other nonlinearities in the neural system (e.g., synaptic saturation, dendritic processing) could also extract envelope information without requiring the specific rectification mechanism proposed here."
+          ],
+          "required_assumptions": [
+            "The half-wave rectification is the dominant mechanism for envelope extraction, not one of several competing nonlinear mechanisms.",
+            "Artificial α-activity captures the essential features relevant to the mechanism."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "The large time constant of NMDAergic synaptic gating (~100 ms) and the hemodynam…",
+        "claim": "The large time constant of NMDAergic synaptic gating (~100 ms) and the hemodynamic response function together low-pass filter the signal such that only slow frequency components remain in fMRI.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the large time constant of NMDAergic synaptic gating led to an attenuation of higher frequencies. The low-pass filtering property of the hemodynamic response additionally attenuated higher frequencies such that in fMRI signals only the slow frequency components remained.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The low-pass filtering by NMDA time constants (~100 ms) and hemodynamic response function are well-established biophysical properties, not model-specific assumptions.",
+            "The sequential filtering by two independent biological processes provides a robust and parsimonious explanation for why only slow components survive in fMRI."
+          ],
+          "weaknesses": [
+            "The specific time constants used in the model (τ_NMDA = 100 ms, τ_GABA = 10 ms) are fixed values that may not capture the full range of synaptic dynamics across brain regions.",
+            "The hemodynamic forward model is assumed to be driven exclusively by excitatory synaptic activity, which is a simplification that may not hold universally."
+          ],
+          "alternative_interpretations": [
+            "The low-pass filtering could be dominated by the hemodynamic response alone, making the NMDA contribution relatively minor for the final fMRI signal."
+          ],
+          "required_assumptions": [
+            "Neurovascular coupling is mediated exclusively by excitatory synaptic activity.",
+            "The fixed synaptic time constants adequately represent cortical dynamics."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "This mechanism is robust to the choice of α-frequency: simulations with 9 Hz and…",
+        "claim": "This mechanism is robust to the choice of α-frequency: simulations with 9 Hz and 11 Hz artificial α-waves produced qualitatively identical results (r > 0.99 with 10 Hz model outputs).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "we simulated otherwise identical models for artificial α-waves at 9 Hz and 11 Hz frequencies and found qualitatively identical results: simulated fMRI and moving average firing rate time series of the 9 Hz and the 11 Hz model had correlation coefficients r > 0.99 with the respective time series of the 10 Hz model.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Testing at 9, 10, and 11 Hz provides evidence of robustness across the α-band.",
+            "Very high correlations (r > 0.99) between model outputs at different frequencies demonstrate near-identical dynamics."
+          ],
+          "weaknesses": [
+            "The range tested (9–11 Hz) is narrow and does not cover the full α-band (8–12 Hz) or test whether the mechanism generalizes to other frequency bands.",
+            "The robustness result is expected: since the mechanism operates on the envelope (power modulation) rather than the carrier frequency, changing the carrier by 1 Hz should have minimal effect on the slow output."
+          ],
+          "alternative_interpretations": [
+            "The near-perfect correlation may simply reflect that the mechanism is insensitive to carrier frequency by design (envelope extraction), which is not surprising."
+          ],
+          "required_assumptions": [
+            "The artificial α-activity captures the relevant features of real α-oscillations.",
+            "Testing at three frequencies is sufficient to establish robustness."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.5",
+        "label": "The identified mechanism provides evidence that RSN oscillations originate from …",
+        "claim": "The identified mechanism provides evidence that RSN oscillations originate from neuronal activity rather than being a purely hemodynamic epiphenomenon, adding to the debate about non-neuronal contributions to fMRI.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "These findings thereby add to accumulating evidence suggesting that RSNs originate from neuronal activity rather than being a purely hemodynamic phenomenon that is only correlated, but not caused by it.",
+        "evaluation": {
+          "node_id": "c1.3.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The model provides a concrete mechanistic chain from α-power fluctuations to fMRI oscillations, which is more informative than purely correlational empirical analyses.",
+            "The result is consistent with prior work showing correlations between EEG and fMRI (Goldman et al., 2002; Logothetis et al., 2001)."
+          ],
+          "weaknesses": [
+            "Inferential gap: the model shows that a neural mechanism CAN produce fMRI-like oscillations from EEG, but does not prove that RSN oscillations DO originate from this mechanism in the real brain. This is a candidate hypothesis, not evidence.",
+            "The model does not account for non-neuronal contributions (respiration, cardiac), so it cannot rule them out.",
+            "The paper's own data show that the α-regressor achieves comparable time series correlations without biophysical modeling, which weakens the argument that a specific neural mechanism is required."
+          ],
+          "alternative_interpretations": [
+            "RSN oscillations could have multiple origins — both neural (α-related) and non-neural (vascular, respiratory) — and the model captures only one component.",
+            "The correlation between model predictions and empirical fMRI could reflect shared confounds (e.g., physiological noise affecting both EEG and fMRI) rather than a genuine neural mechanism."
+          ],
+          "required_assumptions": [
+            "The model captures the dominant mechanism underlying RSN oscillations.",
+            "Physiological noise does not substantially confound the EEG-fMRI relationship exploited by the model."
+          ],
+          "notes": "The claim language ('add to accumulating evidence') is somewhat calibrated, but the subsequent implications about physiological noise correction (c1.3.6) extend beyond what the evidence supports.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.6",
+        "label": "Physiological noise correction methods may remove fMRI variance that is related …",
+        "claim": "Physiological noise correction methods may remove fMRI variance that is related to neuronal activity and may therefore exclude relevant information for fMRI data interpretation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Methods for physiological noise correction might remove variance from fMRI experiments that is related to neuronal activity and may therefore exclude relevant information for the interpretation of fMRI data.",
+        "evaluation": {
+          "node_id": "c1.3.6",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The concern is logically connected to the model results: if α-related neural processes drive some fMRI variance, removing correlated physiological signals could remove neural information."
+          ],
+          "weaknesses": [
+            "Inferential gap: the claim that physiological noise correction removes neurally-relevant variance is not tested in this paper. No comparison of model predictions with and without physiological noise correction was performed.",
+            "The model does not include physiological noise processes, so it cannot distinguish between neural and non-neural contributions to fMRI variance.",
+            "This is speculative extrapolation from model results to experimental methodology, stated without the appropriate caveats."
+          ],
+          "alternative_interpretations": [
+            "Physiological noise correction methods are carefully designed to remove non-neural variance and may correctly identify and remove confounds that happen to correlate with neural signals but are not of neural origin."
+          ],
+          "required_assumptions": [
+            "The fMRI variance predicted by the model is not confounded by physiological noise that correlates with EEG α-power.",
+            "Physiological noise correction methods cannot distinguish between neural and non-neural contributions that share temporal characteristics."
+          ],
+          "notes": "This claim has significant practical implications but is not supported by the presented evidence. It should be framed more cautiously.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "When long-range coupling is deactivated, the power-law exponent of simulated fMR…",
+        "claim": "When long-range coupling is deactivated, the power-law exponent of simulated fMRI matches injected EEG α-power (βsim_Gzero = −0.54 vs. βα-band = −0.53), while activated coupling increases the exponent toward empirical fMRI (βsim = −0.73 vs. βemp = −0.82).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "when long-range coupling was deactivated in simulations that used EEG source activity as input, the power-law exponent of simulated fMRI (βsim_Gzero = −0.54) was close to the exponent of the α-band power time course of the injected EEG source activity (βα-band = −0.53).",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison between coupled (β = −0.73) and uncoupled (β = −0.54) conditions provides a clean demonstration of the coupling effect.",
+            "The uncoupled exponent matching the EEG α-power exponent (−0.53 vs. −0.54) provides a nice internal consistency check.",
+            "Rigorous model selection criteria were used for power-law testing (in time domain), avoiding common pitfalls of simple straight-line fits."
+          ],
+          "weaknesses": [
+            "Evidential gap from sub-claims: no confidence intervals or statistical tests comparing the exponents are reported. The difference between −0.73 and −0.82 may or may not be statistically significant.",
+            "Inter-subject variability of exponents is not reported.",
+            "The gap between simulated (−0.73) and empirical (−0.82) exponents suggests the model does not fully capture the scale-free properties of real fMRI."
+          ],
+          "alternative_interpretations": [
+            "The steepening of the power-law exponent with coupling could be a generic property of any coupled oscillator network with slow dynamics, not specific to the proposed mechanism.",
+            "Other factors not modeled (e.g., hemodynamic transit time heterogeneity, vascular networks) could contribute to the empirical exponent."
+          ],
+          "required_assumptions": [
+            "The power-law exponent is a meaningful metric for comparing model and empirical dynamics.",
+            "The structural connectivity estimated from tractography adequately captures the relevant long-range coupling."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "Long-range coupling conveys feedforward excitation that is coherent with local I…",
+        "claim": "Long-range coupling conveys feedforward excitation that is coherent with local IPSC fluctuations caused by α-power changes, creating constructive interference that amplifies slower oscillations more than faster ones.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "this fluctuation of long-range input was coherent with the fluctuation of IPSCs that resulted from the fluctuation of α-band power, which further amplified the effect of α-band power on population activity.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The coherence between long-range input fluctuations and local IPSC fluctuations is demonstrated through the artificial α-activity experiments.",
+            "The mechanistic explanation is physically intuitive: when α-power decreases → less local inhibition → more firing → more long-range excitation → positive feedback loop."
+          ],
+          "weaknesses": [
+            "The 'constructive interference' is demonstrated with artificial α-activity, which is idealized compared to real EEG dynamics.",
+            "No quantitative measure of coherence between long-range input and local IPSCs is provided.",
+            "The claim of differential amplification (slower > faster oscillations) depends on the specific parameter regime and may not be robust to parameter perturbations."
+          ],
+          "alternative_interpretations": [
+            "The coherence could be an artifact of the artificial α-input design, where all regions receive temporally coordinated input, which may not hold for real EEG."
+          ],
+          "required_assumptions": [
+            "Long-range excitatory inputs and local inhibitory feedback are temporally coherent in the real brain.",
+            "The artificial α-activity experiments capture the essential dynamics of real α-power fluctuations."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "Due to the large time constant of excitatory synaptic gating (τNMDA = 100 ms), l…",
+        "claim": "Due to the large time constant of excitatory synaptic gating (τNMDA = 100 ms), long-range excitation decays slowly, enabling excitatory activity to accumulate and perpetually reinforce within the long-range network, with slower oscillations having more time to accumulate than faster ones.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Due to the large time constant of excitatory synaptic gating (τNMDA = 100 ms), long-range excitation decayed relatively slowly, which enabled excitatory activity to accumulate and perpetually reinforce within the long-range network.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The biophysical reasoning is sound: longer time constants allow more temporal integration, and slower oscillations provide longer integration windows.",
+            "The τ_NMDA = 100 ms time constant is a well-established biophysical parameter.",
+            "The argument that slower oscillations allow more accumulation is a straightforward consequence of the temporal dynamics and does not require special assumptions."
+          ],
+          "weaknesses": [
+            "The argument is qualitative — no formal mathematical analysis (e.g., transfer function analysis) is provided to quantify the frequency-dependent amplification.",
+            "The claim of 'perpetual reinforcement' within the long-range network may overstate the stability of this process, as synaptic depression and adaptation mechanisms (not modeled) could limit it."
+          ],
+          "alternative_interpretations": [
+            "The accumulation effect could saturate in practice due to synaptic depression or homeostatic mechanisms not included in the model."
+          ],
+          "required_assumptions": [
+            "NMDA receptor dynamics dominate long-range excitatory transmission.",
+            "Synaptic depression and homeostatic mechanisms do not substantially limit the accumulation effect at the time scales considered."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "The power-law exponent of simulated fMRI depends on the balance of long-range ex…",
+        "claim": "The power-law exponent of simulated fMRI depends on the balance of long-range excitation and local inhibition, demonstrating the crucial role of E/I balance for scale invariance and long-range correlations.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "the 2D distribution of the prediction quality of fMRI time series, functional connectivity and the power-law exponent showed a characteristic diagonal pattern...which demonstrated the crucial role of E/I balance for the emergence of scale invariance and long-range correlations.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The 2D parameter sweep (coupling strength vs. inhibition strength) with the characteristic diagonal pattern provides systematic evidence for the E/I balance claim.",
+            "The relationship between E/I balance and scale invariance is a topic of broad interest and the result is novel."
+          ],
+          "weaknesses": [
+            "The diagonal pattern shows that balanced parameters are needed for good predictions, but does not prove that E/I balance specifically causes scale invariance — it could simply reflect that balanced parameters are needed for any reasonable brain-like dynamics.",
+            "Only two parameters were varied simultaneously; the full three-parameter space may have more complex structure.",
+            "The term 'scale invariance' is used loosely — the authors acknowledge that power-laws alone do not prove criticality."
+          ],
+          "alternative_interpretations": [
+            "The diagonal pattern could reflect a trivial requirement for stability (too much excitation → explosion, too much inhibition → silence) rather than a specific mechanism for scale invariance.",
+            "E/I balance could be necessary for producing any reasonable output, not specifically for power-law scaling."
+          ],
+          "required_assumptions": [
+            "The two-parameter reduction (global coupling + uniform inhibition) captures the essential E/I balance dynamics.",
+            "The diagonal pattern specifically relates to scale invariance rather than general model stability."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "This provides an explanation for scale-free fMRI power spectra as an emergent pr…",
+        "claim": "This provides an explanation for scale-free fMRI power spectra as an emergent property of long-range brain network interaction, without requiring small-scale decentralized processes like constant active retuning of microscopic parameters proposed by self-organized criticality theories.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "giving an explanation for scale-free fMRI power spectra as an emergent property of long-range brain network interaction that does not require small-scale decentralized processes like the constant active retuning of microscopic parameters as proposed in some theories of self-organized criticality.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The model provides a concrete alternative to self-organized criticality theories for explaining power-law scaling in fMRI.",
+            "The frequency-dependent amplification by network coupling is a novel mechanistic contribution."
+          ],
+          "weaknesses": [
+            "Inferential gap: the model shows that long-range coupling CAN produce power-law scaling, but does not prove that it does in the real brain. Other mechanisms (including self-organized criticality) are not excluded.",
+            "The claim implicitly dismisses self-organized criticality theories without engaging with them in depth — in reality, both mechanisms could coexist.",
+            "The simulated exponent (−0.73) does not match the empirical exponent (−0.82), suggesting additional mechanisms may be needed."
+          ],
+          "alternative_interpretations": [
+            "Both long-range network effects and local self-organized critical dynamics could contribute to fMRI power-law scaling.",
+            "The power-law scaling could arise from the hemodynamic response function's filtering properties alone, without requiring the specific neural mechanism proposed."
+          ],
+          "required_assumptions": [
+            "Long-range structural coupling is the primary mechanism generating the power-law slope difference between EEG and fMRI.",
+            "Self-organized criticality is not a major contributor to fMRI power-law scaling."
+          ],
+          "notes": "The gap between simulated and empirical exponents (−0.73 vs. −0.82) actually suggests additional mechanisms are needed, weakening the claim that long-range coupling alone explains power-law scaling.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.6",
+        "label": "The frequency-dependent amplification effect is already visible in firing rates …",
+        "claim": "The frequency-dependent amplification effect is already visible in firing rates and synaptic gating time series, excluding an influence of the hemodynamic forward model on the emergence of power-law scaling.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Note that this effect (i.e. that slower oscillations reach higher amplitudes) can already be observed in firing rates and synaptic gating time series, which excludes an influence of the hemodynamic forward model.",
+        "evaluation": {
+          "node_id": "c1.4.6",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Observing the effect in firing rates and synaptic gating (pre-hemodynamic) is an important control that separates neural from hemodynamic contributions.",
+            "This addresses a common concern that fMRI power-law properties could be artifacts of hemodynamic filtering."
+          ],
+          "weaknesses": [
+            "The claim is demonstrated with artificial α-activity experiments (visual inspection of time series), not with formal spectral analysis of the pre-hemodynamic signals.",
+            "The hemodynamic forward model could still modify (enhance or diminish) the effect even if it doesn't create it."
+          ],
+          "alternative_interpretations": [
+            "The hemodynamic forward model could amplify an existing but weak effect in the neural signals, making the relative contribution of neural vs. hemodynamic factors unclear."
+          ],
+          "required_assumptions": [
+            "Visual inspection of amplitude differences in time series is sufficient to establish frequency-dependent amplification at the neural level.",
+            "The hemodynamic forward model does not interact with the neural frequency-dependent amplification in a non-trivial way."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "In contrast to time series prediction, the α-regressor showed low correlations w…",
+        "claim": "In contrast to time series prediction, the α-regressor showed low correlations with empirical functional connectivity, while all three model-based approaches provided significantly better FC predictions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In contrast to time series prediction, the α-regressor showed low correlations with empirical functional connectivity. Compared to the α-regressor, all three model-based approaches provided significantly better predictions of subjects' individual long-epoch FC and short-epoch FC.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The dissociation between time series and FC prediction for the α-regressor is informative: it shows that predicting temporal dynamics does not automatically predict spatial patterns.",
+            "The significance testing with Wilcoxon rank sum tests provides statistical support."
+          ],
+          "weaknesses": [
+            "Critical evidential gap from sub-claims: the hybrid model FC prediction was not significantly better than the random permutation model, which is a major limitation. If temporally scrambled input produces equivalent FC, the temporal dynamics of EEG contribute little to FC prediction.",
+            "The improvement over the noise model may reflect statistical properties of the EEG signals (e.g., spectral characteristics) rather than meaningful neural information.",
+            "Effect sizes and actual correlation values are not reported in the text."
+          ],
+          "alternative_interpretations": [
+            "FC prediction may be driven primarily by the structural connectome and the spectral properties of the input, not by the specific temporal dynamics of the EEG."
+          ],
+          "required_assumptions": [
+            "The FC metric (pairwise correlation) is an appropriate measure of spatial network topology.",
+            "Improvement over the α-regressor in FC prediction reflects genuine advantages of the biophysical model."
+          ],
+          "notes": "The equivalence with the permutation model is a significant finding that the authors could have discussed more critically. It suggests FC emerges from structural coupling regardless of input temporal structure.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Hybrid and random permutation models produced effectively the same FC correlatio…",
+        "claim": "Hybrid and random permutation models produced effectively the same FC correlations, likely because long-range network dynamics driving FC emergence through structural coupling are relatively preserved when permuting injected activity.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "correlations for hybrid and random permutation models were effectively the same, likely because the long-range network dynamics, which drive the emergence of FC by structural coupling, would be relatively preserved when permuting injected activity.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The explanation is logically sound: FC is driven by structural coupling, which is preserved under temporal permutation.",
+            "The authors honestly report this null result rather than omitting it.",
+            "The interpretation is consistent with the known role of structural connectivity in shaping functional connectivity."
+          ],
+          "weaknesses": [
+            "This result significantly weakens the claim that the hybrid model's use of temporally structured EEG adds value for FC prediction.",
+            "The result suggests that for FC prediction, the hybrid model offers no advantage over injecting random signals."
+          ],
+          "alternative_interpretations": [
+            "The equivalence could also reflect insufficient sensitivity of the FC metric to temporal structure, rather than the irrelevance of temporal dynamics for FC."
+          ],
+          "required_assumptions": [
+            "Temporal permutation preserves the relevant statistical properties (variance, spectral density) of the injected signals while destroying temporal structure."
+          ],
+          "notes": "This is an important self-criticism that the authors handle well.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "Injected EEG source activity serves as approximation of excitatory synaptic inpu…",
+        "claim": "Injected EEG source activity serves as approximation of excitatory synaptic input currents, which increases the biological plausibility of generated model activity compared to noise-driven models.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Abstract",
+        "verbatim_quote": "The injected EEG source activity serves as approximation of excitatory synaptic input currents (EPSCs), which helps to increase the biological plausibility of generated model activity.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The theoretical motivation for using EEG as EPSC approximation is grounded in established neurophysiology literature.",
+            "The approach of injecting empirical data rather than noise is a genuinely novel methodological contribution.",
+            "The sample of 15 subjects with simultaneously acquired EEG-fMRI provides individual-level validation."
+          ],
+          "weaknesses": [
+            "Evidential gap: the claim of 'increased biological plausibility' compared to noise-driven models is somewhat circular — it is assumed rather than demonstrated that EEG source activity is more biologically plausible than structured noise as a proxy for EPSCs.",
+            "The paper acknowledges that EEG source activity is only an approximation of EPSCs, and the extent of this approximation is unknown.",
+            "The Desikan-Killiany atlas with 68 regions provides coarse spatial resolution that may not capture fine-grained heterogeneity."
+          ],
+          "alternative_interpretations": [
+            "EEG source activity could be dominated by volume-conducted signals and source imaging artifacts rather than genuine local EPSCs, in which case the biological plausibility advantage over noise would be limited."
+          ],
+          "required_assumptions": [
+            "EEG source activity is a better approximation of local EPSCs than noise.",
+            "The source imaging method adequately reconstructs cortical source activity from scalp EEG."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "The parameter space converges for different metrics of brain activity (time seri…",
+        "claim": "The parameter space converges for different metrics of brain activity (time series, FC, power-law scaling) toward a single optimal subspace, indicating validity of the model.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "We show that in fact the parameter space converges for different metrics of brain activity toward a single optimal subspace indicating validity of our model.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The parameter space heat maps show a relatively consistent optimal region across different metrics.",
+            "Convergence toward a single optimal subspace supports model identifiability."
+          ],
+          "weaknesses": [
+            "Inferential gap: convergence of parameter optima across metrics supports identifiability but does not establish 'validity' of the model. A model can have a well-defined optimum while still being an incorrect model of the underlying system.",
+            "The convergence was shown for only three parameters — in higher-dimensional parameter spaces, the picture may be different.",
+            "Sub-claim evaluation notes that the FIC comparison was only for time series prediction, not for other metrics."
+          ],
+          "alternative_interpretations": [
+            "Parameter convergence could reflect mathematical constraints of the model architecture rather than biological validity — e.g., there may be a narrow stability region that all metrics favor simply because outside it the model produces unrealistic output."
+          ],
+          "required_assumptions": [
+            "Convergence of parameter optima across different metrics implies that the model captures the underlying biological system.",
+            "The tested parameter space covers the relevant biological range."
+          ],
+          "notes": "The word 'validity' is too strong for what the evidence shows. 'Consistency' or 'identifiability' would be more appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "The key emergent phenomena were not explicitly constructed into the model but em…",
+        "claim": "The key emergent phenomena were not explicitly constructed into the model but emerged from generic neural population models constrained by empirical data, including processes at considerably faster time scales than the fMRI fitting target.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "A key point of consideration is that the brain model was built from networks of generic neural population models that were constrained by empirical data, but not explicitly constructed to address specific reproduced phenomena.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "This is a genuinely important point: the model reproduces phenomena at faster time scales than the fitting target (fMRI), which provides independent validation.",
+            "The use of generic neural population models rather than purpose-built models strengthens the generalizability of the findings.",
+            "Emergence of α-phase-firing relationships and E/I balance from fMRI-fitted parameters is a notable result."
+          ],
+          "weaknesses": [
+            "The extent to which these emergent phenomena are truly unexpected versus being inevitable consequences of the model architecture is debatable (see c1.2.1).",
+            "The model equations contain α-oscillating input and monotonic transfer functions, so some emergent fast-scale phenomena may be architecturally guaranteed."
+          ],
+          "alternative_interpretations": [
+            "Some of the 'emergent' phenomena could be mathematical consequences of the model equations rather than genuine predictions about brain function."
+          ],
+          "required_assumptions": [
+            "The model architecture is sufficiently generic that emergent phenomena represent genuine predictions rather than built-in features.",
+            "The neural mass equations capture the essential dynamics of cortical populations."
+          ],
+          "notes": "This is one of the strongest aspects of the paper — emergence of multi-scale phenomena from a model fitted at a single scale.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.4",
+        "label": "The hybrid model is not an autonomous model of the brain but depends on external…",
+        "claim": "The hybrid model is not an autonomous model of the brain but depends on externally injected activity, and EEG-based approximation of local EPSCs is limited by EEG's coarse spatial resolution and inability to disentangle EPSCs from other current contributions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "the hybrid model is clearly limited by the fact that it is not an autonomous (self-contained) model of the brain, but depends on externally injected activity. Furthermore, EEG-based approximation of local EPSCs is limited by the coarse spatial resolution of EEG.",
+        "evaluation": {
+          "node_id": "c1.6.4",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "underclaimed",
+          "strengths": [
+            "The authors are refreshingly honest about the limitations of their approach.",
+            "The acknowledgment of EEG source imaging limitations is important and technically accurate.",
+            "The non-autonomy limitation is clearly stated and helps readers understand the scope of the model."
+          ],
+          "weaknesses": [
+            "The limitation regarding CSD contributions from IPSCs (Lakatos et al., 2008, 2013) could be discussed in more depth, as it directly challenges the core assumption of using EEG as EPSC approximation."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "notes": "The candid discussion of limitations strengthens the paper's credibility.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "The observed processes may not be specific to α-oscillations but may apply to ot…",
+        "claim": "The observed processes may not be specific to α-oscillations but may apply to other frequencies or non-oscillatory signal components, as phase-locked discharge occurs across a range of frequency bands.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "It is important to note that the observed processes may not be specific to α-oscillations, but may apply also to other frequencies or non-oscillatory signal components, for example, phase-locked discharge of neurons occurs over a range of frequency bands.",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The generalization caveat is important and appropriately placed.",
+            "The observation that the analysis focused on α but the injected EEG was not band-limited is relevant."
+          ],
+          "weaknesses": [
+            "No empirical evidence is provided for whether the proposed mechanisms work with other frequency bands — this remains entirely speculative.",
+            "The authors note that α-regressor performance was comparable to the hybrid model, suggesting α dominance, which somewhat contradicts the claim that other frequencies may be equally important."
+          ],
+          "alternative_interpretations": [
+            "If the mechanism is truly frequency-general, it should work with beta, gamma, or theta oscillations, but this is not tested."
+          ],
+          "required_assumptions": [
+            "The rectification and E/I balance mechanisms generalize across frequency bands.",
+            "Other frequency bands produce similar power modulation patterns that would engage the same mechanism."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "The modeling approach may play a key role for identifying mechanisms underlying …",
+        "claim": "The modeling approach may play a key role for identifying mechanisms underlying pathophysiology of disorders linked to disrupted E/I balance and altered connectivity, and assist in developing novel therapies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The presented modelling approach may therefore play a key role for identifying the precise mechanisms underlying the pathophysiology of different disorders and assist in developing novel therapies that restore altered E/I balance or brain connectivity.",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "evidence_strength": "weak",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The connection to E/I balance disruption in neurological disorders is well-motivated by the literature.",
+            "The identification of E/I balance parameters in the model could in principle enable disease-related investigations."
+          ],
+          "weaknesses": [
+            "No disease-related data or analysis is presented in this paper — the claim is entirely speculative.",
+            "The model has only three free parameters, which may be insufficient to capture the heterogeneity of E/I imbalances across different disorders.",
+            "The claim about 'developing novel therapies' is far beyond the scope of any evidence presented."
+          ],
+          "alternative_interpretations": [
+            "The model may be too abstract and simplified to capture the specific E/I imbalances relevant to particular neurological or psychiatric conditions."
+          ],
+          "required_assumptions": [
+            "The model's E/I balance parameters map meaningfully onto disease-related changes in cortical E/I balance.",
+            "The three-parameter model is sufficient to capture disorder-specific dynamics."
+          ],
+          "notes": "This is a speculative future direction, not a supported claim. It should be weighted accordingly.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#f97316",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "Maximum correlations between same-subject simulated and empirical data were sign…",
+        "claim": "Maximum correlations between same-subject simulated and empirical data were significantly larger than cross-subject correlations (p<<0.01, Wilcoxon rank sum test).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "the maximum correlation coefficients over all tested parameters were significantly larger when empirical and simulated data sets belonged to the same subject compared to when they came from different subjects (p<<0.01, Wilcoxon rank sum test).",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The analysis tests subject-specificity directly by comparing within- vs. between-subject maximum correlations across all parameter combinations, which is the appropriate test for this claim.",
+            "Use of a non-parametric test (Wilcoxon rank sum) is appropriate given the small sample size (n=15).",
+            "The reported p<<0.01 suggests a strong effect."
+          ],
+          "weaknesses": [
+            "Reporting 'p<<0.01' is imprecise; exact p-values and effect sizes (e.g., Cliff's delta) should be reported for consistency with other analyses in the paper.",
+            "Taking the maximum correlation over all tested parameter combinations for each subject-pair comparison introduces a selection bias — the same-subject comparison benefits from parameter optimization on that subject's data, inflating the within-subject advantage. This is not a clean test of subject-specificity but partly a test of parameter overfitting.",
+            "With only 15 subjects and exhaustive parameter search, the chance of spurious correlations with other subjects is not well characterized; a permutation-based null distribution would be more rigorous.",
+            "No correction for the multiple comparisons involved in evaluating all cross-subject pairs is mentioned."
+          ],
+          "alternative_interpretations": [
+            "The within-subject advantage could partly reflect that parameters were optimized on each subject's own fMRI data, so the comparison is confounded by the fitting procedure rather than purely reflecting genuine subject-specific neural dynamics.",
+            "Shared global features (e.g., drowsiness, scanner drift) unique to a simultaneous EEG-fMRI session could produce subject-specific correlations without implying neural specificity."
+          ],
+          "required_assumptions": [
+            "The parameter optimization does not overfit to subject-specific noise or artefacts shared between EEG and fMRI.",
+            "EEG source reconstruction preserves subject-specific temporal information rather than producing generic outputs."
+          ],
+          "notes": "The confound between parameter optimization and subject-specificity testing is a notable methodological concern that somewhat undermines the strength of this claim.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Epochs in the upper quartile of RSN standard deviations were significantly bette…",
+        "claim": "Epochs in the upper quartile of RSN standard deviations were significantly better predicted than epochs in the lower quartile.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "epochs in the upper quartile of RSN s.d.s were significantly better predicted than epochs in the lower quartile.",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The sliding-window analysis provides a time-resolved characterization of prediction quality, going beyond a single summary statistic.",
+            "The claim is supported by both scatter plots (Figure 3c) showing correlation between RSN variance and prediction quality and direct quartile comparisons (Figure 3d).",
+            "The finding is intuitive and consistent with the authors' explanation that higher RSN variance reflects more synchronized neural activity that is more detectable by EEG."
+          ],
+          "weaknesses": [
+            "Statistical details of the quartile comparison (test statistic, p-value, effect size) are not explicitly reported in the text for the general claim — only the figure panels are referenced.",
+            "The relationship between RSN variance and prediction quality could be partly trivially driven: higher variance epochs have higher signal-to-noise, making any predictor (including noise) more likely to correlate. The paper does not fully rule out this floor effect."
+          ],
+          "alternative_interpretations": [
+            "The effect could simply reflect that correlation coefficients are more reliably estimated and more likely to be non-zero when signal variance is high, rather than reflecting genuine improvement in the model's mechanistic accuracy.",
+            "Motion or physiological artifacts that increase variance could also increase EEG-fMRI coupling, inflating apparent prediction quality."
+          ],
+          "required_assumptions": [
+            "RSN temporal mode standard deviation reflects genuine neural synchrony rather than non-neural variance.",
+            "The sliding window length (100 scans ≈ 194 s) is appropriate for capturing RSN dynamics."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3.1",
+        "label": "Five-fold cross-validation showed no significant difference between training and…",
+        "claim": "Five-fold cross-validation showed no significant difference between training and validation data sets (two-tailed Wilcoxon rank sum test, p=0.71, Cliff's delta d = 0.0044) and between validation and full time series (p=0.42, d = −0.067).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "five-fold cross-validation showed no significant difference of prediction quality between training and validation data sets (two-tailed Wilcoxon rank sum test, p=0.71, t = 0.54, Cliff's delta d = 0.0044).",
+        "evaluation": {
+          "node_id": "c1.1.3.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "Five-fold cross-validation is an appropriate method to test for overfitting with only three global parameters.",
+            "Both p-values (0.71 and 0.42) and effect sizes (Cliff's delta near zero) are reported, providing transparent and interpretable results.",
+            "The negligible effect sizes (d = 0.0044 and d = −0.067) convincingly support the absence of meaningful overfitting."
+          ],
+          "weaknesses": [
+            "With only 15 subjects and three parameters, the cross-validation is between temporal segments within subjects rather than between subjects. It would be stronger to also show generalization across subjects (leave-one-subject-out).",
+            "The non-significant result could reflect low statistical power rather than true absence of overfitting, though the very small effect sizes argue against this.",
+            "It is unclear whether the exhaustive parameter search was conducted independently on each fold's training set or whether some information leakage occurred."
+          ],
+          "alternative_interpretations": [
+            "The absence of overfitting could reflect that the parameters are insensitive (i.e., performance is relatively flat across parameter space) rather than that the model generalizes well."
+          ],
+          "required_assumptions": [
+            "Temporal segments within a subject's session are sufficiently independent for cross-validation to be meaningful.",
+            "Parameter search was conducted entirely on training folds without contamination from validation data."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "Despite comparable time series prediction, the α-regressor yields low FC correla…",
+        "claim": "Despite comparable time series prediction, the α-regressor yields low FC correlations and cannot predict the electrophysiological phenomena reproduced by the hybrid model because it lacks biological state variables.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "Although the α-regressor makes noteworthy fMRI time series predictions, it yields low correlations with FC and, importantly, it is unable to predict the electric neuronal phenomena that have been reproduced with the hybrid model as it is not based on state variables that correspond to biological entities.",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim correctly distinguishes the hybrid model from the α-regressor on multiple dimensions: FC prediction, time series prediction, and ability to generate electrophysiological observables.",
+            "The low FC correlations of the α-regressor are empirically demonstrated (Figure 4).",
+            "The argument that the α-regressor lacks biological state variables is a logical and valid structural point about model design."
+          ],
+          "weaknesses": [
+            "The inability of the α-regressor to predict electrophysiological phenomena is stated as a logical consequence of its design rather than being empirically tested — this is an inferential gap (the α-regressor was never actually tested against electrophysiological data).",
+            "The authors acknowledge that formal model comparison is not performed, which limits the strength of any comparative claim. The hybrid model has three free parameters while the α-regressor has zero, making direct comparison of predictive power difficult without penalizing complexity.",
+            "The comparable time series prediction between the hybrid model and α-regressor (acknowledged by the authors) actually undercuts the practical utility of the hybrid model for fMRI time series prediction specifically."
+          ],
+          "alternative_interpretations": [
+            "The comparable time series prediction of the α-regressor with zero free parameters could be interpreted as evidence that the hybrid model's mechanistic apparatus adds little predictive value for fMRI time series beyond what the α-power envelope provides.",
+            "The hybrid model's FC prediction advantage over the α-regressor may stem from the structural connectivity constraints rather than the neural mass dynamics per se."
+          ],
+          "required_assumptions": [
+            "The additional phenomena predicted by the hybrid model (E/I balance, α-firing relationships) are valid advantages even though they were not the fitting target and have not been validated against subject-specific invasive data.",
+            "Biological plausibility of state variables is a meaningful advantage even when predictive accuracy is comparable."
+          ],
+          "notes": "The authors themselves flag the difficulty of formal model comparison here, which is commendable honesty.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5.1",
+        "label": "All hybrid model RSN correlations rejected the null hypothesis of zero median at…",
+        "claim": "All hybrid model RSN correlations rejected the null hypothesis of zero median at 5% significance level, except for executive control and frontoparietal networks over 20 min.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "All tests rejected the null hypothesis of zero medians except for RSN correlations over 20 min for the executive control and the frontoparietal networks.",
+        "evaluation": {
+          "node_id": "c1.1.5.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim is appropriately precise, noting the two exceptions (executive control and frontoparietal networks) rather than overclaiming universal significance.",
+            "Testing the null hypothesis of zero median is the appropriate statistical check for whether the correlations are meaningfully different from chance.",
+            "The exceptions are reported transparently."
+          ],
+          "weaknesses": [
+            "The failure for executive control and frontoparietal networks is notable because these are among the most commonly studied RSNs. The paper does not provide a satisfying explanation for why these networks failed.",
+            "No correction for multiple comparisons across the nine RSNs is mentioned, though given that most tests were significant, this is a minor concern.",
+            "The test is for whether median correlation differs from zero — this is a very low bar. The magnitude of correlations and their practical significance are not discussed for individual RSNs."
+          ],
+          "alternative_interpretations": [
+            "The failure for executive control and frontoparietal networks might indicate that the model does not capture higher-order cognitive networks well, possibly because these networks are less well characterized by α-dynamics.",
+            "The two failed networks might have lower EEG source reconstruction quality due to their deep or distributed sources."
+          ],
+          "required_assumptions": [
+            "The ICA-derived RSNs are reliable at the group level and the RSN time courses are meaningful for individual subjects.",
+            "A non-zero median correlation is a meaningful benchmark for model validity."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "Population firing rates were highest during the trough and lowest during the pea…",
+        "claim": "Population firing rates were highest during the trough and lowest during the peak of α-cycles, as shown in histograms of firing rates divided into six bins according to α-cycle segments.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Population firing rates were highest during the trough and lowest during the peak of α-cycles.",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The binning of firing rates by α-cycle segments (six bins) is a standard and well-established methodology following Haegens et al. (2011).",
+            "The result is qualitatively consistent with invasive electrophysiology findings in monkey cortex.",
+            "The grand average waveform analysis (Figure 5b) provides a mechanistic explanation linking the observation to E/I balance dynamics."
+          ],
+          "weaknesses": [
+            "This is a model-internal result — the firing rates are simulated, not empirically measured. The claim that this 'reproduces' the empirical phenomenon (Haegens et al., 2011) is qualitative rather than quantitative; no formal statistical comparison with empirical data distributions is provided.",
+            "The finding is somewhat expected by construction: the model uses α-oscillating input, and the neural mass equations have a monotonic input-output relationship, so some phase-dependent modulation of firing is nearly guaranteed.",
+            "No statistical test is reported for the significance of the phase-firing relationship in the model; the evidence is presented as a histogram and grand average waveforms without formal testing."
+          ],
+          "alternative_interpretations": [
+            "The phase-firing relationship could be a trivial consequence of the model architecture rather than a meaningful reproduction of biological phenomena.",
+            "Any model with oscillatory input and a monotonic transfer function would produce this result, so it may not distinguish the specific neural mass model used here."
+          ],
+          "required_assumptions": [
+            "The model's firing rates are meaningful approximations of real neuronal spiking activity.",
+            "EEG source activity adequately approximates the EPSCs that drive real cortical circuits.",
+            "The qualitative match with Haegens et al. (2011) is sufficient to claim reproduction of the empirical phenomenon."
+          ],
+          "notes": "The claim is honestly stated as a qualitative reproduction. However, the degree to which this is a meaningful emergent phenomenon versus a built-in consequence of the model architecture deserves scrutiny.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "Firing rate decreased with increasing α-power across five equal-sized bins (Krus…",
+        "claim": "Firing rate decreased with increasing α-power across five equal-sized bins (Kruskal-Wallis/Tukey's post-hoc multiple comparison; p<0.001), replicating invasive monkey recordings.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Firing rate decreased with increasing α-power (Kruskal-Wallis/Tukey's post-hoc multiple comparison; p<0.001).",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "overclaimed",
+          "strengths": [
+            "The analysis closely follows the methodology of Haegens et al. (2011), enabling direct comparison.",
+            "A formal statistical test (Kruskal-Wallis with Tukey's post-hoc) was applied with a highly significant result (p<0.001).",
+            "The five-bin approach provides granularity in showing the monotonic decrease."
+          ],
+          "weaknesses": [
+            "The claim 'replicating invasive monkey recordings' is overclaimed — this is a simulated result in a computational model, not an empirical replication. The qualitative similarity to Haegens et al. (2011) does not constitute replication in the usual scientific sense.",
+            "The p<0.001 significance is from model-generated data where sample sizes can be made arbitrarily large, making p-values less meaningful. Effect sizes would be more informative.",
+            "The result in the model is again expected by construction: the half-wave rectification mechanism described in the paper means increased α-power necessarily leads to decreased excitatory firing rates."
+          ],
+          "alternative_interpretations": [
+            "This model behavior is a necessary consequence of the identified mechanism (half-wave rectification by inhibitory populations) and therefore does not provide independent evidence for the model's validity.",
+            "The comparison with monkey data is cross-species and cross-methodology, limiting the strength of the claimed correspondence."
+          ],
+          "required_assumptions": [
+            "Model firing rates correspond meaningfully to spiking rates measured invasively.",
+            "The α-power-firing relationship observed in monkey cortex generalizes to human cortex.",
+            "The binning methodology is comparable between the simulation and the original experiment."
+          ],
+          "notes": "The word 'replicating' in the claim text implies empirical replication, which this is not. 'Consistent with' or 'qualitatively reproduces the pattern from' would be more appropriate.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "Empirical fMRI had power-law exponent βemp = −0.82; simulated fMRI with coupling…",
+        "claim": "Empirical fMRI had power-law exponent βemp = −0.82; simulated fMRI with coupling had βsim = −0.73; simulated without coupling had βsim_Gzero = −0.54; α-power had βα-band = −0.53.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Empirical and simulated fMRI spectra have a large power-law exponent, that is a steeper slope, compared to ongoing α-power or wide-band power (βα-band = −0.53, βwide-band = −0.47).",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The claim reports specific numerical values for power-law exponents across multiple conditions, enabling direct comparison.",
+            "The comparison between coupled and uncoupled conditions provides a controlled test of the role of long-range connectivity.",
+            "The progression from β_α-band ≈ β_sim_Gzero < β_sim < β_emp is logically consistent with the proposed mechanism of frequency-dependent amplification by long-range coupling.",
+            "The empirical fMRI exponent (−0.82) is consistent with published values from He (2011)."
+          ],
+          "weaknesses": [
+            "No confidence intervals or statistical tests comparing the exponents are reported — it is unclear whether the differences between exponents (e.g., −0.73 vs. −0.82) are statistically significant.",
+            "The exponents are reported as single values (presumably group averages) without any indication of inter-subject variability.",
+            "The gap between simulated (−0.73) and empirical (−0.82) fMRI exponents is non-trivial and could reflect missing model components rather than just measurement noise."
+          ],
+          "alternative_interpretations": [
+            "The steeper power-law slope in fMRI vs. EEG could partly result from the hemodynamic response function's low-pass filtering properties rather than (or in addition to) neural network dynamics.",
+            "The difference between coupled and uncoupled exponents might reflect autocorrelation introduced by recurrent connectivity rather than genuine scale-free dynamics."
+          ],
+          "required_assumptions": [
+            "Power-law fitting methods are appropriate and not confounded by the finite length and TR of fMRI time series.",
+            "The comparison between conditions (coupled vs. uncoupled) is valid given that other parameters were held constant."
+          ],
+          "notes": "The claim is factual and well-calibrated as a report of numerical results. The mechanistic interpretation is presented elsewhere.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.2",
+        "label": "On average 79% of all region-wise time series tested as scale-free using rigorou…",
+        "claim": "On average 79% of all region-wise time series tested as scale-free using rigorous DFA-based Bayesian model selection (83% for empirical fMRI, 69% for simulated fMRI).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Materials and methods",
+        "verbatim_quote": "on average 79% of all 1020 region-wise time series...for the seven analyzed signal types tested as scale-free; for every signal type every subject had at least five regions to test as scale-free.",
+        "evaluation": {
+          "node_id": "c1.4.1.2",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The use of DFA-based Bayesian model selection in the time domain is methodologically rigorous and superior to simple spectral fitting for testing scale-freeness.",
+            "The paper reports results across multiple signal types (seven), providing a broad characterization.",
+            "The criterion that every subject had at least five regions testing as scale-free per signal type is a reasonable minimum threshold."
+          ],
+          "weaknesses": [
+            "The 79% average is presented without confidence intervals or variability across subjects/signal types.",
+            "The difference between empirical (83%) and simulated (69%) fMRI is notable and unexplained — this 14 percentage point gap suggests the model does not fully capture the scale-free properties of real fMRI.",
+            "The quoted text references '1020 region-wise time series' but the paper uses 68 regions × 15 subjects = 1020, so this represents pooling across all subjects, which may inflate the apparent consistency.",
+            "The threshold for what constitutes 'scale-free' via Bayesian model selection is not described in the truncated text."
+          ],
+          "alternative_interpretations": [
+            "Scale-free appearance could result from the superposition of multiple processes with different time scales rather than genuine criticality.",
+            "The 69% for simulated fMRI suggests the model produces scale-free dynamics in only about two-thirds of regions, which could be interpreted as a partial failure rather than a success."
+          ],
+          "required_assumptions": [
+            "DFA-based Bayesian model selection correctly distinguishes scale-free from non-scale-free processes at the length scales available in the data.",
+            "The time series are long enough for reliable DFA estimation."
+          ],
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "Hybrid model FC prediction was significantly better than noise-driven model (one…",
+        "claim": "Hybrid model FC prediction was significantly better than noise-driven model (one-tailed Wilcoxon rank sum test, p<0.05 or p<0.01 for different comparisons shown in Figure 4).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "hybrid model simulation results correlated significantly better with empirical network topology than predictions obtained from the noise-driven model.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "evidence_strength": "moderate",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison with the noise-driven model is the most relevant control for assessing the added value of EEG-driven input for FC prediction.",
+            "Statistical significance was demonstrated using appropriate non-parametric tests.",
+            "Both static (long-epoch) and dynamic (sliding-window) FC were evaluated."
+          ],
+          "weaknesses": [
+            "The hybrid model FC was not significantly better than the random permutation model, which substantially undercuts this claim. If temporally scrambled input produces equivalent FC, the temporal dynamics of EEG add little for FC prediction, and the improvement over the noise model may simply reflect statistical properties of the input signals (e.g., autocorrelation structure) rather than meaningful neural dynamics.",
+            "The effect sizes and actual correlation values are not reported in the text, making it difficult to judge practical significance.",
+            "The p-value thresholds shown (p<0.05, p<0.01) are modest for a study with n=15."
+          ],
+          "alternative_interpretations": [
+            "The FC prediction improvement over noise-driven models may primarily reflect the structural connectivity constraints that are shared across all model-based approaches, with EEG input providing marginal additional benefit.",
+            "The equivalent performance of hybrid and permuted-input models for FC suggests that FC is primarily determined by anatomy rather than by the temporal dynamics of injected activity."
+          ],
+          "required_assumptions": [
+            "FC correlation is a meaningful metric for comparing model quality.",
+            "The Desikan-Killiany parcellation is appropriate for comparing simulated and empirical FC."
+          ],
+          "notes": "The equivalence of hybrid and random permutation FC is acknowledged by the authors and is an important caveat for interpreting FC results.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "Models were constructed for 15 human subjects using individual structural connec…",
+        "claim": "Models were constructed for 15 human subjects using individual structural connectomes (68 cortical regions, Desikan-Killiany atlas) with EEG source activity projected via sLORETA inverse solution and only three global parameters fitted per subject.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Materials and methods",
+        "verbatim_quote": "We constructed individual hybrid brain network models for 15 human adult subjects using each subject's own structural connectomes and injected each with their own region-wise EEG source activity time courses that were acquired simultaneously with the fMRI data subsequently predicted.",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The methodological description is clear and specific: 15 subjects, individual connectomes, 68 regions (Desikan-Killiany), sLORETA source reconstruction, simultaneous EEG-fMRI acquisition.",
+            "Using only three global parameters is commendable parsimony for a brain network model.",
+            "Individual connectomes and individual EEG source activity ensure subject-specificity.",
+            "Cross-validation results (c1.1.3.1) support that three parameters are not overfitted."
+          ],
+          "weaknesses": [
+            "The sample size of 15 subjects is relatively small for establishing generalizability of the approach.",
+            "The Desikan-Killiany atlas with 68 regions is relatively coarse and may not capture fine-grained spatial heterogeneity.",
+            "sLORETA source reconstruction has known limitations in spatial resolution and may produce spatially smoothed solutions that do not well approximate true cortical source activity.",
+            "The exhaustive parameter search over three parameters is feasible but the total number of parameter combinations tested is not specified in the extracted text."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "sLORETA provides adequate source reconstruction for driving neural mass models.",
+            "68 cortical regions are sufficient granularity for the phenomena being studied.",
+            "Three global parameters capture the most important inter-subject variability."
+          ],
+          "notes": "This is primarily a methodological description claim and is well-calibrated as such.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "No significant difference in prediction quality was found between simulations wi…",
+        "claim": "No significant difference in prediction quality was found between simulations with FIC (68 local parameters) vs. a single global inhibitory coupling parameter (one-tailed Wilcoxon rank sum test, p=0.36, d = −0.15).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Materials and methods",
+        "verbatim_quote": "We compared the effect of FIC on time series prediction quality and found no significant difference in prediction quality to simulations that used only a single value for all local coupling weights Ji per subject (one-tailed Wilcoxon rank sum test, p=0.36, z = −0.37, Cliffs's delta d = −0.15).",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "evidence_strength": "strong",
+          "claim_evidence_calibration": "calibrated",
+          "strengths": [
+            "The comparison between FIC (68 local parameters) and a single global parameter directly tests whether the additional complexity of heterogeneous inhibition is necessary.",
+            "The appropriate test (Wilcoxon rank sum) and both p-value (0.36) and effect size (Cliff's delta = −0.15) are reported.",
+            "The negligible effect size supports the conclusion that the simpler model suffices, which favors parsimony."
+          ],
+          "weaknesses": [
+            "The non-significant result could reflect insufficient power (n=15) rather than genuine equivalence. A formal equivalence test (e.g., TOST procedure) would be more appropriate for claiming no difference.",
+            "The comparison is specifically for time series prediction quality — FIC might matter for other output measures (FC, power-law exponents) that were not tested in this comparison.",
+            "This finding seems somewhat at odds with prior literature (e.g., Deco et al., 2014) showing that FIC is important for reproducing realistic FC patterns."
+          ],
+          "alternative_interpretations": [
+            "The injected EEG source activity may effectively substitute for the role of heterogeneous inhibition in shaping local dynamics, making FIC redundant in this particular framework but not in general.",
+            "The insensitivity to FIC could indicate that the model's output is dominated by the injected input rather than internal dynamics, suggesting the model is partially acting as a sophisticated filter rather than a genuine dynamical system."
+          ],
+          "required_assumptions": [
+            "Time series prediction quality is a sufficient criterion for comparing the two parameterizations.",
+            "The statistical test has adequate power to detect meaningful differences."
+          ],
+          "notes": "The finding that 68 additional parameters do not improve prediction quality could be interpreted as either model parsimony or as evidence that the model dynamics are dominated by input rather than internal parameters.",
+          "literature_citations": [],
+          "novelty_score": null,
+          "groundedness_score": null
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.6",
+        "source": "c1.1",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.4",
+        "source": "c1.2",
+        "target": "c1.2.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.5",
+        "source": "c1.3",
+        "target": "c1.3.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.6",
+        "source": "c1.3",
+        "target": "c1.3.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.6",
+        "source": "c1.4",
+        "target": "c1.4.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.4",
+        "source": "c1.6",
+        "target": "c1.6.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.3_c1.1.3.1",
+        "source": "c1.1.3",
+        "target": "c1.1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.5_c1.1.5.1",
+        "source": "c1.1.5",
+        "target": "c1.1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.2",
+        "source": "c1.4.1",
+        "target": "c1.4.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 50,
+    "total_edges": 49,
+    "max_depth": 3,
+    "high_support_nodes": 17,
+    "low_support_nodes": 2,
+    "overall_assessment": "The paper's 50 claims show mixed overall support when weighted by centrality (weighted support score 0.69, where the central thesis counts far more than peripheral evidence). The most load-bearing weakly-supported claim is: “Physiological noise correction methods may remove fMRI variance that is related to neuronal activity and may therefore exclude relevant information for fMRI dat…” (2 weakly-supported claim(s) total)."
+  },
+  "final_review": null
+}

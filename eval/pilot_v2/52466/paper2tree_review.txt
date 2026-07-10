@@ -1,0 +1,59 @@
+**eLife Assessment**
+
+This study presents a **valuable** investigation into how hippocampal CA1 neurons encode delay and reward information during delay-discounting decisions, supported by a multi-condition behavioral paradigm and genetic manipulation. However, the evidence is **incomplete** for several central claims — particularly regarding value coding by a specific neuronal subpopulation and the specificity of the NMDA receptor knockout effects on delay discounting — with key analyses lacking formal statistical testing and critical confounds left unaddressed.
+
+**Summary**
+
+This paper examines how hippocampal CA1 neurons contribute to delay-discounting decision making by recording from mice performing a T-maze task in which delay length, delay position, and reward amount are systematically varied across sessions. The authors identify two subpopulations of CA1 neurons — delay-active and delay-suppressed — that show opposing modulation during delay periods and differentially respond to reward size manipulations. They further report that these populations encode delay length through both temporal population codes and single-neuron rate codes, and that a subset may function as "value-coding" neurons by integrating delay and reward information. Genetic deletion of the NMDA receptor (NR1) in hippocampal pyramidal cells is shown to impair delay-discounting behavior and disrupt delay-dependent neural activity, linking synaptic plasticity to these representations.
+
+The study addresses an important question at the intersection of hippocampal physiology and decision neuroscience. The experimental design — with independent manipulation of delay length, delay position, and reward amount — is a genuine methodological strength that enables partial dissociation of multiple task variables. However, several of the paper's most central interpretive claims, particularly regarding value coding and the specificity of the NMDA receptor contribution, exceed what the data formally demonstrate.
+
+**Strengths**
+
+- **Opposing reward responses of delay-act and delay-sup populations** (claim c1.3): The differential responses of the two subpopulations to reward loss (Z=−2.6, p=0.007) and reward gain (Z=2.1, p=0.03) are statistically supported by appropriate non-parametric tests and represent the most compelling dissociation in the paper. The bidirectional evidence from both reward loss and gain conditions strengthens the interpretation that these populations carry distinct reward-related signals.
+
+- **Side-selectivity analysis** (claim c1.4.1): The three-way ANOVA framework applied to switched and both-side conditions provides a rigorous approach to dissociating spatial from delay-related coding. The finding that 73.5% of delay-act and 64.9% of delay-sup neurons are side-selective, while 26.5–35.1% encode delay independent of location, is well-supported and informative about the nature of hippocampal delay representations.
+
+- **cKO behavioral phenotype** (claim c1.6.1): The two-way ANOVA showing a significant genotype effect (F₁=14.4, p<0.001) with post-hoc differences at 5–40 s delays, but not at 0 s, provides clear evidence that NMDAR-deficient mice maintain reward preference across delays where controls discount. This behavioral result is robust and biologically interpretable.
+
+- **Preserved basic firing properties in cKO mice** (evidence for c1.6.7): The demonstration that mean firing rates are not significantly different between genotypes (overall p=0.44, delay-act p=0.35, delay-sup p=0.14) importantly rules out a trivial explanation of altered excitability for the delay-coding deficits observed.
+
+- **Transparent acknowledgment of NR1 deletion spread** (c1.6.8): The authors honestly disclose that NR1 deletion may extend beyond CA1 at the ages used for physiological recording, providing appropriate caveats on the specificity of their causal claims.
+
+**Weaknesses / Essential Revisions**
+
+- **The "value coding" claim lacks formal statistical support** (claim c1.5): This is the paper's most central interpretive claim and its weakest link. The abstract states that a "specific population of neurons fit the criteria of value coding," but no statistical criterion defines membership in this population, no test determines whether more neurons fall near the "delay effect = reward effect" line in Figure 7E than expected by chance, and no formal definition of proximity to this line is operationalized. The authors themselves note "there are no global trends" at the population level, which undermines systematic value coding. This claim must either be substantiated with formal statistical analysis (e.g., permutation tests on angular distance from the identity line, clustering analyses) or substantially rewritten to reflect the speculative nature of the observation.
+
+- **Peak firing rate correlations with delay length are likely artifactually inflated** (claim c1.2, evidence c1.2.2): The finding that 79.3% of delay-act and 72.3% of delay-sup cells show significant peak firing rate correlations with delay length is highlighted as evidence for rate coding, but this is confounded by a sampling artifact: longer delays provide more time samples, mechanically increasing the probability of observing a higher peak firing rate. The authors do not address this confound despite emphasizing peak firing rate as a "better indicator" than mean firing rate. The more reliable mean firing rate correlations (34.5%, 37.3%) are far more modest. The authors should either formally control for this confound (e.g., by subsampling equal-duration windows across delay conditions) or remove claims based on peak firing rate correlations.
+
+- **The subjective value interpretation from forced-choice data is unsupported** (claim c1.3.3): The claim that "firing of delay-act neurons represents the animal's subjective value" relies on a forced-choice experiment (Figure 7—figure supplement 2) that is presented with no quantification, no statistical analysis, and only example neurons. A population-level analysis with formal statistics is essential before this interpretation can be sustained. The forced-choice manipulation also introduces multiple confounds (barriers, stress, frustration) that are not controlled for.
+
+- **The cKO behavioral claim of impaired delay-discounting is undermined by a non-significant interaction term** (claim c1.6.1): The reported genotype × delay interaction (F₁,₄=1.07, p=0.37) is non-significant, which is inconsistent with differential delay sensitivity between genotypes. The F₄=23.0 (p<0.001) appears to be the delay main effect, not the interaction, and the notation is confusing (F-statistics lack denominator degrees of freedom). Without a significant interaction, the data support only a general preference difference, not a specific impairment in delay discounting. The authors must clarify the statistical reporting and, if the interaction is indeed non-significant, temper their interpretation accordingly. Alternative explanations (perseveration, spatial learning deficit) should be more seriously considered.
+
+- **Neuron independence assumptions are violated in cKO analyses** (claims c1.6.2, c1.6.3, c1.6.4): Fisher's exact tests and Mann-Whitney U tests applied to neurons from only 3 cKO and 4 control mice treat neurons as independent observations, but neurons within an animal are clustered. This violates the independence assumption and inflates significance. The Fisher's exact test for delay-act/delay-sup ratios (p=0.02) and the Mann-Whitney U test for firing rate ratios (p=0.04) are marginal and would likely not survive animal-level analyses or mixed-effects modeling. These analyses should be redone using the animal as the unit of analysis or using hierarchical/mixed-effects models.
+
+- **Population vector segmentation lacks formal statistical testing** (claim c1.1.4, c1.6.3): The segmentation of activity into start/delay/goal periods is assessed only visually from correlation matrices, with no quantitative metric or statistical comparison between conditions or genotypes. Moreover, the three periods correspond to distinct maze locations, so the segmentation could substantially reflect spatial coding rather than temporal task-phase coding. A formal quantification of segmentation (e.g., silhouette scores, block-diagonal indices) with statistical comparison is needed.
+
+- **The compulsive behavior interpretation is highly speculative** (claim c1.6.5): The suggestion that the cKO behavioral phenotype may relate to OCD/compulsive behavior is a substantial inferential leap with no supporting evidence. No compulsivity-specific behavioral measures were collected, and the cited NMDAR-OCD literature involves systemic pharmacology, not hippocampus-specific manipulations. This interpretation should be substantially softened or removed.
+
+**Minor Comments**
+
+- The sequential (non-randomized) presentation of delay conditions across sessions is a potential confound that should be explicitly discussed. Satiety, habituation, or order effects could contribute to the apparent delay-discounting curves.
+
+- The terminology "skew" used in describing the one-sample t-test results (c1.3.2) is imprecise — the t-test assesses whether the mean differs from zero, not distributional skewness. This should be corrected.
+
+- The KS test (p=0.46) for the both-side condition is interpreted as evidence for uniform distribution of peak firing times, but failure to reject the null is not evidence of uniformity, particularly with potentially low sample sizes and statistical power. This distinction should be acknowledged.
+
+- The LFP analyses (SWR frequency, theta dominance) are based on only 3 mice (6 sessions), which limits generalizability. The small sample should be explicitly noted as a limitation.
+
+- The number of neurons and animals contributing to several key analyses (reward manipulation conditions, forced-choice experiment, SVM decoding) are not clearly stated in the results text. These should be made explicit for reproducibility.
+
+- The criteria for classifying neurons as "side-selective" from the three-way ANOVA should be fully specified — which main effects or interactions define side-selectivity is unclear.
+
+- The claim that inhibitory CA1 neurons show "similar population codes" (claim c1.1.5) is stated without statistics or detailed comparison. A quantitative analysis would strengthen this claim.
+
+**Recommendation**
+
+Major Revisions
+
+The paper addresses an important question with a well-designed experimental paradigm, and several findings (opposing reward responses, side-selectivity, cKO behavioral effects) are robustly supported. However, the most central interpretive claims — value coding by a specific neuronal subpopulation, the specificity of the NMDAR effect on delay discounting, and the subjective value interpretation — are either formally unsupported or undermined by statistical concerns (7 of 48 claims are weakly supported, including the most load-bearing claim on value coding). Major revisions addressing the statistical foundations of these claims, the peak firing rate artifact, neuron independence violations, and the inconsistent interaction term in the cKO behavioral data are essential before the conclusions can meet eLife's standards for compelling evidence.

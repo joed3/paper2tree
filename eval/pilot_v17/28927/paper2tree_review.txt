@@ -1,0 +1,59 @@
+**eLife Assessment**
+
+This paper presents a **valuable** contribution to computational neuroscience by proposing a connectome-based brain network model driven by individual EEG source activity that integrates multiple data modalities and reproduces several empirical phenomena within a single framework. However, the evidence supporting the central mechanistic claims is **incomplete**: while statistical comparisons with control scenarios are provided, the absence of formal model comparison, the small sample size (n=15), the overclaiming of "revealed mechanisms" from model-internal dynamics, and several low-support interpretive claims collectively prevent the conclusions from reaching the level of rigor required for the strongest assertions made.
+
+**Summary**
+
+The authors develop a "hybrid" brain network model that uses subject-specific structural connectivity (from diffusion MRI tractography) and EEG source-reconstructed activity (interpreted as excitatory postsynaptic currents) to drive reduced Wong-Wang neural mass models at each cortical node. Three global parameters are fitted per subject by exhaustive search to maximize correlation between simulated and empirical resting-state fMRI time series over ~20 minutes. The authors claim that this framework not only predicts individual fMRI time series and functional connectivity networks significantly better than noise-driven, permutation, and α-regressor control scenarios, but also reveals neurophysiological mechanisms linking six empirical phenomena across scales: fMRI resting-state oscillations, functional connectivity networks, excitation-inhibition balance, inverse α-phase/firing-rate relationships, inverse α-power/fMRI relationships, and fMRI power-law scaling. The proposed mechanisms include half-wave rectification by inhibitory populations (transforming α-power fluctuations into slow fMRI oscillations) and frequency-dependent amplification via long-range NMDA-mediated excitatory feedback (producing power-law scaling).
+
+**Strengths**
+
+- **Cross-validation and overfitting assessment**: Five-fold cross-validation demonstrated no significant difference between training and validation datasets (p=0.71, Cliff's delta d=0.0044), providing solid evidence against overfitting. This is further supported by the fact that only three global parameters are fitted, making overfitting unlikely a priori.
+
+- **Subject-specificity of predictions**: The analysis showing that same-subject correlations significantly exceed cross-subject correlations (p<<0.01) is a convincing demonstration that the model captures individual-level features, not merely group-average patterns.
+
+- **Rigorous power-law assessment**: Scale-freeness was confirmed using modified detrended fluctuation analysis with Bayesian model comparison (79% of region-wise time series classified as scale-free), going beyond simple straight-line fits in the frequency domain. The specific exponent values (βemp = −0.82, βsim = −0.73, βsim_Gzero = −0.54) provide a quantitatively informative comparison.
+
+- **Transparent reporting of model limitations**: The authors commendably acknowledge that their model comparison is informal rather than formally Bayesian, that the model is non-autonomous, and that EEG source activity is only an approximation of EPSCs. This intellectual honesty strengthens the paper.
+
+- **E/I balance parameter space diagonal**: The observation that multiple metrics (fMRI time series, FC, power-law exponent) all show a characteristic diagonal pattern in excitation-inhibition parameter space provides internally consistent evidence for the model's behavior.
+
+- **Functional connectivity prediction controls**: The finding that hybrid and random permutation models produce equivalent FC predictions is transparently reported and provides important insight that structural connectivity, rather than EEG temporal structure, primarily drives FC emergence.
+
+**Weaknesses / Essential Revisions**
+
+- **Overclaiming of "revealed mechanisms"** (Root claim, Primary claims on α-phase/firing, half-wave rectification, power-law scaling): The paper repeatedly claims to "reveal" neurophysiological mechanisms, but what is actually demonstrated is that a specific neural mass model (Wong-Wang) produces emergent behaviors consistent with empirical observations. The α-phase/firing-rate relationship, for instance, is a near-inevitable consequence of any model with excitatory input driving fast inhibitory feedback. Different model architectures could yield different "mechanisms" reproducing the same phenomena. The language should be revised to "candidate mechanisms" or "model-consistent mechanisms" throughout, and the paper should explicitly discuss model degeneracy—the possibility that multiple mechanistic explanations could produce identical observable outputs.
+
+- **Absence of formal model comparison** (Supporting claim on informal assessment): The authors acknowledge that their comparison of prediction qualities is informal and does not account for model complexity. The hybrid model has three fitted parameters per subject optimized via exhaustive search (3888 combinations), while the α-regressor has zero free parameters yet achieves "noteworthy" predictions by the authors' own admission. Without complexity-penalized comparison (e.g., BIC, cross-validated log-likelihood), it is impossible to determine whether the biophysical model architecture genuinely adds predictive value beyond what α-power convolution provides. This is a critical gap that must be addressed or the claims about superiority substantially moderated.
+
+- **Clinical and translational claims are entirely unsupported** (Primary claim on pathophysiological mechanisms): The claim that the modeling approach "may play a key role for identifying pathophysiological mechanisms in disorders linked to E/I balance disruption" is wholly speculative. No clinical data, clinical predictions, or even preliminary clinical application is presented. This claim should be removed from the main conclusions or clearly flagged as speculation requiring future work.
+
+- **The untestable assumption about unobservable dynamics** (Supporting claim on model fitting assumption): The paper's interpretive framework rests on the assumption that when the model optimally fits observable fMRI, the underlying unobservable neural dynamics are also faithfully reproduced. This assumption is fundamentally untestable within the paper's framework and is undermined by the well-known equifinality problem. The authors should discuss this limitation more prominently and temper claims about "inference on unobservable processes."
+
+- **Small sample size and missing effect sizes** (Primary claim on fMRI prediction): With only n=15 subjects, the generalizability of the findings is uncertain. More critically, absolute correlation values (effect sizes) and explained variance (R²) are never reported—only that differences between conditions are "statistically significant." Given the small sample, statistical significance may not imply practical significance. The actual prediction quality must be reported to allow readers to judge the model's utility.
+
+- **FC prediction undermined by random permutation equivalence** (Primary claim on FC prediction): The finding that the random permutation model (which destroys temporal structure while preserving spectral content) produces FC predictions "effectively the same" as the hybrid model fundamentally undermines the claim that subject-specific EEG input adds value for FC prediction. This means the FC result is attributable to structural connectivity alone, not to the hybrid approach. This should be discussed more prominently and the FC-related claims revised accordingly.
+
+- **RSN oscillation neural origin claim overstated** (Supporting claim on evidence for neural origin): The claim that model results "constitute evidence that RSN oscillations originate from neuronal activity" overstates what a computational model can establish. Showing one plausible neural mechanism does not constitute evidence against alternative explanations (hemodynamic, physiological noise). The caution that "methods for physiological noise correction might remove neurally relevant variance" is potentially misleading without empirical validation and should be moderated.
+
+- **Self-organized criticality claims are speculative** (Supporting claims on criticality): The claims that scale-free fMRI spectra emerge without requiring "microscopic self-organized criticality mechanisms" and that co-emergence of FC and power-law scaling "may point to a unifying explanation within the theory of self-organized criticality" are contradictory and both unsupported. The E/I balance tuning in the model may itself be functionally equivalent to tuning toward a critical point, and no formal test of criticality is performed.
+
+**Minor Comments**
+
+- The paper would benefit from reporting actual correlation coefficient values (not just significance tests) for all comparisons, ideally with confidence intervals. Box plots or violin plots showing the distribution across subjects would be informative.
+
+- The failure of the model to predict executive control and frontoparietal network time courses (2 of 9 RSNs) deserves more discussion. This may indicate systematic limitations for higher-order cognitive networks that are less dominated by α-oscillations.
+
+- The FIC analysis showing no improvement over a single global inhibitory parameter (p=0.36) raises the question of why FIC was retained in the main analysis. If regional heterogeneity in inhibition does not improve predictions, this has implications for the level of biological detail the model can meaningfully capture.
+
+- The robustness test across α-frequencies (9, 10, 11 Hz) covers only a 2 Hz range. Testing outside the α-band or with broadband inputs would provide a more meaningful robustness assessment.
+
+- The artificial α-input demonstrations (pure sinusoids) are highly idealized. Demonstrating the rectification mechanism with more realistic non-sinusoidal waveforms would strengthen the claim.
+
+- The paper should clarify how cross-validation folds were constructed (contiguous temporal blocks vs. random assignment), as temporal autocorrelation in fMRI data could trivially produce equivalent performance across folds if the signal is approximately stationary.
+
+**Recommendation**
+
+Major Revisions
+
+The paper presents an innovative modeling framework that addresses an important question about multi-scale neural mechanisms, but 6 of 55 claims have low support, including critical interpretive claims about mechanisms and clinical relevance. The absence of formal model comparison, missing effect sizes, overclaiming of "revealed mechanisms" from model-internal dynamics, and several speculative conclusions require substantial revision before the paper meets eLife's standards for evidence strength commensurate with claim strength.

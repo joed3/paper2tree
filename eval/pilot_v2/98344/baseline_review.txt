@@ -1,0 +1,39 @@
+**eLife Assessment**
+This useful study presents a workflow combining single-cell RNA sequencing and TCR profiling to rationalize TCR clone selection for transgenic mouse generation, but the central claim that this approach is superior to classical hybridoma-based methods rests on incomplete evidence, as the comparison involves a single anecdotal failure versus a single success with multiple confounding variables.
+
+**Summary**
+The authors describe an optimized approach for generating TCR transgenic (Tg) mice by using single-cell RNA sequencing (scRNA-seq) combined with TCR VDJ sequencing, analyzed through their previously developed DALI software tool, to rationally select TCR clones based on functional characteristics (cytokine production, proliferation markers, memory potential markers, clonal expansion). As a proof of concept, they aimed to generate CORSET8 mice carrying a CD8 TCR specific for a SARS-CoV-2 Spike epitope. An initial attempt using classical hybridoma technology yielded a TCR Tg line whose T cells failed to respond to Spike peptide or protein in co-culture assays, despite expressing a functional TCR capable of positive selection. A second attempt using scRNA-seq-guided clone selection produced functional CORSET8 mice whose T cells proliferated in response to minute peptide doses ex vivo, expanded upon vaccination in vivo, and responded to SARS-CoV-2 infection in K18-hACE2 transgenic mice. The authors argue this rationalized approach saves time and resources compared to classical methods.
+
+**Strengths**
+- The conceptual premise — that linking TCR clonotype identity to functional transcriptomic data can inform clone selection — is logical and addresses a genuine practical problem in the field.
+- The CORSET8 mice generated via the new approach are well-validated across multiple experimental contexts: ex vivo BM-DC co-culture with dose-response, in vivo adoptive transfer with Spike/CpG immunization, intramuscular BNT162b2 vaccination, and live SARS-CoV-2 infection under BSL3 conditions.
+- The demonstration of CORSET8 T cell responsiveness to very low peptide concentrations (10 pg/ml) and superior tetramer staining intensity compared to endogenous Spike-reactive T cells provides evidence for high TCR affinity.
+- The use of the freely available, GUI-based DALI tool lowers the bioinformatics barrier for immunologists, making the approach accessible.
+- The paper clearly illustrates the workflow with informative schematics, making the methodology reproducible.
+
+**Weaknesses / Essential Revisions**
+- **Confounded comparison between classical and new approaches:** The failed classical attempt and the successful scRNA-seq-guided attempt targeted entirely different epitopes (IEDB-predicted peptide pool including GNYNYLYRL vs. VNFNFNGL). The failure of the first line cannot be attributed to the selection method when the epitope itself differs. The authors need to either (a) attempt classical hybridoma selection against the same VNFNFNGL epitope and compare outcomes, or (b) substantially temper their claims about methodological superiority and acknowledge that the comparison is confounded.
+
+- **N=1 proof of concept with no systematic validation:** The entire argument rests on one failed and one successful mouse line. No evidence is presented that the scRNA-seq selection criteria (Mki67+, Ifng+, Cd69+, Tcf7+, Sell−) systematically predict in vivo functionality. Testing additional clonotypes from the same scRNA-seq dataset (e.g., less expanded or phenotypically distinct clones) as controls would substantially strengthen the claim that the selection criteria matter.
+
+- **Memory potential claim is unsubstantiated:** The authors state they selected clonotype 1 partly because it had "the potential to become a memory cell" (Cd69+, Tcf7+, Sell−), yet no memory experiments are shown. All functional validations assess acute effector responses (4-day timepoints). If memory potential is a key selection criterion, it should be experimentally validated.
+
+- **Limited biological replication for scRNA-seq:** The scRNA-seq analysis is based on cells pooled from only two immunized mice plus one naive control. Given the stochastic nature of clonal expansion, the dominance of clonotype 1 could be mouse-specific. The authors should discuss this limitation and ideally show reproducibility of clonotype 1 dominance across independent immunizations (even by bulk TCR sequencing).
+
+- **Incomplete characterization of the failed CORSET8 line:** The authors show the first TCR Tg line has CD8 T cells on a Rag1−/− background (demonstrating positive selection) but do not investigate why it fails to respond. Is the TCR sequence confirmed correct? Could the issue be construct design, transgene copy number, or expression level rather than clone selection? Without this analysis, the failure cannot be attributed to the selection methodology.
+
+- **No assessment of TCR mispairing or endogenous chain competition:** On the Rag1-sufficient background, ~30% of CD8 T cells are tetramer-negative. The authors do not discuss whether mixed dimer formation between transgenic and endogenous TCR chains affects functionality or interpretation of results.
+
+- **Statistical concerns:** Several key comparisons (e.g., Figure 4G-I) appear to have very small sample sizes (n=2-3 per group in some conditions), and the statistical framework described (Shapiro-Wilk followed by parametric/non-parametric tests) may not be appropriate for such small samples where normality testing has very low power. The authors should report exact n values for all experiments and consider whether their statistical approach is suitable.
+
+**Minor Comments**
+- The timeline comparison between classical and new approaches (referenced in the Discussion as "see Figure 1 for timelines") is not quantitatively presented. A clear comparison of person-hours, calendar time, and costs would strengthen the practical argument.
+- Figure 2—figure supplement 1: The gating strategy for tetramer-positive cell sorting should include information about the frequency of tetramer+ cells in immunized vs. naive mice and the number of cells recovered for sequencing.
+- The paper would benefit from discussing how generalizable this approach is to CD4 TCR Tg mice, where the functional readouts and selection criteria would differ.
+- The VNFNFNGL epitope is described as "conserved," but no data on conservation across SARS-CoV-2 variants is shown.
+- The Discussion extensively reviews alternative TCR Tg generation methods (retrogenic mice, TRex mice, CRISPR replacement) but does not discuss how scRNA-seq-guided selection could complement these approaches.
+- Some antibody clone numbers are missing from the Materials and Methods antibody list.
+
+**Recommendation**
+Major Revisions
+The core idea is sound and practically relevant, but the central claim of methodological superiority is not adequately supported due to confounded comparisons and a single proof-of-concept example; substantial additional evidence or significant reframing of claims is needed to meet eLife's standards for a convincing methodological advance.

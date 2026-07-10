@@ -1,0 +1,55 @@
+**eLife Assessment**
+
+This study presents a *useful* investigation of how experimental evolution compensates for fitness loss in a genome-reduced *E. coli*, but the central claims — particularly the proposed novel "divergent to convergent" evolutionary strategy and the gene network analysis — are supported by *incomplete* evidence. While the experimental evolution and basic genomic characterization are sound, several key interpretive leaps, an underpowered network analysis, and insufficient distinction from well-established evolutionary concepts prevent the paper from meeting the threshold for a convincing conceptual advance.
+
+**Summary**
+
+This paper reports experimental evolution of nine independent lineages of a genome-reduced *E. coli* strain (~21% genome deleted) over approximately 1,000 generations. The authors find that eight of nine lineages significantly recover growth rate, albeit with decreased carrying capacity. Genome resequencing reveals 65 mutations across the nine lineages with no shared mutations, while transcriptome analysis shows highly variable differentially expressed gene sets but a conserved six-period chromosomal periodicity. The authors synthesize these findings into a conceptual model they term "divergent to convergent" evolution — diverse mutational paths leading to a shared transcriptomic architecture — positioning it as a novel evolutionary strategy distinct from parallel or divergent evolution. Weighted gene co-expression network analysis (WGCNA) is used to identify three gene modules proposed to separately govern growth fitness, transcriptional reorganization, and mutation accumulation.
+
+**Strengths**
+
+- **Robust fitness recovery demonstration (8/9 lineages with significant growth rate improvement):** The experimental design with nine independent evolutionary lineages provides reasonable replication, and the consistent growth rate recovery is convincingly demonstrated with appropriate non-parametric statistical tests. This finding, supported at high confidence, establishes the empirical foundation of the paper.
+
+- **Strong evidence for mutational diversity:** The identification of 65 mutations across lineages with no common mutation shared by all nine is well-supported by Illumina sequencing analyzed with the validated Breseq pipeline (strong support). The enrichment of nonsynonymous SNPs (36/45, p<0.01) provides classic evidence for positive selection, and the significant enrichment of essential genes among mutated genes (chi-square p=0.008) is a robust and biologically interpretable finding.
+
+- **Rigorous periodicity analysis:** The Fourier transform analysis with Fisher's g test confirming six-period chromosomal periodicity across all evolved populations, the wild type, and the ancestor is technically sound and consistently applied (strong support, Supplementary file 5). The methodology builds on established prior work.
+
+- **Comprehensive DEG characterization:** The use of DESeq2 with FDR correction, confirmed by the independent RankProd method, and the clear visualization of declining DEG overlap across lineages (UpSet plot, Figure 4A-B) provide strong evidence for transcriptomic diversity among evolved lineages. The 108 common DEGs from potentially thousands represents a concrete, well-documented finding.
+
+- **Systematic multi-omic approach:** The integration of growth phenotyping, whole-genome resequencing, and transcriptomics across nine lineages represents a thorough experimental strategy that addresses the central question from multiple angles.
+
+**Weaknesses / Essential Revisions**
+
+- **The "divergent to convergent" evolutionary strategy lacks genuine novelty (Root claim and c1.6; low support, overclaimed):** The central conceptual contribution — that diverse genotypic paths lead to a common phenotypic outcome — is a well-established phenomenon in experimental evolution (e.g., Tenaillon et al. 2012; Barrick et al. 2009). The distinction between this study's proposed strategy and standard convergent evolution is largely semantic. The authors must explicitly address how their findings differ from the extensive literature on convergent phenotypic evolution from diverse mutations, or substantially temper the novelty claims. As framed, the "all roads leading to Rome" metaphor redescribes a known phenomenon rather than identifying a new one.
+
+- **Transcriptomic "convergence" is inadequately demonstrated (c1.3, c1.3.4; overclaimed):** The two pillars of transcriptomic convergence — conserved six-period periodicity and PCA/clustering — are each problematic. The six-period periodicity likely reflects the conserved macrodomain organization of the *E. coli* chromosome, a structural feature that would not be expected to change with point mutations or IS element deletions. Its conservation is arguably a null expectation, not evidence of "homeostasis." The PCA-based convergence claim (Figure 4—figure supplement 1) is entirely qualitative, with no formal statistical test of whether evolved transcriptomes are more similar to each other than expected by chance. The authors must either provide a quantitative metric of transcriptomic convergence (e.g., pairwise distance comparisons with permutation tests) or substantially revise the convergence claims.
+
+- **WGCNA analysis is critically underpowered (c1.5, c1.5.1; overclaimed):** The WGCNA was performed with only ~9–11 samples, far below the developer-recommended minimum of 15. This is a near-fatal flaw for the claim that three functionally differentiated modules (M2, M10, M16) separately govern growth, transcriptional change, and mutation accumulation. No robustness validation (bootstrap, cross-validation, or split-sample analysis) was performed. The surprising finding that translation associates with DEG count (M10) rather than growth rate (M2) — contradicting one of the most robust relationships in bacterial physiology (Scott & Hwa 2023) — may well be an artifact of small-sample instability rather than genuine biology. The authors should either validate the WGCNA results with additional samples or independent methods, or remove/substantially downweight these claims.
+
+- **The claim that M10 is "responsible for genome reduction" is a causal overstatement (c1.5.3; overclaimed):** Co-enrichment of functional categories (phage, unknown function) between module M10 and the set of deleted genes does not establish that M10 is "responsible for genome reduction." This conflates correlation with causation and confuses responsiveness with responsibility. The language must be revised.
+
+- **The equivalence of genome reduction/evolution to stress response is weakly supported (c1.6.2; low support, overclaimed):** The claim that "genome reduction and evolution seemed equivalent to the stress response" is a sweeping conclusion drawn from limited enrichment data (mobile elements, enterobactin). Flagellar assembly changes in genome reduction DEGs likely reflect direct gene deletion, not a stress response. This claim requires either substantially more evidence or removal.
+
+- **The proposed WGCNA-based "alternative genetic classification" is not substantiated (c1.6.3; low support, overclaimed):** Proposing WGCNA modules as an alternative to Gene Ontology or regulon-based classification based on a single, underpowered analysis of one experimental system is an unjustified extrapolation. WGCNA modules are inherently condition-specific and cannot serve as a general classification system without extensive cross-condition validation.
+
+- **Locational bias test uses unconventional statistics (c1.2.3):** The use of the "mean of p-values" from 1000 simulations is not a standard meta-analytic approach, and the resulting mean p-value of 0.07–0.09 is borderline rather than clearly non-significant. Standard combined probability methods (e.g., Fisher's method) or direct permutation-based approaches should be used. The conclusion of "no locational bias" should be softened to reflect this ambiguity.
+
+- **Variable RNA-seq replication (N=2-4) undermines DEG comparisons (c1.4.1):** The large variation in DEG numbers across Evos (333–1130) could partly reflect differential statistical power from variable replication rather than true biological variation. The authors should assess whether DEG count correlates with replicate number and discuss this potential confound.
+
+- **The "trade-off" framing is internally inconsistent (c1.1):** The paper describes a trade-off between growth rate and carrying capacity, but the positive r/K correlation among evolved populations (c1.1.3) directly contradicts trade-off expectations. The drift hypothesis for carrying capacity decline (c1.1.6) is also inconsistent with the trade-off framing. The authors should reconcile these contradictions or abandon the trade-off terminology.
+
+**Minor Comments**
+
+- The inconsistency between the Methods section (biological triplicates for growth) and figure legends (N=4–6) should be clarified explicitly.
+- The discrepancy between 49 mutated genes and 51 mutations in genes should be explained (presumably multiple mutations in the same gene).
+- The insH deletion is described as "frequently found" without specifying how many of the nine Evos carry it — precise counts should be provided.
+- Exact p-values for Mann-Whitney U tests comparing each Evo to the ancestor should be reported, not just significance symbols.
+- The actual Spearman correlation coefficient and p-value for the r/K correlation should be reported in the main text, not only in the figure.
+- PCA results (Figure 4—figure supplement 1) are critical to the convergence argument and should be in the main figures rather than supplements.
+- The soft threshold parameter (12) and module merging cutoff (0.25) for WGCNA should be justified beyond the general R² recommendation, ideally with sensitivity analyses.
+
+**Recommendation**
+
+Major Revisions
+
+The paper addresses an interesting question and presents solid experimental evolution data, but 5 of 49 claims have low support, including the most conceptually central claim (the "divergent to convergent" strategy), and several primary claims are overclaimed relative to their evidence base. The critically underpowered WGCNA analysis, the lack of formal tests for transcriptomic convergence, and the insufficient distinction from established evolutionary concepts represent substantial issues that must be resolved before the paper can meet eLife's standards for a convincing conceptual advance.

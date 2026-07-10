@@ -1,0 +1,53 @@
+**eLife Assessment**
+
+This study presents a **valuable** contribution to understanding how the nervous system resolves neural redundancy during brain-computer interface (BCI) control, demonstrating that output-null activity is coupled with output-potent activity rather than being governed by minimal energy or minimal intervention principles. The core experimental finding is supported by **convincing** evidence across multiple animals and sessions, though several broader interpretive claims—particularly regarding the generalization to natural motor control and constraints on neural computation—rest on **incomplete** evidence and require more careful calibration.
+
+**Summary**
+
+This paper investigates how the brain selects among redundant neural activity patterns that produce the same behavioral output. Using a BCI paradigm in which rhesus monkeys control a cursor via primary motor cortex activity, the authors precisely define output-potent (task-relevant) and output-null (redundant) dimensions and test whether principles from the muscular redundancy literature—minimal energy and minimal intervention—predict the distribution of output-null activity. The central finding is that neither class of principle accurately predicts the data. Instead, a "Fixed Distribution" hypothesis, which posits that the joint distribution of output-null activity conditioned on output-potent activity is preserved across different BCI mappings, provides the best predictions in 41 of 42 sessions across three animals. The authors interpret this coupling between output-potent and output-null activity as evidence that neural redundancy is resolved differently from muscular redundancy and that there are limits on the extent to which output-null dimensions can be independently exploited for computation.
+
+**Strengths**
+
+- **Fixed Distribution hypothesis superiority (c1.1, c1.1.1):** The Fixed Distribution hypothesis achieved the lowest histogram error in 41 of 42 sessions across three animals (13.4% ± 0.5%), with statistical significance at α = 0.001 for all pairwise comparisons. This remarkable consistency across sessions and animals, combined with convergent evidence from three independent error metrics (histogram, mean, covariance), provides compelling evidence for the core empirical finding.
+
+- **Variance stability analysis (c1.6):** The analysis of variance changes when dimensions switch from output-potent to output-null (Figure 6) is a particularly incisive test that directly discriminates among competing hypotheses. The observed small variance change is inconsistent with both minimal firing (which predicts a large decrease) and uncontrolled (which predicts an increase) hypotheses, while being closest to Fixed Distribution predictions. Testing both directions (potent-to-null and null-to-potent) strengthens this analysis.
+
+- **Experimental design avoiding circularity (c1.1, c1.1.5):** The use of two different BCI mappings, where predictions are built from one mapping and evaluated on the other, is methodologically rigorous and avoids the circularity that would arise from fitting and testing on the same data. The additional control analyses—reversed mapping order and actual versus estimated internal model—further bolster confidence.
+
+- **Progressive hypothesis refinement (c1.3.1, c1.3.2, c1.3.3):** The systematic progression from Uncontrolled-uniform (56.6%) to Uncontrolled-empirical (23.8%) to Persistent Strategy (17.4%) to Fixed Distribution (13.4%) provides genuine mechanistic insight by isolating the contribution of each additional piece of information, particularly the coupling between potent and null dimensions.
+
+- **Rejection of minimal energy principles (c1.2):** The poor performance of Minimal Firing (73.2%) and Minimal Deviation (30.9%) hypotheses, combined with the additional analysis showing no systematic shift of mean output-null activity toward minimal-energy predictions (Figure 6—figure supplement 2), provides strong evidence that spike-count minimization does not dominate redundancy resolution at the neural level.
+
+**Weaknesses / Essential Revisions**
+
+- **Overclaimed generalization from BCI to natural neural computation (ROOT, c1.5):** The root claim that "there are constraints on the extent to which neural circuits can exploit redundancy for computation" is stated broadly but supported only in a highly specific experimental context: a 2D BCI cursor task with a 10D manifold in M1. The implications for movement preparation (Kaufman et al., 2014), noise filtering (Moreno-Bote et al., 2014), and stable computation (Driscoll et al., 2017) cited in claim c1.5.1 are purely speculative with no supporting data. The authors should substantially temper the breadth of their computational implications or provide additional analyses (e.g., quantifying how much computational capacity remains in the null space despite coupling) to support these claims.
+
+- **Overclaimed distinction between neural and muscular redundancy (c1.4):** The paper claims that "neural redundancy is resolved differently from muscular redundancy," but the authors themselves acknowledge that OFC with an appropriate cost function could potentially predict their findings (c1.4.1). This substantially undermines the categorical nature of the claim. The paper only demonstrates that *specific simplified implementations* of minimal energy and minimal intervention principles fail—not that the underlying frameworks are inapplicable. The authors should reframe this as a failure of specific implementations rather than a fundamental distinction between neural and muscular systems, or provide a more rigorous argument for why no reasonable cost function within these frameworks could reproduce the data.
+
+- **Overclaimed proximity to error floor (c1.1.4):** The characterization that Fixed Distribution errors are "exceedingly close" to the error floor is not well-calibrated across all metrics. While the histogram error (13.4% vs. 6.7% floor) is reasonably close, the mean error (23.5 vs. 6.9 spikes/s, ~3.4× the floor) and covariance error (1.4 vs. 1.0) show meaningful gaps. The authors should present a more balanced assessment of the residual unexplained structure, discuss what might account for the gap (particularly for the mean), and consider whether additional factors beyond the Fixed Distribution hypothesis are needed.
+
+- **Speculative claims about natural motor control (c1.5.3):** The speculation that "during arm movements with larger output dimensionality, many null dimensions will remain coupled with potent dimensions" (claim c1.5.3, rated weak support) lacks any empirical basis. No EMG data are reported to confirm the absence of muscle activity during BCI control (noted in c1.5.4), and the absence of proprioceptive feedback and biomechanical constraints in BCI fundamentally differs from natural motor control. This speculation should either be removed or clearly flagged as an untested hypothesis requiring future work.
+
+- **Limited exploration of alternative energy cost functions (c1.2.1):** Only two forms of metabolic cost were tested (total spikes and deviation from baseline). More biologically realistic metabolic cost functions—accounting for synaptic costs, nonlinear spike-rate relationships, or maintenance costs—were not explored. Given the authors' own acknowledgment that "metabolic activity can decrease without corresponding changes in firing rates" (Picard et al., 2013), the claim that energy minimization plays no dominant role should be tempered, or additional cost function variants should be tested.
+
+- **Modest quantitative margin for the key conceptual distinction (c1.1, c1.3.3):** The difference between the Persistent Strategy hypothesis (17.4%) and Fixed Distribution (13.4%) is the critical comparison for establishing that output-potent and output-null activity are coupled rather than merely correlated through shared task variables. While statistically significant, this margin is smaller than other hypothesis comparisons. The authors should discuss whether this margin is practically meaningful and what it implies about the strength of the coupling.
+
+**Minor Comments**
+
+- The one session (of 42) where Fixed Distribution did not achieve the lowest error is not discussed. Understanding this exception could be informative and would strengthen the paper.
+
+- Only 3 of 8 output-null dimensions are shown visually in the main figures, selected by variance explained. Showing all dimensions (even in supplementary materials) would provide a more complete picture and guard against selection bias in presentation.
+
+- The covariance error metric is reported in arbitrary units, making it difficult to assess practical significance. A normalized metric or effect size would be more interpretable.
+
+- The null-to-potent analysis (c1.6.3) reports only p > 0.5 without an exact p-value or power analysis. Given that this is a null result used to support the Fixed Distribution hypothesis, a power analysis would strengthen the interpretation.
+
+- The number of sessions per animal for supplementary analyses (reverse direction, actual vs. internal model) should be clearly stated.
+
+- The paper would benefit from a more explicit discussion of whether the observed coupling is a property of the intrinsic manifold structure (i.e., a structural constraint of recurrent network dynamics) versus a computational principle about redundancy resolution. These have different implications for generalizability.
+
+**Recommendation**
+
+Major Revisions
+
+The core empirical finding—that the Fixed Distribution hypothesis best predicts output-null activity—is supported by convincing evidence across 23 high-support claims. However, the two weakly supported claims and several overclaimed interpretive claims concern the paper's most conceptually ambitious contributions: the generalization to natural neural computation, the distinction from muscular redundancy, and the implications for neural computation in null spaces. These broader claims, which form the basis of the paper's significance for the field, require substantial recalibration or additional supporting evidence to meet eLife's standards for a study claiming to reveal fundamental principles of neural redundancy.

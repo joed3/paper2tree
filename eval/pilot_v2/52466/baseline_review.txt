@@ -1,0 +1,42 @@
+**eLife Assessment**
+This study presents potentially valuable observations about hippocampal CA1 neuron populations during delay-discounting behavior, but the central claims—particularly regarding value coding and the specificity of delay-related activity—rest on incomplete evidence due to significant experimental confounds, liberal classification criteria, and insufficiently rigorous statistical analysis.
+
+**Summary**
+The authors recorded CA1 single-unit activity in mice performing a delay-discounting T-maze task, identifying two populations of neurons: "delay-active" cells that increase firing during delays and "delay-suppressed" cells that decrease firing. They report that these populations encode delay length via both rate coding and population-level temporal sequences, exhibit spatial selectivity, and show opposing responses to reward size manipulations—with delay-active cells decreasing and delay-suppressed cells increasing firing upon reward loss. A subset of neurons is proposed to encode integrated "value" by responding similarly to both delay extension and reward reduction. Additionally, CA1-NR1 conditional knockout mice show impaired delay discounting and disrupted delay-related neural patterns. The study attempts to bridge hippocampal physiology with decision-making computations, a topic of considerable interest.
+
+**Strengths**
+- The experimental design is ambitious, employing multiple behavioral manipulations (delay extension, arm switching, both-side delays, reward loss/gain) within the same animals to probe different aspects of delay-related coding. This multi-condition approach is well-suited to dissect spatial, temporal, and reward contributions.
+- The observation that delay-active and delay-suppressed populations show opposite responses to reward size changes (Figure 7C-D) is novel and potentially important for understanding how hippocampal subpopulations contribute to valuation.
+- The inclusion of CA1-NR1 cKO mice provides a mechanistic dimension, linking NMDAR-dependent plasticity to both delay-discounting behavior and delay-period neural activity patterns.
+- The LFP analysis confirming theta dominance and absence of sharp-wave ripples during the delay period (Figure 2) is a useful characterization confirming the hippocampal circuit remains in an "online" processing state during delays.
+- The SVM decoding analysis (Figure 5—figure supplement 1) provides population-level evidence complementing single-neuron rate-coding results.
+
+**Weaknesses / Essential Revisions**
+- **Confound of sequential delay presentation with time and satiety**: Delay lengths are always presented in ascending order (0→5→10→20→40 s) within sessions. This means that delay length is fundamentally confounded with trial number, elapsed session time, satiety, and cumulative reward consumption. The reported correlations between firing rate and delay length (Figure 5) could reflect these confounds rather than delay encoding per se. Randomized or counterbalanced delay presentations are essential, or at minimum, the authors must provide analyses controlling for trial number, cumulative reward, and running behavior.
+
+- **Overly liberal classification of delay-act/delay-sup neurons**: 38% + 49% = 87% of all CA1 neurons are classified into one of these two categories. With a permutation test at p < 0.05 (two-tailed), one expects ~10% false positives. The extraordinarily high proportion suggests the classification captures nearly all neurons and may not identify a functionally distinct population. The authors should demonstrate that these populations have properties beyond what would be expected from baseline rate variability, or use more stringent thresholds.
+
+- **Value coding claim is not rigorously supported**: The identification of "value-coding neurons" (Figure 7E) is based on visual inspection of neurons near the diagonal of a scatter plot, but no formal statistical test or clustering analysis is applied. The overall correlations in these scatter plots are not significant (as noted in the figure). Without a quantitative criterion for identifying value neurons and a statistical test for whether the observed number exceeds chance, this claim remains speculative.
+
+- **Motor and behavioral confounds during delay periods**: There is no analysis of the animals' behavior during the delay period (locomotion, grooming, head movements, licking). Firing rate changes could reflect differences in motor state across delay lengths rather than delay encoding. Running speed analysis during the delay is essential, as CA1 firing rates are well known to correlate with velocity.
+
+- **NMDAR knockout specificity**: The authors acknowledge that NR1 deletion may extend to CA3, dentate gyrus, and deep cortical layers in the CaMK2-Cre line used. This substantially weakens the claim that the behavioral and physiological effects are specifically attributable to CA1 NMDARs. The recording ages of cKO mice exceeded the 2-month window of CA1-restricted deletion, making this caveat particularly important. Additionally, n = 3 cKO and n = 4 control mice for physiology is underpowered for drawing strong conclusions.
+
+- **Insufficient trial numbers and unclear cell tracking across conditions**: Many conditions appear to involve relatively few trials (~10 per block). It is unclear how many of the same neurons were tracked across different delay lengths and conditions. The paper should provide explicit information about how many neurons were held across conditions and how unit identity was verified.
+
+- **Reward loss/gain conditions lack proper controls**: The reward manipulation conditions are performed in a specific order (extension → reward loss → reward gain). Animals' motivational states likely differ substantially between these conditions, and the results could reflect engagement or arousal differences rather than reward value coding per se.
+
+- **Population coding analysis**: The claim that time cell–like sequences tile the delay period is weakened by the observation that a uniform distribution of peak firing times was found only in the both-side condition (Figure 4—figure supplement 2). In most conditions, activity was biased toward delay onset, which could reflect a startle or transition response rather than temporal coding. This should be discussed more carefully.
+
+**Minor Comments**
+- Figure 1C shows preference data but the number of animals contributing to each delay condition is not indicated, nor are individual animal data shown.
+- The paper would benefit from a clearer schematic showing exactly which neurons contribute to each analysis (e.g., a flow diagram of inclusions/exclusions).
+- The term "value coding" is used loosely. The authors should more carefully distinguish between neurons that independently encode delay and reward versus those that encode an integrated value signal, with reference to formal definitions in the neuroeconomics literature.
+- Figure 7—figure supplement 2 describes a "forced conditions" experiment that is mentioned only briefly in the text but could be informative if analyzed more thoroughly.
+- The Discussion's comparison to OCD and compulsive behavior in the context of cKO mice is speculative and should be toned down given the limitations of the knockout model.
+- Some statistical tests appear to lack correction for multiple comparisons (e.g., the multiple Mann-Whitney tests in Figure 2B, the multiple comparisons in the two-way ANOVA for cKO behavior).
+- The paper should report effect sizes alongside p-values for key comparisons.
+
+**Recommendation**
+Major Revisions
+The study addresses an interesting question about hippocampal contributions to delay-based decision making, but fundamental experimental confounds (sequential delay presentation, lack of motor controls), overly liberal neuron classification, and insufficiently rigorous analysis of the value-coding claim prevent the current evidence from meeting eLife's standards for the central conclusions drawn.

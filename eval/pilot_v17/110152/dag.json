@@ -1,0 +1,3166 @@
+{
+  "schema_version": 2,
+  "paper": {
+    "paper_id": "elife_110152",
+    "title": "A structural code for assembly specificity in GID/CTLH-type E3 ligases",
+    "authors": [
+      "Pia Maria van gen Hassend",
+      "Hermann Schindelin"
+    ],
+    "url": "https://doi.org/10.7554/eLife.110152",
+    "abstract": "GID/CTLH-type E3 ligases assemble into conserved ring-shaped architectures built from repeating LisH-CTLH-CRA modules, yet the molecular rules that enforce their highly specific subunit arrangement have remained unknown. Here, we decode the structural ‘assembly specificity code’ that governs CRA-CRA pairing. Using crystal structures of multiple CTLH-CRA domains, including the RanBP9-muskelin heterodimer, integrated with quantitative binding analyses, we show that several interfaces operate with exceptionally high affinity, reaching the picomolar range, and that conserved sequence and geometric features enable each subunit to only select cognate partners. Strikingly, targeted perturbations of these features are sufficient to reprogram pairing preferences, enabling engineered subunits such as RanBP10 or Twa1 to adopt non-native interaction partners. These findings reveal the molecular logic that preserves the architecture of GID/CTLH-type E3 ligases and demonstrate that their assembly code is both decipherable and engineerable, providing a conceptual foundation for reconfiguring these ring-shaped E3 ligases.",
+    "word_count": 9531,
+    "processed_at": "2026-07-09T23:58:40.233494+00:00",
+    "has_local_pdf": false
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "c1",
+        "label": "Crystal structures of mammalian CTLH-CRA domains define a residue-level specific…",
+        "claim": "Crystal structures of mammalian CTLH-CRA domains define a residue-level specificity code governing partner recognition within the CTLH complex, enabling bidirectional rewiring of binding preferences and providing a framework for rational manipulation of CTLH ring assembly.",
+        "type": "root",
+        "depth": 0,
+        "section_source": "Discussion",
+        "verbatim_quote": "By mapping this residue-level code and demonstrating bidirectional specificity rewiring of CTLH-CRA domains, we provide a framework for understanding and rationally manipulating CTLH complex ring assembly.",
+        "evaluation": {
+          "node_id": "c1",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Multiple crystal structures at high resolution (1.4–3.5 Å) provide direct structural evidence for the proposed specificity code.",
+            "Bidirectional specificity rewiring is demonstrated experimentally (RanBP10→Maea via R10_GLFF, Twa1→muskelin via Twa1_52), which is a strong test of the proposed model.",
+            "Quantitative binding data (ITC, SEC-MALS) corroborate structural predictions, lending coherence to the overall claim.",
+            "The work builds on established structural frameworks from Sherpa et al. (2021, 2022), Chrustowicz et al. (2024), and Qiao et al. (2020)."
+          ],
+          "weaknesses": [
+            "The claim of providing a 'framework for rational manipulation of CTLH ring assembly' is only partially substantiated—all experiments are on isolated domains or subcomplexes in vitro, and no reconstitution of an actual altered ring complex is demonstrated.",
+            "The rewired interfaces have not been tested in the context of full-length ring assembly or in cells, so the claim of enabling 'rational manipulation of CTLH ring assembly' remains aspirational.",
+            "Conservation claims across eukaryotes rely entirely on AlphaFold3 predictions rather than experimental structures, which limits the strength of the evolutionary argument.",
+            "The 'residue-level specificity code' is specific to two interface pairs (RanBP10-muskelin/Maea and Twa1-Maea/muskelin); generalization to all eight CTLH-CRA interfaces in the ring is not demonstrated."
+          ],
+          "alternative_interpretations": [
+            "The specificity code may be more context-dependent than portrayed—additional domains (SPRY, kelch, WD40) contribute ~100-fold tighter binding in the full-length context, suggesting the CRA interface alone does not fully determine ring assembly specificity.",
+            "The 'code' may be better described as a set of steric and polar constraints specific to each pair rather than a generalizable code applicable to other ring-shaped assemblies."
+          ],
+          "required_assumptions": [
+            "Isolated CTLH-CRA domain constructs faithfully recapitulate the behavior of these domains in the context of the full-length, megadalton ring complex.",
+            "Murine/rat proteins behave equivalently to human proteins at these interfaces.",
+            "AlphaFold predictions accurately represent cross-species interface structures.",
+            "The rewired interfaces would function in the context of full ring assembly."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The root claim is a composite of well-supported structural observations and less-supported functional extrapolations. The structural and biophysical data are strong for the isolated domains but do not yet demonstrate manipulation of actual ring assembly.",
+          "literature_citations": [
+            {
+              "title": "Cryo-EM structure of the CTLH complex",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2021,
+              "url": "",
+              "relevance": "Provided the initial cryo-EM architecture that this work aims to complement at higher resolution.",
+              "stance": "extends"
+            },
+            {
+              "title": "Phosphorylation-dependent E2-E3 interface in CTLH complex",
+              "authors": [
+                "Chrustowicz"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Established the Ube2H-RING interaction and overall ring architecture this work builds upon.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 48,
+          "border_width": 3
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1",
+        "label": "High-resolution crystal structures of CTLH-CRA domains from multiple CTLH comple…",
+        "claim": "High-resolution crystal structures of CTLH-CRA domains from multiple CTLH complex subunits reveal a conserved overall fold with two CRA helices mediating the assembly interface, while specificity arises from subunit-specific aromatic and polar contacts.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Overall, all CTLH-CRA domains share a similar fold, with four helices contributed by the CTLH motif and four by the CRA motif.",
+        "evaluation": {
+          "node_id": "c1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Five independent crystal structures at resolutions from 1.4–2.1 Å provide strong direct evidence for the conserved fold.",
+            "The RanBP9-muskelin co-crystal structure directly identifies the CRA helix-mediated assembly interface.",
+            "Superposition with AlphaFold predictions validates that truncation constructs preserve the native fold.",
+            "Prior cryo-EM work (Sherpa et al., 2021; Qiao et al., 2020) had indicated this region was unresolved, making these crystal structures a genuine structural advance."
+          ],
+          "weaknesses": [
+            "The Twa1 CTLH-CRA structure showed helix swapping (a crystal artifact), which reduces confidence in using that particular structure for interface characterization—authors appropriately used the lower-resolution RanBP10-Twa1 structure instead.",
+            "Wdr26 and Rmnd5a CTLH-CRA domains could not be crystallized individually, limiting the completeness of the structural survey."
+          ],
+          "alternative_interpretations": [
+            "The 'conserved fold' may reflect the constraints of a minimal helical bundle rather than a specific functional conservation—many unrelated proteins adopt similar four-helix bundle architectures."
+          ],
+          "required_assumptions": [
+            "Truncated and fused constructs do not introduce non-native structural distortions at the interface.",
+            "The CTLH-CRA domain fold in isolation reflects its conformation in the assembled ring."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is one of the best-supported claims in the paper, with multiple independent crystal structures and validation against AlphaFold predictions.",
+          "literature_citations": [
+            {
+              "title": "Cryo-EM structure of the CTLH complex",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2021,
+              "url": "",
+              "relevance": "CTLH-CRA regions were unresolved in prior cryo-EM, motivating this crystallographic work.",
+              "stance": "extends"
+            },
+            {
+              "title": "Structure of CTLH ring",
+              "authors": [
+                "Qiao"
+              ],
+              "year": 2020,
+              "url": "",
+              "relevance": "Defined the CRA-mediated assembly mode that the crystal structures now resolve at atomic detail.",
+              "stance": "extends"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2",
+        "label": "Three specific residue positions in RanBP9/10 (phenylalanine for π-π stacking, t…",
+        "claim": "Three specific residue positions in RanBP9/10 (phenylalanine for π-π stacking, tyrosine for hydrogen bonding, and valine to avoid steric clash) determine binding to muskelin and explain why Twa1 cannot bind muskelin.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "In the RanBP9-muskelin structure, muskelin interacts with RanBP9 through two specific contacts: (i) π-π stacking between muskelin F686 and RanBP9 F576 (RanBP10 F543) and (ii) a hydrogen bond between muskelin Q679 and RanBP9 Y581 (RanBP10 Y548).",
+        "evaluation": {
+          "node_id": "c1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The RanBP9-muskelin crystal structure (2.0 Å) directly identifies the two specific contacts (π-π stacking and hydrogen bond).",
+            "Systematic mutagenesis of all three positions with progressive Twa1-like substitutions produces a graded loss of affinity from low nM to undetectable, providing strong functional validation.",
+            "The structural comparison with Twa1 provides a clear mechanistic rationale for why Twa1 cannot bind muskelin.",
+            "ITC measurements with 3–6 replicates per mutant and standard errors provide quantitative rigor."
+          ],
+          "weaknesses": [
+            "Only one muskelin mutant (F686L) could be purified, limiting reciprocal validation from the muskelin side.",
+            "The steric hindrance argument for V556F/F160 is structural inference from overlay rather than confirmed by a co-crystal structure of a Twa1-muskelin attempt.",
+            "The claim that these are the three residue positions that 'determine' binding is based on a defined set of mutations—other untested positions could also contribute."
+          ],
+          "alternative_interpretations": [
+            "Additional backbone or sidechain contacts not highlighted in the structural analysis may also contribute to specificity; the three identified residues may be necessary but not fully sufficient."
+          ],
+          "required_assumptions": [
+            "The structural overlay of RanBP10 and Twa1 onto the RanBP9-muskelin co-crystal accurately predicts the relevant contacts.",
+            "Loss of binding in ITC reflects disrupted specific contacts rather than destabilization of the overall fold."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The progressive mutagenesis series is particularly convincing and represents a rigorous test of the structural predictions.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3",
+        "label": "RanBP10 binding specificity can be switched from muskelin to Maea by four mutati…",
+        "claim": "RanBP10 binding specificity can be switched from muskelin to Maea by four mutations (Q519G, F543L, Y548F, V556F), demonstrating that a single steric clash (Q519 vs. Maea F245) is the primary barrier to Maea binding.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Consistent with our hypothesis, R10_G bound both muskelin and Maea, whereas R10_GLFF bound Maea only.",
+        "evaluation": {
+          "node_id": "c1.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The claim is supported by three independent methods: SEC-MALS (stoichiometry and complex formation), ITC (binding preference), and NAGE (qualitative binding).",
+            "The R10_G mutant (single substitution) gaining dual specificity while R10_GLFF switches exclusively to Maea provides a convincing stepwise demonstration.",
+            "A crystal structure of the R10_GLFF-Maea complex (3.5 Å, PDB: 9SOH) provides direct structural validation of the specificity switch.",
+            "The discovery of an additional stabilizing hydrogen bond (Maea Y254–Q540) that was not predicted a priori adds credibility to the structural model."
+          ],
+          "weaknesses": [
+            "The 3.5 Å resolution of the R10_GLFF-Maea complex is relatively low for confident assignment of hydrogen bonds and precise sidechain orientations.",
+            "ITC with Maea was stated as 'not feasible due to its oligomeric state,' so direct affinity measurements for the R10_GLFF-Maea interaction are lacking.",
+            "The claim that Q519 is 'the primary barrier' oversimplifies—the R10_G mutant binds both partners, meaning the other three mutations are needed to eliminate muskelin binding, making this a four-mutation switch rather than a single-residue barrier."
+          ],
+          "alternative_interpretations": [
+            "The Q519G mutation may not just relieve a steric clash but could also create new contacts or alter backbone flexibility, contributing to Maea binding through mechanisms beyond simple steric relief."
+          ],
+          "required_assumptions": [
+            "The oligomeric state of Maea CTLH-CRA does not fundamentally alter the binding interface compared to monomeric Maea in the full complex.",
+            "The R10_GLFF-Maea co-crystal structure at 3.5 Å resolution correctly resolves the hydrogen bond between Y254 and Q540."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The wording 'primary barrier to Maea binding' for Q519 is reasonable given that a single mutation permits Maea binding, though the full switch requires four mutations total. The claim is well-supported overall.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4",
+        "label": "Twa1 binding specificity can be fully switched from Maea to muskelin through eig…",
+        "claim": "Twa1 binding specificity can be fully switched from Maea to muskelin through eight mutations (Twa1_52), requiring more extensive remodeling than RanBP10 due to distinct geometric constraints including a kinked first CRA helix.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Eight mutations – A125G, Q126R, Δ127T, L140K, E144K, L147F, F152Y, and F160V – were required to achieve this specificity swap, twice as many as in RanBP10.",
+        "evaluation": {
+          "node_id": "c1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Extensive mutagenesis (52 mutants) represents a thorough experimental approach.",
+            "The progressive pathway from Twa1_10 (insufficient) → Twa1_14 (dual specificity) → Twa1_52 (switched) is well documented.",
+            "Crystal structure of Twa1_14-Maea (3.3 Å) provides a structural explanation for why intermediate mutants retain dual specificity.",
+            "SEC-MALS and ITC quantitatively validate the final Twa1_52 mutant's binding to muskelin.",
+            "The structural rationale for why more mutations are needed (kinked helix, different geometric constraints) is persuasive and supported by the crystal structure."
+          ],
+          "weaknesses": [
+            "The affinity of Twa1_52 for muskelin (KD = 146 nM) is ~30-fold weaker than wild-type RanBP10 (KD = 4.3 nM), raising questions about whether this truly constitutes a 'full switch' or merely a partial rewiring.",
+            "No crystal structure of a Twa1_52-muskelin complex was obtained to confirm the predicted interface.",
+            "Some substitutions are described as 'dispensable' or reintroduced for stability, suggesting the engineering was partly empirical rather than fully rational.",
+            "The NAGE screening assay at 200 μM is a high concentration that may not reflect physiologically relevant binding."
+          ],
+          "alternative_interpretations": [
+            "The eight mutations required may reflect that the Twa1 scaffold is simply not well-suited for muskelin binding, and the resulting complex may be kinetically or thermodynamically distinct from native CRA interactions.",
+            "The shift from enthalpy-driven to entropy-driven binding could indicate a fundamentally different binding mode rather than optimization of the same interface."
+          ],
+          "required_assumptions": [
+            "The kinked first CRA helix in Twa1 is an intrinsic feature rather than a crystallographic artifact.",
+            "The 146 nM affinity is sufficient for functional relevance in a ring assembly context.",
+            "NAGE at 200 μM is a reliable screening method for identifying genuine binding interactions."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The claim is well-supported by data, though the 'full switch' language may overstate the result given the 30-fold affinity reduction compared to native RanBP10-muskelin.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5",
+        "label": "RanBP9 and RanBP10 are functionally interchangeable in CTLH complex assembly, bi…",
+        "claim": "RanBP9 and RanBP10 are functionally interchangeable in CTLH complex assembly, binding muskelin and Wdr26 with comparable picomolar affinities, though RanBP9 binds Wdr26 approximately tenfold weaker than RanBP10.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Results",
+        "verbatim_quote": "Both RanBP9 and RanBP10 outcompeted Twa1_52 binding and bound muskelin very tightly, with comparable affinities (KD = 79.5 ± 37.9 pM and 70.0±22.1 pM).",
+        "evaluation": {
+          "node_id": "c1.5",
+          "support_level": "medium",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "Analytical gel filtration shows no detectable difference between RanBP9-Twa1 and RanBP10-Twa1 in complex assembly with muskelin/Wdr26.",
+            "Competition ITC provides picomolar affinity measurements for all four combinations.",
+            "The structural basis for similar binding (nearly identical interfaces) is supported by the crystal structures.",
+            "Consistent with Sherpa et al. (2022) who showed RanBP10 can substitute for RanBP9."
+          ],
+          "weaknesses": [
+            "The claim states RanBP9 and RanBP10 are 'functionally interchangeable' but then immediately notes a ~6-fold difference in Wdr26 binding (412 pM vs 62 pM), which is internally contradictory.",
+            "The picomolar KD values are derived from competitive ITC using Twa1_52 as a displacement tool—this indirect method introduces additional uncertainty, as the accuracy depends critically on the precision of the first titration parameters.",
+            "The error bars on the picomolar measurements are large relative to the measured values (e.g., 79.5 ± 37.9 pM, nearly 50% error), reducing confidence in the quantitative comparison.",
+            "No functional assay (e.g., ubiquitylation activity) is provided to support the 'functionally interchangeable' claim."
+          ],
+          "alternative_interpretations": [
+            "A ~6-fold difference in Wdr26 binding could be biologically significant in determining complex composition in vivo, contradicting the 'interchangeable' characterization.",
+            "The large error bars on picomolar measurements may mask real differences between RanBP9 and RanBP10."
+          ],
+          "required_assumptions": [
+            "Competitive ITC accurately measures picomolar affinities despite the inherent limitations of the technique at such tight binding.",
+            "In vitro binding affinities in isolation translate to functional equivalence in the cellular context.",
+            "The Twa1_52 displacement tool provides accurate reference parameters for the competitive model."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The claim of 'functional interchangeability' is undermined by the authors' own data showing a significant difference in Wdr26 binding. The claim should be more carefully qualified. Tension with the subsequent claim c1.5.4 about RanBP10 substituting for RanBP9 specifically in Wdr26-containing complexes.",
+          "literature_citations": [
+            {
+              "title": "RanBP10 in CTLH complex assembly",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2022,
+              "url": "",
+              "relevance": "Showed RanBP10 can substitute for RanBP9, consistent with the interchangeability claim but also noting context-dependence.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6",
+        "label": "The specificity determinants governing CTLH-CRA interfaces are broadly conserved…",
+        "claim": "The specificity determinants governing CTLH-CRA interfaces are broadly conserved across eukaryotes, with the same mechanism of specificity (π-π/Met-π interactions and hydrogen bonds) preserved in species from yeast to mammals.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "AlphaFold3 predictions of CTLH-CRA dimerization interfaces across model organisms indicate that the determinants of binding specificity are broadly conserved beyond mammals.",
+        "evaluation": {
+          "node_id": "c1.6",
+          "support_level": "low",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The comparative analysis across seven model organisms provides breadth.",
+            "The yeast Gid1-Gid7 comparison is supported by an experimental cryo-EM structure (PDB: 7NSB) from Sherpa et al. (2021).",
+            "The observation that yeast lacks the phenylalanine but has a compensatory N-terminal contact is an interesting evolutionary insight."
+          ],
+          "weaknesses": [
+            "The conservation claim relies almost entirely on AlphaFold3 predictions rather than experimental structures for non-mammalian species. AF3 predictions of interfaces, particularly across distant species, have known limitations in accuracy.",
+            "The paper acknowledges that C. elegans Wdr26 has an insertion leading to low-confidence predictions, yet this does not seem to temper the overall conservation claim.",
+            "The yeast interface 'largely conserved, except for the missing phenylalanine' actually undermines the claim that the 'same mechanism of specificity' is preserved, as π-π stacking was identified as a key specificity determinant.",
+            "No experimental validation of any predicted cross-species interface is provided.",
+            "The claim extends from 'yeast to mammals' but the yeast mechanism is explicitly different (missing phenylalanine, additional N-terminal contact)."
+          ],
+          "alternative_interpretations": [
+            "The conservation may reflect the constraints of a hydrophobic helix-helix interface rather than conservation of the specific 'specificity code' identified in mammalian complexes.",
+            "AlphaFold3 may impose biases toward the mammalian interface geometry in its predictions, particularly for species with limited training data.",
+            "Francis et al. (2013) noted that muskelin is metazoan-specific, meaning the π-π stacking mechanism cannot be conserved in yeast or plants."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 predictions accurately represent cross-species CTLH-CRA interfaces.",
+            "Sequence-based conservation of key residues implies structural and functional conservation.",
+            "The 'same mechanism' applies despite documented differences in yeast (missing phenylalanine, extra N-terminal contact)."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim is overstated given that the primary evidence is computational prediction and the yeast example actually shows a different mechanism. The claim of conservation 'from yeast to mammals' is undermined by the authors' own observation that the yeast interface differs in key specificity determinants.",
+          "literature_citations": [
+            {
+              "title": "Comparative genomics of CTLH complex",
+              "authors": [
+                "Francis"
+              ],
+              "year": 2013,
+              "url": "",
+              "relevance": "Established that muskelin is metazoan-specific, meaning the muskelin-specific π-π stacking cannot be conserved in yeast.",
+              "stance": "contradicts"
+            },
+            {
+              "title": "AlphaFold3 structure prediction",
+              "authors": [
+                "Abramson"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Tool used for cross-species predictions; its accuracy for protein-protein interfaces, especially across distant species, has known limitations.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7",
+        "label": "The specificity-disrupting and specificity-switching mutations can serve as tool…",
+        "claim": "The specificity-disrupting and specificity-switching mutations can serve as tools for controlled assembly of alternative CTLH ring compositions, enabling analysis of substrate dependencies and potentially the design of novel ring-shaped protein complexes.",
+        "type": "primary",
+        "depth": 1,
+        "section_source": "Discussion",
+        "verbatim_quote": "This engineering toolkit might be used in future studies for the controlled assembly of alternative ring compositions, thus enabling analysis of substrate dependencies or the design entirely new protein ring assemblies.",
+        "evaluation": {
+          "node_id": "c1.7",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic connecting specificity-switch mutations to altered ring compositions is sound in principle.",
+            "The mutations are well-characterized biochemically with isolated domains.",
+            "The disease mutation example (Wdr26 S254R in Skraban-Deardorff syndrome, from Gross et al. 2024 and Skraban et al. 2017) provides a real-world example of functional relevance of interface disruption."
+          ],
+          "weaknesses": [
+            "No alternative ring complex has been reconstituted using any of these mutations—the claim is entirely speculative.",
+            "No cellular experiments demonstrate that these mutations alter CTLH complex composition in vivo.",
+            "No substrate ubiquitylation assay is performed with any mutant complex.",
+            "The suggestion that these could serve as 'blueprints for designing other ring-shaped complexes beyond E3 ligases' has no supporting evidence whatsoever.",
+            "The claim that Twa1_52 'may favor incorporation of Wdr26/muskelin dimers at the expense of Rmnd5a-Maea' is purely hypothetical—no reconstitution experiment tests this."
+          ],
+          "alternative_interpretations": [
+            "Interface mutations in isolated domains may have unpredictable effects in the context of full-length proteins where additional domains contribute to assembly.",
+            "The ~100-fold affinity difference between isolated CTLH-CRA domains and full-length proteins (as noted in c1.5.3) suggests that CRA interface mutations alone may be insufficient to redirect assembly."
+          ],
+          "required_assumptions": [
+            "CRA interface mutations in isolation will have the same effects in full-length protein context.",
+            "Altered ring compositions would be stable and functional.",
+            "The modular nature of the ring allows simple swapping of subunit identities without disrupting overall ring geometry."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim is presented as a future application/tool, but no proof-of-concept is provided. The paper explicitly uses language like 'might be used' and 'may favor,' acknowledging the speculative nature. As a prediction/proposal rather than a demonstrated finding, this should not be evaluated as a well-supported scientific claim.",
+          "literature_citations": [
+            {
+              "title": "Skraban-Deardorff syndrome and Wdr26",
+              "authors": [
+                "Skraban"
+              ],
+              "year": 2017,
+              "url": "",
+              "relevance": "Demonstrates that interface mutations in CTLH subunits have functional consequences in vivo, supporting the general concept.",
+              "stance": "supports"
+            },
+            {
+              "title": "CTLH complex and neurodevelopment",
+              "authors": [
+                "Gross"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Showed Wdr26 S254R impairs complex formation, providing precedent for interface-disrupting mutations affecting function.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 36,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1",
+        "label": "Crystal structures were determined for CTLH-CRA domains of RanBP9 (1.8 Å), RanBP…",
+        "claim": "Crystal structures were determined for CTLH-CRA domains of RanBP9 (1.8 Å), RanBP10 (2.1 Å), Twa1 (2.1 Å), Maea (1.4 Å), and the RanBP9-muskelin complex (2.0 Å), as well as the RanBP10-Twa1 heterodimer (3.2 Å).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "We next solved CTLH-CRA structures of RanBP10 (2.1 Å, PDB: 9SNF), Twa1 (2.1 Å, PDB: 9SNI), and Maea (1.4 Å, PDB: 9SNH)",
+        "evaluation": {
+          "node_id": "c1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "PDB accession codes are provided for all structures (9SNE, 9SNF, 9SNI, 9SNH, 9SNV, 9SOC), enabling independent verification.",
+            "Resolutions range from 1.4 to 3.2 Å, with most structures at better than 2.1 Å.",
+            "Multiple independent crystal forms and space groups add confidence.",
+            "Methodology is described in sufficient detail for reproduction."
+          ],
+          "weaknesses": [
+            "The RanBP10-Twa1 structure at 3.2 Å is described as 'highly anisotropic,' which may limit reliability in certain directions.",
+            "Data collection and refinement statistics are not provided in the excerpt (may be in supplementary material)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Data quality metrics (R-factors, completeness, redundancy) are acceptable, though not shown in the excerpt."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is a factual claim about experimental results. PDB deposition provides the strongest form of validation.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2",
+        "label": "The truncated CTLH-CRA fusion constructs accurately reflect the structural conte…",
+        "claim": "The truncated CTLH-CRA fusion constructs accurately reflect the structural context of the full-length proteins, as validated by superposition with AlphaFold predictions.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Superposition of the experimentally solved CTLH-CRA domain structures with full-length AlphaFold predictions confirmed that truncations and fusion approaches did not affect the overall fold or the canonical dimerization interface.",
+        "evaluation": {
+          "node_id": "c1.1.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Superposition of experimental structures with AlphaFold2 predictions (Varadi et al., 2022, 2024) is a reasonable validation approach.",
+            "The figure supplement reportedly shows overlay with full-length predictions for all constructs used."
+          ],
+          "weaknesses": [
+            "AlphaFold predictions are used as the reference standard, but AlphaFold itself may not accurately capture all features of the full-length protein context, particularly at interfaces.",
+            "No experimental structure of the full-length protein in the ring context is compared—only AlphaFold predictions.",
+            "The validation is circular if AlphaFold predictions were used to design the domain boundaries in the first place (as stated in Methods).",
+            "Helix swapping in the Twa1 construct (acknowledged as artifact) demonstrates that truncation can introduce non-native conformations."
+          ],
+          "alternative_interpretations": [
+            "Agreement between a construct and an AlphaFold prediction of the full-length protein does not prove the construct captures the native context—both could be wrong in the same way."
+          ],
+          "required_assumptions": [
+            "AlphaFold predictions of full-length proteins accurately represent the CTLH-CRA domain fold in the assembled complex.",
+            "The helix-swapping artifact in Twa1 is an isolated case and does not reflect a broader problem with the truncation strategy."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The circular logic concern (AlphaFold used for design and validation) somewhat weakens this claim. The Twa1 helix-swapping artifact shows constructs can adopt non-native conformations.",
+          "literature_citations": [
+            {
+              "title": "AlphaFold Protein Structure Database",
+              "authors": [
+                "Varadi"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Source of predictions used for validation of construct design.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.3",
+        "label": "The CRAC helix behaves as an extension of the LisH domain rather than as part of…",
+        "claim": "The CRAC helix behaves as an extension of the LisH domain rather than as part of the CTLH-CRA domain, as demonstrated by its absence in the RanBP9 CTLH-CRA crystal structure despite being included in the construct.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Although the construct included the CRAC helix, it was not resolved, reinforcing that this helix behaves as an extension of the LisH domain rather than as part of the CTLH-CRA domain.",
+        "evaluation": {
+          "node_id": "c1.1.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The CRAC helix was included in the construct but not resolved in electron density, providing direct experimental evidence for its disorder.",
+            "The interpretation is consistent with the known LisH-CRAC functional unit observed in other LisH-mediated dimers (Emes and Ponting, 2001)."
+          ],
+          "weaknesses": [
+            "Absence of electron density could reflect construct design issues, crystal packing constraints, or proteolytic degradation rather than inherent flexibility.",
+            "Only one crystal form was tested—the CRAC helix might be ordered in different crystal packing environments.",
+            "The conclusion 'behaves as an extension of the LisH domain' is inferred from a single negative observation (lack of density) rather than positive evidence of LisH association."
+          ],
+          "alternative_interpretations": [
+            "The CRAC helix might be disordered because its binding partner (the LisH helix of Twa1 in the full complex) is absent in this construct, not because it is intrinsically independent of the CTLH-CRA domain.",
+            "Crystal contacts may have selected for conformations where CRAC is disordered."
+          ],
+          "required_assumptions": [
+            "Absence of electron density reflects genuine flexibility rather than experimental artifacts.",
+            "The behavior of the CRAC helix in isolation predicts its behavior in the assembled complex."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The interpretation is reasonable but not uniquely supported by the data.",
+          "literature_citations": [
+            {
+              "title": "LisH motif analysis",
+              "authors": [
+                "Emes",
+                "Ponting"
+              ],
+              "year": 2001,
+              "url": "",
+              "relevance": "Established the LisH dimerization domain, consistent with CRAC functioning as an extension of LisH.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4",
+        "label": "The Maea CTLH-CRA domain forms a previously undescribed dimer-of-dimers assembly…",
+        "claim": "The Maea CTLH-CRA domain forms a previously undescribed dimer-of-dimers assembly mediated by π-π stacking between Y272 and Y275, which is disrupted in the full CTLH complex in favor of Twa1 binding.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Two canonical CTLH-CRA dimers associate via π-π stacking between Y272 and Y275 contributed by all four Maea subunits.",
+        "evaluation": {
+          "node_id": "c1.1.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Crystal structure at 1.4 Å provides high-confidence identification of the dimer-of-dimers interface.",
+            "SEC-MALS confirms concentration-dependent oligomerization behavior consistent with the crystal packing.",
+            "The Y272A/Y275A double mutation abolishes tetramerization while preserving the dimer, providing clean functional validation.",
+            "The observation is novel—Maea homodimerization via this mode had not been previously described."
+          ],
+          "weaknesses": [
+            "The KD of ~5 μM for dimer-of-dimer formation is derived from SEC-MALS mass measurements rather than a true equilibrium binding assay, which may introduce systematic error.",
+            "The claim that this represents an 'intermediate state in assembly' is speculative—no kinetic or assembly pathway data support this interpretation."
+          ],
+          "alternative_interpretations": [
+            "The dimer-of-dimers may be an artifact of high concentrations used in SEC-MALS and crystallography, with no biological relevance.",
+            "The homodimerization could represent an autoinhibitory state rather than an assembly intermediate."
+          ],
+          "required_assumptions": [
+            "Crystal packing interactions reflect solution-phase interactions.",
+            "The truncated CTLH-CRA domain of Maea recapitulates the behavior of full-length Maea."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The structural and mutational evidence for the dimer-of-dimers is convincing. The 'intermediate state' interpretation is reasonable but unproven.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.5",
+        "label": "The RanBP10-Twa1 heterodimer adopts the canonical helix arrangement reported for…",
+        "claim": "The RanBP10-Twa1 heterodimer adopts the canonical helix arrangement reported for RanBP9-Twa1, explaining how RanBP10 can substitute for RanBP9 in complex assembly.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "As expected, the RanBP10-Twa1 heterodimer adopts the canonical helix arrangement reported for the RanBP9-Twa1 complex (PDB: 7NSC; Sherpa et al., 2021), explaining how RanBP10 can substitute for RanBP9 in complex assembly.",
+        "evaluation": {
+          "node_id": "c1.1.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The 3.2 Å crystal structure (PDB: 9SOC) provides direct structural evidence.",
+            "Structural comparison with the published RanBP9-Twa1 structure (PDB: 7NSC, Sherpa et al., 2021) confirms the canonical arrangement.",
+            "Consistent with the low-resolution cryo-EM observation from Sherpa et al. (2022) that RanBP10 can substitute for RanBP9."
+          ],
+          "weaknesses": [
+            "The 3.2 Å resolution with high anisotropy limits detailed comparison of sidechain contacts.",
+            "'As expected' language suggests this was confirmatory rather than discovery-driven."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The anisotropic data provide sufficient quality for meaningful structural comparison."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Confirmatory of prior expectations from cryo-EM and sequence analysis.",
+          "literature_citations": [
+            {
+              "title": "Cryo-EM structure of CTLH complex",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2021,
+              "url": "",
+              "relevance": "Provided the RanBP9-Twa1 reference structure for comparison.",
+              "stance": "supports"
+            },
+            {
+              "title": "RanBP10 in CTLH complex",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2022,
+              "url": "",
+              "relevance": "Low-resolution cryo-EM had suggested RanBP10 substitution, now confirmed at higher resolution.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.6",
+        "label": "Helix swapping observed in the isolated Twa1 CTLH-CRA crystal structure is a cry…",
+        "claim": "Helix swapping observed in the isolated Twa1 CTLH-CRA crystal structure is a crystal packing artifact and would not occur in the full-length protein where CRAC-mediated dimerization restrains the CRA segment.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "this arrangement most likely arises from crystal packing. The swapped conformation creates an additional dimerization interface that is stabilized within the crystal lattice and was therefore preferentially selected during crystallization.",
+        "evaluation": {
+          "node_id": "c1.1.6",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The explanation is structurally logical—in the full-length protein, CRAC-mediated dimerization would constrain the CRA segment.",
+            "Crystal packing artifacts are well-recognized phenomena in protein crystallography."
+          ],
+          "weaknesses": [
+            "The claim that helix swapping is a crystal artifact is an assertion, not a demonstrated fact.",
+            "No experiment directly tests whether the helix-swapped conformation occurs in solution (e.g., crosslinking, FRET).",
+            "The argument is based on the assumption that CRAC restrains CRA, but no structure shows both CRAC and CRA in the same construct.",
+            "The fact that this artifact occurred raises questions about the fidelity of the truncation approach used throughout the study."
+          ],
+          "alternative_interpretations": [
+            "Domain-swapped dimers can sometimes be physiologically relevant, particularly at high local concentrations or in crowded cellular environments.",
+            "The propensity for helix swapping may indicate that the CRA segment is more flexible than assumed, which could have implications for interface dynamics."
+          ],
+          "required_assumptions": [
+            "CRAC-mediated dimerization in the full-length protein is sufficient to prevent CRA helix swapping.",
+            "The crystallization conditions did not select for a physiologically relevant conformation."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "The authors appropriately use the RanBP10-Twa1 heterodimer structure rather than the isolated Twa1 structure for interface analysis, which is methodologically sound regardless of whether the artifact interpretation is correct.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1",
+        "label": "Progressive Twa1-like substitutions in RanBP10 (F543L, Y548F, V556F) systematica…",
+        "claim": "Progressive Twa1-like substitutions in RanBP10 (F543L, Y548F, V556F) systematically reduced muskelin binding from low-nanomolar to undetectable, confirming the importance of each specific contact.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Wild-type muskelin bound RanBP10 tightly, with a KD of 4.33±0.99 nM. Single mutations reduced affinity to the double-digit nanomolar range, double mutants into the triple-digit range, and the triple mutant abolished binding.",
+        "evaluation": {
+          "node_id": "c1.2.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Seven mutant combinations (single, double, triple) systematically cover the combinatorial space.",
+            "ITC measurements with 3–6 replicates per variant provide robust statistical support.",
+            "The graded affinity reduction (single → double-digit nM, double → triple-digit nM, triple → undetectable) is a compelling dose-response pattern.",
+            "Complementary NAGE analysis confirms the ITC results qualitatively.",
+            "SEC-MALS confirms that all mutants remain monomeric (folded), ruling out destabilization artifacts."
+          ],
+          "weaknesses": [
+            "Standard errors on some measurements are substantial (e.g., the wild-type KD error is ~23% of the value).",
+            "The term 'abolished binding' for the triple mutant should ideally specify a lower limit of detection."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "All mutant proteins maintain the native fold, as supported by SEC-MALS showing monomeric species."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is among the most rigorously supported claims in the paper.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.2",
+        "label": "Twa1 cannot bind muskelin because it carries a leucine (L155) instead of phenyla…",
+        "claim": "Twa1 cannot bind muskelin because it carries a leucine (L155) instead of phenylalanine preventing π-π stacking, a phenylalanine (F152) instead of tyrosine preventing the hydrogen bond, and an additional phenylalanine (F160) creating steric hindrance.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "In contrast, Twa1 carries a leucine (L155) and a phenylalanine (F152) at the equivalent positions, preventing these interactions. Moreover, Twa1 contains an additional phenylalanine (F160) at a site where RanBP9/10 features a valine (V589/V556), thus creating steric hindrance with muskelin Q679.",
+        "evaluation": {
+          "node_id": "c1.2.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The structural overlay clearly identifies the three positions where Twa1 differs from RanBP9/10.",
+            "The mutagenesis data in c1.2.1 confirms that converting these residues to Twa1-like variants eliminates muskelin binding.",
+            "The structural rationale (Leu prevents π-π, Phe prevents H-bond, additional Phe creates clash) is mechanistically coherent."
+          ],
+          "weaknesses": [
+            "No direct binding experiment between Twa1 and muskelin is shown to confirm that Twa1 indeed does not bind—this is inferred from the RanBP10 mutagenesis.",
+            "The claim is based on structural inference from overlay, not from a co-crystal structure of Twa1 with muskelin."
+          ],
+          "alternative_interpretations": [
+            "Other differences between Twa1 and RanBP9/10 outside these three positions could also prevent muskelin binding."
+          ],
+          "required_assumptions": [
+            "The overlay of Twa1 onto the RanBP9-muskelin co-crystal structure accurately predicts Twa1-muskelin incompatibility."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The indirect evidence from RanBP10 mutagenesis is compelling, though direct Twa1-muskelin binding data would strengthen the claim.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.3",
+        "label": "RanBP9/10 cannot bind Maea because a glutamine (Q552/Q519) in RanBP9/10 sterical…",
+        "claim": "RanBP9/10 cannot bind Maea because a glutamine (Q552/Q519) in RanBP9/10 sterically clashes with a phenylalanine (F245) in Maea, whereas muskelin carries a sterically less demanding lysine at the equivalent position.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The overlay revealed a steric clash between a glutamine in RanBP9/10 (Q552/519) and a phenylalanine in Maea (F245). At the equivalent position, muskelin carries a sterically less demanding lysine residue.",
+        "evaluation": {
+          "node_id": "c1.2.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The structural overlay clearly identifies the Q552/Q519 vs F245 clash.",
+            "The Q519G mutation relieves this clash and permits Maea binding (shown in c1.3), providing functional validation.",
+            "The comparison of muskelin (lysine at equivalent position) vs Maea (phenylalanine) provides a structural rationale."
+          ],
+          "weaknesses": [
+            "No direct binding measurement between wild-type RanBP9/10 and Maea is provided—the steric clash is inferred from overlay rather than demonstrated experimentally.",
+            "ITC with Maea 'was not feasible due to its oligomeric state,' limiting quantitative validation.",
+            "The steric clash argument is based on static structure comparison; dynamic flexibility could potentially accommodate such clashes."
+          ],
+          "alternative_interpretations": [
+            "The exclusion of RanBP9/10 from Maea binding could involve additional contacts beyond the single Q-F clash, such as charge complementarity or other steric factors not highlighted."
+          ],
+          "required_assumptions": [
+            "Static structural overlay accurately predicts dynamic binding incompatibility.",
+            "The Q-F clash is the dominant factor preventing RanBP9/10-Maea interaction."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The Q519G rescue experiment (c1.3) provides indirect but strong support for this claim.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1",
+        "label": "The Q519G mutation alone (R10_G) was sufficient to permit Maea binding by reliev…",
+        "claim": "The Q519G mutation alone (R10_G) was sufficient to permit Maea binding by relieving the steric clash, while the combined R10_GLFF mutations abolished muskelin binding and shifted specificity exclusively to Maea.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Consistent with our hypothesis, R10_G bound both muskelin and Maea, whereas R10_GLFF bound Maea only.",
+        "evaluation": {
+          "node_id": "c1.3.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Three independent methods (SEC-MALS, ITC, NAGE) consistently show R10_G binds both partners and R10_GLFF binds only Maea.",
+            "SEC-MALS stoichiometry measurements confirm 1:1 complex formation with defined molecular weights.",
+            "The stepwise logic (one mutation adds Maea binding, additional three remove muskelin binding) is clean and interpretable."
+          ],
+          "weaknesses": [
+            "ITC data with Maea are not provided directly due to Maea's oligomeric state—the Maea binding evidence relies primarily on SEC-MALS and NAGE.",
+            "The claim 'exclusively to Maea' for R10_GLFF should be qualified—binding to other potential partners was not tested."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "SEC-MALS and NAGE reliably detect binding/non-binding in the concentration ranges used."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2",
+        "label": "The crystal structure of R10_GLFF-Maea complex (3.5 Å) confirms the predicted st…",
+        "claim": "The crystal structure of R10_GLFF-Maea complex (3.5 Å) confirms the predicted structural basis for specificity switching and reveals an unexpected additional hydrogen bond between Maea Y254 and R10_GLFF Q540 that stabilizes the new interaction.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Unexpectedly, the interaction with Maea is further stabilized by an additional hydrogen bond between Maea Y254 and R10_GLFF Q540, thus explaining its exclusive binding to Maea.",
+        "evaluation": {
+          "node_id": "c1.3.2",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "A co-crystal structure provides direct structural evidence for the predicted binding mode.",
+            "The unexpected hydrogen bond (Y254-Q540) adds a mechanistic insight that was not predicted a priori, lending credibility to the structural analysis.",
+            "Overlay with the RanBP9-muskelin complex confirms that the mutations have the expected structural effects."
+          ],
+          "weaknesses": [
+            "The 3.5 Å resolution is marginal for confident hydrogen bond assignment—hydrogen bond distances and geometries should be interpreted with caution at this resolution.",
+            "No experimental validation of the Y254-Q540 hydrogen bond (e.g., Y254A mutation) is provided."
+          ],
+          "alternative_interpretations": [
+            "At 3.5 Å, what appears as a hydrogen bond could be a van der Waals contact or a modeling artifact."
+          ],
+          "required_assumptions": [
+            "3.5 Å electron density is sufficient to correctly position sidechains for hydrogen bond identification.",
+            "The Y254-Q540 contact is a genuine hydrogen bond rather than a proximity artifact of model building."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The resolution concern is significant for the specific hydrogen bond claim but does not invalidate the overall binding mode observation.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.3",
+        "label": "R10_GLFF binds Maea but not Twa1 despite both carrying phenylalanine at the equi…",
+        "claim": "R10_GLFF binds Maea but not Twa1 despite both carrying phenylalanine at the equivalent position, likely because Twa1 F160 cannot form the hydrogen bond that Maea Y254 makes with Q540.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "The difference may be explained by the newly formed hydrogen bond in the R10_GLFF-Maea complex, in which Maea Y254 interacts with RanBP10 Q540, whereas Twa1 F160 cannot.",
+        "evaluation": {
+          "node_id": "c1.3.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is structurally sound—Twa1 F160 cannot donate a hydrogen bond like Maea Y254.",
+            "Consistent with the structural data from the R10_GLFF-Maea complex."
+          ],
+          "weaknesses": [
+            "This is a post-hoc rationalization—the Q519G mutation was predicted to relieve clashes with both Maea F245 and the equivalent Twa1 residue, and the failure to bind Twa1 requires an additional explanation.",
+            "No direct binding measurement between R10_GLFF and Twa1 is shown—the non-binding is stated but not quantified.",
+            "The 'subtle steric constraints' mentioned as additional factors are not specified or tested.",
+            "The hydrogen bond argument relies on the 3.5 Å structure, where hydrogen bond assignment is uncertain."
+          ],
+          "alternative_interpretations": [
+            "Other differences between Maea and Twa1 at the interface (beyond the F160 vs Y254 position) could explain the selectivity.",
+            "The inability to bind Twa1 could reflect electrostatic incompatibility or differences in interface flexibility."
+          ],
+          "required_assumptions": [
+            "The Y254-Q540 hydrogen bond is the primary factor discriminating Maea from Twa1 binding to R10_GLFF.",
+            "3.5 Å resolution is sufficient to correctly assign this discriminating hydrogen bond."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim would be significantly strengthened by a Y254F mutation in Maea or F160Y in Twa1 to test the hydrogen bond hypothesis.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.4",
+        "label": "The Q519G mutation in RanBP10 promotes weak homodimerization (estimated KD ~18 μ…",
+        "claim": "The Q519G mutation in RanBP10 promotes weak homodimerization (estimated KD ~18 μM) that is concentration-dependent, as revealed by SEC-MALS and the 1.7 Å crystal structure of R10_GLFF.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "The introduction of the Q519G mutation appeared to promote weak dimerization. Additional SEC-MALS measurements at different concentrations showed a concentration-dependent dimerization of R10_G, with an estimated KD of ~18 μM.",
+        "evaluation": {
+          "node_id": "c1.3.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS concentration series directly demonstrates concentration-dependent behavior consistent with weak dimerization.",
+            "The estimated KD of ~18 μM from fitted data is reasonable for a weak, non-native interaction.",
+            "The 1.7 Å crystal structure reveals the structural basis—Q519G substitution creates space, and Y548F reaches deeper into the interface.",
+            "Comparison with wild-type RanBP10 (monomeric by SEC-MALS) confirms the mutation-dependent nature of the dimerization."
+          ],
+          "weaknesses": [
+            "The KD estimate from SEC-MALS is approximate and model-dependent.",
+            "The weak dimerization could be considered an undesirable side effect of the Q519G mutation rather than an informative finding."
+          ],
+          "alternative_interpretations": [
+            "The homodimerization may indicate that Q519 normally serves as a 'gatekeeper' preventing non-specific CRA-CRA interactions."
+          ],
+          "required_assumptions": [
+            "SEC-MALS mass measurements at different points across the elution peak accurately reflect equilibrium concentrations."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1",
+        "label": "Direct transfer of four key RanBP10-like residues into Twa1 (Twa1_10) was insuff…",
+        "claim": "Direct transfer of four key RanBP10-like residues into Twa1 (Twa1_10) was insufficient to achieve muskelin binding, indicating that additional determinants beyond the primary specificity residues are required.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Direct transfer of four key residues from the RanBP10 swap mutant R10_GLFF into Twa1 (Twa1_10: A130Q, L147F, F152Y, and F160V) proved insufficient: muskelin binding was not achieved and Maea interaction was only weakened.",
+        "evaluation": {
+          "node_id": "c1.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "NAGE screening clearly shows that Twa1_10 does not bind muskelin and only weakly binds Maea.",
+            "This negative result is informative—it demonstrates that the specificity code is not simply transferable between paralogs.",
+            "The result motivates the more extensive mutagenesis that follows."
+          ],
+          "weaknesses": [
+            "NAGE is a qualitative assay—quantitative binding data (ITC) for Twa1_10 would strengthen the conclusion."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "NAGE at 200 μM reliably detects relevant binding interactions.",
+            "Twa1_10 maintains proper folding."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "This is an important negative result that guides the subsequent engineering strategy.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2",
+        "label": "An intermediate mutant Twa1_14 displayed dual specificity, binding both Maea and…",
+        "claim": "An intermediate mutant Twa1_14 displayed dual specificity, binding both Maea and muskelin, because the shorter and kinked first CRA helix in Twa1 rotates the A130Q substitution outward, leaving space for Maea F245.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Since the corresponding α-helix (first CRA helix) in Twa1 is shorter and kinked, A130Q rotates outward, leaving space for Maea F245.",
+        "evaluation": {
+          "node_id": "c1.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The 3.3 Å crystal structure of Twa1_14-Maea directly explains the dual specificity.",
+            "The structural explanation (shorter/kinked helix causing A130Q to rotate outward) is mechanistically specific and testable.",
+            "Identification of the analogous Y254-E144Q hydrogen bond provides consistency with the R10_GLFF-Maea observation.",
+            "SEC-MALS and ITC confirm that Twa1_14 binds both Maea and muskelin."
+          ],
+          "weaknesses": [
+            "3.3 Å resolution limits confidence in precise sidechain placement and hydrogen bond assignment.",
+            "The kinked helix interpretation should be validated—is the kink present in the Twa1 structure alone or only in the Twa1_14-Maea complex?"
+          ],
+          "alternative_interpretations": [
+            "The A130Q may not rotate outward in all conformational states—the crystal structure may capture one of several possible orientations."
+          ],
+          "required_assumptions": [
+            "The kinked helix is an intrinsic feature of Twa1 rather than induced by the mutations or crystal packing."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.3",
+        "label": "A125G and Q126R substitutions were identified as particularly critical for muske…",
+        "claim": "A125G and Q126R substitutions were identified as particularly critical for muskelin interaction: A125G prevents steric interference with L147F needed for π-π stacking, while Q126R likely stabilizes muskelin backbone contacts.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Stepwise mutagenesis highlighted two substitutions as particularly critical for muskelin interaction: A125G and Q126R.",
+        "evaluation": {
+          "node_id": "c1.4.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Comparison of Twa1_24 and Twa1_22 isolates the contribution of A125G and Q126R.",
+            "The structural rationale (A125G preventing steric interference with L147F) is mechanistically specific.",
+            "Multiple mutant comparisons support the importance of these two positions."
+          ],
+          "weaknesses": [
+            "The mechanistic explanations ('likely prevents steric interference,' 'probably stabilizes backbone contacts') are inferences, not experimentally validated individual claims.",
+            "No individual A125G or Q126R single mutants in the final construct background are shown to quantify their individual contributions.",
+            "The Q126R rationale ('stabilizes muskelin backbone contacts') is vague and unsupported by structural data."
+          ],
+          "alternative_interpretations": [
+            "A125G may alter helix stability or backbone flexibility rather than directly affecting L147F positioning.",
+            "Q126R could contribute through electrostatic effects beyond backbone contacts."
+          ],
+          "required_assumptions": [
+            "NAGE comparisons between Twa1_24 and Twa1_22 reliably isolate the effects of A125G and Q126R."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The NAGE-based evidence is qualitative; ITC data for individual contributions of these residues would strengthen the claim.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4",
+        "label": "Twa1_52 binds muskelin with KD of 146 ± 11 nM and forms a defined 1:1 complex, w…",
+        "claim": "Twa1_52 binds muskelin with KD of 146 ± 11 nM and forms a defined 1:1 complex, with binding evolving from strongly enthalpy-driven in early mutants toward more entropically favored interaction.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "ITC revealed an affinity of KD = 146 ± 11 nM, slightly stronger than Twa1_14 (KD = 192 ± 28 nM). Interestingly, binding evolved from being strongly enthalpy-driven in early mutants toward a more entropically favored interaction, consistent with reduced conformational strain at the interface.",
+        "evaluation": {
+          "node_id": "c1.4.4",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS provides a precise molecular weight measurement (31.2 ± 0.9 kDa vs theoretical 33.6 kDa) confirming 1:1 stoichiometry.",
+            "ITC measurements with 3–4 replicates provide reliable KD values with standard errors.",
+            "The thermodynamic decomposition (enthalpy vs entropy contributions) across the mutant series is an informative additional analysis.",
+            "The observation that binding evolves toward more entropic favorability is mechanistically interpretable."
+          ],
+          "weaknesses": [
+            "The 7% discrepancy between measured (31.2 kDa) and theoretical (33.6 kDa) molecular weight is somewhat large for SEC-MALS; this could reflect non-ideal behavior.",
+            "The thermodynamic interpretation ('reduced conformational strain') is qualitative and speculative."
+          ],
+          "alternative_interpretations": [
+            "The shift from enthalpy to entropy could reflect changes in solvation rather than conformational strain."
+          ],
+          "required_assumptions": [
+            "ITC one-site binding model is appropriate for this interaction.",
+            "SEC-MALS calibration is accurate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5",
+        "label": "The specificity swap in Twa1_52 extends to both muskelin and Wdr26, as confirmed…",
+        "claim": "The specificity swap in Twa1_52 extends to both muskelin and Wdr26, as confirmed by co-expression and SEC-MALS of defined 1:1 complexes with both partners.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "This demonstrates that the specificity swap in Twa1_52 applies not only to muskelin but also to Wdr26.",
+        "evaluation": {
+          "node_id": "c1.4.5",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Tag-free co-expression eliminates potential artifacts from affinity tags.",
+            "SEC-MALS of both Twa1_52-muskelin and Twa1_52-Wdr26 confirms well-defined 1:1 complexes.",
+            "The extension to Wdr26 demonstrates generalizability of the specificity swap."
+          ],
+          "weaknesses": [
+            "Co-expression and co-purification can artificially stabilize weak interactions that would not form post-translationally.",
+            "No affinity measurement for Twa1_52-Wdr26 is provided (only co-expression/SEC-MALS)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Co-expression complexes reflect genuine binding interactions rather than kinetically trapped assemblies."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "ITC data for Twa1_52-Wdr26 would complete the characterization.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1",
+        "label": "Analytical gel filtration of near full-length proteins showed no detectable diff…",
+        "claim": "Analytical gel filtration of near full-length proteins showed no detectable difference between RanBP9-Twa1 and RanBP10-Twa1 interactions with muskelin or Wdr26.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "Interaction of muskelin or Wdr26 with either RanBP9-Twa1 or RanBP10-Twa1 complexes showed no detectable difference, indicating a highly similar assembly behavior.",
+        "evaluation": {
+          "node_id": "c1.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Analytical gel filtration with near full-length proteins provides the most relevant assembly context in the study.",
+            "Both muskelin and Wdr26 tested with both RanBP9-Twa1 and RanBP10-Twa1—all four combinations examined.",
+            "'No detectable difference' is a strong statement if the method has sufficient resolution."
+          ],
+          "weaknesses": [
+            "Analytical gel filtration has limited resolution for detecting subtle differences in affinity or stoichiometry.",
+            "No quantitative comparison (e.g., peak height, area, retention time) is provided—the comparison may be qualitative."
+          ],
+          "alternative_interpretations": [
+            "Lack of detectable difference in gel filtration does not rule out meaningful differences in affinity (as later shown by ITC with ~6-fold difference for Wdr26)."
+          ],
+          "required_assumptions": [
+            "Analytical gel filtration is sufficiently sensitive to detect relevant differences in assembly behavior."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The ITC data in c1.5.2 actually reveal a difference (RanBP9 vs RanBP10 for Wdr26) that gel filtration missed, somewhat undermining the 'no detectable difference' conclusion.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2",
+        "label": "Competition ITC using Twa1_52 as a displacement tool revealed picomolar affiniti…",
+        "claim": "Competition ITC using Twa1_52 as a displacement tool revealed picomolar affinities for RanBP9/10 binding to muskelin and Wdr26, with RanBP10 binding Wdr26 (KD = 62.3 pM) more tightly than RanBP9 (KD = 412 pM).",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "RanBP10 bound also Wdr26 with similar affinity (KD = 62.3 ± 14.3 pM), whereas RanBP9 bound Wdr26 slightly weaker (KD = 412 ± 58.2 pM) than muskelin.",
+        "evaluation": {
+          "node_id": "c1.5.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Competitive ITC is a creative approach to measuring picomolar affinities that are otherwise intractable.",
+            "Multiple replicates with standard errors are provided.",
+            "The displacement approach is validated by SEC-MALS showing Twa1_52 release.",
+            "The ~6-fold difference between RanBP9 and RanBP10 for Wdr26 (412 vs 62 pM) is a potentially biologically meaningful finding."
+          ],
+          "weaknesses": [
+            "Picomolar KD values from competitive ITC carry substantial inherent uncertainty—the technique is at or beyond its reliable measurement range.",
+            "The error bars are very large relative to the measurements (e.g., 79.5 ± 37.9 pM represents ~48% error; 412 ± 58.2 pM is ~14%).",
+            "The accuracy of the competitive model depends critically on the precision of the first titration (Twa1_52 binding), propagating errors into the final KD values.",
+            "The approximately tenfold difference between Twa1_52 binding to full-length vs isolated muskelin is not fully explained."
+          ],
+          "alternative_interpretations": [
+            "Given the large error bars, the reported ~6-fold difference between RanBP9-Wdr26 and RanBP10-Wdr26 may not be statistically significant.",
+            "The picomolar values may be better interpreted as upper bounds rather than precise measurements."
+          ],
+          "required_assumptions": [
+            "Competitive ITC accurately resolves picomolar affinities.",
+            "The one-site binding model parameters from the first titration are sufficiently accurate for the competitive model.",
+            "The experimental setup (concentrations, injection volumes) is optimized for this affinity range."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The picomolar measurements should be interpreted with appropriate caution given the technical limitations of the approach. A statistical test for the RanBP9 vs RanBP10 difference would strengthen the claim.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3",
+        "label": "Additional contacts between the SPRY domain of RanBP9/10 and the kelch/WD40 doma…",
+        "claim": "Additional contacts between the SPRY domain of RanBP9/10 and the kelch/WD40 domains of muskelin/Wdr26 likely contribute to the much tighter picomolar affinity compared to the ~100-fold weaker nanomolar interaction of isolated CTLH-CRA domains.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Results",
+        "verbatim_quote": "These results suggest that additional contacts between the SPRY domain of RanBP9/10 and the kelch domain of muskelin or the WD40 domain of Wdr26 contribute to positioning and tighter interaction.",
+        "evaluation": {
+          "node_id": "c1.5.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The ~100-fold affinity difference between isolated CTLH-CRA domains and full-length proteins is consistently observed.",
+            "The AlphaFold3 prediction of the RanBP9-Wdr26 interface supports additional SPRY-WD40 contacts.",
+            "Cryo-EM data fit well with the proposed model."
+          ],
+          "weaknesses": [
+            "The SPRY-kelch/WD40 interaction is inferred from AlphaFold3 prediction, not experimentally validated.",
+            "No structure of a full-length RanBP9/10-muskelin or RanBP9/10-Wdr26 complex is available to confirm these additional contacts.",
+            "The ~100-fold difference could also arise from avidity effects in oligomeric muskelin (tetramer) and Wdr26 (dimer) rather than additional binding interfaces.",
+            "The tenfold difference between Twa1_52 binding full-length vs isolated muskelin could similarly reflect avidity."
+          ],
+          "alternative_interpretations": [
+            "The tighter binding of full-length proteins may reflect avidity from oligomeric muskelin/Wdr26 rather than additional domain contacts.",
+            "Conformational differences between isolated domains and full-length proteins could account for the affinity difference without requiring additional interfaces."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 accurately predicts the SPRY-kelch/WD40 interaction.",
+            "The affinity difference is due to additional binding interfaces rather than avidity or conformational effects."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is a reasonable hypothesis but lacks direct experimental support. The avidity alternative is not discussed.",
+          "literature_citations": [
+            {
+              "title": "AlphaFold3 structure prediction",
+              "authors": [
+                "Abramson"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Provided the predicted SPRY-WD40 interface, which is the primary evidence for additional contacts.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.4",
+        "label": "The approximately tenfold weaker binding of RanBP9 to Wdr26 compared to RanBP10 …",
+        "claim": "The approximately tenfold weaker binding of RanBP9 to Wdr26 compared to RanBP10 may explain why RanBP10 can substitute for RanBP9 in Wdr26-containing CTLH complexes during erythrocyte maturation.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Interestingly, RanBP9 appears to bind Wdr26 approximately tenfold weaker than RanBP10, possibly explaining why RanBP10 can substitute for RanBP9 in Wdr26-containing CTLH complexes during erythrocyte maturation.",
+        "evaluation": {
+          "node_id": "c1.5.4",
+          "support_level": "low",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The binding data (c1.5.2) show a measurable difference consistent with this hypothesis.",
+            "Consistent with Sherpa et al. (2022) who showed RanBP10 substitution in Wdr26-containing complexes during erythrocyte maturation."
+          ],
+          "weaknesses": [
+            "The authors themselves acknowledge the functional significance 'remains unclear.'",
+            "The ~6-fold affinity difference (412 vs 62 pM) may not be statistically significant given the large error bars on the picomolar measurements.",
+            "Both affinities are in the picomolar range, which is likely far below cellular concentrations needed for assembly—a 6-fold difference at this affinity range may be functionally irrelevant.",
+            "No cellular or functional data connect the in vitro affinity difference to the biological observation of RanBP10 substitution during erythrocyte maturation.",
+            "The logic is reversed: if RanBP10 binds Wdr26 tighter, that doesn't explain why RanBP10 can substitute for RanBP9—rather, it might explain a preference for RanBP10 in certain contexts."
+          ],
+          "alternative_interpretations": [
+            "RanBP10 substitution during erythrocyte maturation may be driven by changes in expression levels rather than affinity differences.",
+            "Other factors (post-translational modifications, subcellular localization, additional protein interactions) may determine which paralog is incorporated."
+          ],
+          "required_assumptions": [
+            "The in vitro affinity difference is statistically significant and biologically relevant.",
+            "Affinity differences in the picomolar range influence complex composition in vivo.",
+            "No other regulatory mechanisms override the affinity difference."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is highly speculative. The claim conflates in vitro affinity measurements with cellular complex assembly, which involves many additional factors.",
+          "literature_citations": [
+            {
+              "title": "RanBP10 in CTLH complex",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2022,
+              "url": "",
+              "relevance": "Showed RanBP10 substitution in Wdr26-containing complexes during erythrocyte maturation.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1",
+        "label": "In muskelin-containing species (X. laevis, D. rerio), the RanBP9/10 interface em…",
+        "claim": "In muskelin-containing species (X. laevis, D. rerio), the RanBP9/10 interface employs the same π-π and Met-π interactions and hydrogen bonds as in mouse.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "In muskelin-containing species such as X. laevis and D. rerio, the RanBP9/10 interface is particularly well preserved, employing the same mechanism of specificity as in mouse.",
+        "evaluation": {
+          "node_id": "c1.6.1",
+          "support_level": "low",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "AlphaFold3 predictions for X. laevis and D. rerio show conservation of key interface residues.",
+            "The conservation is consistent with the known evolutionary history of muskelin as a metazoan-specific addition (Francis et al., 2013)."
+          ],
+          "weaknesses": [
+            "The evidence is entirely computational—no experimental structures or binding data for X. laevis or D. rerio interfaces exist.",
+            "AlphaFold3 interface predictions have known limitations, particularly for cross-species comparisons where training data may be limited.",
+            "The 'same mechanism of specificity' claim requires that predicted contacts are functionally equivalent, which is unverified.",
+            "No mutagenesis or binding experiments in non-mammalian systems validate the predictions."
+          ],
+          "alternative_interpretations": [
+            "Sequence conservation at interface positions may reflect structural constraints (maintaining the hydrophobic core) rather than conservation of the specific specificity mechanism."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 accurately predicts protein-protein interfaces across species.",
+            "Sequence conservation implies functional conservation of interaction specificity."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This claim would be substantially strengthened by experimental validation in at least one non-mammalian species.",
+          "literature_citations": [
+            {
+              "title": "Evolution of CTLH complex",
+              "authors": [
+                "Francis"
+              ],
+              "year": 2013,
+              "url": "",
+              "relevance": "Established muskelin as metazoan-specific, consistent with conservation pattern in vertebrates.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2",
+        "label": "The hydrogen bond between RanBP9/10 tyrosine and Wdr26 histidine is conserved ev…",
+        "claim": "The hydrogen bond between RanBP9/10 tyrosine and Wdr26 histidine is conserved even between A. thaliana homologs, despite these organisms diverging early in eukaryotic evolution.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Remarkably, this hydrogen bond is conserved even between the A. thaliana homologs of RanBP9 and Wdr26.",
+        "evaluation": {
+          "node_id": "c1.6.2",
+          "support_level": "low",
+          "confidence_level": "low",
+          "is_well_supported": false,
+          "strengths": [
+            "The observation is interesting from an evolutionary perspective.",
+            "A. thaliana homologs of RanBP9 and Wdr26 are experimentally characterized to exist (Tomaštíková et al., 2012)."
+          ],
+          "weaknesses": [
+            "The hydrogen bond conservation in A. thaliana is based solely on AlphaFold3 prediction—no experimental structure or binding data exist.",
+            "Plants lack muskelin (Francis et al., 2013), so the comparison is specifically about the RanBP9-Wdr26 interface, not the broader specificity mechanism.",
+            "The term 'conserved even between' implies surprise, but if both proteins were present in the last eukaryotic common ancestor, conservation is expected rather than remarkable.",
+            "A single predicted hydrogen bond may be insufficient evidence for claiming conservation of a 'specificity mechanism.'"
+          ],
+          "alternative_interpretations": [
+            "The predicted hydrogen bond may not exist in reality—AF3 may impose mammalian-like interface geometry on plant sequences.",
+            "Even if the residues are conserved, the functional significance may differ in plants."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 accurately predicts hydrogen bonds in plant CTLH-CRA interfaces.",
+            "Residue conservation implies functional conservation of the interaction."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is among the weakest claims in the paper—entirely dependent on a single computational prediction for a distant species.",
+          "literature_citations": [
+            {
+              "title": "CTLH complex in plants",
+              "authors": [
+                "Tomaštíková"
+              ],
+              "year": 2012,
+              "url": "",
+              "relevance": "Showed CTLH complex homologs exist in A. thaliana.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.3",
+        "label": "The position of a conserved aromatic residue distinguishes different CTLH-CRA in…",
+        "claim": "The position of a conserved aromatic residue distinguishes different CTLH-CRA interface classes: muskelin places its phenylalanine immediately after the conserved leucine for π-π stacking, while other CTLH subunits carry theirs two positions later, and non-CTLH proteins shift it seven positions upstream.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Muskelin uses its phenylalanine, immediately following the conserved leucine*, for π-π stacking with RanBP9, whereas other CTLH complex members carry their conserved Phe/Tyr two residues after the leucine*.",
+        "evaluation": {
+          "node_id": "c1.6.3",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The observation is based on sequence alignment and structural comparison of experimentally determined structures.",
+            "The three positional classes are clearly defined relative to the conserved leucine.",
+            "The comparison of Maea and TRP2 homodimers (experimentally determined structures) provides direct structural evidence for different aromatic positions leading to different loop geometries.",
+            "Published structures of non-CTLH proteins (SMU1, Wdr47, TOPLESS, TRP2) provide independent validation."
+          ],
+          "weaknesses": [
+            "The classification into three classes is based on a limited number of structures—the universality of this classification is unclear.",
+            "The functional significance of these different aromatic positions for specificity is inferred rather than experimentally tested.",
+            "Non-CTLH proteins may use entirely different specificity mechanisms that are not captured by the positional classification."
+          ],
+          "alternative_interpretations": [
+            "The different aromatic positions may reflect phylogenetic relationships rather than functional divergence.",
+            "Loop geometry differences may be coincidental rather than causally related to aromatic position."
+          ],
+          "required_assumptions": [
+            "The positional classification of aromatic residues is functionally meaningful.",
+            "The limited number of available structures is representative of the broader CTLH-CRA domain family."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "An interesting structural observation supported by available data but of uncertain functional significance.",
+          "literature_citations": [
+            {
+              "title": "TOPLESS structure",
+              "authors": [
+                "Ke"
+              ],
+              "year": 2015,
+              "url": "",
+              "relevance": "Provided TRP2 structure for comparison of non-CTLH CRA interfaces.",
+              "stance": "supports"
+            },
+            {
+              "title": "SMU1 structure",
+              "authors": [
+                "Ashraf"
+              ],
+              "year": 2019,
+              "url": "",
+              "relevance": "Provided non-CTLH CRA domain structure for comparison.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1",
+        "label": "Interface-disrupting mutations like R10_LFF or Twa1_3 selectively perturb define…",
+        "claim": "Interface-disrupting mutations like R10_LFF or Twa1_3 selectively perturb defined subunit interactions while preserving other structural or regulatory roles, providing advantages over protein depletion or knockout strategies.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Unlike protein depletion or knockout strategies, targeted interface mutations selectively perturb defined subunit interactions while preserving other structural or regulatory roles.",
+        "evaluation": {
+          "node_id": "c1.7.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "The argument that interface mutations provide greater specificity than knockout/depletion is logically sound.",
+            "The Wdr26 S254R disease mutation (Skraban et al., 2017; Gross et al., 2024) provides a real-world example of a functionally significant interface mutation.",
+            "Multiple mutations (R10_LFF, Twa1_3) are shown to disrupt specific interactions while the proteins remain folded."
+          ],
+          "weaknesses": [
+            "No experiment in the paper demonstrates that these mutations selectively perturb function while preserving other roles—this is entirely hypothetical.",
+            "No cellular experiment, ubiquitylation assay, or reconstitution of altered ring complexes validates the 'tool' claim.",
+            "The advantage over depletion/knockout is asserted but not demonstrated—interface mutations could have unanticipated effects on protein stability, localization, or other interactions.",
+            "The Twa1_3 example (L122R, A151R) was used as a negative control, not as a functional tool."
+          ],
+          "alternative_interpretations": [
+            "Interface mutations may have pleiotropic effects if the mutated residues are involved in other (unknown) interactions.",
+            "Protein depletion with specific domain add-back could achieve the same specificity with greater control."
+          ],
+          "required_assumptions": [
+            "Interface mutations do not affect protein stability, expression, or other functions.",
+            "The CRA interface is the only contact mediating the relevant interaction."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is a proposal for future experiments rather than a supported finding.",
+          "literature_citations": [
+            {
+              "title": "Skraban-Deardorff syndrome",
+              "authors": [
+                "Skraban"
+              ],
+              "year": 2017,
+              "url": "",
+              "relevance": "Wdr26 S254R demonstrates that CRA interface mutations have functional consequences.",
+              "stance": "supports"
+            },
+            {
+              "title": "Wdr26 mutations in neurodevelopment",
+              "authors": [
+                "Gross"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Showed S254R impairs complex formation.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.2",
+        "label": "Specificity-switch mutations could enable non-canonical CTLH ring architectures,…",
+        "claim": "Specificity-switch mutations could enable non-canonical CTLH ring architectures, such as assemblies lacking catalytic modules (via Twa1_52) or containing additional catalytic modules (via R10_GLFF), and potentially invert the orientation of the RanBP9/10-Twa1 module within the ring.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Introduction of the Twa1_52 mutant may favor incorporation of Wdr26/muskelin dimers at the expense of Rmnd5a-Maea, thus resulting in assemblies lacking catalytic modules.",
+        "evaluation": {
+          "node_id": "c1.7.2",
+          "support_level": "low",
+          "confidence_level": "high",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic connecting specific mutations to predicted architectural outcomes is internally consistent.",
+            "The mutations are biochemically characterized at the domain level."
+          ],
+          "weaknesses": [
+            "No non-canonical ring complex has been reconstituted—the claim is entirely speculative.",
+            "No evidence that altered ring compositions would be stable, let alone functional.",
+            "The prediction that Twa1_52 would 'favor incorporation of Wdr26/muskelin dimers at the expense of Rmnd5a-Maea' assumes that CRA interfaces alone determine ring composition, ignoring other stabilizing contacts.",
+            "The idea that R10_GLFF would 'promote incorporation of additional catalytic modules' assumes Maea-RanBP10 interaction would replace muskelin/Wdr26, but this has not been tested in any assembly context.",
+            "The claim about inverting the orientation of RanBP9/10-Twa1 module is pure speculation with no experimental or computational support."
+          ],
+          "alternative_interpretations": [
+            "The full-length proteins may have kinetic or thermodynamic barriers to forming non-canonical assemblies that are not apparent from domain-level studies.",
+            "Non-canonical ring compositions may be unstable and never form in practice."
+          ],
+          "required_assumptions": [
+            "CRA interface specificity is sufficient to redirect ring assembly in the full-length protein context.",
+            "Non-canonical ring architectures would be stable.",
+            "Other domain-domain interactions would not prevent the predicted assembly outcomes."
+          ],
+          "supporting_evidence_quality": "absent",
+          "notes": "The authors appropriately use hedging language ('may favor,' 'may promote,' 'potentially'), but the claim is still presented as a finding of the paper rather than pure speculation.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.3",
+        "label": "Swapping specificity of very tight interfaces (nM-pM range) is substantially mor…",
+        "claim": "Swapping specificity of very tight interfaces (nM-pM range) is substantially more challenging than merely disrupting them, requiring coordinated loss of original contacts together with formation of new partner-specific interactions while preserving the hydrophobic core architecture.",
+        "type": "supporting",
+        "depth": 2,
+        "section_source": "Discussion",
+        "verbatim_quote": "Importantly, swapping the specificity of these very tight interfaces (nM-pM range) is substantially more challenging than merely disrupting them.",
+        "evaluation": {
+          "node_id": "c1.7.3",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The paper directly demonstrates the difficulty—four mutations were needed for RanBP10 and eight for Twa1, compared to single/double mutations for disruption.",
+            "The contrast between R10_LFF (disruption) and R10_GLFF (switch) clearly illustrates the additional complexity of switching vs disrupting.",
+            "The Twa1_3 example (two mutations for disruption vs eight for switching) provides a second independent demonstration.",
+            "The observation that coordinated loss of old contacts and gain of new ones is required is supported by the crystal structures."
+          ],
+          "weaknesses": [
+            "This is more of a methodological observation than a scientific claim requiring evidence—it follows logically from the experiments."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [],
+          "supporting_evidence_quality": "strong",
+          "notes": "This claim is well-supported by the overall body of work in the paper and represents a useful conceptual insight for protein engineering.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 24,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.1.1",
+        "label": "The RanBP10-Twa1 complex crystallized at 3.2 Å with high anisotropy, and data we…",
+        "claim": "The RanBP10-Twa1 complex crystallized at 3.2 Å with high anisotropy, and data were collected at ESRF beamline ID23-2.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Methods",
+        "verbatim_quote": "only the near-full-length RanBP10-Twa1 heterodimer yielded diffracting crystals (3.2 Å, highly anisotropic; PDB 9SOC)",
+        "evaluation": {
+          "node_id": "c1.1.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "PDB deposition (9SOC) allows independent verification.",
+            "The anisotropy is acknowledged transparently.",
+            "Methods describe crystallization conditions in detail."
+          ],
+          "weaknesses": [
+            "Data collection and refinement statistics are not shown in the excerpted text.",
+            "The beamline is not explicitly mentioned in the excerpted text (though stated to be ESRF ID23-2 in the claim)."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Standard crystallographic quality metrics were met."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Factual claim about experimental results; the PDB deposition is the strongest evidence.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.2.1",
+        "label": "Overlay of experimentally determined CTLH-CRA domain structures with full-length…",
+        "claim": "Overlay of experimentally determined CTLH-CRA domain structures with full-length AlphaFold predictions demonstrates that truncated and fused constructs accurately reflect the structural context of the full-length proteins.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The overlay demonstrates that the truncated and fused CTLH-CRA constructs accurately reflect the structural context of the full-length proteins and highlights the high conservation of these mammalian subunits.",
+        "evaluation": {
+          "node_id": "c1.1.2.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The overlay is described in a figure supplement and reportedly demonstrates structural agreement.",
+            "All five CTLH-CRA domain structures were compared with AlphaFold predictions."
+          ],
+          "weaknesses": [
+            "The actual RMSD values or other quantitative metrics for the overlay are not reported in the text.",
+            "The validation is somewhat circular—AlphaFold was used to define domain boundaries.",
+            "AlphaFold predictions of full-length proteins may not accurately capture domain behavior in the assembled complex.",
+            "The Twa1 helix-swapping artifact demonstrates that constructs can adopt non-native conformations despite this validation."
+          ],
+          "alternative_interpretations": [
+            "Agreement with AlphaFold predictions validates the fold but not necessarily the interface behavior in the full complex context."
+          ],
+          "required_assumptions": [
+            "AlphaFold predictions accurately represent the relevant structural features of full-length proteins."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Quantitative metrics (RMSD) would strengthen this evidence considerably.",
+          "literature_citations": [
+            {
+              "title": "AlphaFold Protein Structure Database",
+              "authors": [
+                "Varadi"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Source of predictions used for validation.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.1",
+        "label": "SEC-MALS showed Maea CTLH-CRA domain displayed concentration-dependent apparent …",
+        "claim": "SEC-MALS showed Maea CTLH-CRA domain displayed concentration-dependent apparent masses between a dimer (30.2 kDa) and tetramer (60.4 kDa), with estimated KD of ~5 μM for dimer-of-dimer formation.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Fitting these data with a one-site binding model yielded an estimated KD of ~5 μM for dimer-of-dimer formation.",
+        "evaluation": {
+          "node_id": "c1.1.4.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS directly measures molecular mass in solution, providing orthogonal evidence to crystallography.",
+            "Concentration-dependent behavior is consistent with a reversible oligomerization equilibrium.",
+            "The estimated KD (~5 μM) is consistent with the weak interaction expected for a non-native assembly intermediate."
+          ],
+          "weaknesses": [
+            "The KD estimation from SEC-MALS is approximate—this technique measures mass during elution rather than at equilibrium, and dilution during chromatography can shift equilibria.",
+            "A one-site binding model for dimer-of-dimer formation is an oversimplification—multiple binding sites and cooperativity could be involved.",
+            "Only data from the 0.3 ml peak fraction are fitted, which may not represent the full equilibrium."
+          ],
+          "alternative_interpretations": [
+            "The concentration-dependent mass could reflect non-specific aggregation rather than specific dimer-of-dimer formation."
+          ],
+          "required_assumptions": [
+            "SEC-MALS peak fraction measurements approximate equilibrium conditions.",
+            "The one-site binding model is appropriate for dimer-of-dimer association."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The crystal structure provides independent support for the dimer-of-dimers, strengthening the SEC-MALS interpretation.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.2",
+        "label": "Mutation of Y272 and Y275 to alanine abolished Maea tetramerization and yielded …",
+        "claim": "Mutation of Y272 and Y275 to alanine abolished Maea tetramerization and yielded a stable dimer in SEC-MALS.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Mutation of these residues to alanine abolished tetramerization and yielded a stable dimer in SEC-MALS.",
+        "evaluation": {
+          "node_id": "c1.1.4.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "The Y272A/Y275A double mutation specifically targets the crystallographically identified interface.",
+            "SEC-MALS shows a clear shift from tetramer to stable dimer.",
+            "The specificity of the mutation validates the structural model."
+          ],
+          "weaknesses": [
+            "No ITC or other quantitative binding assay confirms that the mutations completely abolish higher-order assembly.",
+            "Only a double mutant was tested—single mutants would provide additional insight into relative contributions."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The mutations do not destabilize the protein fold, only the specific interface."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.1.4.3",
+        "label": "Maea homodimerization likely represents an intermediate assembly state, as it wo…",
+        "claim": "Maea homodimerization likely represents an intermediate assembly state, as it would prevent ring formation in the context of the full CTLH complex.",
+        "type": "supporting",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "Maea homodimerization, reported here for the first time, is compatible with the full-length protein but would prevent ring formation and therefore likely represents an intermediate state in the assembly.",
+        "evaluation": {
+          "node_id": "c1.1.4.3",
+          "support_level": "medium",
+          "confidence_level": "low",
+          "is_well_supported": false,
+          "strengths": [
+            "The logic is reasonable—Maea homodimerization and Twa1 binding use overlapping surfaces, so they should be mutually exclusive.",
+            "Consistent with the known architecture of the CTLH ring where Twa1 binds Maea."
+          ],
+          "weaknesses": [
+            "No kinetic or assembly pathway experiments support the 'intermediate state' interpretation.",
+            "The homodimerization could equally represent an autoinhibitory state, a storage form, or simply a consequence of overexpression in E. coli.",
+            "No evidence that Maea homodimers exist in cells or are on-pathway to ring assembly."
+          ],
+          "alternative_interpretations": [
+            "Maea homodimerization may be an in vitro artifact of working with isolated domains at high concentrations.",
+            "In cells, co-translational assembly or chaperone-assisted folding may prevent Maea homodimer formation entirely."
+          ],
+          "required_assumptions": [
+            "Maea homodimers form in vivo.",
+            "Ring assembly proceeds through sequential intermediate states."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This is a reasonable hypothesis but presented with more confidence than warranted by the data.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.1",
+        "label": "ITC measurements showed wild-type muskelin bound RanBP10 with KD of 4.33 ± 0.99 …",
+        "claim": "ITC measurements showed wild-type muskelin bound RanBP10 with KD of 4.33 ± 0.99 nM; single mutations reduced affinity to double-digit nM, double mutants to triple-digit nM, and the triple mutant abolished binding.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Wild-type muskelin bound RanBP10 tightly, with a KD of 4.33±0.99 nM. Single mutations reduced affinity to the double-digit nanomolar range, double mutants into the triple-digit range, and the triple mutant abolished binding.",
+        "evaluation": {
+          "node_id": "c1.2.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Quantitative ITC data with multiple replicates (3–6 per variant) and standard errors.",
+            "The systematic pattern (single < double < triple mutations) provides strong internal consistency.",
+            "The absolute values are reported with appropriate precision."
+          ],
+          "weaknesses": [
+            "The wild-type KD standard error (0.99 nM on 4.33 nM, ~23%) is substantial.",
+            "Exact KD values for individual single and double mutants are not provided in the excerpt—only ranges."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The one-site binding model used for ITC fitting is appropriate.",
+            "All mutants maintain proper fold."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "This is among the most quantitatively rigorous evidence in the paper.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.2.1.2",
+        "label": "NAGE of RanBP10 mutants carrying progressive Twa1-like substitutions illustrated…",
+        "claim": "NAGE of RanBP10 mutants carrying progressive Twa1-like substitutions illustrated stepwise loss of muskelin binding with increasing substitutions.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Native agarose gel electrophoreses (NAGE) of RanBP10 mutants carrying combinations of Twa1-like substitutions (F543L, Y548F, V556F; L--, -F-, -FF, LF-, L-F, -FF, LFF) illustrate the progressive loss of muskelin binding with increasing substitutions.",
+        "evaluation": {
+          "node_id": "c1.2.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "NAGE provides an independent qualitative confirmation of the ITC results.",
+            "All seven mutant combinations were tested systematically.",
+            "The progressive loss pattern is visually clear in gel-based assays."
+          ],
+          "weaknesses": [
+            "NAGE is qualitative and semi-quantitative at best.",
+            "The 200 μM concentration used may not reflect physiologically relevant conditions."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "NAGE reliably reflects binding at the concentrations used."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "Useful as a complementary assay to ITC.",
+          "literature_citations": [],
+          "novelty_score": "low",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.1",
+        "label": "SEC-MALS confirmed that when Maea interacted with R10_G or R10_GLFF, Maea homodi…",
+        "claim": "SEC-MALS confirmed that when Maea interacted with R10_G or R10_GLFF, Maea homodimerization was disrupted and a 1:1 complex was observed (MW = 31.8 ± 1.1 kDa for R10_G, MW = 28.3 ± 0.8 kDa for R10_GLFF).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "When Maea interacted with R10_G or R10_GLFF, its homodimerization was disrupted and a 1:1 complex was observed (MW = 31.8 ± 1.1 kDa for R10_G, MW = 28.3 ± 0.8 kDa for R10_GLFF).",
+        "evaluation": {
+          "node_id": "c1.3.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS provides direct molecular weight measurements with error estimates.",
+            "The measured masses (31.8 ± 1.1 kDa for R10_G-Maea and 28.3 ± 0.8 kDa for R10_GLFF-Maea) are consistent with 1:1 complexes.",
+            "Disruption of Maea homodimerization upon RanBP10 binding provides additional validation of the binding model."
+          ],
+          "weaknesses": [
+            "The theoretical MW for these complexes is not explicitly stated in this excerpt, limiting assessment of agreement.",
+            "No negative control (wild-type RanBP10 + Maea showing no complex) is mentioned."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "SEC-MALS accurately measures the molecular weight of these complexes."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.1.2",
+        "label": "ITC and NAGE binding analyses confirmed that R10_G bound both muskelin and Maea,…",
+        "claim": "ITC and NAGE binding analyses confirmed that R10_G bound both muskelin and Maea, whereas R10_GLFF bound exclusively Maea.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Consistent with our hypothesis, R10_G bound both muskelin and Maea, whereas R10_GLFF bound Maea only.",
+        "evaluation": {
+          "node_id": "c1.3.1.2",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Three independent methods (ITC, NAGE, SEC-MALS) consistently show the same binding specificity pattern.",
+            "The dual specificity of R10_G vs exclusive Maea binding of R10_GLFF is clearly demonstrated."
+          ],
+          "weaknesses": [
+            "ITC with Maea was not directly feasible, so the Maea binding evidence comes primarily from SEC-MALS and NAGE."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The methods reliably distinguish binding from non-binding."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "The multi-method consistency is a notable strength.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.3.2.1",
+        "label": "The 3.5 Å crystal structure of R10_GLFF-Maea (PDB: 9SOH) confirmed the predicted…",
+        "claim": "The 3.5 Å crystal structure of R10_GLFF-Maea (PDB: 9SOH) confirmed the predicted effects of the mutations and revealed an additional stabilizing hydrogen bond between Maea Y254 and R10_GLFF Q540.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Overlay with the RanBP9-muskelin complex confirmed the expected effects of the mutations: R10_GLFF no longer forms the π-π-stacking or the hydrogen bond with muskelin and exhibits reduced steric hindrance toward Maea due to the Q519G exchange.",
+        "evaluation": {
+          "node_id": "c1.3.2.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The co-crystal structure provides direct structural evidence.",
+            "Overlay with RanBP9-muskelin confirms predictions about which contacts are lost.",
+            "The unexpected Y254-Q540 hydrogen bond adds mechanistic depth."
+          ],
+          "weaknesses": [
+            "3.5 Å resolution is marginal for confident hydrogen bond assignment.",
+            "No validation experiment (e.g., Y254A or Q540A mutation) tests the proposed hydrogen bond."
+          ],
+          "alternative_interpretations": [
+            "At 3.5 Å, model bias could influence sidechain placement, making the hydrogen bond assignment less reliable."
+          ],
+          "required_assumptions": [
+            "3.5 Å electron density is sufficient for sidechain placement and hydrogen bond identification."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The resolution concern should be explicitly addressed—B-factors or electron density maps for the key residues would be informative.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.1.1",
+        "label": "52 Twa1 interface mutants were generated and screened by NAGE for binding to Mae…",
+        "claim": "52 Twa1 interface mutants were generated and screened by NAGE for binding to Maea and muskelin CTLH-CRA domains at 200 μM.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "In total, 52 interface mutants were generated and screened for binding by NAGE, which provided a rapid readout.",
+        "evaluation": {
+          "node_id": "c1.4.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "52 mutants represents a thorough systematic screen.",
+            "NAGE provides rapid qualitative readout suitable for screening.",
+            "The data are presented in supplementary figures for verification."
+          ],
+          "weaknesses": [
+            "NAGE at 200 μM is a high-concentration, low-sensitivity assay that may miss weak interactions or produce false positives.",
+            "The selection criteria for which mutants to pursue further are not explicitly stated."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "NAGE at 200 μM provides a reliable screening readout."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The extensive screening is a strength of the study's methodology.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.2.1",
+        "label": "The 3.3 Å crystal structure of Twa1_14-Maea complex (PDB: 9SOI) revealed that A1…",
+        "claim": "The 3.3 Å crystal structure of Twa1_14-Maea complex (PDB: 9SOI) revealed that A130Q rotates outward due to the shorter, kinked first CRA helix, leaving space for Maea F245 and explaining persistent Maea binding.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "we solved a 3.3 Å crystal structure of the Twa1_14-Maea complex (PDB: 9SOI; Figure 4B), which revealed that A130Q did not create the expected steric hindrance seen for Q551/Q519 in RanBP9/10.",
+        "evaluation": {
+          "node_id": "c1.4.2.1",
+          "support_level": "high",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "Crystal structure directly shows the A130Q rotation, providing a clear structural explanation.",
+            "The observation explains an otherwise puzzling result (persistent Maea binding despite the steric-clash mutation).",
+            "Comparison with RanBP9/10 shows why the kinked helix in Twa1 leads to different behavior."
+          ],
+          "weaknesses": [
+            "3.3 Å resolution limits precision of sidechain modeling.",
+            "Only one crystal form was obtained; other conformations may exist in solution."
+          ],
+          "alternative_interpretations": [
+            "The A130Q rotation could be an artifact of crystal packing in this particular space group."
+          ],
+          "required_assumptions": [
+            "The crystal structure captures the solution-phase conformation.",
+            "3.3 Å resolution is sufficient for sidechain placement at the key positions."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.4.1",
+        "label": "SEC-MALS confirmed a defined 1:1 Twa1_52-muskelin complex (MW = 31.2 ± 0.9 kDa, …",
+        "claim": "SEC-MALS confirmed a defined 1:1 Twa1_52-muskelin complex (MW = 31.2 ± 0.9 kDa, theoretical 33.6 kDa).",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "SEC-MALS confirmed a defined 1:1 Twa1_52-muskelin complex (MW = 31.2 ± 0.9 kDa, theoretical 33.6 kDa).",
+        "evaluation": {
+          "node_id": "c1.4.4.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS provides direct molecular weight confirmation of the 1:1 complex.",
+            "The measured mass (31.2 ± 0.9 kDa) is reasonably close to theoretical (33.6 kDa)."
+          ],
+          "weaknesses": [
+            "The ~7% discrepancy between measured and theoretical MW is somewhat large for SEC-MALS.",
+            "Only a single concentration was used for this measurement."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "SEC-MALS calibration is accurate."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.4.5.1",
+        "label": "Tag-free co-expression of Twa1_52 with CTLH-CRA domains of muskelin or Wdr26 fol…",
+        "claim": "Tag-free co-expression of Twa1_52 with CTLH-CRA domains of muskelin or Wdr26 followed by SEC-MALS confirmed formation of well-defined 1:1 complexes in both cases.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "tag-free co-expression of Twa1_52 with either the CTLH-CRA domain of muskelin or Wdr26, followed by SEC-MALS analysis, confirmed the formation of well-defined 1:1 complexes in both cases.",
+        "evaluation": {
+          "node_id": "c1.4.5.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Tag-free co-expression eliminates potential tag artifacts.",
+            "Both muskelin and Wdr26 tested, demonstrating generalizability.",
+            "SEC-MALS provides quantitative confirmation of 1:1 stoichiometry."
+          ],
+          "weaknesses": [
+            "Co-expression may artificially promote complex formation that would not occur post-translationally.",
+            "No affinity measurement (ITC) for Twa1_52-Wdr26."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "Co-expression complexes reflect thermodynamically stable assemblies."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.1.1",
+        "label": "SEC-MALS of ITC-derived complexes confirmed 1:1 binding stoichiometry of RanBP9 …",
+        "claim": "SEC-MALS of ITC-derived complexes confirmed 1:1 binding stoichiometry of RanBP9 with muskelin or Wdr26, with displaced monomeric Twa1_52 observed.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Addition of excess RanBP9-Twa1 to pre-assembled Twa1_52-muskelin or Twa1_52-Wdr26 complexes results in displacement of monomeric Twa1_52 and formation of muskelin/Wdr26-RanBP9-Twa1 complexes.",
+        "evaluation": {
+          "node_id": "c1.5.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "SEC-MALS of ITC-derived complexes provides an independent validation of the competition experiment.",
+            "Observation of displaced monomeric Twa1_52 directly confirms competition.",
+            "1:1 stoichiometry is confirmed by molecular weight measurements."
+          ],
+          "weaknesses": [
+            "Only RanBP9-Twa1 was tested in this particular experiment; RanBP10-Twa1 displacement data are mentioned but not detailed."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The SEC-MALS run after ITC accurately reflects the equilibrium state."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.1",
+        "label": "Twa1_52 bound tetrameric muskelin and dimeric Wdr26 with similar affinities (KD …",
+        "claim": "Twa1_52 bound tetrameric muskelin and dimeric Wdr26 with similar affinities (KD = 17.9 ± 5.1 nM and KD = 15.9 ± 1.5 nM), approximately tenfold lower than isolated CTLH-CRA domain measurements.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Twa1_52 CTLH-CRA domain bound tetrameric muskelin and dimeric Wdr26 with similar affinities (KD = 17.9 ± 5.1 nM and KD = 15.9 ± 1.5 nM).",
+        "evaluation": {
+          "node_id": "c1.5.2.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The ~tenfold difference between Twa1_52 binding full-length vs isolated muskelin is consistently observed.",
+            "Similar affinities for muskelin and Wdr26 are consistent with the structural similarity."
+          ],
+          "weaknesses": [
+            "The tenfold discrepancy is not fully explained—avidity effects from oligomeric muskelin (tetramer) could account for this rather than additional binding sites.",
+            "Different experimental conditions between the two measurements (isolated domain vs full-length; different titrant concentrations) complicate direct comparison."
+          ],
+          "alternative_interpretations": [
+            "The tenfold tighter binding to full-length muskelin may reflect avidity from the tetrameric state rather than additional contacts."
+          ],
+          "required_assumptions": [
+            "The comparison between different ITC experiments is valid despite different experimental conditions."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.2.2",
+        "label": "RanBP9 and RanBP10 bound muskelin with comparable picomolar affinities (KD = 79.…",
+        "claim": "RanBP9 and RanBP10 bound muskelin with comparable picomolar affinities (KD = 79.5 ± 37.9 pM and 70.0 ± 22.1 pM) as determined by competitive ITC.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "Both RanBP9 and RanBP10 outcompeted Twa1_52 binding and bound muskelin very tightly, with comparable affinities (KD = 79.5 ± 37.9 pM and 70.0±22.1 pM).",
+        "evaluation": {
+          "node_id": "c1.5.2.2",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The competitive ITC approach is a creative solution to measuring extremely tight binding.",
+            "Multiple replicates with standard errors are provided.",
+            "Both RanBP9 and RanBP10 were measured against muskelin, enabling direct comparison."
+          ],
+          "weaknesses": [
+            "The error on RanBP9 (79.5 ± 37.9 pM, ~48% error) is very large for a quantitative measurement.",
+            "Picomolar ITC measurements are at the extreme limit of the technique's capabilities.",
+            "The accuracy depends on error propagation from the first titration parameters, which are not discussed."
+          ],
+          "alternative_interpretations": [
+            "The values may be better interpreted as 'sub-nanomolar' or 'picomolar range' rather than precise KD values."
+          ],
+          "required_assumptions": [
+            "The competitive binding model accurately handles the error propagation from two sequential titrations.",
+            "The ITC instrument and analysis software can reliably fit picomolar affinities."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "These measurements should be treated as order-of-magnitude estimates rather than precise values.",
+          "literature_citations": [],
+          "novelty_score": "high",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.5.3.1",
+        "label": "AlphaFold3 prediction of the RanBP9-Wdr26 interface overlaid with the RanBP9-mus…",
+        "claim": "AlphaFold3 prediction of the RanBP9-Wdr26 interface overlaid with the RanBP9-muskelin crystal structure shows a conserved mode of interaction with a Met-π interaction between Wdr26 M238 and RanBP9 F576 and a hydrogen bond between Wdr26 H231 and RanBP9 Y581.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Results",
+        "verbatim_quote": "The predicted interface includes a Met-π interaction between Wdr26 M238 and RanBP9 F576 and a hydrogen bond between Wdr26 H231 and RanBP9 Y581, consistent with the comparable affinities of both complexes.",
+        "evaluation": {
+          "node_id": "c1.5.3.1",
+          "support_level": "medium",
+          "confidence_level": "low",
+          "is_well_supported": false,
+          "strengths": [
+            "AlphaFold3 prediction identifies specific residues (M238, H231) that are consistent with known interaction types.",
+            "The prediction is consistent with the experimental RanBP9-muskelin structure in terms of overall geometry."
+          ],
+          "weaknesses": [
+            "The Met-π interaction and hydrogen bond are entirely computational predictions without experimental validation.",
+            "No mutagenesis of Wdr26 M238 or H231 is performed to test the predicted contacts.",
+            "The RanBP9-Wdr26 crystals did not diffract, so no experimental structure exists.",
+            "AlphaFold3 predictions of specific interaction types (Met-π, hydrogen bonds) at interfaces should be treated with caution."
+          ],
+          "alternative_interpretations": [
+            "The actual RanBP9-Wdr26 interface may differ from the AF3 prediction in ways that are not apparent from sequence."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 accurately predicts the specific contacts at the RanBP9-Wdr26 interface."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "This evidence should be clearly labeled as computational prediction rather than experimental observation.",
+          "literature_citations": [
+            {
+              "title": "AlphaFold3",
+              "authors": [
+                "Abramson"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Source of the structural prediction used as evidence.",
+              "stance": "neutral"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.1.1",
+        "label": "AlphaFold3 predictions of CTLH-CRA interfaces across seven model organisms (M. m…",
+        "claim": "AlphaFold3 predictions of CTLH-CRA interfaces across seven model organisms (M. musculus, X. laevis, D. rerio, C. elegans, D. melanogaster, S. cerevisiae, A. thaliana) show conservation of specificity-determining contacts.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "AlphaFold3 predictions of CTLH-CRA dimerization interfaces across model organisms indicate that the determinants of binding specificity are broadly conserved beyond mammals.",
+        "evaluation": {
+          "node_id": "c1.6.1.1",
+          "support_level": "low",
+          "confidence_level": "medium",
+          "is_well_supported": false,
+          "strengths": [
+            "Seven model organisms spanning major eukaryotic lineages are included.",
+            "Comparison with the experimental yeast Gid1-Gid7 structure (PDB: 7NSB) provides one validated comparison point."
+          ],
+          "weaknesses": [
+            "Six of seven comparisons rely entirely on AlphaFold3 predictions of protein-protein interfaces.",
+            "AlphaFold3 interface predictions are not validated by any experimental data for non-mammalian species.",
+            "The C. elegans prediction has low interface confidence, acknowledged by the authors, but this does not temper the overall conservation claim.",
+            "Only UniProt accession numbers and species are specified—no structural quality metrics for the predictions are provided."
+          ],
+          "alternative_interpretations": [
+            "AlphaFold3 may impose a mammalian-like interface on divergent sequences, giving the false impression of conservation.",
+            "Conservation of fold does not necessarily imply conservation of specificity mechanism."
+          ],
+          "required_assumptions": [
+            "AlphaFold3 accurately predicts cross-species protein-protein interfaces.",
+            "Predicted contact conservation implies functional conservation."
+          ],
+          "supporting_evidence_quality": "weak",
+          "notes": "The yeast comparison with an experimental structure is the only well-supported data point.",
+          "literature_citations": [],
+          "novelty_score": "medium",
+          "groundedness_score": "low"
+        },
+        "visual": {
+          "color": "#ef4444",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.6.2.1",
+        "label": "In yeast, the Gid1 (RanBP9 homolog) interface is largely conserved except for th…",
+        "claim": "In yeast, the Gid1 (RanBP9 homolog) interface is largely conserved except for the missing phenylalanine, but the Gid1 N-terminus forms an additional contact with Gid7 that may have shifted interface specificity constraints.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "In yeast, the Gid1 (RanBP9 homologue) interface is largely conserved, except for the missing phenylalanine. The Gid1 N-terminus, however, forms an additional contact site with the Wdr26 homolog Gid7.",
+        "evaluation": {
+          "node_id": "c1.6.2.1",
+          "support_level": "medium",
+          "confidence_level": "medium",
+          "is_well_supported": true,
+          "strengths": [
+            "The yeast Gid1-Gid7 cryo-EM structure (PDB: 7NSB) provides experimental data for comparison.",
+            "The observation that the Gid1 N-terminus forms an additional contact is based on experimental structure.",
+            "The interpretation that this additional contact may have relaxed interface specificity constraints is a reasonable evolutionary hypothesis."
+          ],
+          "weaknesses": [
+            "The 'largely conserved except for the missing phenylalanine' actually represents a significant difference from the mammalian mechanism, since π-π stacking was identified as a key specificity determinant.",
+            "The compensatory N-terminal contact hypothesis is not tested experimentally.",
+            "The claim that this represents conservation of the 'same mechanism' is weakened by the documented differences."
+          ],
+          "alternative_interpretations": [
+            "The yeast interface may use a fundamentally different specificity mechanism, with the conservation being limited to the hydrophobic core rather than the specific contacts."
+          ],
+          "required_assumptions": [
+            "Conservation of interface geometry implies conservation of the specificity principle despite different specific contacts."
+          ],
+          "supporting_evidence_quality": "moderate",
+          "notes": "The yeast data are experimental and informative but actually argue for divergent rather than conserved specificity mechanisms.",
+          "literature_citations": [
+            {
+              "title": "GID complex cryo-EM",
+              "authors": [
+                "Sherpa"
+              ],
+              "year": 2021,
+              "url": "",
+              "relevance": "Provided the yeast Gid1-Gid7 experimental structure for comparison.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "medium",
+          "groundedness_score": "medium"
+        },
+        "visual": {
+          "color": "#eab308",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      },
+      {
+        "id": "c1.7.1.1",
+        "label": "The pathogenic human Wdr26 S254R variant, which causes Skraban-Deardorff syndrom…",
+        "claim": "The pathogenic human Wdr26 S254R variant, which causes Skraban-Deardorff syndrome, impairs complex formation by introducing a charged residue into the hydrophobic CRA core, illustrating the functional relevance of interface-disrupting mutations.",
+        "type": "evidence",
+        "depth": 3,
+        "section_source": "Discussion",
+        "verbatim_quote": "the pathogenic human Wdr26 S254R variant (S234R in mouse), which causes, by impaired complex formation, Skraban-Deardorff syndrome, an intellectual disability disorder.",
+        "evaluation": {
+          "node_id": "c1.7.1.1",
+          "support_level": "high",
+          "confidence_level": "high",
+          "is_well_supported": true,
+          "strengths": [
+            "Wdr26 S254R is a naturally occurring pathogenic mutation, providing the strongest possible validation of functional relevance.",
+            "The mutation (serine to arginine in the hydrophobic core) matches the general principle described in the paper (charged substitutions in hydrophobic interfaces disrupt dimerization).",
+            "Independent studies (Skraban et al., 2017; Gross et al., 2024) confirmed the disease association and complex formation defect."
+          ],
+          "weaknesses": [
+            "The S254R mutation is a naturally occurring variant, not an engineered mutation—it illustrates the principle but was not generated by the authors.",
+            "The mechanism of impaired complex formation by S254R has not been structurally validated in the current study."
+          ],
+          "alternative_interpretations": [],
+          "required_assumptions": [
+            "The S254R pathogenic mechanism operates through interface disruption rather than through other effects on Wdr26 function."
+          ],
+          "supporting_evidence_quality": "strong",
+          "notes": "Strong real-world validation of the interface disruption principle.",
+          "literature_citations": [
+            {
+              "title": "Skraban-Deardorff syndrome",
+              "authors": [
+                "Skraban"
+              ],
+              "year": 2017,
+              "url": "",
+              "relevance": "Identified the disease-causing Wdr26 variant.",
+              "stance": "supports"
+            },
+            {
+              "title": "Wdr26 mutations",
+              "authors": [
+                "Gross"
+              ],
+              "year": 2024,
+              "url": "",
+              "relevance": "Demonstrated impaired complex formation by S254R.",
+              "stance": "supports"
+            }
+          ],
+          "novelty_score": "low",
+          "groundedness_score": "high"
+        },
+        "visual": {
+          "color": "#22c55e",
+          "size": 20,
+          "border_width": 1
+        },
+        "page_number": null,
+        "bbox": null
+      }
+    ],
+    "edges": [
+      {
+        "id": "e_c1_c1.1",
+        "source": "c1",
+        "target": "c1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.2",
+        "source": "c1",
+        "target": "c1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.3",
+        "source": "c1",
+        "target": "c1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.4",
+        "source": "c1",
+        "target": "c1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.5",
+        "source": "c1",
+        "target": "c1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.6",
+        "source": "c1",
+        "target": "c1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1_c1.7",
+        "source": "c1",
+        "target": "c1.7",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.1",
+        "source": "c1.1",
+        "target": "c1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.2",
+        "source": "c1.1",
+        "target": "c1.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.3",
+        "source": "c1.1",
+        "target": "c1.1.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.4",
+        "source": "c1.1",
+        "target": "c1.1.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.5",
+        "source": "c1.1",
+        "target": "c1.1.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1_c1.1.6",
+        "source": "c1.1",
+        "target": "c1.1.6",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.1",
+        "source": "c1.2",
+        "target": "c1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.2",
+        "source": "c1.2",
+        "target": "c1.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2_c1.2.3",
+        "source": "c1.2",
+        "target": "c1.2.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.1",
+        "source": "c1.3",
+        "target": "c1.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.2",
+        "source": "c1.3",
+        "target": "c1.3.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.3",
+        "source": "c1.3",
+        "target": "c1.3.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3_c1.3.4",
+        "source": "c1.3",
+        "target": "c1.3.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.1",
+        "source": "c1.4",
+        "target": "c1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.2",
+        "source": "c1.4",
+        "target": "c1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.3",
+        "source": "c1.4",
+        "target": "c1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.4",
+        "source": "c1.4",
+        "target": "c1.4.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4_c1.4.5",
+        "source": "c1.4",
+        "target": "c1.4.5",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.1",
+        "source": "c1.5",
+        "target": "c1.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.2",
+        "source": "c1.5",
+        "target": "c1.5.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.3",
+        "source": "c1.5",
+        "target": "c1.5.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5_c1.5.4",
+        "source": "c1.5",
+        "target": "c1.5.4",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.1",
+        "source": "c1.6",
+        "target": "c1.6.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.2",
+        "source": "c1.6",
+        "target": "c1.6.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6_c1.6.3",
+        "source": "c1.6",
+        "target": "c1.6.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.1",
+        "source": "c1.7",
+        "target": "c1.7.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.2",
+        "source": "c1.7",
+        "target": "c1.7.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7_c1.7.3",
+        "source": "c1.7",
+        "target": "c1.7.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.1_c1.1.1.1",
+        "source": "c1.1.1",
+        "target": "c1.1.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.2_c1.1.2.1",
+        "source": "c1.1.2",
+        "target": "c1.1.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.1",
+        "source": "c1.1.4",
+        "target": "c1.1.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.2",
+        "source": "c1.1.4",
+        "target": "c1.1.4.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.1.4_c1.1.4.3",
+        "source": "c1.1.4",
+        "target": "c1.1.4.3",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.1",
+        "source": "c1.2.1",
+        "target": "c1.2.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.2.1_c1.2.1.2",
+        "source": "c1.2.1",
+        "target": "c1.2.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.1",
+        "source": "c1.3.1",
+        "target": "c1.3.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.1_c1.3.1.2",
+        "source": "c1.3.1",
+        "target": "c1.3.1.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.3.2_c1.3.2.1",
+        "source": "c1.3.2",
+        "target": "c1.3.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.1_c1.4.1.1",
+        "source": "c1.4.1",
+        "target": "c1.4.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.2_c1.4.2.1",
+        "source": "c1.4.2",
+        "target": "c1.4.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.4_c1.4.4.1",
+        "source": "c1.4.4",
+        "target": "c1.4.4.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.4.5_c1.4.5.1",
+        "source": "c1.4.5",
+        "target": "c1.4.5.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.1_c1.5.1.1",
+        "source": "c1.5.1",
+        "target": "c1.5.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.1",
+        "source": "c1.5.2",
+        "target": "c1.5.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.2_c1.5.2.2",
+        "source": "c1.5.2",
+        "target": "c1.5.2.2",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.5.3_c1.5.3.1",
+        "source": "c1.5.3",
+        "target": "c1.5.3.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.1_c1.6.1.1",
+        "source": "c1.6.1",
+        "target": "c1.6.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.6.2_c1.6.2.1",
+        "source": "c1.6.2",
+        "target": "c1.6.2.1",
+        "relationship": "supports",
+        "label": "supports"
+      },
+      {
+        "id": "e_c1.7.1_c1.7.1.1",
+        "source": "c1.7.1",
+        "target": "c1.7.1.1",
+        "relationship": "supports",
+        "label": "supports"
+      }
+    ]
+  },
+  "summary": {
+    "total_nodes": 57,
+    "total_edges": 56,
+    "max_depth": 3,
+    "high_support_nodes": 32,
+    "low_support_nodes": 7,
+    "overall_assessment": "The paper presents 57 claims with mixed overall support (32 high, 7 low)."
+  },
+  "final_review": null
+}
