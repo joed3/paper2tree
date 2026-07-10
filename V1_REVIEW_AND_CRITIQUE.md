@@ -204,7 +204,7 @@ Work is on branch **`v2-compositional-evaluation`**. Per the directive to stop a
 
 | Phase | Status | Notes |
 |---|---|---|
-| 0 — Baseline lock-in | ⏳ **user action** | Run `eval/pilot_study.py` (n=20) on both code versions; `eval/compare.py` is ready to pair them. Requires API tokens — left to you (budget). |
+| 0 — Baseline lock-in | ✅ **done (2026-07-09)** | Ran both versions, 19/20 papers, $53 total. **Result: neither criterion held** (see §14 ▶ Result). v2 ≈ baseline ≈ v1.7 on prose metrics; v2 regressed concern precision. Judgment-specific metrics not yet built. |
 | 1 — Simplify scoring | ✅ done | `evidence_strength` + `claim_evidence_calibration`; `confidence_level`/`is_well_supported`/`supporting_evidence_quality` removed. Schema, prompt, formatter, final reviewer, CLI, frontend, tests all updated. |
 | 2 — Compositional evaluation | ✅ done | `claim_evaluator` now evaluates depth-by-depth, deepest first, parents conditioned on children (evidential vs. inferential gaps). New tests assert ordering + child context. |
 | 3 — Centrality-weighted aggregation | ✅ done | Weighted verdict + "worth reading?" framing; a weak thesis with strong leaves no longer reads "strong". Tests cover the old bug. |
@@ -268,6 +268,18 @@ The pilot is the referee for the whole release. Freeze it so "before vs. after" 
 ---
 
 ## 14. Measuring whether it actually worked
+
+### ▶ Result (run 2026-07-09, n=19 paired; full writeup in `eval/pilot_v2/v2.0_report.md`)
+
+**Neither pre-registered criterion held.** Compositional v2.0 (a) did **not** beat the single-prompt baseline and (b) did **not** improve over v1.7 on prose-similarity metrics — and it *regressed* concern precision. Paired Wilcoxon deltas:
+
+- **v2 vs. baseline:** concern precision −0.021 (p=0.040) and concern F1 −0.013 (p=0.049) both favor the **baseline**; BERTScore/ROUGE/cosine/recall are ties. The DAG still doesn't beat one well-prompted call.
+- **v2 vs. v1.7:** concern precision −0.021 (p=0.029) favors **v1.7**; everything else a tie. Compositional eval didn't move the metrics.
+- **Cost:** v2 is +36% $ and +28% latency vs. v1.7 ($1.52 vs $1.12/paper) for no prose gain; both DAG arms are ~7–10× the baseline's cost.
+
+**Per the decision rule below → "neither holds" branch: stop feature work, build judgment-specific metrics, re-decide.** Two load-bearing caveats: (1) these metrics measure similarity to *one* human review and cannot see what v2 changed — compositional inferential-gap catching, the overclaiming axis, the artifact; the metrics that *would* test those weren't run. (2) The concern-precision drop plausibly reflects the intended shift away from the manufacture-concerns "Reviewer 2" persona, which this metric penalizes. So this is "measure the right things before building more," not "v2 is worse." **The interactive artifact remains the defensible value.**
+
+---
 
 The whole point of §3 is that we currently can't claim improvement. This release must be judged by the eval harness, not by inspection. Concrete protocol:
 
