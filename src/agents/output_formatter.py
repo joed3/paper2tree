@@ -13,84 +13,30 @@ from ..schemas.output import DAGData, DAGEdge, DAGNode, DAGSummary, PaperDAG, Pa
 from ..schemas.paper import ExtractedPaper
 from ..utils.graph import EnrichedClaim
 
-_EVIDENCE_COLOR = {
-    "strong": "#22c55e",  # green
-    "moderate": "#eab308",  # yellow
-    "weak": "#f97316",  # orange
-    "absent": "#ef4444",  # red
-}
 
-# How much each claim contributes to the paper-level verdict. A weak thesis must
-# dominate the summary; a weak evidence-leaf must barely move it (§7 of the v2 critique).
-_CENTRALITY = {"root": 4.0, "primary": 2.0, "supporting": 1.0, "evidence": 0.5}
-
-# Numeric value of each evidence band, for the weighted aggregate.
-_EVIDENCE_SCORE = {"strong": 1.0, "moderate": 0.6, "weak": 0.25, "absent": 0.0}
-
-
-def _evidence_color(evidence_strength: str) -> str:
-    return _EVIDENCE_COLOR.get(evidence_strength, "#ef4444")
+def _support_color(support_level: str) -> str:
+    if support_level == "high":
+        return "#22c55e"  # green
+    elif support_level == "medium":
+        return "#eab308"  # yellow
+    return "#ef4444"  # red
 
 
 def _node_size(depth: int) -> int:
     return max(20, 48 - depth * 12)
 
 
-def _overall_assessment(
-    enriched: list[EnrichedClaim],
-    evaluations: dict[str, ClaimEvaluation],
-) -> str:
-    """Centrality-weighted verdict that tracks whether the paper's *thesis* holds.
-
-    Leads with the most central weakly-supported claims so a triaging reader sees
-    the load-bearing problems first ("worth reading?" framing).
-    """
-    weighted_sum = 0.0
-    weight_total = 0.0
-    weak_by_centrality: list[tuple[float, str]] = []
-
-    for ec in enriched:
-        ev = evaluations.get(ec.claim.id)
-        if ev is None:
-            continue
-        weight = _CENTRALITY.get(ec.claim.type, 1.0)
-        score = _EVIDENCE_SCORE.get(ev.evidence_strength, 0.0)
-        weighted_sum += weight * score
-        weight_total += weight
-        if ev.evidence_strength in ("weak", "absent"):
-            weak_by_centrality.append((weight, ec.claim.text))
-
-    if weight_total == 0:
-        return "No claims were evaluated."
-
-    verdict_score = weighted_sum / weight_total
-    if verdict_score >= 0.7:
+def _overall_assessment(high: int, low: int, n_claims: int) -> str:
+    if high / n_claims >= 0.6:
         quality = "strong"
-    elif verdict_score >= 0.45:
-        quality = "mixed"
-    else:
+    elif low / n_claims >= 0.5:
         quality = "weak"
-
-    n_claims = len(enriched)
-    parts = [
-        f"The paper's {n_claims} claims show {quality} overall support when weighted by "
-        f"centrality (weighted support score {verdict_score:.2f}, where the central thesis "
-        f"counts far more than peripheral evidence)."
-    ]
-
-    # Surface the highest-centrality weak claims first — the triaging reader's core need.
-    weak_by_centrality.sort(key=lambda t: t[0], reverse=True)
-    if weak_by_centrality:
-        top = weak_by_centrality[0][1]
-        snippet = top[:160] + ("…" if len(top) > 160 else "")
-        parts.append(
-            f"The most load-bearing weakly-supported claim is: “{snippet}” "
-            f"({len(weak_by_centrality)} weakly-supported claim(s) total)."
-        )
     else:
-        parts.append("No central claim was found to be weakly supported.")
-
-    return " ".join(parts)
+        quality = "mixed"
+    return (
+        f"The paper presents {n_claims} claims with {quality} overall support "
+        f"({high} high, {low} low)."
+    )
 
 
 def format_output(
@@ -108,7 +54,7 @@ def format_output(
     for ec in enriched:
         claim = ec.claim
         eval_ = evaluations.get(claim.id)
-        evidence_strength = eval_.evidence_strength if eval_ else "moderate"
+        support_level = eval_.support_level if eval_ else "medium"
 
         nodes.append(
             DAGNode(
@@ -121,7 +67,7 @@ def format_output(
                 verbatim_quote=claim.verbatim_quote,
                 evaluation=eval_.model_dump() if eval_ else None,
                 visual=VisualMeta(
-                    color=_evidence_color(evidence_strength),
+                    color=_support_color(support_level),
                     size=_node_size(ec.depth),
                     border_width=3 if ec.depth == 0 else 1,
                 ),
@@ -141,9 +87,8 @@ def format_output(
                 )
             )
 
-    # "high support" = strong evidence; "low support" = weak or absent evidence.
-    high_support = sum(1 for e in evaluations.values() if e.evidence_strength == "strong")
-    low_support = sum(1 for e in evaluations.values() if e.evidence_strength in ("weak", "absent"))
+    high_support = sum(1 for e in evaluations.values() if e.support_level == "high")
+    low_support = sum(1 for e in evaluations.values() if e.support_level == "low")
     max_depth = max((ec.depth for ec in enriched), default=0)
     n_claims = len(nodes)
 
@@ -165,7 +110,7 @@ def format_output(
             max_depth=max_depth,
             high_support_nodes=high_support,
             low_support_nodes=low_support,
-            overall_assessment=_overall_assessment(enriched, evaluations),
+            overall_assessment=_overall_assessment(high_support, low_support, n_claims),
         ),
     )
 

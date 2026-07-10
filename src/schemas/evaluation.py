@@ -14,15 +14,14 @@ class LiteratureCitation(BaseModel):
 
 class ClaimEvaluation(BaseModel):
     node_id: str
-    # How good is the evidence for this claim? (absorbs the former support_level,
-    # is_well_supported, and supporting_evidence_quality into one axis).
-    evidence_strength: Literal["strong", "moderate", "weak", "absent"]
-    # Does the strength of the claim match the strength of its evidence?
-    claim_evidence_calibration: Literal["overclaimed", "calibrated", "underclaimed"]
+    support_level: Literal["high", "medium", "low"]
+    confidence_level: Literal["high", "medium", "low"]
+    is_well_supported: bool
     strengths: list[str]
     weaknesses: list[str]
     alternative_interpretations: list[str]
     required_assumptions: list[str]
+    supporting_evidence_quality: Literal["strong", "moderate", "weak", "absent"]
     notes: str
     literature_citations: list[LiteratureCitation] = []
     novelty_score: Literal["high", "medium", "low"] | None = None

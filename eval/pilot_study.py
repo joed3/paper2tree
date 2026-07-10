@@ -16,6 +16,7 @@ Options:
     --output-dir DIR    Output directory (default: eval/pilot)
     --concurrency N     Papers to process in parallel (default: 1)
     --limit N           Process at most N not-yet-done papers this run (batch size)
+    --max-failures N    Exclude a paper after N failures (default: 2; 0 disables)
     --reuse-from DIR    Seed sample + baseline from a prior run (e.g. eval/pilot_v17)
     --github-token TOK  GitHub API token (or set GITHUB_TOKEN env var)
     --force             Re-run all steps even if outputs exist
@@ -117,6 +118,29 @@ def reuse_from(src_dir: Path, dst_dir: Path, log=print) -> None:
     log(
         f"Reused sample + baseline from {src_dir} ({n} papers); paper2tree artifacts will regenerate"
     )
+
+
+# ── Failure tracking (exclude a paper after repeated failures) ──────────────────
+
+
+def failure_count(paper_dir: Path) -> int:
+    f = paper_dir / "failures.json"
+    if f.exists():
+        try:
+            return int(json.loads(f.read_text()).get("count", 0))
+        except Exception:
+            return 0
+    return 0
+
+
+def record_failure(paper_dir: Path, err: str) -> int:
+    """Increment and persist a paper's failure count; returns the new count."""
+    paper_dir.mkdir(parents=True, exist_ok=True)
+    c = failure_count(paper_dir) + 1
+    (paper_dir / "failures.json").write_text(
+        json.dumps({"count": c, "last_error": err[:500]}, indent=2)
+    )
+    return c
 
 
 # ── Per-paper processing ───────────────────────────────────────────────────────
@@ -867,16 +891,36 @@ async def main_async(args: argparse.Namespace) -> None:
     # not-yet-done papers this invocation processes, so runs can be checkpointed in
     # batches of N; re-invoke to continue where it left off (completed papers are
     # cached and skipped).
+    max_failures = args.max_failures
+    excluded = [
+        p
+        for p in papers
+        if not (output_dir / p.article_id / "paper2tree_review.txt").exists()
+        and max_failures
+        and failure_count(output_dir / p.article_id) >= max_failures
+    ]
+
     def _needs_work(p: ELifePaper) -> bool:
-        return not (output_dir / p.article_id / "paper2tree_review.txt").exists()
+        pd = output_dir / p.article_id
+        if (pd / "paper2tree_review.txt").exists():
+            return False  # already done
+        if max_failures and failure_count(pd) >= max_failures:
+            return False  # excluded after repeated failures — no more retries
+        return True
 
     pending = [p for p in papers if _needs_work(p)]
-    done_before = len(papers) - len(pending)
+    done_before = len(papers) - len(pending) - len(excluded)
     batch = pending[: args.limit] if args.limit else pending
     remaining_after = len(pending) - len(batch)
+    if excluded:
+        log(
+            f"Excluded {len(excluded)} paper(s) after ≥{max_failures} failures: "
+            f"{', '.join(p.article_id for p in excluded)}"
+        )
     log(
-        f"{done_before}/{len(papers)} already complete; "
-        f"processing {len(batch)} this run; {remaining_after} will remain"
+        f"{done_before}/{len(papers)} complete; "
+        f"processing {len(batch)} this run; {remaining_after} pending after; "
+        f"{len(excluded)} excluded"
     )
 
     concurrency = max(1, args.concurrency)
@@ -898,10 +942,15 @@ async def main_async(args: argparse.Namespace) -> None:
                     log=log,
                 )
             except Exception as e:  # keep one bad paper from aborting the batch
-                log(f"  Failed: {paper.article_id}: {e}")
+                c = record_failure(paper_dir, str(e))
+                log(f"  Failed ({c}× — excluded at {args.max_failures}): {paper.article_id}: {e}")
                 return False
-            log(f"  {'Done' if ok else 'Failed'}: {paper.article_id}")
-            return ok
+            if not ok:
+                c = record_failure(paper_dir, "process_paper returned False")
+                log(f"  Failed ({c}× — excluded at {args.max_failures}): {paper.article_id}")
+                return False
+            log(f"  Done: {paper.article_id}")
+            return True
 
     await asyncio.gather(*[run_one(done_before + i, p) for i, p in enumerate(batch, 1)])
 
@@ -976,6 +1025,13 @@ def main() -> None:
         default=None,
         help="Process at most N not-yet-done papers this run (batch size). "
         "Re-run to continue; completed papers are cached and skipped.",
+    )
+    parser.add_argument(
+        "--max-failures",
+        type=int,
+        default=2,
+        help="Exclude a paper (no more retries) after this many failures (default: 2). "
+        "0 disables exclusion.",
     )
     parser.add_argument(
         "--reuse-from",

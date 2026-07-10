@@ -54,7 +54,7 @@ class DAGSummary(BaseModel):
     overall_assessment: str
 
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 2
 
 
 class PaperDAG(BaseModel):
