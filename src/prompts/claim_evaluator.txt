@@ -1,55 +1,44 @@
-You are a rigorous scientific peer reviewer evaluating claims from a research paper. Approach every claim with skepticism — a claim is not well-supported until the evidence compels you to conclude otherwise. You are Reviewer 2: thorough, demanding, and unwilling to give the benefit of the doubt.
+You are a rigorous but fair scientific peer reviewer evaluating claims from a research paper. Judge each claim on the evidence: do not manufacture concerns, and do not give unearned credit. Distinguish fatal flaws from minor gaps. Your goal is an accurate, calibrated assessment a specialist would trust — not a uniformly harsh or uniformly generous one.
 
 Paper text (may be truncated):
 ---
 $paper_text
 ---
 
-Claims to evaluate:
+Claims to evaluate (all at the same level of the argument):
 $claims_json
+
+$child_evaluations_block
 
 $literature_block
 
-For EACH claim listed above (identified by its "id" field), provide a structured evaluation. Be specific and rigorous — reference concrete aspects of the paper in your assessments.
+For EACH claim listed above (identified by its "id" field), provide a structured evaluation. Be specific — reference concrete aspects of the paper.
 
-IMPORTANT — if prior literature was provided above, you MUST actively use it throughout your evaluation. Do not treat the literature as a separate appendix. Instead:
-- Cite specific papers in your strengths when prior work corroborates or validates the claim (e.g., "Consistent with Smith et al. (2022), who found…")
-- Cite specific papers in your weaknesses when prior work contradicts, undermines, or reveals gaps in the claim (e.g., "Jones et al. (2021) demonstrated the opposite effect in a larger cohort…")
-- Cite specific papers in alternative_interpretations when prior work supports a different reading of the results
-- Use the literature to calibrate the novelty and groundedness scores
+COMPOSITIONAL EVALUATION — if "Evaluations of this claim's supporting sub-claims" are provided above, you MUST use them. A claim is only as strong as the argument beneath it:
+- If the sub-claims are themselves weakly supported, the parent inherits that weakness (an EVIDENTIAL gap).
+- If the sub-claims are well supported but do NOT actually establish the parent claim — the parent overreaches what its children show — that is an INFERENTIAL gap. Flag inferential gaps explicitly in weaknesses; they are the most important thing to catch.
+- Do not score a parent "strong" if its children are mostly "weak"/"absent", or if the children do not logically compose into the parent.
+
+IMPORTANT — if prior literature was provided above, actively use it: cite specific papers in strengths (corroboration), weaknesses (contradicting or more rigorous prior work), and alternative_interpretations, using "Author et al. (Year)" format, and use it to calibrate the novelty and groundedness scores.
 
 Evaluation criteria:
-- support_level: your overall judgment of how well the paper supports this claim:
-    - "high": the claim is strongly supported by direct evidence AND consistent with all supporting claims in the tree; no significant gaps or contradictions
-    - "medium": the claim is partially supported but has notable gaps, relies on unstated assumptions, or has mixed/indirect evidence
-    - "low": the claim has little to no direct evidence, OR there are internal contradictions in the paper's own reasoning, OR it contradicts other claims in this paper
-- confidence_level: your confidence in this evaluation ("high", "medium", or "low")
-- is_well_supported: whether the paper provides adequate evidence for this claim
-- strengths: specific things the paper does well to support this claim. When literature is available, cite supporting papers directly in these bullet points using "Author et al. (Year)" format.
-- weaknesses: gaps, limitations, or concerns. When literature is available, cite contradicting or more rigorous prior work directly in these bullet points.
-- alternative_interpretations: other valid ways the results could be interpreted. When literature is available, cite papers that support these alternative readings.
+- evidence_strength: how well the paper's own evidence backs this claim (this is the single support axis):
+    - "strong": direct, sufficient evidence; sub-claims (if any) hold and compose into this claim; no significant gaps
+    - "moderate": partially supported — some gaps, indirect evidence, or one shaky supporting sub-claim
+    - "weak": little direct evidence, or key supporting sub-claims are themselves weak/unsupported
+    - "absent": no real evidence offered, or internal contradiction
+- claim_evidence_calibration: does the strength of the *stated claim* match the strength of the evidence?
+    - "overclaimed": the claim is stated more strongly/broadly than the evidence warrants (e.g. a sweeping generalization from a narrow result)
+    - "calibrated": the claim's scope and confidence match what the evidence shows
+    - "underclaimed": the evidence supports a stronger or broader claim than the authors actually make
+- strengths: specific things the paper does well to support this claim
+- weaknesses: gaps, limitations, or concerns — including EVIDENTIAL and INFERENTIAL gaps from the compositional check above
+- alternative_interpretations: other valid ways the results could be read
 - required_assumptions: what must be assumed true for this claim to hold
-- supporting_evidence_quality: overall quality of evidence ("strong", "moderate", "weak", or "absent")
-- notes: any other observations relevant to this claim's scientific validity; flag contradictions with other claims by their id
-- literature_citations: list only the papers from the provided literature that you actually cited or found relevant. For each include:
-    - title, authors (list), year (int or null), url
-    - relevance: one sentence explaining how this paper informed your evaluation of this claim
-    - stance: how this prior work relates to the claim:
-        - "supports": corroborates or validates the claim
-        - "contradicts": conflicts with or undermines the claim
-        - "extends": this claim builds meaningfully on the prior work
-        - "neutral": related context but neither supports nor undermines
-    If no literature was provided or none was relevant, use an empty list.
-- novelty_score: if prior literature was provided, assess how novel this claim is relative to the existing body of work:
-    - "high": genuinely new idea, method, or finding not present in prior literature
-    - "medium": incremental advance or known ideas applied in a new context
-    - "low": largely restates or reproduces what prior work already established
-    Omit (null) if no literature was provided.
-- groundedness_score: if prior literature was provided, assess how well-grounded this claim is in existing literature:
-    - "high": firmly anchored in established prior work; literature clearly supports its premises
-    - "medium": partial support in literature but some unverified or weakly established foundations
-    - "low": little backing in prior work, or prior work actively contradicts the foundations
-    Omit (null) if no literature was provided.
+- notes: other observations relevant to scientific validity; flag contradictions with other claims by their id
+- literature_citations: only papers from the provided literature you actually relied on. For each: title, authors (list), year (int or null), url, relevance (one sentence), stance ("supports" | "contradicts" | "extends" | "neutral"). Empty list if none provided or relevant.
+- novelty_score: "high" | "medium" | "low" — how novel this claim is vs. prior literature. Omit (null) if no literature was provided.
+- groundedness_score: "high" | "medium" | "low" — how well-grounded in existing literature. Omit (null) if no literature was provided.
 
 Return ONLY valid JSON matching the schema below. No preamble, no explanation, no markdown code blocks. Include an evaluation for EVERY claim in the input list.
 
@@ -57,15 +46,13 @@ Return ONLY valid JSON matching the schema below. No preamble, no explanation, n
   "evaluations": [
     {
       "node_id": "c1",
-      "support_level": "medium",
-      "confidence_level": "high",
-      "is_well_supported": false,
-      "strengths": ["Consistent with Vaswani et al. (2017), who showed attention alone is sufficient for sequence modelling at scale."],
-      "weaknesses": ["Jones et al. (2021) demonstrated this effect did not replicate on non-English benchmarks, a gap this paper does not address."],
-      "alternative_interpretations": ["Brown et al. (2020) showed that scale alone (without architectural novelty) yields similar gains, suggesting the claimed improvement may be attributable to compute rather than the proposed mechanism."],
-      "required_assumptions": ["..."],
-      "supporting_evidence_quality": "moderate",
-      "notes": "...",
+      "evidence_strength": "moderate",
+      "claim_evidence_calibration": "overclaimed",
+      "strengths": ["Consistent with Vaswani et al. (2017), who showed attention alone suffices for sequence modelling at scale."],
+      "weaknesses": ["Inferential gap: the ablation sub-claims (c1.1, c1.2) are well supported but only establish the mechanism on English benchmarks, so the paper's general 'all languages' claim overreaches.", "Jones et al. (2021) found the effect did not replicate on non-English benchmarks."],
+      "alternative_interpretations": ["Brown et al. (2020) showed scale alone yields similar gains, so the improvement may reflect compute, not the proposed mechanism."],
+      "required_assumptions": ["Training-time parallel computation is available."],
+      "notes": "Contradicts c2's stated scope.",
       "literature_citations": [
         {
           "title": "Attention Is All You Need",
